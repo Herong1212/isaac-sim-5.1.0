@@ -1,0 +1,9 @@
+.history/
+
+exts/
+extscache/
+extsDeprecated/
+kit/
+
+
+standalone_examples/

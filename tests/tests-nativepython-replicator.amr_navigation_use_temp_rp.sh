@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+SCRIPT_DIR=$(dirname ${BASH_SOURCE})
+SAMPLE_DIR=$SCRIPT_DIR/../
+
+"$SCRIPT_DIR/../python.sh" -m pip install -r $SCRIPT_DIR/../requirements.txt
+"$SCRIPT_DIR/../python.sh" $SAMPLE_DIR/standalone_examples/replicator/amr_navigation.py --num_frames 3 --env_interval 1 --use_temp_rp $@ --no-window
+        
