@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="curve_dark" transform="translate(-143 -497)">
+    <g id="bezier_curve_dark" transform="translate(-1444.334 300.287)">
+      <rect id="Icon_Base" width="3.498" height="3.498" transform="translate(1598.538 202.788)" fill="none"/>
+      <g id="Group_3585" data-name="Group 3585" transform="translate(1588.813 201.713)">
+        <path id="Path_3462" data-name="Path 3462" d="M-112.13-21.155s5.2,1.84,7.578-2.088S-99.8-26.69-99.8-26.69" transform="translate(112.526 26.921)" fill="none" stroke="#549fbb" stroke-linecap="round" stroke-width="2"/>
+        <rect id="Rectangle_1089" data-name="Rectangle 1089" width="2.448" height="2.448" transform="translate(-1 4.498)" fill="#f9f903"/>
+        <rect id="Rectangle_1091" data-name="Rectangle 1091" width="2.462" height="2.462" transform="translate(11.579 -1)" fill="#f9f903"/>
+      </g>
+    </g>
+    <rect id="Rectangle_2132" data-name="Rectangle 2132" width="16" height="16" transform="translate(143 497)" fill="none"/>
+  </g>
+</svg>

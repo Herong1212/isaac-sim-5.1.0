@@ -1,0 +1,15 @@
+<project toolsVersion="5.0">
+  <dependency name="premake" linkPath="../_build/host-deps/premake" tags="non-redist">
+    <package name="premake" version="5.0.0-beta4-0-${platform}-release" />
+  </dependency>
+  <dependency name="msvc" linkPath="../_build/host-deps/msvc" tags="non-redist">
+    <!-- If this version changes, you must also fix up MSVC_VERSION in premake5-public.lua -->
+    <package name="msvc" version="2019-16.11.17-2" platforms="windows-x86_64" />
+  </dependency>
+  <dependency name="llvm" linkPath="../_build/host-deps/llvm">
+    <package name="llvm" version="6.0.0-linux-x86_64" platforms="linux-x86_64 linux-aarch64 manylinux_2_35_x86_64 manylinux_2_35_aarch64"/>
+  </dependency>
+  <dependency name="7za" linkPath="../_build/host-deps/7za" tags="non-redist">
+    <package name="7za" version="16.02.4"/>
+  </dependency>
+</project>

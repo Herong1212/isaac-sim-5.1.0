@@ -1,0 +1,86 @@
+/******************************************************************************
+ * Copyright 1986, 2023 NVIDIA Corporation. All rights reserved.
+ *****************************************************************************/
+mdl 1.6;
+
+import ::state::*;
+import ::math::*;
+import ::tex::*;
+
+export enum lookup_mode {
+    /*latlong, */ // can use base::environment_spherical
+    mirroredBall,
+    angular,
+    cubeMapVerticalCross
+};
+
+export color lookup_dome(
+    uniform texture_2d texture = texture_2d(),
+    uniform lookup_mode mode = angular)
+{
+    float3 d = state::direction();
+
+    float2 uv;
+    switch (mode) {
+        /* case latlong:
+        {
+            float theta = math::asin(d.y);
+            float phi = math::atan2(d.z, d.x);
+            uv = float2(0.5f + phi * float(0.5 / math::PI), 0.5f + theta * float(1.0 / math::PI));
+            break;
+        } */
+        case mirroredBall:
+        {
+            float f = 0.5f / math::sqrt(2.0f * (d.z + 1.0f));
+            uv = float2(d.x * f + 0.5f, d.y * f + 0.5f);
+            break;
+        }
+        case angular:
+        {
+            float r = math::acos(d.z) / (math::sqrt(d.x * d.x + d.y * d.y) * math::PI) * 0.5f;
+            uv = float2(d.x * r + 0.5f, d.y * r + 0.5f);
+            break;
+        }
+        case cubeMapVerticalCross:
+        {
+            float2 offset;
+            float3 a = math::abs(d);
+            if (a.z > a.y && a.z > a.x) {
+                offset.x = float(1.0 / 3.0);
+                float f = -0.5f / d.z;
+                uv = float2(d.x * f, d.y * f);
+                if (d.z < 0.0f) {
+                    offset.y = 0.5f;
+                } else {
+                    offset.y = 0.0f;
+                    uv.x = -uv.x;
+                }
+            } else if (a.y > a.x) {
+                offset.x = float(1.0 / 3.0);
+                float f = 0.5f / d.y;
+                uv = float2(d.x * f, d.z * f);
+                if (d.y < 0.0f) {
+                    offset.y = 0.25f;
+                    uv.x = -uv.x;
+                } else {
+                    offset.y = 0.75f;
+                }
+            } else {
+                offset.y = 0.5f;
+                float f = 0.5f / d.x;
+                uv = float2(d.z * f, d.y * f);
+                if (d.x < 0.0f) {
+                    offset.x = 0.0f;
+                    uv.y = -uv.y;
+                } else {
+                    offset.x = float(2.0 / 3.0);
+                }
+            }
+            uv = offset + (uv + float2(0.5f)) * float2(float(1.0 / 3.0), 0.25f);
+            break;
+        }
+    }
+
+    return tex::lookup_color(texture, uv);
+}
+

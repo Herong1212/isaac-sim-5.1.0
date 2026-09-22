@@ -1,0 +1,61 @@
+[package]
+title = "Asyncio Runner"
+category = "Internal"
+description = "Connects main python's asyncio event loop and kit's run loop"
+keywords = ["asyncio", "event", "loop", "runner"]
+support_level = "Core"
+version = "0.0.3"
+readme = "docs/Overview.md"
+
+[dependencies]
+
+[[python.module]]
+name = "omni.kit.async_engine"
+
+[settings]
+# By default we spin event loop while there are "ready" tasks. We can change it to spin only once. That means something
+# like asyncio.sleep(0) will yield until next update.
+exts."omni.kit.async_engine".spinLoopOncePerUpdate = false
+
+# We try to update asyncio event loop in the very end of update event, so that all other system are already updated and
+# user code can be executed. This is how many extensions were already written in Kit and I don't want to break that
+# assumption.
+
+# Allow the event loop policy to be changed in config. "os_default" means to use Python's default policy, and is the
+# default value if unspecified.
+#exts."omni.kit.async_engine".event_loop_policy_windows = "os_default"
+#exts."omni.kit.async_engine".event_loop_policy_unix = "os_default"
+
+# Individual event loop can be overridden too. "os_default" means to use the policy from above, and is the default value
+# if unspecified.
+#exts."omni.kit.async_engine".event_loop_windows = "os_default"
+#exts."omni.kit.async_engine".event_loop_unix = "os_default"
+
+# Do not set updateSubscriptionOrder here, default is
+# python value omni.kit.app.UPDATE_ORDER_PYTHON_EXEC_END_UPDATE
+# exts."omni.kit.async_engine".updateSubscriptionOrder = 1000000
+
+[[test]]
+# It starts before omni.kit.test coverage, module level code treated as uncovered (imports, startup)
+pyCoverageThreshold = 45
+
+[[test]]
+# It starts before omni.kit.test coverage, module level code treated as uncovered (imports, startup)
+pyCoverageThreshold = 45
+name="SelectorPolicy"
+args = ["--/exts/omni.kit.async_engine/event_loop_policy_windows=WindowsSelectorEventLoopPolicy","--/exts/omni.kit.async_engine/event_loop_policy_unix=DefaultEventLoopPolicy", "--/tests/selectorTest=1"]
+
+[[test]]
+# It starts before omni.kit.test coverage, module level code treated as uncovered (imports, startup)
+pyCoverageThreshold = 45
+name="Selector"
+args = ["--/exts/omni.kit.async_engine/event_loop_windows=SelectorEventLoop","--/exts/omni.kit.async_engine/event_loop_unix=SelectorEventLoop", "--/tests/selectorTest=1"]
+
+[[test]]
+# It starts before omni.kit.test coverage, module level code treated as uncovered (imports, startup)
+pyCoverageThreshold = 45
+name="not-keep_loop_running"
+args = ["--/exts/omni.kit.async_engine/keep_loop_running=0"]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]

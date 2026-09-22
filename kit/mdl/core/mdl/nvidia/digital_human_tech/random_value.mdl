@@ -1,0 +1,117 @@
+mdl 1.7;
+
+import ::df::*;
+import ::state::*;
+import ::math::*;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+import ::limits::*;
+
+
+
+
+const string COPYRIGHT = "Copyright 2023 NVIDIA Corporation. All rights reserved.";
+
+
+float simple_random_value(float2 pos, float seed)
+{
+    float value = math::frac(math::sin(pos.x + pos.y * 57.0 + seed *113.0) * 43758.5453);
+    return value;
+}
+
+
+export float random_value(
+
+    //Liling Color Correction
+    //
+
+    uniform float in_f = float(0.0)
+    [[
+        anno::display_name("Input Value"),
+        anno::in_group("Input")
+    ]],
+
+    uniform float seed = float(0.0) [[
+        anno::display_name("Seed"),
+        anno::soft_range(0.01, 100.0),
+        anno::in_group("Input")
+    ]]
+
+)
+[[
+    anno::display_name("Random Value"),
+    anno::description("Random Value Float Node"),
+	anno::thumbnail("./thumbs/rvalue_node_icon.png"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33),
+    anno::author("NVIDIA Corporation"),
+    anno::copyright_notice(COPYRIGHT)
+]]
+{
+    return simple_random_value(float2(in_f), seed);
+}
+
+
+export float random_value(
+
+    //Liling Color Correction
+    //
+
+    uniform float2 in_f = float2(0.0)
+    [[
+        anno::display_name("Input Value"),
+        anno::in_group("Input")
+    ]],
+
+    uniform float seed = float(0.0) [[
+        anno::display_name("Seed"),
+        anno::soft_range(0.01, 100.0),
+        anno::in_group("Input")
+    ]]
+
+)
+[[
+    anno::display_name("Random Value Float2"),
+    anno::description("Random Value Float2 Node"),
+	anno::thumbnail("./thumbs/rvalue_f2_node_icon.png"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33),
+    anno::author("NVIDIA Corporation"),
+    anno::copyright_notice(COPYRIGHT)
+]]
+{
+    return simple_random_value(in_f, seed);
+}
+
+
+export float random_value_varying(
+
+    //Liling Color Correction
+    //
+
+    varying float2 in_f = float2(0.0)
+    [[
+        anno::display_name("Input Value"),
+        anno::in_group("Input")
+    ]],
+
+    varying float seed = float(0.0) [[
+        anno::display_name("Seed"),
+        anno::soft_range(0.01, 100.0),
+        anno::in_group("Input")
+    ]]
+
+)
+[[
+    anno::display_name("Random Value Float2"),
+    anno::description("Random Value Float2 Node"),
+	anno::thumbnail("./thumbs/rvalue_f2_node_icon.png"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33),
+    anno::author("NVIDIA Corporation"),
+    anno::copyright_notice(COPYRIGHT)
+]]
+{
+    return simple_random_value(in_f, seed);
+}

@@ -1,0 +1,534 @@
+mdl 1.7;
+
+import ::df::*;
+import ::state::*;
+import ::math::*;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+import ::limits::*;
+using ::nvidia::digital_human_tech::random_value import random_value_varying;
+
+const string COPYRIGHT = "Copyright 2024 NVIDIA Corporation. All rights reserved.";
+
+
+
+export float3 rgb_to_hsv_float3(color rgb)
+[[
+    anno::display_name("RGB 2 HSV"),
+    anno::description("Convert RGB color to HSV float3"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33)
+]]
+{
+    float R = float3(rgb).x;
+    float G = float3(rgb).y;
+    float B = float3(rgb).z;
+    float rgb_max = math::max(R, math::max(G, B));
+    float rgb_min = math::min(R, math::min(G, B));
+    float delta = rgb_max - rgb_min;
+
+    float H = 0.0;
+    float S = (rgb_max > limits::FLOAT_MIN) ? (delta / rgb_max) : 0.0;
+    float V = rgb_max;
+
+    if (S <= limits::FLOAT_MIN)
+        return float3(H, S, V);
+
+    if (R >= rgb_max)
+        H = (G - B) / delta;
+    else if (G >= rgb_max)
+        H = 2.0 + (B - R) / delta;
+    else if (B >= rgb_max)
+        H = 4.0 + (R - G) / delta;
+
+    H /= 6.0;  // remap to [0, 1]
+    if (H < 0.0)
+        H += 1.0;
+
+    return float3(H, S, V);
+}
+
+export color hsv_to_rgb_color(float3 hsv)
+[[
+    anno::display_name("HSV 2 RGB"),
+    anno::description("Convert HSV float3 to RGB Color"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33)
+]]
+{
+    float H = hsv.x;
+    float S = hsv.y;
+    float V = hsv.z;
+
+    if (S <= limits::FLOAT_MIN)
+        return color(V, V, V);
+
+    float h = (H < 1.0) ? H * 6.0 : 0.0;
+    float h_i = math::floor(h);
+    float f = h - h_i;
+
+    float p = V * (1.0 - S);
+    float q = V * (1.0 - (S * f));
+    float t = V * (1.0 - (S * (1.0 - f)));
+
+    switch (int(h_i))
+    {
+        case 0: return color(V, t, p);
+        case 1: return color(q, V, p);
+        case 2: return color(p, V, t);
+        case 3: return color(p, q, V);
+        case 4: return color(t, p, V);
+        case 5: return color(V, p, q);
+        default: return color(V, t, p);  // == case 0
+    }
+}
+
+
+
+float3 contrast_rgb(float3 rgb, float3 contrast, float3 contrast_pivot){
+
+    return (rgb - contrast_pivot) * contrast + contrast_pivot;
+
+}
+
+// copied from unmerged base.mdl, should point to base:: later when it's merged
+float hue(float3 rgb)
+{
+    float max = math::max_value(rgb);
+    float min = math::min_value(rgb);
+    float range = max - min;
+    float inv_range = 1.0f/range;
+
+    float hue = (range != 0.0f) ?
+        (1.0f/6.0f) * (                                     // 60.0/360.0
+        (max == rgb.x) ? ((rgb.y-rgb.z)*inv_range)          // R is max
+        : (max == rgb.y) ? (2.0f + (rgb.z-rgb.x)*inv_range) // G is max
+        : (4.0f + (rgb.x-rgb.y)*inv_range)                  // B is max
+        )
+
+        : 0.0f;                                             // hue is undefined (assume 0)
+
+    return (hue >= 0.0f) ? hue : (hue + 1.0f);
+}
+
+float3 rgb_to_hsv(float3 rgb)
+{
+    float min = math::min_value(rgb);
+    float max = math::max_value(rgb);
+    float h = 0.f, s = 0.f, v = max;
+    float delta = max - min;
+    s = delta / max;
+    h = hue(rgb);
+
+    return float3(h, s, v);
+}
+
+// copied from unmerged base.mdl, should point to base:: later when it's merged
+float3 hsv_to_rgb(float3 hsv)
+{
+    // from "Color Imaging, Fundamentals and Applications", Reinhard et al., p. 442
+
+    // A hue of 1.0 is questionably valid, and needs to be interpreted as 0.0f
+    float h_prime = (hsv.x != 1.0f) ? hsv.x * 6.0f : 0.0f; // H * 360.0/60.0
+    float h_floor = math::floor(h_prime);
+    float f = h_prime - h_floor;
+    float zy = hsv.z*hsv.y;
+    float a = hsv.z - zy;
+    float b = hsv.z - zy*f;
+    float c = a + zy*f;
+
+    switch(int(h_floor))
+    {
+    default:
+
+        // fall through...
+    case 0:
+        return float3(hsv.z, c, a);
+    case 1:
+        return float3(b, hsv.z, a);
+    case 2:
+        return float3(a, hsv.z, c);
+    case 3:
+        return float3(a, b, hsv.z);
+    case 4:
+        return float3(c, a, hsv.z);
+    case 5:
+        return float3(hsv.z, a, b);
+    }
+}
+
+
+color hue_tint_calc(color rgb, float hue_tint, float hue_tint_amount)
+[[ anno::unused() ]]
+{
+
+    if (hue_tint_amount != 0)
+    {
+        float3 hsv = rgb_to_hsv(float3(rgb));
+        float h = hsv.x;
+        float s = hsv.y;
+        float v = hsv.z;
+
+        h += (hue_tint - h)*(hue_tint_amount);
+        hsv = float3(h, s, v);
+        return color(hsv);
+    }
+    return rgb;
+}
+
+
+
+color Color_Correct_calc(
+
+    //Color Correction
+    //
+
+    color in_c = color(1.0, 1.0, 1.0)
+    [[
+        anno::display_name("Input Color"),
+        anno::in_group("Input")
+    ]],
+
+    varying float gamma = float(1.0) [[
+        anno::display_name("Gamma"),
+        anno::soft_range(0.01, 10.0),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float hue_shift = float(0.0) [[
+        anno::display_name("Hue Shift"),
+        anno::hard_range(-1.f, 1.f),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float saturation = float(1.0) [[
+        anno::display_name("Saturation"),
+        anno::hard_range(0.f, 10.f),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float3 contrast = float3(1.0) [[
+        anno::display_name("Contrast"),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float3 contrast_pivot = float3(0.18) [[
+        anno::display_name("Contrast Pivot"),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float exposure = float(0.0) [[
+        anno::display_name("Exposure"),
+        anno::soft_range(0, 10),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying color multiply_color = color(1.0) [[
+        anno::display_name("Multiply"),
+        anno::in_group("Color Correction")
+    ]],
+
+     varying color add_color = color(0.0) [[
+        anno::display_name("Add"),
+        anno::in_group("Color Correction")
+    ]],
+
+    bool invert = false [[
+        anno::display_name("Invert"),
+        anno::in_group("Color Correction")
+    ]]
+
+)
+[[
+    anno::display_name("Color Correct "),
+    anno::description("Color Correction Node"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33)
+]]
+{
+
+
+    // apply invert if needed
+    if(invert)
+        // in_c = math::clamp(in_c, 0.f, 1.f);
+        in_c = color(1.f) - in_c;
+
+    float3 rgb = float3(in_c);
+
+
+    // apply gamma
+    if(gamma != 1.f)
+        rgb = math::pow(rgb, 1.f/gamma);
+
+
+
+    // hue shift, saturation
+    if(hue_shift != 0.f || saturation != 1.f)
+    {
+        // RGB to HSV
+
+        if (hue_shift != 0.f)
+            // clamp because hue shift does not work well with negative number
+            rgb = math::clamp(rgb, 0.f, 1.f);
+
+        float3 hsv = rgb_to_hsv(rgb);
+
+        float h = hsv.x;
+        float s = hsv.y;
+        float v = hsv.z;
+        if(v > 0.f)
+        {
+
+            if(saturation != 1.f)
+                s *= saturation;
+
+        }
+        s = math::clamp(s, 0.f, 1.f);
+        // apply cromatic corrections
+        h += hue_shift;
+
+        if(h < 0.f)
+            h += 1.f;
+        else if(h >= 1.f)
+            h -= 1.f;
+
+
+        // // HSV to RGB
+
+        // rgb = float3(r+m, g+m, b+m);
+        // hsv to rgb usig base::hsv_to_rgb
+        hsv = float3(h, s, v);
+        // // HSV to RGB
+        rgb = hsv_to_rgb(hsv);
+    }
+
+
+    // // apply contrast
+    if(contrast != float3(1.f))
+    {
+        rgb = contrast_rgb(rgb, contrast, contrast_pivot);
+    }
+
+
+    // apply exposure
+    if(exposure != 0.f)
+        rgb *= math::pow(2.f, exposure);
+
+    // apply multiplier
+    rgb *= float3(multiply_color);
+
+    // apply add color
+    rgb += float3(add_color);
+
+    // Arnold & Nuke does not clamp results,
+    // so we are not clamping values here as well
+    // rgb = math::clamp(rgb, 0.f, 1.f);
+
+    return color(rgb);
+}
+
+
+
+export color Color_Correct(
+
+    //Color Correction
+    //
+
+    color in_c = color(1.0, 1.0, 1.0)
+    [[
+        anno::display_name("Input Color"),
+        anno::in_group("Input")
+    ]],
+
+    varying float gamma = float(1.0) [[
+        anno::display_name("Gamma"),
+        anno::soft_range(0.01, 10.0),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float hue_shift = float(0.0) [[
+        anno::display_name("Hue Shift"),
+        anno::hard_range(-1.f, 1.f),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float saturation = float(1.0) [[
+        anno::display_name("Saturation"),
+        anno::hard_range(0.f, 10.f),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float3 contrast = float3(1.0) [[
+        anno::display_name("Contrast"),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float3 contrast_pivot = float3(0.18) [[
+        anno::display_name("Contrast Pivot"),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying float exposure = float(0.0) [[
+        anno::display_name("Exposure"),
+        anno::soft_range(0, 10),
+        anno::in_group("Color Correction")
+    ]],
+
+    varying color multiply_color = color(1.0) [[
+        anno::display_name("Multiply"),
+        anno::in_group("Color Correction")
+    ]],
+
+     varying color add_color = color(0.0) [[
+        anno::display_name("Add"),
+        anno::in_group("Color Correction")
+    ]],
+
+    bool invert = false [[
+        anno::display_name("Invert"),
+        anno::in_group("Color Correction")
+    ]]
+
+)
+[[
+    anno::display_name("Color Correct "),
+    anno::description("Color Correction Node"),
+	anno::thumbnail("./thumbs/cc_node_icon.png"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33),
+    anno::author("NVIDIA Corporation"),
+    anno::copyright_notice(COPYRIGHT)
+]]
+{
+
+    return Color_Correct_calc(
+        in_c,
+        gamma,
+        hue_shift,
+        saturation,
+        contrast,
+        contrast_pivot,
+        exposure,
+        multiply_color,
+        add_color,
+        invert
+    );
+}
+
+
+
+// hsv randomize calc
+color hsv_rand_calc(
+        color in_c,
+        float rand_h,
+        float rand_s,
+        float rand_v,
+        float seed,
+        float2 uvcoord
+)
+{
+    float3 hsv = rgb_to_hsv(float3(in_c));
+    float h = hsv.x;
+    float s = hsv.y;
+    float v = hsv.z;
+
+    if (rand_h != 0)
+    {
+        // randon_value returns 0-1 in this case
+        // so map it between -rand_h and rand_h
+        float hue_shift = -rand_h + 2.f * rand_h * random_value_varying(uvcoord, seed + 17.03f);
+        h += hue_shift;
+        if(h < 0.f)
+            h += 1.f;
+        else if(h >= 1.f)
+            h -= 1.f;
+    }
+
+    if (rand_s != 0){
+        float s_shift = -rand_s + 2.f * rand_s * random_value_varying(uvcoord, seed + 112.24);
+        s += s_shift;
+    }
+    s = math::clamp(s, 0.f, 1.f);
+
+    if (rand_v != 0){
+        float v_shift = -rand_v + 2.f * rand_v * random_value_varying(uvcoord, seed);
+        v += v_shift;
+    }
+    // no negtive v
+    v = math::clamp(v, 0.f, 10.f);
+
+    hsv = float3(h, s, v);
+    return color(hsv_to_rgb(hsv));
+}
+
+// hsv randomize node
+export color hsv_randomize(
+
+    //Color Correction
+    //
+
+    color in_c = color(1.0, 1.0, 1.0)
+    [[
+        anno::display_name("Input Color"),
+        anno::in_group("Input")
+    ]],
+
+    float rand_h = float(0.f)
+    [[
+        anno::display_name("Hue Random Value"),
+        anno::description("Hue random range, if value is 0.1, it will randomly offset to current Hue with a value between [-0.1, 0.1]"),
+        anno::hard_range(0.f, 1.f),
+        anno::in_group("Input")
+    ]],
+
+    float rand_s = float(0.f)
+    [[
+        anno::display_name("Saturation Random "),
+        anno::description("Saturation random range, if value is 0.1, it will randomly offset to current Saturation with a value between [-0.1, 0.1]"),
+        anno::hard_range(0.f, 1.f),
+        anno::in_group("Input")
+    ]],
+
+    float rand_v = float(0.f)
+    [[
+        anno::display_name("Brightness Random "),
+        anno::description("Brightness random range, if value is 0.1, it will randomly offset to current brightness with a value between [-0.1, 0.1]"),
+        anno::hard_range(0.f, 1.f),
+        anno::in_group("Input")
+    ]],
+
+    float seed = float(0.f)
+    [[
+        anno::display_name("Random seed"),
+        anno::in_group("Input")
+    ]],
+
+    float2 uvcoord = float2(0.f)
+    [[
+        anno::display_name("Optional UV Coordinates"),
+        anno::description("Option uv coord input, if variation based on uv is needed"),
+        anno::in_group("Input")
+    ]]
+
+)
+[[
+    anno::display_name("HSV Randomize"),
+    anno::description("HSV Randomize Node"),
+	anno::thumbnail("./thumbs/hsv_rand_node_icon.png"),
+    anno::in_group("Advanced"),
+    anno::ui_order(33),
+    anno::author("NVIDIA Corporation"),
+    anno::copyright_notice(COPYRIGHT)
+]]
+{
+
+    return hsv_rand_calc(
+        in_c,
+        rand_h,
+        rand_s,
+        rand_v,
+        seed,
+        uvcoord
+    );
+}

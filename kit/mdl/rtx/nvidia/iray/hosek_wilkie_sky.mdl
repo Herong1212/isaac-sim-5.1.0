@@ -1,0 +1,518 @@
+/***************************************************************************************************
+ * Copyright 2023 NVIDIA Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *  * Neither the name of NVIDIA CORPORATION nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **************************************************************************************************/
+
+mdl 1.7;
+
+//
+// Implementation of the sky model by Lukas Hosek and Alexander Wilkie, references:
+//  [1] "An Analytic Model for Full Spectral Sky-Dome Radiance"
+//       ACM TOG 31(4) - Proceedings of ACM SIGGRAPH 2012
+//  [2] "Adding a Solar Radiance Function to the Hosek Skylight Model"
+//       IEEE Computer Graphics & Applications, May/June edition, 2013
+//  [3]  Webpage containig source and data
+//       https://cgg.mff.cuni.cz/projects/SkylightModelling/
+//
+// Extensions:
+//  - artistic sun disk size control
+//  - artistic horizon control in analogy to base::sun_and_sky
+//  - irradiance computation fit added for explicit illuminance control and ground color computation
+//
+
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+
+// data from [3] + additional precomputed data
+import hosek_wilkie_sky_data::*;
+
+const float[11] wavelengths = float[11](
+    320.0f, 360.0f, 400.0f, 440.0f, 480.0f, 520.0f, 560.0f, 600.0f, 640.0f, 680.0f, 720.0f);
+
+// utility to handle interpolation between turbidities
+struct ipol {
+    int i0;
+    float w0;
+};
+ipol make_ipol(float val, int imin, int imax)
+{
+    ipol i;
+    i.i0 = int(val);
+    if (i.i0 <= imin) {
+        i.i0 = imin;
+        i.w0 = 1.0f;
+    } else if (i.i0 >= imax) {
+        i.i0 = imax;
+        i.w0 = 1.0f;
+    } else {
+        i.w0 = 1.0f - math::frac(val);
+    }
+    return i;
+}
+
+struct config {
+    float[9] v;
+};
+
+// interpolate all parameters needed for evaluation for equation 8 [1]
+config create_config(
+    int wl_idx,
+    ipol iturb,
+    float albedo,
+    float[6] w)
+{
+    config c;
+
+    int offset = wl_idx * 1080;
+    int i0 = offset + 54 * (iturb.i0 - 1);
+    for (int i = 0; i < 9; ++i) {
+        c.v[i] =
+            iturb.w0 * (1.0f - albedo) * (
+                w[0] * hosek_wilkie_sky_data::datasets[i0 + i] +
+                w[1] * hosek_wilkie_sky_data::datasets[i0 + i + 9] +
+                w[2] * hosek_wilkie_sky_data::datasets[i0 + i + 18] +
+                w[3] * hosek_wilkie_sky_data::datasets[i0 + i + 27] +
+                w[4] * hosek_wilkie_sky_data::datasets[i0 + i + 36] +
+                w[5] * hosek_wilkie_sky_data::datasets[i0 + i + 45]);
+    }
+    i0 = offset + 540 + 54 * (iturb.i0 - 1);
+    for (int i = 0; i < 9; ++i) {
+        c.v[i] +=
+            iturb.w0 * albedo * (
+                w[0] * hosek_wilkie_sky_data::datasets[i0 + i] +
+                w[1] * hosek_wilkie_sky_data::datasets[i0 + i + 9] +
+                w[2] * hosek_wilkie_sky_data::datasets[i0 + i + 18] +
+                w[3] * hosek_wilkie_sky_data::datasets[i0 + i + 27] +
+                w[4] * hosek_wilkie_sky_data::datasets[i0 + i + 36] +
+                w[5] * hosek_wilkie_sky_data::datasets[i0 + i + 45]);
+    }
+    if (iturb.w0 >= 1.0f)
+        return c;
+    i0 = offset + 54 * iturb.i0;
+    for (int i = 0; i < 9; ++i) {
+        c.v[i] +=
+            (1.0f - iturb.w0) * (1.0f - albedo) * (
+                w[0] * hosek_wilkie_sky_data::datasets[i0 + i] +
+                w[1] * hosek_wilkie_sky_data::datasets[i0 + i + 9] +
+                w[2] * hosek_wilkie_sky_data::datasets[i0 + i + 18] +
+                w[3] * hosek_wilkie_sky_data::datasets[i0 + i + 27] +
+                w[4] * hosek_wilkie_sky_data::datasets[i0 + i + 36] +
+                w[5] * hosek_wilkie_sky_data::datasets[i0 + i + 45]);
+    }
+    i0 = offset + 540 + 54 * iturb.i0;
+    for (int i = 0; i < 9; ++i) {
+        c.v[i] +=
+            (1.0f - iturb.w0) * albedo * (
+                w[0] * hosek_wilkie_sky_data::datasets[i0 + i] +
+                w[1] * hosek_wilkie_sky_data::datasets[i0 + i + 9] +
+                w[2] * hosek_wilkie_sky_data::datasets[i0 + i + 18] +
+                w[3] * hosek_wilkie_sky_data::datasets[i0 + i + 27] +
+                w[4] * hosek_wilkie_sky_data::datasets[i0 + i + 36] +
+                w[5] * hosek_wilkie_sky_data::datasets[i0 + i + 45]);
+    }
+    return c;
+}
+
+// interpolate reference sky radiance value [1]
+float create_radiance(
+    int wl_idx,
+    ipol iturb,
+    float albedo,
+    float[6] w)
+{
+    int offset = wl_idx * 120;
+    int i0 = offset + 6 * (iturb.i0 - 1);
+    float val =
+        iturb.w0 * (1.0f - albedo) * (
+            w[0] * hosek_wilkie_sky_data::datasets_rad[i0] +
+            w[1] * hosek_wilkie_sky_data::datasets_rad[i0 + 1] +
+            w[2] * hosek_wilkie_sky_data::datasets_rad[i0 + 2] +
+            w[3] * hosek_wilkie_sky_data::datasets_rad[i0 + 3] +
+            w[4] * hosek_wilkie_sky_data::datasets_rad[i0 + 4] +
+            w[5] * hosek_wilkie_sky_data::datasets_rad[i0 + 5]);
+    i0 = offset + 60 + 6 * (iturb.i0 - 1);
+    val +=
+        iturb.w0 * albedo *(
+            w[0] * hosek_wilkie_sky_data::datasets_rad[i0] +
+            w[1] * hosek_wilkie_sky_data::datasets_rad[i0 + 1] +
+            w[2] * hosek_wilkie_sky_data::datasets_rad[i0 + 2] +
+            w[3] * hosek_wilkie_sky_data::datasets_rad[i0 + 3] +
+            w[4] * hosek_wilkie_sky_data::datasets_rad[i0 + 4] +
+            w[5] * hosek_wilkie_sky_data::datasets_rad[i0 + 5]);
+    if (iturb.w0 == 1.0f)
+        return val;
+    i0 = offset + 6 * iturb.i0;
+    val +=
+        (1.0f - iturb.w0) * (1.0f - albedo) * (
+            w[0] * hosek_wilkie_sky_data::datasets_rad[i0] +
+            w[1] * hosek_wilkie_sky_data::datasets_rad[i0 + 1] +
+            w[2] * hosek_wilkie_sky_data::datasets_rad[i0 + 2] +
+            w[3] * hosek_wilkie_sky_data::datasets_rad[i0 + 3] +
+            w[4] * hosek_wilkie_sky_data::datasets_rad[i0 + 4] +
+            w[5] * hosek_wilkie_sky_data::datasets_rad[i0 + 5]);
+    i0 = offset + 60 + 6 * iturb.i0;
+    val +=
+        (1.0f - iturb.w0) * albedo * (
+            w[0] * hosek_wilkie_sky_data::datasets_rad[i0] +
+            w[1] * hosek_wilkie_sky_data::datasets_rad[i0 + 1] +
+            w[2] * hosek_wilkie_sky_data::datasets_rad[i0 + 2] +
+            w[3] * hosek_wilkie_sky_data::datasets_rad[i0 + 3] +
+            w[4] * hosek_wilkie_sky_data::datasets_rad[i0 + 4] +
+            w[5] * hosek_wilkie_sky_data::datasets_rad[i0 + 5]);
+    return val;
+}
+
+// equations 8 and 9 [1]
+float compute_F(float[9] c, float cos_theta, float cos_gamma, float gamma)
+{
+    float tmp = 1.0f + c[8] * c[8] - 2.0f * c[8] * cos_gamma;
+    float cos_gamma_sqd = cos_gamma * cos_gamma;
+    float chi = (1.0f + cos_gamma_sqd) / (tmp * math::sqrt(tmp));
+    return
+        (1.0f + c[0] * math::exp(c[1] / (cos_theta + 0.01f))) *
+        (c[2] + c[3] * math::exp(c[4] * gamma) + c[5] * cos_gamma_sqd + c[6] * chi + c[7] * math::sqrt(cos_theta));
+}
+
+// weights for equation 11 [1]
+float[6] compute_weights(float x)
+{
+    float xx = x * x;
+    float xxx = xx * x;
+    float y = 1.0f - x;
+    float yy = y * y;
+    float yyy = yy * y;
+
+    return float[6](yyy * yy, 5.0f * yy * yy * x, 10.0f * yyy * xx, 10.0f * yy * xxx, 5.0f * y * xx * xx, xxx * xx);
+}
+
+// compute radiance of sun disk at given elevation [2]
+float[11] compute_sun_radiance(
+    ipol iturb,
+    float elevation)
+{
+    float e = math::pow(elevation * (2.0 / math::PI), 1.0f / 3.0f);
+    int e_idx = math::min(int(e * 45.0f), 44);
+    float elevation0 = float(e_idx) / 45.0f;
+    elevation0 *= elevation0 * elevation0 * math::PI * 0.5f;
+
+    float x = elevation - elevation0;
+    float xx = x * x;
+    float xxx = x * xx;
+
+    float[11] radiance;
+    for (int i = 0, j = 0; i < 11; ++i, j += 6) {
+        int idx = i * 1800 + (iturb.i0 - 1) * 180 + 4 * e_idx;
+        radiance[i] = iturb.w0 * (
+            hosek_wilkie_sky_data::datasets_solar[idx    ] * xxx +
+            hosek_wilkie_sky_data::datasets_solar[idx + 1] * xx +
+            hosek_wilkie_sky_data::datasets_solar[idx + 2] * x +
+            hosek_wilkie_sky_data::datasets_solar[idx + 3]);
+        if (iturb.w0 != 1.0f) {
+            idx = i * 1800 + iturb.i0 * 180 + 4 * e_idx;
+            radiance[i] += (1.0 - iturb.w0) * (
+                hosek_wilkie_sky_data::datasets_solar[idx    ] * xxx +
+                hosek_wilkie_sky_data::datasets_solar[idx + 1] * xx +
+                hosek_wilkie_sky_data::datasets_solar[idx + 2] * x +
+                hosek_wilkie_sky_data::datasets_solar[idx + 3]);
+        }
+    }
+    return radiance;
+}
+
+// compute "limb darkening" effect equation [2]
+float[11] compute_limb_darkening(
+    float sin_gamma_sqd, // sin(gamma)^2
+    float sin_gamma_max_sqd)
+{
+    float cc = math::max(0.0f, 1.0f - sin_gamma_sqd / sin_gamma_max_sqd);
+    float c = math::sqrt(cc);
+    float ccc = cc * c;
+    float cccc = cc * cc;
+    float ccccc = ccc * cc;
+
+    float[11] ld;
+    for (int i = 0, j = 0; i < 11; ++i, j += 6)
+        ld[i] = 
+            hosek_wilkie_sky_data::datasets_ld[j    ] +
+            hosek_wilkie_sky_data::datasets_ld[j + 1] * c +
+            hosek_wilkie_sky_data::datasets_ld[j + 2] * cc +
+            hosek_wilkie_sky_data::datasets_ld[j + 3] * ccc +
+            hosek_wilkie_sky_data::datasets_ld[j + 4] * cccc +
+            hosek_wilkie_sky_data::datasets_ld[j + 5] * ccccc;
+    return ld;
+}
+
+// compute irradiance from sky (without sun) from custom rational fit
+float[11] compute_sky_irradiance(
+    ipol iturb,
+    float[11] albedo,
+    float sun_elevation)
+{
+    float x = sun_elevation * (180.0f / math::PI);
+    float xx = x * x;
+    float xxx = xx * x;
+
+    float[11] irrad;
+    int idx0 = (iturb.i0 - 1) * 22;
+    for (int i = 0; i < 11; ++ i) {
+        int idx = idx0 + i * 2;
+        float4 a = hosek_wilkie_sky_data::datasets_irrad[idx];
+        float4 b = hosek_wilkie_sky_data::datasets_irrad[idx + 1];
+        irrad[i] =
+            (1.0f - albedo[i]) * iturb.w0 *
+            (a.x + a.y * x + a.z * xx + a.w * xxx) / (b.x + b.y * x + b.z * xx + b.w * xxx);
+    }
+    idx0 += 220;
+    for (int i = 0; i < 11; ++ i) {
+        int idx = idx0 + i * 2;
+        float4 a = hosek_wilkie_sky_data::datasets_irrad[idx];
+        float4 b = hosek_wilkie_sky_data::datasets_irrad[idx + 1];
+        irrad[i] +=
+            albedo[i] * iturb.w0 *
+            (a.x + a.y * x + a.z * xx + a.w * xxx) / (b.x + b.y * x + b.z * xx + b.w * xxx);
+    }
+    if (iturb.w0 == 1.0f)
+        return irrad;
+    idx0 = iturb.i0 * 22;
+    for (int i = 0; i < 11; ++ i) {
+        int idx = idx0 + i * 2;
+        float4 a = hosek_wilkie_sky_data::datasets_irrad[idx];
+        float4 b = hosek_wilkie_sky_data::datasets_irrad[idx + 1];
+        irrad[i] +=
+            (1.0f - albedo[i]) * (1.0f - iturb.w0) *
+            (a.x + a.y * x + a.z * xx + a.w * xxx) / (b.x + b.y * x + b.z * xx + b.w * xxx);
+    }
+    idx0 += 220;
+    for (int i = 0; i < 11; ++ i) {
+        int idx = idx0 + i * 2;
+        float4 a = hosek_wilkie_sky_data::datasets_irrad[idx];
+        float4 b = hosek_wilkie_sky_data::datasets_irrad[idx + 1];
+        irrad[i] +=
+            albedo[i] * (1.0f - iturb.w0) *
+            (a.x + a.y * x + a.z * xx + a.w * xxx) / (b.x + b.y * x + b.z * xx + b.w * xxx);
+    }
+    return irrad;
+}
+
+
+// even if ground albedo color input is spectral, we don't have the means to query
+// it at certain wavelengths in MDL, so we do use RGB and estimate spectral from that...
+float[11] estimate_spectral_albedo(color ground_albedo)
+{
+    float3 rgb = float3(ground_albedo);
+    float[11] albedo;
+    for (int i = 0; i < 11; ++i)        
+        albedo[i] = (wavelengths[i] < 485.0f) ? rgb.z : ((wavelengths[i] < 595.0f) ? rgb.y : rgb.x);
+
+    return albedo;
+}
+
+// modify directions based on horizon height and up-vector orientation (from base::sun_and_sky)
+float3 prepare_direction(
+    float3 dir,
+    bool y_is_up,
+    float horizon_height)
+{
+    if (y_is_up) {
+        float tmp = dir.y;
+        dir.y = dir.z;
+        dir.z = tmp;
+    }
+    if (horizon_height != 0.0f) {
+        dir.z -= horizon_height;
+        dir = math::normalize(dir);
+    }
+    return dir;
+}
+
+export enum illuminance_mode
+[[
+    anno::description("Illuminance control for sun and sky light"),
+    anno::hidden()
+]]
+{
+    illuminance_mode_raw = 0
+    [[ anno::description("Raw intensity from original data") ]],
+    illuminance_mode_total = 1
+    [[ anno::description("Matches sum of sun and skylight to target illuminance.") ]],
+    illuminance_mode_sun_sky = 2
+    [[ anno::description("Seperate controls for luminance from sun and sky light.") ]]
+};
+
+// full sun and sky model for use as environment
+export color sun_and_sky(
+    uniform float turbidity = 2.0f
+    [[ anno::description("Turbidity, higher values increase haziness, range from 1 (clear sky) to 10 (hazy day)"),
+       anno::hard_range(1.0f, 10.0f) ]],
+    uniform color ground_albedo = color(0.5f)
+    [[ anno::description("Albedo of ground."),
+       anno::hard_range(color(0.0f), color(1.0f)) ]],
+    uniform float intensity_multiplier = 1.0f
+    [[ anno::description("Global multiplier for the intensity of sun and sky light."),
+       anno::enable_if("mode==illuminance_mode_raw")]],
+    uniform float3 sun_direction = float3(0.0, 0.229271f, 0.418882f)
+    [[ anno::description("Direction pointing to sun.") ]],
+    uniform bool y_is_up = true
+    [[ anno::description("Switch up-vector convention between z and y.") ]],
+    uniform float sun_disk_scale = 1.0f
+    [[ anno::description("Scaling of sun disk radius.") ]],
+    uniform float sun_disk_intensity_multiplier = 1.0f
+    [[ anno::description("Multiplier for sun light intensity (ignored for illumiance_mode_sun_sky)."),
+       anno::enable_if("mode!=illuminance_mode_sun_sky") ]],
+    uniform float sky_intensity_multiplier = 1.0f
+    [[ anno::description("Multiplier for sky light intensity (ignored for illumiance_mode_sun_sky)."),
+       anno::enable_if("mode!=illuminance_mode_sun_sky") ]],
+    uniform float horizon_height = 0.0f
+    [[ anno::description("Height of the horizon line") ]],
+    uniform float horizon_blur = 0.1f
+    [[ anno::description("Blur between sky and ground color at horizon.") ]],
+    uniform illuminance_mode mode = illuminance_mode_raw
+    [[ anno::description("Switch to explicit illuminance control.") ]],
+    uniform float illuminance_total = 100000.0f
+    [[ anno::description("Illuminance in lux that sun and sky light will be matched to (illumiance_mode_total)."),
+       anno::enable_if("mode==illuminance_mode_total") ]],
+    uniform float illuminance_sun = 80000.0f
+    [[ anno::description("Illuminance in lux that sun light will be matched to (illumiance_mode_sun_sky)."),
+       anno::enable_if("mode==illuminance_mode_sun_sky") ]],
+    uniform float illuminance_sky = 20000.0f
+    [[ anno::description("Illuminance in lux that sky light will be matched to (illumiance_mode_sun_sky)."),
+       anno::enable_if("mode==illuminance_mode_sun_sky") ]],
+    float3 direction = state::direction()
+    [[ anno::description("Lookup direction, has to be normalized. Default is for environment functions.") ]])
+[[
+    anno::description("Hosek and Wilkie spectral sun and sky model.")
+]]
+{
+    //
+    // prepare input data
+    //
+    horizon_height *= 0.1f;
+    sun_direction = math::normalize(sun_direction);
+    sun_direction = prepare_direction(sun_direction, y_is_up, horizon_height);
+
+    if (sun_direction.z <= 0.0f)
+        return color(0.0f);
+
+    float3 dir = prepare_direction(direction, y_is_up, horizon_height);
+    float cos_theta = math::max(dir.z, 0.01f);
+    
+    float sun_elevation = math::asin(sun_direction.z);
+    ipol iturb = make_ipol(turbidity, 1, 10);
+    float[11] albedo = estimate_spectral_albedo(ground_albedo);
+
+    if (mode == illuminance_mode_sun_sky) {
+        sun_disk_intensity_multiplier = 1.0f;
+        sky_intensity_multiplier = 1.0f;
+        intensity_multiplier = 1.0f;
+    } else {
+        sun_disk_intensity_multiplier = math::max(sun_disk_intensity_multiplier, 0.0f);
+        sky_intensity_multiplier = math::max(sky_intensity_multiplier, 0.0f);
+        intensity_multiplier = math::max(intensity_multiplier, 0.0f);
+    }
+
+    //
+    // compute irradiance if needed (ground lookup or for explicit illuminance control)
+    //
+    color ground_irradiance;
+    if ((dir.z <= 0.0f) || (mode != illuminance_mode_raw)) {
+        float sun_solid_angle = 6.794e-5f;
+        float[11] sun_radiance = compute_sun_radiance(iturb, sun_elevation); // approximate using sun radiance at center
+        for (int i = 0; i < 11; ++i)
+            sun_radiance[i] *= hosek_wilkie_sky_data::datasets_ld_avg[i]; // account for average influence of limb darkening
+        color sun_irradiance = math::emission_color(wavelengths, sun_radiance) * (sun_direction.z * sun_solid_angle * sun_disk_intensity_multiplier);
+        color sky_irradiance = math::emission_color(wavelengths, compute_sky_irradiance(iturb, albedo, sun_elevation)) * sky_intensity_multiplier;
+
+        // adjust intensity
+        if (mode == illuminance_mode_sun_sky) {
+            sun_disk_intensity_multiplier = math::max(illuminance_sun, 0.0f) / math::luminance(sun_irradiance);
+            sky_intensity_multiplier = math::max(illuminance_sky, 0.0f) / math::luminance(sky_irradiance);
+            ground_irradiance = sun_irradiance * sun_disk_intensity_multiplier + sky_irradiance * sky_intensity_multiplier;
+        } else {
+            ground_irradiance = sky_irradiance + sun_irradiance;
+
+            if (mode == illuminance_mode_total)
+                intensity_multiplier = math::max(illuminance_total, 0.0f) / math::luminance(ground_irradiance);
+        }
+    }
+
+    //
+    // compute ground color
+    //
+    color result = color(0.0f);
+    float weight_sky = 1.0f;
+    if (dir.z <= 0.0f) {
+        float weight_ground = 1.0f;
+        if (horizon_blur > 0.0f) {
+            weight_ground = math::min(-dir.z / horizon_blur * 10.0f, 1.0f);
+            if (weight_ground < 1.0f)
+                weight_ground *= weight_ground * (3.0f - 2.0f * weight_ground);
+        }
+        weight_sky = 1.0f - weight_ground;
+
+        if (weight_ground > 0.0f)
+            result = ground_irradiance * ground_albedo * ((1.0f / math::PI) * weight_ground);
+
+        if (weight_ground >= 1.0f)
+            return result * intensity_multiplier;
+    }
+
+    //
+    // compute sky contribution
+    //
+    float x = math::pow(sun_elevation * (2.0f / math::PI), 1.0f / 3.0f);
+    float[6] w = compute_weights(x);
+    config[11] c;
+    for (int i = 0; i < 11; ++i)
+        c[i] = create_config(i, iturb, albedo[i], w);
+    float cos_gamma = math::max(math::min(math::dot(sun_direction, dir), 1.0f), -1.0f);
+    float gamma = math::acos(cos_gamma);
+    float[11] intensities;
+    for (int i = 0; i < 11; ++i)
+        intensities[i] = weight_sky * create_radiance(i, iturb, albedo[i], w) * compute_F(c[i].v, cos_theta, cos_gamma, gamma) * sky_intensity_multiplier;
+
+    //
+    // compute sun contribution
+    //
+    float sun_radius_angle = 0.0046504f; // acos(1 - sun_solid_angle / (2 * pi))
+    sun_disk_intensity_multiplier /= sun_disk_scale * sun_disk_scale;
+    float[2] sin_gamma_max_cos_gamma_min = math::sincos(sun_radius_angle * sun_disk_scale);
+    if (cos_gamma >= sin_gamma_max_cos_gamma_min[1]) {
+        // should use math::asin(cos_theta) instead of sun_elevation here, but for compatibility with the iray-builtin we simplify this
+        float sin_gamma_max_sqd = sin_gamma_max_cos_gamma_min[0] * sin_gamma_max_cos_gamma_min[0];
+        float sin_gamma_sqd = 1.0f - cos_gamma * cos_gamma;
+
+        float[11] sun_radiance = compute_sun_radiance(iturb, sun_elevation);
+        float[11] sun_ld = compute_limb_darkening(sin_gamma_sqd, sin_gamma_max_sqd);
+        for (int i = 0; i < 11; ++i)
+            intensities[i] += weight_sky * sun_ld[i] * sun_radiance[i] * sun_disk_intensity_multiplier;
+    }
+
+    result += math::emission_color(wavelengths, intensities);
+
+    return result * intensity_multiplier;
+}
+

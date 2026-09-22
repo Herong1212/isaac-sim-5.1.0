@@ -1,0 +1,206 @@
+// ====================================================================================================================
+//
+// This json file defines an array of driver ranges for each renderer and platform.
+// Each object in the list defines a driver range between min (optional) and max to be blacklisted if the attribute is "blocked"=true
+// and/or max driver to be printed by the application as recommended driver version if the attribute is "recommended"=true.
+// There might be multiple recommended driver versions for different driver categories (GameReady, RTX/Quadro, etc.)
+// Users may enumerate all driver ranges with the attribute of "recommended"=true to determine the recommended driver for the current OV branch/project.
+//
+// ======= Attributes =================================================================================================
+//
+// version (64bit integer):
+//  - The version for the format of this json file. Always check the version before parsing this file.
+//
+// Supported platform attributes (platform string with array of driver ranges as the value):
+//   - "windows-x86_64"
+//   - "linux-x86_64"
+//   - "linux-aarch64"
+//   Notes:
+//     If linux-aarch64 item is not found, linux-x86_64 range array requirements will be used instead.
+//     If the intention is to allow all drivers for linux-aarch64 platform, simply define it in this file as empty array: "linux-aarch64": []
+//
+// blocked (boolean):
+//    - If true, the application will block and blacklist the specified driver range [min, max) for the corresponding renderer.
+//      Range comparison is as "min <= current-driver < max", which excludes the max value for blocking the range.
+//      If a user has installed a driver in that range, the renderer will fail with the "message" string specified as the reason of the failure.
+//  
+// recommended (boolean):
+//    - If true, the driver version listed in the "max" range is the recommended driver for the corresponding "category" and the renderer.
+//      Enumerate all the drivers with recommended=true status and check the "category" to find the recommended driver for your desired GPU.
+//      Users are encouraged to install this driver, since it is certified for OV and extensively tested.
+//  
+// category (array of strings):
+//    - An array to determine what driver models the range belongs to. The valid strings in the array are as follows:
+//        - "GameReady":  Geforce Game Ready drivers. (e.g. Geforce RTX 5090)
+//        - "Studio":     Geforce Studio drivers suitable for creative 3D applications. (e.g. Geforce RTX 5090)
+//        - "RTX/Quadro": Workstation UDA drivers for RTX or Quadro GPUs or certain data center GPUs with display mode support. (e.g. A6000/A40/L40)
+//        - "Grid/vGPU":  Enterprise drivers for Data Center/Tesla or Grid/vGPU that require a valid license. (e.g. L40)
+//
+// min (object):
+//    - The minimum NVIDIA driver range to verify or recommend in the format of { "major": 0, "minor": 0, "patch": 0, "build": 0 }
+//      for a desired driver version "major.minor.patch.build". For example driver "535.129.03.
+//      "min" object is optional. if not specified, assume a value of zero for the driver version.
+//
+// max (object):
+//    - The maximum NVIDIA driver range to verify which excludes the max value itself during comparison as [min, max), or to be the recommend driver,
+//      both in the format of { "major": 0, "minor": 0, "patch": 0, "build": 0 } for a desired driver version of "major.minor.patch.build".
+//      Attributes of "blocked" and "recommended" determines the action for the range.
+//      A range can be blocked from min driver all the way prior to max driver as [min, max).
+//      The max driver can also be tagged as the recommended version, since it won't be blocked in the range.
+// 
+// message (string):
+//    - When "blocked" attribute is set to true, it will be the reason for blacklisting the driver range.
+//      Otherwise, it is an optional message for attributes such as "recommended" driver, which may not be necessarily displayed by the application. 
+//
+// ====================================================================================================================
+{
+    "version": 1,
+    // ---- RTX renderers ----
+    "rtx": {
+        "description": "Driver requirements for Omniverse RTX renderers",
+        "windows-x86_64": [
+            {
+                "message": "The minimum Omniverse RTX requirement on Windows",
+                "category": [],
+                "blocked": true,
+                "recommended": false,
+                "min": {
+                    "major": 0,
+                    "minor": 0,
+                    "patch": 0,
+                    "build": 0
+                },
+                "max": {
+                    "major": 537,
+                    "minor": 58,
+                    "patch": 0,
+                    "build": 0
+                }
+            },
+            {
+                "message": "The recommended driver for Omniverse RTX renderers with Geforce GPUs on Windows",
+                "category": [ "GameReady", "Studio" ],
+                "blocked": false,
+                "recommended": true,
+                "max": {
+                    "major": 537,
+                    "minor": 58,
+                    "patch": 0,
+                    "build": 0
+                }
+            },
+            {
+                "message": "The recommended driver for Omniverse RTX renderers with workstation and data center GPUs on Windows",
+                "category": [ "RTX/Quadro", "Grid/vGPU" ],
+                "blocked": false,
+                "recommended": true,
+                "max": {
+                    "major": 537,
+                    "minor": 70,
+                    "patch": 0,
+                    "build": 0
+                }
+            }
+        ],
+        "linux-x86_64": [
+            {
+                "message": "The minimum Omniverse RTX requirement on Linux",
+                "category": [],
+                "blocked": true,
+                "recommended": false,
+                "min": {
+                    "major": 0,
+                    "minor": 0,
+                    "patch": 0,
+                    "build": 0
+                },
+                "max": {
+                    "major": 535,
+                    "minor": 129,
+                    "patch": 3,
+                    "build": 0
+                }
+            },
+            {
+                "message": "The recommended driver for Omniverse RTX renderers on Linux",
+                "category": [ "GameReady", "Studio", "RTX/Quadro", "Grid/vGPU" ],
+                "blocked": false,
+                "recommended": true,
+                "max": {
+                    "major": 535,
+                    "minor": 161,
+                    "patch": 7,
+                    "build": 0
+                }
+            }
+        ]
+    },
+    // ---- Iray renderer ----
+    "iray": {
+        "description": "Driver requirements for NVIDIA Iray renderer",
+        "windows-x86_64": [
+            {
+                "message": "The minimum NVIDIA Iray requirement on Windows",
+                "category": [],
+                "blocked": true,
+                "recommended": false,
+                "min": {
+                    "major": 0,
+                    "minor": 0,
+                    "patch": 0,
+                    "build": 0
+                },
+                "max": {
+                    "major": 537,
+                    "minor": 58,
+                    "patch": 0,
+                    "build": 0
+                }
+            },
+            {
+                "message": "The recommended driver for Iray on Windows for GPU acceleration",
+                "category": [ "GameReady", "Studio", "RTX/Quadro", "Grid/vGPU" ],
+                "blocked": false,
+                "recommended": true,
+                "max": {
+                    "major": 570,
+                    "minor": 84,
+                    "patch": 0,
+                    "build": 0
+                }
+            }
+        ],
+        "linux-x86_64": [
+            {
+                "message": "The minimum NVIDIA Iray requirement on Linux",
+                "category": [],
+                "blocked": true,
+                "recommended": false,
+                "min": {
+                    "major": 0,
+                    "minor": 0,
+                    "patch": 0,
+                    "build": 0
+                },
+                "max": {
+                    "major": 535,
+                    "minor": 129,
+                    "patch": 3,
+                    "build": 0
+                }
+            },
+            {
+                "message": "The recommended driver for Iray on Linux for GPU acceleration",
+                "category": [ "GameReady", "Studio", "RTX/Quadro", "Grid/vGPU" ],
+                "blocked": false,
+                "recommended": true,
+                "max": {
+                    "major": 570,
+                    "minor": 33,
+                    "patch": 0,
+                    "build": 0
+                }
+            }
+        ]
+    }
+}

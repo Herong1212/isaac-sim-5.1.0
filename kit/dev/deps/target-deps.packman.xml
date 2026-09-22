@@ -1,0 +1,153 @@
+<project toolsVersion="6.11" chroniclePath="../_build/chronicles">
+  <dependency name="winsdk" linkPath="../_build/host-deps/winsdk" tags="non-redist">
+    <package name="winsdk" version="10.0.19041.0" platforms="windows-x86_64" />
+  </dependency>
+  <!-- rtx_plugins has been moved to tools/repoman/build.py
+  <dependency name="rtx_plugins" linkPath="../_build/target-deps/rtx_plugins" tags="slim-package">
+    <package name="rtx_plugins" version="2020.1.1829.548b9b1e-mr317-${platform_target}" />
+  </dependency> -->
+  <dependency name="glm" linkPath="../_build/target-deps/glm">
+    <package name="glm" version="0.9.9.1-4-560319f4" />
+  </dependency>
+  <dependency name="gsl" linkPath="../_build/target-deps/gsl">
+    <package name="gsl" version="3.1.0.1" />
+  </dependency>
+  <dependency name="nvtx" linkPath="../_build/target-deps/nvtx">
+    <package name="nvtx" version="5.6.0.18099-lic-${platform_target}" platforms="windows-x86_64" />
+    <package name="nvtx" version="3-20180925-lic3" platforms="linux-x86_64 linux-aarch64 manylinux_2_35_x86_64 manylinux_2_35_aarch64" />
+  </dependency>
+  <dependency name="concurrentqueue" linkPath="../_build/target-deps/concurrentqueue">
+    <package name="concurrentqueue" version="1.0.0-beta-16-b77e829a"/>
+  </dependency>
+  <dependency name="rapidxml" linkPath="../_build/target-deps/rapidxml">
+    <package name="rapidxml" version="1.13.0-6-dc2a495b" />
+  </dependency>
+  <dependency name="mikktspace" linkPath="../_build/target-deps/mikktspace">
+    <package name="mikktspace" version="1.0-21-163a296d" />
+  </dependency>
+  <dependency name="boost_preprocessor" linkPath="../_build/target-deps/boost-preprocessor">
+    <package name="boost-preprocessor" version="1.70-2" />
+  </dependency>
+  <dependency name="omniverse.discovery.client.py" linkPath="../_build/target-deps/omniverse.discovery.client.py">
+    <package name="omniverse.discovery.client.py" version="1.4.2+main.teamcity.593.4977d25e" />
+  </dependency>
+  <dependency name="omniverse.tagging.client.py" linkPath="../_build/target-deps/omniverse.tagging.client.py">
+    <package name="omniverse.tagging.client.py"  version="3.0.0-main+teamcity.970.6675778b" />
+  </dependency>
+  <dependency name="idl.py" linkPath="../_build/target-deps/idl.py">
+    <package name="idl.py" version="0.29+master.gitlab.1897.39a57655" />
+  </dependency>
+  <dependency name="imguicolortextedit" linkPath="../_build/target-deps/ImGuiColorTextEdit">
+    <package name="imguicolortextedit" version="0.2.0-6b06acb3-0" />
+  </dependency>
+  <dependency name="openvr" linkPath="../_build/target-deps/openvr">
+    <package name="openvr" version="1.16.8" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64" />
+  </dependency>
+  <dependency name="nvenc" linkPath="../_build/target-deps/nvenc">
+    <package name="nvenc" version="12.1.14" />
+  </dependency>
+
+  <dependency name="c-blosc_${config}" linkPath="../_build/target-deps/c-blosc/${config}">
+    <package name="c-blosc" version="1.21.5-0-${platform_target}-static-${config}" platforms="windows-x86_64 linux-x86_64 linux-aarch64 manylinux_2_35_x86_64 manylinux_2_35_aarch64" />
+  </dependency>
+
+  <!--
+  <dependency name="sranipal" linkPath="../_build/target-deps/sranipal">
+    <package name="sranipal" version="1.1.0.1-win" platforms="windows-x86_64" />
+  </dependency>
+  -->
+  <dependency name="easywsclient" linkPath="../_build/target-deps/easywsclient">
+    <package name="easywsclient" version="1.0-da0d020f" />
+  </dependency>
+  <!-- Note that this dep also exists in rendering (twice!) so maybe we should consolidate-->
+  <dependency name="abseil-${config}" linkPath="../_build/target-deps/abseil/${config}">
+    <package name="abseil" version="20240116.1-1-${platform_target_abi}-static-${config}" />
+  </dependency>
+  <!-- TODO: this should be bundled with rtx_plugins -->
+  <dependency name="xxhash" linkPath="../_build/target-deps/xxhash">
+      <package name="xxhash" version="0.8.0"/>
+  </dependency>
+  <dependency name="jemalloc" linkPath="../_build/target-deps/jemalloc" >
+    <package name="jemalloc" version="5.2.1+nv1-linux-x86_64-release" platforms="linux-x86_64 manylinux_2_35_x86_64" />
+  </dependency>
+  <dependency name="memcached" linkPath="../_build/${platform_target}/${config}/testlibs/memcached">
+    <package name="memcached" version="1.6.19+packaging.0.5ef90488.local.linux-x86_64" platforms="linux-x86_64 manylinux_2_35_x86_64"/>
+  </dependency>
+  <dependency name="benchmark" linkPath="../_build/target-deps/benchmark">
+    <package name="benchmark" version="1.6.1+nv6-${platform_target}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64"/>
+  </dependency>
+
+  <!-- gRPC -->
+  <!-- Note: Where we are pulling in static libs, how do we stop them from being packaged with Kit? (or do we want to? Depends whether shipped as part of a kit-sdk -->
+  <dependency name="grpc-${config}" linkPath="../_build/target-deps/grpc/${config}">
+    <package name="grpc" version="1.64.3-1-${platform_target_abi}-static-${config}" />
+  </dependency>
+
+  <dependency name="c-ares-${config}" linkPath="../_build/target-deps/c-ares/${config}">
+    <package name="c-ares" version="1.32.1-0-${platform_target_abi}-dynamic-${config}" />
+  </dependency>
+
+  <dependency name="re2-${config}" linkPath="../_build/target-deps/re2/${config}">
+    <package name="re2" version="20230301-1-${platform_target_abi}-dynamic-${config}" />
+  </dependency>
+
+  <dependency name="protobuf-${config}" linkPath="../_build/target-deps/protobuf/${config}">
+    <package name="protobuf" version="5.26.0-2-${platform_target_abi}-static-${config}" />
+ </dependency>
+
+  <dependency name="googleapis-${config}" linkPath="../_build/target-deps/googleapis/${config}">
+    <package name="googleapis" version="20230501-1-cci-${platform_target_abi}-static-${config}" />
+  </dependency>
+
+  <dependency name="grpc-proto-${config}" linkPath="../_build/target-deps/grpc-proto/${config}">
+    <package name="grpc-proto" version="20220627-4-cci-${platform_target_abi}-static-${config}" />
+  </dependency>
+
+  <!-- gRPC -->
+
+  <dependency name="cli11" linkPath="../_build/target-deps/cli11">
+    <package name="cli11" version="2.3.2-dev.2822+dev_gevans_cli11.70ae6a8e9037f9dfc5a3004988fd79d5d94b0210" />
+  </dependency>
+
+  <!--  The reason we need to pull this package is only so we get omnitrace headers, the dll/so is loaded from the omni.kit.trace extension.
+          here : https://gitlab-master.nvidia.com/omniverse/observability/omni-kit-trace/-/blob/master/deps/ext-deps.packman.xml -->
+  <dependency name="omnitrace-sdk-cpp" linkPath="../_build/target-deps/omnitrace-sdk-cpp" tags="non-redist">
+    <package name="omnitrace-sdk-cpp" version="1.6.45aa2da5" platforms="windows-x86_64"/>
+    <package name="omnitrace-sdk-cpp" version="1.6.45aa2da5" platforms="linux-x86_64 manylinux_2_35_x86_64"/>
+    <package name="omnitrace-sdk-cpp" version="1.6.45aa2da5" platforms="linux-aarch64 manylinux_2_35_aarch64"/>
+  </dependency>
+
+  <dependency name="carb_audio" linkPath="../_build/target-deps/carb_audio">
+    <package name="carb_audio.${platform_target_abi}" version="170.0-pre+master.244.b4440da3.gl" />
+  </dependency>
+
+  <dependency name="amqp1_0" linkPath="../_build/target-deps/amqp1_0/${config}">
+    <package name="amqp1_0" version="2023.05.13-dev.4751+main.e87cac1533589d7da186ebd7391c8e810255d1bc-${platform_target}-static-${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64"/>
+  </dependency>
+
+  <dependency name="rabbitmq-stream-c-client" linkPath="../_build/target-deps/rabbitmq-stream-c-client/${config}">
+    <package name="rabbitmq-stream-c-client" version="2025.03.26-0nv-0-${platform_target}-static-${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64"/>
+  </dependency>
+
+  <!-- SENSORS -->
+  <dependency name="hdf5" linkPath="../_build/target-deps/hdf5">
+    <package name="hdf5" version="1.14.6-0-${platform_target_abi}-dynamic-release" platforms="linux-x86_64 manylinux_2_35_x86_64 windows-x86_64 linux-aarch64 manylinux_2_35_aarch64"/>
+  </dependency>
+
+  <dependency name="open3d" linkPath="../_build/target-deps/open3d">
+    <package name="open3d" version="0.18.0-1-${platform_target}-release" platforms="linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64 windows-x86_64" />
+  </dependency>
+
+  <dependency name="rapidjson" linkPath="../_build/target-deps/rapidjson">
+    <package name="rapidjson" version="5.2.1-5-b4cf59b6" />
+  </dependency>
+
+  <dependency name="libtorch" linkPath="../_build/target-deps/libtorch">
+      <package name="libtorch" version="2.0.1-2-${platform_target_abi}-release" platforms="linux-x86_64 manylinux_2_35_x86_64 windows-x86_64" />
+  </dependency>
+
+  <dependency name="isp_smodel_adapter" linkPath="../_build/target-deps/isp_smodel_adapter">
+    <package name="isp_smodel_adapter" version="1.4-linux-x86_64" platforms="linux-x86_64 manylinux_2_35_x86_64" />
+  </dependency>
+
+</project>

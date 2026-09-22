@@ -1,0 +1,43 @@
+mdl 1.5;
+
+import ::tex::*;
+
+import ::anno::author;
+import ::anno::copyright_notice;
+import ::anno::description;
+import ::anno::display_name;
+import ::anno::in_group;
+import ::anno::key_words;
+import ::anno::unused;
+import ::anno::usage;
+import ::math::dot;
+import ::state::normal;
+import ::df::diffuse_edf;
+
+export material Gizmo(
+    color emission_color = color(1.f, 1.f, 1.f) [[
+        ::anno::description("Color of The Light"),
+        ::anno::display_name("emission_color"),
+        ::anno::in_group("", "", ""),
+        ::anno::usage("")
+    ]],
+    float emission_intensity = 2000.f [[
+        ::anno::description("Light Intensity Scale"),
+        ::anno::display_name("emission_intensity"),
+        ::anno::in_group("", "", ""),
+        ::anno::usage("")
+    ]],
+    float3 light_vector = float3(1.f) [[
+        ::anno::description("Light Direction"),
+        ::anno::display_name("light_vector"),
+        ::anno::in_group("", "", ""),
+        ::anno::usage("")
+    ]])
+ = 
+    let {
+        material_emission tmp0(material_emission(df::diffuse_edf(), emission_color * emission_intensity * ::math::dot(light_vector, ::state::normal()), intensity_radiant_exitance));
+    } in
+        material(
+            thin_walled: false,
+            surface: material_surface( emission: tmp0 )
+           );

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <Type Name="omni::SmallVector&lt;*&gt;">
+        <DisplayString>size: { _size }, capacity: {_capacity}, inplacecapacity: {$T2}, isinplace: {_capacity &lt;= ($T2) ? true : false}</DisplayString>
+        <Expand>
+            <IndexListItems>
+                <Size>_size</Size>
+                <ValueNode>_capacity &lt;= ($T2) ? *((($T1*)_data._local) + $i) : *((($T1*)_data._remote) + $i)</ValueNode>
+            </IndexListItems>
+        </Expand>
+    </Type>
+</AutoVisualizer>

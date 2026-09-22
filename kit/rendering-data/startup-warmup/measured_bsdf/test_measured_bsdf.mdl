@@ -1,0 +1,10 @@
+mdl 1.8;
+
+import ::df::*;
+
+export material test_measured_bsdf() = material(
+	surface: material_surface(
+		scattering: df::measured_bsdf(
+			bsdf_measurement("gold_metalllic_paint_blue_rubber.mbsdf"))			
+	)
+);

@@ -1,0 +1,350 @@
+# this config makes kit kernel pretend to be an extension for the purpose of building docs.
+# format is exactly like extension.toml, but only what is required to build docs
+[package]
+keywords = ["omniverse", "kit", "manual", "developer", "start"]
+
+[[python.module]]
+name = "omni.kit.app"
+path = "py"
+
+[[python.module]]
+name = "omni.ext"
+path = "py"
+
+[[python.module]]
+name = "carb"
+path = "py"
+
+[[python.module]]
+name = "carb.settings"
+path = "py"
+
+[[python.module]]
+name = "carb.tokens"
+path = "py"
+
+[[python.module]]
+name = "carb.events"
+path = "py"
+
+# [[python.module]]
+# name = "omni.log"
+# path = "py"
+
+# [[python.module]]
+# name = "omni.platforminfo"
+# path = "py"
+
+[[python.module]]
+name = "omni.str"
+path = "py"
+
+# [[python.module]]
+# name = "carb.datasource"
+# path = "py"
+
+[[python.module]]
+name = "carb.audio"
+path = "py"
+
+[[python.module]]
+name = "carb.dictionary"
+path = "py"
+
+[[python.module]]
+name = "carb.input"
+path = "py"
+
+[[python.module]]
+name = "carb.profiler"
+path = "py"
+
+[[python.module]]
+name = "carb.windowing"
+path = "py"
+
+[[python.module]]
+name = "carb.eventdispatcher"
+path = "py"
+
+[[python.module]]
+name = "carb.variant"
+path = "py"
+
+[[python.module]]
+name = "omni.core"
+path = "py"
+
+[[python.module]]
+name = "omni.structuredlog"
+path = "py"
+
+
+[documentation]
+deps = [
+    ["carb.audio", "../../../../_build/docs/carb.audio/latest"],
+    ["carbonite", "../../../../_build/docs/carbonite/latest"], # note: link is created by kit_repo_docs.py
+    ["omni.activity.core", "../../../../_build/docs/omni.activity.core/latest"],
+    ["omni.activity.freeze_monitor", "../../../../_build/docs/omni.activity.freeze_monitor/latest"],
+    ["omni.activity.profiler", "../../../../_build/docs/omni.activity.profiler/latest"],
+    ["omni.activity.pump", "../../../../_build/docs/omni.activity.pump/latest"],
+    ["omni.activity.ui", "../../../../_build/docs/omni.activity.ui/latest"],
+    ["omni.activity.usd_resolver", "../../../../_build/docs/omni.activity.usd_resolver/latest"],
+    ["omni.appwindow", "../../../../_build/docs/omni.appwindow/latest"],
+    ["omni.datastore", "../../../../_build/docs/omni.datastore/latest"],
+    ["omni.fabric.commands", "../../../../_build/docs/omni.fabric.commands/latest"],
+    ["omni.gpu_foundation.shadercache.d3d12", "../../../../_build/docs/omni.gpu_foundation.shadercache.d3d12/latest"],
+    ["omni.gpu_foundation.shadercache.vulkan", "../../../../_build/docs/omni.gpu_foundation.shadercache.vulkan/latest"],
+    ["omni.gpu_foundation", "../../../../_build/docs/omni.gpu_foundation/latest"],
+    ["omni.graph.action_core", "../../../../_build/docs/omni.graph.action_core/latest"],
+    ["omni.graph.core", "../../../../_build/docs/omni.graph.core/latest"],
+    ["omni.graph.exec", "../../../../_build/docs/omni.graph.exec/latest"],
+    ["omni.graph.image.core", "../../../../_build/docs/omni.graph.image.core/latest"],
+    ["omni.graph.image.nodes", "../../../../_build/docs/omni.graph.image.nodes/latest"],
+    ["omni.graph.tools", "../../../../_build/docs/omni.graph.tools/latest"],
+    ["omni.graph", "../../../../_build/docs/omni.graph/latest"],
+    ["omni.hsscclient", "../../../../_build/docs/omni.hsscclient/latest"],
+    ["omni.hydra.engine.stats", "../../../../_build/docs/omni.hydra.engine.stats/latest"],
+    ["omni.hydra.iray.shadercache.d3d12", "../../../../_build/docs/omni.hydra.iray.shadercache.d3d12/latest"],
+    ["omni.hydra.iray.shadercache.vulkan", "../../../../_build/docs/omni.hydra.iray.shadercache.vulkan/latest"],
+    ["omni.hydra.rtx.shadercache.d3d12", "../../../../_build/docs/omni.hydra.rtx.shadercache.d3d12/latest"],
+    ["omni.hydra.rtx.shadercache.vulkan", "../../../../_build/docs/omni.hydra.rtx.shadercache.vulkan/latest"],
+    ["omni.hydra.scene_api", "../../../../_build/docs/omni.hydra.scene_api/latest"],
+    ["omni.index.compute", "../../../../_build/docs/omni.index.compute/latest"],
+    ["omni.inspect", "../../../../_build/docs/omni.inspect/latest"],
+    ["omni.kit.actions.core", "../../../../_build/docs/omni.kit.actions.core/latest"],
+    ["omni.kit.actions.window", "../../../../_build/docs/omni.kit.actions.window/latest"],
+    ["omni.kit.async_engine", "../../../../_build/docs/omni.kit.async_engine/latest"],
+    ["omni.kit.audiodeviceenum", "../../../../_build/docs/omni.kit.audiodeviceenum/latest"],
+    ["omni.kit.capture.viewport", "../../../../_build/docs/omni.kit.capture.viewport/latest"],
+    ["omni.kit.clipboard", "../../../../_build/docs/omni.kit.clipboard/latest"],
+    ["omni.kit.collaboration.channel_manager", "../../../../_build/docs/omni.kit.collaboration.channel_manager/latest"],
+    ["omni.kit.collaboration.presence_layer", "../../../../_build/docs/omni.kit.collaboration.presence_layer/latest"],
+    ["omni.kit.collaboration.selection_outline", "../../../../_build/docs/omni.kit.collaboration.selection_outline/latest"],
+    ["omni.kit.collaboration.settings", "../../../../_build/docs/omni.kit.collaboration.settings/latest"],
+    ["omni.kit.collaboration.stage_columns", "../../../../_build/docs/omni.kit.collaboration.stage_columns/latest"],
+    ["omni.kit.collaboration.telemetry", "../../../../_build/docs/omni.kit.collaboration.telemetry/latest"],
+    ["omni.kit.collaboration.viewport.camera", "../../../../_build/docs/omni.kit.collaboration.viewport.camera/latest"],
+    ["omni.kit.commands", "../../../../_build/docs/omni.kit.commands/latest"],
+    ["omni.kit.context_menu", "../../../../_build/docs/omni.kit.context_menu/latest"],
+    ["omni.kit.debug.python", "../../../../_build/docs/omni.kit.debug.python/latest"],
+    ["omni.kit.debug.vscode", "../../../../_build/docs/omni.kit.debug.vscode/latest"],
+    ["omni.kit.documentation.builder", "../../../../_build/docs/omni.kit.documentation.builder/latest"],
+    ["omni.kit.documentation.ui.style", "../../../../_build/docs/omni.kit.documentation.ui.style/latest"],
+    ["omni.kit.exec.core", "../../../../_build/docs/omni.kit.exec.core/latest"],
+    ["omni.kit.exec.core", "../../../../_build/docs/omni.kit.exec.core/latest"],
+    ["omni.kit.filebrowser_column.acl", "../../../../_build/docs/omni.kit.filebrowser_column.acl/latest"],
+    ["omni.kit.filebrowser_column.tags", "../../../../_build/docs/omni.kit.filebrowser_column.tags/latest"],
+    ["omni.kit.helper.file_utils", "../../../../_build/docs/omni.kit.helper.file_utils/latest"],
+    ["omni.kit.hotkeys.core", "../../../../_build/docs/omni.kit.hotkeys.core/latest"],
+    ["omni.kit.hotkeys.window", "../../../../_build/docs/omni.kit.hotkeys.window/latest"],
+    ["omni.kit.hydra_texture", "../../../../_build/docs/omni.kit.hydra_texture/latest"],
+    ["omni.kit.loop-default", "../../../../_build/docs/omni.kit.loop-default/latest"],
+    ["omni.kit.mainwindow", "../../../../_build/docs/omni.kit.mainwindow/latest"],
+    ["omni.kit.manipulator.camera", "../../../../_build/docs/omni.kit.manipulator.camera/latest"],
+    ["omni.kit.manipulator.prim.core", "../../../../_build/docs/omni.kit.manipulator.prim.core/latest"],
+    ["omni.kit.manipulator.prim.fabric", "../../../../_build/docs/omni.kit.manipulator.prim.fabric/latest"],
+    ["omni.kit.manipulator.prim.fabric", "../../../../_build/docs/omni.kit.manipulator.prim.fabric/latest"],
+    ["omni.kit.manipulator.prim.usd", "../../../../_build/docs/omni.kit.manipulator.prim.usd/latest"],
+    ["omni.kit.manipulator.prim", "../../../../_build/docs/omni.kit.manipulator.prim/latest"],
+    ["omni.kit.manipulator.selection", "../../../../_build/docs/omni.kit.manipulator.selection/latest"],
+    ["omni.kit.manipulator.selector", "../../../../_build/docs/omni.kit.manipulator.selector/latest"],
+    ["omni.kit.manipulator.tool.snap", "../../../../_build/docs/omni.kit.manipulator.tool.snap/latest"],
+    ["omni.kit.manipulator.transform", "../../../../_build/docs/omni.kit.manipulator.transform/latest"],
+    ["omni.kit.material.library", "../../../../_build/docs/omni.kit.material.library/latest"],
+    ["omni.kit.menu.common", "../../../../_build/docs/omni.kit.menu.common/latest"],
+    ["omni.kit.menu.core", "../../../../_build/docs/omni.kit.menu.core/latest"],
+    ["omni.kit.menu.create", "../../../../_build/docs/omni.kit.menu.create/latest"],
+    ["omni.kit.menu.edit", "../../../../_build/docs/omni.kit.menu.edit/latest"],
+    ["omni.kit.menu.file", "../../../../_build/docs/omni.kit.menu.file/latest"],
+    ["omni.kit.menu.utils", "../../../../_build/docs/omni.kit.menu.utils/latest"],
+    ["omni.kit.nls", "../../../../_build/docs/omni.kit.nls/latest"],
+    ["omni.kit.notification_manager", "../../../../_build/docs/omni.kit.notification_manager/latest"],
+    ["omni.kit.pip_archive", "../../../../_build/docs/omni.kit.pip_archive/latest"],
+    ["omni.kit.pipapi", "../../../../_build/docs/omni.kit.pipapi/latest"],
+    ["omni.kit.primitive.mesh", "../../../../_build/docs/omni.kit.primitive.mesh/latest"],
+    ["omni.kit.property.audio", "../../../../_build/docs/omni.kit.property.audio/latest"],
+    ["omni.kit.property.bundle", "../../../../_build/docs/omni.kit.property.bundle/latest"],
+    ["omni.kit.property.camera", "../../../../_build/docs/omni.kit.property.camera/latest"],
+    ["omni.kit.property.geometry", "../../../../_build/docs/omni.kit.property.geometry/latest"],
+    ["omni.kit.property.layer", "../../../../_build/docs/omni.kit.property.layer/latest"],
+    ["omni.kit.property.light", "../../../../_build/docs/omni.kit.property.light/latest"],
+    ["omni.kit.property.material", "../../../../_build/docs/omni.kit.property.material/latest"],
+    ["omni.kit.property.render", "../../../../_build/docs/omni.kit.property.render/latest"],
+    ["omni.kit.property.tagging", "../../../../_build/docs/omni.kit.property.tagging/latest"],
+    ["omni.kit.property.transform", "../../../../_build/docs/omni.kit.property.transform/latest"],
+    ["omni.kit.property.usd", "../../../../_build/docs/omni.kit.property.usd/latest"],
+    ["omni.kit.raycast.query", "../../../../_build/docs/omni.kit.raycast.query/latest"],
+    ["omni.kit.registry.nucleus", "../../../../_build/docs/omni.kit.registry.nucleus/latest"],
+    ["omni.kit.renderer.capture", "../../../../_build/docs/omni.kit.renderer.capture/latest"],
+    ["omni.kit.renderer.core", "../../../../_build/docs/omni.kit.renderer.core/latest"],
+    ["omni.kit.renderer.imgui", "../../../../_build/docs/omni.kit.renderer.imgui/latest"],
+    ["omni.kit.scene_view.opengl", "../../../../_build/docs/omni.kit.scene_view.opengl/latest"],
+    ["omni.kit.scene_view.usd", "../../../../_build/docs/omni.kit.scene_view.usd/latest"],
+    ["omni.kit.search_core", "../../../../_build/docs/omni.kit.search_core/latest"],
+    ["omni.kit.selection", "../../../../_build/docs/omni.kit.selection/latest"],
+    ["omni.kit.stage.copypaste", "../../../../_build/docs/omni.kit.stage.copypaste/latest"],
+    ["omni.kit.stage_column.active", "../../../../_build/docs/omni.kit.stage_column.active/latest"],
+    ["omni.kit.stage_template.core", "../../../../_build/docs/omni.kit.stage_template.core/latest"],
+    ["omni.kit.tagging", "../../../../_build/docs/omni.kit.tagging/latest"],
+    ["omni.kit.telemetry", "../../../../_build/docs/omni.kit.telemetry/latest"],
+    ["omni.kit.tool.collect", "../../../../_build/docs/omni.kit.tool.collect/latest"],
+    ["omni.kit.ui.actions", "../../../../_build/docs/omni.kit.ui.actions/latest"],
+    ["omni.kit.uiapp", "../../../../_build/docs/omni.kit.uiapp/latest"],
+    ["omni.kit.usd_undo", "../../../../_build/docs/omni.kit.usd_undo/latest"],
+    ["omni.kit.usd.collect", "../../../../_build/docs/omni.kit.usd.collect/latest"],
+    ["omni.kit.usd.layers", "../../../../_build/docs/omni.kit.usd.layers/latest"],
+    ["omni.kit.usd.mdl", "../../../../_build/docs/omni.kit.usd.mdl/latest"],
+    ["omni.kit.usda_edit", "../../../../_build/docs/omni.kit.usda_edit/latest"],
+    ["omni.kit.usdz_export", "../../../../_build/docs/omni.kit.usdz_export/latest"],
+    ["omni.kit.viewport.actions", "../../../../_build/docs/omni.kit.viewport.actions/latest"],
+    ["omni.kit.viewport.docs", "../../../../_build/docs/omni.kit.viewport.docs/latest"],
+    ["omni.kit.viewport.legacy_gizmos", "../../../../_build/docs/omni.kit.viewport.legacy_gizmos/latest"],
+    ["omni.kit.viewport.manipulator.transform", "../../../../_build/docs/omni.kit.viewport.manipulator.transform/latest"],
+    ["omni.kit.viewport.menubar.camera", "../../../../_build/docs/omni.kit.viewport.menubar.camera/latest"],
+    ["omni.kit.viewport.menubar.core", "../../../../_build/docs/omni.kit.viewport.menubar.core/latest"],
+    ["omni.kit.viewport.menubar.display", "../../../../_build/docs/omni.kit.viewport.menubar.display/latest"],
+    ["omni.kit.viewport.menubar.render", "../../../../_build/docs/omni.kit.viewport.menubar.render/latest"],
+    ["omni.kit.viewport.menubar.settings", "../../../../_build/docs/omni.kit.viewport.menubar.settings/latest"],
+    ["omni.kit.viewport.ready", "../../../../_build/docs/omni.kit.viewport.ready/latest"],
+    ["omni.kit.viewport.registry", "../../../../_build/docs/omni.kit.viewport.registry/latest"],
+    ["omni.kit.viewport.utility", "../../../../_build/docs/omni.kit.viewport.utility/latest"],
+    ["omni.kit.viewport.window", "../../../../_build/docs/omni.kit.viewport.window/latest"],
+    ["omni.kit.watched_config", "../../../../_build/docs/omni.kit.watched_config/latest"],
+    ["omni.kit.widget.browser_bar", "../../../../_build/docs/omni.kit.widget.browser_bar/latest"],
+    ["omni.kit.widget.cache_indicator", "../../../../_build/docs/omni.kit.widget.cache_indicator/latest"],
+    ["omni.kit.widget.context_menu", "../../../../_build/docs/omni.kit.widget.context_menu/latest"],
+    ["omni.kit.widget.filebrowser", "../../../../_build/docs/omni.kit.widget.filebrowser/latest"],
+    ["omni.kit.widget.filter", "../../../../_build/docs/omni.kit.widget.filter/latest"],
+    ["omni.kit.widget.graph", "../../../../_build/docs/omni.kit.widget.graph/latest"],
+    ["omni.kit.widget.highlight_label", "../../../../_build/docs/omni.kit.widget.highlight_label/latest"],
+    ["omni.kit.widget.layers", "../../../../_build/docs/omni.kit.widget.layers/latest"],
+    ["omni.kit.widget.live", "../../../../_build/docs/omni.kit.widget.live/latest"],
+    ["omni.kit.widget.live_session_management", "../../../../_build/docs/omni.kit.widget.live_session_management/latest"],
+    ["omni.kit.widget.nucleus_connector", "../../../../_build/docs/omni.kit.widget.nucleus_connector/latest"],
+    ["omni.kit.widget.nucleus_info", "../../../../_build/docs/omni.kit.widget.nucleus_info/latest"],
+    ["omni.kit.widget.options_button", "../../../../_build/docs/omni.kit.widget.options_button/latest"],
+    ["omni.kit.widget.options_menu", "../../../../_build/docs/omni.kit.widget.options_menu/latest"],
+    ["omni.kit.widget.path_field", "../../../../_build/docs/omni.kit.widget.path_field/latest"],
+    ["omni.kit.widget.path_field", "../../../../_build/docs/omni.kit.widget.path_field/latest"],
+    ["omni.kit.widget.prompt", "../../../../_build/docs/omni.kit.widget.prompt/latest"],
+    ["omni.kit.widget.search_delegate", "../../../../_build/docs/omni.kit.widget.search_delegate/latest"],
+    ["omni.kit.widget.searchable_combobox", "../../../../_build/docs/omni.kit.widget.searchable_combobox/latest"],
+    ["omni.kit.widget.searchfield", "../../../../_build/docs/omni.kit.widget.searchfield/latest"],
+    ["omni.kit.widget.settings", "../../../../_build/docs/omni.kit.widget.settings/latest"],
+    ["omni.kit.widget.spinner", "../../../../_build/docs/omni.kit.widget.spinner/latest"],
+    ["omni.kit.widget.stage_icons", "../../../../_build/docs/omni.kit.widget.stage_icons/latest"],
+    ["omni.kit.widget.stage", "../../../../_build/docs/omni.kit.widget.stage/latest"],
+    ["omni.kit.widget.text_editor", "../../../../_build/docs/omni.kit.widget.text_editor/latest"],
+    ["omni.kit.widget.toolbar", "../../../../_build/docs/omni.kit.widget.toolbar/latest"],
+    ["omni.kit.widget.versioning", "../../../../_build/docs/omni.kit.widget.versioning/latest"],
+    ["omni.kit.widget.viewport", "../../../../_build/docs/omni.kit.widget.viewport/latest"],
+    ["omni.kit.window.commands", "../../../../_build/docs/omni.kit.window.commands/latest"],
+    ["omni.kit.window.console", "../../../../_build/docs/omni.kit.window.console/latest"],
+    ["omni.kit.window.content_browser_registry", "../../../../_build/docs/omni.kit.window.content_browser_registry/latest"],
+    ["omni.kit.window.content_browser", "../../../../_build/docs/omni.kit.window.content_browser/latest"],
+    ["omni.kit.window.cursor", "../../../../_build/docs/omni.kit.window.cursor/latest"],
+    ["omni.kit.window.drop_support", "../../../../_build/docs/omni.kit.window.drop_support/latest"],
+    ["omni.kit.window.extensions", "../../../../_build/docs/omni.kit.window.extensions/latest"],
+    ["omni.kit.window.file_exporter", "../../../../_build/docs/omni.kit.window.file_exporter/latest"],
+    ["omni.kit.window.file_importer", "../../../../_build/docs/omni.kit.window.file_importer/latest"],
+    ["omni.kit.window.file", "../../../../_build/docs/omni.kit.window.file/latest"],
+    ["omni.kit.window.filepicker", "../../../../_build/docs/omni.kit.window.filepicker/latest"],
+    ["omni.kit.window.inspector", "../../../../_build/docs/omni.kit.window.inspector/latest"],
+    ["omni.kit.window.popup_dialog", "../../../../_build/docs/omni.kit.window.popup_dialog/latest"],
+    ["omni.kit.window.preferences", "../../../../_build/docs/omni.kit.window.preferences/latest"],
+    ["omni.kit.window.property", "../../../../_build/docs/omni.kit.window.property/latest"],
+    ["omni.kit.window.script_editor", "../../../../_build/docs/omni.kit.window.script_editor/latest"],
+    ["omni.kit.window.splash", "../../../../_build/docs/omni.kit.window.splash/latest"],
+    ["omni.kit.window.stage", "../../../../_build/docs/omni.kit.window.stage/latest"],
+    ["omni.kit.window.status_bar", "../../../../_build/docs/omni.kit.window.status_bar/latest"],
+    ["omni.kit.window.title", "../../../../_build/docs/omni.kit.window.title/latest"],
+    ["omni.kit.window.welcome", "../../../../_build/docs/omni.kit.window.welcome/latest"],
+    ["omni.materialx.libs", "../../../../_build/docs/omni.materialx.libs/latest"],
+    ["omni.mdl.neuraylib", "../../../../_build/docs/omni.mdl.neuraylib/latest"],
+    ["omni.mdl", "../../../../_build/docs/omni.mdl/latest"],
+    ["omni.metrics.core", "../../../../_build/docs/omni.metrics.core/latest"],
+    ["omni.ocio", "../../../../_build/docs/omni.ocio/latest"],
+    ["omni.rtx.shadercache.d3d12", "../../../../_build/docs/omni.rtx.shadercache.d3d12/latest"],
+    ["omni.rtx.shadercache.vulkan", "../../../../_build/docs/omni.rtx.shadercache.vulkan/latest"],
+    ["omni.rtx.window.settings", "../../../../_build/docs/omni.rtx.window.settings/latest"],
+    ["omni.sensors.nv.beams", "../../../../_build/docs/omni.sensors.nv.beams/latest"],
+    ["omni.sensors.nv.camera", "../../../../_build/docs/omni.sensors.nv.camera/latest"],
+    ["omni.sensors.nv.common", "../../../../_build/docs/omni.sensors.nv.common/latest"],
+    ["omni.sensors.nv.lidar", "../../../../_build/docs/omni.sensors.nv.lidar/latest"],
+    ["omni.sensors.nv.materials", "../../../../_build/docs/omni.sensors.nv.materials/latest"],
+    ["omni.sensors.nv.radar", "../../../../_build/docs/omni.sensors.nv.radar/latest"],
+    ["omni.sensors.nv.ultrasonic", "../../../../_build/docs/omni.sensors.nv.ultrasonic/latest"],
+    ["omni.stats", "../../../../_build/docs/omni.stats/latest"],
+    ["omni.syntheticdata", "../../../../_build/docs/omni.syntheticdata/latest"],
+    ["omni.timeline", "../../../../_build/docs/omni.timeline/latest"],
+    ["omni.ui.scene", "../../../../_build/docs/omni.ui.scene/latest"],
+    ["omni.ui", "../../../../_build/docs/omni.ui/latest"],
+    ["omni.ui_query", "../../../../_build/docs/omni.ui_query/latest"],
+    ["omni.uiaudio", "../../../../_build/docs/omni.uiaudio/latest"],
+    ["omni.ujitso.client", "../../../../_build/docs/omni.ujitso.client/latest"],
+    ["omni.ujitso.default", "../../../../_build/docs/omni.ujitso.default/latest"],
+    ["omni.ujitso.processor.geometry", "../../../../_build/docs/omni.ujitso.processor.geometry/latest"],
+    ["omni.ujitso.processor.texture", "../../../../_build/docs/omni.ujitso.processor.texture/latest"],
+    ["omni.usd.schema.omni_sensors", "../../../../_build/docs/omni.usd.schema.omni_sensors/latest"],
+    ["omni.usd_resolver", "../../../../_build/docs/omni.usd_resolver/latest"],
+    ["omni.usd.config", "../../../../_build/docs/omni.usd.config/latest"],
+    ["omni.usd.core", "../../../../_build/docs/omni.usd.core/latest"],
+    ["omni.usd.libs", "../../../../_build/docs/omni.usd.libs/latest"],
+    ["omni.usd", "../../../../_build/docs/omni.usd/latest"],
+    ["omni.videoencoding", "../../../../_build/docs/omni.videoencoding/latest"],
+    ["omni.volume_nodes", "../../../../_build/docs/omni.volume_nodes/latest"],
+    ["omni.volume", "../../../../_build/docs/omni.volume/latest"],
+    ["pxr-usd-api", "../../../../_build/docs/pxr-usd-api/latest"], # need for pxr api link from kit overview
+    ["test.omni.graph.core", "../../../../_build/docs/test.omni.graph.core/latest"],
+    ["usdrt.scenegraph", "../../../../_build/docs/usdrt.scenegraph/latest"],
+]
+
+args = []
+title = "Omniverse Kit Manual"
+files.exclude = ["docs/config/python_api.md"]
+
+[documentation.pages]
+
+# High Level
+"Kit Overview" = "docs/guide/kit_overview.md"
+"Kit Architecture" = "docs/guide/kit_architecture.md"
+"Kit Core IApp Interface" = "docs/guide/kit_core_iapp_interface.md"
+
+# Extensions
+"Extensions (Basic)" = "docs/guide/extensions_basic.md"
+"Extensions (Advanced)" = "docs/guide/extensions_advanced.md"
+"Extensions (USD Schema)" = "docs/guide/extensions_usd_schema.md"
+"Extensions (API)" = "docs/guide/extensions_api.md"
+
+# Extensions Subtopics
+"Testing Extensions with Python" = "docs/guide/testing_exts_python.md" # new - need review for internal things
+"Testing Extensions with C++" = "docs/guide/testing_exts_cplusplus.md"
+"Documenting Extensions" = "docs/guide/documenting_exts.md"
+"Publishing Extensions" = "docs/guide/publishing_exts.md" # new - need review for internal things
+
+# Kit Technology Specific Topics
+"Creating Kit Apps" = "docs/guide/creating_kit_apps.md" # new - need review for internal things
+"Configuring" = "docs/guide/configuring.md"
+"Logging" = "docs/guide/logging.md"
+"Profiling" = "docs/guide/profiling.md"
+"Python Scripting" = "docs/guide/python_scripting.md"
+
+# Kit Python Topics
+"Embedded Kit Python" = "docs/guide/embedded_kit_python.md"
+"Using Python pip packages" = "docs/guide/using_pip_packages.md" # new - need review for internal things
+"Kit Python Package" = "docs/guide/kit_python_package.md"
+
+# Kit Carbonite-specific Topics
+"Dictionaries and Settings" = "docs/guide/dictionary_settings.md"
+"Events" = "docs/guide/events.md"
+"Legacy Events" = "docs/guide/legacy_events.md"
+
+# Reference
+"Tokens Reference" = "docs/guide/tokens.md"
+"Linux Troubleshooting" = "docs/guide/linux_troubleshooting.rst"
+"Frequently Asked Questions" = "docs/guide/faq.md"
+"Migration Guide" = "docs/guide/migration.md"
+"Kit SDK Extensions" = "docs/guide/kit_exts.md"
+"OpenUSD Python API" = "docs/guide/pxr_index.rst"
+# Implicit API (python) entry

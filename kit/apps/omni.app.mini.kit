@@ -1,0 +1,27 @@
+[package]
+title = "Mini Kit"
+description = "A Minimal Kit"
+version = "0.1.1"
+support_level = "Sample"
+
+# That makes it browsable in UI with "app" filter
+keywords = ["app"]
+
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.window.extensions" = {}
+
+[settings]
+app.window.title = "Kit Mini"
+
+app.runLoops.main.rateLimitEnabled = true
+app.runLoops.main.rateLimitFrequency = 60
+app.runLoops.main.rateLimitUseBusyLoop = false
+
+[[test]]
+args = [
+	"--no-assert-dialog",
+	"--/renderer/multiGpu/autoEnable=false",
+	"--/app/asyncRendering=false",
+	"--/renderer/debug/validation/enabled=false",
+]

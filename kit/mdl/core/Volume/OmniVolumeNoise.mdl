@@ -1,0 +1,445 @@
+/***************************************************************************************************
+ * Copyright 2021 NVIDIA Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *  * Neither the name of NVIDIA CORPORATION nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **************************************************************************************************/
+
+// OmniProceduralVolumes
+mdl 1.7;
+
+import ::tex::*;
+import ::anno::*;
+import ::base::*;
+import ::df::*;
+import ::state::*;
+
+
+export enum worley_mode
+[[ 
+    anno::description("Worley Noise Mode")
+]]
+{
+    f1f2_x = 0 [[ 
+        anno::display_name("f1f2 x") 
+    ]],
+
+    f1f2_x_squared = 1 [[ 
+        anno::display_name("Squared f1f2 x") 
+    ]],
+
+    cell = 2 [[ 
+        anno::display_name("Cell") 
+    ]],
+
+    hardstep = 3 [[ 
+        anno::display_name("Hard Step") 
+    ]],
+
+    smoothstep = 4 [[ 
+        anno::display_name("Smooth Step") 
+    ]],
+
+    normalized_smoothstep = 5 [[ 
+        anno::display_name("Normalized Smooth Step") 
+    ]],
+
+    multiply = 6 [[ 
+        anno::display_name("Mulitply") 
+    ]],
+
+    add = 7 [[ 
+        anno::display_name("Add") 
+    ]],
+
+    f1f2_y = 8 [[ 
+        anno::display_name("f1f2 y") 
+    ]],
+
+    f1f2_y_squared = 9 [[ 
+        anno::display_name("Squared f1f2 y") 
+    ]],
+
+    Manhattan = 10 [[ 
+        anno::display_name("Manhattan") 
+    ]],
+
+    Chebyshev = 11 [[ 
+        anno::display_name("Chebyshev") 
+    ]]
+};
+
+export enum worley_metric
+[[ 
+    anno::description("Worley Noise Metric")
+]]
+{
+    Euclidean_Metric = 0 [[ 
+        anno::display_name("Euclidean") 
+    ]],
+    Manhattan_Metric = 1 [[ 
+        anno::display_name("Manhattan") 
+    ]],
+
+    Chebyshev_Metric = 2 [[ 
+        anno::display_name("Chebyshev") 
+    ]]
+};
+
+export material OmniVolumeWorleyNoise(
+    // BASE
+	color volume_albedo = color(0.2f, 0.2f, 0.2f) 
+    [[
+		anno::display_name("Volume Color"),
+		anno::description("Volume Albedo Color"),
+        anno::in_group("Base")
+    ]],
+
+	float volume_density_scale = 10.0
+    [[
+        anno::display_name("Density Scale"),
+		anno::description("Scales the density of the noise field"),
+        anno::in_group("Base"),
+		anno::soft_range(0.f, 1000.f)
+    ]],
+
+	float directional_bias = 0.f 
+    [[
+        anno::display_name("Scattering Phase"),
+        anno::description("Forward, backward or isotropic scattering phase. Positive values are forward scattering; Negative are backward scattering; 0 is isotropic scattering."),
+        anno::in_group("Base"),
+        anno::hard_range(-1, 1)
+    ]],
+
+    // NOISE
+	color color1 = color(0)
+    [[
+        anno::display_name("Color 1"),
+        anno::in_group("Noise"),
+        anno::description("The Perlin noise function will blend between this color and \"color2\"")
+    ]],
+
+    color color2 = color(1)
+    [[
+        anno::display_name("Color 2"),
+        anno::in_group("Noise"),
+        anno::description("The Perlin noise function will blend between \"color1\" and this color")
+    ]],
+
+    uniform float size = 25.f 
+    [[
+        anno::display_name("Size"),
+        anno::in_group("Noise"),
+        anno::soft_range(0, 1000)
+    ]],
+
+    uniform worley_mode worley_mode = f1f2_x
+    [[
+        anno::display_name("Worley Mode"),
+        anno::description("Output function used to modify the noise result (0..11)"),
+        anno::in_group("Noise")
+    ]],
+
+	uniform worley_metric metric = Euclidean_Metric 
+    [[
+        anno::display_name("Metric"),
+        anno::description("Metric used in the noise function (0: Euclidean, 1: Manhattan, 2: Chebyshev)"),
+        anno::in_group("Noise")
+    ]],
+    uniform bool apply_marble = false 
+    [[
+        anno::display_name("Marble"),
+        anno::description("Triggers a modification to make the pattern have a marble like appearance (cosine)"),
+        anno::in_group("Noise")
+    ]],
+    uniform bool apply_dent = false 
+    [[
+        anno::display_name("Dent"),
+        anno::description("Raises the output of the function to the power of 3"),
+        anno::in_group("Noise")
+    ]],
+    
+    uniform float3 noise_distortion = float3(0.f) 
+    [[
+        anno::display_name("Noise Distortion"),
+        anno::description("Weight of additional noise turbulence"),
+        anno::in_group("Noise"),
+        anno::soft_range(float3(0.f), float3(100.f))
+    ]],
+
+    uniform float noise_threshold_high = 1.f 
+    [[
+        anno::display_name("High Threshold"),
+        anno::description("Noise values greater then \"Noise High Threshold\" are mapped to \"Color 1\""),
+        anno::in_group("Noise"),
+        anno::soft_range(0.f, 10.f)
+    ]],
+
+    uniform float noise_threshold_low = 0.7f 
+    [[
+        anno::display_name("Low Threshold"),
+        anno::description("Noise values greater then \"Noise Low Threshold\" are mapped to \"Color 2\""),
+        anno::in_group("Noise"),
+        anno::soft_range(0.f, 10.f)
+    ]],
+
+    uniform float noise_bands = 2.7f 
+    [[
+        anno::display_name("Noise Bands"),
+        anno::description("Creates a \"tree ring\" like banding effect"),
+        anno::in_group("Noise"),
+        anno::soft_range(0, 100.f)
+    ]],
+
+    uniform float step_threshold = 0.0f 
+    [[
+        anno::display_name("Step Threshold"),
+        anno::description("Used only in \"Hard Step\" mode"),
+        anno::in_group("Noise"),
+        anno::soft_range(0, 100.f)
+    ]],
+
+    uniform float edge = 1.f 
+    [[
+        anno::display_name("Edge"),
+        anno::description("Smoothness of noise"),
+        anno::in_group("Noise"),
+        anno::hard_range(0.f, 1.f)
+    ]]
+)	
+[[
+    anno::display_name("OmniVolumeWorleyNoise"),
+    anno::description("Volumetric Worley Density."),
+ 	anno::in_group("Volumes"),
+    anno::author("NVIDIA Corporation"),
+    anno::key_words(string[]("generic", "volume")),
+    anno::version(1, 0, 0, "")    
+]] = let {
+    material_surface fake_surface(
+            ::df::specular_bsdf(color(1.f, 1.f, 1.f), ::df::scatter_transmit, ""),
+            material_emission());
+
+		color volume_density = volume_density_scale *
+				::base::worley_noise_texture(
+					::base::coordinate_source(::base::texture_coordinate_object, 0), 
+					color1, 
+					color2, 
+					size, 
+                    worley_mode, 
+					metric, 
+					apply_marble, 
+					apply_dent, 
+					noise_distortion, 
+					noise_threshold_high, 
+					noise_threshold_low, 
+					noise_bands, 
+					step_threshold, 
+					edge).tint;
+
+        color volume_scattering = volume_albedo 	  * volume_density;
+		color volume_absorption = (1 - volume_albedo) * volume_density;
+		
+        material_volume volume(
+            ::df::anisotropic_vdf(directional_bias, ""),
+            volume_absorption,
+			volume_scattering);
+    } in
+        material(
+            surface: fake_surface,
+            ior: color(1.0),
+            volume: volume);
+
+
+
+
+export material OmniVolumePerlinNoise(
+    // Base
+    color volume_albedo = color(.2f, .2f, .2f) [[
+		anno::display_name("Volume Color"),
+		anno::description("Volume Albedo Color"),
+        anno::in_group("Base")
+    ]],
+	
+    float volume_density_scale = 10.0
+    [[
+        anno::display_name("Density Scale"),
+		anno::description("Scales the density of the noise field"),
+        anno::in_group("Base"),
+		anno::soft_range(0.f, 1000.f)
+    ]],	
+
+
+	float directional_bias = 0.f 
+    [[
+        anno::display_name("Scattering Phase"),
+        anno::description("Forward, backward or isotropic scattering phase. Positive values are forward scattering; Negative are backward scattering; 0 is isotropic scattering."),
+        anno::in_group("Base"),
+        anno::hard_range(-1, 1)
+    ]],
+
+
+    // NOISE
+	color color1 = color(0)
+    [[
+        anno::display_name("Color 1"),
+        anno::in_group("Noise"),
+        anno::description("The Perlin noise function will blend between this color and \"color2\"")
+    ]],
+
+    color color2 = color(1)
+    [[
+        anno::display_name("Color 2"),
+        anno::in_group("Noise"),
+        anno::description("The Perlin noise function will blend between \"color1\" and this color")
+    ]],
+
+    uniform float size = 25.f 
+    [[
+        anno::display_name("Size"),
+        anno::description("Size of the biggest feature of the pattern"),
+        anno::in_group("Noise"),
+		anno::soft_range(0.f, 10000.f)
+    ]],
+
+    uniform bool apply_marble = false 
+    [[
+        anno::display_name("Marble"),        
+        anno::description("Triggers a modification to make the pattern have a marble like appearance (cosine)"),
+        anno::in_group("Noise")
+    ]],
+    
+    uniform bool apply_dent = false 
+    [[
+        anno::display_name("Dent"),
+        anno::description("Raises the output of the function to the power of 3"),
+        anno::in_group("Noise")
+    ]],
+
+    
+    uniform float noise_phase = 1.f 
+    [[
+        anno::display_name("Phase"),
+        anno::description("Controls the 4th dimension of the function (can be time in animations)"),
+        anno::in_group("Noise"),
+    	anno::soft_range(0.f, 10000.f)
+    ]],
+    
+    uniform int noise_levels = 2 
+    [[
+        anno::display_name("Octaves"),
+        anno::description("Number of octaves of Perlin to sum up"),
+        anno::in_group("Noise"),
+        anno::soft_range(1, 6)
+    ]],
+
+    uniform bool absolute_noise = false 
+    [[
+        anno::display_name("Absolute"),
+        anno::description("If true, the appearance of the pattern will be more \"billowing\" and \"turbulent\""),
+        anno::in_group("Noise")
+    ]],
+    
+    uniform bool ridged_noise = false 
+    [[
+        anno::display_name("Ridges"),
+        anno::description("If true, the appearance of the pattern will be more \"electrical\""),
+        anno::in_group("Noise")
+    ]],
+
+    uniform float3 noise_distortion = float3(0.f) 
+    [[
+        anno::display_name("Noise Distortion"),
+        anno::description("Weight of additional noise turbulence"),
+        anno::in_group("Noise"),
+        anno::soft_range(float3(0.f), float3(100.f))
+    ]],
+
+    uniform float noise_threshold_high = 1.f 
+    [[
+        anno::display_name("High Threshold"),
+        anno::description("Noise values greater then \"Noise High Threshold\" are mapped to \"Color 1\""),
+        anno::in_group("Noise"),
+        anno::soft_range(0.f, 10.f)
+    ]],
+
+    uniform float noise_threshold_low = 0.7f 
+    [[
+        anno::display_name("Low Threshold"),
+        anno::description("Noise values greater then \"Noise Low Threshold\" are mapped to \"Color 2\""),
+        anno::in_group("Noise"),
+        anno::soft_range(0.f, 10.f)
+    ]],
+
+
+    uniform float noise_bands = 2.0f 
+    [[
+        anno::display_name("Noise Bands"),
+        anno::description("Creates a \"tree ring\" like banding effect"),
+        anno::in_group("Noise"),
+        anno::soft_range(0, 100.f)
+    ]]
+
+)
+[[
+    anno::display_name("OmniVolumePerlinNoise"),
+    anno::description("Volumetric Perlin Density."),
+    anno::author("NVIDIA Corporation"),
+    anno::key_words(string[]("generic", "volume")),
+    anno::version(1, 0, 0, ""),
+ 	anno::in_group("Volumes")
+]]
+ = let {
+        material_surface fake_surface(
+            ::df::specular_bsdf(color(1.f, 1.f, 1.f), ::df::scatter_reflect_transmit, ""),
+            material_emission(emission: edf(), intensity: color(0), mode: intensity_radiant_exitance));
+			
+		color volume_density = volume_density_scale *
+		::base::perlin_noise_texture(
+									::base::coordinate_source(::base::texture_coordinate_object, 0), 
+									color1, 
+									color2, 
+									size, 
+									apply_marble, 
+									apply_dent, 
+									noise_phase, 
+									noise_levels, 
+									absolute_noise, 
+									ridged_noise, 
+									noise_distortion, 
+									noise_threshold_high, 
+									noise_threshold_low, 
+									noise_bands).tint;
+									
+		color volume_scattering = 	   volume_albedo  * volume_density;
+		color volume_absorption = (1 - volume_albedo) * volume_density;
+		
+        material_volume volume(
+            ::df::anisotropic_vdf(directional_bias, ""),
+            volume_absorption,
+			volume_scattering);
+    } in
+        material(
+            surface: fake_surface,
+            ior: color(1.0),
+            volume: volume);

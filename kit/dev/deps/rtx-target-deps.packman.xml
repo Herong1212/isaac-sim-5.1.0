@@ -1,0 +1,65 @@
+<project toolsVersion="6.11" chroniclePath="../_build/chronicles">
+  <import path="../_build/target-deps/rtx_plugins.${config}/_build/${platform_target}/${config}/dev/all-deps.packman.xml">
+    <filter include="carb_sdk_plugins" />
+    <filter include="carb_docs" />
+    <filter include="slang" />
+    <filter include="usd-${config}" />
+    <filter include="tbb-${config}" />
+    <filter include="nvflow" />
+    <filter include="eigen" />
+    <filter include="imgui" />
+    <filter include="cuda" />
+    <filter include="iray" />
+    <filter include="mdl-distiller" />
+    <filter include="mdl_sdk" />
+    <filter include="omni_usd_resolver-${config}" />
+    <filter include="omni_core_materials" />
+    <filter include="freetype-${config}" />
+    <filter include="nvindex" />
+    <filter include="nvindex-openvdb" />
+    <filter include="nvapi" />
+    <filter include="glew" />
+    <filter include="omni_client_library" />
+    <filter include="omni_hub" />
+    <filter include="openvdb_${config}" />
+    <filter include="nanovdb_${config}" />
+    <filter include="openssl-${config}" />
+    <filter include="zlib" />
+    <filter include="libcurl-${config}" />
+    <filter include="materialx-${config}" />
+    <filter include="omnimetrics-${config}" />
+    <filter include="opentelemetry-cpp" />
+    <filter include="usd_schema_semantics_${config}" />
+  </import>
+
+  <dependency name="carb_sdk_plugins" linkPath="../_build/target-deps/carb_sdk_plugins" tags="slim-package" />
+  <dependency name="carb_docs" linkPath="../_build/target-deps/carb_docs" />
+  <dependency name="slang" linkPath="../_build/target-deps/slang" />
+  <dependency name="usd-${config}" linkPath="../_build/target-deps/usd/${config}" />
+  <dependency name="tbb-${config}" linkPath="../_build/target-deps/tbb-${config}" />
+  <dependency name="nvflow" linkPath="../_build/target-deps/nvflow" />
+  <dependency name="eigen" linkPath="../_build/target-deps/eigen" />
+  <dependency name="imgui" linkPath="../_build/target-deps/imgui" />
+  <dependency name="cuda" linkPath="../_build/target-deps/cuda" />
+  <dependency name="iray" linkPath="../_build/target-deps/iray" tags="slim-package" />
+  <dependency name="mdl-distiller" linkPath="../_build/target-deps/mdl-distiller" tags="slim-package" />
+  <dependency name="omni_usd_resolver-${config}" linkPath="../_build/target-deps/omni_usd_resolver/${config}" />
+  <dependency name="omni_core_materials" linkPath="../_build/target-deps/omni_core_materials" />
+  <dependency name="freetype-${config}" linkPath="../_build/target-deps/freetype-${config}" />
+  <dependency name="usd_schema_semantics_${config}" linkPath="../_build/target-deps/usd_schema_semantics/${config}" />
+  <dependency name="nvindex" linkPath="../_build/target-deps/nvindex" />
+  <dependency name="nvindex-openvdb" linkPath="../_build/target-deps/nvindex-openvdb" />
+  <dependency name="nvapi" linkPath="../_build/target-deps/nvapi" />
+  <dependency name="glew" linkPath="../_build/target-deps/glew" />
+  <dependency name="omni_client_library" linkPath="../_build/target-deps/omni_client_library" />
+  <dependency name="omni_hub" linkPath="../_build/target-deps/omni_hub" />
+  <dependency name="openvdb_${config}" linkPath="../_build/target-deps/openvdb/${config}" />
+  <dependency name="nanovdb_${config}" linkPath="../_build/target-deps/nanovdb/${config}" />
+  <dependency name="openssl-${config}" linkPath="../_build/target-deps/openssl-${config}" />
+  <dependency name="zlib" linkPath="../_build/target-deps/zlib" />
+  <dependency name="libcurl-${config}" linkPath="../_build/target-deps/libcurl-${config}" />
+  <dependency name="materialx-${config}" linkPath="../_build/target-deps/materialx/${config}" />
+  <dependency name="omnimetrics-${config}" linkPath="../_build/target-deps/omnimetrics-${config}" />
+  <dependency name="opentelemetry-cpp" linkPath="../_build/target-deps/opentelemetry-cpp/${config}" />
+  <dependency name="usd_schema_semantics_${config}" linkPath="../_build/target-deps/usd_schema_semantics/${config}" />
+</project>

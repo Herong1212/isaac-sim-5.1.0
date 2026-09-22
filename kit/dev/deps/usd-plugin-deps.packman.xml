@@ -1,0 +1,24 @@
+<project toolsVersion="6.11" chroniclePath="../_build/chronicles">
+  <!-- TODO: these dependencies need to be reparameterized with the usd version / flavor -->
+  <dependency name="omni_geospatial_${config}" linkPath="../_build/target-deps/omni_geospatial/${config}" >
+    <package name="omnigeospatial_openusd_0.${usd_ver}_py_${python_ver}" version="2.1.0-alpha-gl.mr28.537.16d0942b.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64" />
+  </dependency>
+  <dependency name="usd_ext_animation_${config}" linkPath="../_build/target-deps/usd_ext_animation/${config}">
+    <package name="omnianimationschema_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-alpha-gl.mr199.363.6a03e67a.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64" />
+  </dependency>
+  <dependency name="usd_ext_anim_retargeting_${config}" linkPath="../_build/target-deps/usd_ext_anim_retargeting/${config}">
+    <package name="omnianimationretargetingschema_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-alpha-gl.mr21.42.41b46961.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64" />
+  </dependency>
+  <dependency name="usd_ext_omnigraph_${config}" linkPath="../_build/target-deps/usd_ext_omnigraph/${config}">
+    <package name="omnigraphschema_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-alpha-gl.mr48.71.03334b3a.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64"/>
+  </dependency>
+  <dependency name="usd_ext_omniscripting_${config}" linkPath="../_build/target-deps/usd_ext_omniscripting/${config}">
+    <package name="omniscriptingschema_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-alpha-gl.mr29.26.a54a70ad.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64" />
+  </dependency>
+  <dependency name="usd_audio_schema_${config}" linkPath="../_build/target-deps/usd_audio_schema/${config}">
+    <package name="omniaudioschema_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-alpha-gl.mr55.481.727d12fa.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64"/>
+  </dependency>
+  <dependency name="omni_spectree_${config}" linkPath="../_build/target-deps/omni_spectree_${config}">
+    <package name="omnispectree_openusd_0.${usd_ver}_py_${python_ver}" version="2.0.0-gl.602.1d150eb1.${platform_target_abi}.${config}" platforms="windows-x86_64 linux-x86_64 manylinux_2_35_x86_64 linux-aarch64 manylinux_2_35_aarch64" />
+  </dependency>
+</project>

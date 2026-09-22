@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49.662" height="34" viewBox="0 0 49.662 34">
+  <defs>
+    <filter id="Rectangle_524" x="14.662" y="0" width="35" height="34" filterUnits="userSpaceOnUse">
+      <feOffset dx="-4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.471"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Switch_Global" data-name="Switch Global" transform="translate(-8345.107 -59)">
+    <g id="Rectangle_523" data-name="Rectangle 523" transform="translate(8345.107 64)" fill="#7b7b7c" stroke="#707070" stroke-width="1">
+      <rect width="49" height="24" rx="6" stroke="none"/>
+      <rect x="0.5" y="0.5" width="48" height="23" rx="5.5" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 8345.11, 59)" filter="url(#Rectangle_524)">
+      <rect id="Rectangle_524-2" data-name="Rectangle 524" width="23" height="22" rx="5" transform="translate(24.66 6)" fill="#ccc"/>
+    </g>
+    <text id="L" transform="translate(8354.859 81)" fill="#3c4043" font-size="18" font-family="Calibri-Bold, Calibri" font-weight="700"><tspan x="0" y="0">L</tspan></text>
+    <text id="G" transform="translate(8376.037 82)" fill="#3c4043" font-size="18" font-family="Calibri-Bold, Calibri" font-weight="700"><tspan x="0" y="0">G</tspan></text>
+  </g>
+</svg>

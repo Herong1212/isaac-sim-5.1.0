@@ -1,0 +1,74 @@
+{
+	"unionDefinitions" : {
+		"$description": [
+			"This file contains the definitions for attribute union groups. Attribute Union Groups are convenient groupings of related attribute types",
+			"Each entry contains an union name as the key, and a list of the string representations for corresponding ogn types, or the names of other", 
+			"unions to include. Valid dictionary values are strings, lists of strings, or dictionaries.",
+			"In the case of dictionaries, it must contain two keys:",
+			"   'entries', whose values are attribute type names or union names, and",
+			"   'append', whose value is a string to append to each resolved value in 'entries.'"
+		],
+		"integral_scalers": ["uchar", "int", "uint", "uint64", "int64"],
+		"integral_tuples": ["int[2]", "int[3]", "int[4]"],
+		"decimal_scalers": ["double", "float", "half", "timecode"],
+		"decimal_tuples": [
+			"double[2]",
+			"double[3]",
+			"double[4]",
+			"float[2]",
+			"float[3]",
+			"float[4]",
+			"half[2]",
+			"half[3]",
+			"half[4]",
+			"colord[3]",
+			"colord[4]",
+			"colorf[3]",
+			"colorf[4]",
+			"colorh[3]",
+			"colorh[4]",
+			"normald[3]",
+			"normalf[3]",
+			"normalh[3]",
+			"pointd[3]",
+			"pointf[3]",
+			"pointh[3]",
+			"texcoordd[2]",
+			"texcoordd[3]",
+			"texcoordf[2]",
+			"texcoordf[3]",
+			"texcoordh[2]",
+			"texcoordh[3]",
+			"quatd[4]",
+			"quatf[4]",
+			"quath[4]",
+			"vectord[3]",
+			"vectorf[3]",
+			"vectorh[3]"
+		],
+		"matrices": ["matrixd[2]", "matrixd[3]", "matrixd[4]", "transform[4]", "frame[4]"],
+		"integral_array_elements": ["integral_scalers", "integral_tuples"],
+		"integral_arrays" : {
+			"entries": ["integral_array_elements"],
+			"append": "[]"
+		},
+		"integrals" : ["integral_array_elements", "integral_arrays"],
+		"decimal_array_elements": ["decimal_scalers", "decimal_tuples"],
+		"decimal_arrays": {
+			"entries" : ["decimal_array_elements"],
+			"append" : "[]"
+		},
+		"decimals": ["decimal_array_elements", "decimal_arrays"],
+		"numeric_scalers": ["integral_scalers", "decimal_scalers"],
+		"numeric_tuples":  ["integral_tuples", "decimal_tuples"],
+		"numeric_array_elements": ["numeric_scalers", "numeric_tuples", "matrices"],
+		"numeric_arrays": {
+			"entries": ["numeric_array_elements"],
+			"append": "[]"
+		},
+		"numerics": ["numeric_array_elements", "numeric_arrays"],
+		"array_elements": ["numeric_array_elements", "token"],
+		"arrays": ["numeric_arrays", "token[]"],
+		"string_types": ["path", "string", "token", "token[]"]
+	}
+}

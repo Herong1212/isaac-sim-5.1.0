@@ -1,0 +1,278 @@
+/******************************************************************************
+ *     Copyright 1986, 2022 NVIDIA Corporation. All rights reserved.
+ ******************************************************************************
+
+Permission is hereby granted by NVIDIA Corporation ("NVIDIA"), free of charge,
+to any person obtaining a copy of the sample definition code that uses our
+Material Definition Language (the "MDL Materials"), to reproduce and distribute
+the MDL Materials, including without limitation the rights to use, copy, merge,
+publish, distribute, and sell modified and unmodified copies of the MDL
+Materials, and to permit persons to whom the MDL Materials is furnished to do
+so, in all cases solely for use with NVIDIA's Material Definition Language,
+subject to the following further conditions:
+
+1. The above copyright notices, this list of conditions, and the disclaimer
+that follows shall be retained in all copies of one or more of the MDL
+Materials, including in any software with which the MDL Materials are bundled,
+redistributed, and/or sold, and included either as stand-alone text files,
+human-readable headers or in the appropriate machine-readable metadata fields
+within text or binary files as long as those fields can be easily viewed by the
+user, as applicable.
+2. The name of NVIDIA shall not be used to promote, endorse or advertise any
+Modified Version without specific prior written permission, except a) to comply
+ with the notice requirements otherwise contained herein; or b) to acknowledge
+the contribution(s) of NVIDIA.
+
+THE MDL MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT,
+TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR
+ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL,
+INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE
+THE MDL MATERIALS OR FROM OTHER DEALINGS IN THE MDL MATERIALS.
+*/
+
+mdl 1.4;
+
+import ::df::*;
+import ::math::PI;
+import ::math::cos;
+import ::math::max;
+import ::math::min;
+import ::math::pow;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+
+export enum light_area_shape {
+    unspecified,
+    sphere,
+    rectangle,
+    disc,
+    cylinder
+};
+
+// compute EDF parameters that mimic OV PT spot emission behavior
+struct spot_params {
+    float spread;
+    float spot_exponent;
+    float intensity_scale;
+};
+uniform spot_params compute_spot_params(
+    uniform float spread,
+    uniform float spot_exponent,
+    uniform light_area_shape shape)
+{
+    spot_params p;
+
+    p.intensity_scale = 1.0f;
+    if (shape == rectangle || shape == disc) {
+        spot_exponent += 1.0f; // account for surface cosine
+    } else if (shape == sphere || shape == cylinder) {
+        p.intensity_scale = 0.25f; // ~= average cosine influence on surface
+    }
+
+    // map spread to supported range (iray only allows hemisphere for spot)
+    p.spread = math::min(math::max(spread, 0.0f), math::PI * 0.5f);
+    float s = math::cos(p.spread);
+
+    // match spread with MDL's EDF spread definition (angle to main axis -> opening angle)
+    p.spread = math::min(2.0f * p.spread, math::PI);
+    if (p.spread <= 0.001f) {
+        p.spot_exponent = 0.0f;
+        p.intensity_scale = 0.0f;
+    }
+
+    // spread of MDL spot EDF is (cos - s)^k vs. cos^k in OV PT
+    // there's generally no 1:1 match, so we match the integral within the spread domain
+    if (s < 0.001f)
+    {
+        // special case of the other branch with s == 0.0 and (1-s) == 1.0
+        p.spot_exponent = math::max(spot_exponent, 0.001f); // avoid special case of uniform all directions
+
+        // divide by peak of (normalized) spot distribution EDF
+        p.intensity_scale *= 2.0f * math::PI / (p.spot_exponent + 1.0f);
+    }
+    else
+    {
+        p.spot_exponent = (1.0f - s) / (1.0f - math::pow(s, spot_exponent + 1.0f)) * (spot_exponent + 1.0f) - 1.0f;
+
+        p.spot_exponent = math::max(p.spot_exponent, 0.001f); // avoid special case of uniform all directions
+
+        // divide by peak of (normalized) spot distribution EDF
+        p.intensity_scale *= 2.0f * math::PI * (1.0f - s) / (p.spot_exponent + 1.0f);
+    }
+
+    return p;
+}
+
+// compute EDF paramsters that mimic OV PT light profile behavior
+struct lprof_params {
+    float intensity_scale;
+    bool global_distribution;
+};
+uniform lprof_params compute_lprof_params(
+    uniform light_area_shape shape)
+{
+    lprof_params p;
+    p.intensity_scale = 1.0f;
+    p.global_distribution = true;
+
+    if (shape == sphere || shape == cylinder) {
+        p.intensity_scale = 0.25f; // ~= average cosine influence on surface
+    } else {
+        // - we would want to use global_distribution = false here to properly include the surface cosine
+        // - unfortunately, that does not work as the orientation does not match then (wrong hemisphere)...
+        // - so right now we merely rely on the integration code setting a scale that will at least match power between iray and OV
+    }
+
+    return p;
+}
+
+export enum light_type
+[[
+    anno::description("Used in light sources to define the emission mode"),
+    anno::hidden()
+]]
+{
+    diffuse
+        [[ anno::description("diffuse") ]],
+    spot
+        [[ anno::description("spot") ]],
+    lprof
+        [[ anno::description("light profile") ]]
+
+};
+
+export material omni_light (
+    color tint = color(1., 1., 1.)
+    [[
+        anno::display_name("Color"),
+        anno::description("The color of the light source")
+    ]],
+    uniform float intensity = 10
+    [[
+        anno::display_name("Intensity"),
+        anno::description("The brightness of the light source")
+    ]],
+    uniform float unit_scale = 1.
+    [[
+        anno::display_name("Unit scale"),
+        anno::description("Modeling unit to meter conversion factor")
+    ]],
+    uniform float spot_exponent = 30
+    [[
+        anno::display_name("Spot focus"),
+        anno::description("Larger values lead to more focused spotlights")
+    ]],
+	uniform float spread = math::PI
+    [[
+        anno::display_name("Spot spread"),
+        anno::description("Spot spread")
+    ]],
+	uniform light_profile profile = light_profile()
+    [[
+        anno::display_name("Light profile"),
+        anno::description("An IES light profile describing the emission characteristic")
+    ]],
+        uniform float profile_intensity_scale = 1.0f
+    [[
+        anno::display_name("Light profile intensity scale"),
+        anno::description("Intensity multiplier for light profile lookups")
+    ]],
+	uniform texture_2d diffuse_texture = texture_2d()
+    [[
+        anno::display_name("Light texture"),
+        anno::description("Texture to be used for the light source")
+    ]],
+    uniform light_type type = diffuse
+    [[
+        anno::display_name("Emission"),
+        anno::description("The emission type")
+    ]],
+    uniform light_area_shape area_shape = unspecified
+    [[
+        anno::display_name("Area shape"),
+        anno::description("Light source's area shape (used for better spotlight match)")
+    ]],
+    uniform bool normalized_power = false,
+    uniform bool cast_shadows = false,
+    uniform bool is_matte = false,
+    uniform bool use_color_temperature = false
+    [[
+        anno::display_name("Enable Color Temperature"),
+        anno::description("If enabled, the given color temperature is multiplied with the tint.")
+    ]],
+    float color_temperature = float(6500.0f)
+    [[
+        anno::display_name("Color Temperature"),
+        anno::description("Color Temperature of the emitter.")
+    ]]
+) [[
+	anno::copyright_notice (
+    "Permission is hereby granted by NVIDIA Corporation (\"NVIDIA\"), free of charge, "
+    "to any person obtaining a copy of the sample definition code that uses our "
+    "Material Definition Language (the \"MDL Materials\"), to reproduce and distribute "
+    "the MDL Materials, including without limitation the rights to use, copy, merge, "
+    "publish, distribute, and sell modified and unmodified copies of the MDL  "
+    "Materials, and to permit persons to whom the MDL Materials is furnished to do "
+    "so, in all cases solely for use with NVIDIA's Material Definition Language, "
+    "subject to the following further conditions: "
+    "\n"
+    "1. The above copyright notices, this list of conditions, and the disclaimer "
+    "that follows shall be retained in all copies of one or more of the MDL "
+    "Materials, including in any software with which the MDL Materials are bundled, "
+    "redistributed, and/or sold, and included either as stand-alone text files, "
+    "human-readable headers or in the appropriate machine-readable metadata fields "
+    "within text or binary files as long as those fields can be easily viewed by the "
+    "user, as applicable. "
+    "2. The name of NVIDIA shall not be used to promote, endorse or advertise any "
+    "Modified Version without specific prior written permission, except a) to comply "
+    "with the notice requirements otherwise contained herein; or b) to acknowledge "
+    "the contribution(s) of NVIDIA. "
+    "\n"
+    "THE MDL MATERIALS ARE PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+    "OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, "
+    "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, "
+    "TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR "
+    "ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, "
+    "INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF "
+    "CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE "
+    "THE MDL MATERIALS OR FROM OTHER DEALINGS IN THE MDL MATERIALS."),
+	anno::author("NVIDIA Corporation"),
+    anno::display_name("Omni Light"),
+    anno::description("Material for a light with a diffuse, shaped or IES defined distribution characteristic")
+]]  = 
+let{
+    color tint_in = use_color_temperature ? base::blackbody_emission(temperature1: color_temperature) * tint : tint;
+    color light_intensity = tex::texture_isvalid(diffuse_texture)
+        ? tint_in * unit_scale * base::file_texture(texture: diffuse_texture, color_scale: color(intensity)).tint
+        : tint_in * unit_scale * intensity;
+
+    uniform spot_params sp = (type == spot) ? compute_spot_params(spread, spot_exponent, area_shape) : spot_params();
+    uniform lprof_params lp = (type == lprof) ? compute_lprof_params(area_shape) : lprof_params();
+    color out_intensity = (type == lprof)
+        ? light_intensity * (profile_intensity_scale * lp.intensity_scale)
+        : (type == spot)
+            ? light_intensity * sp.intensity_scale
+            : light_intensity * math::PI;
+
+} in  material (
+    surface: material_surface (
+        scattering: (cast_shadows || is_matte) ? bsdf() : df::specular_bsdf(mode: df::scatter_transmit),
+        emission:  material_emission (
+            emission: (type == spot)
+                ? df::spot_edf(exponent: sp.spot_exponent, spread: sp.spread , global_distribution: true,
+                    global_frame: float3x3(1.,0.,0.,   0.,1.,0.,  0.,0.,-1) )
+                : (type == lprof)
+                    ? df::measured_edf(profile: profile, global_distribution: lp.global_distribution,
+                        global_frame: float3x3(1.,0.,0.,   0.,1.,0.,  0.,0.,1) )
+                    : df::diffuse_edf(),
+            intensity: normalized_power ? (out_intensity / math::PI) : out_intensity,
+            mode: normalized_power ? intensity_power : intensity_radiant_exitance
+        )
+    ),
+    thin_walled: true,
+    ior: color(1.0f)
+);

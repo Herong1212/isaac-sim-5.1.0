@@ -1,0 +1,136 @@
+[package]
+title = "Kit Base Editor App"
+description = "Refreshed Base Editor App"
+version = "1.0.0"
+keywords = ["app"]
+support_level = "Sample"
+
+[dependencies]
+"omni.anim.curve.core" = {} # Runtime support for animcurves
+"omni.graph.core" = {} # Omni Graph runtime
+"omni.graph.action" = {} # Action graph runtime
+"omni.graph.nodes" = {} # Action graph nodes
+"omni.graph.ui_nodes" = {} # Action graph ui nodes
+"omni.graph.scriptnode" = {} # Scriptnode support.
+"omni.hydra.engine.stats" = {}  # Load the stats HUD (resolution, fps, etc..)
+"omni.hydra.rtx" = {}  # Viewport renderer
+"omni.kit.mainwindow" = {}  # Main uiapp
+"omni.kit.manipulator.camera" = {}  # Load the camera-manipulator (navigation)
+"omni.kit.manipulator.prim" = {}  # Load the prim-manipulator (translate, rotate, scale)
+"omni.kit.manipulator.selection" = {}  # Load the selection-manipulator (selecteable prims)
+"omni.kit.material.library" = {} # Create and assign materials.
+"omni.kit.menu.create" = {} # Create menu
+"omni.kit.menu.edit" = {}  # Edit menu
+"omni.kit.menu.file" = {}  # File menu
+"omni.kit.property.bundle" = {} # all the property editors
+"omni.kit.raycast.query" = {} # RTX Raycast Query
+"omni.rtx.settings.core" = {} # RTX Settings
+"omni.kit.stage_template.core" = {}  # For creating new empty stages.
+"omni.kit.telemetry" = {} # Telemetry support
+# "omni.kit.tool.asset_importer" = {} # Add Asset Importer functionality.
+"omni.kit.tool.collect" = {} # USD Collect tool
+"omni.kit.viewport.legacy_gizmos" = {}  # Load the legacy grid and gizmo drawing for now
+"omni.kit.viewport.menubar.display" = {}  # Load the display type menu
+"omni.kit.viewport.menubar.camera" = {}  # Load the view-from-camera menu
+"omni.kit.viewport.menubar.lighting" = {}  # Load the viewport settings menu
+"omni.kit.viewport.menubar.render" = {}  # Load the renderer selection menu
+"omni.kit.viewport.menubar.settings" = {}  # Load the viewport settings menu
+"omni.kit.viewport.scene_camera_model" = {} # Sync camera to scene UI
+"omni.kit.viewport.window" = {}  # Load the actual ViewportWindow extension
+"omni.kit.viewport.ready" = {} # Show RTX loading information during startup
+"omni.activity.profiler" = {} # For showing RTX loading progress
+"omni.activity.pump" = {} # For shouwing RTX loading progress
+"omni.kit.window.console" = {}  # Console/log
+"omni.kit.window.content_browser" = {} # Add content browser to UI
+"omni.kit.window.extensions" = {} # Extensions Manager UI
+"omni.kit.window.property" = {} # Property editor window
+"omni.kit.window.stage" = {}  # Stage tree
+"omni.kit.window.status_bar" = {}  # Status Bar
+"omni.kit.window.toolbar" = {}  # Manipular Toolbar
+"omni.physx.stageupdate" = {} # Physics runtime support - will pull in physx dependencies.
+"omni.uiaudio" = {} # for audio playback.
+"omni.warp.core" = {} # Warp support
+"omni.rtx.shadercache.vulkan" = {} # Vulkan shader caches
+[dependencies."filter:platform"."windows-x86_64"]
+"omni.rtx.shadercache.d3d12" = {} # DX shader caches (windows only)
+
+
+[settings]
+app.name = "Base Editor App"
+app.hangDetector.enabled = true
+app.hangDetector.timeout = 120
+
+app.content.emptyStageOnStart = true
+
+# Fonts
+app.font.file = "${fonts}/OpenSans-SemiBold.ttf"
+app.font.size = 16
+
+app.renderer.resolution.height = 1080
+app.renderer.resolution.width = 1920
+app.renderer.skipWhileMinimized = true
+
+app.viewport.defaults.fillViewport = true  # default to fill viewport
+
+app.window.title = "Kit Base Editor"
+app.window.width = 1920
+app.window.height = 1010
+app.window.x = -1
+app.window.y = -1
+
+exts."omni.kit.material.library".ui_show_list = ["OmniPBR", "OmniSurface", "USD Preview Surface"]
+
+exts."omni.kit.renderer.core".imgui.enableMips = true
+
+exts."omni.kit.viewport.menubar.lighting".defaultRigIgnorePattern = "" # Allows auto light rig with anon layers
+
+exts."omni.kit.viewport.window".windowMenu.entryCount = 1
+exts."omni.kit.viewport.window".windowMenu.label="" # Put Viewport menuitem under Window menu
+
+exts."omni.rtx.window.settings".window_menu = "Window" # Where to put the render settings menuitem
+
+exts."omni.warp".enable_menu = false
+
+# Improves startup speed, but may make OpenGL unavailable on mGPU systems
+renderer.gpuEnumeration.glInterop.enabled = false
+
+# Disabled for now: don't block while renderer inits
+# renderer.asyncInit = true 
+
+rtx.ecoMode.enabled = true
+rtx.hydra.mdlMaterialWarmup = true # start loading the MDL shaders needed before any delegate is actually created.
+
+# Enable "Smooth Kit" frame pacing.
+app.runLoops.main.rateLimitEnabled = true
+app.runLoops.main.rateLimitFrequency = 60
+app.runLoops.main.rateLimitUsePrecisionSleep = true
+app.runLoops.main.syncToPresent = true
+app.runLoops.present.rateLimitEnabled = true
+app.runLoops.present.rateLimitFrequency = 60
+app.runLoops.present.rateLimitUsePrecisionSleep = true
+app.runLoops.rendering_0.rateLimitEnabled = true
+app.runLoops.rendering_0.rateLimitFrequency = 60
+app.runLoops.rendering_0.rateLimitUsePrecisionSleep = true
+app.runLoops.rendering_0.syncToPresent = true
+app.runLoops.rendering_1.rateLimitEnabled = true
+app.runLoops.rendering_1.rateLimitFrequency = 60
+app.runLoops.rendering_1.rateLimitUsePrecisionSleep = true
+app.runLoops.rendering_1.syncToPresent = true
+app.runLoopsGlobal.syncToPresent = true
+app.vsync = true
+exts."omni.kit.renderer.core".present.enabled = true
+exts."omni.kit.renderer.core".present.presentAfterRendering = true
+persistent.app.viewport.defaults.tickRate = 60
+
+[[test]]
+args = [
+	"--/app/file/ignoreUnsavedOnExit=true",
+	"--/app/audio/enabled=false" # disable audio for app test
+]
+stdoutFailPatterns.include = ["*[warning]*", "*[error]*", "*[fatal]*"]
+stdoutFailPatterns.exclude = [
+	"*plugin.so remained loaded after unload request*", # warnings - only happens on linux test runs
+	"*[gpu.foundation.plugin] ECC is enabled on physical device*", # warnings - Windows test runner only
+	"*ECC is enabled, this will reduce rendering performance*", # warnings - Windows test runner only
+	"*[omni.kit.renderer.plugin] Reducing '/app/runLoops/present/rateLimitFrequency'*" # warnings - OK for test runners
+]

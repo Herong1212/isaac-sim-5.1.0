@@ -2,8 +2,5 @@
 
 exts/
 extscache/
-extsDeprecated/
-kit/
-
-
-# standalone_examples/
+# extsDeprecated/
+# kit/

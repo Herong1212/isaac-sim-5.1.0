@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="33" viewBox="0 0 33 33">
+  <defs>
+    <filter id="Path_2202" x="3.889" y="4.121" width="25.409" height="26.619" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+      <feFlood flood-opacity="0.329"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Model" transform="translate(-15293.44 7250.5)">
+    <g id="Group_2430" data-name="Group 2430" transform="translate(0 -53)">
+      <g id="Group_2432" data-name="Group 2432" transform="translate(15318.1 -7195.7)">
+        <line id="Line_501" data-name="Line 501" x2="6.555" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_502" data-name="Line 502" y1="6.555" transform="translate(6.555)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Group_2434" data-name="Group 2434" transform="translate(15301.854 -7166.345) rotate(180)">
+        <line id="Line_501-2" data-name="Line 501" x2="6.555" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_502-2" data-name="Line 502" y1="6.555" transform="translate(6.555)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Group_2433" data-name="Group 2433" transform="translate(15324.654 -7172.9) rotate(90)">
+        <line id="Line_501-3" data-name="Line 501" x2="6.555" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_502-3" data-name="Line 502" y1="6.555" transform="translate(6.555)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Group_2431" data-name="Group 2431" transform="translate(15295.3 -7189.146) rotate(-90)">
+        <line id="Line_501-4" data-name="Line 501" x2="6.555" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_502-4" data-name="Line 502" y1="6.555" transform="translate(6.555)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <g id="Group_2430-2" data-name="Group 2430" transform="translate(-0.531 25.473)">
+        <g transform="matrix(1, 0, 0, 1, 15293.97, -7222.97)" filter="url(#Path_2202)">
+          <path id="Path_2202-2" data-name="Path 2202" d="M.184,1.537,11.319-3.851,22.592,1.537V14.559L11.319,19.768.184,14.559Z" transform="translate(5.21 8.47)" fill="#324043"/>
+        </g>
+        <g id="Group_842" data-name="Group 842" transform="translate(15299.131 -7218.573)">
+          <path id="Path_2199" data-name="Path 2199" d="M0,0,11.408,5.4V18.813L0,13.417Z" transform="translate(0 5.419)" fill="#475a5e"/>
+          <path id="Path_2200" data-name="Path 2200" d="M11.408,0,0,5.4V18.813l11.408-5.4Z" transform="translate(11.408 5.419)" fill="#616f73"/>
+          <path id="Path_2201" data-name="Path 2201" d="M-3.9,10.437-15.3,15.855l11.408,5.4,11.41-5.4Z" transform="translate(15.304 -10.437)" fill="#767d80"/>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle_1077" data-name="Rectangle 1077" width="33" height="33" transform="translate(15293.44 -7250.5)" fill="none"/>
+  </g>
+</svg>

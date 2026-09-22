@@ -1,0 +1,15 @@
+<project toolsVersion="6.11" chroniclePath="../_build/chronicles">
+  <import path="../_build/target-deps/carb_sdk_plugins/deps/target-deps.packman.xml">
+    <filter include="pybind11${pybind11_dash_version}" linkPath="../_build/target-deps/pybind11" />
+    <filter include="fmt" linkPath="../_build/target-deps/fmt" />
+    <filter include="doctest" linkPath="../_build/target-deps/doctest" />
+    <filter include="cxxopts" linkPath="../_build/target-deps/cxxopts" />
+  </import>
+  <import path="../_build/target-deps/carb_sdk_plugins/deps/python.packman.xml">
+    <filter include="python-${python_ver}" as="python" linkPath="../_build/target-deps/python" />
+  </import>
+
+  <import path="../_build/target-deps/carb_sdk_plugins/tools/omni.bind/deps.packman.xml">
+    <filter include="clang-mini" />
+  </import>
+</project>

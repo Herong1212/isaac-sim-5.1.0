@@ -1,0 +1,10 @@
+<svg id="Sequence" xmlns="http://www.w3.org/2000/svg" width="17.181" height="19.655" viewBox="0 0 17.181 19.655">
+  <g id="Group_1568" data-name="Group 1568" transform="translate(0 0.003)">
+    <path id="Path_3185" data-name="Path 3185" d="M-.214,0H16.3V12a1,1,0,0,1-1,1H.786a1,1,0,0,1-1-1Z" transform="translate(0.881 6.652)" fill="#545e61"/>
+    <path id="Subtraction_6" data-name="Subtraction 6" d="M16.485,2.689h-2.4L15.876,0h.609Zm-5.637,0H8.61L10.4,0h2.238l-1.79,2.689Zm-5.479,0H3.131L4.917,0H7.155L5.369,2.689ZM0,2.522H0V0H1.676L0,2.521Z" transform="translate(0.665 6.652)" fill="#e0e0e0"/>
+    <g id="Group_1565" data-name="Group 1565" transform="translate(0 4.267) rotate(-15.009)">
+      <rect id="Rectangle_780" data-name="Rectangle 780" width="16.432" height="2.689" fill="#4a5558"/>
+      <path id="Subtraction_7" data-name="Subtraction 7" d="M16.485,0h-2.4l1.786,2.689h.609V0ZM10.848,0H8.61L10.4,2.689h2.238ZM5.369,0H3.131L4.917,2.689H7.155ZM0,.167H0V2.689H1.676L0,.168Z" fill="#e0e0e0"/>
+    </g>
+  </g>
+</svg>

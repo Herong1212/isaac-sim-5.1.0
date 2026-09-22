@@ -1,0 +1,562 @@
+// Copyright (c) 2023, NVIDIA CORPORATION.  All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto.  Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+// Revision 4
+mdl 1.8;
+
+import ::df::*;
+import ::base::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+import ::tex::*;
+import ::limits::*;
+
+import UsdPreviewSurfaceLib::*;
+
+using UsdPreviewSurfaceLib import usd_wrap_mode;
+using UsdPreviewSurfaceLib import usd_to_mdl_wrap_mode;
+
+using ::scene import data_lookup_float, data_lookup_float2, data_lookup_float3, data_lookup_float4, data_lookup_int;
+
+// rename and/or add function/material outputs for UsdShade representation
+annotation annotation_function_outputNames(string[<N>] s);
+
+// specify name for UsdShade representation
+annotation annotation_port_usdName(string s);
+
+// specify type name for UsdShade representation
+annotation annotation_port_usdType(string s);
+
+annotation annotation_not_connectable();
+annotation annotation_widget_type(string s);
+
+annotation annotation_colorspace_parameter(string s);
+
+
+export float
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_float
+(
+    uniform string varname = "",
+    float fallback = 0.0f
+)
+{
+    return data_lookup_float(varname, fallback);
+}
+
+
+export float2
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_float2
+(
+    uniform string varname = "",
+    float2 fallback = float2(0.0f, 0.0f)
+)
+{
+    return data_lookup_float2(varname, fallback);
+}
+
+
+export float3
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_float3
+(
+    uniform string varname = "",
+    float3 fallback = float3(0.0f, 0.0f, 0.0f)
+)
+{
+    return data_lookup_float3(varname, fallback);
+}
+
+
+export float4
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_float4
+(
+    uniform string varname = "",
+    float4 fallback = float4(0.0f, 0.0f, 0.0f, 0.0f)
+)
+{
+    return data_lookup_float4(varname, fallback);
+}
+
+
+export int
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_int
+(
+    uniform string varname = "",
+    int fallback = 0
+)
+{
+    return data_lookup_int(varname, fallback);
+}
+
+
+export float3
+[[
+   annotation_function_outputNames(string[]("result")),
+   annotation_port_usdType("normal3f")
+]]
+UsdPrimvarReader_normal
+(
+    uniform string varname = "",
+    float3 fallback = float3(0.0f, 0.0f, 0.0f)
+    [[
+        annotation_port_usdType("normal3f")
+    ]]
+)
+{
+    return data_lookup_float3(varname, fallback);
+}
+
+
+export float3
+[[
+   annotation_function_outputNames(string[]("result")),
+   annotation_port_usdType("point3f")
+]]
+UsdPrimvarReader_point
+(
+    uniform string varname = "",
+    float3 fallback = float3(0.0f, 0.0f, 0.0f)
+    [[
+        annotation_port_usdType("point3f")
+    ]]
+)
+{
+    return data_lookup_float3(varname, fallback);
+}
+
+
+export float3
+[[
+   annotation_function_outputNames(string[]("result")),
+   annotation_port_usdType("vector3f")
+]]
+UsdPrimvarReader_vector
+(
+    uniform string varname = "",
+    float3 fallback = float3(0.0f, 0.0f, 0.0f)
+    [[
+        annotation_port_usdType("vector3f")
+    ]]
+)
+{
+    return data_lookup_float3(varname, fallback);
+}
+
+
+export string
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_string
+(
+    uniform string varname = ""
+    [[
+        anno::unused()
+    ]],
+
+    string fallback = ""
+)
+{
+    return fallback;
+}
+
+
+export double4x4
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdPrimvarReader_matrix
+(
+    uniform string varname = ""
+    [[
+        anno::unused()
+    ]],
+
+    double4x4 fallback = double4x4(1)
+)
+{
+    return fallback;
+}
+
+
+export float2
+[[
+    annotation_function_outputNames(string[]("result"))
+]]
+UsdTransform2d
+(
+    //should be 'in' per spec, but this is a reserverd word in the language.
+    float2 st = float2(0.0f)
+    [[
+        annotation_port_usdName("in")
+    ]],
+
+    uniform float rotation = 0.0f
+    [[
+        anno::soft_range(-360.0f, 360.0f)
+    ]],
+
+    uniform float2 scale = float2(1.0f)
+    [[
+        anno::hard_range(float2(0.0f), float2(limits::FLOAT_MAX))
+    ]],
+
+    uniform float2 translation = float2(0.0f)
+)
+{
+    // scale
+    base::texture_coordinate_info coordinate(float3(
+        st.x * scale.x,
+        st.y * scale.y,
+        0.0f)
+    );
+
+    float3 offset(0.5f);
+
+    // rotation happens around 0.5f in base::rotation_translation_scale
+    // we want it around 0.f, so offset;
+    coordinate.position += offset;
+
+    // rotate
+    float4x4 R = base::rotation_translation_scale(
+        // rotation is counter-clockwise
+        rotation: float3(
+            0.0f,
+            0.0f,
+            math::radians(-rotation)),
+    );
+    coordinate = base::transform_coordinate(R, coordinate);
+
+    // remove offset
+    coordinate.position -= offset;
+
+    float2 st_out(coordinate.position.x,
+                  coordinate.position.y);
+
+    // translate
+    st_out += translation;
+
+    return st_out;
+}
+
+
+export struct TextureReturnOut
+{
+    float r;
+    float g;
+    float b;
+    float a;
+    float3 rgb;
+};
+
+
+export TextureReturnOut
+[[
+    anno::node_output_port_default(anno::node_port_fields_only)
+]]
+UsdUVTexture
+(
+    uniform texture_2d file = texture_2d()
+    [[
+        annotation_colorspace_parameter("sourceColorSpace")
+    ]],
+
+    float2 st = float2(0.0f),
+
+    uniform usd_wrap_mode wrapS = ::UsdPreviewSurfaceLib::black
+    [[
+        annotation_port_usdType("token")
+    ]],
+
+    uniform usd_wrap_mode wrapT = ::UsdPreviewSurfaceLib::black
+    [[
+        annotation_port_usdType("token")
+    ]],
+
+    float4 fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+
+    float4 scale = float4(1.0f),
+
+    float4 bias = float4(0.0f),
+
+    uniform string sourceColorSpace = "auto"
+    [[
+        annotation_port_usdType("token"),
+        anno::unused()
+    ]]
+)
+{
+    TextureReturnOut texOut;
+
+    if (tex::texture_isvalid(file))
+    {
+        base::texture_coordinate_info uvw(float3(st.x, st.y, 0.0f), float3(0.0f), float3(0.0f));
+
+        ::tex::wrap_mode mdlWrapS = usd_to_mdl_wrap_mode(wrapS);
+        ::tex::wrap_mode mdlWrapT = usd_to_mdl_wrap_mode(wrapT);
+
+        base::texture_return texRet = base::file_texture(file, color(0.0f), color(1.0f), base::mono_alpha, uvw,
+                                                         float2(0.f, 1.f), float2(0.f, 1.f), mdlWrapS, mdlWrapT, false);
+
+        float3 tint = texRet.tint;
+
+        float4 f = float4(tint.x, tint.y, tint.z, texRet.mono) * scale + bias;
+
+        texOut.rgb = float3(f[0], f[1], f[2]);
+        texOut.r = f[0];
+        texOut.g = f[1];
+        texOut.b = f[2];
+        texOut.a = f[3];
+    }
+    else
+    {
+        texOut.rgb = float3(fallback[0], fallback[1], fallback[2]);
+        texOut.r = fallback[0];
+        texOut.g = fallback[1];
+        texOut.b = fallback[2];
+        texOut.a = fallback[3];
+    }
+
+    return texOut;
+}
+
+
+export material
+[[
+    annotation_function_outputNames(string[]("surface","displacement"))
+]]
+UsdPreviewSurface
+(
+    float3 diffuseColor = float3(0.18)
+    [[
+        annotation_port_usdType("color3f")
+    ]],
+
+    float3 emissiveColor = float3(0.0)
+    [[
+        annotation_port_usdType("color3f")
+    ]],
+
+    // OM-44796, OM-108436: Scale emissive textures such that their value is the same as the exposed
+    // pixel value with our default camera exposure settings.
+    uniform float emissiveScale = 1133.6
+    [[
+        anno::hidden()
+    ]],
+
+    uniform int useSpecularWorkflow = 0
+    [[
+        anno::hard_range(0, 1)
+    ]],
+
+    float3 specularColor = float3(0.0)
+    [[
+        annotation_port_usdType("color3f")
+    ]],
+
+    float metallic = 0.0
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    float roughness = 0.5
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    float clearcoat = 0.0
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    float clearcoatRoughness = 0.01
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    uniform bool enable_opacity = false
+    [[
+        anno::hidden(),
+        annotation_not_connectable()
+    ]],
+
+    uniform bool enable_specular_transmission = false
+    [[
+        anno::hidden(),
+        annotation_not_connectable()
+    ]],
+
+    float opacity = 1.0
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    uniform float opacityThreshold = 0.0
+    [[
+        anno::hard_range(0.0f, 1.0f)
+    ]],
+
+    uniform float ior = 1.5
+    [[
+        anno::soft_range(1.0f, 5.0f),
+        anno::hard_range(0.0f, limits::FLOAT_MAX)
+    ]],
+
+    float3 normal = float3(0.0, 0.0, 1.0)
+    [[
+        anno::hard_range(float3(-1.0f), float3(1.0f)),
+        annotation_port_usdType("normal3f")
+    ]],
+
+    float displacement = 0.0,
+
+    float occlusion = 1.0
+    [[
+        anno::hard_range(0.0f, 1.0f),
+        anno::unused()
+    ]]
+)
+= let {
+    // logics are based on UsdPreviewSurface specification and Pixar's OSL implementation:
+    // https://openusd.org/release/spec_usdpreviewsurface.html
+    // https://github.com/PixarAnimationStudios/USD/blob/release/third_party/renderman-24/shaders/UsdPreviewSurfaceParameters.osl
+
+
+    // OM-44796: scale emission such that its value is the same as the exposed pixel value with our
+    // default camera exposure settings.
+    // scale by inverse of rendering camera exposure * PI (nits) matches HdStrom
+    color emissive_color_nits = color(emissiveColor) * math::PI * emissiveScale;
+
+    bool spec_workflow = (useSpecularWorkflow == 1);
+
+    color diff_color_metal = color(diffuseColor) * color(1.0 - metallic);
+    color diff_color = spec_workflow ? color(diffuseColor) : diff_color_metal;
+
+    float ior_reflectivity = (1.0 - ior) / (1.0 + ior);
+    float ior_reflectivity2 = ior_reflectivity * ior_reflectivity;
+
+    color spec_color_face_metal = math::lerp(color(ior_reflectivity2), color(diffuseColor), metallic);
+    color spec_color_edge_metal = math::lerp(color(1.0), color(diffuseColor), metallic);
+    // probably the `specularColor` for spec workflow should be scaled by `ior_reflectivity2`,
+    // however the USD spec defines it non-scaled. this may cause that the specular is too
+    // bright when the `specularColor` is close to 1.0.
+    color spec_color_face = spec_workflow ? color(specularColor) : spec_color_face_metal;
+    color spec_color_edge = spec_workflow ? color(1.0) : spec_color_edge_metal;
+
+    float opacity_adjusted = (!enable_specular_transmission) ?
+        1.0 :
+        math::lerp(opacity, 1.0, metallic);  // full opaque when metallic
+    float cutout_opacity = (enable_opacity && (opacityThreshold > opacity)) ? 0.0 : 1.0;
+
+
+    // normal
+    //
+    // Always use st idx 0, for normal mapping.  It is probably good enough, but it's limiting.
+    // However, in order to make it more extensible we'd need to add a parameter to control which
+    // st index to use for the mapping which would go against the UsdPreviewSurface specification.
+    // If we must have control over this, we could do so via a specifically named primvar
+    // that we would lookup here.
+    base::texture_coordinate_info uvw = base::texture_coordinate_info();
+
+    float3 shading_normal = ((normal == float3(0.0, 0.0, 1.0)) || (normal == float3(1.0, 1.0, 1.0))) ?
+        state::normal() :
+        math::normalize(
+            uvw.tangent_u * normal.x +
+            uvw.tangent_v * normal.y +
+            state::normal() * normal.z
+        );
+
+
+    // BSDFs
+    bsdf diff_bsdf = df::diffuse_reflection_bsdf(
+        tint: diff_color
+    );
+
+    bsdf spec_bsdf = df::microfacet_ggx_smith_bsdf(
+        roughness_u: roughness * roughness,
+        mode: df::scatter_reflect
+    );
+
+    bsdf coat_bsdf = df::microfacet_ggx_smith_bsdf(
+        roughness_u: clearcoatRoughness * clearcoatRoughness,
+        mode: df::scatter_reflect
+    );
+
+    // USD spec defines transmission roughensss is 0.0 always
+    bsdf transm_bsdf = df::specular_bsdf(
+        tint: color(1.0),
+        mode: df::scatter_transmit
+    );
+
+
+    // layering
+    //
+    // by the USD spec, the opacity is a blend factor between diffuse and transmission.
+    // specular and clearcoat must be visible on fully transparent surface.
+    bsdf mix_diff_transm = df::weighted_layer(
+        weight: opacity_adjusted,
+        layer: diff_bsdf,
+        base: transm_bsdf
+    );
+
+    bsdf spec_over_diff = df::color_custom_curve_layer(
+        normal_reflectivity: spec_color_face,
+        grazing_reflectivity: spec_color_edge,
+        exponent: 5.0,
+        weight: color(1.0),
+        layer: spec_bsdf,
+        base: mix_diff_transm
+    );
+
+    bsdf coat_over_spec = df::custom_curve_layer(
+        normal_reflectivity: ior_reflectivity2,
+        grazing_reflectivity: 1.0,
+        exponent: 5.0,
+        weight: clearcoat,
+        layer: coat_bsdf,
+        base: spec_over_diff
+    );
+
+
+    // construct shader
+    material_emission emission = material_emission(
+        df::diffuse_edf(),
+        intensity: emissive_color_nits
+    );
+    material_surface surface = material_surface(
+        emission: emission,
+        scattering: coat_over_spec
+    );
+    material_geometry geometry = material_geometry(
+        displacement: state::normal() * displacement,
+        normal: shading_normal,
+        cutout_opacity: cutout_opacity
+    );
+}
+in material(
+    ior: color(ior),
+    thin_walled: false,
+    surface: surface,
+    backface: surface,
+    geometry: geometry
+);

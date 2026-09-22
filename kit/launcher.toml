@@ -1,0 +1,53 @@
+#displayed application name
+name = "Kit"
+#displayed before application name in launcher
+productArea = "Omniverse"
+version = "107.3.3"
+
+#unique identifier for component, all lower case, persists between versions
+slug = "kit"
+## install and launch instructions by environment
+[defaults.windows-x86_64]
+url = ""
+entrypoint = "${productRoot}/omni.app.editor.base.bat"
+args = []
+
+[defaults.windows-x86_64.environment]
+
+[defaults.windows-x86_64.install]
+pre-install = ""
+pre-install-args = []
+install = ""
+install-args = []
+post-install = ""
+post-install-args = []
+
+[defaults.windows-x86_64.uninstall]
+pre-uninstall = ""
+pre-uninstall-args = []
+uninstall = ""
+uninstall-args = []
+post-uninstall = ""
+post-uninstall-args = []
+
+[defaults.linux-x86_64]
+url = ""
+entrypoint = "${productRoot}/omni.app.editor.base.sh"
+args = []
+[defaults.linux-x86_64.environment]
+
+[defaults.linux-x86_64.install]
+pre-install = ""
+pre-install-args = []
+install = ""
+install-args = []
+post-install = ""
+post-install-args = []
+
+[defaults.linux-x86_64.uninstall]
+pre-uninstall = ""
+pre-uninstall-args = []
+uninstall = ""
+uninstall-args = []
+post-uninstall = ""
+post-uninstall-args = []

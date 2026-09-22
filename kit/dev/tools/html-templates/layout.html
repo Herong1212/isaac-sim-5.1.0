@@ -1,0 +1,17 @@
+{%- extends "!layout.html" %}
+
+{% block sidebartitle %}
+
+{%- if not logo_target_url %}
+  {% set logo_target_url = "http://omniverse-docs.s3-website-us-east-1.amazonaws.com" %}
+{%- endif %}
+
+{% set logo_dest = pathto(logo_target_url, 1) %}
+
+<a href="{{ logo_dest|e }}">
+  <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" alt="{{ _('Logo') }}"/>
+</a>
+
+{% include "searchbox.html" %}
+
+{% endblock %}

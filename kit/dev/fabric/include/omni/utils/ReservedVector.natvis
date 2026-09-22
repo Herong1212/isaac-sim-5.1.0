@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <Type Name="omni::ReservedVector&lt;*&gt;">
+        <DisplayString>size: {*(uint64_t*)&amp;m_size}, capacity: {m_base.m_capacity}, commited: {*(size_t*)&amp;m_base.m_committedPages * m_base.m_pageSize * m_base.m_sizePerElem / 1024} kb</DisplayString>
+        <Expand>
+            <IndexListItems>
+                <Size>*(uint64_t*)&amp;m_size</Size>
+                <ValueNode>m_elems[$i]</ValueNode> 
+            </IndexListItems>
+        </Expand>
+    </Type>
+</AutoVisualizer>

@@ -1,0 +1,355 @@
+// Copyright (c) 2023, NVIDIA CORPORATION.  All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto.  Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+mdl 1.8;
+
+import ::anno::*;
+import ::tex::*;
+
+import UsdPreviewSurface::*;
+import UsdPreviewSurfaceLib::*;
+
+using UsdPreviewSurfaceLib import texture_channel_select;
+using UsdPreviewSurfaceLib import connection_type;
+using UsdPreviewSurfaceLib import usd_wrap_mode;
+using UsdPreviewSurfaceLib import usd_to_mdl_wrap_mode;
+
+
+export material UsdPreviewSurfaceMonolithicLite (
+
+    float3 diffuseColor = float3(0.18f),
+        uniform connection_type diffuseColor_connectionType = none,
+        uniform texture_2d diffuseColor_file = texture_2d(),
+        uniform usd_wrap_mode diffuseColor_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode diffuseColor_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 diffuseColor_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 diffuseColor_scale = float4(1.0f),
+        uniform float4 diffuseColor_bias = float4(0.0f),
+        uniform string diffuseColor_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select diffuseColor_channel = rgb,
+
+
+    float3 emissiveColor = float3(0.0),
+        uniform connection_type emissiveColor_connectionType = none,
+        uniform texture_2d emissiveColor_file = texture_2d(),
+        uniform usd_wrap_mode emissiveColor_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode emissiveColor_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 emissiveColor_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 emissiveColor_scale = float4(1.0f),
+        uniform float4 emissiveColor_bias = float4(0.0f),
+        uniform string emissiveColor_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select emissiveColor_channel = rgb,
+
+
+    uniform float emissiveScale = 1133.6
+        [[
+            anno::hidden()
+        ]],
+
+
+    uniform int useSpecularWorkflow = 0,
+
+
+    float3 specularColor = float3(0.0),
+        uniform connection_type specularColor_connectionType = none,
+        uniform texture_2d specularColor_file = texture_2d(),
+        uniform usd_wrap_mode specularColor_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode specularColor_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 specularColor_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 specularColor_scale = float4(1.0f),
+        uniform float4 specularColor_bias = float4(0.0f),
+        uniform string specularColor_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select specularColor_channel = rgb,
+
+
+    float metallic = 0.0f,
+        uniform connection_type metallic_connectionType = none,
+        uniform texture_2d metallic_file = texture_2d(),
+        uniform usd_wrap_mode metallic_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode metallic_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 metallic_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 metallic_scale = float4(1.0f),
+        uniform float4 metallic_bias = float4(0.0f),
+        uniform string metallic_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select metallic_channel = r,
+
+
+    float roughness = 0.5f,
+        uniform connection_type roughness_connectionType = none,
+        uniform texture_2d roughness_file = texture_2d(),
+        uniform usd_wrap_mode roughness_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode roughness_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 roughness_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 roughness_scale = float4(1.0f),
+        uniform float4 roughness_bias = float4(0.0f),
+        uniform string roughness_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select roughness_channel = r,
+
+
+    float clearcoat = 0.0f,
+        uniform connection_type clearcoat_connectionType = none,
+        uniform texture_2d clearcoat_file = texture_2d(),
+        uniform usd_wrap_mode clearcoat_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode clearcoat_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 clearcoat_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 clearcoat_scale = float4(1.0f),
+        uniform float4 clearcoat_bias = float4(0.0f),
+        uniform string clearcoat_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select clearcoat_channel = r,
+
+
+    float clearcoatRoughness = 0.01f,
+        uniform connection_type clearcoatRoughness_connectionType = none,
+        uniform texture_2d clearcoatRoughness_file = texture_2d(),
+        uniform usd_wrap_mode clearcoatRoughness_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode clearcoatRoughness_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 clearcoatRoughness_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 clearcoatRoughness_scale = float4(1.0f),
+        uniform float4 clearcoatRoughness_bias = float4(0.0f),
+        uniform string clearcoatRoughness_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select clearcoatRoughness_channel = r,
+
+
+    float opacity = 1.0f,
+        uniform connection_type opacity_connectionType = none,
+        uniform texture_2d opacity_file = texture_2d(),
+        uniform usd_wrap_mode opacity_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode opacity_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 opacity_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 opacity_scale = float4(1.0f),
+        uniform float4 opacity_bias = float4(0.0f),
+        uniform string opacity_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select opacity_channel = r,
+
+
+    uniform float opacityThreshold = 0.0,
+
+
+    uniform bool enable_opacity = false,
+
+    uniform bool enable_specular_transmission = false,
+
+    uniform float ior = 1.5,
+
+
+    float3 normal = float3(0.0, 0.0, 1.0),
+        uniform connection_type normal_connectionType = none,
+        uniform texture_2d normal_file = texture_2d(),
+        uniform usd_wrap_mode normal_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode normal_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 normal_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 normal_scale = float4(1.0f),
+        uniform float4 normal_bias = float4(0.0f),
+        uniform string normal_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select normal_channel = rgb,
+
+
+    float displacement = 0.0f,
+        uniform connection_type displacement_connectionType = none,
+        uniform texture_2d displacement_file = texture_2d(),
+        uniform usd_wrap_mode displacement_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode displacement_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 displacement_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 displacement_scale = float4(1.0f),
+        uniform float4 displacement_bias = float4(0.0f),
+        uniform string displacement_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select displacement_channel = r,
+
+
+    float occlusion = 1.0f,
+        uniform connection_type occlusion_connectionType = none,
+        uniform texture_2d occlusion_file = texture_2d(),
+        uniform usd_wrap_mode occlusion_wrapS = ::UsdPreviewSurfaceLib::black,
+        uniform usd_wrap_mode occlusion_wrapT = ::UsdPreviewSurfaceLib::black,
+        uniform float4 occlusion_fallback = float4(0.0f, 0.0f, 0.0f, 1.0f),
+        uniform float4 occlusion_scale = float4(1.0f),
+        uniform float4 occlusion_bias = float4(0.0f),
+        uniform string occlusion_sourceColorSpace = "auto"
+            [[
+                anno::unused()
+            ]],
+        uniform texture_channel_select occlusion_channel = r
+
+) = let {
+
+    float3 PS_diffuseColor = (diffuseColor_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float3_from_texture (
+            diffuseColor_file,
+            diffuseColor_wrapS,
+            diffuseColor_wrapT,
+            diffuseColor_fallback,
+            diffuseColor_scale,
+            diffuseColor_bias,
+            diffuseColor_channel
+        ) : diffuseColor;
+
+    float3 PS_emissiveColor = (emissiveColor_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float3_from_texture (
+            emissiveColor_file,
+            emissiveColor_wrapS,
+            emissiveColor_wrapT,
+            emissiveColor_fallback,
+            emissiveColor_scale,
+            emissiveColor_bias,
+            emissiveColor_channel
+        ) : emissiveColor;
+
+    float3 PS_specularColor = (specularColor_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float3_from_texture (
+            specularColor_file,
+            specularColor_wrapS,
+            specularColor_wrapT,
+            specularColor_fallback,
+            specularColor_scale,
+            specularColor_bias,
+            specularColor_channel
+        ) : specularColor;
+
+    float PS_metallic = (metallic_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            metallic_file,
+            metallic_wrapS,
+            metallic_wrapT,
+            metallic_fallback,
+            metallic_scale,
+            metallic_bias,
+            metallic_channel
+        ) : metallic;
+
+    float PS_roughness = (roughness_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            roughness_file,
+            roughness_wrapS,
+            roughness_wrapT,
+            roughness_fallback,
+            roughness_scale,
+            roughness_bias,
+            roughness_channel
+        ) : roughness;
+
+    float PS_clearcoat = (clearcoat_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            clearcoat_file,
+            clearcoat_wrapS,
+            clearcoat_wrapT,
+            clearcoat_fallback,
+            clearcoat_scale,
+            clearcoat_bias,
+            clearcoat_channel
+        ) : clearcoat;
+
+    float PS_clearcoatRoughness = (clearcoatRoughness_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            clearcoatRoughness_file,
+            clearcoatRoughness_wrapS,
+            clearcoatRoughness_wrapT,
+            clearcoatRoughness_fallback,
+            clearcoatRoughness_scale,
+            clearcoatRoughness_bias,
+            clearcoatRoughness_channel
+        ) : clearcoatRoughness;
+
+    float PS_opacity = (opacity_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            opacity_file,
+            opacity_wrapS,
+            opacity_wrapT,
+            opacity_fallback,
+            opacity_scale,
+            opacity_bias,
+            opacity_channel
+        ) : opacity;
+
+    float3 PS_normal = (normal_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float3_from_texture (
+            normal_file,
+            normal_wrapS,
+            normal_wrapT,
+            normal_fallback,
+            normal_scale,
+            normal_bias,
+            normal_channel
+        ) : normal;
+
+    float PS_displacement = (displacement_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            displacement_file,
+            displacement_wrapS,
+            displacement_wrapT,
+            displacement_fallback,
+            displacement_scale,
+            displacement_bias,
+            displacement_channel
+        ) : displacement;
+
+    float PS_occlusion = (occlusion_connectionType == texture) ?
+        UsdPreviewSurfaceLib::float_from_texture (
+            occlusion_file,
+            occlusion_wrapS,
+            occlusion_wrapT,
+            occlusion_fallback,
+            occlusion_scale,
+            occlusion_bias,
+            occlusion_channel
+        ) : occlusion;
+
+    material base = UsdPreviewSurface::UsdPreviewSurface (
+        diffuseColor: PS_diffuseColor,
+        emissiveColor: PS_emissiveColor,
+        emissiveScale: emissiveScale,
+        useSpecularWorkflow: useSpecularWorkflow,
+        specularColor: PS_specularColor,
+        metallic: PS_metallic,
+        roughness: PS_roughness,
+        clearcoat: PS_clearcoat,
+        clearcoatRoughness: PS_clearcoatRoughness,
+        opacity: PS_opacity,
+        opacityThreshold: opacityThreshold,
+        enable_opacity: enable_opacity,
+        enable_specular_transmission: enable_specular_transmission,
+        ior: ior,
+        normal: PS_normal,
+        displacement: PS_displacement,
+        occlusion: PS_occlusion
+    );
+
+} in material (
+    surface:  base.surface,
+    ior: base.ior,
+    geometry: base.geometry
+);

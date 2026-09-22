@@ -1,0 +1,252 @@
+<project toolsVersion="6.11">
+
+    <dependency name="7za">
+        <package name="7za" version="16.02.4" />
+    </dependency>
+    <dependency name="abseil-release">
+        <package name="abseil" version="20240116.1-1-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="amqp1_0">
+        <package name="amqp1_0" version="2023.05.13-dev.4751+main.e87cac1533589d7da186ebd7391c8e810255d1bc-linux-x86_64-static-release" />
+    </dependency>
+    <dependency name="benchmark">
+        <package name="benchmark" version="1.6.1+nv6-linux-x86_64" />
+    </dependency>
+    <dependency name="boost_preprocessor">
+        <package name="boost-preprocessor" version="1.70-2" />
+    </dependency>
+    <dependency name="c-ares-release">
+        <package name="c-ares" version="1.32.1-0-manylinux_2_35_x86_64-dynamic-release" />
+    </dependency>
+    <dependency name="c-blosc_release">
+        <package name="c-blosc" version="1.21.5-0-linux-x86_64-static-release" />
+    </dependency>
+    <dependency name="carb_audio">
+        <package name="carb_audio.manylinux_2_35_x86_64" version="170.0-pre+master.244.b4440da3.gl" />
+    </dependency>
+    <dependency name="carb_docs">
+        <package name="carb_docs" version="206.6+release.9587.07f17b1b.gl" />
+    </dependency>
+    <dependency name="carb_sdk_plugins">
+        <package name="carb_sdk+plugins.manylinux_2_35_x86_64" version="206.6+release.9587.07f17b1b.gl" />
+    </dependency>
+    <dependency name="carbonite_assets">
+        <package name="carbonite_assets" version="6b5aa8cb" />
+    </dependency>
+    <dependency name="ccache">
+        <package name="ccache" version="4.6-1-linux-x86_64-release" />
+    </dependency>
+    <dependency name="clang-mini">
+        <package name="clang-mini" version="18.1.1-3-manylinux_2_35_x86_64-release" />
+    </dependency>
+    <dependency name="cli11">
+        <package name="cli11" version="2.3.2-dev.2822+dev_gevans_cli11.70ae6a8e9037f9dfc5a3004988fd79d5d94b0210" />
+    </dependency>
+    <dependency name="concurrentqueue">
+        <package name="concurrentqueue" version="1.0.0-beta-16-b77e829a" />
+    </dependency>
+    <dependency name="cuda">
+        <package name="cuda" version="11.8.0-4-linux-x86_64-release" />
+    </dependency>
+    <dependency name="cxxopts">
+        <package name="cxxopts" version="2.2.0-1" />
+    </dependency>
+    <dependency name="doctest">
+        <package name="doctest" version="2.4.5+nv7-0" />
+    </dependency>
+    <dependency name="easywsclient">
+        <package name="easywsclient" version="1.0-da0d020f" />
+    </dependency>
+    <dependency name="eigen">
+        <package name="eigen" version="3.4.0-0" />
+    </dependency>
+    <dependency name="fmt">
+        <package name="fmt" version="7.0.3+nv2" />
+    </dependency>
+    <dependency name="freetype-release">
+        <package name="freetype" version="2.13.2-0-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="glew">
+        <package name="glew" version="2.1.0-119.7c8c3625-linux-x86_64" />
+    </dependency>
+    <dependency name="glm">
+        <package name="glm" version="0.9.9.1-4-560319f4" />
+    </dependency>
+    <dependency name="googleapis-release">
+        <package name="googleapis" version="20230501-1-cci-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="grpc-proto-release">
+        <package name="grpc-proto" version="20220627-4-cci-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="grpc-release">
+        <package name="grpc" version="1.64.3-1-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="gsl">
+        <package name="gsl" version="3.1.0.1" />
+    </dependency>
+    <dependency name="hdf5">
+        <package name="hdf5" version="1.14.6-0-manylinux_2_35_x86_64-dynamic-release" />
+    </dependency>
+    <dependency name="idl.py">
+        <package name="idl.py" version="0.29+master.gitlab.1897.39a57655" />
+    </dependency>
+    <dependency name="imgui">
+        <package name="imgui" version="1.77_WIP-277297b1" />
+    </dependency>
+    <dependency name="imguicolortextedit">
+        <package name="imguicolortextedit" version="0.2.0-6b06acb3-0" />
+    </dependency>
+    <dependency name="iray">
+        <package name="iray-for-omniverse" version="381500.5658a-linux-x86_64" />
+    </dependency>
+    <dependency name="isp_smodel_adapter">
+        <package name="isp_smodel_adapter" version="1.4-linux-x86_64" />
+    </dependency>
+    <dependency name="jemalloc">
+        <package name="jemalloc" version="5.2.1+nv1-linux-x86_64-release" />
+    </dependency>
+    <dependency name="libcurl-release">
+        <package name="libcurl" version="8.10.0-0-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="libtorch">
+        <package name="libtorch" version="2.0.1-2-manylinux_2_35_x86_64-release" />
+    </dependency>
+    <dependency name="llvm">
+        <package name="llvm" version="6.0.0-linux-x86_64" />
+    </dependency>
+    <dependency name="mdl-distiller">
+        <package name="mdl-distiller-for-omniverse" version="381500.5658-linux-x86_64" />
+    </dependency>
+    <dependency name="memcached">
+        <package name="memcached" version="1.6.19+packaging.0.5ef90488.local.linux-x86_64" />
+    </dependency>
+    <dependency name="mikktspace">
+        <package name="mikktspace" version="1.0-21-163a296d" />
+    </dependency>
+    <dependency name="nanovdb_release">
+        <package name="nanovdb" version="32.7.0-136-rc.0-py_3.11-manylinux_2_35_x86_64-release" />
+    </dependency>
+    <dependency name="nvenc">
+        <package name="nvenc" version="12.1.14" />
+    </dependency>
+    <dependency name="nvflow">
+        <package name="nvflow" version="106.4.7.1-linux-x86_64" />
+    </dependency>
+    <dependency name="nvindex">
+        <package name="index-for-omniverse" version="380600.8087-linux-x86_64" />
+    </dependency>
+    <dependency name="nvtx">
+        <package name="nvtx" version="3-20180925-lic3" />
+    </dependency>
+    <dependency name="omni_client_library">
+        <package name="omni_client_library.linux-x86_64" version="2.67.0" />
+    </dependency>
+    <dependency name="omni_core_materials">
+        <package name="omni_core_materials" version="1.3.6-a0210a06" />
+    </dependency>
+    <dependency name="omni_geospatial_release">
+        <package name="omnigeospatial_openusd_0.24.05_py_3.11" version="2.1.0-alpha-gl.mr28.537.16d0942b.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="omni_hub">
+        <package name="omni_hub.linux-x86_64" version="1.0.0+8e3e0971" />
+    </dependency>
+    <dependency name="omni_spectree_release">
+        <package name="omnispectree_openusd_0.24.05_py_3.11" version="2.0.0-gl.602.1d150eb1.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="omni_usd_resolver-release">
+        <package name="omniusdresolver_openusd_0.24.05_py_3.11" version="2.2.1-gl.2904.242bd407.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="omnimetrics-release">
+        <package name="omnimetrics" version="2.0.0+main.407.19eced93.gl.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="omnitrace-sdk-cpp">
+        <package name="omnitrace-sdk-cpp" version="1.6.45aa2da5" />
+    </dependency>
+    <dependency name="omniverse.discovery.client.py">
+        <package name="omniverse.discovery.client.py" version="1.4.2+main.teamcity.593.4977d25e" />
+    </dependency>
+    <dependency name="omniverse.tagging.client.py">
+        <package name="omniverse.tagging.client.py" version="3.0.0-main+teamcity.970.6675778b" />
+    </dependency>
+    <dependency name="omniverse_kit_resources">
+        <package name="omniverse_kit_resources" version="93b0b3e1" />
+    </dependency>
+    <dependency name="open3d">
+        <package name="open3d" version="0.18.0-1-linux-x86_64-release" />
+    </dependency>
+    <dependency name="openssl-release">
+        <package name="openssl" version="3.5.0-0-linux-x86_64-static-release" />
+    </dependency>
+    <dependency name="opentelemetry-cpp">
+        <package name="opentelemetry-cpp" version="1.14.2-3-manylinux_2_35_x86_64-debug-abi_v1" />
+    </dependency>
+    <dependency name="openvdb_release">
+        <package name="openvdb" version="11.0.1-131-rc.1-py_3.11-manylinux_2_35_x86_64-release" />
+    </dependency>
+    <dependency name="openvr">
+        <package name="openvr" version="1.16.8" />
+    </dependency>
+    <dependency name="premake">
+        <package name="premake" version="5.0.0-beta4-0-linux-x86_64-release" />
+    </dependency>
+    <dependency name="protobuf-release">
+        <package name="protobuf" version="5.26.0-2-manylinux_2_35_x86_64-static-release" />
+    </dependency>
+    <dependency name="pybind11">
+        <package name="pybind11" version="2.11.1-0" />
+    </dependency>
+    <dependency name="python">
+        <package name="python" version="3.11.13+nv1-linux-x86_64" />
+    </dependency>
+    <dependency name="rabbitmq-stream-c-client">
+        <package name="rabbitmq-stream-c-client" version="2025.03.26-0nv-0-linux-x86_64-static-release" />
+    </dependency>
+    <dependency name="rapidjson">
+        <package name="rapidjson" version="5.2.1-5-b4cf59b6" />
+    </dependency>
+    <dependency name="rapidxml">
+        <package name="rapidxml" version="1.13.0-6-dc2a495b" />
+    </dependency>
+    <dependency name="re2-release">
+        <package name="re2" version="20230301-1-manylinux_2_35_x86_64-dynamic-release" />
+    </dependency>
+    <dependency name="rtx_plugins">
+        <package name="rtx_plugins" version="107.3.3+production.229634.69cbf6ad.gl.manylinux_2_35_x86_64-rendering-usd_24.05_3.11-69cbf6ad01" />
+    </dependency>
+    <dependency name="rtx_plugins.release">
+        <package name="rtx_plugins.release" version="107.3.3+production.229634.69cbf6ad.gl.manylinux_2_35_x86_64-rendering-usd_24.05_3.11-69cbf6ad01" />
+    </dependency>
+    <dependency name="slang">
+        <package name="slang" version="v2024.14.2-linux-x86_64-release-glibc-2.17" />
+    </dependency>
+    <dependency name="telemetry_transmitter">
+        <package name="telemetry_transmitter.linux-x86_64" version="179.0+release.7074.8ebfb055.gl" />
+    </dependency>
+    <dependency name="usd-release">
+        <package name="usd.py311.manylinux_2_35_x86_64.stock.release" version="0.24.05.kit.7-gl.16400+05f48f24" />
+    </dependency>
+    <dependency name="usd_audio_schema_release">
+        <package name="omniaudioschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr55.481.727d12fa.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="usd_ext_anim_retargeting_release">
+        <package name="omnianimationretargetingschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr21.42.41b46961.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="usd_ext_animation_release">
+        <package name="omnianimationschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr199.363.6a03e67a.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="usd_ext_omnigraph_release">
+        <package name="omnigraphschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr48.71.03334b3a.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="usd_ext_omniscripting_release">
+        <package name="omniscriptingschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr29.26.a54a70ad.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="usd_schema_semantics_release">
+        <package name="omnisemanticsschema_openusd_0.24.05_py_3.11" version="2.0.0-alpha-gl.mr33.224.3d124610.manylinux_2_35_x86_64.release" />
+    </dependency>
+    <dependency name="xxhash">
+        <package name="xxhash" version="0.8.0" />
+    </dependency>
+    <dependency name="zlib">
+        <package name="zlib" version="1.3.1-0-linux-x86_64-static-release" />
+    </dependency>
+</project>

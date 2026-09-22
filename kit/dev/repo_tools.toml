@@ -1,0 +1,263 @@
+########################################################################################################################
+# This file defines tools that come with Kit package. They can be used outside of kit repo.
+# This file is include in the kit package, external repos can point to it using `repo.extra_tool_paths` in
+# `repo.toml` to start using those tools.
+########################################################################################################################
+
+########################################################################################################################
+# Python stubs generator
+########################################################################################################################
+
+[repo_stubgen]
+command = "stubgen"
+entry_point = "${config_root}/tools/repoman/stubgen.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false
+
+# Where to search for extensions with python libraries. To figure out which extensions to enable.
+exts_autosearch_paths = ["${root}/_build/${platform}/${config}/exts", "${root}/_build/${platform}/${config}/extscore"]
+exts_include = [
+    # "omni.bar"
+]
+exts_exclude = [
+    # "omni.foo.*"
+]
+
+# Path to kit executable to run pybind11_stubgen script in and choosen extensions above.
+kit_path = "${config_root}/_build/${platform}/${config}/kit${exe_ext}"
+# Extra args to pass to kit
+#kit_extra_args = ["-v"]
+
+# For which python libraries to generate stubs.
+stubgen_include = ["${root}"]
+stubgen_exclude = [
+    "${root}/_build/$platform/$config/kit",
+    "${root}/_build/$platform/$config/extscache",
+]
+
+#
+# Look for linked directories or files next to the .pyd, and if found,
+# copy generated .pyi files into the same parent as the link's source.
+# This can be useful for Pylance when editing source from related modules.
+# Please do not commit the generated .pyi files (recommend adding them to
+# .gitignore either locally or as part of the overall project).
+stubgen_copy_back = false
+
+
+########################################################################################################################
+# Extensions publisher
+########################################################################################################################
+
+[repo_publish_exts]
+command = "publish_exts"
+entry_point = "${config_root}/tools/repoman/publish_exts.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false
+
+# When running from package, look for package using that path/pattern:
+archive_pattern = "${root}/_builtpackages/omniverse-kit@*${platform_target}.${config}.7z"
+
+# ${publish_root} == ${root} when running locally. When running in "from package" mode it becomes root of the unpacked package (archive_pattern).
+publish_root = "${root}"
+
+# When specified, unpack and set $kit_root token to the root of the package when running in "from package" mode.
+kit_archive_pattern = ""
+
+# ${kit_root} == ${root} when running locally. When running from package it becomes root of the unpacked kit package (kit_archive_pattern).
+kit_root = "${root}/_build/$platform/$config"
+
+# Path to kit executable to run publish script in.
+kit_path = "${kit_root}/kit${exe_ext}"
+
+# Extra args to pass to kit
+kit_extra_args = []
+
+# Extra env vars to set before running kit
+kit_env_vars.OMNI_TRUSTED_CERTIFICATE = "ALL"
+
+# Supported configs, platforms, python tags when `-a` cmd is used
+# Python tags looks like: 'cp39' (CPython 3.9), refer to https://peps.python.org/pep-0425/#python-tag
+configs = [
+    "release",
+    "debug"
+]
+platforms = [
+    "windows-x86_64",
+    "linux-x86_64",
+    "linux-aarch64"
+]
+python_tags = [""] # Empty string stands for "use version from kit, that is used for publishing"
+
+# Should we fail when running --from-package and platform+config+python-tag combination is missing? Set to "false" to allow optional platforms, based on CI.
+fail_when_package_missing = true
+
+# Repo name to be written into package metadata when publishing. E.g. `kit-usd`
+repo_name = ""
+
+# Extensions to publish, include and exclude among those discovered by kit. Wildcards are supported.
+exts.include = [
+    "*"
+]
+exts.exclude = []
+
+# Exclude all apps (kit files) from publishing
+exts.exclude_apps = false
+
+# Extra ext folders to pass
+ext_folders = []
+
+# Registries to publish to.
+registries = [
+    { name = "kit/default", url = "omniverse://kit-extensions.ov.nvidia.com/exts/kit/default" },
+]
+
+# User for connecting to the registry. Format: "user:pass"
+write_auth = "${env:OMNI_KIT_EXTENSIONS_USERNAME}:${env:OMNI_KIT_EXTENSIONS_KEY}"
+read_auth = "" # If not set, write_auth is used for read as well
+
+# kit publish settings
+publish_verification = false
+use_content_hash_as_archive_name = false
+use_packman_to_upload_archive = true
+skip_upload_metadata = false
+write_target_kit_hash = false
+remove_authors_from_config = true
+retry_count = 12
+
+# Parallel publish settings (experimental)
+parallel_publish = false
+
+# Use repo_codesign to sign binaries before publishing
+signing.enabled = false
+signing.configs = ["release"]
+signing.platforms = ["windows-x86_64"]
+signing.folders = [
+  "${publish_root}/exts", # By default scan and sign all extensions
+]
+
+# By enabling, Extensions will be published to registries that have been setup for the new Usd version
+usd.version_compatibility.enable = false
+usd.version_compatibility.registries = [
+    { name = "kit/usd", url = "omniverse://kit-extensions.ov.nvidia.com/exts/kit/usd/usd/${usd_version}/${usd_variant}"},
+]
+
+publish_artifacts = ["${kit_root}/_build/**/*.log", "${kit_root}/**/*.dmp", "${kit_root}/**/*.dmp.toml"]
+
+
+########################################################################################################################
+# Extensions precacher
+########################################################################################################################
+
+[repo_precache_exts]
+command = "precache_exts"
+entry_point = "${config_root}/tools/repoman/precache_exts.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false
+
+# Path to kit executable to run precache script in.
+kit_path = "${config_root}/../kit${exe_ext}"
+# Extra args to pass to kit
+kit_extra_args = []
+# Extra env vars to set before running kit
+kit_env_vars.OMNI_TRUSTED_CERTIFICATE = "ALL"
+# Run kit in portable mode
+kit_portable = true
+# Pull extensions in parallel (experimental)
+kit_parallel_pull = true
+# Use urllib instead of client library to download archives from http(s) urls
+kit_use_urllib_for_http = false
+# After pulling an extension use only name instead of extension id for dst extension path ("omni.foo" vs "omni.foo-1.2.3")
+kit_omit_ext_version = false
+
+# Folder to store cache extensions into. Can be empty, then the default $data folder of the app is used.
+cache_path = "${root}/_build/${platform}/${config}/extscache"
+
+# Link selected extensions into a separate folder without a version. Used for build-time referencing extensions.
+# Wildcards are supported in the list.
+links.path = "${root}/_build/${platform}/${config}/extsbuild"
+links.exts.include = [
+    "omni.graph.tools",
+    "omni.ui",
+    "omni.kit.renderer.imgui",
+    "omni.kit.test",
+    "omni.usd.core",
+    "omni.usd.libs",
+]
+links.exts.exclude = []
+
+# Apps to run and precache
+apps = [
+    #"omni.app.mini.kit"
+]
+
+# Generated kit file with all extensions in the repo (leave empty to disable).
+generated_app_path = "${root}/source/apps/exts.deps.generated.kit"
+# Auto-add test dependencies to the generated kit file (from [[test]] section).
+generated_app.add_test_deps = true
+# Always add following test dependencies:
+generated_app.default_test_deps = [
+    "omni.kit.test",
+]
+
+# Extra ext folders to pass
+ext_folders = []
+
+# Registries to use
+registries = [
+    { name = "kit/default", url = "omniverse://kit-extensions.ov.nvidia.com/exts/kit/default" },
+    { name = "kit/sdk", url = "omniverse://kit-extensions.ov.nvidia.com/exts/kit/sdk/${kit_version_short}/${kit_git_hash}" },
+]
+
+# By enabling, Extensions will also be searched in registries compatible with the current USD version
+usd.version_compatibility.enable = false
+usd.version_compatibility.registries = [
+    { name = "kit/usd", url = "omniverse://kit-extensions.ov.nvidia.com/exts/kit/usd/usd/${usd_version}/${usd_variant}"},
+]
+
+# Write version lock into app files
+generate_version_lock = true
+generate_version_lock_overwrite = false
+
+publish_artifacts = ["${root}/_build/**/*.log", "${root}/**/*.dmp", "${root}/**/*.dmp.toml"]
+
+########################################################################################################################
+# Extension docs (wrapper over repo_docs + omni.kit.documentation.builder)
+########################################################################################################################
+
+# Can be activated by putting this entry point in `[repo_docs]`:
+# entry_point = "${root}/_build/$platform/debug/kit/dev/tools/repoman/kit_repo_docs.py:setup_repo_tool"
+#
+# Read `kit_repo_docs.py` toplevel docstring for configuration options.
+
+########################################################################################################################
+# AutoNode node type generator
+########################################################################################################################
+[repo_omnigraph_autonode]
+command = "omnigraph_autonode"
+entry_point = "${config_root}/tools/repoman/omnigraph_autonode.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false
+
+########################################################################################################################
+# OmniGraph node metadata generator
+########################################################################################################################
+[repo_omnigraph_metadata]
+command = "omnigraph_metadata"
+entry_point = "${config_root}/tools/repoman/omnigraph_metadata.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false
+
+########################################################################################################################
+# OmniGraph attribute data type configuration file generator
+########################################################################################################################
+[repo_omnigraph_type_name_conversions]
+command = "omnigraph_type_name_conversions"
+entry_point = "${config_root}/tools/repoman/omnigraph_type_name_conversions.py:setup_repo_tool"
+
+# Must be explicitly enabled. To avoid showing tools that might be misconfigured/unwanted.
+enabled = false

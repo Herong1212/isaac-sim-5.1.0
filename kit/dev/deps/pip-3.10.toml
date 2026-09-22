@@ -1,0 +1,154 @@
+########################################################################################################################
+# Example:
+########################################################################################################################
+
+#
+# [[dependency]]                           # Toml way to define array of objects.
+# python = "../_build/target-deps/python"  # Path to python used to install. Absolute or relative to this config.
+# packages = ["numpy"]                     # Array of packages to install, they all will be passed directly to pip.
+# target = "../_build/target-deps/numpy"   # Folder to install into.   Absolute or relative to this config.
+# platforms = ["windows-x86_64"]           # Platform(s) to filter, default is ["*"].
+# download_only = true                     # Do pip download instead of install, gets a whl file that can be installed later.
+#
+
+# !!!
+# IMPORTANT: If you change this config cleanup target folder. Script check that it already exists and does nothing.
+############################
+
+# Options.
+# Various options are available that are passed through pip during the installation.
+
+# download_only: Only download the pip package, do not install it.
+# install_dependencies: When set to False, dependencies of a pip package will not be downloaded or installed
+# append_to_install_folder: When set to true and the target directory already exists, these packages will be appended to the existing folder.
+# build_isolated: Sets `--isolated` for pip install when installing. This means that environment variables and user settings will be ignored.
+# add_python_to_lib_path: Will set --global-options to include Python's lib and include folders when running the pip install.
+#    Useful when a python pip package has a C extension that needs to bind to Python. Setting this to true will set build_isolated to False.
+
+########################################################################################################################
+# Dependencies:
+########################################################################################################################
+
+# For many other pip packages used by default we install them in `pip_prebundle` folder to make available without need to install immediately.
+
+# NOTE - For any new packages added to this list, please make sure that the license is compatible with Omniverse (i.e. avoid GPL/LGPL) and
+# that a SWIPAT bug report is filed for legal to validate if there is no existing ticket.
+# The SWIPAT template is here: http://nvbugs/2732212
+# Dependencies for aiohttp should not be installed by default as we do not want to pull in chardet due to its license. Use cchardet instead
+[[dependency]]
+python = "../_build/target-deps/python"
+packages = [
+    "aiohttp==3.11.11",     # OSRB filed under: https://nvbugs/5082113
+    "aiobotocore==2.12.1"   # OSRB filed under: https://nvbugs/4576936
+]
+target = "../_build/target-deps/pip_prebundle"
+platforms = ["*"]
+download_only = false
+install_dependencies = false
+append_to_install_folder = true
+python_include_dir = true
+subprocess_path = ["${root}/_build/host-deps/msvc/MSBuild/Current/Bin", "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64", "${root}/_build/host-deps/msvc/VC/Auxiliary/Build", "${root}/_build/host-deps/winsdk/bin/x64"]
+win_sdk_path = "${root}/_build/host-deps/winsdk"
+msvc_path = "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133"
+gather_licenses_path = "../_build/PACKAGE-LICENSES/PIP-prebundled-LICENSES.txt"
+
+[[dependency]]
+python = "../_build/target-deps/python"
+packages = [
+    "pycares==4.8.0",              # OSRB filed under: https://nvbugs/4575566
+    "aiodns==3.1.1",               # OSRB filed under: https://nvbugs/4575570
+    "Pillow==11.3.0",              # OSRB filed under: https://nvbugs/4971783
+    "toml==0.10.2",                # OSRB filed under: https://nvbugs/4575571
+    "numpy==1.26.0",               # OSRB filed under: https://nvbugs/4575572
+    "click==8.1.7",                # OSRB filed under: https://nvbugs/4575573
+    "websockets==12.0",            # OSRB filed under: https://nvbugs/4576912
+    "fastapi==0.110.0",            # OSRB filed under: https://nvbugs/4575575
+    "attrs==25.1.0",               # OSRB filed under: https://nvbugs/4576956
+    "multidict==6.1.0",            # OSRB filed under: https://nvbugs/4575581
+    "async_timeout==5.0.1",        # OSRB filed under: https://nvbugs/4576973
+    "yarl==1.18.3",                # OSRB filed under: https://nvbugs/4575582
+    "idna==3.10",                  # OSRB filed under: https://nvbugs/4575584
+    "idna-ssl==1.1.0",             # OSRB filed under: https://nvbugs/3114237
+    "typing_extensions==4.12.2",   # OSRB filed under: https://nvbugs/4575600
+    "cchardet==2.1.7",             # OSRB filed under: https://nvbugs/4575614
+    "aiofiles==23.2.1",            # OSRB filed under: https://nvbugs/4575619
+    "aiosignal==1.3.2",            # OSRB filed under: https://nvbugs/3974173
+    "uvicorn==0.29.0",             # OSRB filed under: https://nvbugs/4575623
+    "httptools==0.6.1",            # OSRB filed under: https://nvbugs/4575626
+    "asteval==1.0.6",              # OSRB filed under: https://nvbugs/4575638
+    "python-multipart==0.0.20",    # OSRB filed under: https://nvbugs/4575640
+    "botocore==1.34.68",           # OSRB filed under: https://nvbugs/4575642
+    "wrapt==1.16.0",               # OSRB filed under: https://nvbugs/4575643
+    "aioitertools==0.11.0",        # OSRB filed under: https://nvbugs/4575645
+    "coverage==7.4.4",             # OSRB filed under: https://nvbugs/4575647
+    "watchdog==4.0.0",             # OSRB filed under: https://nvbugs/4575649
+    "sentry-sdk==1.43.0",          # OSRB filed under: https://nvbugs/4575650
+    "charset_normalizer==3.3.2",   # OSRB filed under: https://nvbugs/4575651
+    "frozenlist==1.5.0",           # OSRB filed under: https://nvbugs/4575656
+    "pytz==2024.1",                # OSRB filed under: https://nvbugs/4575658
+    "qrcode==7.4.2",               # OSRB filed under: https://nvbugs/4202760
+    "Jinja2==3.1.6",               # OSRB filed under: https://nvbugs/4685944
+    "aiohappyeyeballs==2.4.4",     # OSRB filed under: https://nvbugs/5082113
+    "propcache==0.2.1",            # OSRB filed under: https://nvbugs/5082113
+]
+target = "../_build/target-deps/pip_prebundle"
+platforms = ["*"]
+download_only = false
+append_to_install_folder = true
+python_include_dir = true
+subprocess_path = ["${root}/_build/host-deps/msvc/MSBuild/Current/Bin", "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64", "${root}/_build/host-deps/msvc/VC/Auxiliary/Build", "${root}/_build/host-deps/winsdk/bin/x64"]
+msvc_path = "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133"
+win_sdk_path = "${root}/_build/host-deps/winsdk"
+gather_licenses_path = "../_build/PACKAGE-LICENSES/PIP-prebundled-LICENSES.txt"
+
+
+# NOTE - For any new packages added to this list, please make sure that the license is compatible with Omniverse (i.e. avoid GPL/LGPL) and
+# that a SWIPAT bug report is filed for legal to validate if there is no existing ticket.
+# The SWIPAT template is here: http://nvbugs/2732212
+[[dependency]]
+python = "../_build/target-deps/python"
+packages = [
+    "psutil==5.9.8"             # OSRB filed under: https://nvbugs/4575660
+]
+target = "../_build/target-deps/pip_prebundle"
+platforms = ["*"]
+download_only = false
+append_to_install_folder = true
+# Needed for gcc to find python's lib and include directories for packages that have C components
+add_python_to_lib_path = true
+python_include_dir = true
+subprocess_path = ["${root}/_build/host-deps/msvc/MSBuild/Current/Bin", "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64", "${root}/_build/host-deps/msvc/VC/Auxiliary/Build", "${root}/_build/host-deps/winsdk/bin/x64"]
+msvc_path = "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133"
+win_sdk_path = "${root}/_build/host-deps/winsdk"
+gather_licenses_path = "../_build/PACKAGE-LICENSES/PIP-prebundled-LICENSES.txt"
+
+
+# omni.kit.debug.python
+[[dependency]]
+python = "../_build/target-deps/python"
+packages = [
+    "debugpy==1.8.1" # OSRB filed under: https://nvbugs/4575661
+]
+target = "../_build/target-deps/pip_debugpy"
+platforms = ["*"]
+download_only = false
+append_to_install_folder = true
+python_include_dir = true
+subprocess_path = ["${root}/_build/host-deps/msvc/MSBuild/Current/Bin", "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64", "${root}/_build/host-deps/msvc/VC/Auxiliary/Build", "${root}/_build/host-deps/winsdk/bin/x64"]
+msvc_path = "${root}/_build/host-deps/msvc/VC/Tools/MSVC/14.29.30133"
+win_sdk_path = "${root}/_build/host-deps/winsdk"
+gather_licenses_path = "../_build/PACKAGE-LICENSES/PIP-prebundled-LICENSES.txt"
+
+
+# omni.kit.registry.nucleus
+[[dependency]]
+python = "../_build/target-deps/python"
+packages = [
+    "requests==2.32.3" # OSRB filed under: https://nvbugs/4032137
+]
+target = "../_build/target-deps/pip_requests"
+platforms = ["*"]
+download_only = false
+append_to_install_folder = true
+python_include_dir = true
+gather_licenses_path = "../_build/PACKAGE-LICENSES/PIP-prebundled-LICENSES.txt"

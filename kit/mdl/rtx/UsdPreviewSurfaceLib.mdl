@@ -1,0 +1,176 @@
+// Copyright (c) 2023, NVIDIA CORPORATION.  All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto.  Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+mdl 1.8;
+
+import ::base::*;
+import ::math::*;
+import ::tex::*;
+
+using ::tex import wrap_mode;
+
+// The wrap modes defined by the UsdPreviewSurface specification
+export enum usd_wrap_mode
+{
+    black,
+    clamp,
+    repeat,
+    mirror,
+    useMetadata
+};
+
+
+// map UsdPreviewSurface wrap mode to corresponding MDL wrap mode.
+export uniform wrap_mode usd_to_mdl_wrap_mode(uniform usd_wrap_mode usd)
+{
+    if (usd == clamp)
+    {
+        return ::tex::wrap_clamp;
+    }
+
+    if (usd == repeat)
+    {
+        return ::tex::wrap_repeat;
+    }
+
+    if (usd == mirror)
+    {
+        return ::tex::wrap_mirrored_repeat;
+    }
+
+    // black and useMetadata
+    return ::tex::wrap_clip;
+}
+
+
+// output channel selector for texture lookup
+export enum texture_channel_select
+{
+    r,
+    g,
+    b,
+    a,
+    rgb
+};
+
+
+// flag to indicate which type of node
+// is connected to a port on UsdPreviewSurface
+export enum connection_type
+{
+    none,
+    texture,
+    primvar
+};
+
+
+// convert float4 to float using channel to drive conversion
+export float float4_to_float
+(
+    float4 f,
+    uniform texture_channel_select channel
+)
+{
+    return (channel != rgb) ? f[channel] : math::luminance(float3(f[0], f[1], f[2]));
+}
+
+
+// convert float4 to float3 using channel to drive conversion
+export float3 float4_to_float3
+(
+    float4 f,
+    uniform texture_channel_select channel
+)
+{
+    return (channel == rgb) ? float3(f[0], f[1], f[2]) : float3(f[channel], 0.0f, 0.0f);
+}
+
+
+// Lighter weight versions of UsdUvTexture that
+//   1. return a [float|float3] vs TextureReturnOut
+//   2. use uv-set st0
+
+export float float_from_texture
+(
+    uniform texture_2d file,
+    uniform usd_wrap_mode wrapS,
+    uniform usd_wrap_mode wrapT,
+    uniform float4 fallback,
+    uniform float4 scale,
+    uniform float4 bias,
+    uniform texture_channel_select channel
+)
+{
+    float4 texVal = fallback;
+    if (tex::texture_isvalid(file))
+    {
+        base::texture_coordinate_info uvw;
+
+        ::tex::wrap_mode mdlWrapS = usd_to_mdl_wrap_mode(wrapS);
+        ::tex::wrap_mode mdlWrapT = usd_to_mdl_wrap_mode(wrapT);
+
+        base::texture_return texRet =
+            base::file_texture(
+                file,
+                color(0.0f),
+                color(1.0f),
+                base::mono_alpha,
+                uvw,
+                float2(0.f, 1.f),
+                float2(0.f, 1.f),
+                mdlWrapS,
+                mdlWrapT,
+                false
+            );
+
+        float3 tint = texRet.tint;
+        texVal = float4(tint.x, tint.y, tint.z, texRet.mono) * scale + bias;
+    }
+
+    return float4_to_float(texVal, channel);
+}
+
+export float3 float3_from_texture
+(
+    uniform texture_2d file,
+    uniform usd_wrap_mode wrapS,
+    uniform usd_wrap_mode wrapT,
+    uniform float4 fallback,
+    uniform float4 scale,
+    uniform float4 bias,
+    uniform texture_channel_select channel
+)
+{
+    float4 texVal = fallback;
+    if (tex::texture_isvalid(file))
+    {
+        base::texture_coordinate_info uvw;
+
+        ::tex::wrap_mode mdlWrapS = usd_to_mdl_wrap_mode(wrapS);
+        ::tex::wrap_mode mdlWrapT = usd_to_mdl_wrap_mode(wrapT);
+
+        base::texture_return texRet =
+            base::file_texture(
+                file,
+                color(0.0f),
+                color(1.0f),
+                base::mono_alpha,
+                uvw,
+                float2(0.f, 1.f),
+                float2(0.f, 1.f),
+                mdlWrapS,
+                mdlWrapT,
+                false
+            );
+
+        float3 tint = texRet.tint;
+        texVal = float4(tint.x, tint.y, tint.z, texRet.mono) * scale + bias;
+    }
+
+    return float4_to_float3(texVal, channel);
+}

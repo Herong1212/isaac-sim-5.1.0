@@ -1,0 +1,38 @@
+# Using suppressions: https://github.com/google/sanitizers/wiki/ThreadSanitizerSuppressions
+
+# Framework/ONI/PluginManager OVCC-1454
+deadlock:carb::FrameworkImpl::resolveInterfaceDependency
+deadlock:carb::FrameworkImpl::removeLoadHook
+deadlock:carb::FrameworkImpl::acquireInterface
+
+# Logging system (OVCC-1455)
+deadlock:omni::log::LogSystem::setLevel
+# This may not be an issue since it's eventually correct
+race:carb::logging::registerLoggingForClient()::{lambda(int)#1}
+
+# carb.profiler-cpu (OVCC-1456)
+race:carb::profiler::EventProcessor
+race:libcarb.profiler-cpu.plugin.so
+
+# carb.tasking (OVCC-1457)
+race:carb::tasking::TaskQueue
+# carb.tasking lookups aren't working natively in tsan, so suppress the module for now
+race:libcarb.tasking.plugin.so
+
+# debug-only mutex can be ignored
+race:omni::core::AssertOnLogMutex
+
+# ignore audio stuff (OVCC-1458)
+race:libpulsecommon*.so
+race:^FORGE_*
+
+# Launcher (OVCC-1459)
+race:carb::launcher::StreamReader
+race:libcarb.launcher.plugin.so
+deadlock:libcarb.launcher.plugin.so
+
+# StructuredLog (OVCC-1460)
+deadlock:omni::structuredlog::StructuredLog
+
+# omni.job (OVCC-1461)
+race:libomni.experimental.job.plugin

@@ -1,0 +1,92 @@
+# Public API for module omni.client:
+
+## Functions
+
+- def make_file_url_if_possible(absolute_local_path: str) -> str
+- def make_relative_url_if_possible(base_url: str, path_or_url: str) -> str
+- def make_absolute_url_if_possible(base_url: str, path_or_url: str) -> str
+- def equal_urls(url_a: str, url_b: str, ignore_port = True, ignore_user = True, ignore_query_string = True)
+- def is_local_url(path_or_url: str) -> bool
+- def normalize_url(path_or_url: str) -> str
+- def is_omni_objects_enabled(url: str) -> bool
+- def is_valid_url(url: str) -> bool
+- def is_tagging_enabled(url: str) -> bool
+- def set_result_if_not_done(f, result)
+- def get_server_info(url: str) -> Tuple[Result, ServerInfo]
+- async def get_server_info_async(url: str) -> Tuple[Result, ServerInfo]
+- def refresh_auth_token(url: str) -> Tuple[Result, str]
+- async def refresh_auth_token_async(url: str) -> Tuple[Result, str]
+- def list(url: str, include_deleted_option: ListIncludeOption = ListIncludeOption.NO_DELETED_FILES) -> Tuple[Result, Tuple[ListEntry]]
+- async def list_async(url: str, include_deleted_option: ListIncludeOption = ListIncludeOption.NO_DELETED_FILES) -> Tuple[Result, Tuple[ListEntry]]
+- def stat(url: str, include_deleted_option: ListIncludeOption = ListIncludeOption.NO_DELETED_FILES) -> Tuple[Result, ListEntry]
+- async def stat_async(url: str, include_deleted_option: ListIncludeOption = ListIncludeOption.NO_DELETED_FILES) -> Tuple[Result, ListEntry]
+- def resolve(url: str, search_urls: List[str]) -> Tuple[Result, ListEntry, str]
+- async def resolve_async(url: str, search_urls: List[str]) -> Tuple[Result, ListEntry, str]
+- def delete(url: str) -> Result
+- async def delete_async(url: str) -> Result
+- def delete_single(url: str) -> Result
+- async def delete_single_async(url: str) -> Result
+- def undelete(url: str) -> Result
+- async def undelete_async(url: str) -> Result
+- def obliterate(url: str, obliterate_checkpoints: bool) -> Result
+- async def obliterate_async(url: str, obliterate_checkpoints: bool) -> Result
+- def create_folder(url: str) -> Result
+- async def create_folder_async(url: str) -> Result
+- def copy(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- async def copy_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- def copy_file(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- async def copy_file_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- def copy_folder(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- async def copy_folder_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Result
+- def move(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- async def move_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- def move_file(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- async def move_file_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- def move_folder(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- async def move_folder_async(src_url: str, dst_url: str, behavior: CopyBehavior = CopyBehavior.ERROR_IF_EXISTS, message: str = '') -> Tuple[Result, bool]
+- def get_local_file(url: str, download: bool = True) -> Tuple[Result, str]
+- async def get_local_file_async(url: str, download: bool = True) -> Tuple[Result, str]
+- def open_cached_file(url: str, download: bool = True) -> Tuple[Result, int, str]
+- async def open_cached_file_async(url: str, download: bool = True) -> Tuple[Result, int, str]
+- def read_file(url: str) -> Tuple[Result, str, Content]
+- async def read_file_async(url: str) -> Tuple[Result, str, Content]
+- def create_with_hash(url: str, hash: str, overwrite: bool) -> Tuple[Result, str, str]
+- async def create_with_hash_async(url: str, hash: str, overwrite: bool) -> Tuple[Result, str, str]
+- def write_file(url: str, content: bytes, message: str = '') -> Result
+- async def write_file_async(url: str, content: bytes, message: str = '') -> Result
+- def write_file_ex(url: str, content: bytes, message: str = '', skip_checkpoint: bool = False) -> Tuple[Result, WriteFileExInfo]
+- async def write_file_ex_async(url: str, content: bytes, message: str = '', skip_checkpoint: bool = False) -> Tuple[Result, WriteFileExInfo]
+- def get_acls(url: str) -> Tuple[Result, List[AclEntry]]
+- async def get_acls_async(url: str) -> Tuple[Result, List[AclEntry]]
+- def set_acls(url: str, acls: List[AclEntry]) -> Result
+- async def set_acls_async(url: str, acls: List[AclEntry]) -> Result
+- def send_message(join_request_id: int, content: bytes) -> Result
+- async def send_message_async(join_request_id: int, content: bytes) -> Result
+- def list_checkpoints(url: str) -> Tuple[Result, Tuple[ListEntry]]
+- async def list_checkpoints_async(url: str) -> Tuple[Result, Tuple[ListEntry]]
+- def create_checkpoint(url: str, comment: str, force: bool = False) -> Tuple[Result, str]
+- async def create_checkpoint_async(url: str, comment: str, force: bool = False) -> Tuple[Result, str]
+- def get_groups(url: str) -> Tuple[Result, List[str]]
+- async def get_groups_async(url: str) -> Tuple[Result, List[str]]
+- def get_group_users(url: str, group: str) -> Tuple[Result, List[str]]
+- async def get_group_users_async(url: str, group: str) -> Tuple[Result, List[str]]
+- def create_group(url: str, group: str) -> Result
+- async def create_group_async(url: str, group: str) -> Result
+- def rename_group(url: str, group: str, new_group: str) -> Result
+- async def rename_group_async(url: str, group: str, new_group: str) -> Result
+- def remove_group(url: str, group: str) -> Tuple[Result, int]
+- async def remove_group_async(url: str, group: str) -> Tuple[Result, int]
+- def get_users(url: str) -> Tuple[Result, List[str]]
+- async def get_users_async(url: str) -> Tuple[Result, List[str]]
+- def get_user_groups(url: str, user: str) -> Tuple[Result, List[str]]
+- async def get_user_groups_async(url: str, user: str) -> Tuple[Result, List[str]]
+- def add_user_to_group(url: str, user: str, group: str) -> Result
+- async def add_user_to_group_async(url: str, user: str, group: str) -> Result
+- def remove_user_from_group(url: str, user: str, group: str) -> Result
+- async def remove_user_from_group_async(url: str, user: str, group: str) -> Result
+- def get_hub_version() -> Tuple[Result, str]
+- async def get_hub_version_async() -> Tuple[Result, str]
+
+## Variables
+
+- AUTH_ABORT: bool

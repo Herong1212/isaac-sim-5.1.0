@@ -1,0 +1,109 @@
+/***************************************************************************************************
+ * Copyright 2021 NVIDIA Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *  * Neither the name of NVIDIA CORPORATION nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **************************************************************************************************/
+
+// OmniVolumeDensity based on VDB volumes
+mdl 1.7;
+
+import ::tex::*;
+import ::anno::*;
+import ::base::*;
+import ::df::*;
+import ::state::*;
+import ::tex::*;
+import ::math::*;
+
+
+export material OmniVolumeDensity(
+    uniform texture_3d volume_density_texture = texture_3d() 
+    [[
+        anno::display_name("Volume Density Texture"),
+        anno::description("Density VDB Texture File."),
+        anno::in_group("Base")
+    ]],
+	uniform color volume_albedo = color(1.f, 1.f, 1.f) 
+    [[
+        anno::display_name("Volume Color"),
+		anno::description("Volume Albedo Color"),
+        anno::in_group("Base")
+    ]],
+    uniform float volume_density_scale = 1.f 
+    [[
+        anno::display_name("Density Scale"),
+		anno::description("Scales the volume density."),
+        anno::in_group("Base"),
+        anno::usage("")
+    ]],
+   	uniform float directional_bias = 0.f 
+       [[
+        anno::display_name("Scattering Phase"),
+        anno::description("Forward, backward or isotropic scattering phase. Positive values are forward scattering; Negative are backward scattering; 0 is isotropic scattering."),
+        anno::in_group("Base"),
+        anno::hard_range(-1, 1)
+    ]]
+)
+[[
+    anno::display_name("OmniVolumeDensity"),
+    anno::description("3D Density."),
+    anno::author("NVIDIA Corporation"),
+    anno::key_words(string[]("generic", "volume")),
+    anno::version(1, 0, 0, ""),
+ 	anno::in_group("Volumes")
+]]
+ = 
+    let {
+	float density_scale = ::math::clamp(volume_density_scale, -1e30, 1e30);
+	
+	color volume_scattering =  		volume_albedo;
+	color volume_absorption = (1 -	volume_albedo);
+	
+    ::base::volume_coefficients c = 
+		::base::lookup_volume_coefficients(
+				volume_density_texture, 
+				volume_scattering, 
+				volume_absorption, 
+				color(0), /* scatter_mult */
+				color(0), /* absorpt_mult */ 
+				float4x4(1.0f), 
+				density_scale, 
+				false);
+				
+    material_surface fake_surface(
+                        ::df::specular_bsdf(color(1.f, 1.f, 1.f), ::df::scatter_transmit, ""),
+                        material_emission(emission: edf(), intensity: color(0), mode: intensity_radiant_exitance));
+			
+    material_volume volume = 
+		material_volume(
+			::df::anisotropic_vdf(directional_bias, ""), 
+			scattering_coefficient: c.scattering_coefficient,
+			absorption_coefficient: c.absorption_coefficient);
+} in material
+(
+	surface: fake_surface,
+	ior: color(1.f),
+	volume: volume
+);

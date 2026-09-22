@@ -1,0 +1,56 @@
+{
+    "glyphs" : [
+        {
+            "filename" : "toolbar_select_models.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_select_prims.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_select_model.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_select_prim.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_move_global.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_move_local.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_rotate_global.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_rotate_local.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_scale.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_snap.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_play.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_pause.svg",
+            "scale" : "2.0"
+        },
+        {
+            "filename" : "toolbar_stop.svg",
+            "scale" : "2.0"
+        }
+    ]
+}

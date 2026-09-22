@@ -1,0 +1,63 @@
+[package]
+title = "Kit Full App"
+description = "Used for smoke testing."
+version = "1.0.1"
+keywords = ["app"]
+support_level = "Sample"
+
+[dependencies]
+# Include basic configuration (that brings most of basic extensions)
+"omni.app.dev" = {}
+
+# # Omni Graph
+"omni.graph.core" = {}
+
+# # More Windows and UI elements
+"omni.kit.tagging" = { order = -10 } # should be a dependency of below
+"omni.kit.window.stats" = { order = 1000 }
+"omni.kit.window.usd_paths" = {}
+
+# # Misc
+"omni.kit.window.cursor" = {}
+
+# # Property Widgets and Window
+"omni.kit.property.tagging" = {}
+
+# geometry streaming
+"omni.hydra.scene_api" = {}
+
+[settings]
+app.window.title = "Kit Full App"
+
+# Enable sending stack traces to Sentry
+telemetry.enableSentry = true
+
+[[test]]
+args = [
+	"--no-assert-dialog",
+	"--no-window",
+	"--/rtx/materialDb/syncLoads=true",
+	"--/omni.kit.plugin/syncUsdLoads=true",
+	"--/rtx/hydra/materialSyncLoads=true",
+	"--/renderer/multiGpu/autoEnable=false",
+	"--/app/hydraEngine/skipStatusBarIdle=true",
+	"--/app/asyncRendering=false",
+	"--/renderer/debug/validation/enabled=false",
+	"--/renderer/enabled='rtx,iray'",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/extensions/registryEnabled=0" # Extensions in kit-sdk should not depend on downstream repos
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers"
+]
+
+# We can run all extension tests inside of an app. In practice many of them failing and crashing, that requires time
+# investment to fix. Add one extension, to keep pipeline working:
+pythonTests.include = [
+    "omni.kit.window.preferences.*",
+]
+pythonTests.exclude = [
+]
+timeout = 600

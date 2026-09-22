@@ -1,0 +1,143 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+
+mdl 1.7;
+
+import ::anno::*;
+import ::base::*;
+import ::limits::*;
+import ::math::*;
+import ::state::*;
+import ::tex::*;
+
+
+export float3 rgb_to_hsv(color rgb)
+{
+    float R = float3(rgb).x;
+    float G = float3(rgb).y;
+    float B = float3(rgb).z;
+    float rgb_max = math::max_value(rgb);
+    float rgb_min = math::min_value(rgb);
+    float delta = rgb_max - rgb_min;
+
+    float H = 0.0;
+    float S = (rgb_max > limits::FLOAT_MIN) ? (delta / rgb_max) : 0.0;
+    float V = rgb_max;
+
+    if (S <= limits::FLOAT_MIN)
+        return float3(H, S, V);
+
+    if (R >= rgb_max)
+        H = (G - B) / delta;
+    else if (G >= rgb_max)
+        H = 2.0 + (B - R) / delta;
+    else if (B >= rgb_max)
+        H = 4.0 + (R - G) / delta;
+
+    H /= 6.0;  // remap to [0, 1]
+    if (H < 0.0)
+        H += 1.0;
+
+    return float3(H, S, V);
+}
+
+export color hsv_to_rgb(float3 hsv)
+{
+    float H = hsv.x;
+    float S = hsv.y;
+    float V = hsv.z;
+
+    if (S <= limits::FLOAT_MIN)
+        return color(V, V, V);
+
+    float h = (H < 1.0) ? H * 6.0 : 0.0;
+    float h_i = math::floor(h);
+    float f = h - h_i;
+
+    float p = V * (1.0 - S);
+    float q = V * (1.0 - (S * f));
+    float t = V * (1.0 - (S * (1.0 - f)));
+
+    switch (int(h_i))
+    {
+        case 0: return color(V, t, p);
+        case 1: return color(q, V, p);
+        case 2: return color(p, V, t);
+        case 3: return color(p, q, V);
+        case 4: return color(t, p, V);
+        case 5: return color(V, p, q);
+        default: return color(V, t, p);  // == case 0
+    }
+}
+
+export float3 rgb_to_hsl(color rgb)
+{
+    float R = float3(rgb).x;
+    float G = float3(rgb).y;
+    float B = float3(rgb).z;
+    float rgb_max = math::max_value(rgb);
+    float rgb_min = math::min_value(rgb);
+    float delta = rgb_max - rgb_min;
+    float sigma = rgb_max + rgb_min;
+
+    float H = 0.0;
+    float S = 0.0;
+    float L = sigma / 2.0;
+
+    if (rgb_max == rgb_min)
+         return float3(0.0, 0.0, L);
+
+    S = (L > 0.5) ? (delta / (2.0 - sigma)) : (delta / sigma);
+
+    if (R >= rgb_max)
+        H = (G - B) / delta;
+    else if (G >= rgb_max)
+        H = 2.0 + (B - R) / delta;
+    else if (B >= rgb_max)
+        H = 4.0 + (R - G) / delta;
+
+    H /= 6.0;  // remap to [0, 1]
+    if (H < 0.0)
+        H += 1.0;
+
+    return float3(H, S, L);
+}
+
+float hue_to_x(float m1, float m2, float h)
+{
+    float H = h;
+
+    if (H > 1.0)
+        H -= 1.0;
+    if (H < 0.0)
+        H += 1.0;
+    if (H < (1.0 / 6.0))
+        return m1 + (m2 - m1) * H * 6.0;
+    if (H < (1.0 / 2.0))
+        return m2;
+    if (H < (2.0 / 3.0))
+        return m1 + (m2 - m1) * (2.0 / 3.0 - H) * 6.0;
+
+    return m1;
+}
+
+export color hsl_to_rgb(float3 hsl)
+{
+    float H = hsl.x;
+    float S = hsl.y;
+    float L = hsl.z;
+
+    if (S <= limits::FLOAT_MIN)
+        return color(L, L, L);
+
+    float m2 = (L < 0.5) ? (L * (1.0 + S)) : (L + S - L * S);
+    float m1 = 2.0 * L - m2;
+    float R = hue_to_x(m1, m2, H + 1.0 / 3.0);
+    float G = hue_to_x(m1, m2, H);
+    float B = hue_to_x(m1, m2, H - 1.0 / 3.0);
+
+    return color(R, G, B);
+}

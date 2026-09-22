@@ -1,0 +1,26 @@
+[core]
+reloadable = false
+
+[package]
+title = "Omniverse Client Library Core"
+version = "1.1.0"
+category = "Internal"
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+description = "Omniverse Client Library provides foundation APIs for uniformly accessing Nucleus filesystem, local filesystem, HTTP resources, etc."
+keywords = ["client", "nucleus", "filesystem", "http"]
+support_level = "Core"
+
+[dependencies]
+"omni.kit.async_engine" = {}
+
+[[python.module]]
+name = "omni.client"
+
+[[native.library]]
+path = "bin/${lib_prefix}omniclient${lib_ext}"
+recursive = false
+
+[[test]]
+# Tested in client-library repo: https://gitlab-master.nvidia.com/omniverse/client-library/-/blob/1f30c5c18bfe7e2d3c522f64da10c238fdca2f13/source/tests/python/test_client.py
+pyCoverageThreshold = 20

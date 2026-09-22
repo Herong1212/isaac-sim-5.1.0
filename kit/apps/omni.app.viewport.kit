@@ -1,0 +1,51 @@
+[package]
+title = "Kit Single Viewport"
+description = "Kit with Viewport only"
+version = "1.0.0"
+support_level = "Sample"
+
+[dependencies]
+# The only required extension for this app
+"omni.kit.viewport.window" = {}
+
+# Optional: support navigation out of the box
+"omni.kit.manipulator.camera" = {}
+
+# Optional: show a bit of info as RTX is compiling shaders
+"omni.kit.viewport.ready" = {}
+
+# Required when progress-bar of shader-compilation is wanted
+# (when exts."omni.kit.viewport.ready".activity_progress.enabled = true)
+#
+# "omni.activity.profiler" = {}
+# "omni.activity.pump" = {}
+
+[settings]
+app.window.title = "Kit Viewport"
+app.window.width = 1280
+app.window.height = 720
+app.docks.disabled = true
+
+app.viewport.defaults.noTitleBar = true
+app.viewport.defaults.hud.renderResolution.visible = true
+app.viewport.defaults.fillViewport = true
+
+persistent.app.viewport.noPadding = true
+
+# Hide the omni.ui.scene grid by default
+app.viewport.defaults.guide.grid.visible = false
+
+# Short circuit legacy displayOptions
+persistent.app.viewport.displayOptions = 0
+
+# Disable progress in favor of static "Renderer Loading"
+exts."omni.kit.viewport.ready".activity_progress.enabled = false
+
+# Don't load a default stage, app want's to be launched with --/app/content/usdFile=""
+app.content.emptyStageOnStart = false
+
+# No active renderer by default
+# Launch with --enable omni.hydra.xxx to choose one
+# (currently must use --/renderer/active=xxx for iray or index)
+renderer.enabled = ""
+renderer.active = ""

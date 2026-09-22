@@ -1,0 +1,123 @@
+[package]
+title = "Nucleus Registry for Extensions"
+category = "Internal"
+description = "Extension registry implementation based on client library. Supports nucleus, http, filesystem storage."
+keywords = ["nucleus", "registry", "http", "filesystem"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[core]
+order = -1000
+
+[dependencies]
+"omni.client.lib" = {}
+
+[[python.module]]
+name = "omni.kit.registry.nucleus"
+
+
+[settings.exts."omni.kit.registry.nucleus"]
+# URL where to store archives and index of extensions (can be local filesystem too). They are being pulled in order,
+# so if multiple registries have a package with the same name the one that specified first is prioritized.
+# Both Carbonite and custom tokens (defined below under "tokens" key) are supported in URLs. That allows to reuse same
+# URL parts for multiple registries.
+# `optional` flag if set is used to ignore registry if it's unreachable, otherwise it will be treated as an error.
+registries = [
+    #{ name = "kit/default", url = "${main_registry_url}/kit/default", optional = false },
+]
+
+# Custom tokens that can be used in registry URLs.
+# tokens.main_registry_url = "omniverse://kit-extensions.ov.nvidia.com/exts"
+
+# Read and write accounts for sync and publish automation. If not set defaults to regular sign in. Format: "user:pass"
+# Only supported for omniverse:// URLs and can be set per host. Empty url matches all hosts.
+accounts = [
+    { url = "omniverse://kit-extensions.ov.nvidia.com", read = "svc-kit-extension-viewer:Trgkyw25PB6SFLV9MaACfp", write = "" }
+]
+
+# After pulling an extension use only name instead of extension id for dst extension path ("omni.foo" vs "omni.foo-1.2.3")
+omitExtVersion = false
+
+# Global system cache with downloaded extensions (+ cache version subdir)
+cachePath = "${omni_global_data}/exts"
+cacheVersionSubdir = "v2"
+
+# Use folder links from installed extension to cache or copy (links faster)
+cacheCreateLinks = true
+
+# Cache files from URLs (index file primarily) for offline use
+cacheFiles = true
+
+# Cache Prune settings.
+# We run prune every N installs (links/copies created) or N days (whichever comes first).
+# We remove unused extensions that are older than N days.
+cachePrune.enabled = true
+cachePrune.runEveryNInstalls = 1000
+cachePrune.runEveryNDays = 7
+cachePrune.removeOlderThanNDays = 7
+cachePrune.runOnStartup = false
+
+# Re-download extension archives even if they are already in cache (force overwrite cache, for development/testing)
+cacheInvalidateOnPull = false
+
+# Default index format (when creating new index): "index.zip", "index.json", "index.toml"
+defaultIndexFormat = "index.zip"
+
+# Default index version (when pushing or creating a new index): "v1", "v2"
+defautIndexVersion = "v2"
+
+# Clean local index cache (v2 only)
+resetLocalIndexCache = false
+
+# Special mode where index automatically upgraded from "3" to "v2"
+runMigration = false
+
+# Push with packman instead of putting archives to the same url where index is.
+usePackmanToUploadArchives = false
+
+# Use urllib instead of client library to download archives from http(s) urls
+useUrllibForHttp = false
+
+# Use both http and https when downloading archives from http(s) urls (to work around issues when packman returns a wrong url)
+tryBothHttpAndHttps = true
+
+# Use hash version part of archive name. If nothing changed since last published package it will be reused.
+useContentHashAsArchiveName = false
+
+# Remove authors from extension config when publishing.
+removeAuthorsFromConfig = false
+
+# Parallel publish of extensions (experimental)
+parallelPublish = false
+
+# Set "yank" flag instead of removing extension from index when unpublishing (preferred).
+yankWhenUnpublishing = true
+
+# All omni.client API calls can retry on connection errors.
+retryParameters.maxRetries = 1
+retryParameters.baseDelay = 2.0
+retryParameters.maxDelay = 30.0
+
+# Persistent/user list of registries (same format as above)
+[settings.persistent.exts."omni.kit.registry.nucleus"]
+userRegistries = []
+
+
+[settings]
+# Registry used by default to publish and unpublish
+app.extensions.registryPublishDefault = "kit/default"
+
+[[test]]
+# Tested well through C++ tests: `test.kit.app/ext/TestExtensions.cpp`, see: "Extension nucleus registry" tests. They are not
+# included into coverage measurement.
+pyCoverageThreshold = 25
+
+dependencies = [
+    "omni.kit.core.tests"
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Architecture.md"
+]

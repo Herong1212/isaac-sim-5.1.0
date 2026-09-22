@@ -1,0 +1,445 @@
+// SPDX-FileCopyrightText: Copyright (c) 2020-2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+//
+// NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+// property and proprietary rights in and to this material, related
+// documentation and any modifications thereto. Any use, reproduction,
+// disclosure or distribution of this material and related documentation
+// without an express license agreement from NVIDIA CORPORATION or
+// its affiliates is strictly prohibited.
+
+/**
+ * @brief WPM (wave propagation model) interface.
+ * @note all units follow standard metric system except when otherwise specified in a member name (ex: timeNs will
+ * indicate time in nano seconds instead of standard seconds)
+ *
+ */
+
+#pragma once
+
+#define RTXSENSOR_MODEL_V20
+#include <rtx/rtsensor/RtxSensorModel.h>
+
+//! @file
+//!
+//! @brief WPM (wave propagation model) API
+
+#include <carb/IObject.h>
+
+#include <omni/sensors/materials/MaterialManager.h>
+
+#include <cstdint>
+
+// Forward declaration of external needed types
+struct float3;
+struct float4;
+
+// Short hand for RtxSensor types namespace
+namespace rts = rtx::rtxsensor;
+
+namespace omni
+{
+namespace sensors
+{
+namespace wpm
+{
+
+/** @brief cuda stream type can be mapped directly to cudaStream_t */
+using WpmCudaStream_t = void*;
+
+/** @brief type for custom ray properties */
+using CustomRayProps = void;
+
+
+/*************************************************************************
+ * Config that needs to be set once
+ * **********************************************************************/
+
+/**
+ * @brief Global Wpm config that needs to be set only once at Init and can't change after
+ *
+ */
+struct Config
+{
+    /** @brief max depth of the ray tracing tree (defines number of bounces) */
+    uint8_t maxTraceTreeDepth;
+
+    /** @brief max contribution ray material evaluations between bounce and rx */
+    uint8_t maxContributionRayDepth = 2;
+
+    /** @brief max number of tx patterns */
+    uint8_t maxNumTxPatterns;
+
+    /** @brief max number of Txs in any Tx pattern */
+    uint32_t maxNumTxsPerPattern;
+
+    /** @brief max number of ray patterns */
+    uint8_t maxNumRxPatterns;
+
+    /** @brief max number of rays in any ray pattern */
+    uint32_t maxNumRxsPerPattern;
+
+    /** @brief max number of Rx groups mappings */
+    uint32_t maxNumRxGroupMaps;
+
+
+    /** @brief max number of ray patterns */
+    uint8_t maxNumRayPatterns;
+
+    /** @brief max number of rays in any ray pattern */
+    uint32_t maxNumRaysPerPattern;
+
+    /** @brief max number of target receiver groups per Rx mapping*/
+    uint32_t maxNumTarRxGroupsPerMap;
+
+    /** @brief max numbers of receiver indices per any target receiver group */
+    uint8_t maxNumIdxsPerTarRxGroup;
+
+
+    /** @brief size of the CustomRayProps blob */
+    size_t customRayPropsSize;
+
+    /** @brief determines if transmitters definition should be on host */
+    bool isTransmittersOnHost;
+
+    /** @brief determines if receivers definition should be on host */
+    bool isReceiversOnHost;
+
+    /** @brief enables generation of transmission rays (not yet supported) */
+    bool enTransmission;
+
+    /** @brief enables calculating round trip path velocity in contributions */
+    bool enRtVelocity;
+
+    /** @brief enables availability of hit point geometry information */
+    bool enHitGeometry;
+
+    /** @brief minimum distance to accept ray hit [m] */
+    float minHitDistanceM = 0.005f;
+
+    /** @brief minimum distance to accept ray hit for primary rays [m] */
+    float minPrimaryHitDistanceM = 0.005f;
+
+    /** @brief maximum distance after which ray hit search terminates [m] */
+    float maxHitDistanceM = 1000.0f;
+
+    /** @brief contribution rays need to get this close to receiver to be valid [m] */
+    float contributionRayRxHitOffset = 0.05f;
+
+    /** @brief opening angle for random primary ray direction perturbation [rad] */
+    float primaryRayPerturbRad = 0.0f;
+
+    /** @brief model name provided to memory handler of wpm to synchronize settings */
+    omni::string memHandlerModelString = "";
+
+    /** @brief lobewidth of source beam */
+    float sourceDivergence = 0.0f;
+};
+
+
+/*************************************************************************
+ * Trace definition that can be modified with each new trace
+ * **********************************************************************/
+
+/** @brief a struct the defines a frame of reference */
+struct Frame
+{
+    float3 p; /**< position vector */
+    float4 q; /**< orientation quaternion */
+};
+
+/** @brief a struct the defines a frame of reference */
+struct Frames
+{
+    float3* p; /**< position vector */
+    float4* q; /**< orientation quaternion */
+};
+
+/** @brief a struct the defines motion of a frame of reference */
+struct FrameMotion
+{
+    Frame start; /**< position and orientation at frame motion start */
+    uint64_t startTimeNs; /**< time in nano secs at frame motion start */
+
+    Frame end; /**< position and orientation at frame motion end */
+    uint64_t endTimeNs; /**< time in nano secs at frame motion end */
+
+    float3 velocity; /**< world linear velocity vector */
+    float3 localAngVelocity; /**< local angular velocity vector */
+};
+
+/** @brief a struct that defines a Ray */
+struct Rays
+{
+    uint64_t* deltaTimeNs; /**< delta time in nano secs from parent transmitter */
+    float3* origin; /**< vector defining origin point of the ray relative to transmitter frame */
+    float3* direction; /**< unit vector defining ray direction relative to transmitter frame */
+};
+
+/** @brief a struct that defines a transmitter */
+struct Transmitters
+{
+    uint64_t* deltaTimeNs; /**< delta time in nano secs from frame start time */
+    Frames frames; /**< a frame of reference defining the pose of the transmitter relative to the sensor frame */
+    uint8_t* rayPatternIdx; /**< idx of ray pattern transmitted by transmitter */
+    uint32_t* targetRxGroup; /**< target corresponding receiver to transmitter */
+};
+
+/** @brief a struct that defines a receiver */
+struct Receivers
+{
+    Frames frames; /**< a frame of reference defining the pose of the receiver relative to the sensor frame */
+};
+
+/**
+ * @brief a struct defining a trace, the trace definition struct can be obtained from the wpm object with the API
+ * getTraceDefinition() and can be changed in runtime, changes will only take effect at the start of a new trace
+ *
+ * @note the wpm manages the memory allocation of trace definition members, and the user has some control on this with
+ * allocation flags in the config struct (ex: isTransmittersOnHost ... etc), this is to ease usage depending on the size
+ * of the entities being defined (transmitters, receivers, ... etc). if the setCudaDevice() API is not called the wpm
+ * will assume pure CPU mode and all memory will be allocated on host, otherwise GPU mode and allocation flags will be
+ * respected
+ *
+ */
+struct TraceDefinition
+{
+    /** @brief cudaStream for the current run, not used in case of CPU mode */
+    WpmCudaStream_t cudaStream{ 0 };
+
+    /** @brief defines the depth of the trace tree, related to expected num bounces/returns per ray */
+    uint8_t traceTreeDepth{ 0 };
+
+    /** @brief defines the max. contribution ray material evaluations between bounce and rx */
+    uint8_t contributionRayDepth{ 2 };
+
+    /** @brief sensor frame motion throughout the whole trace */
+    FrameMotion frameMotion;
+
+    /** @brief current transmitter pattern ID*/
+    uint8_t txPatternIdx;
+
+    /** @brief current receiver pattern ID*/
+    uint8_t rxPatternIdx;
+
+    /** @brief current Rx group map ID*/
+    uint8_t targetRxGroupsMapIdx;
+
+    /** @brief 2 dimensional array of transmitter definitions (ordered by pattern ID, TX within the pattern),
+     *  transmitters2D can be on host if flag (isTransmittersOnHost) is true otherwise on device  */
+    Transmitters transmitters2D;
+
+    /** @brief number of transmitters per pattern */
+    uint32_t* numTxsPerPattern1D{ nullptr };
+
+    /** @brief number of transmitter patterns*/
+    uint8_t numTxPatterns{ 0 };
+
+
+    /** @brief 2 dimensional array of receiver definitions (ordered by Rx pattern ID, Rx within pattern),
+     * receivers1D can be on host if flag (isReceiversOnHost) is true otherwise on device  */
+    Receivers receivers2D;
+
+    /** @brief number of receivers per pattern */
+    uint32_t* numRxsPerPattern1D{ nullptr };
+
+    /** @brief number of receiver patterns*/
+    uint8_t numRxPatterns{ 0 };
+
+
+    /** @brief 2 dimensional array of ray definitions linearized in row major, rows represent patterns, columns
+     * represent rays within a pattern [pattern1(ray1+ray2+...)+pattern2(...)+...], rays2D is always on device */
+    Rays rays2D;
+
+    /** @brief 2 dimensional array of custom ray properties linearized in row major, rows represent patterns, columns
+     * represent rays within a pattern [pattern1(rayProps1+rayProps2+...)+pattern2(...)+...], rayProps2D is always on
+     * device */
+    CustomRayProps* rayProps2D{ nullptr };
+
+    /** @brief 1 dimensional array same size as ray patterns, each element specifies the number of rays in the
+     * corresponding pattern, numRaysPerPattern1D is always on device */
+    uint32_t* numRaysPerPattern1D{ nullptr };
+
+    /** @brief number of ray patterns */
+    uint8_t numRayPatterns{ 0 };
+
+
+    /** @brief 3 dimensional array of target receiver indicies linearized major to minor as (z->y->x), z represents
+     * Rx map, y represents receiver groups, x represents receiver indices
+     * [pattern1(group1(RxIdx1+RxIdx2+RxIdx3+...)+group2(...)+...)+pattern2(...)+...], targetDetIdxs3D can be on
+     * host if flag (isReceiversOnHost) is true otherwise on device */
+    uint32_t* targetRxGroups3D{ nullptr };
+
+    /** @brief 2 dimensional array of numIndicies linearized in row major, rows represent Rx map, columns
+     * represent num indicies per group within a pattern
+     * [pattern1(NumRxIdxsPergroup1+NumRxIdxsPergroup2+...)+pattern2(...)+...], numRxIdxsPerGroup2D can be on host if
+     * both flag (isReceiversOnHost) is true otherwise on device */
+    uint8_t* numRxIdxsPerGroup2D{ nullptr };
+};
+
+/*************************************************************************
+ * Output (trace results) data types
+ * **********************************************************************/
+
+/**
+ * @brief a struct that contains a single contribution form a ray bounce in the scene to a receiver, each bounce
+ * contributes only one contribution
+ *
+ * @note this struct only defines the standard WPM properties inside a contribution, in addition to that, each
+ * contribution also has a custom ray properties associated with it this can be extracted from rayProps2D
+ *
+ */
+struct Contributions
+{
+    bool* isValid; /**< if true, means this contribution is valid to be used otherwise, shouldn't be used */
+    uint8_t* numBounces; /**< total num bounces throughout the contribution path */
+    float* rtDistance; /**< total roundtrip distance (total contribution path length) */
+    float* rtVelocity; /**< total roundtrip velocity (total contribution path length change) */
+    float3* pos; /**< contribution position in receiver frame */
+    float3* vertices; /**< vertex positions for the hit triangle in receiver frame (float3 array with stride of 3)*/
+    uint64_t* deltaTimeNs; /**< contribution delta time in nsec from startframe */
+    uint32_t* materialId; /**< contribution materialId */
+    float* cosAngle; /**< incident normal dot prod for contribution */
+    float* accumBeamRangeDivergence; /**< accumulated divergence with range of the beam for this contribution */
+};
+
+/**
+ * @brief a struct that holds all results from a trace (all contributions from all bounces for all receivers inside all
+ * receivers)
+ * @note all arrays are on device, except if in pure CPU mode (i.e. setCudaDevice() API was never called)
+ *
+ */
+struct TraceResult
+{
+    /** @brief 2 dimensional array of standard contributions linearized major to minor as (y->x), y represents
+     * receivers, x represents bounces per receiver
+     * [receiver1(Bounce1+Bounce2+...)+receiver2()+...] */
+    Contributions contributions2D;
+
+    /** @brief 2 dimensional array of custom rayProps linearized major to minor as (y->x), y represents
+     * receivers, x represents bounces per receiver [receiver1(Prop1+Prop2+...)+receiver2()+...)
+     * + receiver2(...)+....] */
+    CustomRayProps* rayProps2D{ nullptr };
+
+    /** @brief max number of bounces per receiver as convenience for acessing results in aforementioned 2D arrays (y
+     * size) */
+    uint32_t maxNumBouncesPerReceiver;
+};
+
+/**
+ * @brief Main wave propagation model interface, users can create objects that implement this interface by acquiring the
+ * IWpmFactory carbonite interface and using the createInstance() method. eventhough it is not foreseen as need, it
+ * is possible for each sensor model to own multiple wave propagation model objects that are configured differently and
+ * to alternate using them. it is worth noting that a wpm object is heavy can have a heavy footprint on GPU resources,
+ * thus it is adviced to use wpm objects sparingly
+ *
+ */
+class IWpm : public carb::IObject
+{
+public:
+    virtual ~IWpm(){};
+
+    /*************************************************************************
+     * Init interfaces
+     * - normally used on init and maybe upon device migration
+     * **********************************************************************/
+
+    /**
+     * @brief Sets the Cuda Device to be used, if no cuda device is set the wpm
+     * will assume cpu mode and all memory will be allocated on host
+     *
+     * @param cudaDevice cuda device to use
+     */
+    virtual void setCudaDevice(int32_t cudaDevice) = 0;
+
+    /**
+     * @brief Checks the WPM configuration for sanity (also against RTX Sensor config)
+     *
+     * @param cfg WPM config to check
+     * @param reqs RTX sensor requirements to check against
+     */
+    virtual void checkConfig(const Config& cfg, const rts::RtxSensorRequirements& reqs) = 0;
+
+    /**
+     * @brief Sets the WPM configuration
+     *
+     * @param cfg WPM config to set
+     */
+    virtual void setConfig(const Config& cfg) = 0;
+
+    /**
+     * @brief Gets the Trace Definition object, the user needs to pass to pass the
+     * currently active cuda stream.
+     * Users can modify the trace definition in runtime, changes will only take effect on
+     * a new trace cycle.
+     *
+     * @param cudaStream provides the currently active cuda stream
+     * * @param randState configuration to include random states for material interactions
+     * @return TraceDefinition* pointer to trace definition object when successfull, otherwise a nullptr
+     */
+    virtual TraceDefinition* getTraceDefinition(WpmCudaStream_t cudaStream, const bool randState = true) = 0;
+
+    /**
+     * @brief sets up a material map, with this interface the user can map specific RtxSensor MaterialIds, to
+     * specific material names. all exisiting enabled material plugins will be searched and the material with same
+     * name will be used. in case users are providing own material plugins they are encouraged to use unique names
+     * because name collisions can occur (first material with matching name will be used)
+     *
+     * @param materialMap material map, maps RtxSensor Material Ids, material descriptors
+     * @param reset reset material map to reprocess materials
+     * @param update update material map for existing materials
+     * @return true if setting up materials succeeds
+     * @return false if setting up materials fails
+     */
+    virtual bool setupMaterials(const omni::sensors::materials::MaterialMap& materialMap, bool reset = false, bool update = false) = 0;
+
+    /*************************************************************************
+     * Runnable interfaces
+     * - used cyclically within a trace to cover batches of work
+     * fillFirings()->setReturns()->fillFirings()->setReturns()-> ... etc
+     * - Note: the user can find out how many batches are needed using
+     * utilGetNumBatches(), if the APIs are called more than needed they will
+     * boil down to a no-op in the extra calls.
+     * **********************************************************************/
+
+    /**
+     * @brief fills the RtxSensor firings for the user. the wpm has an internal state and will fill the firings
+     * based on the current batch of work. the trace definition specifies the full trace tree depth, and thus the
+     * number of batches and the amount of work. this API will normally be called within the batchBegin(...) from
+     * RtxSensor API
+     *
+     * @param firings an array of RtxSensor firings to be filled by the wpm
+     */
+    virtual void fillFirings(rts::RtxSensorFiring* firings) = 0;
+
+    /**
+     * @brief sets in the wpm the results of tracing the previous firings. wpm uses the results to
+     * calculate the next needed amount of work
+     *
+     * @param returns and array of RtxSensor returns containing the results of tracing the previous firings
+     */
+    virtual void setReturns(rts::RtxSensorReturn* returns) = 0;
+
+    /*************************************************************************
+     * Result interfaces
+     * - used to get the result from a trace
+     * **********************************************************************/
+
+    /**
+     * @brief Get the Trace Result object
+     * @note using this API at the end of a trace is mandatory to indicate to the wpm the start of a new trace
+     *
+     * @return TraceResult* pointer to and object that has trace results.
+     */
+    virtual TraceResult* getTraceResult() = 0;
+};
+
+/**
+ * @brief a carb object pointer for an object that implements the IWpm interface
+ *
+ */
+using IWpmPtr = carb::ObjectPtr<IWpm>;
+
+} // namespace wpm
+} // namespace sensors
+} // namespace omni

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.466" height="15.443" viewBox="0 0 16.466 15.443">
+  <g id="physics_dark" transform="translate(-11458.145 451.864)">
+    <g id="Group_1186" data-name="Group 1186" transform="translate(11461.853 -448.384)">
+      <path id="Path_2202" data-name="Path 2202" d="M0,2.13,4.4,0,8.86,2.13V7.279L4.4,9.338,0,7.279Z" transform="translate(0.091 0.087)" fill="#324043"/>
+      <g id="Group_842" data-name="Group 842" transform="translate(0 0)">
+        <path id="Path_2199" data-name="Path 2199" d="M0,0,4.51,2.133v5.3L0,5.3Z" transform="translate(0 2.142)" fill="#687477"/>
+        <path id="Path_2200" data-name="Path 2200" d="M4.51,0,0,2.133v5.3L4.51,5.3Z" transform="translate(4.51 2.142)" fill="#84959a"/>
+        <path id="Path_2201" data-name="Path 2201" d="M4.51,0,0,2.142,4.51,4.276,9.021,2.142Z" fill="#97acb1"/>
+      </g>
+    </g>
+    <g id="Group_1187" data-name="Group 1187" transform="translate(11458.853 -442.965)">
+      <line id="Line_516" data-name="Line 516" x2="1.459" y2="1.459" transform="translate(0 4.377)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_518" data-name="Line 518" x1="1.459" y2="1.459" transform="translate(1.459 4.377)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_517" data-name="Line 517" y2="5.836" transform="translate(1.459)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+    </g>
+    <g id="Group_1188" data-name="Group 1188" transform="translate(11470.986 -442.965)">
+      <line id="Line_516-2" data-name="Line 516" x2="1.459" y2="1.459" transform="translate(0 4.377)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_518-2" data-name="Line 518" x1="1.459" y2="1.459" transform="translate(1.459 4.377)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_517-2" data-name="Line 517" y2="5.836" transform="translate(1.459)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+    </g>
+    <g id="Group_1189" data-name="Group 1189" transform="translate(11464.172 -451.364)">
+      <line id="Line_520" data-name="Line 520" y2="1.688" transform="translate(0 0.563)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_519" data-name="Line 519" y2="1.688" transform="translate(4.377 0.563)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+      <line id="Line_521" data-name="Line 521" y2="2.063" transform="translate(2.189)" fill="none" stroke="#97acb1" stroke-linecap="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

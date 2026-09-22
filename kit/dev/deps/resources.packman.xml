@@ -1,0 +1,5 @@
+<project toolsVersion="5.0">
+  <dependency name="omniverse_kit_resources" linkPath="../_build/resources">
+    <package name="omniverse_kit_resources" version="93b0b3e1" />
+  </dependency>
+</project>
