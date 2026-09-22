@@ -1,0 +1,71 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnROS2PublishImage.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_ros2_bridge_ROS2PublishImage" (
+        docs="""This node publishes ROS2 Image messages"""
+    )
+    {
+        token node:type = "isaacsim.ros2.bridge.ROS2PublishImage"
+        int node:typeVersion = 1
+
+        # 16 attributes
+        custom uint inputs:bufferSize = 0 (
+            docs="""Size (in bytes) of the buffer (0 if the input is a texture)"""
+        )
+        custom uint64 inputs:context = 0 (
+            docs="""ROS2 context handle, Default of zero will use the default global context"""
+        )
+        custom int inputs:cudaDeviceIndex = -1 (
+            docs="""Index of the device where the data lives (-1 for host data)"""
+        )
+        custom uchar[] inputs:data = [] (
+            docs="""Buffer array data"""
+        )
+        custom uint64 inputs:dataPtr = 0 (
+            docs="""Pointer to the raw rgba array data"""
+        )
+        custom token inputs:encoding = "rgb8" (
+            docs="""ROS encoding format for the input data, taken from the list of strings in include/sensor_msgs/image_encodings.h. Input data is expected to already be in this format, no conversions are performed"""
+        )
+        custom uint inputs:execIn (
+            docs="""The input execution port."""
+        )
+        custom uint64 inputs:format = 0 (
+            docs="""Format"""
+        )
+        custom string inputs:frameId = "sim_camera" (
+            docs="""FrameId for ROS2 message"""
+        )
+        custom uint inputs:height = 0 (
+            docs="""Buffer array height"""
+        )
+        custom string inputs:nodeNamespace = "" (
+            docs="""Namespace of ROS2 Node, prepends any published/subscribed topic by the node namespace"""
+        )
+        custom string inputs:qosProfile = "" (
+            docs="""QoS profile config"""
+        )
+        custom uint64 inputs:queueSize = 10 (
+            docs="""The number of messages to queue up before throwing some away, in case messages are collected faster than they can be sent. Only honored if 'history' QoS policy was set to 'keep last'. This setting can be overwritten by qosProfile input."""
+        )
+        custom double inputs:timeStamp = 0.0 (
+            docs="""Time in seconds to use when publishing the message"""
+        )
+        custom string inputs:topicName = "rgb" (
+            docs="""Name of ROS2 Topic"""
+        )
+        custom uint inputs:width = 0 (
+            docs="""Buffer array width"""
+        )
+    }
+}

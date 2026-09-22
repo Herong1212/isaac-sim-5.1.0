@@ -1,0 +1,55 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnROS2QoSProfile.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_ros2_bridge_ROS2QoSProfile" (
+        docs="""This node generates a JSON config of a QoS Profile"""
+    )
+    {
+        token node:type = "isaacsim.ros2.bridge.ROS2QoSProfile"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom token inputs:createProfile = "Default for publishers/subscribers" (
+            docs="""Preset profile configs. Choosing a QoS profile will update the policies accordingly."""
+        )
+        custom double inputs:deadline = 0.0 (
+            docs="""Deadline policy. Defined in seconds"""
+        )
+        custom uint64 inputs:depth = 10 (
+            docs="""Depth (Queue size) policy. Only honored if the'history' policy was set to 'keepLast'."""
+        )
+        custom token inputs:durability = "volatile" (
+            docs="""Durability policy"""
+        )
+        custom token inputs:history = "keepLast" (
+            docs="""History policy"""
+        )
+        custom double inputs:leaseDuration = 0.0 (
+            docs="""Lease Duration policy. Defined in seconds"""
+        )
+        custom double inputs:lifespan = 0.0 (
+            docs="""Lifespan policy. Defined in seconds"""
+        )
+        custom token inputs:liveliness = "systemDefault" (
+            docs="""Liveliness policy"""
+        )
+        custom token inputs:reliability = "reliable" (
+            docs="""Reliability policy"""
+        )
+
+        # 1 attribute
+        custom string outputs:qosProfile (
+            docs="""QoS profile config"""
+        )
+    }
+}

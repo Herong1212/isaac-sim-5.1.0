@@ -1,0 +1,71 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnROS2PublishCameraInfo.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_ros2_bridge_ROS2PublishCameraInfo" (
+        docs="""This node publishes camera info as a ROS2 CameraInfo message"""
+    )
+    {
+        token node:type = "isaacsim.ros2.bridge.ROS2PublishCameraInfo"
+        int node:typeVersion = 2
+
+        # 16 attributes
+        custom uint64 inputs:context = 0 (
+            docs="""ROS2 context handle, Default of zero will use the default global context"""
+        )
+        custom uint inputs:execIn (
+            docs="""The input execution port"""
+        )
+        custom string inputs:frameId = "sim_camera" (
+            docs="""FrameId for ROS2 message"""
+        )
+        custom uint inputs:height = 0 (
+            docs="""Height for output image"""
+        )
+        custom double[] inputs:k = [] (
+            docs="""3x3 Intrinsic camera matrix for the raw (distorted) images. Projects 3D points in the camera coordinate frame to 2D pixel coordinates using the focal lengths and principal point."""
+        )
+        custom string inputs:nodeNamespace = "" (
+            docs="""Namespace of ROS2 Node, prepends any published/subscribed topic by the node namespace"""
+        )
+        custom double[] inputs:p = [] (
+            docs="""3x4 Rectification matrix (stereo cameras only). A rotation matrix aligning the camera coordinate system to the ideal stereo image plane so that epipolar lines in both stereo images are parallel."""
+        )
+        custom float[] inputs:physicalDistortionCoefficients = [] (
+            docs="""physical distortion model used for approximation, physicalDistortionModel must be set to use these coefficients"""
+        )
+        custom token inputs:physicalDistortionModel = "" (
+            docs="""physical distortion model used for approximation, if blank projectionType is used"""
+        )
+        custom token inputs:projectionType = "" (
+            docs="""projection type"""
+        )
+        custom string inputs:qosProfile = "" (
+            docs="""QoS profile config"""
+        )
+        custom uint64 inputs:queueSize = 10 (
+            docs="""The number of messages to queue up before throwing some away, in case messages are collected faster than they can be sent. Only honored if 'history' QoS policy was set to 'keep last'. This setting can be overwritten by qosProfile input."""
+        )
+        custom double[] inputs:r = [] (
+            docs="""3x3 Rectification matrix (stereo cameras only). A rotation matrix aligning the camera coordinate system to the ideal stereo image plane so that epipolar lines in both stereo images are parallel."""
+        )
+        custom double inputs:timeStamp = 0.0 (
+            docs="""ROS2 Timestamp in seconds"""
+        )
+        custom string inputs:topicName = "camera_info" (
+            docs="""Name of ROS2 Topic"""
+        )
+        custom uint inputs:width = 0 (
+            docs="""Width for output image"""
+        )
+    }
+}

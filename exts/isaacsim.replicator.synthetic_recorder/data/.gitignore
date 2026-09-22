@@ -1,0 +1,3 @@
+# Preserve file visibility; large-file exclusions are managed in the root .gitignore.
+# Disabled: *_config.json
+!default_config.json

@@ -1,0 +1,6 @@
+setup.py
+geographic_msgs/__init__.py
+geographic_msgs.egg-info/PKG-INFO
+geographic_msgs.egg-info/SOURCES.txt
+geographic_msgs.egg-info/dependency_links.txt
+geographic_msgs.egg-info/top_level.txt

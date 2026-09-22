@@ -1,0 +1,49 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnIsaacReadEffortSensor.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_sensors_physics_IsaacReadEffortSensor" (
+        docs="""Node that reads out joint effort values"""
+    )
+    {
+        token node:type = "isaacsim.sensors.physics.IsaacReadEffortSensor"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom bool inputs:enabled = true (
+            docs="""True to enable sensor, False to disable the sensor"""
+        )
+        custom uint inputs:execIn (
+            docs="""The input execution port"""
+        )
+        custom rel inputs:prim (
+            docs="""Path to the joint getting measured"""
+        )
+        custom float inputs:sensorPeriod = 0 (
+            docs="""Downtime between sensor readings"""
+        )
+        custom bool inputs:useLatestData = false (
+            docs="""True to use the latest data from the physics step, False to use the data measured by the sensor"""
+        )
+
+        # 3 attributes
+        custom uint outputs:execOut (
+            docs="""Output execution triggers when sensor has data"""
+        )
+        custom float outputs:sensorTime = 0 (
+            docs="""Timestamp of the sensor reading"""
+        )
+        custom float outputs:value = 0.0 (
+            docs="""Effort value reading"""
+        )
+    }
+}

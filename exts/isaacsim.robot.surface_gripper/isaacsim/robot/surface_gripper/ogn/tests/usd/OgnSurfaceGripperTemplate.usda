@@ -1,0 +1,32 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSurfaceGripper.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_robot_surface_gripper_SurfaceGripper" (
+        docs="""Surface Gripper"""
+    )
+    {
+        token node:type = "isaacsim.robot.surface_gripper.SurfaceGripper"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom rel inputs:SurfaceGripper (
+            docs="""The Surface Gripper prim to control"""
+        )
+        custom uint inputs:Toggle (
+            docs="""Toggle the gripper"""
+        )
+        custom bool inputs:enabled = true (
+            docs="""node does not execute if disabled"""
+        )
+    }
+}

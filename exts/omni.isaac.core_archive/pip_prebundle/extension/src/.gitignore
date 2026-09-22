@@ -1,0 +1,4 @@
+# Preserve file visibility; large-file exclusions are managed in the root .gitignore.
+# Ignore all static libraries
+# Disabled: *.a
+# Disabled: *.lib

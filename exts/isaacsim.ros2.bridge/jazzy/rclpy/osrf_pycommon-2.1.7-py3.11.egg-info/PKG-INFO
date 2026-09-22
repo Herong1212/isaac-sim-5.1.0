@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: osrf_pycommon
+Version: 2.1.7
+Summary: Commonly needed Python modules, used by Python software developed at OSRF
+Home-page: http://osrf-pycommon.readthedocs.org/
+Author: William Woodall
+Author-email: william@osrfoundation.org
+Maintainer: William Woodall
+Maintainer-email: william@openrobotics.org
+License: Apache 2.0
+Keywords: osrf,utilities
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Requires-Python: >=3.5
+License-File: LICENSE
+Requires-Dist: importlib-metadata; python_version < "3.8"
+Provides-Extra: test
+Requires-Dist: flake8; extra == "test"
+Requires-Dist: flake8_import_order; extra == "test"
+Requires-Dist: pytest; extra == "test"

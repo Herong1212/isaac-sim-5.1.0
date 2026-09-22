@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnROS2ServicePrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_ros2_bridge_ROS2ServicePrim" (
+        docs="""This node provides the services to list prims and all their attributes, as well as read and write a specific attribute"""
+    )
+    {
+        token node:type = "isaacsim.ros2.bridge.ROS2ServicePrim"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom uint64 inputs:context = 0 (
+            docs="""ROS2 context handle, Default of zero will use the default global context"""
+        )
+        custom uint inputs:execIn (
+            docs="""The input execution port."""
+        )
+        custom string inputs:getAttributeServiceName = "get_prim_attribute" (
+            docs="""Name of the ROS2 service to read a specific prim attribute"""
+        )
+        custom string inputs:getAttributesServiceName = "get_prim_attributes" (
+            docs="""Name of the ROS2 service to list all specific prim's attributes"""
+        )
+        custom string inputs:nodeNamespace = "" (
+            docs="""Namespace of ROS2 Node, prepends any service name by the node namespace"""
+        )
+        custom string inputs:primsServiceName = "get_prims" (
+            docs="""Name of the ROS2 service to list all prims in the current stage"""
+        )
+        custom string inputs:qosProfile = "" (
+            docs="""QoS profile config"""
+        )
+        custom string inputs:setAttributeServiceName = "set_prim_attribute" (
+            docs="""Name of the ROS2 service to write a specific prim attribute"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Output execution triggers when a response has been submitted"""
+        )
+    }
+}

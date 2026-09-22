@@ -1,0 +1,67 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnHolonomicController.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_robot_wheeled_robots_HolonomicController" (
+        docs="""Holonomic Controller"""
+    )
+    {
+        token node:type = "isaacsim.robot.wheeled_robots.HolonomicController"
+        int node:typeVersion = 2
+
+        # 13 attributes
+        custom double inputs:angularGain = 1 (
+            docs="""Angular gain"""
+        )
+        custom uint inputs:execIn (
+            docs="""The input execution"""
+        )
+        custom double3 inputs:inputVelocity = (0.0, 0.0, 0.0) (
+            docs="""Velocity in x and y (m/s) and rotation (rad/s)"""
+        )
+        custom double inputs:linearGain = 1 (
+            docs="""Linear gain"""
+        )
+        custom double inputs:maxAngularSpeed = 100000 (
+            docs="""Maximum angular rotation speed allowed for the vehicle in rad/s"""
+        )
+        custom double inputs:maxLinearSpeed = 100000 (
+            docs="""Maximum speed allowed for the vehicle in m/s"""
+        )
+        custom double inputs:maxWheelSpeed = 100000 (
+            docs="""Maximum rotation speed allowed for the wheel joints in rad/s"""
+        )
+        custom double[] inputs:mecanumAngles = [] (
+            docs="""Angles of the mecanum wheels with respect to wheel's rotation axis in radians"""
+        )
+        custom double3 inputs:upAxis = (0.0, 0.0, 1.0) (
+            docs="""The rotation axis of the vehicle"""
+        )
+        custom double3 inputs:wheelAxis = (1.0, 0.0, 0.0) (
+            docs="""The rotation axis of the wheels"""
+        )
+        custom double4[] inputs:wheelOrientations = [] (
+            docs="""Orientation of the wheel with respect to chassis' center of mass frame"""
+        )
+        custom double3[] inputs:wheelPositions = [] (
+            docs="""Position of the wheel with respect to chassis' center of mass in meters"""
+        )
+        custom double[] inputs:wheelRadius = [] (
+            docs="""An array of wheel radius in meters"""
+        )
+
+        # 1 attribute
+        custom double[] outputs:jointVelocityCommand (
+            docs="""Velocity commands for the wheels joints"""
+        )
+    }
+}

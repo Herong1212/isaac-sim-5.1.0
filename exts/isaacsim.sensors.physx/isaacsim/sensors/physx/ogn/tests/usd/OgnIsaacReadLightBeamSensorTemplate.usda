@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnIsaacReadLightBeamSensor.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_sensors_physx_IsaacReadLightBeam" (
+        docs="""Node that reads out light beam sensor data"""
+    )
+    {
+        token node:type = "isaacsim.sensors.physx.IsaacReadLightBeam"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom uint inputs:execIn (
+            docs="""The input execution port"""
+        )
+        custom rel inputs:lightbeamPrim (
+            docs="""Usd prim reference to the light beam prim"""
+        )
+
+        # 7 attributes
+        custom point3f[] outputs:beamEndPoints = [] (
+            docs="""Array containing end points of each beam"""
+        )
+        custom bool[] outputs:beamHitData = [] (
+            docs="""Array of bools that registers if a light beam is broken"""
+        )
+        custom point3f[] outputs:beamOrigins = [] (
+            docs="""Array containing origins of each beam"""
+        )
+        custom uint outputs:execOut (
+            docs="""Output execution triggers when sensor has data"""
+        )
+        custom point3f[] outputs:hitPosData = [] (
+            docs="""Array containing hit position data"""
+        )
+        custom float[] outputs:linearDepthData = [] (
+            docs="""Array containing linear depth data"""
+        )
+        custom int outputs:numRays = 0 (
+            docs="""The number of rays in light curtain"""
+        )
+    }
+}

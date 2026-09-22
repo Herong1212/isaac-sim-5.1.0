@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSampleBetweenSpheres.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_replicator_examples_OgnSampleBetweenSpheres" (
+        docs="""Assignes uniformly sampled between two spheres"""
+    )
+    {
+        token node:type = "isaacsim.replicator.examples.OgnSampleBetweenSpheres"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom uint inputs:execIn = 0 (
+            docs="""exec"""
+        )
+        custom rel inputs:prims (
+            docs="""prims to randomize"""
+        )
+        custom float inputs:radius1 = 0.5 (
+            docs="""inner sphere radius"""
+        )
+        custom float inputs:radius2 = 1.0 (
+            docs="""outer sphere radius"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

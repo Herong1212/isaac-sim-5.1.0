@@ -1,4 +1,43 @@
+# 编辑器本地历史
 .history/
 
-exts/
+# GitHub 普通 Git 单文件上限为 100 MiB。
+# 仅忽略下列超限文件，保留目录内其他文件及新增文件的变化检测。
+# 这些运行库仍保留在本机，克隆仓库后需另外补齐。
+
+# exts/：17 个超过 100 MiB 的文件
+/exts/omni.isaac.core_archive/pip_prebundle/llvmlite/binding/libllvmlite.so
+/exts/omni.isaac.ml_archive/pip_prebundle/cusparselt/lib/libcusparseLt.so.0
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cublas/lib/libcublas.so.12
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cublas/lib/libcublasLt.so.12
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cuda_nvrtc/lib/libnvrtc.alt.so.12
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cudnn/lib/libcudnn_adv.so.9
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cudnn/lib/libcudnn_ops.so.9
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cufft/lib/libcufft.so.11
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/curand/lib/libcurand.so.10
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cusolver/lib/libcusolver.so.11
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cusolver/lib/libcusolverMg.so.11
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/cusparse/lib/libcusparse.so.12
+/exts/omni.isaac.ml_archive/pip_prebundle/nvidia/nccl/lib/libnccl.so.2
+/exts/omni.isaac.ml_archive/pip_prebundle/torch/lib/libtorch_cpu.so
+/exts/omni.isaac.ml_archive/pip_prebundle/torch/lib/libtorch_cuda.so
+/exts/omni.isaac.ml_archive/pip_prebundle/torch/lib/libtorch_cuda_linalg.so
+
+# extscache/：15 个超过 100 MiB 的文件
 extscache/
+/extscache/omni.genproc.core-107.0.3+107.0.3.lx64.r.cp311.u353/bin/libomni.genproc.core.plugin.so
+/extscache/omni.hydra.rtx-1.0.0+69cbf6ad.lx64.r/bin/deps/libnrend.so
+/extscache/omni.index.libs-380600.8087.0+69cbf6ad.lx64.r/bin/nvindex-libs/libnvindex.so
+/extscache/omni.iray.libs-0.0.0+69cbf6ad.lx64.r/bin/iray/libiray.so
+/extscache/omni.iray.libs-0.0.0+69cbf6ad.lx64.r/bin/iray/libneuray.so
+/extscache/omni.iray.libs-0.0.0+69cbf6ad.lx64.r/bin/iray/libnvindex.so
+/extscache/omni.kit.converter.hoops_core-509.1.0+107.3.1.lx64.r.cp311.u353/bin/libA3DLIBS.so
+/extscache/omni.kit.converter.hoops_core-509.1.0+107.3.1.lx64.r.cp311.u353/bin/libA3DLIBS.so.25.6.0
+/extscache/omni.kit.usd.mdl-1.1.5+69cbf6ad.lx64.r.cp311/bin/libnrend.so
+/extscache/omni.physx.foundation-107.3.26+107.3.3.lx64.r.cp311.u353/bin/libPhysXGpu_64.so
+/extscache/omni.scene.optimizer.core-107.3.12+107.3.0.lx64.r.cp311.u353/bin/libomnimesh_ops.so
+/extscache/omni.sensors.nv.common-3.0.0+69cbf6ad.lx64.r.cp311/bin/libcufft.so
+/extscache/omni.sensors.nv.common-3.0.0+69cbf6ad.lx64.r.cp311/bin/libcufft.so.10
+/extscache/omni.sensors.nv.common-3.0.0+69cbf6ad.lx64.r.cp311/bin/libcufft.so.10.9.0.58
+/extscache/omni.warp.core-1.8.2+lx64/warp/bin/warp.so
