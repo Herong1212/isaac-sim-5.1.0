@@ -1,0 +1,77 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+dome_light:
+  create.light:
+    light_type: dome
+
+stage_render_setting:
+  settings.set_render_pathtraced:
+    samples_per_pixel: 32
+
+plane:
+  create.plane:
+    semantics: [["class", "plane"]]
+    visible: true
+    scale: 10
+
+register_instantiate:
+  randomizer.register:
+    get_props:
+      inputs:
+        size: null
+      instances:
+        randomizer.instantiate:
+          paths:
+            utils.get_usd_files:
+              path: 'omniverse://localhost/NVIDIA/Assets/Vegetation/Plant_Tropical/'
+              recursive: True
+          size: size
+          mode: 'point_instance'
+
+      with.instances:
+        modify.pose:
+          position:
+            distribution.uniform:
+              lower: [-5, -5, 0]
+              upper: [5, 5, 0]
+          rotation:
+            distribution.uniform:
+              lower: [0, 0, 0]
+              upper: [0, 0, 0]
+          scale: 0.01
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+    rt_subframes: 5
+
+with_trigger:
+  with.trigger:
+    randomizer.get_props:
+      size: 3
+
+camera:
+  create.camera:
+    position: [10, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

@@ -1,0 +1,104 @@
+{
+    "ToUint64": {
+        "version": 1,
+        "description": [
+            "Converts the input to 64-bit unsigned integer. Array inputs are converted",
+            "element-wise to arrays of the same shape.",
+            "Conversion of floating-point values is performed by truncation towards zero.",
+            "Conversion of negative values is performed by subtracting the converted",
+            "positive value from the value 2e64."
+        ],
+        "uiName": "To UInt64",
+        "categories": ["math:conversion"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["bool",   "int",   "uint",   "int64",   "uint64",   "float",   "double",   "half",   "uchar",
+                         "bool[]", "int[]", "uint[]", "int64[]", "uint64[]", "float[]", "double[]", "half[]", "uchar[]"],
+                "uiName": "Value",
+                "description": "The numeric or boolean value to convert."
+             }
+        },
+        "outputs": {
+            "converted": {
+                "type": ["uint64", "uint64[]"],
+                "uiName": "UInt64",
+                "description": "The value converted to 64-bit unsigned integer form."
+             }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "bool", "value": true},
+                "outputs:converted": {"type": "uint64", "value": 1}
+            },
+            {
+                "inputs:value": {"type": "int", "value": 42},
+                "outputs:converted": {"type": "uint64", "value": 42}
+            },
+            {
+                "inputs:value": {"type": "uint", "value": 96},
+                "outputs:converted": {"type": "uint64", "value": 96}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 42},
+                "outputs:converted": {"type": "uint64", "value": 42}
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 0},
+                "outputs:converted": {"type": "uint64", "value": 0}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 2.9},
+                "outputs:converted": {"type": "uint64", "value": 2}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 2.1},
+                "outputs:converted": {"type": "uint64", "value": 2}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 2.9},
+                "outputs:converted": {"type": "uint64", "value": 2}
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 35},
+                "outputs:converted": {"type": "uint64", "value": 35}
+            },
+            {
+                "inputs:value": {"type": "bool[]", "value": [true, false]},
+                "outputs:converted": {"type": "uint64[]", "value": [1, 0]}
+            },
+            {
+                "inputs:value": {"type": "int[]", "value": [2, 0, -4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 0, 18446744073709551612] }
+            },
+            {
+                "inputs:value": {"type": "uint[]", "value": [2, 3, 4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 3, 4] }
+            },
+            {
+                "inputs:value": {"type": "int64[]", "value": [2, 3, -4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 3, 18446744073709551612] }
+            },
+            {
+                "inputs:value": {"type": "uint64[]", "value": [2, 0, 4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 0, 4] }
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [] },
+                "outputs:converted": {"type": "uint64[]", "value": []}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": [2.1, 0, 4.7] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 0, 4] }
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [2, 3, 4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 3, 4] }
+            },
+            {
+                "inputs:value": {"type": "uchar[]", "value": [2, 0, 4] },
+                "outputs:converted": {"type": "uint64[]", "value": [2, 0, 4] }
+            }
+        ]
+    }
+}

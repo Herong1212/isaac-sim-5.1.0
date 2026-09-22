@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnArrayFill.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ArrayFill" (
+        docs="""Creates a copy of the input array, filled with the given value."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ArrayFill"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:array (
+            docs="""The array to be copied into the output array attribute. Essentially sets the size
+            of the output array since the actual values will all be overridden."""
+        )
+        custom token inputs:fillValue (
+            docs="""The value to be repeated in the new array."""
+        )
+
+        # 1 attribute
+        custom token outputs:array (
+            docs="""An array computed from the input array whose individual elements have all been set to equal the
+            value of the "Value" input attribute."""
+        )
+    }
+}

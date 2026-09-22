@@ -1,0 +1,30 @@
+{
+    "FlowSimTime": {
+        "version": 1,
+        "categories": "FlowUsd",
+        "categoryDefinitions": "FlowNodeCategories.json",
+        "description": "Node exposing simulation time to OG",
+        "metadata": {
+            "uiName": "Flow SimTime"
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Executes when values are updated"
+            },
+            "lastAbsoluteSimTime": {
+                "type": "double",
+                "description": "Time when work submitted to Flow has flushed through",
+                "uiName": "Last Absolute",
+                "default": 0.0
+            },
+            "lastFaultAbsoluteSimTime": {
+                "type": "double",
+                "description": "Last time Flow hit max blocks",
+                "uiName": "Last Fault Absolute",
+                "default": 0.0
+            }
+        },
+        "exclude": ["tests"]
+    }
+}

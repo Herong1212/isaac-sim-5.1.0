@@ -1,0 +1,25 @@
+[package]
+title = "USD Collection Utils (Preview)"
+description = "USD Collection Utils"
+version = "0.2.3"
+category = "Internal"
+authors = ["NVIDIA"]
+keywords = ["collection", "outliner", "usd"]
+changelog = "docs/CHANGELOG.md"
+repository = ""
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+readme = "docs/README.md"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.usd" = {}
+
+[[python.module]]
+name = "omni.kit.core.collection"
+
+[[test]]
+dependencies = [
+    "omni.kit.renderer.core",
+    "omni.kit.usd.layers"
+]

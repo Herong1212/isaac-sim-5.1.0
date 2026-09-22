@@ -1,0 +1,200 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+
+version = "4.5.12"
+category = "Internal"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "USD Property Window Widgets"
+description="Property Window widgets that displays USD related information."
+
+# URL of the extension source repository.
+repository = ""
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Keywords for the extension
+keywords = ["kit", "usd", "property"]
+support_level = "Core"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+[dependencies]
+"omni.client" = {}
+"omni.kit.commands" = {}
+"omni.timeline" = {}
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.window.property" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.widget.context_menu" = {}
+"omni.kit.window.file_importer" = {optional = true}
+"omni.kit.window.content_browser" = {optional = true}
+"omni.kit.widget.versioning" = {optional = true}
+"omni.kit.widget.live_session_management" = {optional = true}
+"omni.kit.usd.layers" = {}
+"omni.kit.notification_manager" = {optional = true}
+"usdrt.scenegraph" = {}
+"omni.kit.property.adapter.core" = {}
+"omni.kit.property.adapter.usd" = {}
+"omni.kit.property.adapter.fabric" = {}
+
+[settings]
+persistent.exts."omni.kit.property.usd".large_selection = 100
+persistent.exts."omni.kit.property.usd".raw_widget_multi_selection_limit = 1
+persistent.exts."omni.kit.property.usd".update_on_press_enter = true
+persistent.exts."omni.kit.property.usd".references_check_missing = true
+persistent.exts."omni.kit.property.usd".references_hide_max = 5
+exts."omni.kit.property.usd".allow_rename_prims = true
+exts."omni.kit.property.usd".show_prefs = true
+
+# Disable adapter layer by default. This is effectively disabling all omni.kit.property.adapter.* extensions but USD.
+# Set this to true to use all enabled omni.kit.property.adapter.* extensions and access values from different datastores.
+ext."omni.kit.property.usd".enableAdapter = false
+# add/remove schema APIs
+ext."omni.kit.property.usd".showSchemaAPI = true
+ext."omni.kit.property.usd".removeSchemaAPI = true
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.property.usd".
+[[python.module]]
+name = "omni.kit.property.usd"
+
+[[test]]
+name = "all"
+timeout = 600
+pythonTests.exclude = [
+    "omni.kit.property.usd.tests.test_coverage*",
+    "omni.kit.property.usd.tests.test_schema_api*",
+]
+
+args = [
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/persistent/app/stage/dragDropImport='reference'",
+    "--/persistent/app/material/dragDropMaterialPath='absolute'",
+    "--/persistent/app/properties/material/displayBaseShader=true",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+    "--/persistent/exts/omni.kit.property.usd/raw_widget_multi_selection_limit=0",
+    "--/exts/omni.kit.notification_manager/disable_notifications=true",
+    "--/exts/omni.kit.property.usd/allow_rename_prims = true",
+    "--/persistent/exts/omni.kit.property.usd/references_check_missing=true",
+    "--/persistent/exts/omni.kit.property.usd/references_hide_max=50",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=1",
+    "--/ext/omni.kit.property.usd/enableAdapter=true",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.window.preferences",
+    "omni.kit.window.content_browser",
+    "omni.kit.window.file_importer",
+    "omni.kit.window.stage",
+    "omni.kit.widget.layers",
+    "omni.kit.widget.live_session_management",
+    "omni.kit.widget.versioning",
+    "omni.kit.property.material",
+    "omni.kit.property.layer",
+    "omni.kit.window.status_bar",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file",
+    "omni.fabric.commands",
+    "omni.kit.primitive.mesh",
+    "omni.kit.context_menu",
+    "omni.kit.window.status_bar",
+    "omni.kit.material.library",
+]
+
+#pyCoverageIncludeDependencies = false
+
+stdoutFailPatterns.exclude = [
+    "*failed to load native plugin:*usdrt.hydra.fabric_scene_delegate.plugin.dll*",
+    "*Tried to call pure virtual function*",
+    "*[carb.events.python] ArgumentError*",
+    "*[omni.kit.property.usd.attribute_context_menu] can_paste: error Token*",
+    "*comp error: C120 could not find module*",
+    "*Cannot get Sdr.ShaderProperty input*",
+    "*pxr.Tf.ErrorException*", # tests randomly fail because of pxr.Tf.ErrorException error loading MDL
+]
+
+pythonTests.unreliable = [
+    "*test_asset_array_widget_ov_absolute*", # OM-110152
+    "*test_asset_array_widget_ov_relative*", # OM-110152
+    # tests randomly fail because of "'rtx::neuraylib::MdlModuleId' for '' is Invalid"
+    "*test_drag_drop_multi_mdl_asset_path*",  # OMPE-43880
+    "*test_drag_drop_single_mdl_asset_path*",  # OMPE-43880
+    "*test_drag_drop_multi_png_asset_path*",  # OMPE-43880
+    "*test_drag_drop_single_png_asset_path*",  # OMPE-43880
+    "*test_shader_goto_material_property*",  # OMPE-43880
+    # omni.kit.window.content_browser function navigate_to randomly fails to change directory
+    "*test_reference_buttons*",  # OMPE-43460
+    # TypeError: __setitem__(): incompatible function arguments. The following argument types are supported
+    "*test_attribute_model*",  # OMPE-43878
+]
+
+[[test]]
+name = "coverage"
+pythonTests.include = [
+    "omni.kit.property.usd.tests.test_coverage*",
+    "omni.kit.property.usd.tests.test_schema_api*",
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/persistent/app/stage/dragDropImport='reference'",
+    "--/persistent/app/material/dragDropMaterialPath='absolute'",
+    "--/persistent/app/properties/material/displayBaseShader=true",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+    "--/persistent/exts/omni.kit.property.usd/raw_widget_multi_selection_limit=0",
+    "--/exts/omni.kit.property.usd/allow_rename_prims = true",
+    "--/exts/omni.kit.notification_manager/disable_notifications=true",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=1",
+    "--/ext/omni.kit.property.usd/enableAdapter=true",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.window.preferences",
+    "omni.kit.window.content_browser",
+    "omni.kit.window.file_importer",
+    "omni.kit.window.stage",
+    "omni.kit.widget.layers",
+    "omni.kit.property.material",
+    "omni.kit.property.layer",
+    "omni.kit.window.status_bar",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file",
+    "omni.kit.primitive.mesh",
+    "omni.kit.context_menu",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Tried to call pure virtual function*",
+    "*[carb.events.python] ArgumentError*",
+    "*[omni.kit.property.usd.attribute_context_menu] can_paste: error Token*",
+    "*comp error: C120 could not find module*",
+]
+
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]

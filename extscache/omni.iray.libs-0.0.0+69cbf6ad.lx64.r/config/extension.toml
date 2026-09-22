@@ -1,0 +1,40 @@
+[package]
+title = "Iray Renderer and MDL material binaries"
+category = "Rendering"
+description = "Binaries for the Iray Renderer and the MDL material backend."
+keywords = ["Iray", "renderer", "MDL", "material"]
+support_level = "Core"
+
+[dependencies]
+
+[[native.library]]
+"filter:platform"."linux-x86_64".path = "bin/iray/liboptix_prime${lib_ext}.1"
+
+[[native.library]]
+path = "bin/iray/libiray${lib_ext}"
+
+[[native.library]]
+path = "bin/iray/libneuray${lib_ext}"
+
+[[native.library]]
+path = "bin/mdl-distiller/mdl_distiller${lib_ext}"
+
+[[native.library]]
+path = "bin/mdl-distiller/mdl_lod_distiller${lib_ext}"
+
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/iray_openimageio.dll"
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/iray_dds.dll"
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/mi_exporter.dll"
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/iray_bridge_client.dll"
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/nvcuvid_video_decoder.dll"
+
+[[native.library]]
+"filter:platform"."windows-x86_64".path = "bin/iray/libnvindex.dll"
+
+[[test]]
+waiver = "Bundle extension that pulls all iray libs"

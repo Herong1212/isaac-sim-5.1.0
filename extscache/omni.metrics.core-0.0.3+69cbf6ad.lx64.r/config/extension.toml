@@ -1,0 +1,25 @@
+[package]
+version = "0.0.3"
+title = "Metrics Core"
+category = "Internal"
+description = "Allow opentelemetry metrics to be used via carb plugin carb.metrics"
+keywords = ["statistics", "metrics", "utilization"]
+support_level = "Core"
+
+[dependencies]
+
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+
+[[native.plugin]]
+"filter:os".windows.path = "bin/deps/carb.metrics.plugin"
+"filter:platform"."linux-x86_64".path = "bin/deps/carb.metrics.plugin"
+
+
+[[test]]
+waiver = "carb plugin tested"

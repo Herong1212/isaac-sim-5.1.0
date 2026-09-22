@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="LookAtIK" transform="translate(-82 -200)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(82 200)" fill="none"/>
+    <path id="bgr" d="M9,0H40a0,0,0,0,1,0,0V31a9,9,0,0,1-9,9H0a0,0,0,0,1,0,0V9A9,9,0,0,1,9,0Z" transform="translate(82 200)" fill="#1e2931"/>
+    <g id="Ellipse_284" data-name="Ellipse 284" transform="translate(85 203)" fill="#fff" stroke="#000" stroke-width="1">
+      <circle cx="8.5" cy="8.5" r="8.5" stroke="none"/>
+      <circle cx="8.5" cy="8.5" r="8" fill="none"/>
+    </g>
+    <circle id="Ellipse_285" data-name="Ellipse 285" cx="5" cy="5" r="5" transform="translate(90 208)"/>
+    <circle id="Ellipse_286" data-name="Ellipse 286" cx="1.5" cy="1.5" r="1.5" transform="translate(92 210)" fill="#fff"/>
+    <line id="Line_937" data-name="Line 937" x2="14" y2="14" transform="translate(97.5 216.5)" fill="none" stroke="#86d580" stroke-linecap="round" stroke-width="2" stroke-dasharray="2 3"/>
+    <line id="Line_938" data-name="Line 938" y2="12" transform="translate(112 224.5)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+    <line id="Line_939" data-name="Line 939" x2="11" transform="translate(106.5 230.5)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

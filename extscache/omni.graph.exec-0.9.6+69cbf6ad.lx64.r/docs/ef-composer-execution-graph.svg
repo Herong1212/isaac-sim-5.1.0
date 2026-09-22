@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 4677.9623 528.75"
+   version="1.1"
+   id="ef-composer-execution-graph"
+   width="100%"
+   height="100%"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     class="graph"
+     transform="matrix(0.625,0,0,0.625,2.5,526.25)"
+     id="g454">
+    <path
+       fill="#ffffff"
+       stroke="transparent"
+       d="M -4,4 V -842 H 7480.74 V 4 Z"
+       id="path2" />
+    <g
+       class="cluster"
+       id="g8">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="m 20,-8 h 7436.74 c 6,0 12,-6 12,-12 v -798 c 0,-6 -6,-12 -12,-12 H 20 c -6,0 -12,6 -12,12 v 798 c 0,6 6,12 12,12"
+         id="path4" />
+      <text
+         x="3738.3701"
+         y="-813.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text6">EXECUTION GRAPH | kit.def.execution(8412328473570437098)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g14">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 261.98,-16 h 7186.76 c 6,0 12,-6 12,-12 v -757 c 0,-6 -6,-12 -12,-12 H 261.98 c -6,0 -12,6 -12,12 v 757 c 0,6 6,12 12,12"
+         id="path10" />
+      <text
+         x="3855.3601"
+         y="-780.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text12">kit.legacyPipeline(2) | kit.def.legacyPipeline(14601541822497998125)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g20">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 5479.15,-360 h 1423.03 c 6,0 12,-6 12,-12 v -62 c 0,-6 -6,-12 -12,-12 H 5479.15 c -6,0 -12,6 -12,12 v 62 c 0,6 6,12 12,12"
+         id="path16" />
+      <text
+         x="6190.6699"
+         y="-429.39999"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text18">OmniGraph(24) | OmniGraphDef(13532122613264624703)</text>
+    </g>
+    <g
+       class="node"
+       id="g26">
+      <circle
+         cx="138.78999"
+         cy="-394"
+         r="83.379997"
+         stroke="#000000"
+         id="circle22" />
+      <text
+         x="138.78999"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text24">kit.customPipeline</text>
+    </g>
+    <g
+       class="cluster"
+       id="g32">
+      <path
+         fill="none"
+         stroke="#b2df8a"
+         d="m 5550.54,-368 h 391.6 c 6,0 12,-6 12,-12 v -21 c 0,-6 -6,-12 -12,-12 h -391.6 c -6,0 -12,6 -12,12 v 21 c 0,6 6,12 12,12"
+         id="path28" />
+      <text
+         x="5746.3398"
+         y="-396.39999"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text30">og.pre_simulation(1) | og.def.pre_simulation(18371527843990822053)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g38">
+      <path
+         fill="none"
+         stroke="#33a02c"
+         d="m 6049.62,-368 h 334.6 c 6,0 12,-6 12,-12 v -21 c 0,-6 -6,-12 -12,-12 h -334.6 c -6,0 -12,6 -12,12 v 21 c 0,6 6,12 12,12"
+         id="path34" />
+      <text
+         x="6216.9199"
+         y="-396.39999"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text36">og.simulation(2) | og.def.simulation(2058752528039269071)</text>
+    </g>
+    <g
+       class="edge"
+       id="g44">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="M 20.14,-394 H 45.07"
+         id="path40" />
+      <path
+         stroke="#000000"
+         d="m 45.33,-397.5 10,3.5 -10,3.5 z"
+         id="path42" />
+    </g>
+    <g
+       class="cluster"
+       id="g50">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 6491.58,-368 h 402.6 c 6,0 12,-6 12,-12 v -21 c 0,-6 -6,-12 -12,-12 h -402.6 c -6,0 -12,6 -12,12 v 21 c 0,6 6,12 12,12"
+         id="path46" />
+      <text
+         x="6692.8799"
+         y="-396.39999"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text48">og.post_simulation(3) | og.def.post_simulation(12859070463537551084)</text>
+    </g>
+    <g
+       class="node"
+       id="g54">
+      <circle
+         cx="17.799999"
+         cy="-394"
+         r="1.8"
+         stroke="#000000"
+         id="circle52" />
+    </g>
+    <g
+       class="edge"
+       id="g60">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="m 222.11,-394 h 25.52"
+         id="path56" />
+      <path
+         stroke="#000000"
+         d="m 239.98,-397.5 10,3.5 -10,3.5 z"
+         id="path58" />
+    </g>
+    <g
+       class="node"
+       id="g66">
+      <circle
+         cx="379.95001"
+         cy="-394"
+         r="82.25"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle62" />
+      <text
+         x="379.95001"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text64">CurveManipulator</text>
+    </g>
+    <g
+       class="edge"
+       id="g72">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 262.11,-394 h 24.98"
+         id="path68" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 287.36,-397.5 10,3.5 -10,3.5 z"
+         id="path70" />
+    </g>
+    <g
+       class="node"
+       id="g78">
+      <circle
+         cx="548.53003"
+         cy="-394"
+         r="50.400002"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle74" />
+      <text
+         x="548.53003"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text76">OmniSkel</text>
+    </g>
+    <g
+       class="edge"
+       id="g84">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 462.78,-394 h 25.05"
+         id="path80" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 487.94,-397.5 10,3.5 -10,3.5 z"
+         id="path82" />
+    </g>
+    <g
+       class="node"
+       id="g88">
+      <circle
+         cx="259.78"
+         cy="-394"
+         r="1.8"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle86" />
+    </g>
+    <g
+       class="node"
+       id="g94">
+      <circle
+         cx="711.76001"
+         cy="-394"
+         r="77.050003"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle90" />
+      <text
+         x="711.76001"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text92">SkeletonsCombo</text>
+    </g>
+    <g
+       class="edge"
+       id="g100">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 598.78,-394 h 25.46"
+         id="path96" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 624.49,-397.5 10,3.5 -10,3.5 z"
+         id="path98" />
+    </g>
+    <g
+       class="edge"
+       id="g106">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 697.98,-470.05 c 2.15,-11.32 6.74,-18.98 13.78,-18.98 4.73,0 8.35,3.46 10.88,9.16"
+         id="path102" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 726.06,-480.63 -0.52,10.58 -6.19,-8.6 z"
+         id="path104" />
+    </g>
+    <g
+       class="edge"
+       id="g112">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 681.39,-464.92 c 0.07,-23.42 10.2,-42.11 30.37,-42.11 17.18,0 27.07,13.56 29.68,32.04"
+         id="path108" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 744.93,-475.14 -2.8,10.22 -4.18,-9.73 z"
+         id="path110" />
+    </g>
+    <g
+       class="node"
+       id="g118">
+      <circle
+         cx="1194.52"
+         cy="-394"
+         r="369.97"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle114" />
+      <text
+         x="1194.52"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text116">omni.anim.retarget.&lt;class 'omni.anim.retarget.ui.scripts.retarget_window.RetargetWindow'&gt;</text>
+    </g>
+    <g
+       class="edge"
+       id="g124">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 788.94,-394 h 25.57"
+         id="path120" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 814.77,-397.5 10,3.5 -10,3.5 z"
+         id="path122" />
+    </g>
+    <g
+       class="edge"
+       id="g130">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 1564.5,-394 h 25.69"
+         id="path126" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 1590.2,-397.5 10,3.5 -10,3.5 z"
+         id="path128" />
+    </g>
+    <g
+       class="node"
+       id="g136">
+      <circle
+         cx="1957.98"
+         cy="-394"
+         r="95.589996"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle132" />
+      <text
+         x="1957.98"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text134">SingletonCurveEditor</text>
+    </g>
+    <g
+       class="edge"
+       id="g142">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 1826.36,-394 h 25.45"
+         id="path138" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 1852.03,-397.5 10,3.5 -10,3.5 z"
+         id="path140" />
+    </g>
+    <g
+       class="node"
+       id="g148">
+      <circle
+         cx="2153.3601"
+         cy="-394"
+         r="63.689999"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle144" />
+      <text
+         x="2153.3601"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text146">CurveCreator</text>
+    </g>
+    <g
+       class="edge"
+       id="g154">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 2053.97,-394 h 25.65"
+         id="path150" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 2079.71,-397.5 10,3.5 -10,3.5 z"
+         id="path152" />
+    </g>
+    <g
+       class="node"
+       id="g160">
+      <circle
+         cx="2329.4299"
+         cy="-394"
+         r="76.449997"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle156" />
+      <text
+         x="2329.4299"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text158">AnimationGraph</text>
+    </g>
+    <g
+       class="edge"
+       id="g166">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 2217.21,-394 h 25.61"
+         id="path162" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 2242.92,-397.5 10,3.5 -10,3.5 z"
+         id="path164" />
+    </g>
+    <g
+       class="node"
+       id="g172">
+      <circle
+         cx="2512.2"
+         cy="-394"
+         r="70.089996"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle168" />
+      <text
+         x="2512.2"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text170">Stage Recorder</text>
+    </g>
+    <g
+       class="edge"
+       id="g178">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 2406.05,-394 h 25.39"
+         id="path174" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 2431.66,-397.5 10,3.5 -10,3.5 z"
+         id="path176" />
+    </g>
+    <g
+       class="node"
+       id="g184">
+      <circle
+         cx="2691.2"
+         cy="-394"
+         r="72.919998"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle180" />
+      <text
+         x="2691.2"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text182">SequencePlayer</text>
+    </g>
+    <g
+       class="edge"
+       id="g190">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 2582.65,-394 h 25.67"
+         id="path186" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 2608.33,-397.5 10,3.5 -10,3.5 z"
+         id="path188" />
+    </g>
+    <g
+       class="node"
+       id="g196">
+      <circle
+         cx="2909.1201"
+         cy="-394"
+         r="109.42"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle192" />
+      <text
+         x="2909.1201"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text194">PhysXCameraPrePhysics</text>
+    </g>
+    <g
+       class="edge"
+       id="g202">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 2764.1,-394 h 25.32"
+         id="path198" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 2789.55,-397.5 10,3.5 -10,3.5 z"
+         id="path200" />
+    </g>
+    <g
+       class="node"
+       id="g208">
+      <circle
+         cx="3131.8999"
+         cy="-394"
+         r="77.639999"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle204" />
+      <text
+         x="3131.8999"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text206">PhysXSupportUI</text>
+    </g>
+    <g
+       class="edge"
+       id="g214">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="M 3018.57,-394 H 3044"
+         id="path210" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 3044.08,-397.5 10,3.5 -10,3.5 z"
+         id="path212" />
+    </g>
+    <g
+       class="node"
+       id="g220">
+      <circle
+         cx="3406.96"
+         cy="-394"
+         r="161.49001"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle216" />
+      <text
+         x="3406.96"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text218">PhysxInspector Before Update Physics</text>
+    </g>
+    <g
+       class="edge"
+       id="g226">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 3209.69,-394 h 25.68"
+         id="path222" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 3235.41,-397.5 10,3.5 -10,3.5 z"
+         id="path224" />
+    </g>
+    <g
+       class="node"
+       id="g232">
+      <circle
+         cx="3713.6699"
+         cy="-394"
+         r="109.42"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle228" />
+      <text
+         x="3713.6699"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text230">PhysXVehiclePrePhysics</text>
+    </g>
+    <g
+       class="edge"
+       id="g238">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 3568.79,-394 h 25.42"
+         id="path234" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 3594.33,-397.5 10,3.5 -10,3.5 z"
+         id="path236" />
+    </g>
+    <g
+       class="edge"
+       id="g244">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 3823.02,-394 h 25.59"
+         id="path240" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 3848.79,-397.5 10,3.5 -10,3.5 z"
+         id="path242" />
+    </g>
+    <g
+       class="node"
+       id="g250">
+      <circle
+         cx="4124.0698"
+         cy="-394"
+         r="155.7"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle246" />
+      <text
+         x="4124.0698"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text248">PhysxInspector After Update Physics</text>
+    </g>
+    <g
+       class="edge"
+       id="g256">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 3932.55,-394 h 25.48"
+         id="path252" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 3958.21,-397.5 10,3.5 -10,3.5 z"
+         id="path254" />
+    </g>
+    <g
+       class="node"
+       id="g262">
+      <circle
+         cx="4381.9702"
+         cy="-394"
+         r="66.099998"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle258" />
+      <text
+         x="4381.9702"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text260">UsdPhysicsUI</text>
+    </g>
+    <g
+       class="edge"
+       id="g268">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 4279.83,-394 h 25.5"
+         id="path264" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 4305.54,-397.5 10,3.5 -10,3.5 z"
+         id="path266" />
+    </g>
+    <g
+       class="node"
+       id="g274">
+      <circle
+         cx="4531.2598"
+         cy="-394"
+         r="46.970001"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle270" />
+      <text
+         x="4531.2598"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text272">PhysXUI</text>
+    </g>
+    <g
+       class="edge"
+       id="g280">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 4448.43,-394 h 25.54"
+         id="path276" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 4473.97,-397.5 10,3.5 -10,3.5 z"
+         id="path278" />
+    </g>
+    <g
+       class="node"
+       id="g286">
+      <circle
+         cx="4727.2202"
+         cy="-394"
+         r="112.95"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle282" />
+      <text
+         x="4727.2202"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text284">PhysXCameraPostPhysics</text>
+    </g>
+    <g
+       class="edge"
+       id="g292">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 4578.71,-394 h 25.24"
+         id="path288" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 4604.02,-397.5 10,3.5 -10,3.5 z"
+         id="path290" />
+    </g>
+    <g
+       class="node"
+       id="g298">
+      <circle
+         cx="5026.7002"
+         cy="-394"
+         r="150.5"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle294" />
+      <text
+         x="5026.7002"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text296">PhysxInspector Debug visualization</text>
+    </g>
+    <g
+       class="edge"
+       id="g304">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 4840.26,-394 h 25.6"
+         id="path300" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 4865.99,-397.5 10,3.5 -10,3.5 z"
+         id="path302" />
+    </g>
+    <g
+       class="node"
+       id="g310">
+      <circle
+         cx="1713.22"
+         cy="-394"
+         r="112.93"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle306" />
+      <text
+         x="1713.22"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text308">SkelAnimationAnnotation</text>
+    </g>
+    <g
+       class="node"
+       id="g316">
+      <circle
+         cx="5326.1699"
+         cy="-394"
+         r="112.95"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle312" />
+      <text
+         x="5326.1699"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text314">PhysXVehiclePostPhysics</text>
+    </g>
+    <g
+       class="edge"
+       id="g322">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5177.31,-394 h 25.48"
+         id="path318" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 5203,-397.5 10,3.5 -10,3.5 z"
+         id="path320" />
+    </g>
+    <g
+       class="node"
+       id="g328">
+      <circle
+         cx="3895.6799"
+         cy="-394"
+         r="36.59"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle324" />
+      <text
+         x="3895.6799"
+         y="-389.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text326">PhysX</text>
+    </g>
+    <g
+       class="edge"
+       id="g334">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5439.17,-394 h 25.57"
+         id="path330" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 5457.15,-397.5 10,3.5 -10,3.5 z"
+         id="path332" />
+    </g>
+    <g
+       class="node"
+       id="g338">
+      <circle
+         cx="5476.9502"
+         cy="-394"
+         r="1.8"
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         id="circle336" />
+    </g>
+    <g
+       class="node"
+       id="g342">
+      <circle
+         cx="5746.3398"
+         cy="-378"
+         r="1.8"
+         fill="#b2df8a"
+         stroke="#b2df8a"
+         id="circle340" />
+    </g>
+    <g
+       class="node"
+       id="g348">
+      <circle
+         cx="5746.3398"
+         cy="-540"
+         r="85.669998"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle344" />
+      <text
+         x="5746.3398"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text346">SceneVisualization</text>
+    </g>
+    <g
+       class="edge"
+       id="g354">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 5478.8,-393.82 c 4.65,1.01 27.64,5.86 49.72,8.69"
+         id="path350" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 5528.99,-388.6 9.55,4.6 -10.33,2.35 z"
+         id="path352" />
+    </g>
+    <g
+       class="edge"
+       id="g360">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5573.18,-446 c 28.91,-15.79 60.45,-33 88.53,-48.34"
+         id="path356" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 5660.22,-497.51 10.46,-1.72 -7.1,7.86 z"
+         id="path358" />
+    </g>
+    <g
+       class="node"
+       id="g366">
+      <circle
+         cx="6692.3799"
+         cy="-540"
+         r="61.43"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle362" />
+      <text
+         x="6692.3799"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text364">PhysXFabric</text>
+    </g>
+    <g
+       class="node"
+       id="g370">
+      <circle
+         cx="6216.4199"
+         cy="-378"
+         r="1.8"
+         fill="#33a02c"
+         stroke="#33a02c"
+         id="circle368" />
+    </g>
+    <g
+       class="edge"
+       id="g376">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 5954.13,-378 h 73.16"
+         id="path372" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 6027.62,-381.5 10,3.5 -10,3.5 z"
+         id="path374" />
+    </g>
+    <g
+       class="node"
+       id="g380">
+      <circle
+         cx="6692.3799"
+         cy="-378"
+         r="1.8"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle378" />
+    </g>
+    <g
+       class="edge"
+       id="g386">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5723.42,-622.48 c 3.5,-12.57 11.14,-21.11 22.92,-21.11 8.46,0 14.79,4.41 18.97,11.56"
+         id="path382" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 5768.67,-633.06 0.58,10.58 -7.05,-7.91 z"
+         id="path384" />
+    </g>
+    <g
+       class="edge"
+       id="g392">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 6396.21,-378 h 73.25"
+         id="path388" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 6469.58,-381.5 10,3.5 -10,3.5 z"
+         id="path390" />
+    </g>
+    <g
+       class="edge"
+       id="g398">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5696.42,-609.66 c -2.97,-28.2 13.67,-51.93 49.92,-51.93 31.85,0 48.56,18.33 50.12,41.91"
+         id="path394" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 5799.96,-619.59 -3.71,9.93 -3.28,-10.08 z"
+         id="path396" />
+    </g>
+    <g
+       class="edge"
+       id="g404">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 6301.06,-540 h 319.57"
+         id="path400" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 6620.75,-543.5 10,3.5 -10,3.5 z"
+         id="path402" />
+    </g>
+    <g
+       class="node"
+       id="g410">
+      <circle
+         cx="7024.0801"
+         cy="-540"
+         r="58.459999"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle406" />
+      <text
+         x="7024.0801"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text408">DebugDraw</text>
+    </g>
+    <g
+       class="node"
+       id="g416">
+      <circle
+         cx="6216.4199"
+         cy="-540"
+         r="84.489998"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle412" />
+      <text
+         x="6216.4199"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text414">WarpKernelAttach</text>
+    </g>
+    <g
+       class="edge"
+       id="g422">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 6753.85,-540 h 201.89"
+         id="path418" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 6955.75,-543.5 10,3.5 -10,3.5 z"
+         id="path420" />
+    </g>
+    <g
+       class="edge"
+       id="g428">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 5832.1,-540 h 289.46"
+         id="path424" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 6121.68,-543.5 10,3.5 -10,3.5 z"
+         id="path426" />
+    </g>
+    <g
+       class="node"
+       id="g434">
+      <circle
+         cx="7164.7598"
+         cy="-540"
+         r="46.41"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle430" />
+      <text
+         x="7164.7598"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text432">FlowUsd</text>
+    </g>
+    <g
+       class="edge"
+       id="g440">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 7082.69,-540 h 25"
+         id="path436" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 7107.95,-543.5 10,3.5 -10,3.5 z"
+         id="path438" />
+    </g>
+    <g
+       class="node"
+       id="g446">
+      <circle
+         cx="7349.98"
+         cy="-540"
+         r="102.53"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle442" />
+      <text
+         x="7349.98"
+         y="-535.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text444">PhysXStageUpdateLast</text>
+    </g>
+    <g
+       class="edge"
+       id="g452">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 7211.52,-540 h 25.3"
+         id="path448" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 7236.87,-543.5 10,3.5 -10,3.5 z"
+         id="path450" />
+    </g>
+  </g>
+</svg>

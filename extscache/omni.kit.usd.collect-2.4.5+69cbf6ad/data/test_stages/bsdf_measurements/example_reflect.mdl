@@ -1,0 +1,16 @@
+mdl 1.6;
+
+import ::df::*;
+
+export material measured(
+    uniform bool reflect_transmit = false,
+    uniform bsdf_measurement data = bsdf_measurement("./example_reflect.mbsdf"),
+    uniform float multiplier = 1.0f)
+= material(
+    surface: material_surface(
+        scattering: df::measured_bsdf(
+            measurement: data,
+            multiplier: multiplier,
+            mode: reflect_transmit ? df::scatter_reflect_transmit : df::scatter_reflect)
+        )
+    );

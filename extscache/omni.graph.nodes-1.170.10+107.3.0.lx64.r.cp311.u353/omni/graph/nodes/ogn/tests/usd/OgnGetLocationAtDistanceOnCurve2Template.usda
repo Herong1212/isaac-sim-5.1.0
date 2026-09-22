@@ -1,0 +1,48 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetLocationAtDistanceOnCurve2.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetLocationAtDistanceOnCurve2" (
+        docs="""Given a set of curve points and a normalized distance between 0-1.0, return the location on a closed curve. 0 is the first point on the curve, 1.0 is also the first point because the is an implicit segment connecting the first and last points. Values outside the range 0-1.0 will be wrapped to that range, for example -0.4 is equivalent to 0.6 and 1.3 is equivalent to 0.3. This is a simplistic curve-following node, intended for curves in a plane, for prototyping purposes."""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetLocationAtDistanceOnCurve2"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom point3d[] inputs:curve = [] (
+            docs="""The vertex values of the curve to be examined."""
+        )
+        custom double inputs:distance = 0.0 (
+            docs="""The distance along the curve, normalized to the range 0-1.0."""
+        )
+        custom token inputs:forwardAxis = "X" (
+            docs="""The direction vector from which the returned rotation is relative. The legal values
+            are 'X', 'Y', or 'Z'."""
+        )
+        custom token inputs:upAxis = "Y" (
+            docs="""The world Up vector, the curve should be in a plane perpendicular with this. The legal values
+            are 'X', 'Y', or 'Z'."""
+        )
+
+        # 3 attributes
+        custom point3d outputs:location (
+            docs="""Location"""
+        )
+        custom quatf outputs:orientation (
+            docs="""Orientation"""
+        )
+        custom vector3d outputs:rotateXYZ (
+            docs="""Rotations"""
+        )
+    }
+}

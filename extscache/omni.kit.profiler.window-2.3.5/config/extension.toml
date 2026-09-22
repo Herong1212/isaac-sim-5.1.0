@@ -1,0 +1,51 @@
+[package]
+version = "2.3.5"
+authors = ["NVIDIA"]
+title = "Profiler Window"
+description="Profiler Window Extension."
+readme  = "docs/README.md"
+repository = ""
+category = "Internal"
+feature = true
+keywords = ["kit", "profiler"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[dependencies]
+"omni.kit.pip_archive" = {}  # aiohttp, aiofiles
+"omni.kit.uiapp" = {}
+"omni.kit.commands" = {}
+"omni.kit.widget.settings" = {}
+"omni.hydra.engine.stats" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.actions.core" = {}
+
+[[python.module]]
+name = "omni.kit.profiler.window"
+
+[[python.module]]
+name = "snakeviz"
+path = "pip_prebundle_snakeviz"
+
+[settings.exts."omni.kit.profiler.window"]
+capturePath = "${logs}/traces"
+
+showProfileStartupMenu = true
+
+[[test]]
+args = [
+    "--/app/menu/legacy_mode=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/profiler/perfsdkRealtimeMetrics/samplingIntervalInMs=0.0",
+    "--/privacy/externalBuild=false",
+    "--no-window"
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to create directory handle*",
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+    "*Cannot use omni.hydra.pxr without OpenGL interop*" # Linux TC configs with multi-GPU might not have OpenGL available
+]

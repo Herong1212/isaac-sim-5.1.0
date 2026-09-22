@@ -1,0 +1,295 @@
+{
+    "RotateVector": {
+        "version": 1,
+        "description": [
+            "Rotates a 3d direction vector by a specified rotation.",
+            "Accepts 3x3 matrices, 4x4 matrices, euler angles (XYZ), or quaternions",
+            "For 4x4 matrices, the transformation information in the matrix is ignored and the vector is treated as",
+            "a 4-component vector where the fourth component is zero. The result is then projected back to a 3-vector.",
+            "Supports mixed array inputs, e.g. a single quaternion and an array of vectors (in which case the",
+            "quaternion would be applied to each vector in the array)."
+        ],
+        "uiName": "Rotate Vector",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "rotation" : {
+                "type": ["matrixd[4]", "matrixd[4][]", "matrixd[3]", "matrixd[3][]",
+                        "vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]",
+                        "quatd[4]", "quatd[4][]", "quatf[4]", "quatf[4][]", "quath[4]", "quath[4][]"],
+                "uiName": "Rotation",
+                "description": [
+                    "The rotation to be applied, either in the form of matrices, euler angles, or quaternions.",
+                    "If this input is an array, then the size of that array should match the size of the \"Vector\"",
+                    "array (or only contain a single element), otherwise the node will be unable to perform the",
+                    "computation. For 4x4 matrices, the transformation information in the matrix will be ignored."
+                ]
+            },
+            "vector": {
+                "type": ["vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]"],
+                "uiName": "Vector",
+                "description": "The three-dimensional row vector (or array of row vectors) to be rotated."
+            },
+            "rotationOrder" : {
+                "type": "token",
+                "description": "The order the rotation should be applied when using euler angles.",
+                "default" : "XYZ",
+                "metadata": {
+                    "allowedTokens": ["XYZ", "XZY", "YXZ", "YZX", "ZXY", "ZYX"]
+                }
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]"],
+                "uiName": "Result",
+                "description": [
+                    "The transformed three-dimensional row vector (or array of row vectors). This output will have the",
+                    "same shape as the input \"Vector\" attribute."
+                ]
+             }
+        },
+        "tests" : [
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectord[3]", "value": [31, 32, 3]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorf[3]", "value": [31, 32, 3]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorh[3]", "value": [31, 32, 3]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"vectord[3]", "value": [90, 0, 0]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorf[3]", "value": [90, 0, 0]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorh[3]", "value": [90, 0, 0]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"quatd[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"quatf[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"quath[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectord[3][]", "value": [[90, 0, 0]]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorf[3][]", "value": [[0, 90, 0], [90, 0, 0], [90, 90, 0]]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[1, 0, 0], [0, -1, 0], [0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorh[3][]", "value": [[90, 0, 0]]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatd[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatf[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quath[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectord[3]", "value": [90, 90, 0]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1], [0, 1, 0], [1, 0, 0]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0], [1, 0, 0], [0, 0, -1]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorf[3]", "value": [90, 0, 0]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorh[3]", "value": [90, 0, 0]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatd[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatf[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quath[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[1, 2, 3]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[31, 32, 3]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectord[3][]", "value": [[90, 0, 0]]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorf[3][]", "value": [[90, 0, 0]]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"vectorh[3][]", "value": [[90, 0, 0]]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatd[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quatf[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:rotation": {"type":"quath[4][]", "value": [[0.7071068, 0, 0, 0.7071068]]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            }
+        ]
+    }
+}

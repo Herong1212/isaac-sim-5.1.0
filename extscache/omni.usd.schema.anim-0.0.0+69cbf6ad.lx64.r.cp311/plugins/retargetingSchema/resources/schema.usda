@@ -1,0 +1,128 @@
+#usda 1.0
+(
+    """ This file contains a schema for supporting skeletal animations in USD.
+    """
+    subLayers = [
+        @usd/schema.usda@,
+        @usdGeom/schema.usda@,
+        @usdSkel/schema.usda@,
+    ]
+)
+
+over "GLOBAL" (
+	customData = {
+	string libraryName = "retargetingSchema"
+	string libraryPath = "./"
+	string libraryPrefix = "RetargetingSchema"
+	}
+)
+{
+}
+
+
+
+class "AnimationSkelBindingAPI" (
+    inherits = </APISchemaBase>
+    doc = """Provides API for setting source skeleton and evaluating retrargeted pose or bake retargeted plain SkelAnimation."""
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdSkel/animation.h"
+#include "pxr/usd/usdSkel/skeleton.h"
+#include "pxr/usd/usdSkel/bindingAPI.h"
+"""
+    }
+)
+{
+    rel animationSkelBinding:sourceSkeleton (
+        customData = {
+            string apiName = "sourceSkeleton"
+        }
+        doc = """Skeleton to be bound to animation prims to tell the animation was authored based on this source skeleton"""
+    )
+}
+
+class "ControlRigAPI" (
+    inherits = </APISchemaBase>
+    doc = """Provides API for seting control rig information for skeleton prim"""
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdSkel/skeleton.h"
+"""
+    }
+)
+{
+    uniform token controlRig:type(
+        customData = {
+            string apiName = "type"
+        }
+        doc = """The skeleton control rig type. """
+    )
+	uniform token controlRig:upAxis(
+        allowedTokens = ["X", "Y", "Z", "MINUS X", "MINUS Y", "MINUS Z"]
+        customData = {
+            string apiName = "upAxis"
+        }
+        doc = """Skeleton's rigging upAxis. If not authored, it should be aligned with stage metrics"""
+    )
+
+	uniform token controlRig:forwardAxis(
+        allowedTokens = ["X", "Y", "Z", "MINUS X", "MINUS Y", "MINUS Z"]
+        customData = {
+            string apiName = "forwardAxis"
+        }
+        doc = """Skeleton's rigging forwardAxis. If not authored, it should be aligned with stage metrics"""
+    )
+    uniform token[] controlRig:jointTags (
+        customData = {
+            string apiName = "jointTags"
+        }
+        doc = """An array of tokens identifying rig joint tags for each joint of skeleton prim"""
+    )
+    uniform token[] controlRig:retargetTags (
+        customData = {
+            string apiName = "retargetTags"
+        }
+        doc = """An array of tokens identifying retarget tags for each joint of skeleton prim"""
+    )
+
+	uniform matrix4d[] controlRig:retargetTransforms (
+		customData = {
+            string apiName = "retargetTransforms"
+        }
+        doc = """Specifies the retarget pose transforms of each joint in
+        **local space**, in the ordering imposed by *joints*. If this attribute
+		does not have authoring value, restTransforms of the skeleton will be
+		used as fallback,"""
+	)
+
+	uniform token[] controlRig:IKTargets(
+        customData = {
+            string apiName = "IKTargets"
+        }
+        doc = """list of joints that can receive desired target transform for full body IK"""
+    )
+
+    rel controlRig:jointConstraints(
+        customData = {
+            string apiName= "jointConstraints"
+        }
+        doc = """Ordered list of all joint constraints"""
+    )
+}
+
+
+class JointConstraint "JointConstraint"
+(
+    doc = """SkelJoint represents a skeleton joint"""
+
+    inherits = </Typed>
+)
+{
+    uniform token joint
+    uniform quatf frame
+    uniform float2 swing
+    uniform float2 twist
+}
+

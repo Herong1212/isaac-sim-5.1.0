@@ -1,0 +1,99 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (216.1808359499982, 103.75950891315667, 247.11118845149014)
+                double3 target = (-5.938707534187358, -0.8233706438864061, -3.566313857487131)
+            }
+            dictionary Right = {
+                double3 position = (-5, 0, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 5, 0)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./cubePhysicsMeters.usda"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Cube "Cube" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMassAPI"]
+    )
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding:physics = </World/PhysicsMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        bool physics:collisionEnabled = 1
+        float physics:density = 10
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        vector3f physics:velocity = (2, 2, 2)
+        float physxCollision:torsionalPatchRadius = 0.01
+        float physxRigidBody:sleepThreshold = 1
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Material "PhysicsMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+    )
+    {
+        float physics:density = 500
+    }
+
+    def PhysicsScene "PhysicsScene"
+    {
+        vector3f physics:gravityDirection = (0, -1, 0)
+        float physics:gravityMagnitude = 9.8
+    }
+
+    def PhysicsPrismaticJoint "PrismaticJoint" (
+        prepend apiSchemas = ["PhysicsDriveAPI:linear", "PhysxLimitAPI:linear"]
+    )
+    {
+        float drive:linear:physics:damping = 1
+        float drive:linear:physics:stiffness = 1
+        float drive:linear:physics:targetPosition = 1
+        float drive:linear:physics:targetVelocity = 1
+        uniform token drive:linear:physics:type = "force"
+        uniform token physics:axis = "X"
+        rel physics:body0 = </World>
+        rel physics:body1 = </World/Cube>
+        float physics:breakForce = inf
+        float physics:breakTorque = inf
+        point3f physics:localPos0 = (0, 0, 0)
+        point3f physics:localPos1 = (0, 0, 0)
+        quatf physics:localRot0 = (1, 0, 0, 0)
+        quatf physics:localRot1 = (1, 0, 0, 0)
+        float physics:lowerLimit = -1
+        float physics:upperLimit = 1
+        float physxLimit:linear:damping = 1
+        float physxLimit:linear:stiffness = 1
+    }
+}
+

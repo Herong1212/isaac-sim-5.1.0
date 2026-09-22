@@ -1,0 +1,111 @@
+# cSpell:disable
+[package]
+title = "OmniGraph Action Graph Nodes"
+version = "1.50.4"
+category = "Graph"
+feature = true
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains nodes for Omnigraph Action Graphs."
+repository = ""
+keywords = ["omnigraph", "nodes", "action"]
+python.import_mode = "ParallelThread"
+writeTarget.kit = true
+writeTarget.usd = true
+support_level = "Core"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.action_nodes"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph" = { version = "1.139.0" }
+"omni.graph.tools" = { version = "1.77.0" }
+"omni.graph.action_core" = { version = "1.1.0" }
+"omni.graph.ui" = { optional = true }
+"omni.kit.commands" = {}
+"omni.kit.window.filepicker" = { optional = true }
+"omni.timeline" = {}
+"omni.usd" = { version = "1.4.8" }
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+name="no_window"
+timeout = 300
+pythonTests.exclude = [
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_ongamepadinput_node",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_onkeyboardinput_node",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_onimpulseevent_node_ui",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_03.TestActionGraphNodes.test_onmouseinput_node",
+]
+stdoutFailPatterns.exclude = [
+    # Exclude carb.events leak that only shows up locally
+    "*[Error] [carb.events.plugin]*PooledAllocator*",
+    "*Ignore this error/warning*",  # Exclude messages which say they should be ignored
+]
+dependencies = [
+    # Needed for tests which use Fabric Scene Delegate
+    "omni.hydra.usdrt_delegate",
+    # Convenience for tests
+    "omni.inspect"
+]
+
+args = [
+    "--no-window"
+]
+
+[[test]]
+name="with_window"
+timeout = 300
+
+pythonTests.include = [
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_ongamepadinput_node",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_onkeyboardinput_node",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_02.TestActionGraphNodes.test_onimpulseevent_node_ui",
+    "omni.graph.action_nodes.tests.test_action_graph_nodes_03.TestActionGraphNodes.test_onmouseinput_node",
+]
+pythonTests.unreliable = [
+    "*test_onkeyboardinput_node*",  # OM-120676
+]
+
+stdoutFailPatterns.exclude = [
+    # Exclude carb.events leak that only shows up locally
+    "*[Error] [carb.events.plugin]*PooledAllocator*",
+    "*Ignore this error/warning*",  # Exclude messages which say they should be ignored
+]
+dependencies = [
+    # Required for UI tests.
+    "omni.kit.test_suite.helpers",
+    "omni.kit.ui_test",
+    # Required to have Property Window display selected nodes.
+    "omni.graph.ui",
+    "omni.kit.window.property",
+    # Convenience for tests
+    "omni.inspect"
+]
+
+args = [
+    "--no-window",
+    "--/app/omni.kit.hotkeys.core/hotkeys_enabled=false"
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+dependencies = [
+    "omni.graph.action"
+]

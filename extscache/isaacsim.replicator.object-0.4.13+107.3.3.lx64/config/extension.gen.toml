@@ -1,0 +1,17 @@
+
+[package]
+    archivePath = "./archives/isaacsim.replicator.object/isaacsim.replicator.object-0.4.13+107.3.3.lx64.zip"
+
+    [package.target]
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229672.69cbf6ad.gl"
+        date = 1759441597
+        buildNumber = "0.1.3+510.12834.91c8aa20.gl"
+        repoName = "isaacsim.action_and_event_data_generation"

@@ -1,0 +1,100 @@
+{
+    "Distance3D": {
+        "version": 1,
+        "description": [
+            "Computes the distance between two 3D points A and B, which is the length of the vector with start and end",
+            "points A and B. If one input is an array and the other is a single point, the scalar will be broadcast to",
+            "the size of the array (i.e. the output will be an array of the distances between each point in the input",
+            "array and the second singular point)."
+        ],
+        "uiName": "Distance3D",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["pointd[3]", "pointf[3]", "pointh[3]", "pointd[3][]", "pointf[3][]", "pointh[3][]"],
+                "description": [
+                    "The first 3D vector (or array of 3D vectors) specifying the point position(s) with which the",
+                    "distance computation will be performed."
+                ],
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["pointd[3]", "pointf[3]", "pointh[3]", "pointd[3][]", "pointf[3][]", "pointh[3][]"],
+                "description": [
+                    "The second 3D vector (or array of 3D vectors) specifying the point position(s) with which the",
+                    "distance computation will be performed."
+                ],
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "distance": {
+                "type": [ "double", "float", "half", "double[]", "float[]", "half[]" ],
+                "description": ["The distance between the points specified by vector(s) \"A\" and vector(s) \"B\"."]
+             }
+        },
+        "tests": [
+            {
+                "inputs:a": {"type": "pointd[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointd[3]", "value": [4,6,8]},
+                "outputs:distance": {"type": "double", "value": 7.07107}
+            },
+            {
+                "inputs:a": {"type": "pointd[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointd[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "double[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointd[3][]", "value": [[1,2,3], [4,6,8]]},
+                "inputs:b": {"type": "pointd[3]", "value": [1,2,3]},
+                "outputs:distance": {"type": "double[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointd[3][]", "value": [[1,2,3], [1,2,3]]},
+                "inputs:b": {"type": "pointd[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "double[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointf[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointf[3]", "value": [4,6,8]},
+                "outputs:distance": {"type": "float", "value": 7.07107}
+            },
+            {
+                "inputs:a": {"type": "pointf[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointf[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "float[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointf[3][]", "value": [[1,2,3], [4,6,8]]},
+                "inputs:b": {"type": "pointf[3]", "value": [1,2,3]},
+                "outputs:distance": {"type": "float[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointf[3][]", "value": [[1,2,3], [1,2,3]]},
+                "inputs:b": {"type": "pointf[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "float[]", "value": [0, 7.07107]}
+            },
+            {
+                "inputs:a": {"type": "pointh[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointh[3]", "value": [4,6,8]},
+                "outputs:distance": {"type": "half", "value": 7.0703125}
+            },
+            {
+                "inputs:a": {"type": "pointh[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "pointh[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "half[]", "value": [0, 7.0703125]}
+            },
+            {
+                "inputs:a": {"type": "pointh[3][]", "value": [[1,2,3], [4,6,8]]},
+                "inputs:b": {"type": "pointh[3]", "value": [1,2,3]},
+                "outputs:distance": {"type": "half[]", "value": [0, 7.0703125]}
+            },
+            {
+                "inputs:a": {"type": "pointh[3][]", "value": [[1,2,3], [1,2,3]]},
+                "inputs:b": {"type": "pointh[3][]", "value": [[1,2,3], [4,6,8]]},
+                "outputs:distance": {"type": "half[]", "value": [0, 7.0703125]}
+            }
+        ]
+    }
+}

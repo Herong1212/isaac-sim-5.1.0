@@ -1,0 +1,53 @@
+{
+    "BooleanNor": {
+        "version": 2,
+        "description": [
+            "Boolean NOR on two or more inputs.",
+            "If the inputs are arrays, NOR operations will be performed pair-wise. The input sizes must match.",
+            "If only one input is an array, the other input(s) will be applied individually to each element in the array.",
+            "Returns an array of booleans if either input is an array, otherwise returning a boolean."
+        ],
+        "uiName": "Boolean NOR",
+        "categories": ["math:condition"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["bool", "bool[]"],
+                "description": "Input A: bool or bool array."
+            },
+            "b": {
+                "type": ["bool", "bool[]"],
+                "description": "Input B: bool or bool array."
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["bool", "bool[]"],
+                "description": "The result of the boolean NOR - an array of booleans if either input is an array, otherwise a boolean.",
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:a": {"type": "bool", "value": false},
+                "inputs:b": {"type": "bool", "value": true},
+                "outputs:result": false
+            },
+            {
+                "inputs:a": {"type": "bool[]", "value": [false, false, true, true]},
+                "inputs:b": {"type": "bool[]", "value": [false, true, false, true]},
+                "outputs:result": [true, false, false, false]
+            },
+            {
+                "inputs:a": {"type": "bool", "value": false},
+                "inputs:b": {"type": "bool[]", "value": [false, true]},
+                "outputs:result": [true, false]
+            },
+            {
+                "inputs:a": {"type": "bool[]", "value": [false, true]},
+                "inputs:b": {"type": "bool", "value": false},
+                "outputs:result": [true, false]
+            }
+        ]
+    }
+}

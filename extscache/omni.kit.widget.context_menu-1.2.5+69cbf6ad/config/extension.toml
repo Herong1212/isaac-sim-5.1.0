@@ -1,0 +1,73 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.2.5"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Context Menu Widget"
+description="Context menu widget. An API to create menus from dictionaries"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "widget", "menu"]
+support_level = "Core"
+
+category = "Internal"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.menu.core" = {}
+
+[settings]
+exts."omni.kit.widget.context_menu".icon_size = 16
+exts."omni.kit.widget.context_menu".text_size = 23
+exts."omni.kit.widget.context_menu".margin_size = [4, 4]
+exts."omni.kit.widget.context_menu".icon_spacing = [7, 7]
+exts."omni.kit.widget.context_menu".submenu_spacing = 4
+exts."omni.kit.widget.context_menu".submenu_icon_size = 11.7
+exts."omni.kit.widget.context_menu".color_label_enabled = 0xFFCCCCCC
+exts."omni.kit.widget.context_menu".color_label_disabled = 0xFF6F6F6F
+exts."omni.kit.widget.context_menu".color_separator = 0xFF6F6F6F
+exts."omni.kit.widget.context_menu".color_icon_enabled = 0xFFFFFFFF
+
+[[python.module]]
+name = "omni.kit.widget.context_menu"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Settings.md",
+    "docs/CHANGELOG.md",
+]
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+]
+
+pythonTests.unreliable = [
+]

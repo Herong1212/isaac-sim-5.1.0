@@ -1,0 +1,47 @@
+[core]
+reloadable = true
+
+[package]
+version = "108.0.2"
+title = "Sequencer USD"
+description = "Sequencer functions which interface to USD."
+repository = ""
+category = "services"
+keywords = ["kit", "machinima", "sequencer", "timeline"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.usd.schema.sequence" = { version = "~3.0" }
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.menubar" = { optional = true }
+"omni.kit.viewport.menubar.camera" = { optional = true }
+"omni.anim.curve.core" = { optional = true }
+"omni.usd.schema.audio" = { optional = true }
+
+[settings]
+exts."omni.kit.viewport.menubar.sequencer".visible = true
+exts."omni.kit.viewport.menubar.sequencer".order = 80
+
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window",
+    "--/app/profilerBackend=\"\"",
+]
+dependencies = [
+    "omni.anim.curve.core",
+]
+
+[[python.module]]
+name = "omni.kit.sequencer.usd"

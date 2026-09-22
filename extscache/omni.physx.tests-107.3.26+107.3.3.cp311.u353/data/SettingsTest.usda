@@ -1,0 +1,19 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary physicsSettings = {
+            double "/physics/pickingForce" = 123456
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+
+}

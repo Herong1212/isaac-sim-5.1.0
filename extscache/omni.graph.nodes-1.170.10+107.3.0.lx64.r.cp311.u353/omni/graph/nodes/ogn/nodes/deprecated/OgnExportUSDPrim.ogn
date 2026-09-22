@@ -1,0 +1,220 @@
+{
+    "omni.graph.ExportUSDPrim": {
+        "description": [
+            "Exports data from an input bundle into a USD prim",
+            "This node is deprecated, Use WritePrim nodes instead"
+        ],
+        "metadata": {
+            "uiName": "export USD prim data",
+            "hidden": "true"
+        },
+        "version": 1,
+        "scheduling": ["usd-write"],
+        "inputs": {
+            "bundle": {
+                "description": [ "The bundle from which data should be exported." ],
+                "type": "bundle"
+            },
+            "primPathFromBundle": {
+                "default": false,
+                "description": [
+                    "When true, if there is a \"primPath\" token attribute inside the bundle, that will be the path of the USD prim to write to, ",
+                    "else the \"outputs:prim\" attribute below will be used for the USD prim path."
+                ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "applyTransform": {
+                "default": false,
+                "description": [ "If true, apply the transform necessary to transform any transforming attributes from the space of the node into the space of the specified prim." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "usdTimecode": {
+                "default": 0,
+                "description": [ "The time at which to evaluate the transform of the USD prim for applyTransform." ],
+                "type": "double",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "timeVaryingAttributes": {
+                "default": false,
+                "description": [ "Check whether the USD attributes should be time-varying and if so, export their data to a time sample at the time \"usdTimecode\"." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "onlyExportToExisting": {
+                "default": false,
+                "description": [ "If true, only attributes that already exist in the specified output prim will have data transferred to them from the input bundle." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "renameAttributes": {
+                "default": false,
+                "description": [
+                    "If true, attributes listed in \"inputAttrNames\" will be exported to attributes with the names specified in \"outputAttrNames\". ",
+                    "Note: to avoid potential issues with redundant attributes being created while typing, keep this off until after ",
+                    "specifying all input and output attribute names."
+                ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "inputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the names of attributes in the input data to be renamed",
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Rename"
+                }
+            },
+            "outputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the new names for the attributes listed in inputAttrNames",
+                "default": "",
+                "metadata": {
+                    "uiName": "New Attribute Names"
+                }
+            },
+            "excludedAttrNames": {
+                "type": "token",
+                "description": "Attributes to be excluded from being exported",
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Exclude"
+                }
+            },
+            "attrNamesToExport": {
+                "type": "token",
+                "description": [
+                    "Comma or space separated text, listing the names of attributes in the input data to be exported ",
+                    "or empty to import all attributes."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Export",
+                    "displayGroup": "parameters"
+                }
+            },
+            "removeMissingAttrs": {
+                "type": "bool",
+                "description": [
+                    "If true, any attributes on the USD prim(s) being written to, that aren't in the input data, ",
+                    "will be removed from the USD prim(s)."
+                ],
+                "default": false,
+                "metadata": {
+                    "uiName": "Export to Root Layer"
+                }
+            },
+            "exportToRootLayer": {
+                "type": "bool",
+                "description": "If true, prims are exported in the root layer, otherwise the layer specified by \"layerName\" is used.",
+                "default": true,
+                "metadata": {
+                    "uiName": "Export to Root Layer"
+                }
+            },
+            "layerName": {
+                "type": "token",
+                "description": "Identifier of the layer to export to if \"exportToRootLayer\" is false, or leave this blank to export to the session layer",
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Name"
+                }
+            }
+        },
+        "outputs": {
+            "prim": {
+                "description": [
+                    "The USD prim(s) to which data should be exported if primPathFromBundle is false or if the bundle doesn't have a \"primPath\" token attribute.  ",
+                    "Note: this is really an input, since the node just receives the path to the prim.  The node does not contain the prim."
+                ],
+                "type": "bundle",
+                "optional": true,
+                "metadata": {
+                    "hidden": "true"
+                }
+            }
+        },
+        "tokens": {
+            "primPath": "primPath",
+            "primType": "primType",
+            "primTime": "primTime",
+            "primCount": "primCount",
+            "transform": "transform"
+        },
+        "state": {
+            "prevPrimPathFromBundle": {
+                "type": "bool",
+                "description": "Value of \"primPathFromBundle\" input from previous run"
+            },
+            "prevApplyTransform": {
+                "type": "bool",
+                "description": "Value of \"applyTransform\" input from previous run"
+            },
+            "prevUsdTimecode": {
+                "type": "double",
+                "description": "Value of \"usdTimecode\" input from previous run"
+            },
+            "prevTimeVaryingAttributes": {
+                "type": "bool",
+                "description": "Value of \"timeVaryingAttributes\" input from previous run"
+            },
+            "prevOnlyExportToExisting": {
+                "type": "bool",
+                "description": "Value of \"onlyExportToExisting\" input from previous run"
+            },
+            "prevRenameAttributes": {
+                "type": "bool",
+                "description": "Value of \"renameAttributes\" input from previous run"
+            },
+            "prevInputAttrNames": {
+                "type": "token",
+                "description": "Value of \"inputAttrNames\" input from previous run"
+            },
+            "prevOutputAttrNames": {
+                "type": "token",
+                "description": "Value of \"outputAttrNames\" input from previous run"
+            },
+            "prevExcludedAttrNames": {
+                "type": "token",
+                "description": "Value of \"excludedAttrNames\" input from previous run"
+            },
+            "prevAttrNamesToExport": {
+                "type": "token",
+                "description": "Value of \"attrNamesToExport\" input from previous run"
+            },
+            "prevRemoveMissingAttrs": {
+                "type": "bool",
+                "description": "Value of \"removeMissingAttrs\" input from previous run"
+            },
+            "prevExportToRootLayer": {
+                "type": "bool",
+                "description": "Value of \"exportToRootLayer\" input from previous run"
+            },
+            "prevLayerName": {
+                "type": "token",
+                "description": "Value of \"layerName\" input from previous run"
+            },
+            "prevBundleDirtyID": {
+                "type": "uint64",
+                "description": "Dirty ID of input bundle from previous run"
+            },
+            "prevPrimDirtyIDs": {
+                "type": "uint64[]",
+                "description": "Dirty IDs of input prims from previous run"
+            }
+        }
+    }
+}

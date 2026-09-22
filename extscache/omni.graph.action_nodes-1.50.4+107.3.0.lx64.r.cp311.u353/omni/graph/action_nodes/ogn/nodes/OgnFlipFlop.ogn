@@ -1,0 +1,41 @@
+{
+    "omni.graph.action.FlipFlop": {
+        "version": 2,
+        "description": [
+            "This node activates its outputs in an alternating sequence, starting with 'On Odd' on the",
+            "first execution after 'Signal Execution' has been activated."
+        ],
+        "uiName": "Flip Flop",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            }
+        },
+        "outputs": {
+            "a": {
+                "type": "execution",
+                "description": [
+                    "After every odd-numbered execution signal to the graph that execution can continue downstream."
+                ],
+                "uiName": "Execute A"
+            },
+            "b": {
+                "type": "execution",
+                "description": [
+                    "After every even-numbered execution signal to the graph that execution can continue downstream."
+                ],
+                "uiName": "Execute B"
+            },
+            "isA": {
+                "type": "bool",
+                "description": "Set to true when the 'Execute A' signal is active, otherwise set to false.",
+                "uiName": "Is A"
+            }
+        }
+    }
+}

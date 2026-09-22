@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetSkeletonAttributes.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnGetSkeletonAttributes" (
+        docs="""Replicator node to expose prim skeleton atrribute data"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnGetSkeletonAttributes"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations."""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Render results"""
+        )
+
+        # 9 attributes
+        custom uint outputs:exec (
+            docs="""Trigger"""
+        )
+        custom token[] outputs:jointPaths (
+            docs="""Array of skeleton joint paths"""
+        )
+        custom float4[] outputs:jointWorldOrientations (
+            docs="""Array of skeleton joint world orientations (rotations)"""
+        )
+        custom double3[] outputs:jointWorldPositions (
+            docs="""Array of skeleton joint world positions"""
+        )
+        custom float3[] outputs:jointWorldScales (
+            docs="""Array of skeleton joint world scales"""
+        )
+        custom token[] outputs:primPaths (
+            docs="""Array of prim paths"""
+        )
+        custom float4[] outputs:primWorldOrientations (
+            docs="""Array of entity world orientations (rotations)"""
+        )
+        custom double3[] outputs:primWorldPositions (
+            docs="""Array of entity world positions"""
+        )
+        custom float3[] outputs:primWorldScales (
+            docs="""Array of entity world scales"""
+        )
+    }
+}

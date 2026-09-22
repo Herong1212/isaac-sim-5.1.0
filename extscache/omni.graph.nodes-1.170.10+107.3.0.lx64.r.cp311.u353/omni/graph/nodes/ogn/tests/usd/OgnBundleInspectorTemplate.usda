@@ -1,0 +1,70 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnBundleInspector.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_BundleInspector" (
+        docs="""This node creates independent outputs containing information about the contents of a bundle. It can be used for testing or debugging what is inside a bundle as it flows through the graph. The bundle is inspected recursively, so any bundles inside of the main bundle will have their contents added to the output as well. The bundle contents can be printed when the node executes, and it passes the input straight through unchanged, so you can insert this node between two nodes to inspect the data flowing through the graph."""
+    )
+    {
+        token node:type = "omni.graph.nodes.BundleInspector"
+        int node:typeVersion = 4
+
+        # 4 attributes
+        custom rel inputs:bundle (
+            docs="""The bundle to be inspected."""
+        )
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom int inputs:inspectDepth = 1 (
+            docs="""The depth that the inspector is going to traverse and print. For example,
+            0 means just attributes on the input bundles. 1 means its immediate children.
+            -1 means the entire recursive contents of the bundle."""
+        )
+        custom bool inputs:print = false (
+            docs="""If true then the contents of 'Bundle To Analyze' will print when the node executes."""
+        )
+
+        # 10 attributes
+        custom int[] outputs:arrayDepths (
+            docs="""List of the array depths of attributes present in the bundle."""
+        )
+        custom uint64 outputs:attributeCount (
+            docs="""Number of attributes present in the bundle. Every output that is an array type
+            should have this number of elements in it."""
+        )
+        custom rel outputs_bundle (
+            docs="""The input 'Bundle', passed through unchanged."""
+        )
+        custom uint64 outputs:childCount (
+            docs="""Number of child bundles present in the bundle."""
+        )
+        custom uint64 outputs:count (
+            docs="""Deprecated - Use 'Attribute Count' instead."""
+        )
+        custom token[] outputs:names (
+            docs="""List of the names of attributes present in the bundle."""
+        )
+        custom token[] outputs:roles (
+            docs="""List of the names of the roles of attributes present in the bundle."""
+        )
+        custom int[] outputs:tupleCounts (
+            docs="""List of the tuple counts of attributes present in the bundle."""
+        )
+        custom token[] outputs:types (
+            docs="""List of the types of attributes present in the bundle."""
+        )
+        custom token[] outputs:values (
+            docs="""List of the bundled attribute values, converted to token format."""
+        )
+    }
+}

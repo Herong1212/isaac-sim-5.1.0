@@ -1,0 +1,45 @@
+[package]
+title = "Graph Widget"
+category = "Internal"
+description = "Omniverse Kit Graph Widget which defines the common API for graph model, delegate and view."
+version = "2.0.0"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["graph", "widget"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/overview.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.commands" = {}
+
+[[python.module]]
+name = "omni.kit.widget.graph"
+
+[settings]
+exts."omni.kit.widget.graph".raster_nodes = false
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+]
+
+[documentation]
+pages = [
+    "docs/overview.md",
+    "docs/SETTINGS.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]

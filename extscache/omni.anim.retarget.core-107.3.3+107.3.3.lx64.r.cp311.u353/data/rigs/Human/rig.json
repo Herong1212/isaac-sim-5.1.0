@@ -1,0 +1,1197 @@
+{
+    "name": "Human",
+    "version": "107.3",
+    "read_only": true,
+    "selection_size": 10,
+    "pin_size": 9,
+    "pin_color": "0xFFFABD2D",
+    "pin_background_color": "0xFF625B38",
+    "pin_invalid_color": "0xFF4ACBDF",
+    "pin_selected_color": "0xFFFFFFFF",
+    "match_score": 5,
+    "current_group": "Body",
+    "secondary_groups": [],
+    "reference_skeleton": "human_skeleton.usd",
+    "reference_animations": [
+        "idle.skelanim.usd",
+        "wave.skelanim.usd",
+        "walk.skelanim.usd"
+    ],
+    "tags": [
+        {
+            "name": "Hips",
+            "group": "Body",
+            "pin_xy": [
+                203,
+                195
+            ],
+            "keywords": [
+                "pelvis",
+                "hip",
+                "hips"
+            ]
+        },
+        {
+            "name": "Head",
+            "group": "Body",
+            "pin_xy": [
+                203,
+                48
+            ],
+            "keywords": [
+                "head"
+            ],
+            "retarget_tag": true
+        },
+        {
+            "name": "Neck1",
+            "pin_xy": [
+                203,
+                84
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftShoulder",
+            "pin_xy": [
+                223,
+                93
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftArm",
+            "pin_xy": [
+                245,
+                79
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftForeArm",
+            "pin_xy": [
+                299,
+                83
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHand",
+            "pin_xy": [
+                358,
+                82
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftLeg",
+            "pin_xy": [
+                225,
+                219
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftShin",
+            "pin_xy": [
+                225,
+                317
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftFoot",
+            "pin_xy": [
+                227,
+                409
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftToeBase",
+            "pin_xy": [
+                231,
+                427
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandThumb3",
+            "pin_xy": [
+                282,
+                278
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandIndex4",
+            "pin_xy": [
+                307,
+                347
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandMiddle4",
+            "pin_xy": [
+                332,
+                352
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandRing4",
+            "pin_xy": [
+                352,
+                345
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandPinky4",
+            "pin_xy": [
+                370,
+                328
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandRing2",
+            "pin_xy": [
+                349,
+                294
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandPinky2",
+            "pin_xy": [
+                365,
+                292
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandMiddle2",
+            "pin_xy": [
+                332,
+                294
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandIndex2",
+            "pin_xy": [
+                315,
+                293
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandThumb2",
+            "pin_xy": [
+                296,
+                260
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandThumb1",
+            "pin_xy": [
+                306,
+                237
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandIndex3",
+            "pin_xy": [
+                311,
+                324
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandMiddle3",
+            "pin_xy": [
+                332,
+                328
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandRing3",
+            "pin_xy": [
+                352,
+                323
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandPinky3",
+            "pin_xy": [
+                368,
+                312
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftEye",
+            "pin_xy": [
+                212,
+                27
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Head"
+        },
+        {
+            "name": "Spine1",
+            "pin_xy": [
+                203,
+                170
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "Neck2",
+            "pin_xy": [
+                203,
+                66
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "HeadEnd",
+            "pin_xy": [
+                203,
+                2
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandThumbEnd",
+            "pin_xy": [
+                268,
+                297
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandIndexEnd",
+            "pin_xy": [
+                304,
+                367
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandMiddleEnd",
+            "pin_xy": [
+                332,
+                378
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandRingEnd",
+            "pin_xy": [
+                354,
+                370
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandPinkyEnd",
+            "pin_xy": [
+                373,
+                348
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "Spine2",
+            "pin_xy": [
+                203,
+                146
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Body"
+        },
+        {
+            "name": "LeftToeEnd",
+            "pin_xy": [
+                234,
+                444
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "left",
+                "l_",
+                "_l",
+                "lf"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightShoulder",
+            "pin_xy": [
+                183,
+                93
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightArm",
+            "pin_xy": [
+                162,
+                79
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightForeArm",
+            "pin_xy": [
+                108,
+                83
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHand",
+            "pin_xy": [
+                49,
+                82
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightLeg",
+            "pin_xy": [
+                182,
+                219
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightShin",
+            "pin_xy": [
+                182,
+                317
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightFoot",
+            "pin_xy": [
+                180,
+                409
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightToeBase",
+            "pin_xy": [
+                176,
+                427
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandThumb3",
+            "pin_xy": [
+                124,
+                278
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandIndex4",
+            "pin_xy": [
+                100,
+                347
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandMiddle4",
+            "pin_xy": [
+                75,
+                352
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandRing4",
+            "pin_xy": [
+                55,
+                345
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandPinky4",
+            "pin_xy": [
+                37,
+                328
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandRing2",
+            "pin_xy": [
+                58,
+                294
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandPinky2",
+            "pin_xy": [
+                42,
+                292
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandMiddle2",
+            "pin_xy": [
+                75,
+                294
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandIndex2",
+            "pin_xy": [
+                92,
+                293
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandThumb2",
+            "pin_xy": [
+                110,
+                260
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandThumb1",
+            "pin_xy": [
+                100,
+                237
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandIndex3",
+            "pin_xy": [
+                96,
+                324
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandMiddle3",
+            "pin_xy": [
+                75,
+                328
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandRing3",
+            "pin_xy": [
+                55,
+                323
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandPinky3",
+            "pin_xy": [
+                39,
+                312
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightEye",
+            "pin_xy": [
+                195,
+                27
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Head"
+        },
+        {
+            "name": "RightHandThumbEnd",
+            "pin_xy": [
+                139,
+                297
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandIndexEnd",
+            "pin_xy": [
+                103,
+                367
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandMiddleEnd",
+            "pin_xy": [
+                75,
+                378
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandRingEnd",
+            "pin_xy": [
+                53,
+                370
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightHandPinkyEnd",
+            "pin_xy": [
+                34,
+                348
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "RightToeEnd",
+            "pin_xy": [
+                173,
+                444
+            ],
+            "retarget_tag": true,
+            "optional": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "Chest",
+            "pin_xy": [
+                203,
+                122
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "group": "Body"
+        },
+        {
+            "name": "LeftHandRing1",
+            "pin_xy": [
+                350,
+                255
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandPinky1",
+            "pin_xy": [
+                367,
+                249
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandMiddle1",
+            "pin_xy": [
+                333,
+                253
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "LeftHandIndex1",
+            "pin_xy": [
+                318,
+                246
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandRing1",
+            "pin_xy": [
+                56,
+                255
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandPinky1",
+            "pin_xy": [
+                39,
+                249
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandMiddle1",
+            "pin_xy": [
+                73,
+                253
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        },
+        {
+            "name": "RightHandIndex1",
+            "pin_xy": [
+                88,
+                246
+            ],
+            "retarget_tag": true,
+            "keywords": [
+                "right",
+                "r_",
+                "_r",
+                "rt"
+            ],
+            "optional": true,
+            "group": "Hands"
+        }
+    ]
+}

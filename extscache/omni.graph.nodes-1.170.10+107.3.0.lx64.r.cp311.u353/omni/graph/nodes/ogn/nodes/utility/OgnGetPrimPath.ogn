@@ -1,0 +1,39 @@
+
+{
+    "GetPrimPath": {
+        "version": 3,
+        "description": ["Generates a path from the specified relationship. This is useful when an absolute prim path may change."],
+        "uiName": "Get Prim Path",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "prim": {
+                "type": "target",
+                "description": "The prim to determine the path of"
+            }
+        },
+        "outputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The absolute path of the given prim as a token"
+            },
+            "path": {
+                "type": "path",
+                "description": "The absolute path of the given prim as a string",
+                "deprecated": "Path is deprecated. Use primPath output instead."
+            }
+        },
+        "tests": [
+            {
+                "inputs:prim": [],
+                "outputs:primPath": "",
+                "outputs:path": ""
+            },
+            {
+                "inputs:prim": "/A",
+                "outputs:primPath": "/A",
+                "outputs:path": "/A"
+            }
+        ]
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "OgnSetVariant": {
+        "description": [
+            "Set variant on prims"
+        ],
+        "version": 1,
+        "uiName": "Set Variant",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+
+        "inputs": {
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "prims": {
+                "type": "target",
+                "description": "Targets to count."
+            },
+            "values": {
+                "type": "token[]",
+                "description": "Variant value."
+            },
+            "variant": {
+                "type": "token",
+                "description": "Variant set name."
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

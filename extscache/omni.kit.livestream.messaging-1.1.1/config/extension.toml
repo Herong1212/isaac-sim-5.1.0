@@ -1,0 +1,31 @@
+[package]
+version = "1.1.1"
+title = "Structured messaging for gfn or webrtc streaming"
+description = "Converts generic string messages from gfn or streamsdk into structured messages with custom event types."
+readme = "docs/README.md"
+repository = ""
+category = "Rendering"
+keywords = ["streaming", "server"]
+changelog = "docs/CHANGELOG.md"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+support_level = "Enterprise"
+authors = ["NVIDIA"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+[[python.module]]
+name = "omni.kit.livestream.messaging"
+
+[dependencies]
+
+[settings]
+exts."omni.kit.livestream.messaging".receive_message_event = "omni.kit.livestream.receive_message"
+exts."omni.kit.livestream.messaging".send_message_event = "omni.kit.livestream.send_message"
+
+
+[[test]]

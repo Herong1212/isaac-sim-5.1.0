@@ -1,0 +1,72 @@
+{
+    "RandomUnitVector": {
+        "version": 1,
+        "description": "Generates a random vector with uniform distribution on the unit sphere.",
+        "uiName": "Random Unit Vector",
+        "categories": [ "math:operator" ],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "seed": {
+                "type": "uint64",
+                "description": "The input seed value for the random unit vector generator.",
+                "uiName": "Seed",
+                "$optional": "Setting optional=true is a workaround to avoid the USD generated tests for checking the default value of 0, since we override the default seed with a random one",
+                "optional": true
+            },
+            "useSeed": {
+                "type": "bool",
+                "description": "Use the custom seed instead of a random one.",
+                "uiName": "Use seed",
+                "default": false
+            },
+            "isNoise": {
+                "type": "bool",
+                "description": [
+                    "Turn this node into a noise generator function.",
+                    "For a given seed, it will always output the same number(s)."
+                ],
+                "uiName": "Is noise function",
+                "default": false,
+                "metadata": {
+                    "hidden": "true",
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "state": {
+            "gen": {
+                "type": "matrixd[3]",
+                "description": [
+                    "Random number generator internal state. Not an actual matrix, the structure was chosen because",
+                    "it was large enough to hold the internal data required for the computation."
+                ]
+            }
+        },
+        "outputs": {
+            "random": {
+                "type": "vectorf[3]",
+                "description": "The random unit vector that was generated.",
+                "uiName": "Random Unit Vector"
+            },
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        },
+        "tests": [
+            {
+                "inputs:useSeed": true,
+                "inputs:seed": 123456789,
+                "inputs:execIn": 1,
+                "outputs:random": [ 0.99799526, 0.02564502, -0.05785976 ],
+                "outputs:execOut": 1,
+                "inputs:isNoise": true
+            }
+
+        ]
+    }
+}

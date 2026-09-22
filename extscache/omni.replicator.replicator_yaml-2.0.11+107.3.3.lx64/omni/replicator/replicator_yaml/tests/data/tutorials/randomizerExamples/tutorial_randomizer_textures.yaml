@@ -1,0 +1,69 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+sphere:
+  create.sphere:
+    semantics: [["class", "sphere"]]
+    position: [1, 0, 1]
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [1, 2, 2]
+
+plane:
+  create.plane:
+    semantics: [["class", "plane"]]
+    visible: true
+    scale: 10
+
+shapes:
+  get.prims:
+    semantics: [['class', 'cube'], ['class', 'sphere']]
+
+register_shape_textures:
+  randomizer.register:
+    randomize_texture:
+      inputs:
+        prims: null
+      with.prims:
+        randomizer.texture:
+          textures:
+            - "omniverse://localhost/NVIDIA/Materials/vMaterials_2/Ground/textures/aggregate_exposed_diff.jpg"
+            - "omniverse://localhost/NVIDIA/Materials/vMaterials_2/Ground/textures/gravel_track_ballast_diff.jpg"
+            - "omniverse://localhost/NVIDIA/Materials/vMaterials_2/Ground/textures/gravel_track_ballast_multi_R_rough_G_ao.jpg"
+            - "omniverse://localhost/NVIDIA/Materials/vMaterials_2/Ground/textures/rough_gravel_rough.jpg"
+
+trigger:
+  trigger.on_frame:
+    max_execs: 100
+    rt_subframes: 3
+
+with_trigger:
+  with.trigger:
+    randomizer.randomize_texture:
+      prims: shapes
+
+camera:
+  create.camera:
+    position: [5, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

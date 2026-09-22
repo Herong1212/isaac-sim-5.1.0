@@ -1,0 +1,74 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+light:
+  create.light:
+    light_type: distant
+
+sphere:
+  create.sphere:
+    semantics: [["class", "sphere"]]
+    position: [1, 0, 1]
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [1, 2, 2]
+plane:
+  create.plane:
+    semantics: [["class", "plane"]]
+    visible: false
+    scale: 10
+
+register_scatter2d:
+  randomizer.register:
+    get_scatter2d:
+      inputs:
+        input_plane: null
+      shapes:
+        get.prims:
+          semantics: [['class', 'cube'], ['class', 'sphere']]
+      with.shapes:
+        randomizer.scatter_2d:
+          surface_prims: [input_plane]
+          seed: 0
+          # surface_prims:
+          #   create.plane:
+          #     semantics: [["class", "plane"]]
+          #     visible: true
+          #     scale: 10
+
+trigger:
+  trigger.on_frame:
+    max_execs: 30
+    rt_subframes: 12
+
+with_trigger:
+  with.trigger:
+    # randomizer.get_scatter2d: null
+    randomizer.get_scatter2d:
+      input_plane: plane
+
+camera:
+  create.camera:
+    position: [5, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

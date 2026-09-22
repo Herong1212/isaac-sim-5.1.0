@@ -1,0 +1,26 @@
+isaacsim.replicator.agent:
+  version: 0.7.0
+  global:
+    seed: 123456789
+    simulation_length: 1800
+  sensor:
+    camera_num: 4
+  character:
+    asset_path:
+    command_file: default_command.txt
+    num: 8
+  robot:
+    command_file: default_robot_command.txt
+    nova_carter_num: 0
+    iw_hub_num: 0
+    write_data: false
+  replicator:
+    writer: IRABasicWriter
+    parameters:
+      object_info_bounding_box_2d_tight: false
+      object_info_bounding_box_2d_loose: false
+      object_info_bounding_box_3d: false
+      agent_info_skeleton_data: false
+      semantic_filter_predicate: class:character|robot;id:*
+      rgb: true
+      camera_params: true

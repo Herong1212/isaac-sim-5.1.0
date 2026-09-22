@@ -1,0 +1,70 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Continental ARS540",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+  "WaveLengthMm": 3.9,
+  "TraceTreeDepth": 5,
+  "FrameDurationNs": 50000000,
+  "InstanceTimeOffsetUsec": 5000,
+  "CfarMode": "4D",
+  "AntennaGainMode" : "COSINEFALLOFF",
+  "ConfigReloadIntervalFrames": 100,
+
+  "ScanCfgs": [
+    {
+      "RaysPerDeg": 8.0,
+      "TimeOffsetUsec": 0,
+      "PowerFactor": 1.0,
+      "BinsFromSpec": true,
+      "EnAngAliasing": false,
+      "DetValFromBinIdx": false,
+      "ElevMode": "FULL_EL",
+
+      "MaxRangeM": 250,
+      "MaxAzAngDeg": 60,
+      "MaxElAngDeg": 9,
+
+      "RangeResM": 0.4,
+      "VelResMps": 0.1,
+      "BoreAzResDeg": 1.2,
+      "BoreElResDeg": 2.3,
+
+      "RBins": 462,
+      "VBins": 512,
+      "AzBins": 32,
+      "ElBins": 8,
+
+      "CfarRnT": 1,
+      "CfarRnG": 0,
+      "CfarVnT": 1,
+      "CfarVnG": 0,
+      "CfarAznT": 1,
+      "CfarAznG": 0,
+      "CfarElnT": 1,
+      "CfarElnG": 0,
+      "CfarMinVal": 1e0,
+      "CfarOffset": 1.0,
+      "CfarNoiseMean": 0,
+      "CfarNoiseSDev": 0,
+
+      "MaxVelMpsSequence":[50.0, 55.0],
+
+      "__comment": "0: detections with RCS in dBsm lower than this threshold will be removed; 1: multiplied with RCS before conversion to dBsm. Set to 1 if no change is needed; 2: standard deviation of rcs noise in dBsm. Set to 0 if no noise is needed.",
+      "RcsTuningCoefficients": [-20, 1, 0.0],
+
+      "AzimuthRadNoiseMean": 0.0,
+      "AzimuthRadNoiseSDev": 0.0017,
+      "RangeNoiseMean": 0.0,
+      "RangeNoiseSDev": 0.1,
+      "VelocityNoiseMean": 0.0,
+      "VelocityNoiseSDev": 0.028,
+      "ElevationRadNoiseMean": 0.0,
+      "ElevationRadNoiseSDev": 0.0017,
+      "exponentialDecayFactor": 0.7
+    }
+  ]
+  }
+}

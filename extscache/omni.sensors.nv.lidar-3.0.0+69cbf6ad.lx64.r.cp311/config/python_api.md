@@ -1,0 +1,289 @@
+# Public API for module omni.sensors.nv.lidar:
+
+## Classes
+
+- class BeamProfile
+  - def __init__(self)
+  - [property] def Msquared(self) -> float
+  - [Msquared.setter] def Msquared(self, arg0: float)
+  - [property] def aspectRatio(self) -> float
+  - [aspectRatio.setter] def aspectRatio(self, arg0: float)
+  - [property] def beamWaistHorM(self) -> float
+  - [beamWaistHorM.setter] def beamWaistHorM(self, arg0: float)
+  - [property] def beamWaistVertM(self) -> float
+  - [beamWaistVertM.setter] def beamWaistVertM(self, arg0: float)
+  - [property] def divHorRad(self) -> float
+  - [divHorRad.setter] def divHorRad(self, arg0: float)
+  - [property] def divVertRad(self) -> float
+  - [divVertRad.setter] def divVertRad(self, arg0: float)
+  - [property] def focusDistM(self) -> float
+  - [focusDistM.setter] def focusDistM(self, arg0: float)
+  - [property] def wavelengthNm(self) -> float
+  - [wavelengthNm.setter] def wavelengthNm(self, arg0: float)
+
+- class EmitterError
+  - def __init__(self)
+  - [property] def elevation(self) -> ErrorProfile
+  - [elevation.setter] def elevation(self, arg0: ErrorProfile)
+  - [property] def origin(self) -> typing.List[ErrorProfile]
+  - [origin.setter] def origin(self, arg1: typing.List[ErrorProfile])
+  - [property] def std(self) -> ErrorProfile
+  - [std.setter] def std(self, arg0: ErrorProfile)
+
+- class ErrorProfile
+  - def __init__(self)
+  - [property] def mean(self) -> float
+  - [mean.setter] def mean(self, arg0: float)
+  - [property] def std(self) -> float
+  - [std.setter] def std(self, arg0: float)
+
+- class ILidarPCConverter
+  - def convertBuffer(self, frameId: int = -1) -> bool
+  - def convertBufferPython(self, arg0: buffer, arg1: int, arg2: int, arg3: bool)
+  - def convertPacket(self, arg0: str, arg1: str)
+  - def getMaxPoints(self) -> int
+  - def getPacketTime(self, arg0: str) -> int
+  - static def getPointCloud(*args, **kwargs) -> typing.Any
+  - def init(self, arg0: LidarPCConverterCfg)
+  - def isPacketOfNewScan(self, arg0: str) -> bool
+  - def setStaticTransformation(self, arg0: typing.List[float], arg1: typing.List[float])
+  - def setTransformation(self, transformation: Transformation, stream: capsule = None)
+  - static def setTransformation(*args, **kwargs) -> typing.Any
+  - def sizeOfVendorPacket(self) -> int
+
+- class ILidarPCConverterFactory
+  - def createInstance(self) -> ILidarPCConverter
+
+- class IntensityMappingParam
+  - def __init__(self)
+  - [property] def decoding(self) -> numpy.ndarray
+  - [property] def elCountDec(self) -> int
+  - [elCountDec.setter] def elCountDec(self, arg0: int)
+  - [property] def elCountEnc(self) -> int
+  - [elCountEnc.setter] def elCountEnc(self, arg0: int)
+  - [property] def encoding(self) -> numpy.ndarray
+  - [property] def intensityScalePercent(self) -> float
+  - [intensityScalePercent.setter] def intensityScalePercent(self, arg0: float)
+  - [property] def type(self) -> LidarIntensityMapping
+  - [type.setter] def type(self, arg0: LidarIntensityMapping)
+
+- class LidarIntensityMapping
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - LINEAR: omni.sensors.nv.lidar._lidar.LidarIntensityMapping
+  - NONLINEAR: omni.sensors.nv.lidar._lidar.LidarIntensityMapping
+  - NONLINEAR_DECODING_ONLY: omni.sensors.nv.lidar._lidar.LidarIntensityMapping
+  - NONLINEAR_ENCODING_ONLY: omni.sensors.nv.lidar._lidar.LidarIntensityMapping
+
+- class LidarIntensityProcessing
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - kCalibrated: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+  - kCorrection: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+  - kNormalization: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+  - kNum: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+  - kPointType: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+  - kRaw: omni.sensors.nv.lidar._lidar.LidarIntensityProcessing
+
+- class LidarMetaData
+  - def __init__(self)
+  - [property] def dataSize(self) -> int
+  - [dataSize.setter] def dataSize(self, arg0: int)
+  - [property] def endTimeNs(self) -> int
+  - [endTimeNs.setter] def endTimeNs(self, arg0: int)
+  - [property] def numPoints(self) -> int
+  - [numPoints.setter] def numPoints(self, arg0: int)
+  - [property] def scanStartTimeNs(self) -> int
+  - [scanStartTimeNs.setter] def scanStartTimeNs(self, arg0: int)
+  - [property] def startTimeNs(self) -> int
+  - [startTimeNs.setter] def startTimeNs(self, arg0: int)
+
+- class LidarPCConverterCfg
+  - def __init__(self)
+  - [property] def clientName(self) -> str
+  - [clientName.setter] def clientName(self, arg1: str)
+  - [property] def constantValue(self) -> float
+  - [constantValue.setter] def constantValue(self, arg0: float)
+  - [property] def desiredCoordsType(self) -> typing.Any
+  - [desiredCoordsType.setter] def desiredCoordsType(*args, **kwargs)
+  - [property] def fileName(self) -> str
+  - [fileName.setter] def fileName(self, arg1: str)
+  - [property] def groupName(self) -> str
+  - [groupName.setter] def groupName(self, arg1: str)
+  - [property] def maxPoints(self) -> int
+  - [maxPoints.setter] def maxPoints(self, arg0: int)
+  - [property] def mode(self) -> LidarPCConverterMode
+  - [mode.setter] def mode(self, arg0: LidarPCConverterMode)
+  - [property] def outputOnGPU(self) -> bool
+  - [outputOnGPU.setter] def outputOnGPU(self, arg0: bool)
+  - [property] def profileName(self) -> str
+  - [profileName.setter] def profileName(self, arg1: str)
+  - [property] def runMode(self) -> LidarPCConverterRunMode
+  - [runMode.setter] def runMode(self, arg0: LidarPCConverterRunMode)
+  - [property] def scanFrequencyHz(self) -> int
+  - [scanFrequencyHz.setter] def scanFrequencyHz(self, arg0: int)
+  - [property] def syncMode(self) -> bool
+  - [syncMode.setter] def syncMode(self, arg0: bool)
+
+- class LidarPCConverterMode
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - GENERIC: omni.sensors.nv.lidar._lidar.LidarPCConverterMode
+  - GENERIC_FILE: omni.sensors.nv.lidar._lidar.LidarPCConverterMode
+  - PACKETS: omni.sensors.nv.lidar._lidar.LidarPCConverterMode
+
+- class LidarPCConverterRunMode
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CPU: omni.sensors.nv.lidar._lidar.LidarPCConverterRunMode
+
+- class LidarProfile
+  - def __init__(self)
+  - [property] def aerosolAtmosParam(self) -> AerosolAtmosProfileParam
+  - [aerosolAtmosParam.setter] def aerosolAtmosParam(self, arg0: AerosolAtmosProfileParam)
+  - [property] def avgPowerW(self) -> float
+  - [avgPowerW.setter] def avgPowerW(self, arg0: float)
+  - [property] def beamProfile(self) -> BeamProfile
+  - [beamProfile.setter] def beamProfile(self, arg0: BeamProfile)
+  - [property] def bitDepthResolution(self) -> float
+  - [bitDepthResolution.setter] def bitDepthResolution(self, arg0: float)
+  - [property] def calibrationGain(self) -> float
+  - [calibrationGain.setter] def calibrationGain(self, arg0: float)
+  - [property] def dwId(self) -> int
+  - [dwId.setter] def dwId(self, arg0: int)
+  - [property] def effectiveApertureSize(self) -> float
+  - [effectiveApertureSize.setter] def effectiveApertureSize(self, arg0: float)
+  - [property] def emitterError(self) -> EmitterError
+  - [emitterError.setter] def emitterError(self, arg0: EmitterError)
+  - [property] def emitterProfileAzimuthDeg(self) -> numpy.ndarray
+  - [property] def emitterProfileBank(self) -> numpy.ndarray
+  - [property] def emitterProfileChannelId(self) -> numpy.ndarray
+  - [property] def emitterProfileDistanceCorrectionM(self) -> numpy.ndarray
+  - [property] def emitterProfileElevationDeg(self) -> numpy.ndarray
+  - [property] def emitterProfileFireTimeNs(self) -> numpy.ndarray
+  - [property] def emitterProfileFocalDistM(self) -> numpy.ndarray
+  - [property] def emitterProfileFocalSlope(self) -> numpy.ndarray
+  - [property] def emitterProfileHorOffsetM(self) -> numpy.ndarray
+  - [property] def emitterProfileIsROI(self) -> numpy.ndarray
+  - [property] def emitterProfileIsROIState(self) -> numpy.ndarray
+  - [property] def emitterProfileMaxRange(self) -> numpy.ndarray
+  - [property] def emitterProfileMinRange(self) -> numpy.ndarray
+  - [property] def emitterProfileNumRaysPerLine(self) -> numpy.ndarray
+  - [property] def emitterProfileRangeId(self) -> numpy.ndarray
+  - [property] def emitterProfileReportRateDiv(self) -> numpy.ndarray
+  - [property] def emitterProfileVertOffsetM(self) -> numpy.ndarray
+  - [property] def emitterStateCount(self) -> int
+  - [emitterStateCount.setter] def emitterStateCount(self, arg0: int)
+  - [property] def farRangeM(self) -> float
+  - [farRangeM.setter] def farRangeM(self, arg0: float)
+  - [property] def intensityMapping(self) -> IntensityMappingParam
+  - [intensityMapping.setter] def intensityMapping(self, arg0: IntensityMappingParam)
+  - [property] def intensityProcessing(self) -> LidarIntensityProcessing
+  - [intensityProcessing.setter] def intensityProcessing(self, arg0: LidarIntensityProcessing)
+  - [property] def maxAzimuthROI(self) -> float
+  - [maxAzimuthROI.setter] def maxAzimuthROI(self, arg0: float)
+  - [property] def maxReturns(self) -> int
+  - [maxReturns.setter] def maxReturns(self, arg0: int)
+  - [property] def minAzimuthROI(self) -> float
+  - [minAzimuthROI.setter] def minAzimuthROI(self, arg0: float)
+  - [property] def minDistBetweenEchos(self) -> float
+  - [minDistBetweenEchos.setter] def minDistBetweenEchos(self, arg0: float)
+  - [property] def minReflectance(self) -> float
+  - [minReflectance.setter] def minReflectance(self, arg0: float)
+  - [property] def minReflectanceRange(self) -> float
+  - [minReflectanceRange.setter] def minReflectanceRange(self, arg0: float)
+  - [property] def nearRangeM(self) -> float
+  - [nearRangeM.setter] def nearRangeM(self, arg0: float)
+  - [property] def numLines(self) -> int
+  - [numLines.setter] def numLines(self, arg0: int)
+  - [property] def numberOfChannels(self) -> int
+  - [numberOfChannels.setter] def numberOfChannels(self, arg0: int)
+  - [property] def numberOfEmitters(self) -> int
+  - [numberOfEmitters.setter] def numberOfEmitters(self, arg0: int)
+  - [property] def pixelPitch(self) -> float
+  - [pixelPitch.setter] def pixelPitch(self, arg0: float)
+  - [property] def pulseTimeNs(self) -> int
+  - [pulseTimeNs.setter] def pulseTimeNs(self, arg0: int)
+  - [property] def quantumEfficiency(self) -> float
+  - [quantumEfficiency.setter] def quantumEfficiency(self, arg0: float)
+  - [property] def rangeAccuracyM(self) -> float
+  - [rangeAccuracyM.setter] def rangeAccuracyM(self, arg0: float)
+  - [property] def rangeCount(self) -> int
+  - [rangeCount.setter] def rangeCount(self, arg0: int)
+  - [property] def rangeResolutionM(self) -> float
+  - [rangeResolutionM.setter] def rangeResolutionM(self, arg0: float)
+  - [property] def rayFiringsParam(self) -> RayFiringsParam
+  - [rayFiringsParam.setter] def rayFiringsParam(self, arg0: RayFiringsParam)
+  - [property] def rayType(self) -> LidarRayType
+  - [rayType.setter] def rayType(self, arg0: LidarRayType)
+  - [property] def reflectionPowerFraction(self) -> float
+  - [reflectionPowerFraction.setter] def reflectionPowerFraction(self, arg0: float)
+  - [property] def reportRateBaseHz(self) -> int
+  - [reportRateBaseHz.setter] def reportRateBaseHz(self, arg0: int)
+  - [property] def scanRateBaseHz(self) -> int
+  - [scanRateBaseHz.setter] def scanRateBaseHz(self, arg0: int)
+  - [property] def scanType(self) -> LidarScanType
+  - [scanType.setter] def scanType(self, arg0: LidarScanType)
+  - [property] def startAzimuthOffsetDeg(self) -> float
+  - [startAzimuthOffsetDeg.setter] def startAzimuthOffsetDeg(self, arg0: float)
+  - [property] def stateResolutionStep(self) -> int
+  - [stateResolutionStep.setter] def stateResolutionStep(self, arg0: int)
+  - [property] def transmissionPowerFraction(self) -> float
+  - [transmissionPowerFraction.setter] def transmissionPowerFraction(self, arg0: float)
+  - [property] def validEndAzimuthDeg(self) -> float
+  - [validEndAzimuthDeg.setter] def validEndAzimuthDeg(self, arg0: float)
+  - [property] def validStartAzimuthDeg(self) -> float
+  - [validStartAzimuthDeg.setter] def validStartAzimuthDeg(self, arg0: float)
+  - [property] def weatherAtmosParam(self) -> AtmosProfileParam
+  - [weatherAtmosParam.setter] def weatherAtmosParam(self, arg0: AtmosProfileParam)
+
+- class LidarRayType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - GAUSSIAN_BEAM: omni.sensors.nv.lidar._lidar.LidarRayType
+  - IDEALIZED: omni.sensors.nv.lidar._lidar.LidarRayType
+  - UNIFORM_BEAM: omni.sensors.nv.lidar._lidar.LidarRayType
+
+- class LidarScanType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - kLinear: omni.sensors.nv.lidar._lidar.LidarScanType
+  - kNum: omni.sensors.nv.lidar._lidar.LidarScanType
+  - kRotary: omni.sensors.nv.lidar._lidar.LidarScanType
+  - kSolidState: omni.sensors.nv.lidar._lidar.LidarScanType
+  - kUnknown: omni.sensors.nv.lidar._lidar.LidarScanType
+
+- class Transformation
+  - def __init__(self)
+  - [property] def desiredCoordsType(self) -> typing.Any
+  - [desiredCoordsType.setter] def desiredCoordsType(*args, **kwargs)
+  - [property] def desiredFrameOfReference(self) -> typing.Any
+  - [desiredFrameOfReference.setter] def desiredFrameOfReference(*args, **kwargs)
+  - [property] def frameEnd(self) -> typing.Any
+  - [frameEnd.setter] def frameEnd(*args, **kwargs)
+  - [property] def frameStart(self) -> typing.Any
+  - [frameStart.setter] def frameStart(*args, **kwargs)
+  - [property] def interpolationFactor(self) -> float
+  - [interpolationFactor.setter] def interpolationFactor(self, arg0: float)
+  - [property] def pose(self) -> typing.Any
+  - [pose.setter] def pose(*args, **kwargs)
+
+## Functions
+
+- def acquire_pcconverter_interface(plugin_name: str = None, library_path: str = None) -> ILidarPCConverterFactory
+- def computeEmitterPeakPower(arg0: LidarProfile, arg1: int, arg2: int) -> float
+- def getChannelsOfBinFileHeader(arg0: str) -> typing.Dict[int, typing.List[float]]
+- def getConstDetector(arg0: LidarProfile) -> float
+- def getLidarBinFileHeader(*args, **kwargs) -> typing.Any
+- def getLidarProfileFromBuffer(arg0: buffer) -> LidarProfile
+- def getParameterString(arg0: buffer) -> str
+- def getSizeOfBinPacketHeader() -> int
+- def getSizeOfLidarBinFileHeader() -> int
+- def propagateSimple(arg0: float, arg1: float, arg2: float, arg3: float, arg4: BeamProfile) -> float
+- def release_pcconverter_interface(arg0: ILidarPCConverterFactory)

@@ -1,0 +1,24 @@
+#usda 1.0
+(
+    """
+    Environment: although the USD environment has a different count of traffic lights than
+    the XODR map file, it's a valid environment file.
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom uniform asset omni:simready:openDrive = @./road.xodr@
+
+    def Xform "traffic_signal_3047"
+    {
+        custom int64 omni:simready:signalID = 3047
+    }
+
+    def Xform "traffic_signal_3050"
+    {
+        custom int64 omni:simready:signalID = 3050
+    }
+
+}

@@ -1,0 +1,47 @@
+{
+    "RenameAttribute": {
+        "version": 1,
+        "description": ["Changes the names of attributes from an input bundle for the corresponding output bundle.",
+                        "Attributes whose names are not in the 'inputAttrNames' list will be copied from the",
+                        "input bundle to the output bundle without changing the name."],
+        "metadata": {
+            "uiName": "Rename Attributes In Bundles"
+        },
+        "categories": ["bundle"],
+        "inputs": {
+            "$constraint": "Length of inputAttrNames should always be equal to the length of outputAttrNames",
+            "inputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the names of attributes in the input data to be renamed",
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Rename"
+                }
+            },
+            "outputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the new names for the attributes listed in inputAttrNames",
+                "default": "",
+                "metadata": {
+                    "uiName": "New Attribute Names"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes to be renamed",
+                "metadata": {
+                    "uiName": "Original Attribute Bundle"
+                }
+            }
+        },
+        "outputs": {
+            "data": {
+                "type": "bundle",
+                "description": ["Final bundle of attributes, with attributes renamed based on inputAttrNames and outputAttrNames"],
+                "metadata": {
+                    "uiName": "Bundle Of Renamed Attributes"
+                }
+            }
+        }
+    }
+}

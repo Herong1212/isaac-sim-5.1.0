@@ -1,0 +1,68 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file TranscoderUltrasonic.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_ultrasonic_TranscoderUltrasonic" (
+        docs="""Transcodes RTSensor buffer data to sensor specific formats and transmits it via udp"""
+    )
+    {
+        token node:type = "omni.sensors.nv.ultrasonic.TranscoderUltrasonic"
+        int node:typeVersion = 1
+
+        # 15 attributes
+        custom uint64 inputs:cudaStream = 0 (
+            docs="""Cuda Stream Input"""
+        )
+        custom bool inputs:dumpPackets = false (
+            docs="""Dump packets as dwBinFile"""
+        )
+        custom string inputs:fileFormat = "bin" (
+            docs="""File format to dump"""
+        )
+        custom string inputs:fileName = "uss.h5" (
+            docs="""File name of the packets"""
+        )
+        custom string inputs:format = "" (
+            docs="""Output format"""
+        )
+        custom double inputs:hydraTime = 0.0 (
+            docs="""hydra timestamp input as double in [ns]"""
+        )
+        custom string inputs:interfaceIP = "127.0.0.1" (
+            docs="""local interface to use"""
+        )
+        custom uint64 inputs:meta = 0 (
+            docs="""Source Meta Data"""
+        )
+        custom string inputs:remoteIP = "127.0.0.1" (
+            docs="""Remote IP of UDP channel"""
+        )
+        custom int inputs:remotePort = 12001 (
+            docs="""Remote port of UDP channel"""
+        )
+        custom float inputs:signalScaler = 1.0 (
+            docs="""Signal scaling parameter"""
+        )
+        custom double inputs:simTime = 0.0 (
+            docs="""simTime timestamp input as double in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom string inputs:timestampMode = "VENDOR" (
+            docs="""mode for the sent timestamp"""
+        )
+        custom string inputs:vendor = "generic" (
+            docs="""USS model vendor"""
+        )
+    }
+}

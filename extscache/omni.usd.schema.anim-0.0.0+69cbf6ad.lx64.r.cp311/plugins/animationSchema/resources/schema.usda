@@ -1,0 +1,118 @@
+#usda 1.0
+(
+    """ This file contains a schema for supporting skeletal animations in USD.
+    """
+    subLayers = [
+        @usdGeom/schema.usda@,
+        @usdSkel/schema.usda@,
+    ]
+)
+
+over "GLOBAL" (
+	customData = {
+	string libraryName = "animationSchema"
+	string libraryPath = "./"
+	string libraryPrefix = "AnimationSchema"
+	}
+)
+{
+}
+
+class SkelJoint "SkelJoint"
+(
+    doc = """SkelJoint represents a skeleton joint"""
+
+    inherits = </Boundable>
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdSkel/skeleton.h"
+"""
+    }
+)
+{
+    bool hide = false(
+        doc = "Additional visibility flag to hide individual joint prim."
+    )
+}
+
+class SkelAnimationAnnotation "SkelAnimationAnnotation"
+(
+    doc = """Creates an annotation for a parent SkelAnimation that contains annotation tag and start/end range."""
+    inherits = </Typed>
+)
+{
+   token tag (
+        doc = """The tag name."""
+        displayName = "Tag"
+    )
+    int start = 0 (
+        doc = """The start offset."""
+        displayName = "Start"
+    )
+    int end = 0 (
+        doc = """The end offset."""
+        displayName = "End"
+    )
+}
+
+class "AnimationCurveAPI"
+(
+    doc = """An API accessing curves."""
+    inherits = </APISchemaBase>
+    customData = {
+        token apiSchemaType = "nonApplied"
+        string extraIncludes = """
+#include "animationCurveTypes.h"
+"""
+        dictionary schemaTokens = {
+            dictionary values = {}
+            dictionary times = {}
+            dictionary inTangentValues = {}
+            dictionary inTangentTimes = {}
+            dictionary inTangentTypes = {}
+            dictionary outTangentValues = {}
+            dictionary outTangentTimes = {}
+            dictionary outTangentTypes = {}
+            dictionary tangentBrokens = {}
+            dictionary tangentWeighteds = {}
+            dictionary defaultTangentType = {}
+            dictionary preInfinityType = {}
+            dictionary postInfinityType = {}
+            dictionary auto = {}
+            dictionary smooth = {}
+            dictionary flat = {}
+            dictionary fixed = {}
+            dictionary linear = {}
+            dictionary step = {}
+            dictionary constant = {}
+            dictionary cycle = {}
+            dictionary linear = {}
+            dictionary cycleRelative = {}
+            dictionary oscillate = {}
+         }
+    }
+)
+{	
+}
+
+class AnimationData "AnimationData"
+(
+    doc = """Curve-based Animation data prim"""
+    inherits = </Typed>
+)
+{
+}
+
+class "AnimationDataAPI"
+(
+    doc = """Applied API for any prim who wants to link to an AnimationData prim for curve-based animation """
+
+    inherits = </APISchemaBase>
+
+)
+{
+    rel animationData:binding (
+        doc = """ Relationship to link the prim to an AnimationData prim """
+    )
+}

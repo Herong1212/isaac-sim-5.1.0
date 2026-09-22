@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetCharacterJointTransform.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_anim_graph_GetCharacterJointTransform" (
+        docs="""Get the joint transform in world space from the Animation Graph on the specified UsdSkelRoot prim."""
+    )
+    {
+        token node:type = "omni.anim.graph.GetCharacterJointTransform"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:joint = "" (
+            docs="""The joint name to query."""
+        )
+        custom token inputs:skelRootPath = "" (
+            docs="""The prim path of a UsdSkelRoot to which has the AnimationGraph applied and assigned to it."""
+        )
+
+        # 1 attribute
+        custom matrix4d outputs:transform = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Joint transform in the world space."""
+        )
+    }
+}

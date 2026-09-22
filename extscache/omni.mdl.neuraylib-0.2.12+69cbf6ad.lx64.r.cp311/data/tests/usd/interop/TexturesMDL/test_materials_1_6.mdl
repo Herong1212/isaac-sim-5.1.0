@@ -1,0 +1,152 @@
+mdl 1.6; // make sure this is 1.6 or later
+
+import ::base::*;
+import ::math::*;
+import ::anno::*;
+import ::df::*;
+import ::tex::*;
+import ::state::*;
+
+color textureReadColor(
+	uniform texture_2d file = texture_2d()
+	[[
+		anno::display_name("Texture")
+	]],
+    int tex_coord_index = 0
+    [[
+        anno::display_name("Texture Coordinate Set")
+    ]],
+    color fallback = color(1.0)
+    [[
+        anno::display_name("Fallback")
+    ]]
+)
+{
+    float3 tex_coord = state::texture_coordinate(tex_coord_index);
+    return tex::texture_isvalid(file)
+        ? tex::lookup_color(file, float2(tex_coord.x, tex_coord.y))
+        : fallback;
+}
+
+// ----------- BODY --------------
+
+export material BodyAbsoluteExisting() = let {
+    uniform texture_2d file = texture_2d("/resources/missing_texture_placeholder.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: color(1.0) - textureReadColor(file) // pink black checker, make it green
+        )
+    )
+);
+
+export material BodyAbsoluteMissing() = let {
+    uniform texture_2d file = texture_2d("/resources/NOT_EXISTING.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material BodyRelativeExisting() = let {
+    uniform texture_2d file = texture_2d("DensityTexture1.png"); // auto strict relative
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material BodyRelativeMissing() = let {
+    uniform texture_2d file = texture_2d("NOT_EXISTING.png"); // auto strict relative
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+// ----------- PARAM --------------
+
+export material ParamAbsoluteExisting(
+    uniform texture_2d file = texture_2d("/resources/missing_texture_placeholder.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: color(1.0) - textureReadColor(file)
+        )
+    )
+);
+
+export material ParamAbsoluteMissing(
+    uniform texture_2d file = texture_2d("/resources/NOT_EXISTING.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material ParamRelativeExisting(
+    uniform texture_2d file = texture_2d("./DensityTexture3.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material ParamRelativeMissing(
+    uniform texture_2d file = texture_2d("./NOT_EXISTING.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+// ----------- BOTH (BODY and PARAM) --------------
+// absolute and relative are covered above, here only relative 
+
+export material BothExisting(
+    uniform texture_2d file = texture_2d("./DensityTexture2.png")
+) = let {
+    uniform texture_2d fileBody = texture_2d("DensityTexture2.png"); // auto strict relative
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: math::sqrt(textureReadColor(file) * textureReadColor(fileBody))
+        )
+    )
+);
+
+export material BothMissing(
+    uniform texture_2d file = texture_2d("NOT_EXISTING.png") // auto strict relative
+) = let {
+    uniform texture_2d fileBody = texture_2d("./NOT_EXISTING.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: math::sqrt(textureReadColor(file) * textureReadColor(fileBody))
+        )
+    )
+);
+
+// ----------- BOTH (BODY and PARAM) --------------
+
+export material ParamEmpty(
+    uniform texture_2d file = texture_2d()
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);

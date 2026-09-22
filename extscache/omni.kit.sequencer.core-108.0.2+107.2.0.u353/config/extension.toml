@@ -1,0 +1,44 @@
+[core]
+reloadable = true
+
+[package]
+version = "108.0.2"
+title = "Sequencer Core"
+description = "Core functionality for sequencer activities."
+repository = ""
+category = "Widgets"
+keywords = ["kit", "machinima", "sequencer"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[dependencies]
+"omni.usd" = {}
+"omni.kit.commands" = {}
+"omni.ui" = {}
+"omni.kit.notification_manager" = {}
+# Lock major and minor version to avoid breaking changes.
+"omni.kit.sequencer.usd" = { version = "~108.0" }
+
+[[test]]
+timeout = 600
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window",
+    "--/app/profilerBackend=\"\"",
+    "--/rtx-transient/resourcemanager/enableTextureStreaming=false", # Texture streaming can hang on exit in linux
+]
+dependencies = []
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface [omni::kit::renderer::IGpuFoundation v0.2] while unloading all plugins*",
+]
+
+
+[[python.module]]
+name = "omni.kit.sequencer.core"

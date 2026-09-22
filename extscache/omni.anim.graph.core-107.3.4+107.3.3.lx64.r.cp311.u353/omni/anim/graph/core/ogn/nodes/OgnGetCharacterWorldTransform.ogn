@@ -1,0 +1,25 @@
+{
+    "omni.anim.graph.GetCharacterWorldTransform": {
+        "version": 1,
+        "description": ["Get the world space transform from the Animation Graph on the specified UsdSkelRoot prim."],
+        "uiName": "Get Animation Graph World Transform",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+            "skelRootPath": {
+                "uiName": "Skel Root Path",
+                "type": "token",
+                "description": "The prim path of a UsdSkelRoot to which has the AnimationGraph applied and assigned to it."
+            }
+        },
+        "outputs": {
+            "transform": {
+                "uiName": "Transform",
+                "description": [
+                "Character world transform of the given UsdSkelRoot."
+                ],
+                "type": "matrixd[4]",
+                "default": [[1.0,0.0,0.0,0.0], [0.0,1.0,0.0,0.0], [0.0,0.0,1.0,0.0], [0.0,0.0,0.0,1.0]]
+            }
+        }
+    }
+}

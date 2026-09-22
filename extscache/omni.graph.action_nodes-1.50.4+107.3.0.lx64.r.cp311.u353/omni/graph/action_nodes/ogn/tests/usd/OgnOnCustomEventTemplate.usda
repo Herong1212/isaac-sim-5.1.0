@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnOnCustomEvent.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_action_OnCustomEvent" (
+        docs="""Event node which fires when the specified custom event is sent. This node is used in combination with 'omni.graph.action.SendCustomEvent'."""
+    )
+    {
+        token node:type = "omni.graph.action.OnCustomEvent"
+        int node:typeVersion = 3
+
+        # 2 attributes
+        custom token inputs:eventName = "" (
+            docs="""The name of the custom event."""
+        )
+        custom bool inputs:onlyPlayback = true (
+            docs="""When true, the node is only executed while the Stage is being played."""
+        )
+
+        # 3 attributes
+        custom rel outputs_bundle (
+            docs="""Bundle received with the event. The contents of the bundle are determined by the input bundle
+            given to the corresponding 'SendCustomEvent' node."""
+        )
+        custom uint outputs:execOut (
+            docs="""When the custom event was received signal to the graph that execution can continue downstream."""
+        )
+        custom token outputs:path (
+            docs="""The path associated with the received custom event"""
+        )
+    }
+}

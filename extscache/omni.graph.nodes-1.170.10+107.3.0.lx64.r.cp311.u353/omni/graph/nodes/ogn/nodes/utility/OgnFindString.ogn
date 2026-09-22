@@ -1,0 +1,93 @@
+{
+    "FindString": {
+        "version": 1,
+        "description": [
+            "Find the index of a substring in a base string starting at pos, or -1 if the string is not found."
+        ],
+        "uiName": "Find String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The base string."
+            },
+            "value": {
+                "type": ["string", "token"],
+                "description": "The string to search for."
+            },
+            "pos": {
+                "type": "int",
+                "description": "The starting position to search for the string."
+            }
+        },
+        "outputs": {
+            "index": {
+                "type": "int",
+                "description": "The index of the first occurrence of string, or -1 if not found."
+            }
+        },
+        "tests": [
+            {
+                "inputs:string": {"type": "string", "value": ""},
+                "inputs:value": {"type": "string", "value": ""},
+                "inputs:pos": 0,
+                "outputs:index": -1
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a test string"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:pos": 50,
+                "outputs:index": -1
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a test string"},
+                "inputs:value": {"type": "string", "value": "car"},
+                "inputs:pos": 0,
+                "outputs:index": -1
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a test string"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:pos": 0,
+                "outputs:index": 10
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This test string has two tests"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:pos": 0,
+                "outputs:index": 5
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This test string has two tests"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:pos": 10,
+                "outputs:index": 25
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a test string"},
+                "inputs:value": {"type": "token", "value": "car"},
+                "inputs:pos": 0,
+                "outputs:index": -1
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a test string"},
+                "inputs:value": {"type": "token", "value": "test"},
+                "inputs:pos": 0,
+                "outputs:index": 10
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This test string has two tests"},
+                "inputs:value": {"type": "token", "value": "test"},
+                "inputs:pos": 0,
+                "outputs:index": 5
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This test string has two tests"},
+                "inputs:value": {"type": "token", "value": "test"},
+                "inputs:pos": 10,
+                "outputs:index": 25
+            }
+        ]
+    }
+}

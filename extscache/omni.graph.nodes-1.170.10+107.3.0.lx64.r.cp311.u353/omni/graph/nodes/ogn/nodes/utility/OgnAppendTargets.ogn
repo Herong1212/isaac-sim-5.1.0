@@ -1,0 +1,80 @@
+{
+    "AppendTargets": {
+        "version": 1,
+        "description": [
+            "Combines the input target arrays into a single array.",
+            "Duplicates are skipped unless \"allowDuplicates\" is true."
+        ],
+        "categories": ["sceneGraph"],
+        "uiName": "Append Targets",
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "allowDuplicates": {
+                "type": "bool",
+                "description": [
+                    "If false, the path will only be added the first time it is encountered.",
+                    "If true, all paths will be added in order."
+                ]
+            },
+            "input0": {
+                "type": "target",
+                "description": "Input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "input1": {
+                "type": "target",
+                "description": "Input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The output target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:input0": [],
+                "inputs:input1": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:input0": [],
+                "inputs:input1": "/A",
+                "outputs:targets": ["/A"]
+            },
+            {
+                "inputs:input0": "/A",
+                "inputs:input1": [],
+                "outputs:targets": ["/A"]
+            },
+            {
+                "inputs:allowDuplicates": false,
+                "inputs:input0": ["/A", "/B", "/C"],
+                "inputs:input1": "/C",
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:allowDuplicates": true,
+                "inputs:input0": ["/A", "/B", "/C"],
+                "inputs:input1": "/C",
+                "outputs:targets": ["/A", "/B", "/C", "/C"]
+            },
+            {
+                "inputs:input0": ["/A", "/B", "/C"],
+                "inputs:input1": "/D",
+                "outputs:targets": ["/A", "/B", "/C", "/D"]
+            },
+            {
+                "inputs:input0": ["/A", "/B", "/C"],
+                "inputs:input1": ["/D", "/E", "/F"],
+                "outputs:targets": ["/A", "/B", "/C", "/D", "/E", "/F"]
+            }
+        ]
+    }
+}

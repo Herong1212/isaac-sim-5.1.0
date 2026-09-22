@@ -1,0 +1,79 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Scope "envs"
+    {
+        def Xform "env_0"
+        {
+            float3 xformOp:translate = (-1, -1, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Xform "vibra_table" (
+                instanceable = true
+            )
+            {
+                quatf xformOp:orient = (0, 0, 0, 1)
+                float3 xformOp:translate = (0.657, -0.1524, 0.8393426)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                def "visual" (
+                    prepend references = @./VibrationTable_Top.usda@
+                )
+                {
+                    float3 xformOp:scale = (0.01, 0.01, 0.01)
+                    float3 xformOp:translate = (0, 0, 0.15)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                }
+            }
+
+            def "bolt0" (
+                instanceable = true
+                prepend references = @./M20_Bolt_Tight_R512_Franka_SI.usda@
+            )
+            {
+            }
+        }
+
+        def Xform "env_1"
+        {
+            float3 xformOp:translate = (1, -1, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Xform "vibra_table" (
+                instanceable = true
+            )
+            {
+                quatf xformOp:orient = (0, 0, 0, 1)
+                float3 xformOp:translate = (0.657, -0.1524, 0.8393426)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
+
+                def "visual" (
+                    prepend references = @./VibrationTable_Top.usda@
+                )
+                {
+                    float3 xformOp:scale = (0.01, 0.01, 0.01)
+                    float3 xformOp:translate = (0, 0, 0.15)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                }
+
+            }
+
+            def "bolt0" (
+                instanceable = true
+                prepend references = @./M20_Bolt_Tight_R512_Franka_SI.usda@
+            )
+            {
+            }
+        }
+    }
+}
+

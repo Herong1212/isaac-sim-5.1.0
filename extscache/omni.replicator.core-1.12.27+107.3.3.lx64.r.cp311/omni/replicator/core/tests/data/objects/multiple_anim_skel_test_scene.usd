@@ -1,0 +1,1314 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            string enableDistanceDelay = "off"
+            string enableDoppler = "off"
+            string enableInterauralDelay = "off"
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (21354.33286027031, -5727.604740764222, 236.92082755843344)
+                double3 target = (19364.39582324749, -5652.155525269542, -58.91167281178369)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/World/Camera"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./multiple_anim_skel_test_scene.usd"
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            int "rtx:post:aa:op" = 3
+        }
+    }
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer C:\\Users\\ujaved\\Documents\\test_record_char_motion0000.usd
+"""
+    endTimeCode = 11
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def DistantLight "defaultLight" (
+        apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Plane"
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 3, 2]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 0), (50, -50, 0), (-50, 50, 0), (50, 50, 0)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (10000, 10000, 1)
+        double3 xformOp:translate = (0, 0, 0.9000000134110451)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DistantLight "DistantLight" (
+        apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (45, 0, 90)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Xform "jp_0122_source_skeleton_cm" (
+        instanceable = false
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def SkelRoot "SkelRoot" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            delete rel proxyPrim = </World/jp_0122_source_skeleton_cm/SkelRoot/Skeleton>
+            prepend rel skel:skeleton = </World/jp_0122_source_skeleton_cm/SkelRoot/Skeleton>
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            def Skeleton "Skeleton" (
+                apiSchemas = ["ControlRigAPI", "SkelBindingAPI"]
+            )
+            {
+                uniform matrix4d[] bindTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:forwardAxis = "X"
+                uniform token[] controlRig:retargetTags = ["", "", "", "Head", "Right_Shoulder", "", "Right_Hand", "Left_Shoulder", "", "Left_Hand", "", "", "Right_Foot", "", "", "Left_Foot"]
+                uniform matrix4d[] controlRig:retargetTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, -0, 0), (-0, 5.960464477539063e-8, -1, 0), (0, 1, 5.960464477539063e-8, 0), (-2.4049999713897705, -18.31100082397461, 24.350000381469727, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 5.960464477539063e-8, 0.9999999403953552, 0), (0, -0.9999999403953552, 5.960464477539063e-8, 0), (-2.4049999713897705, 18.31100082397461, 24.349998474121094, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:upAxis = "Z"
+                uniform token[] joints = ["Root", "Root/pelvis", "Root/pelvis/torso", "Root/pelvis/torso/head", "Root/pelvis/torso/right_upper_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm/right_hand", "Root/pelvis/torso/left_upper_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm/left_hand", "Root/pelvis/right_thigh", "Root/pelvis/right_thigh/right_shin", "Root/pelvis/right_thigh/right_shin/right_foot", "Root/pelvis/left_thigh", "Root/pelvis/left_thigh/left_shin", "Root/pelvis/left_thigh/left_shin/left_foot"]
+                uniform matrix4d[] restTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                rel skel:animationSource = </record_char_motion0000_source>
+
+                def SkelJoint "Root" (
+                    kind = "component"
+                )
+                {
+                    float3[] extent = [(0, 0, 0), (0, 0, 100)]
+
+                    def SkelJoint "pelvis" (
+                        kind = "component"
+                    )
+                    {
+                        float3[] extent = [(0, -8.4887, 0), (0, 8.4887, 0)]
+
+                        def SkelJoint "torso" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(-2.405, -18.311, 0), (-2.405, 18.311, 24.349998)]
+
+                            def SkelJoint "head" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                            }
+
+                            def SkelJoint "right_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (-90, 0, 0)
+
+                                def SkelJoint "right_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "right_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+
+                            def SkelJoint "left_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (90, 0, 0)
+
+                                def SkelJoint "left_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "left_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+                        }
+
+                        def SkelJoint "right_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "right_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "right_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+
+                        def SkelJoint "left_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "left_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "left_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Camera "Camera"
+    {
+        token cameraProjectionType = "pinhole" (
+            allowedTokens = ["pinhole", "fisheyePolynomial", "fisheyeSpherical"]
+        )
+        float focalLength = 24
+        float focusDistance = 400
+        custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -20844.255792794425)
+        double3 xformOp:rotateYXZ = (82.56798553466795, -0.0000036968069099673043, 91.34218597412118)
+        double3 xformOp:scale = (0.9999993443489075, 0.9999997615814209, 1.000000238418579)
+        double3 xformOp:translate = (19892.300000000003, -6225.600000000001, 145.9620000000009)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+    }
+
+    def Xform "jp_0122_source_skeleton_cm_01" (
+        instanceable = false
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (79.4000011831522, 89.70000133663416, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def SkelRoot "SkelRoot" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            delete rel proxyPrim = </World/jp_0122_source_skeleton_cm_01/SkelRoot/Skeleton>
+            prepend rel skel:skeleton = </World/jp_0122_source_skeleton_cm_01/SkelRoot/Skeleton>
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            def Skeleton "Skeleton" (
+                apiSchemas = ["ControlRigAPI", "SkelBindingAPI"]
+            )
+            {
+                uniform matrix4d[] bindTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:forwardAxis = "X"
+                uniform token[] controlRig:retargetTags = ["", "", "", "Head", "Right_Shoulder", "", "Right_Hand", "Left_Shoulder", "", "Left_Hand", "", "", "Right_Foot", "", "", "Left_Foot"]
+                uniform matrix4d[] controlRig:retargetTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, -0, 0), (-0, 5.960464477539063e-8, -1, 0), (0, 1, 5.960464477539063e-8, 0), (-2.4049999713897705, -18.31100082397461, 24.350000381469727, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 5.960464477539063e-8, 0.9999999403953552, 0), (0, -0.9999999403953552, 5.960464477539063e-8, 0), (-2.4049999713897705, 18.31100082397461, 24.349998474121094, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:upAxis = "Z"
+                uniform token[] joints = ["Root", "Root/pelvis", "Root/pelvis/torso", "Root/pelvis/torso/head", "Root/pelvis/torso/right_upper_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm/right_hand", "Root/pelvis/torso/left_upper_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm/left_hand", "Root/pelvis/right_thigh", "Root/pelvis/right_thigh/right_shin", "Root/pelvis/right_thigh/right_shin/right_foot", "Root/pelvis/left_thigh", "Root/pelvis/left_thigh/left_shin", "Root/pelvis/left_thigh/left_shin/left_foot"]
+                uniform matrix4d[] restTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                rel skel:animationSource = </record_char_motion0000_source>
+
+                def SkelJoint "Root" (
+                    kind = "component"
+                )
+                {
+                    float3[] extent = [(0, 0, 0), (0, 0, 89.00507)]
+
+                    def SkelJoint "pelvis" (
+                        kind = "component"
+                    )
+                    {
+                        float3[] extent = [(0, -8.4887, 0), (0, 8.4887, 0)]
+
+                        def SkelJoint "torso" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(-2.405, -18.311, 0), (-2.405, 18.311, 24.349998)]
+
+                            def SkelJoint "head" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                            }
+
+                            def SkelJoint "right_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (-90, 0, 0)
+
+                                def SkelJoint "right_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "right_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+
+                            def SkelJoint "left_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (90, 0, 0)
+
+                                def SkelJoint "left_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "left_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+                        }
+
+                        def SkelJoint "right_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "right_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "right_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+
+                        def SkelJoint "left_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "left_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "left_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Xform "jp_0122_source_skeleton_cm_02" (
+        instanceable = false
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (63.800000950694084, -71.70000106841326, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def SkelRoot "SkelRoot" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            delete rel proxyPrim = </World/jp_0122_source_skeleton_cm_02/SkelRoot/Skeleton>
+            prepend rel skel:skeleton = </World/jp_0122_source_skeleton_cm_02/SkelRoot/Skeleton>
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            def Skeleton "Skeleton" (
+                apiSchemas = ["ControlRigAPI", "SkelBindingAPI"]
+            )
+            {
+                uniform matrix4d[] bindTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:forwardAxis = "X"
+                uniform token[] controlRig:retargetTags = ["", "", "", "Head", "Right_Shoulder", "", "Right_Hand", "Left_Shoulder", "", "Left_Hand", "", "", "Right_Foot", "", "", "Left_Foot"]
+                uniform matrix4d[] controlRig:retargetTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, -0, 0), (-0, 5.960464477539063e-8, -1, 0), (0, 1, 5.960464477539063e-8, 0), (-2.4049999713897705, -18.31100082397461, 24.350000381469727, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 5.960464477539063e-8, 0.9999999403953552, 0), (0, -0.9999999403953552, 5.960464477539063e-8, 0), (-2.4049999713897705, 18.31100082397461, 24.349998474121094, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:upAxis = "Z"
+                uniform token[] joints = ["Root", "Root/pelvis", "Root/pelvis/torso", "Root/pelvis/torso/head", "Root/pelvis/torso/right_upper_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm/right_hand", "Root/pelvis/torso/left_upper_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm/left_hand", "Root/pelvis/right_thigh", "Root/pelvis/right_thigh/right_shin", "Root/pelvis/right_thigh/right_shin/right_foot", "Root/pelvis/left_thigh", "Root/pelvis/left_thigh/left_shin", "Root/pelvis/left_thigh/left_shin/left_foot"]
+                uniform matrix4d[] restTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                rel skel:animationSource = </record_char_motion0000_source>
+
+                def SkelJoint "Root" (
+                    kind = "component"
+                )
+                {
+                    float3[] extent = [(0, 0, 0), (0, 0, 100)]
+
+                    def SkelJoint "pelvis" (
+                        kind = "component"
+                    )
+                    {
+                        float3[] extent = [(0, -8.4887, 0), (0, 8.4887, 0)]
+
+                        def SkelJoint "torso" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(-2.405, -18.311, 0), (-2.405, 18.311, 24.349998)]
+
+                            def SkelJoint "head" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                            }
+
+                            def SkelJoint "right_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (-90, 0, 0)
+
+                                def SkelJoint "right_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "right_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+
+                            def SkelJoint "left_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (90, 0, 0)
+
+                                def SkelJoint "left_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "left_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+                        }
+
+                        def SkelJoint "right_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "right_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "right_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+
+                        def SkelJoint "left_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "left_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "left_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Xform "jp_0122_source_skeleton_cm_03" (
+        instanceable = false
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-97.20000144839287, -145.00000216066837, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def SkelRoot "SkelRoot" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            delete rel proxyPrim = </World/jp_0122_source_skeleton_cm_03/SkelRoot/Skeleton>
+            prepend rel skel:skeleton = </World/jp_0122_source_skeleton_cm_03/SkelRoot/Skeleton>
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            def Skeleton "Skeleton" (
+                apiSchemas = ["ControlRigAPI", "SkelBindingAPI"]
+            )
+            {
+                uniform matrix4d[] bindTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:forwardAxis = "X"
+                uniform token[] controlRig:retargetTags = ["", "", "", "Head", "Right_Shoulder", "", "Right_Hand", "Left_Shoulder", "", "Left_Hand", "", "", "Right_Foot", "", "", "Left_Foot"]
+                uniform matrix4d[] controlRig:retargetTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, -0, 0), (-0, 5.960464477539063e-8, -1, 0), (0, 1, 5.960464477539063e-8, 0), (-2.4049999713897705, -18.31100082397461, 24.350000381469727, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 5.960464477539063e-8, 0.9999999403953552, 0), (0, -0.9999999403953552, 5.960464477539063e-8, 0), (-2.4049999713897705, 18.31100082397461, 24.349998474121094, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                uniform token controlRig:upAxis = "Z"
+                uniform token[] joints = ["Root", "Root/pelvis", "Root/pelvis/torso", "Root/pelvis/torso/head", "Root/pelvis/torso/right_upper_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm/right_hand", "Root/pelvis/torso/left_upper_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm/left_hand", "Root/pelvis/right_thigh", "Root/pelvis/right_thigh/right_shin", "Root/pelvis/right_thigh/right_shin/right_foot", "Root/pelvis/left_thigh", "Root/pelvis/left_thigh/left_shin", "Root/pelvis/left_thigh/left_shin/left_foot"]
+                uniform matrix4d[] restTransforms = [( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 100, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 23.615099489688873, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 22.389400005340576, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, -18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-2.4049999192357063, 18.310999870300293, 24.34999942779541, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -27.47879922389984, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -25.89470148086548, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, -8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 8.488699793815613, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -42.15460121631622, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, -40.98699986934662, 1) )]
+                rel skel:animationSource = </record_char_motion0000_source>
+
+                def SkelJoint "Root" (
+                    kind = "component"
+                )
+                {
+                    float3[] extent = [(0, 0, 0), (0, 0, 100)]
+
+                    def SkelJoint "pelvis" (
+                        kind = "component"
+                    )
+                    {
+                        float3[] extent = [(0, -8.4887, 0), (0, 8.4887, 0)]
+
+                        def SkelJoint "torso" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(-2.405, -18.311, 0), (-2.405, 18.311, 24.349998)]
+
+                            def SkelJoint "head" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                            }
+
+                            def SkelJoint "right_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (-90, 0, 0)
+
+                                def SkelJoint "right_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "right_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+
+                            def SkelJoint "left_upper_arm" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -27.4788), (0, 0, -27.4788)]
+                                float3 xformOp:rotateXYZ = (90, 0, 0)
+
+                                def SkelJoint "left_lower_arm" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, -25.894701), (0, 0, -25.894701)]
+
+                                    def SkelJoint "left_hand" (
+                                        kind = "component"
+                                    )
+                                    {
+                                        float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                    }
+                                }
+                            }
+                        }
+
+                        def SkelJoint "right_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "right_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "right_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+
+                        def SkelJoint "left_thigh" (
+                            kind = "component"
+                        )
+                        {
+                            float3[] extent = [(0, 0, -42.154602), (0, 0, -42.154602)]
+
+                            def SkelJoint "left_shin" (
+                                kind = "component"
+                            )
+                            {
+                                float3[] extent = [(0, 0, -40.987), (0, 0, -40.987)]
+
+                                def SkelJoint "left_foot" (
+                                    kind = "component"
+                                )
+                                {
+                                    float3[] extent = [(0, 0, 0), (0, 0, 0)]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def SkelRoot "Cylinder_Joints_Armature" (
+        prepend apiSchemas = ["SkelBindingAPI"]
+    )
+    {
+        custom string userProperties:blenderName:object = "Cylinder_Joints_Armature"
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 219.4140937732666)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        prepend rel skel:skeleton = </World/Cylinder_Joints_Armature/Skeleton>
+
+        def Skeleton "Skeleton" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+        )
+        {
+            uniform matrix4d[] bindTransforms = [( (-1.6292068494294654e-7, 1, -8.742277657347586e-8, 0), (0, -8.74227694680485e-8, -0.9999999403953552, 0), (-1, -1.6292068494294654e-7, -3.178649876645068e-8, 0), (-9.705877942853365e-24, 4.371138828673793e-8, 1, 1) ), ( (-2.821299744937278e-7, 1, -1.8000100650457374e-14, 0), (0, 2.3204756763972653e-21, -0.9999999403953552, 0), (-1, -2.821299744937278e-7, -3.178651297730539e-8, 0), (-9.705877942853365e-24, -4.371138118131057e-8, 5.960464477539063e-8, 1) )]
+            uniform token[] joints = ["Joint1", "Joint1/Joint2"]
+            uniform matrix4d[] restTransforms = [( (-1.6292068494294654e-7, 1, -8.742277657347586e-8, 0), (0, -8.74227694680485e-8, -0.9999999403953552, 0), (-1, -1.6292068494294654e-7, -3.178649876645068e-8, 0), (-9.705877942853365e-24, 4.371138828673793e-8, 1, 1) ), ( (1, -8.742276236262114e-8, 1.1920928955078125e-7, 0), (8.74227694680485e-8, 1, -1.4242977592693676e-14, 0), (-1.1920928955078125e-7, 2.4868995751603507e-14, 1, 0), (0, 1, 0, 1) )]
+            rel skel:animationSource = </World/Cylinder_Joints_Armature/Skeleton/Anim>
+
+            def SkelAnimation "Anim"
+            {
+                uniform token[] joints = ["Joint1", "Joint1/Joint2"]
+                quatf[] rotations.timeSamples = {
+                    1: [(0.49999994, -0.49999997, -0.5, 0.50000006), (1, -9.777993e-15, -5.9604645e-8, -4.3711385e-8)],
+                    2: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99985987, -3.571284e-9, -5.9330254e-8, -0.01673913)],
+                    3: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9994349, -7.171692e-9, -5.9036708e-8, -0.033614777)],
+                    4: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99871826, -1.079848e-8, -5.8723828e-8, -0.050614066)],
+                    5: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99770415, -1.4448748e-8, -5.8391453e-8, -0.06772341)],
+                    6: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.996387, -1.8119481e-8, -5.80395e-8, -0.08492868)],
+                    7: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9947623, -2.180753e-8, -5.7667922e-8, -0.10221512)],
+                    8: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99282604, -2.5509658e-8, -5.7276726e-8, -0.11956752)],
+                    9: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9905752, -2.9222505e-8, -5.6865982e-8, -0.13697019)],
+                    10: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9880073, -3.2942665e-8, -5.643579e-8, -0.15440713)],
+                    11: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9851211, -3.666663e-8, -5.5986344e-8, -0.17186189)],
+                    12: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.98191583, -4.039088e-8, -5.5517862e-8, -0.18931802)],
+                    13: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.978392, -4.4111815e-8, -5.5030632e-8, -0.20675859)],
+                    14: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9745508, -4.7825864e-8, -5.4525007e-8, -0.22416689)],
+                    15: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9703944, -5.152942e-8, -5.4001372e-8, -0.24152598)],
+                    16: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9659258, -5.521889e-8, -5.3460187e-8, -0.25881907)],
+                    17: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9611491, -5.8890762e-8, -5.2901946e-8, -0.2760297)],
+                    18: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9560692, -6.25415e-8, -5.232719e-8, -0.29314125)],
+                    19: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9506916, -6.616772e-8, -5.173653e-8, -0.31013787)],
+                    20: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.94502306, -6.976606e-8, -5.1130606e-8, -0.32700378)],
+                    21: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9390708, -7.333327e-8, -5.051009e-8, -0.34372377)],
+                    22: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9328429, -7.6866215e-8, -4.98757e-8, -0.3602833)],
+                    23: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9263483, -8.03619e-8, -4.9228177e-8, -0.376668)],
+                    24: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9195963, -8.3817426e-8, -4.856831e-8, -0.39286458)],
+                    25: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.912597, -8.72301e-8, -4.7896894e-8, -0.40886033)],
+                    26: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.90536076, -9.059738e-8, -4.7214737e-8, -0.42464325)],
+                    27: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8978988, -9.391681e-8, -4.6522693e-8, -0.44020194)],
+                    28: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8902224, -9.718624e-8, -4.5821583e-8, -0.4555262)],
+                    29: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8823433, -1.00403575e-7, -4.511229e-8, -0.4706063)],
+                    30: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.87427354, -1.0356697e-7, -4.439564e-8, -0.48543355)],
+                    31: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8660254, -1.066747e-7, -4.36725e-8, -0.50000006)],
+                    32: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.87427354, -1.03566954e-7, -4.439564e-8, -0.48543355)],
+                    33: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8823433, -1.00403554e-7, -4.5112284e-8, -0.4706063)],
+                    34: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8902224, -9.718623e-8, -4.582159e-8, -0.4555262)],
+                    35: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8978988, -9.391681e-8, -4.6522693e-8, -0.44020194)],
+                    36: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.90536076, -9.059738e-8, -4.7214737e-8, -0.42464325)],
+                    37: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.912597, -8.72301e-8, -4.7896894e-8, -0.40886033)],
+                    38: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9195963, -8.3817426e-8, -4.856831e-8, -0.39286458)],
+                    39: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9263483, -8.036189e-8, -4.922818e-8, -0.376668)],
+                    40: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9328429, -7.6866215e-8, -4.98757e-8, -0.3602833)],
+                    41: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9390708, -7.333326e-8, -5.0510092e-8, -0.34372374)],
+                    42: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.94502306, -6.976606e-8, -5.1130606e-8, -0.32700378)],
+                    43: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9506916, -6.616772e-8, -5.173653e-8, -0.31013784)],
+                    44: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9560692, -6.254151e-8, -5.232719e-8, -0.29314125)],
+                    45: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9611491, -5.8890745e-8, -5.290194e-8, -0.27602965)],
+                    46: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9659258, -5.521889e-8, -5.3460187e-8, -0.25881907)],
+                    47: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9703944, -5.1529412e-8, -5.4001372e-8, -0.24152596)],
+                    48: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9745508, -4.782587e-8, -5.4525007e-8, -0.22416689)],
+                    49: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.978392, -4.4111815e-8, -5.503064e-8, -0.20675856)],
+                    50: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.98191583, -4.0390876e-8, -5.5517862e-8, -0.18931802)],
+                    51: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9851211, -3.6666627e-8, -5.5986337e-8, -0.17186187)],
+                    52: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9880073, -3.2942665e-8, -5.643579e-8, -0.15440713)],
+                    53: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9905752, -2.9222502e-8, -5.6865982e-8, -0.13697018)],
+                    54: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99282604, -2.5509653e-8, -5.7276726e-8, -0.11956753)],
+                    55: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9947623, -2.1807528e-8, -5.7667922e-8, -0.10221511)],
+                    56: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.996387, -1.8119483e-8, -5.80395e-8, -0.084928684)],
+                    57: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99770415, -1.4448749e-8, -5.8391453e-8, -0.0677234)],
+                    58: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99871826, -1.0798471e-8, -5.8723828e-8, -0.050614078)],
+                    59: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9994349, -7.1716824e-9, -5.9036708e-8, -0.033614773)],
+                    60: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99985987, -3.57127e-9, -5.9330254e-8, -0.016739143)],
+                    61: [(0.49999994, -0.49999997, -0.5, 0.50000006), (1, -9.777993e-15, -5.9604645e-8, -4.3711385e-8)],
+                    62: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99985987, 3.8784584e-9, -5.986233e-8, 0.016739044)],
+                    63: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9994349, 7.788566e-9, -6.010521e-8, 0.033614688)],
+                    64: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99871826, 1.1727327e-8, -6.0332674e-8, 0.050613977)],
+                    65: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99770415, 1.5691581e-8, -6.054414e-8, 0.06772333)],
+                    66: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99638706, 1.9678064e-8, -6.073909e-8, 0.08492859)],
+                    67: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9947623, 2.3683357e-8, -6.091699e-8, 0.10221503)],
+                    68: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9928261, 2.7703935e-8, -6.107736e-8, 0.11956744)],
+                    69: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9905752, 3.173615e-8, -6.121979e-8, 0.1369701)],
+                    70: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9880073, 3.577631e-8, -6.1343854e-8, 0.15440704)],
+                    71: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9851211, 3.9820602e-8, -6.144924e-8, 0.17186181)],
+                    72: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.98191583, 4.386521e-8, -6.153562e-8, 0.18931791)],
+                    73: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.978392, 4.7906216e-8, -6.160277e-8, 0.20675848)],
+                    74: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9745508, 5.1939736e-8, -6.165049e-8, 0.22416678)],
+                    75: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9703944, 5.5961866e-8, -6.167865e-8, 0.24152587)],
+                    76: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9659258, 5.9968706e-8, -6.168714e-8, 0.25881898)],
+                    77: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.96114916, 6.3956406e-8, -6.167596e-8, 0.27602962)],
+                    78: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9560692, 6.792119e-8, -6.164513e-8, 0.2931412)],
+                    79: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.95069164, 7.185932e-8, -6.1594726e-8, 0.31013778)],
+                    80: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.94502306, 7.576719e-8, -6.1524915e-8, 0.3270037)],
+                    81: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9390708, 7.964123e-8, -6.143586e-8, 0.3437237)],
+                    82: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.93284297, 8.34781e-8, -6.132785e-8, 0.36028323)],
+                    83: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9263483, 8.727445e-8, -6.120114e-8, 0.37666795)],
+                    84: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9195964, 9.1027225e-8, -6.1056106e-8, 0.39286453)],
+                    85: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.912597, 9.4733466e-8, -6.089314e-8, 0.40886024)],
+                    86: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9053608, 9.839039e-8, -6.0712665e-8, 0.4246432)],
+                    87: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.89789885, 1.0199535e-7, -6.0515184e-8, 0.44020188)],
+                    88: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.89022243, 1.05546015e-7, -6.030118e-8, 0.4555261)],
+                    89: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.88234335, 1.09040066e-7, -6.007122e-8, 0.4706062)],
+                    90: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8742736, 1.12475576e-7, -5.982588e-8, 0.4854335)],
+                    91: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.86602545, 1.1585064e-7, -5.9565764e-8, 0.49999997)],
+                    92: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.8742736, 1.12475576e-7, -5.982588e-8, 0.4854335)],
+                    93: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.88234335, 1.09040066e-7, -6.007122e-8, 0.4706062)],
+                    94: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.89022243, 1.0554599e-7, -6.030118e-8, 0.4555261)],
+                    95: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.89789885, 1.0199535e-7, -6.0515184e-8, 0.44020188)],
+                    96: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9053608, 9.839039e-8, -6.0712665e-8, 0.4246432)],
+                    97: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.912597, 9.473346e-8, -6.089314e-8, 0.40886024)],
+                    98: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9195964, 9.102722e-8, -6.1056106e-8, 0.39286453)],
+                    99: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9263483, 8.727445e-8, -6.120114e-8, 0.37666795)],
+                    100: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.93284297, 8.34781e-8, -6.132785e-8, 0.36028323)],
+                    101: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9390708, 7.964124e-8, -6.143587e-8, 0.34372365)],
+                    102: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.94502306, 7.576719e-8, -6.1524915e-8, 0.3270037)],
+                    103: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.95069164, 7.185932e-8, -6.1594726e-8, 0.31013775)],
+                    104: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9560692, 6.792119e-8, -6.1645125e-8, 0.2931412)],
+                    105: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.96114916, 6.3956406e-8, -6.1675955e-8, 0.2760296)],
+                    106: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9659258, 5.9968706e-8, -6.168714e-8, 0.25881898)],
+                    107: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9703944, 5.5961866e-8, -6.167864e-8, 0.24152586)],
+                    108: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9745508, 5.1939736e-8, -6.165049e-8, 0.22416678)],
+                    109: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.978392, 4.7906216e-8, -6.160277e-8, 0.20675845)],
+                    110: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.98191583, 4.386521e-8, -6.153562e-8, 0.18931791)],
+                    111: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9851211, 3.9820605e-8, -6.1449235e-8, 0.17186178)],
+                    112: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9880073, 3.577631e-8, -6.1343854e-8, 0.15440704)],
+                    113: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9905752, 3.1736157e-8, -6.121979e-8, 0.13697009)],
+                    114: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9928261, 2.770393e-8, -6.107736e-8, 0.11956745)],
+                    115: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9947623, 2.3683352e-8, -6.091699e-8, 0.10221502)],
+                    116: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99638706, 1.9678062e-8, -6.073909e-8, 0.084928595)],
+                    117: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99770415, 1.5691585e-8, -6.054414e-8, 0.06772332)],
+                    118: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99871826, 1.1727315e-8, -6.0332674e-8, 0.05061399)],
+                    119: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.9994349, 7.788561e-9, -6.010521e-8, 0.033614684)],
+                    120: [(0.49999994, -0.49999997, -0.5, 0.50000006), (0.99985987, 3.878455e-9, -5.986233e-8, 0.016739057)],
+                }
+                half3[] scales.timeSamples = {
+                    1: [(1, 1, 1), (1, 1, 1)],
+                    2: [(1, 1, 1), (1, 1, 1)],
+                    3: [(1, 1, 1), (1, 1, 1)],
+                    4: [(1, 1, 1), (1, 1, 1)],
+                    5: [(1, 1, 1), (1, 1, 1)],
+                    6: [(1, 1, 1), (1, 1, 1)],
+                    7: [(1, 1, 1), (1, 1, 1)],
+                    8: [(1, 1, 1), (1, 1, 1)],
+                    9: [(1, 1, 1), (1, 1, 1)],
+                    10: [(1, 1, 1), (1, 1, 1)],
+                    11: [(1, 1, 1), (1, 1, 1)],
+                    12: [(1, 1, 1), (1, 1, 1)],
+                    13: [(1, 1, 1), (1, 1, 1)],
+                    14: [(1, 1, 1), (1, 1, 1)],
+                    15: [(1, 1, 1), (1, 1, 1)],
+                    16: [(1, 1, 1), (1, 1, 1)],
+                    17: [(1, 1, 1), (1, 1, 1)],
+                    18: [(1, 1, 1), (1, 1, 1)],
+                    19: [(1, 1, 1), (1, 1, 1)],
+                    20: [(1, 1, 1), (1, 1, 1)],
+                    21: [(1, 1, 1), (1, 1, 1)],
+                    22: [(1, 1, 1), (1, 1, 1)],
+                    23: [(1, 1, 1), (1, 1, 1)],
+                    24: [(1, 1, 1), (1, 1, 1)],
+                    25: [(1, 1, 1), (1, 1, 1)],
+                    26: [(1, 1, 1), (1, 1, 1)],
+                    27: [(1, 1, 1), (1, 1, 1)],
+                    28: [(1, 1, 1), (1, 1, 1)],
+                    29: [(1, 1, 1), (1, 1, 1)],
+                    30: [(1, 1, 1), (1, 1, 1)],
+                    31: [(1, 1, 1), (1, 1, 1)],
+                    32: [(1, 1, 1), (1, 1, 1)],
+                    33: [(1, 1, 1), (1, 1, 1)],
+                    34: [(1, 1, 1), (1, 1, 1)],
+                    35: [(1, 1, 1), (1, 1, 1)],
+                    36: [(1, 1, 1), (1, 1, 1)],
+                    37: [(1, 1, 1), (1, 1, 1)],
+                    38: [(1, 1, 1), (1, 1, 1)],
+                    39: [(1, 1, 1), (1, 1, 1)],
+                    40: [(1, 1, 1), (1, 1, 1)],
+                    41: [(1, 1, 1), (1, 1, 1)],
+                    42: [(1, 1, 1), (1, 1, 1)],
+                    43: [(1, 1, 1), (1, 1, 1)],
+                    44: [(1, 1, 1), (1, 1, 1)],
+                    45: [(1, 1, 1), (1, 1, 1)],
+                    46: [(1, 1, 1), (1, 1, 1)],
+                    47: [(1, 1, 1), (1, 1, 1)],
+                    48: [(1, 1, 1), (1, 1, 1)],
+                    49: [(1, 1, 1), (1, 1, 1)],
+                    50: [(1, 1, 1), (1, 1, 1)],
+                    51: [(1, 1, 1), (1, 1, 1)],
+                    52: [(1, 1, 1), (1, 1, 1)],
+                    53: [(1, 1, 1), (1, 1, 1)],
+                    54: [(1, 1, 1), (1, 1, 1)],
+                    55: [(1, 1, 1), (1, 1, 1)],
+                    56: [(1, 1, 1), (1, 1, 1)],
+                    57: [(1, 1, 1), (1, 1, 1)],
+                    58: [(1, 1, 1), (1, 1, 1)],
+                    59: [(1, 1, 1), (1, 1, 1)],
+                    60: [(1, 1, 1), (1, 1, 1)],
+                    61: [(1, 1, 1), (1, 1, 1)],
+                    62: [(1, 1, 1), (1, 1, 1)],
+                    63: [(1, 1, 1), (1, 1, 1)],
+                    64: [(1, 1, 1), (1, 1, 1)],
+                    65: [(1, 1, 1), (1, 1, 1)],
+                    66: [(1, 1, 1), (1, 1, 1)],
+                    67: [(1, 1, 1), (1, 1, 1)],
+                    68: [(1, 1, 1), (1, 1, 1)],
+                    69: [(1, 1, 1), (1, 1, 1)],
+                    70: [(1, 1, 1), (1, 1, 1)],
+                    71: [(1, 1, 1), (1, 1, 1)],
+                    72: [(1, 1, 1), (1, 1, 1)],
+                    73: [(1, 1, 1), (1, 1, 1)],
+                    74: [(1, 1, 1), (1, 1, 1)],
+                    75: [(1, 1, 1), (1, 1, 1)],
+                    76: [(1, 1, 1), (1, 1, 1)],
+                    77: [(1, 1, 1), (1, 1, 1)],
+                    78: [(1, 1, 1), (1, 1, 1)],
+                    79: [(1, 1, 1), (1, 1, 1)],
+                    80: [(1, 1, 1), (1, 1, 1)],
+                    81: [(1, 1, 1), (1, 1, 1)],
+                    82: [(1, 1, 1), (1, 1, 1)],
+                    83: [(1, 1, 1), (1, 1, 1)],
+                    84: [(1, 1, 1), (1, 1, 1)],
+                    85: [(1, 1, 1), (1, 1, 1)],
+                    86: [(1, 1, 1), (1, 1, 1)],
+                    87: [(1, 1, 1), (1, 1, 1)],
+                    88: [(1, 1, 1), (1, 1, 1)],
+                    89: [(1, 1, 1), (1, 1, 1)],
+                    90: [(1, 1, 1), (1, 1, 1)],
+                    91: [(1, 1, 1), (1, 1, 1)],
+                    92: [(1, 1, 1), (1, 1, 1)],
+                    93: [(1, 1, 1), (1, 1, 1)],
+                    94: [(1, 1, 1), (1, 1, 1)],
+                    95: [(1, 1, 1), (1, 1, 1)],
+                    96: [(1, 1, 1), (1, 1, 1)],
+                    97: [(1, 1, 1), (1, 1, 1)],
+                    98: [(1, 1, 1), (1, 1, 1)],
+                    99: [(1, 1, 1), (1, 1, 1)],
+                    100: [(1, 1, 1), (1, 1, 1)],
+                    101: [(1, 1, 1), (1, 1, 1)],
+                    102: [(1, 1, 1), (1, 1, 1)],
+                    103: [(1, 1, 1), (1, 1, 1)],
+                    104: [(1, 1, 1), (1, 1, 1)],
+                    105: [(1, 1, 1), (1, 1, 1)],
+                    106: [(1, 1, 1), (1, 1, 1)],
+                    107: [(1, 1, 1), (1, 1, 1)],
+                    108: [(1, 1, 1), (1, 1, 1)],
+                    109: [(1, 1, 1), (1, 1, 1)],
+                    110: [(1, 1, 1), (1, 1, 1)],
+                    111: [(1, 1, 1), (1, 1, 1)],
+                    112: [(1, 1, 1), (1, 1, 1)],
+                    113: [(1, 1, 1), (1, 1, 1)],
+                    114: [(1, 1, 1), (1, 1, 1)],
+                    115: [(1, 1, 1), (1, 1, 1)],
+                    116: [(1, 1, 1), (1, 1, 1)],
+                    117: [(1, 1, 1), (1, 1, 1)],
+                    118: [(1, 1, 1), (1, 1, 1)],
+                    119: [(1, 1, 1), (1, 1, 1)],
+                    120: [(1, 1, 1), (1, 1, 1)],
+                }
+                float3[] translations.timeSamples = {
+                    1: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    2: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    3: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    4: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    5: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    6: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    7: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    8: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    9: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    10: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    11: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    12: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    13: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    14: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    15: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    16: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    17: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    18: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    19: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    20: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    21: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    22: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    23: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    24: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    25: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    26: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    27: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    28: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    29: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    30: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    31: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    32: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    33: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    34: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    35: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    36: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    37: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    38: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    39: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    40: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    41: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    42: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    43: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    44: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    45: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    46: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    47: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    48: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    49: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    50: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    51: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    52: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    53: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    54: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    55: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    56: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    57: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    58: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    59: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    60: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    61: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    62: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    63: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    64: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    65: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    66: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    67: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    68: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    69: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    70: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    71: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    72: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    73: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    74: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    75: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    76: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    77: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    78: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    79: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    80: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    81: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    82: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    83: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    84: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    85: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    86: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    87: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    88: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    89: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    90: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    91: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    92: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    93: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    94: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    95: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    96: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    97: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    98: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    99: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    100: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    101: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    102: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    103: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    104: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    105: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    106: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    107: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    108: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    109: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    110: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    111: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    112: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    113: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    114: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    115: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    116: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    117: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    118: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    119: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                    120: [(-9.705878e-24, 4.371139e-8, 1), (0, 1, 0)],
+                }
+            }
+        }
+
+        def Xform "Cylinder_Joints"
+        {
+            custom string userProperties:blenderName:object = "Cylinder_Joints"
+
+            def Mesh "Cylinder_Joints" (
+                active = true
+                prepend apiSchemas = ["SkelBindingAPI"]
+            )
+            {
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                int[] faceVertexIndices = [196, 163, 3, 194, 197, 16, 23, 198, 198, 23, 30, 199, 199, 30, 37, 200, 200, 37, 44, 201, 201, 44, 51, 202, 202, 51, 58, 203, 203, 58, 65, 204, 204, 65, 72, 205, 205, 72, 79, 206, 206, 79, 86, 207, 207, 86, 93, 208, 208, 93, 100, 209, 209, 100, 107, 210, 210, 107, 114, 211, 211, 114, 121, 212, 212, 121, 128, 213, 213, 128, 135, 214, 214, 135, 142, 215, 215, 142, 149, 216, 216, 149, 156, 217, 217, 156, 163, 196, 194, 3, 9, 195, 195, 9, 16, 197, 193, 263, 265, 170, 192, 261, 263, 193, 191, 259, 261, 192, 190, 257, 259, 191, 189, 255, 257, 190, 188, 253, 255, 189, 187, 251, 253, 188, 186, 249, 251, 187, 185, 247, 249, 186, 184, 245, 247, 185, 183, 243, 245, 184, 182, 241, 243, 183, 181, 239, 241, 182, 180, 237, 239, 181, 179, 235, 237, 180, 178, 233, 235, 179, 177, 231, 233, 178, 176, 229, 231, 177, 175, 227, 229, 176, 174, 225, 227, 175, 173, 223, 225, 174, 172, 220, 223, 173, 171, 221, 220, 172, 164, 2, 4, 169, 169, 4, 5, 168, 168, 5, 6, 167, 167, 6, 7, 166, 166, 7, 8, 165, 165, 8, 3, 163, 157, 164, 169, 162, 162, 169, 168, 161, 161, 168, 167, 160, 160, 167, 166, 159, 159, 166, 165, 158, 158, 165, 163, 156, 150, 157, 162, 155, 155, 162, 161, 154, 154, 161, 160, 153, 153, 160, 159, 152, 152, 159, 158, 151, 151, 158, 156, 149, 143, 150, 155, 148, 148, 155, 154, 147, 147, 154, 153, 146, 146, 153, 152, 145, 145, 152, 151, 144, 144, 151, 149, 142, 136, 143, 148, 141, 141, 148, 147, 140, 140, 147, 146, 139, 139, 146, 145, 138, 138, 145, 144, 137, 137, 144, 142, 135, 129, 136, 141, 134, 134, 141, 140, 133, 133, 140, 139, 132, 132, 139, 138, 131, 131, 138, 137, 130, 130, 137, 135, 128, 122, 129, 134, 127, 127, 134, 133, 126, 126, 133, 132, 125, 125, 132, 131, 124, 124, 131, 130, 123, 123, 130, 128, 121, 115, 122, 127, 120, 120, 127, 126, 119, 119, 126, 125, 118, 118, 125, 124, 117, 117, 124, 123, 116, 116, 123, 121, 114, 108, 115, 120, 113, 113, 120, 119, 112, 112, 119, 118, 111, 111, 118, 117, 110, 110, 117, 116, 109, 109, 116, 114, 107, 101, 108, 113, 106, 106, 113, 112, 105, 105, 112, 111, 104, 104, 111, 110, 103, 103, 110, 109, 102, 102, 109, 107, 100, 94, 101, 106, 99, 99, 106, 105, 98, 98, 105, 104, 97, 97, 104, 103, 96, 96, 103, 102, 95, 95, 102, 100, 93, 87, 94, 99, 92, 92, 99, 98, 91, 91, 98, 97, 90, 90, 97, 96, 89, 89, 96, 95, 88, 88, 95, 93, 86, 80, 87, 92, 85, 85, 92, 91, 84, 84, 91, 90, 83, 83, 90, 89, 82, 82, 89, 88, 81, 81, 88, 86, 79, 73, 80, 85, 78, 78, 85, 84, 77, 77, 84, 83, 76, 76, 83, 82, 75, 75, 82, 81, 74, 74, 81, 79, 72, 66, 73, 78, 71, 71, 78, 77, 70, 70, 77, 76, 69, 69, 76, 75, 68, 68, 75, 74, 67, 67, 74, 72, 65, 59, 66, 71, 64, 64, 71, 70, 63, 63, 70, 69, 62, 62, 69, 68, 61, 61, 68, 67, 60, 60, 67, 65, 58, 52, 59, 64, 57, 57, 64, 63, 56, 56, 63, 62, 55, 55, 62, 61, 54, 54, 61, 60, 53, 53, 60, 58, 51, 45, 52, 57, 50, 50, 57, 56, 49, 49, 56, 55, 48, 48, 55, 54, 47, 47, 54, 53, 46, 46, 53, 51, 44, 38, 45, 50, 43, 43, 50, 49, 42, 42, 49, 48, 41, 41, 48, 47, 40, 40, 47, 46, 39, 39, 46, 44, 37, 31, 38, 43, 36, 36, 43, 42, 35, 35, 42, 41, 34, 34, 41, 40, 33, 33, 40, 39, 32, 32, 39, 37, 30, 24, 31, 36, 29, 29, 36, 35, 28, 28, 35, 34, 27, 27, 34, 33, 26, 26, 33, 32, 25, 25, 32, 30, 23, 17, 24, 29, 22, 22, 29, 28, 21, 21, 28, 27, 20, 20, 27, 26, 19, 19, 26, 25, 18, 18, 25, 23, 16, 10, 17, 22, 15, 15, 22, 21, 14, 14, 21, 20, 13, 13, 20, 19, 12, 12, 19, 18, 11, 11, 18, 16, 9, 2, 10, 15, 4, 4, 15, 14, 5, 5, 14, 13, 6, 6, 13, 12, 7, 7, 12, 11, 8, 8, 11, 9, 3, 170, 265, 221, 171, 164, 170, 171, 2, 2, 171, 172, 10, 10, 172, 173, 17, 17, 173, 174, 24, 24, 174, 175, 31, 31, 175, 176, 38, 38, 176, 177, 45, 45, 177, 178, 52, 52, 178, 179, 59, 59, 179, 180, 66, 66, 180, 181, 73, 73, 181, 182, 80, 80, 182, 183, 87, 87, 183, 184, 94, 94, 184, 185, 101, 101, 185, 186, 108, 108, 186, 187, 115, 115, 187, 188, 122, 122, 188, 189, 129, 129, 189, 190, 136, 136, 190, 191, 143, 143, 191, 192, 150, 150, 192, 193, 157, 157, 193, 170, 164, 219, 195, 197, 222, 218, 194, 195, 219, 262, 217, 196, 264, 260, 216, 217, 262, 258, 215, 216, 260, 256, 214, 215, 258, 254, 213, 214, 256, 252, 212, 213, 254, 250, 211, 212, 252, 248, 210, 211, 250, 246, 209, 210, 248, 244, 208, 209, 246, 242, 207, 208, 244, 240, 206, 207, 242, 238, 205, 206, 240, 236, 204, 205, 238, 234, 203, 204, 236, 232, 202, 203, 234, 230, 201, 202, 232, 228, 200, 201, 230, 226, 199, 200, 228, 224, 198, 199, 226, 222, 197, 198, 224, 264, 196, 194, 218, 0, 218, 219, 1, 220, 221, 0, 219, 222, 1, 223, 220, 0, 222, 224, 1, 225, 223, 0, 224, 226, 1, 227, 225, 0, 226, 228, 1, 229, 227, 0, 228, 230, 1, 231, 229, 0, 230, 232, 1, 233, 231, 0, 232, 234, 1, 235, 233, 0, 234, 236, 1, 237, 235, 0, 236, 238, 1, 239, 237, 0, 238, 240, 1, 241, 239, 0, 240, 242, 1, 243, 241, 0, 242, 244, 1, 245, 243, 0, 244, 246, 1, 247, 245, 0, 246, 248, 1, 249, 247, 0, 248, 250, 1, 251, 249, 0, 250, 252, 1, 253, 251, 0, 252, 254, 1, 255, 253, 0, 254, 256, 1, 257, 255, 0, 256, 258, 1, 259, 257, 0, 258, 260, 1, 261, 259, 0, 260, 262, 1, 263, 261, 0, 262, 264, 1, 265, 263, 0, 264, 218, 1, 221, 265]
+                normal3f[] normals = [(-0.25881892, 0.9659258, 0), (-0.25881895, 0.9659258, 1.7272112e-7), (3.3488806e-8, 1, 1.727211e-7), (5.2625268e-8, 1, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, 8.636048e-8), (0.7071067, 0.7071068, 8.6360494e-8), (0.7071067, 0.70710677, 0), (0.7071067, 0.70710677, 0), (0.7071067, 0.7071068, 8.6360494e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.5000001, 0), (0.8660254, 0.5000001, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -3.1096754e-8, 0), (1, -3.3488806e-8, 0), (1, -3.3488806e-8, 0), (1, -3.1096754e-8, 0), (0.9659258, -0.2588191, 4.3180226e-8), (0.9659258, -0.25881904, 0), (0.9659258, -0.25881904, 0), (0.9659258, -0.2588191, 4.3180226e-8), (0.8660254, -0.50000006, 8.6360494e-8), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 8.6360494e-8), (0.70710677, -0.7071067, 1.2954077e-7), (0.70710677, -0.70710677, 0), (0.70710677, -0.70710677, 0), (0.70710677, -0.7071067, 1.2954077e-7), (0.5000001, -0.8660254, 8.6360494e-8), (0.5000001, -0.8660253, 0), (0.5000001, -0.8660253, 0), (0.5000001, -0.8660254, 8.6360494e-8), (0.2588191, -0.9659258, 0), (0.258819, -0.96592575, 0), (0.258819, -0.96592575, 0), (0.2588191, -0.9659258, 0), (-5.7409387e-8, -1, 0), (-4.7841155e-8, -1, 0), (-4.7841155e-8, -1, 0), (-5.7409387e-8, -1, 0), (-0.25881916, -0.9659258, 0), (-0.25881913, -0.9659258, 0), (-0.25881913, -0.9659258, 0), (-0.25881916, -0.9659258, 0), (-0.50000006, -0.8660254, 8.6360515e-8), (-0.50000006, -0.8660254, 0), (-0.50000006, -0.8660254, 0), (-0.50000006, -0.8660254, 8.6360515e-8), (-0.70710677, -0.7071067, 8.636052e-8), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 8.636052e-8), (-0.8660254, -0.50000006, 4.3180258e-8), (-0.86602527, -0.5, 0), (-0.86602527, -0.5, 0), (-0.8660254, -0.50000006, 4.3180258e-8), (-0.9659259, -0.258819, 8.63605e-8), (-0.9659258, -0.25881898, 0), (-0.9659258, -0.25881898, 0), (-0.9659259, -0.258819, 8.63605e-8), (-1, 9.807437e-8, 4.318025e-8), (-1, 1.9136462e-7, 0), (-1, 1.9136462e-7, 0), (-1, 9.807437e-8, 4.318025e-8), (-0.9659258, 0.258819, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.258819, 0), (-0.86602545, 0.49999988, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999988, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.25881895, 0.9659258, 1.7272112e-7), (-0.25881892, 0.9659258, 0), (5.2625268e-8, 1, 0), (3.3488806e-8, 1, 1.727211e-7), (0.25881907, 0.96592575, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.96592575, 0), (0.50000006, 0.8660254, 8.636048e-8), (0.50000006, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.49999997, 0.8660254, 0), (-0.2588189, 0.9659258, 0), (-0.25881892, 0.9659258, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.49999997, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999982, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881898, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999982, 0), (-1, 1.9375668e-7, 0), (-1, 1.865805e-7, 0), (-0.9659258, 0.25881898, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, -0.25881898, 0), (-0.9659258, -0.258819, 0), (-1, 1.865805e-7, 0), (-1, 1.9375668e-7, 0), (-0.86602527, -0.5, 0), (-0.86602527, -0.5, 0), (-0.9659258, -0.258819, 0), (-0.9659258, -0.25881898, 0), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 0), (-0.86602527, -0.5, 0), (-0.86602527, -0.5, 0), (-0.50000006, -0.8660254, 0), (-0.5, -0.8660254, 0), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 0), (-0.25881913, -0.9659258, 0), (-0.25881907, -0.96592575, 0), (-0.5, -0.8660254, 0), (-0.50000006, -0.8660254, 0), (-4.7841155e-8, -1, 0), (-4.305704e-8, -1, 0), (-0.25881907, -0.96592575, 0), (-0.25881913, -0.9659258, 0), (0.258819, -0.96592575, 0), (0.258819, -0.96592575, 0), (-4.305704e-8, -1, 0), (-4.7841155e-8, -1, 0), (0.5000001, -0.8660253, 0), (0.5000001, -0.8660254, 0), (0.258819, -0.96592575, 0), (0.258819, -0.96592575, 0), (0.70710677, -0.70710677, 0), (0.70710677, -0.7071067, 0), (0.5000001, -0.8660254, 0), (0.5000001, -0.8660253, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (0.70710677, -0.7071067, 0), (0.70710677, -0.70710677, 0), (0.9659258, -0.25881904, 0), (0.9659258, -0.2588191, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (1, -3.5880866e-8, 0), (1, -2.8704692e-8, 0), (0.9659258, -0.2588191, 0), (0.9659258, -0.25881904, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -2.8704692e-8, 0), (1, -3.5880866e-8, 0), (0.8660254, 0.5000001, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.7071067, 0.70710677, 0), (0.7071067, 0.7071068, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.5000001, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, 0), (0.7071067, 0.7071068, 0), (0.7071067, 0.70710677, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.9659258, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, 0), (5.2625268e-8, 1, 0), (5.2625268e-8, 1, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.9659258, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (3.348881e-8, 1, -1.7272112e-7), (-1.6744405e-8, 1, -1.7272112e-7), (-0.2588189, 0.9659258, -1.7272107e-7), (-0.2588189, 0.9659258, -1.7272107e-7), (-1.6744405e-8, 1, -1.7272112e-7), (-2.1528521e-8, 1, 1.7272116e-7), (-0.25881898, 0.9659258, 1.7272113e-7), (-0.25881898, 0.9659258, 1.7272113e-7), (-2.1528521e-8, 1, 1.7272116e-7), (9.5682315e-9, 1, 0), (-0.25881895, 0.9659258, 0), (-0.25881895, 0.9659258, 0), (9.5682315e-9, 1, 0), (-2.1528521e-8, 1, -1.7272116e-7), (-0.25881895, 0.9659258, -1.7272112e-7), (-0.25881895, 0.9659258, -1.7272112e-7), (-2.1528521e-8, 1, -1.7272116e-7), (-2.1528521e-8, 1, 1.7272112e-7), (-0.25881892, 0.9659258, 1.7272107e-7), (-0.25881892, 0.9659258, 1.7272107e-7), (-2.1528521e-8, 1, 1.7272112e-7), (3.3488806e-8, 1, 1.727211e-7), (-0.25881895, 0.9659258, 1.7272112e-7), (-0.5, 0.8660254, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (-0.2588189, 0.9659258, -1.7272107e-7), (-0.49999997, 0.86602545, 0), (-0.49999997, 0.86602545, 0), (-0.2588189, 0.9659258, -1.7272107e-7), (-0.25881898, 0.9659258, 1.7272113e-7), (-0.49999994, 0.8660254, 0), (-0.49999994, 0.8660254, 0), (-0.25881898, 0.9659258, 1.7272113e-7), (-0.25881895, 0.9659258, 0), (-0.50000006, 0.8660254, 0), (-0.50000006, 0.8660254, 0), (-0.25881895, 0.9659258, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (-0.49999994, 0.8660254, 0), (-0.49999994, 0.8660254, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (-0.25881892, 0.9659258, 1.7272107e-7), (-0.49999997, 0.86602545, 0), (-0.49999997, 0.86602545, 0), (-0.25881892, 0.9659258, 1.7272107e-7), (-0.25881895, 0.9659258, 1.7272112e-7), (-0.5, 0.8660254, 0), (-0.7071068, 0.7071067, 0), (-0.5, 0.8660254, 0), (-0.49999997, 0.86602545, 0), (-0.70710695, 0.70710665, -4.318026e-8), (-0.70710695, 0.70710665, -4.318026e-8), (-0.49999997, 0.86602545, 0), (-0.49999994, 0.8660254, 0), (-0.7071068, 0.7071067, 0), (-0.7071068, 0.7071067, 0), (-0.49999994, 0.8660254, 0), (-0.50000006, 0.8660254, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.50000006, 0.8660254, 0), (-0.49999994, 0.8660254, 0), (-0.7071068, 0.7071067, 0), (-0.7071068, 0.7071067, 0), (-0.49999994, 0.8660254, 0), (-0.49999997, 0.86602545, 0), (-0.70710695, 0.70710665, 4.318026e-8), (-0.70710695, 0.70710665, 4.318026e-8), (-0.49999997, 0.86602545, 0), (-0.5, 0.8660254, 0), (-0.70710695, 0.70710665, 0), (-0.86602545, 0.49999988, 0), (-0.7071068, 0.7071067, 0), (-0.70710695, 0.70710665, -4.318026e-8), (-0.8660254, 0.49999994, -4.3180254e-8), (-0.8660254, 0.49999994, -4.3180254e-8), (-0.70710695, 0.70710665, -4.318026e-8), (-0.7071068, 0.7071067, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.5, 0), (-0.7071068, 0.7071067, 0), (-0.70710695, 0.70710665, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.5, 0), (-0.70710695, 0.70710665, 0), (-0.7071068, 0.7071067, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.5, 0), (-0.7071068, 0.7071067, 0), (-0.70710695, 0.70710665, 4.318026e-8), (-0.8660254, 0.49999994, 4.3180254e-8), (-0.8660254, 0.49999994, 4.3180254e-8), (-0.70710695, 0.70710665, 4.318026e-8), (-0.70710695, 0.70710665, 0), (-0.86602545, 0.49999988, 0), (-0.9659258, 0.25881904, 0), (-0.86602545, 0.49999988, 0), (-0.8660254, 0.49999994, -4.3180254e-8), (-0.9659258, 0.258819, 0), (-0.9659258, 0.258819, 0), (-0.8660254, 0.49999994, -4.3180254e-8), (-0.8660254, 0.5, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.5, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.5, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.8660254, 0.5, 0), (-0.8660254, 0.49999994, 4.3180254e-8), (-0.9659258, 0.258819, 0), (-0.9659258, 0.258819, 0), (-0.8660254, 0.49999994, 4.3180254e-8), (-0.86602545, 0.49999988, 0), (-0.9659258, 0.258819, 0), (-1, 9.807437e-8, -4.318025e-8), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.258819, 0), (-1, 2.3920579e-9, -4.318025e-8), (-1, 2.3920579e-9, -4.318025e-8), (-0.9659258, 0.258819, 0), (-0.9659258, 0.25881904, 0), (-1, 0, 4.3180258e-8), (-1, 0, 4.3180258e-8), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-1, 0, 0), (-1, 0, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-1, 0, -4.3180258e-8), (-1, 0, -4.3180258e-8), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.258819, 0), (-1, 2.3920579e-9, 4.318025e-8), (-1, 2.3920579e-9, 4.318025e-8), (-0.9659258, 0.258819, 0), (-0.9659258, 0.258819, 0), (-1, 9.807437e-8, 4.318025e-8), (-0.9659259, -0.258819, -8.63605e-8), (-1, 9.807437e-8, -4.318025e-8), (-1, 2.3920579e-9, -4.318025e-8), (-0.9659258, -0.258819, -8.63605e-8), (-0.9659258, -0.258819, -8.63605e-8), (-1, 2.3920579e-9, -4.318025e-8), (-1, 0, 4.3180258e-8), (-0.9659258, -0.25881904, 8.636053e-8), (-0.9659258, -0.25881904, 8.636053e-8), (-1, 0, 4.3180258e-8), (-1, 0, 0), (-0.9659258, -0.258819, 0), (-0.9659258, -0.258819, 0), (-1, 0, 0), (-1, 0, -4.3180258e-8), (-0.9659258, -0.25881904, -8.636053e-8), (-0.9659258, -0.25881904, -8.636053e-8), (-1, 0, -4.3180258e-8), (-1, 2.3920579e-9, 4.318025e-8), (-0.9659258, -0.258819, 8.63605e-8), (-0.9659258, -0.258819, 8.63605e-8), (-1, 2.3920579e-9, 4.318025e-8), (-1, 9.807437e-8, 4.318025e-8), (-0.9659259, -0.258819, 8.63605e-8), (-0.8660254, -0.50000006, -4.3180258e-8), (-0.9659259, -0.258819, -8.63605e-8), (-0.9659258, -0.258819, -8.63605e-8), (-0.8660254, -0.49999994, -4.3180247e-8), (-0.8660254, -0.49999994, -4.3180247e-8), (-0.9659258, -0.258819, -8.63605e-8), (-0.9659258, -0.25881904, 8.636053e-8), (-0.8660254, -0.49999997, 4.3180258e-8), (-0.8660254, -0.49999997, 4.3180258e-8), (-0.9659258, -0.25881904, 8.636053e-8), (-0.9659258, -0.258819, 0), (-0.8660254, -0.49999997, 0), (-0.8660254, -0.49999997, 0), (-0.9659258, -0.258819, 0), (-0.9659258, -0.25881904, -8.636053e-8), (-0.8660254, -0.49999997, -4.3180258e-8), (-0.8660254, -0.49999997, -4.3180258e-8), (-0.9659258, -0.25881904, -8.636053e-8), (-0.9659258, -0.258819, 8.63605e-8), (-0.8660254, -0.49999994, 4.3180247e-8), (-0.8660254, -0.49999994, 4.3180247e-8), (-0.9659258, -0.258819, 8.63605e-8), (-0.9659259, -0.258819, 8.63605e-8), (-0.8660254, -0.50000006, 4.3180258e-8), (-0.7071067, -0.7071067, -8.6360515e-8), (-0.8660254, -0.50000006, -4.3180258e-8), (-0.8660254, -0.49999994, -4.3180247e-8), (-0.7071067, -0.70710677, -8.636052e-8), (-0.7071067, -0.70710677, -8.636052e-8), (-0.8660254, -0.49999994, -4.3180247e-8), (-0.8660254, -0.49999997, 4.3180258e-8), (-0.7071067, -0.70710677, 8.636053e-8), (-0.7071067, -0.70710677, 8.636053e-8), (-0.8660254, -0.49999997, 4.3180258e-8), (-0.8660254, -0.49999997, 0), (-0.7071067, -0.7071067, 0), (-0.7071067, -0.7071067, 0), (-0.8660254, -0.49999997, 0), (-0.8660254, -0.49999997, -4.3180258e-8), (-0.7071067, -0.70710677, -8.636053e-8), (-0.7071067, -0.70710677, -8.636053e-8), (-0.8660254, -0.49999997, -4.3180258e-8), (-0.8660254, -0.49999994, 4.3180247e-8), (-0.7071067, -0.7071068, 8.636053e-8), (-0.7071067, -0.7071068, 8.636053e-8), (-0.8660254, -0.49999994, 4.3180247e-8), (-0.8660254, -0.50000006, 4.3180258e-8), (-0.70710677, -0.7071067, 8.636052e-8), (-0.50000006, -0.8660254, -8.6360515e-8), (-0.7071067, -0.7071067, -8.6360515e-8), (-0.7071067, -0.70710677, -8.636052e-8), (-0.50000006, -0.8660254, -8.6360544e-8), (-0.50000006, -0.8660254, -8.6360544e-8), (-0.7071067, -0.70710677, -8.636052e-8), (-0.7071067, -0.70710677, 8.636053e-8), (-0.50000006, -0.8660254, 8.636055e-8), (-0.50000006, -0.8660254, 8.636055e-8), (-0.7071067, -0.70710677, 8.636053e-8), (-0.7071067, -0.7071067, 0), (-0.50000006, -0.8660254, 0), (-0.50000006, -0.8660254, 0), (-0.7071067, -0.7071067, 0), (-0.7071067, -0.70710677, -8.636053e-8), (-0.50000006, -0.8660254, -8.636055e-8), (-0.50000006, -0.8660254, -8.636055e-8), (-0.7071067, -0.70710677, -8.636053e-8), (-0.7071067, -0.7071068, 8.636053e-8), (-0.50000006, -0.8660254, 8.6360544e-8), (-0.50000006, -0.8660254, 8.6360544e-8), (-0.7071067, -0.7071068, 8.636053e-8), (-0.70710677, -0.7071067, 8.636052e-8), (-0.50000006, -0.8660254, 8.6360515e-8), (-0.25881916, -0.9659258, 0), (-0.50000006, -0.8660254, -8.6360515e-8), (-0.50000006, -0.8660254, -8.6360544e-8), (-0.25881922, -0.96592575, 0), (-0.25881922, -0.96592575, 0), (-0.50000006, -0.8660254, -8.6360544e-8), (-0.50000006, -0.8660254, 8.636055e-8), (-0.25881916, -0.96592575, 0), (-0.25881916, -0.96592575, 0), (-0.50000006, -0.8660254, 8.636055e-8), (-0.50000006, -0.8660254, 0), (-0.25881916, -0.9659258, 0), (-0.25881916, -0.9659258, 0), (-0.50000006, -0.8660254, 0), (-0.50000006, -0.8660254, -8.636055e-8), (-0.25881916, -0.96592575, 0), (-0.25881916, -0.96592575, 0), (-0.50000006, -0.8660254, -8.636055e-8), (-0.50000006, -0.8660254, 8.6360544e-8), (-0.25881922, -0.96592575, 0), (-0.25881922, -0.96592575, 0), (-0.50000006, -0.8660254, 8.6360544e-8), (-0.50000006, -0.8660254, 8.6360515e-8), (-0.25881916, -0.9659258, 0), (-5.7409384e-8, -1, 0), (-0.25881916, -0.9659258, 0), (-0.25881922, -0.96592575, 0), (-5.7409384e-8, -1, 0), (-5.7409384e-8, -1, 0), (-0.25881922, -0.96592575, 0), (-0.25881916, -0.96592575, 0), (-5.2625268e-8, -1, 0), (-5.2625268e-8, -1, 0), (-0.25881916, -0.96592575, 0), (-0.25881916, -0.9659258, 0), (-5.2625268e-8, -1, 0), (-5.2625268e-8, -1, 0), (-0.25881916, -0.9659258, 0), (-0.25881916, -0.96592575, 0), (-5.2625268e-8, -1, 0), (-5.2625268e-8, -1, 0), (-0.25881916, -0.96592575, 0), (-0.25881922, -0.96592575, 0), (-5.7409384e-8, -1, 0), (-5.7409384e-8, -1, 0), (-0.25881922, -0.96592575, 0), (-0.25881916, -0.9659258, 0), (-5.7409387e-8, -1, 0), (0.2588191, -0.9659258, 0), (-5.7409384e-8, -1, 0), (-5.7409384e-8, -1, 0), (0.25881916, -0.9659258, -8.636052e-8), (0.25881916, -0.9659258, -8.636052e-8), (-5.7409384e-8, -1, 0), (-5.2625268e-8, -1, 0), (0.25881913, -0.9659258, 9.124977e-15), (0.25881913, -0.9659258, 9.124977e-15), (-5.2625268e-8, -1, 0), (-5.2625268e-8, -1, 0), (0.25881913, -0.9659258, 0), (0.25881913, -0.9659258, 0), (-5.2625268e-8, -1, 0), (-5.2625268e-8, -1, 0), (0.25881913, -0.96592575, -9.124977e-15), (0.25881913, -0.96592575, -9.124977e-15), (-5.2625268e-8, -1, 0), (-5.7409384e-8, -1, 0), (0.25881916, -0.9659258, 8.636052e-8), (0.25881916, -0.9659258, 8.636052e-8), (-5.7409384e-8, -1, 0), (-5.7409387e-8, -1, 0), (0.2588191, -0.9659258, 0), (0.5000001, -0.8660254, -8.636049e-8), (0.2588191, -0.9659258, 0), (0.25881916, -0.9659258, -8.636052e-8), (0.5000001, -0.8660254, -1.7272099e-7), (0.5000001, -0.8660254, -1.7272099e-7), (0.25881916, -0.9659258, -8.636052e-8), (0.25881913, -0.9659258, 9.124977e-15), (0.50000006, -0.8660254, 8.6360515e-8), (0.50000006, -0.8660254, 8.6360515e-8), (0.25881913, -0.9659258, 9.124977e-15), (0.25881913, -0.9659258, 0), (0.50000006, -0.8660254, 0), (0.50000006, -0.8660254, 0), (0.25881913, -0.9659258, 0), (0.25881913, -0.96592575, -9.124977e-15), (0.5, -0.8660254, -8.636051e-8), (0.5, -0.8660254, -8.636051e-8), (0.25881913, -0.96592575, -9.124977e-15), (0.25881916, -0.9659258, 8.636052e-8), (0.5000001, -0.8660254, 1.72721e-7), (0.5000001, -0.8660254, 1.72721e-7), (0.25881916, -0.9659258, 8.636052e-8), (0.2588191, -0.9659258, 0), (0.5000001, -0.8660254, 8.6360494e-8), (0.70710677, -0.7071067, -1.2954077e-7), (0.5000001, -0.8660254, -8.636049e-8), (0.5000001, -0.8660254, -1.7272099e-7), (0.7071068, -0.7071067, -1.2954078e-7), (0.7071068, -0.7071067, -1.2954078e-7), (0.5000001, -0.8660254, -1.7272099e-7), (0.50000006, -0.8660254, 8.6360515e-8), (0.7071067, -0.70710677, 1.2954077e-7), (0.7071067, -0.70710677, 1.2954077e-7), (0.50000006, -0.8660254, 8.6360515e-8), (0.50000006, -0.8660254, 0), (0.7071067, -0.7071067, 0), (0.7071067, -0.7071067, 0), (0.50000006, -0.8660254, 0), (0.5, -0.8660254, -8.636051e-8), (0.7071067, -0.70710677, -1.2954077e-7), (0.7071067, -0.70710677, -1.2954077e-7), (0.5, -0.8660254, -8.636051e-8), (0.5000001, -0.8660254, 1.72721e-7), (0.70710677, -0.7071067, 1.2954077e-7), (0.70710677, -0.7071067, 1.2954077e-7), (0.5000001, -0.8660254, 1.72721e-7), (0.5000001, -0.8660254, 8.6360494e-8), (0.70710677, -0.7071067, 1.2954077e-7), (0.8660254, -0.50000006, -8.6360494e-8), (0.70710677, -0.7071067, -1.2954077e-7), (0.7071068, -0.7071067, -1.2954078e-7), (0.8660254, -0.5000001, -1.0795061e-7), (0.8660254, -0.5000001, -1.0795061e-7), (0.7071068, -0.7071067, -1.2954078e-7), (0.7071067, -0.70710677, 1.2954077e-7), (0.8660254, -0.50000006, 8.63605e-8), (0.8660254, -0.50000006, 8.63605e-8), (0.7071067, -0.70710677, 1.2954077e-7), (0.7071067, -0.7071067, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (0.7071067, -0.7071067, 0), (0.7071067, -0.70710677, -1.2954077e-7), (0.8660254, -0.50000006, -8.63605e-8), (0.8660254, -0.50000006, -8.63605e-8), (0.7071067, -0.70710677, -1.2954077e-7), (0.70710677, -0.7071067, 1.2954077e-7), (0.8660254, -0.50000006, 1.0795061e-7), (0.8660254, -0.50000006, 1.0795061e-7), (0.70710677, -0.7071067, 1.2954077e-7), (0.70710677, -0.7071067, 1.2954077e-7), (0.8660254, -0.50000006, 8.6360494e-8), (0.9659258, -0.2588191, -4.3180226e-8), (0.8660254, -0.50000006, -8.6360494e-8), (0.8660254, -0.5000001, -1.0795061e-7), (0.96592575, -0.25881916, -6.477035e-8), (0.96592575, -0.25881916, -6.477035e-8), (0.8660254, -0.5000001, -1.0795061e-7), (0.8660254, -0.50000006, 8.63605e-8), (0.96592575, -0.25881913, 4.3180243e-8), (0.96592575, -0.25881913, 4.3180243e-8), (0.8660254, -0.50000006, 8.63605e-8), (0.8660254, -0.50000006, 0), (0.96592575, -0.2588191, 0), (0.96592575, -0.2588191, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, -8.63605e-8), (0.96592575, -0.25881913, -4.3180243e-8), (0.96592575, -0.25881913, -4.3180243e-8), (0.8660254, -0.50000006, -8.63605e-8), (0.8660254, -0.50000006, 1.0795061e-7), (0.96592575, -0.25881916, 6.477035e-8), (0.96592575, -0.25881916, 6.477035e-8), (0.8660254, -0.50000006, 1.0795061e-7), (0.8660254, -0.50000006, 8.6360494e-8), (0.9659258, -0.2588191, 4.3180226e-8), (1, -3.3488806e-8, 0), (0.9659258, -0.2588191, -4.3180226e-8), (0.96592575, -0.25881916, -6.477035e-8), (1, -3.109675e-8, 0), (1, -3.109675e-8, 0), (0.96592575, -0.25881916, -6.477035e-8), (0.96592575, -0.25881913, 4.3180243e-8), (1, -2.8704694e-8, 0), (1, -2.8704694e-8, 0), (0.96592575, -0.25881913, 4.3180243e-8), (0.96592575, -0.2588191, 0), (1, -2.8704694e-8, 0), (1, -2.8704694e-8, 0), (0.96592575, -0.2588191, 0), (0.96592575, -0.25881913, -4.3180243e-8), (1, -2.8704694e-8, 0), (1, -2.8704694e-8, 0), (0.96592575, -0.25881913, -4.3180243e-8), (0.96592575, -0.25881916, 6.477035e-8), (1, -3.1096754e-8, 0), (1, -3.1096754e-8, 0), (0.96592575, -0.25881916, 6.477035e-8), (0.9659258, -0.2588191, 4.3180226e-8), (1, -3.1096754e-8, 0), (0.9659258, 0.25881898, 0), (1, -3.3488806e-8, 0), (1, -3.109675e-8, 0), (0.9659258, 0.25881895, 0), (0.9659258, 0.25881895, 0), (1, -3.109675e-8, 0), (1, -2.8704694e-8, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -2.8704694e-8, 0), (1, -2.8704694e-8, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -2.8704694e-8, 0), (1, -2.8704694e-8, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -2.8704694e-8, 0), (1, -3.1096754e-8, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -3.1096754e-8, 0), (1, -3.1096754e-8, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881895, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881895, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.8660254, 0.50000006, 0), (0.7071067, 0.7071068, -8.6360494e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.70710665, 0.7071069, -8.636049e-8), (0.70710665, 0.7071069, -8.636049e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.70710665, 0.7071069, 8.636051e-8), (0.70710665, 0.7071069, 8.636051e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.70710665, 0.7071069, 0), (0.70710665, 0.7071069, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.70710665, 0.7071069, -8.636051e-8), (0.70710665, 0.7071069, -8.636051e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.70710665, 0.7071069, 8.636049e-8), (0.70710665, 0.7071069, 8.636049e-8), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.7071067, 0.7071068, 8.6360494e-8), (0.50000006, 0.8660254, -8.636048e-8), (0.7071067, 0.7071068, -8.6360494e-8), (0.70710665, 0.7071069, -8.636049e-8), (0.5, 0.8660254, -8.6360494e-8), (0.5, 0.8660254, -8.6360494e-8), (0.70710665, 0.7071069, -8.636049e-8), (0.70710665, 0.7071069, 8.636051e-8), (0.50000006, 0.8660254, 8.636052e-8), (0.50000006, 0.8660254, 8.636052e-8), (0.70710665, 0.7071069, 8.636051e-8), (0.70710665, 0.7071069, 0), (0.49999994, 0.8660254, 0), (0.49999994, 0.8660254, 0), (0.70710665, 0.7071069, 0), (0.70710665, 0.7071069, -8.636051e-8), (0.5, 0.8660254, -8.6360515e-8), (0.5, 0.8660254, -8.6360515e-8), (0.70710665, 0.7071069, -8.636051e-8), (0.70710665, 0.7071069, 8.636049e-8), (0.50000006, 0.8660254, 8.63605e-8), (0.50000006, 0.8660254, 8.63605e-8), (0.70710665, 0.7071069, 8.636049e-8), (0.7071067, 0.7071068, 8.6360494e-8), (0.50000006, 0.8660254, 8.636048e-8), (0.25881907, 0.96592575, 0), (0.50000006, 0.8660254, -8.636048e-8), (0.5, 0.8660254, -8.6360494e-8), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (0.5, 0.8660254, -8.6360494e-8), (0.50000006, 0.8660254, 8.636052e-8), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (0.50000006, 0.8660254, 8.636052e-8), (0.49999994, 0.8660254, 0), (0.25881913, 0.9659258, 0), (0.25881913, 0.9659258, 0), (0.49999994, 0.8660254, 0), (0.5, 0.8660254, -8.6360515e-8), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (0.5, 0.8660254, -8.6360515e-8), (0.50000006, 0.8660254, 8.63605e-8), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (0.50000006, 0.8660254, 8.63605e-8), (0.50000006, 0.8660254, 8.636048e-8), (0.25881907, 0.96592575, 0), (3.348881e-8, 1, -1.7272112e-7), (0.25881907, 0.96592575, 0), (0.25881916, 0.96592575, 0), (-1.6744405e-8, 1, -1.7272112e-7), (-1.6744405e-8, 1, -1.7272112e-7), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (-2.1528521e-8, 1, 1.7272116e-7), (-2.1528521e-8, 1, 1.7272116e-7), (0.25881916, 0.96592575, 0), (0.25881913, 0.9659258, 0), (9.5682315e-9, 1, 0), (9.5682315e-9, 1, 0), (0.25881913, 0.9659258, 0), (0.25881916, 0.96592575, 0), (-2.1528521e-8, 1, -1.7272116e-7), (-2.1528521e-8, 1, -1.7272116e-7), (0.25881916, 0.96592575, 0), (0.25881916, 0.96592575, 0), (-2.1528521e-8, 1, 1.7272112e-7), (-2.1528521e-8, 1, 1.7272112e-7), (0.25881916, 0.96592575, 0), (0.25881907, 0.96592575, 0), (3.3488806e-8, 1, 1.727211e-7), (-0.25881892, 0.9659258, 0), (-0.2588189, 0.9659258, 0), (5.2625268e-8, 1, 0), (5.2625268e-8, 1, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (-0.25881892, 0.9659258, 0), (5.2625268e-8, 1, 0), (3.348881e-8, 1, -1.7272112e-7), (3.348881e-8, 1, -1.7272112e-7), (5.2625268e-8, 1, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.96592575, 0), (0.25881907, 0.96592575, 0), (0.25881907, 0.9659258, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, -8.636048e-8), (0.50000006, 0.8660254, -8.636048e-8), (0.50000006, 0.8660254, 0), (0.7071067, 0.70710677, 0), (0.7071067, 0.7071068, -8.6360494e-8), (0.7071067, 0.7071068, -8.6360494e-8), (0.7071067, 0.70710677, 0), (0.8660254, 0.5000001, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.5000001, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -3.5880866e-8, 0), (1, -3.3488806e-8, 0), (1, -3.3488806e-8, 0), (1, -3.5880866e-8, 0), (0.9659258, -0.25881904, 0), (0.9659258, -0.2588191, -4.3180226e-8), (0.9659258, -0.2588191, -4.3180226e-8), (0.9659258, -0.25881904, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, -8.6360494e-8), (0.8660254, -0.50000006, -8.6360494e-8), (0.8660254, -0.50000006, 0), (0.70710677, -0.70710677, 0), (0.70710677, -0.7071067, -1.2954077e-7), (0.70710677, -0.7071067, -1.2954077e-7), (0.70710677, -0.70710677, 0), (0.5000001, -0.8660253, 0), (0.5000001, -0.8660254, -8.636049e-8), (0.5000001, -0.8660254, -8.636049e-8), (0.5000001, -0.8660253, 0), (0.258819, -0.96592575, 0), (0.2588191, -0.9659258, 0), (0.2588191, -0.9659258, 0), (0.258819, -0.96592575, 0), (-4.7841155e-8, -1, 0), (-5.7409384e-8, -1, 0), (-5.7409384e-8, -1, 0), (-4.7841155e-8, -1, 0), (-0.25881913, -0.9659258, 0), (-0.25881916, -0.9659258, 0), (-0.25881916, -0.9659258, 0), (-0.25881913, -0.9659258, 0), (-0.50000006, -0.8660254, 0), (-0.50000006, -0.8660254, -8.6360515e-8), (-0.50000006, -0.8660254, -8.6360515e-8), (-0.50000006, -0.8660254, 0), (-0.70710677, -0.7071067, 0), (-0.7071067, -0.7071067, -8.6360515e-8), (-0.7071067, -0.7071067, -8.6360515e-8), (-0.70710677, -0.7071067, 0), (-0.86602527, -0.5, 0), (-0.8660254, -0.50000006, -4.3180258e-8), (-0.8660254, -0.50000006, -4.3180258e-8), (-0.86602527, -0.5, 0), (-0.9659258, -0.25881898, 0), (-0.9659259, -0.258819, -8.63605e-8), (-0.9659259, -0.258819, -8.63605e-8), (-0.9659258, -0.25881898, 0), (-1, 1.9375668e-7, 0), (-1, 9.807437e-8, -4.318025e-8), (-1, 9.807437e-8, -4.318025e-8), (-1, 1.9375668e-7, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881904, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999988, 0), (-0.86602545, 0.49999988, 0), (-0.86602545, 0.49999982, 0), (-0.70710695, 0.70710665, 0), (-0.7071068, 0.7071067, 0), (-0.7071068, 0.7071067, 0), (-0.70710695, 0.70710665, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.25881892, 0.9659258, 0), (-0.25881895, 0.9659258, -1.7272112e-7), (0.25881907, 0.9659258, 0), (0.25881907, 0.9659258, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, 0), (5.2625268e-8, 1, 0), (5.2625268e-8, 1, 0), (0.25881907, 0.9659258, 0), (0.25881907, 0.9659258, 0), (-0.49999997, 0.8660254, 0), (-0.5, 0.8660254, 0), (-0.25881892, 0.9659258, 0), (-0.2588189, 0.9659258, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.5, 0.8660254, 0), (-0.49999997, 0.8660254, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999982, 0), (-0.70710695, 0.70710665, 0), (-0.70710695, 0.70710665, 0), (-0.9659258, 0.25881898, 0), (-0.9659258, 0.25881904, 0), (-0.86602545, 0.49999982, 0), (-0.86602545, 0.49999982, 0), (-1, 1.865805e-7, 0), (-1, 1.9136462e-7, 0), (-0.9659258, 0.25881904, 0), (-0.9659258, 0.25881898, 0), (-0.9659258, -0.258819, 0), (-0.9659258, -0.25881898, 0), (-1, 1.9136462e-7, 0), (-1, 1.865805e-7, 0), (-0.86602527, -0.5, 0), (-0.86602527, -0.5, 0), (-0.9659258, -0.25881898, 0), (-0.9659258, -0.258819, 0), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 0), (-0.86602527, -0.5, 0), (-0.86602527, -0.5, 0), (-0.5, -0.8660254, 0), (-0.50000006, -0.8660254, 0), (-0.70710677, -0.7071067, 0), (-0.70710677, -0.7071067, 0), (-0.25881907, -0.96592575, 0), (-0.25881913, -0.9659258, 0), (-0.50000006, -0.8660254, 0), (-0.5, -0.8660254, 0), (-4.305704e-8, -1, 0), (-4.7841155e-8, -1, 0), (-0.25881913, -0.9659258, 0), (-0.25881907, -0.96592575, 0), (0.258819, -0.96592575, 0), (0.258819, -0.96592575, 0), (-4.7841155e-8, -1, 0), (-4.305704e-8, -1, 0), (0.5000001, -0.8660254, 0), (0.5000001, -0.8660253, 0), (0.258819, -0.96592575, 0), (0.258819, -0.96592575, 0), (0.70710677, -0.7071067, 0), (0.70710677, -0.70710677, 0), (0.5000001, -0.8660253, 0), (0.5000001, -0.8660254, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (0.70710677, -0.70710677, 0), (0.70710677, -0.7071067, 0), (0.9659258, -0.2588191, 0), (0.9659258, -0.25881904, 0), (0.8660254, -0.50000006, 0), (0.8660254, -0.50000006, 0), (1, -2.8704692e-8, 0), (1, -3.3488806e-8, 0), (0.9659258, -0.25881904, 0), (0.9659258, -0.2588191, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (1, -3.3488806e-8, 0), (1, -2.8704692e-8, 0), (0.8660254, 0.50000006, 0), (0.8660254, 0.5000001, 0), (0.9659258, 0.25881898, 0), (0.9659258, 0.25881898, 0), (0.7071067, 0.7071068, 0), (0.7071067, 0.70710677, 0), (0.8660254, 0.5000001, 0), (0.8660254, 0.50000006, 0), (0.50000006, 0.8660254, 0), (0.50000006, 0.8660254, 0), (0.7071067, 0.70710677, 0), (0.7071067, 0.7071068, 0), (-0.2588189, 0.9659258, 0), (-0.25881892, 0.9659258, 0), (5.2625268e-8, 1, 0), (5.2625268e-8, 1, 0), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1), (0, 0, -0.99999994), (0, 0, -1), (0, 0, -1), (0, 0, 0.99999994), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "faceVarying"
+                )
+                point3f[] points = [(0, 0, -1), (0, 0, 1), (3.4493428e-9, 0.5, 0.25), (3.4493428e-9, 0.5, -0.25), (3.4493428e-9, 0.5, 0.16666666), (3.4493428e-9, 0.5, 0.08333333), (3.4493428e-9, 0.5, 0), (3.4493428e-9, 0.5, -0.08333333), (3.4493428e-9, 0.5, -0.16666666), (0.12940952, 0.4829629, -0.25), (0.12940952, 0.4829629, 0.25), (0.12940952, 0.4829629, -0.16666666), (0.12940952, 0.4829629, -0.08333333), (0.12940952, 0.4829629, 0), (0.12940952, 0.4829629, 0.08333333), (0.12940952, 0.4829629, 0.16666666), (0.25, 0.4330127, -0.25), (0.25, 0.4330127, 0.25), (0.25, 0.43301266, -0.16666666), (0.25, 0.43301266, -0.08333333), (0.25, 0.4330127, 0), (0.25, 0.43301266, 0.08333333), (0.25, 0.43301266, 0.16666666), (0.35355338, 0.35355338, -0.25), (0.35355338, 0.35355338, 0.25), (0.35355338, 0.35355338, -0.16666666), (0.35355338, 0.35355338, -0.08333333), (0.35355338, 0.35355338, 0), (0.35355338, 0.35355338, 0.08333333), (0.35355338, 0.35355338, 0.16666666), (0.43301272, 0.25, -0.25), (0.43301272, 0.25, 0.25), (0.43301272, 0.25, -0.16666666), (0.43301272, 0.25, -0.08333333), (0.43301272, 0.25, 0), (0.43301272, 0.25, 0.08333333), (0.43301272, 0.25, 0.16666666), (0.4829629, 0.12940955, -0.25), (0.4829629, 0.12940955, 0.25), (0.4829629, 0.12940955, -0.16666666), (0.4829629, 0.12940955, -0.08333333), (0.4829629, 0.12940955, 0), (0.4829629, 0.12940955, 0.08333333), (0.4829629, 0.12940955, 0.16666666), (0.5, -1.9648116e-8, -0.25), (0.5, -1.9648116e-8, 0.25), (0.5, -1.9648116e-8, -0.16666666), (0.5, -1.9648116e-8, -0.08333333), (0.5, -1.9648116e-8, 0), (0.5, -1.9648116e-8, 0.08333333), (0.5, -1.9648116e-8, 0.16666666), (0.4829629, -0.12940952, -0.25), (0.4829629, -0.12940952, 0.25), (0.4829629, -0.12940952, -0.16666666), (0.4829629, -0.12940952, -0.08333333), (0.4829629, -0.12940952, 0), (0.4829629, -0.12940952, 0.08333333), (0.4829629, -0.12940952, 0.16666666), (0.4330127, -0.25000003, -0.25), (0.4330127, -0.25000003, 0.25), (0.43301266, -0.25000003, -0.16666666), (0.43301266, -0.25, -0.08333333), (0.4330127, -0.25000003, 0), (0.43301266, -0.25, 0.08333333), (0.43301266, -0.25000003, 0.16666666), (0.35355338, -0.35355338, -0.25), (0.35355338, -0.35355338, 0.25), (0.35355338, -0.35355338, -0.16666666), (0.35355338, -0.35355338, -0.08333333), (0.35355338, -0.35355338, 0), (0.35355338, -0.35355338, 0.08333333), (0.35355338, -0.35355338, 0.16666666), (0.25000003, -0.4330127, -0.25), (0.25000003, -0.4330127, 0.25), (0.25000003, -0.43301266, -0.16666666), (0.25, -0.43301266, -0.08333333), (0.25000003, -0.4330127, 0), (0.25, -0.43301266, 0.08333333), (0.25000003, -0.43301266, 0.16666666), (0.12940957, -0.4829629, -0.25), (0.12940957, -0.4829629, 0.25), (0.12940957, -0.4829629, -0.16666666), (0.12940955, -0.4829629, -0.08333333), (0.12940957, -0.4829629, 0), (0.12940955, -0.4829629, 0.08333333), (0.12940957, -0.4829629, 0.16666666), (-4.0262048e-8, -0.5, -0.25), (-4.0262048e-8, -0.5, 0.25), (-4.0262048e-8, -0.5, -0.16666666), (-4.0262048e-8, -0.5, -0.08333333), (-4.0262048e-8, -0.5, 0), (-4.0262048e-8, -0.5, 0.08333333), (-4.0262048e-8, -0.5, 0.16666666), (-0.12940954, -0.4829629, -0.25), (-0.12940954, -0.4829629, 0.25), (-0.12940954, -0.4829629, -0.16666666), (-0.12940954, -0.4829629, -0.08333333), (-0.12940954, -0.4829629, 0), (-0.12940954, -0.4829629, 0.08333333), (-0.12940954, -0.4829629, 0.16666666), (-0.25, -0.4330127, -0.25), (-0.25, -0.4330127, 0.25), (-0.25, -0.43301266, -0.16666666), (-0.25, -0.43301266, -0.08333333), (-0.25, -0.4330127, 0), (-0.25, -0.43301266, 0.08333333), (-0.25, -0.43301266, 0.16666666), (-0.35355335, -0.3535534, -0.25), (-0.35355335, -0.3535534, 0.25), (-0.35355335, -0.3535534, -0.16666666), (-0.35355335, -0.3535534, -0.08333333), (-0.35355335, -0.3535534, 0), (-0.35355335, -0.3535534, 0.08333333), (-0.35355335, -0.3535534, 0.16666666), (-0.43301272, -0.24999994, -0.25), (-0.43301272, -0.24999994, 0.25), (-0.43301272, -0.24999994, -0.16666666), (-0.43301272, -0.24999994, -0.08333333), (-0.43301272, -0.24999994, 0), (-0.43301272, -0.24999994, 0.08333333), (-0.43301272, -0.24999994, 0.16666666), (-0.48296294, -0.12940949, -0.25), (-0.48296294, -0.12940949, 0.25), (-0.4829629, -0.12940949, -0.16666666), (-0.4829629, -0.12940949, -0.08333333), (-0.48296294, -0.12940949, 0), (-0.4829629, -0.12940949, 0.08333333), (-0.4829629, -0.12940949, 0.16666666), (-0.5, 8.170019e-9, -0.25), (-0.5, 8.170019e-9, 0.25), (-0.5, 8.170019e-9, -0.16666666), (-0.5, 8.170019e-9, -0.08333333), (-0.5, 8.170019e-9, 0), (-0.5, 8.170019e-9, 0.08333333), (-0.5, 8.170019e-9, 0.16666666), (-0.4829629, 0.12940952, -0.25), (-0.4829629, 0.12940952, 0.25), (-0.4829629, 0.12940952, -0.16666666), (-0.4829629, 0.12940952, -0.08333333), (-0.4829629, 0.12940952, 0), (-0.4829629, 0.12940952, 0.08333333), (-0.4829629, 0.12940952, 0.16666666), (-0.43301272, 0.24999997, -0.25), (-0.43301272, 0.24999997, 0.25), (-0.43301272, 0.24999997, -0.16666666), (-0.43301272, 0.24999997, -0.08333333), (-0.43301272, 0.24999997, 0), (-0.43301272, 0.24999997, 0.08333333), (-0.43301272, 0.24999997, 0.16666666), (-0.35355344, 0.35355335, -0.25), (-0.35355344, 0.35355335, 0.25), (-0.35355344, 0.35355335, -0.16666666), (-0.3535534, 0.35355335, -0.08333333), (-0.35355344, 0.35355335, 0), (-0.3535534, 0.35355335, 0.08333333), (-0.35355344, 0.35355335, 0.16666666), (-0.2500001, 0.43301266, -0.25), (-0.2500001, 0.43301266, 0.25), (-0.2500001, 0.43301266, -0.16666666), (-0.2500001, 0.43301266, -0.08333333), (-0.2500001, 0.43301266, 0), (-0.2500001, 0.43301266, 0.08333333), (-0.2500001, 0.43301266, 0.16666666), (-0.12940942, 0.48296294, -0.25), (-0.12940942, 0.48296294, 0.25), (-0.12940942, 0.4829629, -0.16666666), (-0.12940942, 0.4829629, -0.08333333), (-0.12940942, 0.48296294, 0), (-0.12940942, 0.4829629, 0.08333333), (-0.12940942, 0.4829629, 0.16666666), (-0.12940942, 0.48296294, 0.39999998), (3.4493428e-9, 0.5, 0.39999998), (0.12940952, 0.4829629, 0.39999998), (0.25, 0.4330127, 0.39999998), (0.35355338, 0.35355338, 0.39999998), (0.43301272, 0.25, 0.39999998), (0.4829629, 0.12940955, 0.39999998), (0.5, -1.9648116e-8, 0.39999998), (0.4829629, -0.12940952, 0.39999998), (0.4330127, -0.25000003, 0.39999998), (0.35355338, -0.35355338, 0.39999998), (0.25000003, -0.4330127, 0.39999998), (0.12940957, -0.4829629, 0.39999998), (-4.0262048e-8, -0.5, 0.39999998), (-0.12940954, -0.4829629, 0.39999998), (-0.25, -0.4330127, 0.39999998), (-0.35355335, -0.3535534, 0.39999998), (-0.43301272, -0.24999994, 0.39999998), (-0.48296294, -0.12940949, 0.39999998), (-0.5, 8.170019e-9, 0.39999998), (-0.4829629, 0.12940952, 0.39999998), (-0.43301272, 0.24999997, 0.39999998), (-0.35355344, 0.35355335, 0.39999998), (-0.2500001, 0.43301266, 0.39999998), (3.4493428e-9, 0.5, -0.39999998), (0.12940952, 0.4829629, -0.39999998), (-0.12940942, 0.48296294, -0.39999998), (0.25, 0.4330127, -0.39999998), (0.35355338, 0.35355338, -0.39999998), (0.43301272, 0.25, -0.39999998), (0.4829629, 0.12940955, -0.39999998), (0.5, -1.9648116e-8, -0.39999998), (0.4829629, -0.12940952, -0.39999998), (0.4330127, -0.25000003, -0.39999998), (0.35355338, -0.35355338, -0.39999998), (0.25000003, -0.4330127, -0.39999998), (0.12940957, -0.4829629, -0.39999998), (-4.0262048e-8, -0.5, -0.39999998), (-0.12940954, -0.4829629, -0.39999998), (-0.25, -0.4330127, -0.39999998), (-0.35355335, -0.3535534, -0.39999998), (-0.43301272, -0.24999994, -0.39999998), (-0.48296294, -0.12940949, -0.39999998), (-0.5, 8.170019e-9, -0.39999998), (-0.4829629, 0.12940952, -0.39999998), (-0.43301272, 0.24999997, -0.39999998), (-0.35355344, 0.35355335, -0.39999998), (-0.2500001, 0.43301266, -0.39999998), (3.4493428e-9, 0.5, -1), (0.12940952, 0.4829629, -1), (0.12940952, 0.4829629, 1), (3.4493428e-9, 0.5, 1), (0.25, 0.4330127, -1), (0.25, 0.4330127, 1), (0.35355338, 0.35355338, -1), (0.35355338, 0.35355338, 1), (0.43301272, 0.25, -1), (0.43301272, 0.25, 1), (0.4829629, 0.12940955, -1), (0.4829629, 0.12940955, 1), (0.5, -1.9648116e-8, -1), (0.5, -1.9648116e-8, 1), (0.4829629, -0.12940952, -1), (0.4829629, -0.12940952, 1), (0.4330127, -0.25000003, -1), (0.4330127, -0.25000003, 1), (0.35355338, -0.35355338, -1), (0.35355338, -0.35355338, 1), (0.25000003, -0.4330127, -1), (0.25000003, -0.4330127, 1), (0.12940957, -0.4829629, -1), (0.12940957, -0.4829629, 1), (-4.0262048e-8, -0.5, -1), (-4.0262048e-8, -0.5, 1), (-0.12940954, -0.4829629, -1), (-0.12940954, -0.4829629, 1), (-0.25, -0.4330127, -1), (-0.25, -0.4330127, 1), (-0.35355335, -0.3535534, -1), (-0.35355335, -0.3535534, 1), (-0.43301272, -0.24999994, -1), (-0.43301272, -0.24999994, 1), (-0.48296294, -0.12940949, -1), (-0.48296294, -0.12940949, 1), (-0.5, 8.170019e-9, -1), (-0.5, 8.170019e-9, 1), (-0.4829629, 0.12940952, -1), (-0.4829629, 0.12940952, 1), (-0.43301272, 0.24999997, -1), (-0.43301272, 0.24999997, 1), (-0.35355344, 0.35355335, -1), (-0.35355344, 0.35355335, 1), (-0.2500001, 0.43301266, -1), (-0.2500001, 0.43301266, 1), (-0.12940942, 0.48296294, -1), (-0.12940942, 0.48296294, 1)]
+                matrix4d primvars:skel:geomBindTransform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                int[] primvars:skel:jointIndices = [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0] (
+                    elementSize = 2
+                    interpolation = "vertex"
+                )
+                float[] primvars:skel:jointWeights = [1, 0, 1, 0, 0.95, 0.05, 0.95, 0.05, 0.85, 0.15, 0.6692733, 0.3307267, 0.4999929, 0.50000715, 0.33071527, 0.6692847, 0.15, 0.85, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307267, 0.6692733, 0.50000715, 0.49999285, 0.6692847, 0.33071527, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073422, 0.6692658, 0.5000165, 0.49998355, 0.66929233, 0.3307077, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073443, 0.6692656, 0.5000141, 0.49998587, 0.6692873, 0.33071268, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307306, 0.66926944, 0.5000054, 0.49999464, 0.66927767, 0.33072236, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33072233, 0.66927767, 0.49999464, 0.5000054, 0.66926944, 0.33073056, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33071265, 0.6692873, 0.49998587, 0.5000141, 0.66926557, 0.33073443, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307077, 0.66929233, 0.49998352, 0.5000165, 0.6692658, 0.33073422, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33071527, 0.6692847, 0.49999285, 0.50000715, 0.6692733, 0.3307267, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33072668, 0.6692733, 0.5000071, 0.49999288, 0.66928476, 0.33071527, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073422, 0.6692658, 0.50001645, 0.49998352, 0.66929233, 0.3307077, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073443, 0.6692656, 0.5000141, 0.4999859, 0.6692873, 0.33071265, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073053, 0.66926944, 0.50000536, 0.4999946, 0.66927767, 0.33072236, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33072233, 0.66927767, 0.49999458, 0.5000054, 0.66926944, 0.33073056, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33071268, 0.6692874, 0.49998587, 0.5000141, 0.66926557, 0.33073443, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307077, 0.66929233, 0.49998352, 0.5000165, 0.6692658, 0.3307342, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33071527, 0.66928476, 0.49999288, 0.50000715, 0.6692733, 0.3307267, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307267, 0.66927326, 0.50000715, 0.49999288, 0.6692847, 0.33071527, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073422, 0.6692658, 0.5000165, 0.49998355, 0.6692923, 0.33070773, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073443, 0.6692656, 0.5000141, 0.49998584, 0.6692873, 0.33071268, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33073056, 0.66926944, 0.50000536, 0.4999946, 0.66927767, 0.33072233, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33072236, 0.66927767, 0.4999946, 0.50000536, 0.66926944, 0.33073056, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.33071268, 0.6692873, 0.4999859, 0.5000141, 0.66926557, 0.33073443, 0.85, 0.15, 0.95, 0.05, 0.95, 0.05, 0.15, 0.85, 0.3307077, 0.66929233, 0.49998355, 0.5000165, 0.6692658, 0.33073422, 0.85, 0.15, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0] (
+                    elementSize = 2
+                    interpolation = "vertex"
+                )
+                texCoord2f[] primvars:st = [(0.04166648, 0.65), (0.041666478, 0.68749994), (-1.8626451e-7, 0.6875), (-1.8626451e-7, 0.65), (0.9166666, 0.65), (0.9166666, 0.68750006), (0.87499994, 0.6875), (0.8749999, 0.65), (0.8749999, 0.65), (0.87499994, 0.6875), (0.83333325, 0.6875), (0.83333325, 0.65), (0.83333325, 0.65), (0.83333325, 0.6875), (0.7916666, 0.6875), (0.7916665, 0.65), (0.7916665, 0.65), (0.7916666, 0.6875), (0.7499999, 0.6875), (0.7499999, 0.65), (0.7499999, 0.65), (0.7499999, 0.6875), (0.7083332, 0.6875), (0.70833313, 0.65), (0.70833313, 0.65), (0.7083332, 0.6875), (0.66666657, 0.68750006), (0.6666665, 0.65), (0.6666665, 0.65), (0.66666657, 0.68750006), (0.6249998, 0.6875), (0.6249998, 0.65), (0.6249998, 0.65), (0.6249998, 0.6875), (0.5833331, 0.68749994), (0.58333313, 0.65), (0.58333313, 0.65), (0.5833331, 0.68749994), (0.54166645, 0.6875), (0.5416664, 0.65), (0.5416664, 0.65), (0.54166645, 0.6875), (0.49999982, 0.6875), (0.49999976, 0.65), (0.49999976, 0.65), (0.49999982, 0.6875), (0.4583331, 0.6875), (0.45833313, 0.65), (0.45833313, 0.65), (0.4583331, 0.6875), (0.4166665, 0.68750006), (0.41666645, 0.65), (0.41666645, 0.65), (0.4166665, 0.68750006), (0.37499982, 0.6875), (0.37499982, 0.65), (0.37499982, 0.65), (0.37499982, 0.6875), (0.33333316, 0.6875), (0.33333316, 0.65), (0.33333316, 0.65), (0.33333316, 0.6875), (0.29166648, 0.68749994), (0.2916665, 0.65), (0.2916665, 0.65), (0.29166648, 0.68749994), (0.24999985, 0.6875), (0.24999982, 0.65), (0.24999982, 0.65), (0.24999985, 0.6875), (0.20833316, 0.6875), (0.20833316, 0.65), (0.20833316, 0.65), (0.20833316, 0.6875), (0.1666665, 0.6875), (0.16666651, 0.65000004), (0.16666651, 0.65000004), (0.1666665, 0.6875), (0.12499982, 0.6875), (0.12499983, 0.65), (0.12499983, 0.65), (0.12499982, 0.6875), (0.08333315, 0.6875), (0.08333315, 0.65), (0.08333315, 0.65), (0.08333315, 0.6875), (0.041666478, 0.68749994), (0.04166648, 0.65), (1, 0.65), (1, 0.6875), (0.9583333, 0.6875), (0.95833325, 0.65), (0.95833325, 0.65), (0.9583333, 0.6875), (0.9166666, 0.68750006), (0.9166666, 0.65), (0.08333315, 0.84999996), (0.08333315, 1), (0.04166648, 1), (0.04166648, 0.85), (0.12499982, 0.85), (0.12499982, 1), (0.08333315, 1), (0.08333315, 0.84999996), (0.16666648, 0.85), (0.1666665, 1), (0.12499982, 1), (0.12499982, 0.85), (0.20833316, 0.85), (0.20833316, 1), (0.1666665, 1), (0.16666648, 0.85), (0.2499998, 0.85), (0.24999982, 1), (0.20833316, 1), (0.20833316, 0.85), (0.2916665, 0.85), (0.2916665, 1), (0.24999982, 1), (0.2499998, 0.85), (0.33333316, 0.85), (0.33333316, 1), (0.2916665, 1), (0.2916665, 0.85), (0.37499982, 0.85), (0.37499982, 1), (0.33333316, 1), (0.33333316, 0.85), (0.41666645, 0.85), (0.41666648, 1), (0.37499982, 1), (0.37499982, 0.85), (0.4583332, 0.85), (0.45833313, 1), (0.41666648, 1), (0.41666645, 0.85), (0.49999976, 0.85), (0.49999976, 1), (0.45833313, 1), (0.4583332, 0.85), (0.5416664, 0.85), (0.54166645, 1), (0.49999976, 1), (0.49999976, 0.85), (0.58333313, 0.85), (0.58333313, 1), (0.54166645, 1), (0.5416664, 0.85), (0.6249998, 0.85), (0.6249998, 1), (0.58333313, 1), (0.58333313, 0.85), (0.6666665, 0.85), (0.6666665, 1), (0.6249998, 1), (0.6249998, 0.85), (0.70833325, 0.85), (0.70833313, 1), (0.6666665, 1), (0.6666665, 0.85), (0.7499999, 0.85), (0.7499999, 1), (0.70833313, 1), (0.70833325, 0.85), (0.7916665, 0.85), (0.7916665, 1), (0.7499999, 1), (0.7499999, 0.85), (0.83333325, 0.85), (0.83333325, 1), (0.7916665, 1), (0.7916665, 0.85), (0.8749999, 0.8499999), (0.87499994, 1), (0.83333325, 1), (0.83333325, 0.85), (0.9166666, 0.85), (0.9166666, 1), (0.87499994, 1), (0.8749999, 0.8499999), (0.95833325, 0.85), (0.9583333, 1), (0.9166666, 1), (0.9166666, 0.85), (1, 0.84999996), (1, 1), (0.9583333, 1), (0.95833325, 0.85), (0.04166648, 0.8125), (-1.8626451e-7, 0.8125), (-1.8626451e-7, 0.7916666), (0.041666485, 0.7916666), (0.041666485, 0.7916666), (-1.8626451e-7, 0.7916666), (-1.8626451e-7, 0.7708333), (0.04166648, 0.7708333), (0.04166648, 0.7708333), (-1.8626451e-7, 0.7708333), (-1.8626451e-7, 0.75), (0.041666478, 0.75), (0.041666478, 0.75), (-1.8626451e-7, 0.75), (-1.8626453e-7, 0.7291667), (0.04166648, 0.72916675), (0.04166648, 0.72916675), (-1.8626453e-7, 0.7291667), (-1.8626451e-7, 0.7083333), (0.041666485, 0.7083333), (0.041666485, 0.7083333), (-1.8626451e-7, 0.7083333), (-1.8626451e-7, 0.6875), (0.041666478, 0.68749994), (0.08333315, 0.8125), (0.04166648, 0.8125), (0.041666485, 0.7916666), (0.08333315, 0.7916666), (0.08333315, 0.7916666), (0.041666485, 0.7916666), (0.04166648, 0.7708333), (0.08333315, 0.7708333), (0.08333315, 0.7708333), (0.04166648, 0.7708333), (0.041666478, 0.75), (0.08333315, 0.75), (0.08333315, 0.75), (0.041666478, 0.75), (0.04166648, 0.72916675), (0.08333315, 0.7291667), (0.08333315, 0.7291667), (0.04166648, 0.72916675), (0.041666485, 0.7083333), (0.08333315, 0.7083333), (0.08333315, 0.7083333), (0.041666485, 0.7083333), (0.041666478, 0.68749994), (0.08333315, 0.6875), (0.12499982, 0.8125), (0.08333315, 0.8125), (0.08333315, 0.7916666), (0.12499983, 0.7916666), (0.12499983, 0.7916666), (0.08333315, 0.7916666), (0.08333315, 0.7708333), (0.12499981, 0.7708333), (0.12499981, 0.7708333), (0.08333315, 0.7708333), (0.08333315, 0.75), (0.124999814, 0.75), (0.124999814, 0.75), (0.08333315, 0.75), (0.08333315, 0.7291667), (0.12499981, 0.7291666), (0.12499981, 0.7291666), (0.08333315, 0.7291667), (0.08333315, 0.7083333), (0.12499983, 0.7083333), (0.12499983, 0.7083333), (0.08333315, 0.7083333), (0.08333315, 0.6875), (0.12499982, 0.6875), (0.1666665, 0.8125), (0.12499982, 0.8125), (0.12499983, 0.7916666), (0.1666665, 0.7916666), (0.1666665, 0.7916666), (0.12499983, 0.7916666), (0.12499981, 0.7708333), (0.16666651, 0.7708333), (0.16666651, 0.7708333), (0.12499981, 0.7708333), (0.124999814, 0.75), (0.1666665, 0.75), (0.1666665, 0.75), (0.124999814, 0.75), (0.12499981, 0.7291666), (0.16666651, 0.7291667), (0.16666651, 0.7291667), (0.12499981, 0.7291666), (0.12499983, 0.7083333), (0.1666665, 0.7083333), (0.1666665, 0.7083333), (0.12499983, 0.7083333), (0.12499982, 0.6875), (0.1666665, 0.6875), (0.20833316, 0.8125), (0.1666665, 0.8125), (0.1666665, 0.7916666), (0.20833316, 0.7916666), (0.20833316, 0.7916666), (0.1666665, 0.7916666), (0.16666651, 0.7708333), (0.20833316, 0.77083325), (0.20833316, 0.77083325), (0.16666651, 0.7708333), (0.1666665, 0.75), (0.20833316, 0.75), (0.20833316, 0.75), (0.1666665, 0.75), (0.16666651, 0.7291667), (0.20833316, 0.7291667), (0.20833316, 0.7291667), (0.16666651, 0.7291667), (0.1666665, 0.7083333), (0.20833318, 0.70833325), (0.20833318, 0.70833325), (0.1666665, 0.7083333), (0.1666665, 0.6875), (0.20833316, 0.6875), (0.24999982, 0.8125), (0.20833316, 0.8125), (0.20833316, 0.7916666), (0.24999984, 0.7916666), (0.24999984, 0.7916666), (0.20833316, 0.7916666), (0.20833316, 0.77083325), (0.24999984, 0.7708333), (0.24999984, 0.7708333), (0.20833316, 0.77083325), (0.20833316, 0.75), (0.24999985, 0.75000006), (0.24999985, 0.75000006), (0.20833316, 0.75), (0.20833316, 0.7291667), (0.24999984, 0.7291667), (0.24999984, 0.7291667), (0.20833316, 0.7291667), (0.20833318, 0.70833325), (0.24999985, 0.7083333), (0.24999985, 0.7083333), (0.20833318, 0.70833325), (0.20833316, 0.6875), (0.24999985, 0.6875), (0.2916665, 0.8125), (0.24999982, 0.8125), (0.24999984, 0.7916666), (0.2916665, 0.7916666), (0.2916665, 0.7916666), (0.24999984, 0.7916666), (0.24999984, 0.7708333), (0.2916665, 0.7708333), (0.2916665, 0.7708333), (0.24999984, 0.7708333), (0.24999985, 0.75000006), (0.29166648, 0.75), (0.29166648, 0.75), (0.24999985, 0.75000006), (0.24999984, 0.7291667), (0.2916665, 0.7291666), (0.2916665, 0.7291666), (0.24999984, 0.7291667), (0.24999985, 0.7083333), (0.2916665, 0.7083333), (0.2916665, 0.7083333), (0.24999985, 0.7083333), (0.24999985, 0.6875), (0.29166648, 0.68749994), (0.33333316, 0.8125), (0.2916665, 0.8125), (0.2916665, 0.7916666), (0.33333316, 0.7916666), (0.33333316, 0.7916666), (0.2916665, 0.7916666), (0.2916665, 0.7708333), (0.33333316, 0.7708333), (0.33333316, 0.7708333), (0.2916665, 0.7708333), (0.29166648, 0.75), (0.33333316, 0.75), (0.33333316, 0.75), (0.29166648, 0.75), (0.2916665, 0.7291666), (0.33333316, 0.7291667), (0.33333316, 0.7291667), (0.2916665, 0.7291666), (0.2916665, 0.7083333), (0.33333316, 0.7083333), (0.33333316, 0.7083333), (0.2916665, 0.7083333), (0.29166648, 0.68749994), (0.33333316, 0.6875), (0.37499982, 0.8125), (0.33333316, 0.8125), (0.33333316, 0.7916666), (0.37499982, 0.7916666), (0.37499982, 0.7916666), (0.33333316, 0.7916666), (0.33333316, 0.7708333), (0.37499982, 0.7708333), (0.37499982, 0.7708333), (0.33333316, 0.7708333), (0.33333316, 0.75), (0.37499982, 0.75), (0.37499982, 0.75), (0.33333316, 0.75), (0.33333316, 0.7291667), (0.37499982, 0.7291667), (0.37499982, 0.7291667), (0.33333316, 0.7291667), (0.33333316, 0.7083333), (0.37499982, 0.7083333), (0.37499982, 0.7083333), (0.33333316, 0.7083333), (0.33333316, 0.6875), (0.37499982, 0.6875), (0.4166665, 0.8125), (0.37499982, 0.8125), (0.37499982, 0.7916666), (0.4166665, 0.79166657), (0.4166665, 0.79166657), (0.37499982, 0.7916666), (0.37499982, 0.7708333), (0.4166665, 0.7708333), (0.4166665, 0.7708333), (0.37499982, 0.7708333), (0.37499982, 0.75), (0.41666648, 0.75), (0.41666648, 0.75), (0.37499982, 0.75), (0.37499982, 0.7291667), (0.41666645, 0.7291667), (0.41666645, 0.7291667), (0.37499982, 0.7291667), (0.37499982, 0.7083333), (0.41666654, 0.7083333), (0.41666654, 0.7083333), (0.37499982, 0.7083333), (0.37499982, 0.6875), (0.4166665, 0.68750006), (0.45833313, 0.8125), (0.4166665, 0.8125), (0.4166665, 0.79166657), (0.4583331, 0.7916666), (0.4583331, 0.7916666), (0.4166665, 0.79166657), (0.4166665, 0.7708333), (0.4583331, 0.77083325), (0.4583331, 0.77083325), (0.4166665, 0.7708333), (0.41666648, 0.75), (0.4583331, 0.75), (0.4583331, 0.75), (0.41666648, 0.75), (0.41666645, 0.7291667), (0.4583331, 0.7291667), (0.4583331, 0.7291667), (0.41666645, 0.7291667), (0.41666654, 0.7083333), (0.4583331, 0.70833325), (0.4583331, 0.70833325), (0.41666654, 0.7083333), (0.4166665, 0.68750006), (0.4583331, 0.6875), (0.49999976, 0.8125), (0.45833313, 0.8125), (0.4583331, 0.7916666), (0.49999982, 0.7916666), (0.49999982, 0.7916666), (0.4583331, 0.7916666), (0.4583331, 0.77083325), (0.49999982, 0.7708333), (0.49999982, 0.7708333), (0.4583331, 0.77083325), (0.4583331, 0.75), (0.49999982, 0.75000006), (0.49999982, 0.75000006), (0.4583331, 0.75), (0.4583331, 0.7291667), (0.49999982, 0.7291667), (0.49999982, 0.7291667), (0.4583331, 0.7291667), (0.4583331, 0.70833325), (0.49999982, 0.7083333), (0.49999982, 0.7083333), (0.4583331, 0.70833325), (0.4583331, 0.6875), (0.49999982, 0.6875), (0.54166645, 0.8125), (0.49999976, 0.8125), (0.49999982, 0.7916666), (0.54166645, 0.7916666), (0.54166645, 0.7916666), (0.49999982, 0.7916666), (0.49999982, 0.7708333), (0.5416664, 0.7708333), (0.5416664, 0.7708333), (0.49999982, 0.7708333), (0.49999982, 0.75000006), (0.5416664, 0.75), (0.5416664, 0.75), (0.49999982, 0.75000006), (0.49999982, 0.7291667), (0.5416664, 0.7291667), (0.5416664, 0.7291667), (0.49999982, 0.7291667), (0.49999982, 0.7083333), (0.5416665, 0.7083333), (0.5416665, 0.7083333), (0.49999982, 0.7083333), (0.49999982, 0.6875), (0.54166645, 0.6875), (0.58333313, 0.8125), (0.54166645, 0.8125), (0.54166645, 0.7916666), (0.58333313, 0.7916666), (0.58333313, 0.7916666), (0.54166645, 0.7916666), (0.5416664, 0.7708333), (0.5833331, 0.77083325), (0.5833331, 0.77083325), (0.5416664, 0.7708333), (0.5416664, 0.75), (0.58333313, 0.75000006), (0.58333313, 0.75000006), (0.5416664, 0.75), (0.5416664, 0.7291667), (0.58333313, 0.7291667), (0.58333313, 0.7291667), (0.5416664, 0.7291667), (0.5416665, 0.7083333), (0.58333313, 0.70833325), (0.58333313, 0.70833325), (0.5416665, 0.7083333), (0.54166645, 0.6875), (0.5833331, 0.68749994), (0.6249998, 0.8125), (0.58333313, 0.8125), (0.58333313, 0.7916666), (0.6249998, 0.7916666), (0.6249998, 0.7916666), (0.58333313, 0.7916666), (0.5833331, 0.77083325), (0.6249998, 0.7708333), (0.6249998, 0.7708333), (0.5833331, 0.77083325), (0.58333313, 0.75000006), (0.6249998, 0.75), (0.6249998, 0.75), (0.58333313, 0.75000006), (0.58333313, 0.7291667), (0.6249998, 0.7291667), (0.6249998, 0.7291667), (0.58333313, 0.7291667), (0.58333313, 0.70833325), (0.6249998, 0.7083333), (0.6249998, 0.7083333), (0.58333313, 0.70833325), (0.5833331, 0.68749994), (0.6249998, 0.6875), (0.6666665, 0.8125), (0.6249998, 0.8125), (0.6249998, 0.7916666), (0.66666657, 0.7916666), (0.66666657, 0.7916666), (0.6249998, 0.7916666), (0.6249998, 0.7708333), (0.6666665, 0.7708333), (0.6666665, 0.7708333), (0.6249998, 0.7708333), (0.6249998, 0.75), (0.66666645, 0.75), (0.66666645, 0.75), (0.6249998, 0.75), (0.6249998, 0.7291667), (0.6666664, 0.7291666), (0.6666664, 0.7291666), (0.6249998, 0.7291667), (0.6249998, 0.7083333), (0.66666657, 0.7083334), (0.66666657, 0.7083334), (0.6249998, 0.7083333), (0.6249998, 0.6875), (0.66666657, 0.68750006), (0.7083332, 0.8125), (0.6666665, 0.8125), (0.66666657, 0.7916666), (0.7083332, 0.7916666), (0.7083332, 0.7916666), (0.66666657, 0.7916666), (0.6666665, 0.7708333), (0.7083332, 0.77083325), (0.7083332, 0.77083325), (0.6666665, 0.7708333), (0.66666645, 0.75), (0.7083332, 0.75), (0.7083332, 0.75), (0.66666645, 0.75), (0.6666664, 0.7291666), (0.7083332, 0.7291667), (0.7083332, 0.7291667), (0.6666664, 0.7291666), (0.66666657, 0.7083334), (0.7083332, 0.70833325), (0.7083332, 0.70833325), (0.66666657, 0.7083334), (0.66666657, 0.68750006), (0.7083332, 0.6875), (0.7499999, 0.8125), (0.7083332, 0.8125), (0.7083332, 0.7916666), (0.7499999, 0.7916666), (0.7499999, 0.7916666), (0.7083332, 0.7916666), (0.7083332, 0.77083325), (0.7499999, 0.7708333), (0.7499999, 0.7708333), (0.7083332, 0.77083325), (0.7083332, 0.75), (0.7499999, 0.75), (0.7499999, 0.75), (0.7083332, 0.75), (0.7083332, 0.7291667), (0.7499999, 0.7291667), (0.7499999, 0.7291667), (0.7083332, 0.7291667), (0.7083332, 0.70833325), (0.7499999, 0.7083333), (0.7499999, 0.7083333), (0.7083332, 0.70833325), (0.7083332, 0.6875), (0.7499999, 0.6875), (0.7916665, 0.8125), (0.7499999, 0.8125), (0.7499999, 0.7916666), (0.7916666, 0.7916666), (0.7916666, 0.7916666), (0.7499999, 0.7916666), (0.7499999, 0.7708333), (0.7916666, 0.7708334), (0.7916666, 0.7708334), (0.7499999, 0.7708333), (0.7499999, 0.75), (0.7916666, 0.75000006), (0.7916666, 0.75000006), (0.7499999, 0.75), (0.7499999, 0.7291667), (0.7916666, 0.72916675), (0.7916666, 0.72916675), (0.7499999, 0.7291667), (0.7499999, 0.7083333), (0.7916666, 0.7083333), (0.7916666, 0.7083333), (0.7499999, 0.7083333), (0.7499999, 0.6875), (0.7916666, 0.6875), (0.83333325, 0.8125), (0.7916665, 0.8125), (0.7916666, 0.7916666), (0.83333325, 0.7916666), (0.83333325, 0.7916666), (0.7916666, 0.7916666), (0.7916666, 0.7708334), (0.83333325, 0.7708333), (0.83333325, 0.7708333), (0.7916666, 0.7708334), (0.7916666, 0.75000006), (0.83333325, 0.75), (0.83333325, 0.75), (0.7916666, 0.75000006), (0.7916666, 0.72916675), (0.83333325, 0.7291667), (0.83333325, 0.7291667), (0.7916666, 0.72916675), (0.7916666, 0.7083333), (0.83333325, 0.7083333), (0.83333325, 0.7083333), (0.7916666, 0.7083333), (0.7916666, 0.6875), (0.83333325, 0.6875), (0.87499994, 0.8125), (0.83333325, 0.8125), (0.83333325, 0.7916666), (0.8749999, 0.7916666), (0.8749999, 0.7916666), (0.83333325, 0.7916666), (0.83333325, 0.7708333), (0.875, 0.7708333), (0.875, 0.7708333), (0.83333325, 0.7708333), (0.83333325, 0.75), (0.87499994, 0.75), (0.87499994, 0.75), (0.83333325, 0.75), (0.83333325, 0.7291667), (0.875, 0.7291667), (0.875, 0.7291667), (0.83333325, 0.7291667), (0.83333325, 0.7083333), (0.8749999, 0.7083333), (0.8749999, 0.7083333), (0.83333325, 0.7083333), (0.83333325, 0.6875), (0.87499994, 0.6875), (0.9166666, 0.8125), (0.87499994, 0.8125), (0.8749999, 0.7916666), (0.9166666, 0.7916666), (0.9166666, 0.7916666), (0.8749999, 0.7916666), (0.875, 0.7708333), (0.9166666, 0.7708333), (0.9166666, 0.7708333), (0.875, 0.7708333), (0.87499994, 0.75), (0.9166666, 0.75), (0.9166666, 0.75), (0.87499994, 0.75), (0.875, 0.7291667), (0.9166666, 0.7291667), (0.9166666, 0.7291667), (0.875, 0.7291667), (0.8749999, 0.7083333), (0.9166666, 0.7083333), (0.9166666, 0.7083333), (0.8749999, 0.7083333), (0.87499994, 0.6875), (0.9166666, 0.68750006), (0.9583333, 0.8125), (0.9166666, 0.8125), (0.9166666, 0.7916666), (0.95833325, 0.7916666), (0.95833325, 0.7916666), (0.9166666, 0.7916666), (0.9166666, 0.7708333), (0.9583333, 0.7708333), (0.9583333, 0.7708333), (0.9166666, 0.7708333), (0.9166666, 0.75), (0.9583333, 0.75), (0.9583333, 0.75), (0.9166666, 0.75), (0.9166666, 0.7291667), (0.9583333, 0.7291667), (0.9583333, 0.7291667), (0.9166666, 0.7291667), (0.9166666, 0.7083333), (0.95833325, 0.7083333), (0.95833325, 0.7083333), (0.9166666, 0.7083333), (0.9166666, 0.68750006), (0.9583333, 0.6875), (1, 0.8125), (0.9583333, 0.8125), (0.95833325, 0.7916666), (1, 0.7916666), (1, 0.7916666), (0.95833325, 0.7916666), (0.9583333, 0.7708333), (1, 0.7708333), (1, 0.7708333), (0.9583333, 0.7708333), (0.9583333, 0.75), (1, 0.75), (1, 0.75), (0.9583333, 0.75), (0.9583333, 0.7291667), (1, 0.7291666), (1, 0.7291666), (0.9583333, 0.7291667), (0.95833325, 0.7083333), (1, 0.7083333), (1, 0.7083333), (0.95833325, 0.7083333), (0.9583333, 0.6875), (1, 0.6875), (0.04166648, 0.85), (0.04166648, 1), (-1.8626451e-7, 1), (-1.8626451e-7, 0.85), (0.04166648, 0.8125), (0.04166648, 0.85), (-1.8626451e-7, 0.85), (-1.8626451e-7, 0.8125), (1, 0.8125), (1, 0.84999996), (0.95833325, 0.85), (0.9583333, 0.8125), (0.9583333, 0.8125), (0.95833325, 0.85), (0.9166666, 0.85), (0.9166666, 0.8125), (0.9166666, 0.8125), (0.9166666, 0.85), (0.8749999, 0.8499999), (0.87499994, 0.8125), (0.87499994, 0.8125), (0.8749999, 0.8499999), (0.83333325, 0.85), (0.83333325, 0.8125), (0.83333325, 0.8125), (0.83333325, 0.85), (0.7916665, 0.85), (0.7916665, 0.8125), (0.7916665, 0.8125), (0.7916665, 0.85), (0.7499999, 0.85), (0.7499999, 0.8125), (0.7499999, 0.8125), (0.7499999, 0.85), (0.70833325, 0.85), (0.7083332, 0.8125), (0.7083332, 0.8125), (0.70833325, 0.85), (0.6666665, 0.85), (0.6666665, 0.8125), (0.6666665, 0.8125), (0.6666665, 0.85), (0.6249998, 0.85), (0.6249998, 0.8125), (0.6249998, 0.8125), (0.6249998, 0.85), (0.58333313, 0.85), (0.58333313, 0.8125), (0.58333313, 0.8125), (0.58333313, 0.85), (0.5416664, 0.85), (0.54166645, 0.8125), (0.54166645, 0.8125), (0.5416664, 0.85), (0.49999976, 0.85), (0.49999976, 0.8125), (0.49999976, 0.8125), (0.49999976, 0.85), (0.4583332, 0.85), (0.45833313, 0.8125), (0.45833313, 0.8125), (0.4583332, 0.85), (0.41666645, 0.85), (0.4166665, 0.8125), (0.4166665, 0.8125), (0.41666645, 0.85), (0.37499982, 0.85), (0.37499982, 0.8125), (0.37499982, 0.8125), (0.37499982, 0.85), (0.33333316, 0.85), (0.33333316, 0.8125), (0.33333316, 0.8125), (0.33333316, 0.85), (0.2916665, 0.85), (0.2916665, 0.8125), (0.2916665, 0.8125), (0.2916665, 0.85), (0.2499998, 0.85), (0.24999982, 0.8125), (0.24999982, 0.8125), (0.2499998, 0.85), (0.20833316, 0.85), (0.20833316, 0.8125), (0.20833316, 0.8125), (0.20833316, 0.85), (0.16666648, 0.85), (0.1666665, 0.8125), (0.1666665, 0.8125), (0.16666648, 0.85), (0.12499982, 0.85), (0.12499982, 0.8125), (0.12499982, 0.8125), (0.12499982, 0.85), (0.08333315, 0.84999996), (0.08333315, 0.8125), (0.08333315, 0.8125), (0.08333315, 0.84999996), (0.04166648, 0.85), (0.04166648, 0.8125), (0.9583333, 0.5), (0.95833325, 0.65), (0.9166666, 0.65), (0.9166666, 0.5), (1, 0.5), (1, 0.65), (0.95833325, 0.65), (0.9583333, 0.5), (0.08333315, 0.5), (0.08333315, 0.65), (0.04166648, 0.65), (0.04166648, 0.5), (0.12499982, 0.5), (0.12499983, 0.65), (0.08333315, 0.65), (0.08333315, 0.5), (0.1666665, 0.5), (0.16666651, 0.65000004), (0.12499983, 0.65), (0.12499982, 0.5), (0.20833316, 0.5), (0.20833316, 0.65), (0.16666651, 0.65000004), (0.1666665, 0.5), (0.24999982, 0.5), (0.24999982, 0.65), (0.20833316, 0.65), (0.20833316, 0.5), (0.2916665, 0.5), (0.2916665, 0.65), (0.24999982, 0.65), (0.24999982, 0.5), (0.33333316, 0.5), (0.33333316, 0.65), (0.2916665, 0.65), (0.2916665, 0.5), (0.37499982, 0.5), (0.37499982, 0.65), (0.33333316, 0.65), (0.33333316, 0.5), (0.41666648, 0.5), (0.41666645, 0.65), (0.37499982, 0.65), (0.37499982, 0.5), (0.45833313, 0.5), (0.45833313, 0.65), (0.41666645, 0.65), (0.41666648, 0.5), (0.49999976, 0.5), (0.49999976, 0.65), (0.45833313, 0.65), (0.45833313, 0.5), (0.54166645, 0.5), (0.5416664, 0.65), (0.49999976, 0.65), (0.49999976, 0.5), (0.58333313, 0.5), (0.58333313, 0.65), (0.5416664, 0.65), (0.54166645, 0.5), (0.6249998, 0.5), (0.6249998, 0.65), (0.58333313, 0.65), (0.58333313, 0.5), (0.6666665, 0.5), (0.6666665, 0.65), (0.6249998, 0.65), (0.6249998, 0.5), (0.70833313, 0.5), (0.70833313, 0.65), (0.6666665, 0.65), (0.6666665, 0.5), (0.7499999, 0.5), (0.7499999, 0.65), (0.70833313, 0.65), (0.70833313, 0.5), (0.7916665, 0.5), (0.7916665, 0.65), (0.7499999, 0.65), (0.7499999, 0.5), (0.83333325, 0.5), (0.83333325, 0.65), (0.7916665, 0.65), (0.7916665, 0.5), (0.87499994, 0.5), (0.8749999, 0.65), (0.83333325, 0.65), (0.83333325, 0.5), (0.9166666, 0.5), (0.9166666, 0.65), (0.8749999, 0.65), (0.87499994, 0.5), (0.04166648, 0.5), (0.04166648, 0.65), (-1.8626451e-7, 0.65), (-1.8626451e-7, 0.5), (0.7499999, 0.4241803), (0.75, 0.49), (0.81211656, 0.4818222), (0.29508114, 0.41824523), (0.31211656, 0.4818222), (0.25, 0.49), (0.795081, 0.4182452), (0.81211656, 0.4818222), (0.87, 0.4578461), (0.33709022, 0.40084466), (0.37, 0.4578461), (0.31211656, 0.4818222), (0.8370901, 0.4008445), (0.87, 0.4578461), (0.9197056, 0.41970563), (0.37316412, 0.37316412), (0.41970563, 0.41970563), (0.37, 0.4578461), (0.873164, 0.37316397), (0.9197056, 0.41970563), (0.9578461, 0.37), (0.40084466, 0.33709016), (0.4578461, 0.37), (0.41970563, 0.41970563), (0.9008445, 0.33709016), (0.9578461, 0.37), (0.9818222, 0.31211656), (0.41824532, 0.2950812), (0.4818222, 0.31211656), (0.4578461, 0.37), (0.9182452, 0.29508117), (0.9818222, 0.31211656), (0.99, 0.24999999), (0.42418033, 0.24999999), (0.49, 0.24999999), (0.4818222, 0.31211656), (0.9241802, 0.24999993), (0.99, 0.24999999), (0.9818222, 0.18788344), (0.41824526, 0.2049188), (0.4818222, 0.18788344), (0.49, 0.24999999), (0.91824514, 0.20491879), (0.9818222, 0.18788344), (0.9578461, 0.13), (0.40084463, 0.16290984), (0.4578461, 0.13), (0.4818222, 0.18788344), (0.9008445, 0.16290982), (0.9578461, 0.13), (0.9197056, 0.080294386), (0.37316406, 0.12683588), (0.41970563, 0.080294386), (0.4578461, 0.13), (0.8731641, 0.1268359), (0.9197056, 0.080294386), (0.87, 0.04215391), (0.33709022, 0.09915539), (0.37, 0.04215391), (0.41970563, 0.080294386), (0.8370902, 0.09915537), (0.87, 0.04215391), (0.81211656, 0.018177807), (0.2950812, 0.08175472), (0.3121166, 0.018177807), (0.37, 0.04215391), (0.79508114, 0.081754714), (0.81211656, 0.018177807), (0.75, 0.010000005), (0.24999997, 0.07581964), (0.24999999, 0.010000005), (0.3121166, 0.018177807), (0.75, 0.07581965), (0.75, 0.010000005), (0.68788344, 0.018177807), (0.2049188, 0.08175471), (0.18788342, 0.018177807), (0.24999999, 0.010000005), (0.7049188, 0.081754714), (0.68788344, 0.018177807), (0.63, 0.04215391), (0.1629098, 0.09915538), (0.13, 0.04215391), (0.18788342, 0.018177807), (0.66290975, 0.099155396), (0.63, 0.04215391), (0.5802944, 0.08029437), (0.12683588, 0.12683587), (0.0802944, 0.08029437), (0.13, 0.04215391), (0.6268358, 0.1268359), (0.5802944, 0.08029437), (0.5421539, 0.13000003), (0.09915537, 0.16290985), (0.042153895, 0.13000003), (0.0802944, 0.08029437), (0.5991553, 0.16290987), (0.5421539, 0.13000003), (0.5181778, 0.18788344), (0.08175468, 0.2049188), (0.018177792, 0.18788344), (0.042153895, 0.13000003), (0.5817547, 0.20491882), (0.5181778, 0.18788344), (0.51, 0.25), (0.07581963, 0.24999994), (0.010000005, 0.25), (0.018177792, 0.18788344), (0.5758196, 0.24999999), (0.51, 0.25), (0.5181778, 0.31211656), (0.08175471, 0.29508117), (0.018177807, 0.31211656), (0.010000005, 0.25), (0.58175474, 0.2950812), (0.5181778, 0.31211656), (0.5421539, 0.36999997), (0.09915538, 0.33709013), (0.042153895, 0.36999997), (0.018177807, 0.31211656), (0.5991554, 0.3370902), (0.5421539, 0.36999997), (0.5802944, 0.4197056), (0.12683585, 0.37316403), (0.080294356, 0.4197056), (0.042153895, 0.36999997), (0.6268359, 0.37316406), (0.5802944, 0.4197056), (0.62999994, 0.45784608), (0.16290975, 0.40084454), (0.12999997, 0.45784608), (0.080294356, 0.4197056), (0.66290975, 0.4008446), (0.62999994, 0.45784608), (0.6878835, 0.4818222), (0.20491882, 0.41824523), (0.18788348, 0.4818222), (0.12999997, 0.45784608), (0.704919, 0.41824538), (0.6878835, 0.4818222), (0.75, 0.49), (0.24999993, 0.42418033), (0.25, 0.49), (0.18788348, 0.4818222)] (
+                    interpolation = "faceVarying"
+                )
+                rel skel:skeleton = </World/Cylinder_Joints_Armature/Skeleton>
+                uniform token subdivisionScheme = "none"
+                custom string userProperties:blenderName:data = "Cylinder_Joints"
+                custom string userProperties:blenderName:data:st = "UVMap"
+            }
+        }
+    }
+}
+
+def SkelAnimation "record_char_motion0000_source"
+{
+    uniform token[] joints = ["Root", "Root/pelvis", "Root/pelvis/torso", "Root/pelvis/torso/head", "Root/pelvis/torso/right_upper_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm", "Root/pelvis/torso/right_upper_arm/right_lower_arm/right_hand", "Root/pelvis/torso/left_upper_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm", "Root/pelvis/torso/left_upper_arm/left_lower_arm/left_hand", "Root/pelvis/right_thigh", "Root/pelvis/right_thigh/right_shin", "Root/pelvis/right_thigh/right_shin/right_foot", "Root/pelvis/left_thigh", "Root/pelvis/left_thigh/left_shin", "Root/pelvis/left_thigh/left_shin/left_foot"]
+    quatf[] rotations.timeSamples = {
+        0: [(0.97595257, 0, 0, 0.2179833), (0.97620636, -0.00443851, -0.0030421638, -0.21677661), (0.99979246, 0.00031990244, 0.015628064, -0.013065229), (0.9999741, -0.005361801, -0.0042085545, -0.0023383247), (0.99958986, -0.012389577, -0.0042421008, -0.025469407), (0.9985352, -7.916243e-9, -0.054105964, -4.380127e-9), (1, 0, 0, 0), (0.9967948, 0.0068584676, -0.017446317, 0.07777323), (0.9925477, -1.6763808e-8, -0.12185694, -1.2565581e-8), (1, 0, 0, 0), (0.998494, -0.004462067, -0.017845687, -0.0516852), (0.9988286, 6.402843e-9, 0.04838913, -8.978533e-9), (0.99691474, 0.029913852, -0.070000544, -0.01913394), (0.9991571, 0.017512191, -0.020200564, 0.031151263), (0.998063, 8.731151e-9, 0.062211398, -7.3050628e-9), (0.9982824, -0.023828683, -0.053242065, 0.005462148)],
+        1: [(0.75821805, 0, 0, 0.6520011), (0.7691294, -0.009989712, -0.0013143118, -0.6390137), (0.9994086, -0.00016605065, 0.02690042, -0.021418933), (0.99981177, -0.016917085, -0.007800341, -0.0054247216), (0.99631804, -0.026586214, -0.02086722, -0.078792006), (0.9952251, -1.6763808e-8, -0.09760643, -1.0812074e-8), (1, 0, 0, 0), (0.9863762, 0.021687843, -0.047448687, 0.15601353), (0.9727163, -3.3527616e-8, -0.23199803, 6.286428e-9), (1, 0, 0, 0), (0.9957867, -0.0026593492, -0.031211236, -0.086183555), (0.9948327, 1.3504178e-8, 0.10152809, -4.525646e-9), (0.9880726, 0.038005773, -0.14810051, -0.01828542), (0.9970927, 0.0275306, -0.044885457, 0.055076737), (0.99191016, 1.722947e-8, 0.12694204, -8.498319e-9), (0.99202806, -0.03126403, -0.121757865, 0.008831834)],
+        2: [(0.726087, 0, 0, 0.6876029), (0.7473384, -0.010671432, 0.0012085354, -0.66435677), (0.99907315, -0.00050617324, 0.03487011, -0.025233218), (0.99941725, -0.029085426, -0.016986817, -0.005538139), (0.9906985, -0.042143214, -0.038116883, -0.12364274), (0.98846406, -1.8626453e-8, -0.15145561, -8.498319e-9), (1, 0, 0, 0), (0.9727971, 0.040746037, -0.06393609, 0.21890132), (0.95229274, -3.7252903e-8, -0.30518606, -1.3969839e-9), (1, 0, 0, 0), (0.99328935, -0.0022003928, -0.044255227, -0.10683097), (0.9860833, 2.2351745e-8, 0.1662521, -1.2543754e-8), (0.97006065, 0.044994168, -0.237432, -0.024165543), (0.9929167, 0.032905646, -0.09280418, 0.0664908), (0.97759914, 2.7008358e-8, 0.21047555, -1.0069926e-8), (0.9827921, -0.045674648, -0.17891404, 0.0048309336)],
+        3: [(0.74886495, 0, 0, 0.6627226), (0.7741239, -0.020730587, -0.00036423927, -0.6326945), (0.9986489, -0.0014502507, 0.04525448, -0.025500847), (0.99913937, -0.03259411, -0.024650002, -0.007113638), (0.98753804, -0.055201374, -0.05180322, -0.1379776), (0.97242045, -4.0978197e-8, -0.23323481, 0), (1, 0, 0, 0), (0.9627519, 0.059945393, -0.062320847, 0.25618622), (0.93886983, -4.4703484e-8, -0.34427235, -1.1641532e-9), (1, 0, 0, 0), (0.9897165, 0.002234622, -0.07142953, -0.12391182), (0.97133744, 3.5390258e-8, 0.23770492, -1.1175871e-8), (0.9630798, -0.013236637, -0.26634234, -0.036929876), (0.9882004, 0.03990218, -0.13781449, 0.053618092), (0.9482993, 4.4703487e-8, 0.3173775, -3.7834982e-10), (0.97529364, -0.055255085, -0.21373002, 0.008290854)],
+        4: [(0.7751563, 0, 0, 0.6317694), (0.803371, -0.031687055, -0.010399028, -0.5945441), (0.9982236, -0.01314828, 0.051918037, -0.026100945), (0.9989277, -0.0326846, -0.023815539, -0.022539228), (0.9874256, -0.06563837, -0.0714685, -0.124797806), (0.94579524, -4.0978193e-8, -0.32476354, 3.259629e-9), (1, 0, 0, 0), (0.9605264, 0.0883579, -0.036996298, 0.2611766), (0.933278, -7.450581e-8, -0.3591548, -1.6822016e-8), (1, 0, 0, 0), (0.9884987, -0.00061152206, -0.06562284, -0.13624856), (0.96379507, 3.9115555e-8, 0.26664412, -7.2177513e-9), (0.96054786, -0.010990068, -0.27585158, -0.0336592), (0.98807335, 0.035243366, -0.14764607, 0.025876777), (0.9190952, 5.5879358e-8, 0.39403558, -1.3737009e-8), (0.9622252, -0.10203403, -0.24954356, 0.03794462)],
+        5: [(0.8048097, 0, 0, 0.59353304), (0.82839245, -0.03311436, -0.019714687, -0.5588208), (0.9979316, -0.030419806, 0.052081607, -0.022241006), (0.99843544, -0.031906914, -0.020819329, -0.040929772), (0.9874264, -0.07453579, -0.09757809, -0.09955964), (0.91165924, -6.332995e-8, -0.41094705, -1.024455e-8), (1, 0, 0, 0), (0.96017855, 0.117640376, -0.004738812, 0.2533683), (0.9352602, -4.470349e-8, -0.35396096, -1.25728565e-8), (1, 0, 0, 0), (0.9866397, -0.013899636, -0.055870194, -0.15240574), (0.9621933, 3.7252907e-8, 0.2723674, -3.7834984e-9), (0.9592991, -0.003463468, -0.27910522, -0.042819504), (0.9914715, 0.024752688, -0.12794416, -0.0013768666), (0.88516957, 6.519259e-8, 0.46526864, -3.3760446e-9), (0.95107836, -0.12936549, -0.27305153, 0.06447828)],
+        6: [(0.8833851, 0, 0, 0.46864784), (0.8931094, -0.02375303, -0.026918104, -0.4484048), (0.99740934, -0.04615214, 0.053181205, -0.014707621), (0.9976538, -0.033264477, -0.0308737, -0.051256876), (0.98586524, -0.08157723, -0.12873018, -0.069595486), (0.88029915, -6.332994e-8, -0.4744191, -5.587936e-9), (1, 0, 0, 0), (0.9615763, 0.14257848, 0.024670567, 0.23331042), (0.93737733, -5.960465e-8, -0.3483156, -2.0489098e-8), (1, 0, 0, 0), (0.98710585, -0.029383235, -0.06640273, -0.14265153), (0.95677894, 3.9115548e-8, 0.29081622, -2.9685907e-9), (0.95645744, 0.0069391946, -0.2814078, -0.07714101), (0.9963164, 0.017780192, -0.08383566, -0.0030267953), (0.8623946, 7.0780516e-8, 0.5062368, -7.18137e-9), (0.9484464, -0.12399946, -0.280955, 0.07834493)],
+        7: [(0.8756427, 0, 0, 0.4829595), (0.88379955, -0.015924977, -0.021802688, -0.46708605), (0.99649465, -0.059045933, 0.058924112, -0.0063212765), (0.99636275, -0.036827955, -0.055345953, -0.053309146), (0.9862037, -0.09643887, -0.12894712, -0.038400836), (0.856852, -6.7986555e-8, -0.51556253, 2.7939682e-9), (1, 0, 0, 0), (0.9657848, 0.15989855, 0.03665053, 0.20087047), (0.92688143, -6.332994e-8, -0.3753543, -7.4505815e-9), (1, 0, 0, 0), (0.9876266, -0.040847424, -0.10373477, -0.11029148), (0.9316748, 4.6566136e-8, 0.36329347, -1.085573e-8), (0.95706433, -0.0032719208, -0.27064264, -0.103777565), (0.9991971, 0.023282815, -0.029571401, 0.013731283), (0.880593, 6.7055225e-8, 0.4738734, -1.0404619e-8), (0.94383717, -0.114091165, -0.29642272, 0.091039725)],
+        8: [(0.713825, 0, 0, 0.7003242), (0.7454738, -0.00830595, -0.0044237752, -0.6664685), (0.99512494, -0.06862362, 0.06996244, -0.011065827), (0.99363905, -0.035402033, -0.09553347, -0.047974173), (0.99042445, -0.11380269, -0.07748915, -0.010189382), (0.8491552, -6.519259e-8, -0.52814347, -3.49246e-9), (1, 0, 0, 0), (0.9713135, 0.17843089, 0.0073851217, 0.15702905), (0.90308315, -6.332994e-8, -0.4294658, -1.39698395e-8), (1, 0, 0, 0), (0.9819652, -0.044222068, -0.16463572, -0.081754744), (0.88403493, 6.332994e-8, 0.46742094, -1.047738e-8), (0.9635527, 0.023559969, -0.23463058, -0.1263311), (0.998439, 0.039041426, 0.020240774, 0.034433503), (0.9210315, 5.2154068e-8, 0.38948816, -1.452645e-8), (0.933143, -0.1112004, -0.32248178, 0.11350801)],
+        9: [(0.71410793, 0, 0, 0.70003563), (0.77959543, 0.0037289097, 0.022085909, -0.6258828), (0.99429345, -0.05962818, 0.08519575, -0.023805842), (0.98998815, -0.032513905, -0.13366537, -0.03162149), (0.9916192, -0.12767176, 0.019295378, 0.0043589794), (0.85552424, -6.332994e-8, -0.5177628, -9.313227e-10), (1, 0, 0, 0), (0.97372484, 0.20252107, -0.059670728, 0.08535008), (0.8616807, -7.450581e-8, -0.5074509, -1.3038517e-8), (1, 0, 0, 0), (0.9677765, -0.02778453, -0.24370226, -0.056973375), (0.82043064, 8.009375e-8, 0.5717461, -5.5879363e-9), (0.9698186, 0.04585971, -0.19915436, -0.13299026), (0.99484503, 0.06395453, 0.058108773, 0.05307102), (0.9620469, 3.3527616e-8, 0.27288407, -1.6210835e-8), (0.93755335, -0.10634278, -0.3146918, 0.10321823)],
+        10: [(0.71439016, 0, 0, 0.6997476), (0.7916059, 0.0011072307, 0.028327886, -0.61037385), (0.99290365, -0.035347205, 0.107327655, -0.03706423), (0.9856742, -0.04778333, -0.16132239, -0.011759575), (0.9809068, -0.14093515, 0.13096593, 0.028410617), (0.8662001, -7.82311e-8, -0.49969733, -1.6763808e-8), (1, 0, 0, 0), (0.9629865, 0.22422189, -0.14949489, 0.0057276916), (0.8171409, -8.19564e-8, -0.576438, -1.0943042e-8), (1, 0, 0, 0), (0.9527981, 0.009315086, -0.29955658, -0.048526265), (0.7708476, 9.126963e-8, 0.63701963, -9.778888e-9), (0.9691498, 0.041079648, -0.20446818, -0.13135424), (0.99272627, 0.08609954, 0.04836779, 0.068862244), (0.95367885, 3.7252907e-8, 0.3008266, -1.6356354e-8), (0.9324372, -0.114131115, -0.3368227, 0.06391815)],
+    }
+    half3[] scales.timeSamples = {
+        0: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        1: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        2: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        3: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        4: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        5: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        6: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        7: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        8: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+        9: [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)],
+    }
+    float3[] translations.timeSamples = {
+        0: [(19210.104, -6247.257, 0), (0, 0, 89.00507), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        1: [(19209.68, -6247.568, 0), (0, 0, 87.62237), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        2: [(19209.174, -6247.838, 0), (0, 0, 85.05134), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        3: [(19209.213, -6248.091, 0), (0, 0, 82.97713), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        4: [(19210.146, -6248.0435, 0), (0, 0, 82.18465), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        5: [(19211.205, -6247.6084, 0), (0, 0, 82.01159), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        6: [(19211.998, -6246.932, 0), (0, 0, 81.60655), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        7: [(19212.422, -6246.3447, 0), (0, 0, 80.44836), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        8: [(19212.352, -6245.9883, 0), (0, 0, 78.229996), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        9: [(19211.768, -6245.991, 0), (0, 0, 74.82856), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+        10: [(19213.38, -6245.663, 0), (0, 0, 73.41095), (0, 0, 23.615099), (0, 0, 22.3894), (-2.405, -18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (-2.405, 18.311, 24.349998), (0, 0, -27.4788), (0, 0, -25.894701), (0, -8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987), (0, 8.4887, 0), (0, 0, -42.154602), (0, 0, -40.987)],
+    }
+}
+
+def Camera "OmniverseKit_Persp" (
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (1, 10000000)
+    float focalLength = 18.147562
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 20.955
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -2013.2210171039892)
+    token projection = "perspective"
+    float verticalAperture = 15.2908
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateYXZ = (81.55008143806101, -1.082227193218738e-13, 87.82864894182948)
+    double3 xformOp:scale = (0.9999999999999996, 0.9999999999999998, 0.9999999999999994)
+    double3 xformOp:translate = (21354.33286027031, -5727.604740764222, 236.92082755843344)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Front" (
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 5000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, 0)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateYXZ = (0, -0, -180)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 50000)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Top" (
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 5000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -1.1102230246251565e-11)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateYXZ = (0, -0, -116.39064009680595)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Right" (
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 5000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, 0)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateYXZ = (0, -0, -180)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-50000, 0, -1.1102230246251565e-11)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def RenderProduct "RenderProduct_Viewport" (
+        hide_in_stage_window = true
+        no_delete = true
+    )
+    {
+        rel camera = </OmniverseKit_Persp>
+        custom double farPlaneOverride = 0
+        custom double nearPlaneOverride = 0
+        rel orderedVars = </Render/Vars/LdrColor>
+        custom bool overrideClipRange = 0
+        uniform int2 resolution = (1280, 720)
+        custom uint64 viewPickingId = 13513549851240228486
+        custom int viewportHandle = 0
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}

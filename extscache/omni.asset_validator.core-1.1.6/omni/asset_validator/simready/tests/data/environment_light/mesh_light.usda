@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    """
+    Mesh representing a correct 'light bulb' to be used (referenced) in environment lights
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    def Mesh "mesh_light_bulb" (
+        apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </RootNode/materials/emission>
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0), (0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)]
+    }
+
+    def Scope "materials"
+    {
+        def Material "emission"
+        {
+            token outputs:mdl:displacement.connect = </RootNode/materials/emission/emission.outputs:out>
+            token outputs:mdl:surface.connect = </RootNode/materials/emission/emission.outputs:out>
+            token outputs:mdl:volume.connect = </RootNode/materials/emission/emission.outputs:out>
+
+            def Shader "emission"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @SimPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "SimPBR"
+                bool inputs:enable_emission = 1
+                token outputs:out
+            }
+        }
+    }
+}

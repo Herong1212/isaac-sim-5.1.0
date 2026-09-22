@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "name": "left_oculus_touch_components",
+    "requiredInputs": [
+        "x",
+        "y",
+        "trigger",
+        "thumbstick",
+        "squeeze"
+    ]
+}

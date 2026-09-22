@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.asset_validator.ui-1.1.6.zip"
+
+    [package.publish]
+        kitVersion = "108.0.0+mr38360.203234.78c04e79.gl"
+        date = 1754551594
+        buildNumber = "1.1.6+v1-1-6.7620.1b7aab35.gl"
+        repoName = "asset-validator"
+        signed = 1

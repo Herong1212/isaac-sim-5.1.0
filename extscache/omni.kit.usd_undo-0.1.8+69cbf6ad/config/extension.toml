@@ -1,0 +1,33 @@
+[package]
+title = "USD Undo"
+description = "Utility to undo USD layer operations"
+category = "Internal"
+version = "0.1.8"
+readme = "docs/README.md"
+keywords = ["usd", "undo"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+toggleable=false
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+[[python.module]]
+name = "omni.kit.usd_undo"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]
+
+[[test]]
+timeout=300
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]

@@ -1,0 +1,6 @@
+{
+   "animation_graph_asset_path": "https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/DefaultCharacters/Templates/Default/AnimationGraphs/default.animationgraph.usda",
+   "animation_graph_prim_path": "/World/AnimationGraph",
+   "rig_asset_path": "https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/DefaultCharacters/Templates/Default/Rig/biped_rig.usd",
+   "rig_prim_path": "/World/Root"
+}

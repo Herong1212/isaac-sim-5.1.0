@@ -1,0 +1,45 @@
+{
+    "OnViewportHovered": {
+        "version": 1,
+        "description": [
+            "Event node which fires when the specified viewport is hovered over.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "On Viewport Hovered (BETA)",
+        "categories": ["graph:action", "ui"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for hover events.",
+                "uiName": "Viewport",
+                "default": "Viewport",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "began": {
+                "type": "execution",
+                "description": "When the hover begins, signal to the graph that execution can continue downstream on this path.",
+                "uiName": "Began"
+            },
+            "ended": {
+                "type": "execution",
+                "description": "When the hover ends, signal to the graph that execution can continue downstream on this path.",
+                "uiName": "Ended"
+            }
+        }
+    }
+}

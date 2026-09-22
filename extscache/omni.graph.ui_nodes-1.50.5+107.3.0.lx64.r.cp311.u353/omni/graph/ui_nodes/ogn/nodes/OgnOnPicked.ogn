@@ -1,0 +1,113 @@
+{
+    "OnPicked": {
+        "version": 3,
+        "description": [
+            "Event node which fires when a picking event occurs in the specified viewport.",
+            "Note that picking events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "On Picked (BETA)",
+        "categories": ["graph:action", "ui"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "trackedPrims": {
+                "type": "target",
+                "description": "Optionally specify a set of tracked prims that will cause 'Picked' to fire when picked",
+                "uiName": "Tracked Prims",
+                "optional": true,
+                "metadata": {
+                    "literalOnly": "1",
+                    "allowMultiInputs": "1"
+                }
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for picking events",
+                "uiName": "Viewport",
+                "default": "Viewport",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger a picking event",
+                "uiName": "Gesture",
+                "default": "Left Mouse Click",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "LeftMouseClick": "Left Mouse Click",
+                        "RightMouseClick": "Right Mouse Click",
+                        "MiddleMouseClick": "Middle Mouse Click",
+                        "LeftMousePress": "Left Mouse Press",
+                        "RightMousePress": "Right Mouse Press",
+                        "MiddleMousePress": "Middle Mouse Press"
+                    }
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "picked": {
+                "type": "execution",
+                "description": [
+                    "When a tracked prim is picked,",
+                    "or when any prim is picked if no tracked prims are specified,",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Picked"
+            },
+            "missed": {
+                "type": "execution",
+                "description": [
+                    "When an attempted picking did not pick a tracked prim,",
+                    "or when nothing gets picked if no tracked prims are specified,",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Missed"
+            },
+            "pickedPrimPath": {
+                "type": "token",
+                "description": "The path of the picked prim, or an empty string if nothing got picked",
+                "uiName": "Picked Prim Path",
+                "deprecated": "Use the pickedPrim output instead"
+            },
+            "pickedPrim": {
+                "type": "target",
+                "description": "The picked prim, or an empty target if nothing got picked",
+                "uiName": "Picked Prim"
+            },
+            "pickedWorldPos": {
+                "type": "pointd[3]",
+                "description": [
+                    "The XYZ-coordinates of the point in world space at which the prim got picked,",
+                    "or (0,0,0) if nothing got picked"
+                ],
+                "uiName": "Picked World Position"
+            },
+            "isTrackedPrimPicked": {
+                "type": "bool",
+                "description": [
+                    "True if a tracked prim got picked, or if any prim got picked if no tracked prims are specified",
+                    "(will always be true when 'Picked' fires, and false when 'Missed' fires)"
+                ],
+                "uiName": "Is Tracked Prim Picked"
+            },
+            "trackedPrimPaths": {
+                "type": "token[]",
+                "description": "A list of the paths of the prims specified in 'Tracked Prims'",
+                "uiName": "Tracked Prim Paths"
+            }
+        }
+    }
+}

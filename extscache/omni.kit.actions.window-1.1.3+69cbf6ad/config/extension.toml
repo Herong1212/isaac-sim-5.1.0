@@ -1,0 +1,51 @@
+[package]
+title = "Actions window."
+category = "Utilities"
+description = "A window to show actions."
+authors = ["NVIDIA"]
+
+# Semantic Versioning is used: https://semver.org/
+version = "1.1.3"
+
+changelog="docs/CHANGELOG.rst"
+readme = "docs/README.md"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+
+keywords = ["kit", "action", "window"]
+support_level = "Sample"
+feature = true
+
+[dependencies]
+"omni.kit.actions.core" = {}
+"omni.ui" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.widget.highlight_label" = {}
+"omni.kit.menu.utils" = {}
+
+[[trigger]]
+menu.name = "Window/Actions"
+menu.window = "Actions"
+
+[[python.module]]
+name = "omni.kit.actions.window"
+
+[settings.exts."omni.kit.actions.window"]
+showStartup = false
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.ui/Image/syncTextureLoad=true",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.rst",
+]

@@ -1,0 +1,21 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+
+export color[3] test_color_array
+(
+    color[3] param = color[](
+        color(0.1, 0.2, 0.3),
+        color(0.4, 0.5, 0.6),
+        color(0.7, 0.8, 0.9))
+)
+{
+    return param;
+}

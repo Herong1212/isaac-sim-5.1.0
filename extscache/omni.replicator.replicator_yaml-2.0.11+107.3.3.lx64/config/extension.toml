@@ -1,0 +1,97 @@
+[package]
+# Semantic Versionning is used: https://semver.org/
+version = "2.0.11"
+
+# Build separate extension for kit builds
+writeTarget.kit = true
+
+# Build separate extensions for Windows and Linux so appropriate libraries are bundled
+writeTarget.platform = true
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Replicator YAML"
+description = "Declaritive Replicator scene construction through YAML files"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# One of categories for UI.
+category = "SyntheticData"
+
+# Keywords for the extension
+keywords = ["kit", "replicator", "replicator_yaml", "composer"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+[dependencies]
+"omni.replicator.core" = {}
+
+[[python.module]]
+name = "omni.replicator.replicator_yaml"
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*[omni.physx.cooking.plugin] resources.dataStoreConfigurator is false.*",    # Error seen in Kit 106.5
+    "*[omni.physx.cooking.plugin] Failed to create a valid UJITSO Cooking Compute Service*",    # Error seen in Kit 106.5
+]
+
+
+[[test]]
+dependencies = [
+    # "omni.anim.skelJoint",  # Latest is 105.0.118
+]
+timeout = 2700
+args = [
+    "--enable",
+    "omni.replicator.extended_tests",
+    "--/app/file/ignoreUnsavedOnExit=1",
+    "--/app/viewport/createCameraModelRep=false",
+    "--/rtx/post/aa/op=0",  # Don't use DLSS
+    "--/app/settings/fabricStageFrameHistoryCount=3",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/omni/replicator/RTSubframes=1",   # Simplify testing but capturing at every frame
+    "--/rtx/descriptorSets=60000",
+    "--/rtx/reservedDescriptors=500000",
+    "--/app/omni.graph.scriptnode/opt_in=true",  # Enables script (augmentation) nodes without prompt
+    "--/rtx-transient/aov/enableRtxAovs",
+    "--/rtx-transient/aov/enableRtxAovsSecondary",
+    "--/app/content/emptyStageOnStart=true",
+    "--/omni/replicator/debug=true",
+    "--/rtx/sceneDb/ambientLightIntensity=1.0",
+    # Settings that decrease per-view RTX delegate VRAM consumption,
+    # and general stability improvements
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/structuredLog/enable=false",
+    "--/exts/omni.usd/locking/onClose=true",
+    # "--/rtx/newDenoiser/enabled=false", # New denoiser causes artifacts (OM-119068),
+    "--no-window",
+    "--/exts/omni.replicator.core/initMinLoadTime=1.0",
+    "--/app/useFabricSceneDelegate=true",
+]
+stdoutFailPatterns.exclude = [
+    "*[omni.replicator.replicator_yaml] Could not connect to the Nucleus server:*",
+    "*Failed to create test import for TestOgnSpawnCapsule = Traceback*",
+    "*[omni.graph] Invalid NodeObj object in Py_Node in getAttributes*",
+    "*[omni.graph] Invalid Node object passed to Graph.get_graph_from_node*",
+    "*[omni.hydra] [UsdToMdl] Prim*",
+    "*[omni.physx.cooking.plugin] resources.dataStoreConfigurator is false.*",    # Error seen in Kit 106.5
+    "*[omni.physx.cooking.plugin] Failed to create a valid UJITSO Cooking Compute Service*",    # Error seen in Kit 106.5
+    "*[Error] [omni.syntheticdata.plugin] OgnSdStageSemanticInstanceMapping missing instanceMapping data in the history.*",  # Observed in Kit 107.2
+]

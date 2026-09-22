@@ -1,0 +1,27 @@
+{
+    "PauseSound": {
+        "version": 1,
+        "description": "Pause-unpause playing a sound",
+        "categories": [ "sound" ],
+        "uiName": "Pause Sound",
+        "icon": {
+            "path": "PauseSound.svg"
+        },
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "soundId": {
+                "type": "uint64",
+                "description": "The sound identifier"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

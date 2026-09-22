@@ -1,0 +1,57 @@
+[package]
+title = "Hotkeys window."
+category = "Utilities"
+description = "A window to show hotkeys."
+authors = ["NVIDIA"]
+
+# Semantic Versioning is used: https://semver.org/
+version = "1.4.9"
+
+changelog="docs/CHANGELOG.md"
+readme = "docs/README.md"
+icon = "data/hotkey_editor.svg"
+preview_image = "data/preview.png"
+
+keywords = ["kit", "hotkey", "window"]
+support_level = "Sample"
+feature = true
+
+[dependencies]
+"omni.kit.hotkeys.core" = {}
+"omni.kit.actions.window" = {}
+"omni.ui" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.widget.highlight_label" = {}
+"omni.kit.widget.filter" = {}
+"omni.kit.menu.utils" = {}
+
+[[trigger]]
+menu.name = "Window/Hotkeys"
+menu.window = "Hotkeys"
+
+[[python.module]]
+name = "omni.kit.hotkeys.window"
+
+[settings.exts."omni.kit.hotkeys.window"]
+showStartup = false
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.window.filepicker",
+]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.hotkeys.window/showStartup=true",
+    "--/exts/omni.ui/Image/syncTextureLoad=true",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/EditHotkey.md",
+    "docs/CHANGELOG.md",
+]

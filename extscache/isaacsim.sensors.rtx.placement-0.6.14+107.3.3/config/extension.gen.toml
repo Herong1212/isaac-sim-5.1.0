@@ -1,0 +1,14 @@
+
+[package]
+    archivePath = "./archives/isaacsim.sensors.rtx.placement/isaacsim.sensors.rtx.placement-0.6.14+107.3.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229672.69cbf6ad.gl"
+        date = 1760489652
+        buildNumber = "0.1.3+510.13734.78e5955b.gl"
+        repoName = "isaacsim.action_and_event_data_generation"

@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.hydra.usdrt_delegate-72f509e11fb774f1.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.228598.346f5722.gl"
+        date = 1757755257
+        buildNumber = "107.3.3+1073.228598.346f5722.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

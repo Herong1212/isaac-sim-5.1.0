@@ -1,0 +1,118 @@
+isaacsim.replicator.object:
+  version: 0.3.21
+  output_path: <output_path>
+  gravity: 3
+  inter_frame_time: 2
+  num_frames: 1
+  seed: 1
+  screen_width: 480
+  screen_height: 640
+  camera_parameters:
+    screen_width: $[/screen_width]
+    screen_height: $[/screen_height]
+    horizontal_aperture: 20.955
+    focal_length: 14.228393962367306
+    near_clip: 0.1
+    far_clip: 100000
+  chair_folder: omniverse://isaac-dev.ov.nvidia.com/Isaac/Environments/Hospital/Props
+  aws_root: https://omniverse-content-production.s3-us-west-2.amazonaws.com
+
+  mesh:
+    count: 1
+    type: geometry
+    subtype: mesh
+    tracked: True
+    physics: rigidbody
+    usd_path:
+      distribution_type: set
+      values:
+      - $[/chair_folder]/SM_Chair_01a.usd
+      #  - SM_Chair_02a.usd
+      #  - SM_Chair_04a.usd
+      #  - SM_WheelChair_01a.usd
+      # suffix: usd
+      index: $[seed]
+    transform_operators:
+    - rotateXYZ:
+        distribution_type: range
+        start:
+          - -90
+          - 90
+          - 0
+        end:
+          - -90
+          - 180
+          - 0
+    - scale:
+      - 100
+      - 100
+      - 100
+  camera_1:
+    type: camera
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate:
+      - 0
+      - 0
+      - 200
+  camera_2:
+    type: camera
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate:
+      - 0
+      - 0
+      - -200
+    - rotateXYZ:
+      - 0
+      - 180
+      - 0
+
+  camera_3:
+    type: camera
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate:
+      - 200
+      - 0
+      - 0
+    - rotateXYZ:
+      - 0
+      - 90
+      - 0
+  camera_4:
+    type: camera
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate:
+      - -200
+      - 0
+      - 0
+    - rotateXYZ:
+      - 0
+      - -90
+      - 0
+  dome_light:
+    type: light
+    subtype: dome
+    intensity:
+      distribution_type: range
+      start: 400
+      end: 2500
+    transform_operators:
+    - rotateX: 270
+    color:
+      distribution_type: range
+      start:
+      - 0.7
+      - 0.7
+      - 0.7
+      end:
+      - 1.3
+      - 1.3
+      - 1.3
+  skip_frames_with_no_visible_tracked_mutables: false
+  object_caption:
+    model_name: gpt-4o
+  output_switches:
+    object_caption: True

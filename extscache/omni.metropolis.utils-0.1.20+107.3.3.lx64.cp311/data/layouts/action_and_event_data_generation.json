@@ -1,0 +1,493 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "dock_id": 5,
+                    "height": 782.7999877929688,
+                    "position_x": 0.0,
+                    "position_y": 23.600000381469727,
+                    "selected_in_dock": false,
+                    "title": "Main ToolBar",
+                    "visible": true,
+                    "width": 40.400001525878906
+                  }
+                ],
+                "dock_id": 5,
+                "position": "LEFT"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "dock_id": 9,
+                            "dock_tab_bar_enabled": true,
+                            "dock_tab_bar_visible": true,
+                            "height": 497.20001220703125,
+                            "position_x": 42.0,
+                            "position_y": 23.600000381469727,
+                            "selected_in_dock": true,
+                            "title": "Stage",
+                            "visible": true,
+                            "width": 323.20001220703125
+                          }
+                        ],
+                        "dock_id": 9,
+                        "position": "TOP"
+                      },
+                      {
+                        "children": [
+                          {
+                            "dock_id": 10,
+                            "dock_tab_bar_enabled": true,
+                            "dock_tab_bar_visible": true,
+                            "height": 284.0,
+                            "position_x": 42.0,
+                            "position_y": 522.4000244140625,
+                            "selected_in_dock": true,
+                            "title": "Property",
+                            "visible": true,
+                            "width": 323.20001220703125
+                          }
+                        ],
+                        "dock_id": 10,
+                        "position": "BOTTOM"
+                      }
+                    ],
+                    "dock_id": 7,
+                    "position": "LEFT"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "dock_id": 11,
+                            "dock_tab_bar_enabled": true,
+                            "dock_tab_bar_visible": false,
+                            "height": 590.7999877929688,
+                            "position_x": 366.8000183105469,
+                            "position_y": 23.600000381469727,
+                            "selected_in_dock": true,
+                            "title": "Viewport",
+                            "visible": true,
+                            "width": 767.2000122070312
+                          }
+                        ],
+                        "dock_id": 11,
+                        "position": "TOP"
+                      },
+                      {
+                        "children": [
+                          {
+                            "dock_id": 12,
+                            "dock_tab_bar_enabled": true,
+                            "dock_tab_bar_visible": true,
+                            "height": 190.40000915527344,
+                            "position_x": 366.8000183105469,
+                            "position_y": 616.0,
+                            "selected_in_dock": true,
+                            "title": "Content",
+                            "visible": true,
+                            "width": 767.2000122070312
+                          },
+                          {
+                            "dock_id": 12,
+                            "height": 190.40000915527344,
+                            "position_x": 0.0,
+                            "position_y": 607.2000122070312,
+                            "selected_in_dock": false,
+                            "title": "Console",
+                            "visible": true,
+                            "width": 767.2000122070312
+                          }
+                        ],
+                        "dock_id": 12,
+                        "position": "BOTTOM"
+                      }
+                    ],
+                    "dock_id": 8,
+                    "position": "RIGHT"
+                  }
+                ],
+                "dock_id": 6,
+                "position": "RIGHT"
+              }
+            ],
+            "dock_id": 3,
+            "position": "LEFT"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "dock_id": 13,
+                    "height": 532.7999877929688,
+                    "position_x": 1075.5999755859375,
+                    "position_y": 7.599999904632568,
+                    "selected_in_dock": false,
+                    "title": "Layer",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  },
+                  {
+                    "dock_id": 13,
+                    "height": 532.7999877929688,
+                    "position_x": 0.0,
+                    "position_y": 7.599999904632568,
+                    "selected_in_dock": false,
+                    "title": "Render Settings",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  },
+                  {
+                    "dock_id": 13,
+                    "dock_tab_bar_enabled": true,
+                    "dock_tab_bar_visible": true,
+                    "height": 532.7999877929688,
+                    "position_x": 1135.5999755859375,
+                    "position_y": 23.600000381469727,
+                    "selected_in_dock": true,
+                    "title": "Actor SDG",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  },
+                  {
+                    "dock_id": 13,
+                    "height": 532.7999877929688,
+                    "position_x": 1075.5999755859375,
+                    "position_y": 7.599999904632568,
+                    "selected_in_dock": false,
+                    "title": "Object SDG",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  }
+                ],
+                "dock_id": 13,
+                "position": "TOP"
+              },
+              {
+                "children": [
+                  {
+                    "dock_id": 14,
+                    "dock_tab_bar_enabled": true,
+                    "dock_tab_bar_visible": true,
+                    "height": 248.40000915527344,
+                    "position_x": 1135.5999755859375,
+                    "position_y": 558.0,
+                    "selected_in_dock": true,
+                    "title": "Semantics Schema Editor",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  },
+                  {
+                    "dock_id": 14,
+                    "height": 248.40000915527344,
+                    "position_x": 1134.800048828125,
+                    "position_y": 527.2000122070312,
+                    "selected_in_dock": false,
+                    "title": "Synthetic Data Recorder",
+                    "visible": true,
+                    "width": 400.3999938964844
+                  }
+                ],
+                "dock_id": 14,
+                "position": "BOTTOM"
+              }
+            ],
+            "dock_id": 4,
+            "position": "RIGHT"
+          }
+        ],
+        "dock_id": 1,
+        "position": "TOP"
+      },
+      {
+        "children": [
+          {
+            "dock_id": 2,
+            "height": 58.0,
+            "position_x": 0.0,
+            "position_y": 808.0,
+            "selected_in_dock": false,
+            "title": "Timeline toolbar",
+            "visible": true,
+            "width": 1536.0
+          }
+        ],
+        "dock_id": 2,
+        "position": "BOTTOM"
+      }
+    ],
+    "dock_id": 3358485147
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 24.0,
+    "position_y": 24.0,
+    "selected_in_dock": false,
+    "title": "VLM Scene Captioning",
+    "visible": false,
+    "width": 300.0
+  },
+  {
+    "dock_id": 0,
+    "height": 500.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Timeline Session",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Add Attribute...",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 400.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Collision Groups Filtering Matrix",
+    "visible": false,
+    "width": 750.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Physics Stage Settings",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 500.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "OmniGraph Toolkit",
+    "visible": false,
+    "width": 800.0
+  },
+  {
+    "dock_id": 0,
+    "height": 500.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Lula Test Widget",
+    "visible": false,
+    "width": 600.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Replicator YAML",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 500.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "URDF Importer",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Event Config File",
+    "visible": false,
+    "width": 600.0
+  },
+  {
+    "dock_id": 0,
+    "height": 480.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Animation Preview",
+    "visible": false,
+    "width": 640.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Create Animation Graph",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Animation Graph",
+    "visible": false,
+    "width": 640.0
+  },
+  {
+    "dock_id": 0,
+    "height": 700.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Animation Retargeting",
+    "visible": false,
+    "width": 330.0
+  },
+  {
+    "dock_id": 0,
+    "height": 225.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Push menu for infinity types",
+    "visible": false,
+    "width": 160.0
+  },
+  {
+    "dock_id": 0,
+    "height": 300.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Curve Editor",
+    "visible": false,
+    "width": 600.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Physics Demo Scenes",
+    "visible": false,
+    "width": 960.0
+  },
+  {
+    "dock_id": 0,
+    "height": 0.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Image Search",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 0.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Search Options",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 0.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "BeginSearch",
+    "visible": false,
+    "width": 400.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Scene Optimizer",
+    "visible": false,
+    "width": 600.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Statistics",
+    "visible": false,
+    "width": 600.0
+  },
+  {
+    "dock_id": 0,
+    "height": 114.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "omni.ui.scene 1841058196144",
+    "visible": false,
+    "width": 210.8000030517578
+  },
+  {
+    "dock_id": 0,
+    "height": 114.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "omni.ui.scene 1841058174384",
+    "visible": false,
+    "width": 210.8000030517578
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 3.4028234663852886e+38,
+    "position_y": 3.4028234663852886e+38,
+    "selected_in_dock": false,
+    "title": "Viewport/Viewport0 Sensors Output ",
+    "visible": false,
+    "width": 800.0
+  },
+  {
+    "dock_id": 0,
+    "height": 600.0,
+    "position_x": 55.0,
+    "position_y": 100.0,
+    "selected_in_dock": false,
+    "title": "Simulation Settings",
+    "visible": false,
+    "width": 400.0
+  }
+]

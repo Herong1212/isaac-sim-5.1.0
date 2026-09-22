@@ -1,0 +1,1171 @@
+# Public API for module omni.ui.scene:
+
+## Classes
+
+- class AbstractContainer(AbstractItem)
+  - def clear(self)
+
+- class AbstractGesture
+  - class GesturePayload
+    - def __init__(self, arg0: object, arg1: object, arg2: float)
+    - def __init__(self, arg0: AbstractGesture.GesturePayload)
+    - [property] def item_closest_point(self) -> object
+    - [property] def ray_closest_point(self) -> object
+    - [property] def ray_distance(self) -> float
+  - def get_gesture_payload(self) -> AbstractGesture.GesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> AbstractGesture.GesturePayload
+  - def process(self)
+  - [property] def gesture_payload(self) -> AbstractGesture.GesturePayload
+  - [property] def manager(self) -> GestureManager
+  - [manager.setter] def manager(self, arg1: GestureManager)
+  - [property] def name(self) -> str
+  - [name.setter] def name(self, arg1: str)
+  - [property] def state(self) -> GestureState
+  - [state.setter] def state(self, arg1: GestureState)
+
+- class AbstractItem
+  - def compute_visibility(self) -> bool
+  - def transform_space(self, arg0: Space, arg1: Space, arg2: handle) -> object
+  - [property] def scene_view(self) -> typing.Any
+  - [property] def visible(self) -> bool
+  - [visible.setter] def visible(self, arg1: bool)
+
+- class AbstractManipulatorItem
+  - def __init__(self)
+
+- class AbstractManipulatorModel
+  - def __init__(self)
+  - def add_item_changed_fn(self, arg0: typing.Callable[[AbstractManipulatorModel, AbstractManipulatorItem], None]) -> int
+  - def get_as_bool(self, arg0: handle) -> bool
+  - def get_as_float(self, arg0: handle) -> float
+  - def get_as_floats(self, arg0: handle) -> typing.List[float]
+  - def get_as_int(self, arg0: handle) -> int
+  - def get_as_ints(self, arg0: handle) -> typing.List[int]
+  - def get_item(self, arg0: str) -> AbstractManipulatorItem
+  - def remove_item_changed_fn(self, arg0: int)
+  - def set_bool(self, arg0: handle, arg1: bool)
+  - def set_float(self, arg0: handle, arg1: float)
+  - def set_floats(self, arg0: handle, arg1: typing.List[float])
+  - def set_int(self, arg0: handle, arg1: int)
+  - def set_ints(self, arg0: handle, arg1: typing.List[int])
+  - def subscribe_item_changed_fn(self, arg0: typing.Callable[[AbstractManipulatorModel, AbstractManipulatorItem], None]) -> carb._carb.Subscription
+
+- class AbstractShape(AbstractItem)
+  - def get_gesture_payload(self) -> AbstractGesture.GesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> AbstractGesture.GesturePayload
+  - [property] def gesture_payload(self) -> AbstractGesture.GesturePayload
+  - [property] def gestures(self) -> typing.List[ShapeGesture]
+  - [gestures.setter] def gestures(self, arg1: typing.List[ShapeGesture])
+
+- class Arc(AbstractShape, AbstractItem)
+  - def __init__(self, radius: float, **kwargs)
+  - def get_gesture_payload(self) -> ArcGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> ArcGesturePayload
+  - [property] def axis(self) -> int
+  - [axis.setter] def axis(self, arg1: int)
+  - [property] def begin(self) -> float
+  - [begin.setter] def begin(self, arg1: float)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def culling(self) -> Culling
+  - [culling.setter] def culling(self, arg1: Culling)
+  - [property] def end(self) -> float
+  - [end.setter] def end(self, arg1: float)
+  - [property] def gesture_payload(self) -> ArcGesturePayload
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def radius(self) -> float
+  - [radius.setter] def radius(self, arg1: float)
+  - [property] def sector(self) -> bool
+  - [sector.setter] def sector(self, arg1: bool)
+  - [property] def tesselation(self) -> int
+  - [tesselation.setter] def tesselation(self, arg1: int)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class ArcGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def angle(self) -> float
+  - [property] def culled(self) -> bool
+  - [property] def distance_to_center(self) -> float
+  - [property] def moved(self) -> object
+  - [property] def moved_angle(self) -> float
+  - [property] def moved_distance_to_center(self) -> float
+
+- class AspectRatioPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_HORIZONTAL: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_VERTICAL: omni.ui_scene._scene.AspectRatioPolicy
+  - STRETCH: omni.ui_scene._scene.AspectRatioPolicy
+
+- class CameraModel(AbstractManipulatorModel)
+  - def __init__(self, arg0: object, arg1: object)
+  - [property] def projection(self) -> Matrix44
+  - [projection.setter] def projection(self, arg1: handle)
+  - [property] def view(self) -> Matrix44
+  - [view.setter] def view(self, arg1: handle)
+
+- class ClickGesture(ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class Color4
+  - def __init__(self, c: Vector4)
+  - def __init__(self, r: float = 0.0)
+  - def __init__(self, r: float, g: float, b: float, a: float)
+  - [property] def a(self) -> float
+  - [a.setter] def a(self, arg0: float)
+  - [property] def b(self) -> float
+  - [b.setter] def b(self, arg0: float)
+  - [property] def g(self) -> float
+  - [g.setter] def g(self, arg0: float)
+  - [property] def r(self) -> float
+  - [r.setter] def r(self, arg0: float)
+
+- class Culling
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BACK: omni.ui_scene._scene.Culling
+  - FRONT: omni.ui_scene._scene.Culling
+  - NONE: omni.ui_scene._scene.Culling
+
+- class Curve(AbstractShape, AbstractItem)
+  - class CurveType
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - CUBIC: omni.ui_scene._scene.Curve.CurveType
+    - LINEAR: omni.ui_scene._scene.Curve.CurveType
+  - def __init__(self, arg0: object, **kwargs)
+  - def get_gesture_payload(self) -> CurveGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> CurveGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def curve_type(self) -> Curve.CurveType
+  - [curve_type.setter] def curve_type(self, arg1: Curve.CurveType)
+  - [property] def gesture_payload(self) -> CurveGesturePayload
+  - [property] def intersection_thicknesses(self) -> float
+  - [intersection_thicknesses.setter] def intersection_thicknesses(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def tesselation(self) -> int
+  - [tesselation.setter] def tesselation(self, arg1: int)
+  - [property] def tessellation(self) -> int
+  - [tessellation.setter] def tessellation(self, arg1: int)
+  - [property] def thicknesses(self) -> typing.List[float]
+  - [thicknesses.setter] def thicknesses(self, arg1: typing.List[float])
+
+- class CurveGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def curve_distance(self) -> float
+  - [property] def moved(self) -> object
+  - [property] def moved_distance(self) -> float
+
+- class DoubleClickGesture(ClickGesture, ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+
+- class DragGesture(ShapeGesture, AbstractGesture)
+  - def __init__(self, **kwargs)
+  - static def call_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_began_fn(self) -> bool
+  - def has_on_changed_fn(self) -> bool
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def check_mouse_moved(self) -> bool
+  - [check_mouse_moved.setter] def check_mouse_moved(self, arg1: bool)
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class GestureManager
+  - def __init__(self, **kwargs)
+  - static def amend_input(*args, **kwargs) -> typing.Any
+  - def can_be_prevented(self, arg0: AbstractGesture) -> bool
+  - def should_prevent(self, arg0: AbstractGesture, arg1: AbstractGesture) -> bool
+
+- class GestureState
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BEGAN: omni.ui_scene._scene.GestureState
+  - CANCELED: omni.ui_scene._scene.GestureState
+  - CHANGED: omni.ui_scene._scene.GestureState
+  - ENDED: omni.ui_scene._scene.GestureState
+  - NONE: omni.ui_scene._scene.GestureState
+  - POSSIBLE: omni.ui_scene._scene.GestureState
+  - PREVENTED: omni.ui_scene._scene.GestureState
+
+- class HoverGesture(ShapeGesture, AbstractGesture)
+  - def __init__(self, **kwargs)
+  - static def call_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_began_fn(self) -> bool
+  - def has_on_changed_fn(self) -> bool
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class Image(Rectangle, AbstractShape, AbstractItem)
+  - class FillPolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.Image.FillPolicy
+    - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.Image.FillPolicy
+    - STRETCH: omni.ui_scene._scene.Image.FillPolicy
+  - def __init__(self, source_url: str, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def __init__(self, image_provider: ImageProvider, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def __init__(self, width: float = 1.0, height: float = 1.0, **kwargs)
+  - [property] def fill_policy(self) -> Image.FillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: Image.FillPolicy)
+  - [property] def image_height(self) -> int
+  - [image_height.setter] def image_height(self, arg1: int)
+  - [property] def image_provider(self) -> ImageProvider
+  - [image_provider.setter] def image_provider(self, arg1: ImageProvider)
+  - [property] def image_width(self) -> int
+  - [image_width.setter] def image_width(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+
+- class Label(AbstractShape, AbstractItem)
+  - def __init__(self, arg0: str, **kwargs)
+  - [property] def alignment(self) -> omni.ui._ui.Alignment
+  - [alignment.setter] def alignment(self, arg1: omni.ui._ui.Alignment)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def size(self) -> float
+  - [size.setter] def size(self, arg1: float)
+  - [property] def text(self) -> str
+  - [text.setter] def text(self, arg1: str)
+
+- class Line(AbstractShape, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: object, arg1: object, **kwargs)
+  - def get_gesture_payload(self) -> LineGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> LineGesturePayload
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def end(self) -> object
+  - [end.setter] def end(self, arg1: handle)
+  - [property] def gesture_payload(self) -> LineGesturePayload
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def start(self) -> object
+  - [start.setter] def start(self, arg1: handle)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+
+- class LineGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def line_closest_point(self) -> object
+  - [property] def line_distance(self) -> float
+  - [property] def moved(self) -> object
+
+- class Manipulator(AbstractContainer, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def call_on_build_fn(self, arg0: Manipulator)
+  - def has_on_build_fn(self) -> bool
+  - def invalidate(self)
+  - def on_build(self)
+  - static def on_model_updated(*args, **kwargs) -> typing.Any
+  - def set_on_build_fn(self, fn: typing.Callable[[Manipulator], None])
+  - [property] def gestures(self) -> typing.List[ManipulatorGesture]
+  - [gestures.setter] def gestures(self, arg1: typing.List[ManipulatorGesture])
+  - [property] def model(self) -> AbstractManipulatorModel
+  - [model.setter] def model(self, arg1: AbstractManipulatorModel)
+
+- class ManipulatorGesture(AbstractGesture)
+  - def __init__(self, **kwargs)
+  - [property] def sender(self) -> typing.Any
+
+- class Matrix44
+  - def __init__(self, m: Matrix44)
+  - def __init__(self, x: float = 1.0)
+  - def __init__(self, a1: float, a2: float, a3: float, a4: float, a5: float, a6: float, a7: float, a8: float, a9: float, a10: float, a11: float, a12: float, a13: float, a14: float, a15: float, a16: float)
+  - def get_inverse(self) -> Matrix44
+  - static def get_rotation_matrix(x: float, y: float, z: float, degrees: bool = False) -> Matrix44
+  - static def get_scale_matrix(x: float, y: float, z: float) -> Matrix44
+  - static def get_translation_matrix(x: float, y: float, z: float) -> Matrix44
+  - def set_look_at_view(self, arg0: Matrix44) -> Matrix44
+  - [property] def inversed(self) -> Matrix44
+
+- class MouseInput
+  - def __init__(self)
+  - [property] def clicked(self) -> int
+  - [clicked.setter] def clicked(self, arg0: int)
+  - [property] def double_clicked(self) -> int
+  - [double_clicked.setter] def double_clicked(self, arg0: int)
+  - [property] def down(self) -> int
+  - [down.setter] def down(self, arg0: int)
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg0: int)
+  - [property] def mouse(self) -> Vector2
+  - [mouse.setter] def mouse(self, arg0: Vector2)
+  - [property] def mouse_direction(self) -> Vector3
+  - [mouse_direction.setter] def mouse_direction(self, arg0: Vector3)
+  - [property] def mouse_origin(self) -> Vector3
+  - [mouse_origin.setter] def mouse_origin(self, arg0: Vector3)
+  - [property] def mouse_wheel(self) -> Vector2
+  - [mouse_wheel.setter] def mouse_wheel(self, arg0: Vector2)
+  - [property] def released(self) -> int
+  - [released.setter] def released(self, arg0: int)
+
+- class Points(AbstractShape, AbstractItem)
+  - def __init__(self, arg0: object, **kwargs)
+  - def get_gesture_payload(self) -> PointsGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> PointsGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def gesture_payload(self) -> PointsGesturePayload
+  - [property] def intersection_sizes(self) -> float
+  - [intersection_sizes.setter] def intersection_sizes(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def sizes(self) -> typing.List[float]
+  - [sizes.setter] def sizes(self, arg1: typing.List[float])
+
+- class PointsGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def closest_point(self) -> int
+  - [property] def distance_to_point(self) -> float
+  - [property] def moved(self) -> object
+
+- class PolygonMesh(AbstractShape, AbstractItem)
+  - def __init__(self, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], **kwargs)
+  - def get_gesture_payload(self) -> PolygonMeshGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> PolygonMeshGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def gesture_payload(self) -> PolygonMeshGesturePayload
+  - [property] def intersection_thicknesses(self) -> float
+  - [intersection_thicknesses.setter] def intersection_thicknesses(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def thicknesses(self) -> typing.List[float]
+  - [thicknesses.setter] def thicknesses(self, arg1: typing.List[float])
+  - [property] def vertex_counts(self) -> typing.List[int]
+  - [vertex_counts.setter] def vertex_counts(self, arg1: typing.List[int])
+  - [property] def vertex_indices(self) -> typing.List[int]
+  - [vertex_indices.setter] def vertex_indices(self, arg1: typing.List[int])
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class PolygonMeshGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def face_id(self) -> int
+  - [property] def s(self) -> float
+  - [property] def t(self) -> float
+
+- class Rectangle(AbstractShape, AbstractItem)
+  - def __init__(self, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def get_gesture_payload(self) -> RectangleGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> RectangleGesturePayload
+  - [property] def axis(self) -> int
+  - [axis.setter] def axis(self, arg1: int)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def gesture_payload(self) -> RectangleGesturePayload
+  - [property] def height(self) -> float
+  - [height.setter] def height(self, arg1: float)
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+  - [property] def width(self) -> float
+  - [width.setter] def width(self, arg1: float)
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class RectangleGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def moved(self) -> object
+  - [property] def moved_s(self) -> float
+  - [property] def moved_t(self) -> float
+  - [property] def s(self) -> float
+  - [property] def t(self) -> float
+
+- class Scene(AbstractContainer, AbstractItem)
+  - def __init__(self, **kwargs)
+  - [property] def draw_list_buffer_count(self) -> int
+
+- class SceneView(omni.ui._ui.Widget)
+  - def __init__(self, model: AbstractManipulatorModel = None, **kwargs)
+  - def get_ray_from_ndc(self, ndc: Vector2) -> typing.Tuple[Vector3, Vector3]
+  - [property] def aspect_ratio_policy(self) -> AspectRatioPolicy
+  - [aspect_ratio_policy.setter] def aspect_ratio_policy(self, arg1: AspectRatioPolicy)
+  - [property] def cache_draw_buffer(self) -> bool
+  - [cache_draw_buffer.setter] def cache_draw_buffer(self, arg1: bool)
+  - [property] def child_windows_input(self) -> bool
+  - [child_windows_input.setter] def child_windows_input(self, arg1: bool)
+  - [property] def model(self) -> AbstractManipulatorModel
+  - [model.setter] def model(self, arg1: AbstractManipulatorModel)
+  - [property] def projection(self) -> Matrix44
+  - [projection.setter] def projection(self, arg1: handle)
+  - [property] def scene(self) -> Scene
+  - [scene.setter] def scene(self, arg1: Scene)
+  - [property] def screen_aspect_ratio(self) -> float
+  - [screen_aspect_ratio.setter] def screen_aspect_ratio(self, arg1: float)
+  - [property] def view(self) -> Matrix44
+  - [view.setter] def view(self, arg1: handle)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Screen(AbstractShape, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def get_gesture_payload(self) -> ScreenGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> ScreenGesturePayload
+  - [property] def gesture_payload(self) -> ScreenGesturePayload
+
+- class ScreenGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def direction(self) -> object
+  - [property] def mouse(self) -> object
+  - [property] def mouse_moved(self) -> object
+  - [property] def moved(self) -> object
+
+- class ScrollGesture(ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+  - [property] def scroll(self) -> object
+
+- class ShapeGesture(AbstractGesture)
+  - [property] def raw_input(self) -> typing.Any
+  - [property] def sender(self) -> typing.Any
+
+- class Space
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CURRENT: omni.ui_scene._scene.Space
+  - NDC: omni.ui_scene._scene.Space
+  - OBJECT: omni.ui_scene._scene.Space
+  - SCREEN: omni.ui_scene._scene.Space
+  - WORLD: omni.ui_scene._scene.Space
+
+- class TexturedMesh(PolygonMesh, AbstractShape, AbstractItem)
+  - def __init__(self, source_url: str, uvs: object, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], legacy_flipped_v: bool = True, **kwargs)
+  - def __init__(self, image_provider: omni.ui._ui.ImageProvider, uvs: object, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], legacy_flipped_v: bool = True, **kwargs)
+  - def get_gesture_payload(self) -> TexturedMeshGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> TexturedMeshGesturePayload
+  - [property] def gesture_payload(self) -> TexturedMeshGesturePayload
+  - [property] def image_height(self) -> int
+  - [image_height.setter] def image_height(self, arg1: int)
+  - [property] def image_provider(self) -> omni.ui._ui.ImageProvider
+  - [image_provider.setter] def image_provider(self, arg1: omni.ui._ui.ImageProvider)
+  - [property] def image_width(self) -> int
+  - [image_width.setter] def image_width(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+  - [property] def uvs(self) -> object
+  - [uvs.setter] def uvs(self, arg1: handle)
+
+- class TexturedMeshGesturePayload(PolygonMeshGesturePayload, AbstractGesture.GesturePayload)
+  - [property] def u(self) -> float
+  - [property] def v(self) -> float
+
+- class Transform(AbstractContainer, AbstractItem)
+  - class LookAt
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - CAMERA: omni.ui_scene._scene.Transform.LookAt
+    - NONE: omni.ui_scene._scene.Transform.LookAt
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: object, **kwargs)
+  - [property] def basis(self) -> TransformBasis
+  - [basis.setter] def basis(self, arg1: TransformBasis)
+  - [property] def look_at(self) -> Transform.LookAt
+  - [look_at.setter] def look_at(self, arg1: Transform.LookAt)
+  - [property] def scale_to(self) -> Space
+  - [scale_to.setter] def scale_to(self, arg1: Space)
+  - [property] def transform(self) -> Matrix44
+  - [transform.setter] def transform(self, arg1: handle)
+
+- class TransformBasis
+  - def __init__(self, **kwargs)
+  - def get_matrix(self) -> Matrix44
+
+- class Vector2
+  - def __init__(self, v: Vector2)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector2
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+
+- class Vector3
+  - def __init__(self, v: Vector3)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float, z: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector3
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+  - [property] def z(self) -> float
+  - [z.setter] def z(self, arg0: float)
+
+- class Vector4
+  - def __init__(self, v: Vector4)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float, z: float, w: float)
+  - def __init__(self, v: Vector3, w: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector4
+  - [property] def w(self) -> float
+  - [w.setter] def w(self, arg0: float)
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+  - [property] def z(self) -> float
+  - [z.setter] def z(self, arg0: float)
+
+- class Widget(Rectangle, AbstractShape, AbstractItem)
+  - class FillPolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.Widget.FillPolicy
+    - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.Widget.FillPolicy
+    - STRETCH: omni.ui_scene._scene.Widget.FillPolicy
+  - class UpdatePolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - ALWAYS: omni.ui_scene._scene.Widget.UpdatePolicy
+    - ON_DEMAND: omni.ui_scene._scene.Widget.UpdatePolicy
+    - ON_MOUSE_HOVERED: omni.ui_scene._scene.Widget.UpdatePolicy
+  - def __init__(self, width: float, height: float, **kwargs)
+  - def invalidate(self)
+  - [property] def fill_policy(self) -> Widget.FillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: Widget.FillPolicy)
+  - [property] def frame(self) -> omni.ui._ui.Frame
+  - [property] def resolution_height(self) -> int
+  - [resolution_height.setter] def resolution_height(self, arg1: int)
+  - [property] def resolution_scale(self) -> float
+  - [resolution_scale.setter] def resolution_scale(self, arg1: float)
+  - [property] def resolution_width(self) -> int
+  - [resolution_width.setter] def resolution_width(self, arg1: int)
+  - [property] def update_policy(self) -> Widget.UpdatePolicy
+  - [update_policy.setter] def update_policy(self, arg1: Widget.UpdatePolicy)
+
+## Functions
+
+- def Cross(arg0: handle, arg1: handle) -> object
+- def Dot(arg0: handle, arg1: handle) -> float
+
+# Public API for module omni.ui_scene:
+
+## Classes
+
+- class AbstractContainer(AbstractItem)
+  - def clear(self)
+
+- class AbstractGesture
+  - class GesturePayload
+    - def __init__(self, arg0: object, arg1: object, arg2: float)
+    - def __init__(self, arg0: AbstractGesture.GesturePayload)
+    - [property] def item_closest_point(self) -> object
+    - [property] def ray_closest_point(self) -> object
+    - [property] def ray_distance(self) -> float
+  - def get_gesture_payload(self) -> AbstractGesture.GesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> AbstractGesture.GesturePayload
+  - def process(self)
+  - [property] def gesture_payload(self) -> AbstractGesture.GesturePayload
+  - [property] def manager(self) -> GestureManager
+  - [manager.setter] def manager(self, arg1: GestureManager)
+  - [property] def name(self) -> str
+  - [name.setter] def name(self, arg1: str)
+  - [property] def state(self) -> GestureState
+  - [state.setter] def state(self, arg1: GestureState)
+
+- class AbstractItem
+  - def compute_visibility(self) -> bool
+  - def transform_space(self, arg0: Space, arg1: Space, arg2: handle) -> object
+  - [property] def scene_view(self) -> typing.Any
+  - [property] def visible(self) -> bool
+  - [visible.setter] def visible(self, arg1: bool)
+
+- class AbstractManipulatorItem
+  - def __init__(self)
+
+- class AbstractManipulatorModel
+  - def __init__(self)
+  - def add_item_changed_fn(self, arg0: typing.Callable[[AbstractManipulatorModel, AbstractManipulatorItem], None]) -> int
+  - def get_as_bool(self, arg0: handle) -> bool
+  - def get_as_float(self, arg0: handle) -> float
+  - def get_as_floats(self, arg0: handle) -> typing.List[float]
+  - def get_as_int(self, arg0: handle) -> int
+  - def get_as_ints(self, arg0: handle) -> typing.List[int]
+  - def get_item(self, arg0: str) -> AbstractManipulatorItem
+  - def remove_item_changed_fn(self, arg0: int)
+  - def set_bool(self, arg0: handle, arg1: bool)
+  - def set_float(self, arg0: handle, arg1: float)
+  - def set_floats(self, arg0: handle, arg1: typing.List[float])
+  - def set_int(self, arg0: handle, arg1: int)
+  - def set_ints(self, arg0: handle, arg1: typing.List[int])
+  - def subscribe_item_changed_fn(self, arg0: typing.Callable[[AbstractManipulatorModel, AbstractManipulatorItem], None]) -> carb._carb.Subscription
+
+- class AbstractShape(AbstractItem)
+  - def get_gesture_payload(self) -> AbstractGesture.GesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> AbstractGesture.GesturePayload
+  - [property] def gesture_payload(self) -> AbstractGesture.GesturePayload
+  - [property] def gestures(self) -> typing.List[ShapeGesture]
+  - [gestures.setter] def gestures(self, arg1: typing.List[ShapeGesture])
+
+- class Arc(AbstractShape, AbstractItem)
+  - def __init__(self, radius: float, **kwargs)
+  - def get_gesture_payload(self) -> ArcGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> ArcGesturePayload
+  - [property] def axis(self) -> int
+  - [axis.setter] def axis(self, arg1: int)
+  - [property] def begin(self) -> float
+  - [begin.setter] def begin(self, arg1: float)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def culling(self) -> Culling
+  - [culling.setter] def culling(self, arg1: Culling)
+  - [property] def end(self) -> float
+  - [end.setter] def end(self, arg1: float)
+  - [property] def gesture_payload(self) -> ArcGesturePayload
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def radius(self) -> float
+  - [radius.setter] def radius(self, arg1: float)
+  - [property] def sector(self) -> bool
+  - [sector.setter] def sector(self, arg1: bool)
+  - [property] def tesselation(self) -> int
+  - [tesselation.setter] def tesselation(self, arg1: int)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class ArcGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def angle(self) -> float
+  - [property] def culled(self) -> bool
+  - [property] def distance_to_center(self) -> float
+  - [property] def moved(self) -> object
+  - [property] def moved_angle(self) -> float
+  - [property] def moved_distance_to_center(self) -> float
+
+- class AspectRatioPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_HORIZONTAL: omni.ui_scene._scene.AspectRatioPolicy
+  - PRESERVE_ASPECT_VERTICAL: omni.ui_scene._scene.AspectRatioPolicy
+  - STRETCH: omni.ui_scene._scene.AspectRatioPolicy
+
+- class CameraModel(AbstractManipulatorModel)
+  - def __init__(self, arg0: object, arg1: object)
+  - [property] def projection(self) -> Matrix44
+  - [projection.setter] def projection(self, arg1: handle)
+  - [property] def view(self) -> Matrix44
+  - [view.setter] def view(self, arg1: handle)
+
+- class ClickGesture(ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class Color4
+  - def __init__(self, c: Vector4)
+  - def __init__(self, r: float = 0.0)
+  - def __init__(self, r: float, g: float, b: float, a: float)
+  - [property] def a(self) -> float
+  - [a.setter] def a(self, arg0: float)
+  - [property] def b(self) -> float
+  - [b.setter] def b(self, arg0: float)
+  - [property] def g(self) -> float
+  - [g.setter] def g(self, arg0: float)
+  - [property] def r(self) -> float
+  - [r.setter] def r(self, arg0: float)
+
+- class Culling
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BACK: omni.ui_scene._scene.Culling
+  - FRONT: omni.ui_scene._scene.Culling
+  - NONE: omni.ui_scene._scene.Culling
+
+- class Curve(AbstractShape, AbstractItem)
+  - class CurveType
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - CUBIC: omni.ui_scene._scene.Curve.CurveType
+    - LINEAR: omni.ui_scene._scene.Curve.CurveType
+  - def __init__(self, arg0: object, **kwargs)
+  - def get_gesture_payload(self) -> CurveGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> CurveGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def curve_type(self) -> Curve.CurveType
+  - [curve_type.setter] def curve_type(self, arg1: Curve.CurveType)
+  - [property] def gesture_payload(self) -> CurveGesturePayload
+  - [property] def intersection_thicknesses(self) -> float
+  - [intersection_thicknesses.setter] def intersection_thicknesses(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def tesselation(self) -> int
+  - [tesselation.setter] def tesselation(self, arg1: int)
+  - [property] def tessellation(self) -> int
+  - [tessellation.setter] def tessellation(self, arg1: int)
+  - [property] def thicknesses(self) -> typing.List[float]
+  - [thicknesses.setter] def thicknesses(self, arg1: typing.List[float])
+
+- class CurveGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def curve_distance(self) -> float
+  - [property] def moved(self) -> object
+  - [property] def moved_distance(self) -> float
+
+- class DoubleClickGesture(ClickGesture, ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+
+- class DragGesture(ShapeGesture, AbstractGesture)
+  - def __init__(self, **kwargs)
+  - static def call_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_began_fn(self) -> bool
+  - def has_on_changed_fn(self) -> bool
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def check_mouse_moved(self) -> bool
+  - [check_mouse_moved.setter] def check_mouse_moved(self, arg1: bool)
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class GestureManager
+  - def __init__(self, **kwargs)
+  - static def amend_input(*args, **kwargs) -> typing.Any
+  - def can_be_prevented(self, arg0: AbstractGesture) -> bool
+  - def should_prevent(self, arg0: AbstractGesture, arg1: AbstractGesture) -> bool
+
+- class GestureState
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BEGAN: omni.ui_scene._scene.GestureState
+  - CANCELED: omni.ui_scene._scene.GestureState
+  - CHANGED: omni.ui_scene._scene.GestureState
+  - ENDED: omni.ui_scene._scene.GestureState
+  - NONE: omni.ui_scene._scene.GestureState
+  - POSSIBLE: omni.ui_scene._scene.GestureState
+  - PREVENTED: omni.ui_scene._scene.GestureState
+
+- class HoverGesture(ShapeGesture, AbstractGesture)
+  - def __init__(self, **kwargs)
+  - static def call_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_began_fn(self) -> bool
+  - def has_on_changed_fn(self) -> bool
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_began_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_changed_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+
+- class Image(Rectangle, AbstractShape, AbstractItem)
+  - class FillPolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.Image.FillPolicy
+    - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.Image.FillPolicy
+    - STRETCH: omni.ui_scene._scene.Image.FillPolicy
+  - def __init__(self, source_url: str, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def __init__(self, image_provider: ImageProvider, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def __init__(self, width: float = 1.0, height: float = 1.0, **kwargs)
+  - [property] def fill_policy(self) -> Image.FillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: Image.FillPolicy)
+  - [property] def image_height(self) -> int
+  - [image_height.setter] def image_height(self, arg1: int)
+  - [property] def image_provider(self) -> ImageProvider
+  - [image_provider.setter] def image_provider(self, arg1: ImageProvider)
+  - [property] def image_width(self) -> int
+  - [image_width.setter] def image_width(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+
+- class Label(AbstractShape, AbstractItem)
+  - def __init__(self, arg0: str, **kwargs)
+  - [property] def alignment(self) -> omni.ui._ui.Alignment
+  - [alignment.setter] def alignment(self, arg1: omni.ui._ui.Alignment)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def size(self) -> float
+  - [size.setter] def size(self, arg1: float)
+  - [property] def text(self) -> str
+  - [text.setter] def text(self, arg1: str)
+
+- class Line(AbstractShape, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: object, arg1: object, **kwargs)
+  - def get_gesture_payload(self) -> LineGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> LineGesturePayload
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def end(self) -> object
+  - [end.setter] def end(self, arg1: handle)
+  - [property] def gesture_payload(self) -> LineGesturePayload
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def start(self) -> object
+  - [start.setter] def start(self, arg1: handle)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+
+- class LineGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def line_closest_point(self) -> object
+  - [property] def line_distance(self) -> float
+  - [property] def moved(self) -> object
+
+- class Manipulator(AbstractContainer, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def call_on_build_fn(self, arg0: Manipulator)
+  - def has_on_build_fn(self) -> bool
+  - def invalidate(self)
+  - def on_build(self)
+  - static def on_model_updated(*args, **kwargs) -> typing.Any
+  - def set_on_build_fn(self, fn: typing.Callable[[Manipulator], None])
+  - [property] def gestures(self) -> typing.List[ManipulatorGesture]
+  - [gestures.setter] def gestures(self, arg1: typing.List[ManipulatorGesture])
+  - [property] def model(self) -> AbstractManipulatorModel
+  - [model.setter] def model(self, arg1: AbstractManipulatorModel)
+
+- class ManipulatorGesture(AbstractGesture)
+  - def __init__(self, **kwargs)
+  - [property] def sender(self) -> typing.Any
+
+- class Matrix44
+  - def __init__(self, m: Matrix44)
+  - def __init__(self, x: float = 1.0)
+  - def __init__(self, a1: float, a2: float, a3: float, a4: float, a5: float, a6: float, a7: float, a8: float, a9: float, a10: float, a11: float, a12: float, a13: float, a14: float, a15: float, a16: float)
+  - def get_inverse(self) -> Matrix44
+  - static def get_rotation_matrix(x: float, y: float, z: float, degrees: bool = False) -> Matrix44
+  - static def get_scale_matrix(x: float, y: float, z: float) -> Matrix44
+  - static def get_translation_matrix(x: float, y: float, z: float) -> Matrix44
+  - def set_look_at_view(self, arg0: Matrix44) -> Matrix44
+  - [property] def inversed(self) -> Matrix44
+
+- class MouseInput
+  - def __init__(self)
+  - [property] def clicked(self) -> int
+  - [clicked.setter] def clicked(self, arg0: int)
+  - [property] def double_clicked(self) -> int
+  - [double_clicked.setter] def double_clicked(self, arg0: int)
+  - [property] def down(self) -> int
+  - [down.setter] def down(self, arg0: int)
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg0: int)
+  - [property] def mouse(self) -> Vector2
+  - [mouse.setter] def mouse(self, arg0: Vector2)
+  - [property] def mouse_direction(self) -> Vector3
+  - [mouse_direction.setter] def mouse_direction(self, arg0: Vector3)
+  - [property] def mouse_origin(self) -> Vector3
+  - [mouse_origin.setter] def mouse_origin(self, arg0: Vector3)
+  - [property] def mouse_wheel(self) -> Vector2
+  - [mouse_wheel.setter] def mouse_wheel(self, arg0: Vector2)
+  - [property] def released(self) -> int
+  - [released.setter] def released(self, arg0: int)
+
+- class Points(AbstractShape, AbstractItem)
+  - def __init__(self, arg0: object, **kwargs)
+  - def get_gesture_payload(self) -> PointsGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> PointsGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def gesture_payload(self) -> PointsGesturePayload
+  - [property] def intersection_sizes(self) -> float
+  - [intersection_sizes.setter] def intersection_sizes(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def sizes(self) -> typing.List[float]
+  - [sizes.setter] def sizes(self, arg1: typing.List[float])
+
+- class PointsGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def closest_point(self) -> int
+  - [property] def distance_to_point(self) -> float
+  - [property] def moved(self) -> object
+
+- class PolygonMesh(AbstractShape, AbstractItem)
+  - def __init__(self, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], **kwargs)
+  - def get_gesture_payload(self) -> PolygonMeshGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> PolygonMeshGesturePayload
+  - [property] def colors(self) -> object
+  - [colors.setter] def colors(self, arg1: handle)
+  - [property] def gesture_payload(self) -> PolygonMeshGesturePayload
+  - [property] def intersection_thicknesses(self) -> float
+  - [intersection_thicknesses.setter] def intersection_thicknesses(self, arg1: float)
+  - [property] def positions(self) -> object
+  - [positions.setter] def positions(self, arg1: handle)
+  - [property] def thicknesses(self) -> typing.List[float]
+  - [thicknesses.setter] def thicknesses(self, arg1: typing.List[float])
+  - [property] def vertex_counts(self) -> typing.List[int]
+  - [vertex_counts.setter] def vertex_counts(self, arg1: typing.List[int])
+  - [property] def vertex_indices(self) -> typing.List[int]
+  - [vertex_indices.setter] def vertex_indices(self, arg1: typing.List[int])
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class PolygonMeshGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def face_id(self) -> int
+  - [property] def s(self) -> float
+  - [property] def t(self) -> float
+
+- class Rectangle(AbstractShape, AbstractItem)
+  - def __init__(self, width: float = 1.0, height: float = 1.0, **kwargs)
+  - def get_gesture_payload(self) -> RectangleGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> RectangleGesturePayload
+  - [property] def axis(self) -> int
+  - [axis.setter] def axis(self, arg1: int)
+  - [property] def color(self) -> object
+  - [color.setter] def color(self, arg1: handle)
+  - [property] def gesture_payload(self) -> RectangleGesturePayload
+  - [property] def height(self) -> float
+  - [height.setter] def height(self, arg1: float)
+  - [property] def intersection_thickness(self) -> float
+  - [intersection_thickness.setter] def intersection_thickness(self, arg1: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg1: float)
+  - [property] def width(self) -> float
+  - [width.setter] def width(self, arg1: float)
+  - [property] def wireframe(self) -> bool
+  - [wireframe.setter] def wireframe(self, arg1: bool)
+
+- class RectangleGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def moved(self) -> object
+  - [property] def moved_s(self) -> float
+  - [property] def moved_t(self) -> float
+  - [property] def s(self) -> float
+  - [property] def t(self) -> float
+
+- class Scene(AbstractContainer, AbstractItem)
+  - def __init__(self, **kwargs)
+  - [property] def draw_list_buffer_count(self) -> int
+
+- class SceneView(omni.ui._ui.Widget)
+  - def __init__(self, model: AbstractManipulatorModel = None, **kwargs)
+  - def get_ray_from_ndc(self, ndc: Vector2) -> typing.Tuple[Vector3, Vector3]
+  - [property] def aspect_ratio_policy(self) -> AspectRatioPolicy
+  - [aspect_ratio_policy.setter] def aspect_ratio_policy(self, arg1: AspectRatioPolicy)
+  - [property] def cache_draw_buffer(self) -> bool
+  - [cache_draw_buffer.setter] def cache_draw_buffer(self, arg1: bool)
+  - [property] def child_windows_input(self) -> bool
+  - [child_windows_input.setter] def child_windows_input(self, arg1: bool)
+  - [property] def model(self) -> AbstractManipulatorModel
+  - [model.setter] def model(self, arg1: AbstractManipulatorModel)
+  - [property] def projection(self) -> Matrix44
+  - [projection.setter] def projection(self, arg1: handle)
+  - [property] def scene(self) -> Scene
+  - [scene.setter] def scene(self, arg1: Scene)
+  - [property] def screen_aspect_ratio(self) -> float
+  - [screen_aspect_ratio.setter] def screen_aspect_ratio(self, arg1: float)
+  - [property] def view(self) -> Matrix44
+  - [view.setter] def view(self, arg1: handle)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Screen(AbstractShape, AbstractItem)
+  - def __init__(self, **kwargs)
+  - def get_gesture_payload(self) -> ScreenGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> ScreenGesturePayload
+  - [property] def gesture_payload(self) -> ScreenGesturePayload
+
+- class ScreenGesturePayload(AbstractGesture.GesturePayload)
+  - [property] def direction(self) -> object
+  - [property] def mouse(self) -> object
+  - [property] def mouse_moved(self) -> object
+  - [property] def moved(self) -> object
+
+- class ScrollGesture(ShapeGesture, AbstractGesture)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def call_on_ended_fn(*args, **kwargs) -> typing.Any
+  - def has_on_ended_fn(self) -> bool
+  - static def set_on_ended_fn(*args, **kwargs) -> typing.Any
+  - [property] def modifiers(self) -> int
+  - [modifiers.setter] def modifiers(self, arg1: int)
+  - [property] def mouse_button(self) -> int
+  - [mouse_button.setter] def mouse_button(self, arg1: int)
+  - [property] def scroll(self) -> object
+
+- class ShapeGesture(AbstractGesture)
+  - [property] def raw_input(self) -> typing.Any
+  - [property] def sender(self) -> typing.Any
+
+- class Space
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CURRENT: omni.ui_scene._scene.Space
+  - NDC: omni.ui_scene._scene.Space
+  - OBJECT: omni.ui_scene._scene.Space
+  - SCREEN: omni.ui_scene._scene.Space
+  - WORLD: omni.ui_scene._scene.Space
+
+- class TexturedMesh(PolygonMesh, AbstractShape, AbstractItem)
+  - def __init__(self, source_url: str, uvs: object, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], legacy_flipped_v: bool = True, **kwargs)
+  - def __init__(self, image_provider: omni.ui._ui.ImageProvider, uvs: object, positions: object, colors: object, vertex_counts: typing.List[int], vertex_indices: typing.List[int], legacy_flipped_v: bool = True, **kwargs)
+  - def get_gesture_payload(self) -> TexturedMeshGesturePayload
+  - def get_gesture_payload(self, arg0: GestureState) -> TexturedMeshGesturePayload
+  - [property] def gesture_payload(self) -> TexturedMeshGesturePayload
+  - [property] def image_height(self) -> int
+  - [image_height.setter] def image_height(self, arg1: int)
+  - [property] def image_provider(self) -> omni.ui._ui.ImageProvider
+  - [image_provider.setter] def image_provider(self, arg1: omni.ui._ui.ImageProvider)
+  - [property] def image_width(self) -> int
+  - [image_width.setter] def image_width(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+  - [property] def uvs(self) -> object
+  - [uvs.setter] def uvs(self, arg1: handle)
+
+- class TexturedMeshGesturePayload(PolygonMeshGesturePayload, AbstractGesture.GesturePayload)
+  - [property] def u(self) -> float
+  - [property] def v(self) -> float
+
+- class Transform(AbstractContainer, AbstractItem)
+  - class LookAt
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - CAMERA: omni.ui_scene._scene.Transform.LookAt
+    - NONE: omni.ui_scene._scene.Transform.LookAt
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: object, **kwargs)
+  - [property] def basis(self) -> TransformBasis
+  - [basis.setter] def basis(self, arg1: TransformBasis)
+  - [property] def look_at(self) -> Transform.LookAt
+  - [look_at.setter] def look_at(self, arg1: Transform.LookAt)
+  - [property] def scale_to(self) -> Space
+  - [scale_to.setter] def scale_to(self, arg1: Space)
+  - [property] def transform(self) -> Matrix44
+  - [transform.setter] def transform(self, arg1: handle)
+
+- class TransformBasis
+  - def __init__(self, **kwargs)
+  - def get_matrix(self) -> Matrix44
+
+- class Vector2
+  - def __init__(self, v: Vector2)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector2
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+
+- class Vector3
+  - def __init__(self, v: Vector3)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float, z: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector3
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+  - [property] def z(self) -> float
+  - [z.setter] def z(self, arg0: float)
+
+- class Vector4
+  - def __init__(self, v: Vector4)
+  - def __init__(self, x: float = 0.0)
+  - def __init__(self, x: float, y: float, z: float, w: float)
+  - def __init__(self, v: Vector3, w: float)
+  - def get_length(self) -> float
+  - def get_normalized(self) -> Vector4
+  - [property] def w(self) -> float
+  - [w.setter] def w(self, arg0: float)
+  - [property] def x(self) -> float
+  - [x.setter] def x(self, arg0: float)
+  - [property] def y(self) -> float
+  - [y.setter] def y(self, arg0: float)
+  - [property] def z(self) -> float
+  - [z.setter] def z(self, arg0: float)
+
+- class Widget(Rectangle, AbstractShape, AbstractItem)
+  - class FillPolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - PRESERVE_ASPECT_CROP: omni.ui_scene._scene.Widget.FillPolicy
+    - PRESERVE_ASPECT_FIT: omni.ui_scene._scene.Widget.FillPolicy
+    - STRETCH: omni.ui_scene._scene.Widget.FillPolicy
+  - class UpdatePolicy
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - ALWAYS: omni.ui_scene._scene.Widget.UpdatePolicy
+    - ON_DEMAND: omni.ui_scene._scene.Widget.UpdatePolicy
+    - ON_MOUSE_HOVERED: omni.ui_scene._scene.Widget.UpdatePolicy
+  - def __init__(self, width: float, height: float, **kwargs)
+  - def invalidate(self)
+  - [property] def fill_policy(self) -> Widget.FillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: Widget.FillPolicy)
+  - [property] def frame(self) -> omni.ui._ui.Frame
+  - [property] def resolution_height(self) -> int
+  - [resolution_height.setter] def resolution_height(self, arg1: int)
+  - [property] def resolution_scale(self) -> float
+  - [resolution_scale.setter] def resolution_scale(self, arg1: float)
+  - [property] def resolution_width(self) -> int
+  - [resolution_width.setter] def resolution_width(self, arg1: int)
+  - [property] def update_policy(self) -> Widget.UpdatePolicy
+  - [update_policy.setter] def update_policy(self, arg1: Widget.UpdatePolicy)
+
+## Functions
+
+- def Cross(arg0: handle, arg1: handle) -> object
+- def Dot(arg0: handle, arg1: handle) -> float

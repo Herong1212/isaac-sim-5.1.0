@@ -1,0 +1,32 @@
+[package]
+title = "OmniGraph Action Graph"
+version = "1.130.0"
+category = "Graph"
+feature = true
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains nodes for Omnigraph Action Graphs."
+repository = ""
+keywords = ["omnigraph", "nodes", "action"]
+python.import_mode = "ParallelThread"
+writeTarget.kit = true
+support_level = "Core"
+
+[[python.module]]
+name = "omni.graph.action"
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.graph.action_nodes" = {}
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+dependencies = [
+    "omni.kit.test"  # Required to import generated Ogn test modules
+]

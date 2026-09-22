@@ -1,0 +1,135 @@
+mdl 1.5;
+
+import math::*;
+import df::*;
+import state::*;
+import tex::*;
+import anno::*;
+
+export enum state_function {
+    position,
+    position_obj,
+    normal,
+    normal_obj,
+    geometry_normal,
+    geometry_normal_obj,
+    uvw,
+    tangent_u,
+    tangent_u_obj,
+    tangent_v,
+    tangent_v_obj
+};
+
+export enum color_function {
+    pass_through,
+    abs,
+    frac,
+    unit_vector
+};
+
+
+float3 state_func(state_function which)
+{
+    float3 p;
+
+    switch (which) {
+        case position:
+            p = state::transform_point(state::coordinate_internal, state::coordinate_world, state::position());
+            break;
+        case position_obj:
+            p = state::transform_point(state::coordinate_internal, state::coordinate_object, state::position());
+            break;
+        case normal:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_world, state::normal());
+            break;
+        case normal_obj:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_object, state::normal());
+            break;
+        case geometry_normal:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_world, state::geometry_normal());
+            break;
+        case geometry_normal_obj:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_object, state::geometry_normal());
+            break;
+        case tangent_u:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_world, state::texture_tangent_u(0));
+            break;
+        case tangent_u_obj:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_object, state::texture_tangent_u(0));
+            break;
+        case tangent_v:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_world, state::texture_tangent_v(0));
+            break;
+        case tangent_v_obj:
+            p = state::transform_vector(state::coordinate_internal, state::coordinate_object, state::texture_tangent_v(0));
+            break;
+        case uvw:
+            p = state::texture_coordinate(0);
+            break;
+    }
+
+    return p;
+}
+
+color color_func(color_function which, float3 p, float3 scale, float3 exp)
+{
+    float3 c;
+    switch (which) {
+        case pass_through:
+            c = p;
+            break;
+        case abs:
+            c = math::abs(p);
+            break;
+        case frac:
+            c = math::frac(p);
+            break;
+        case unit_vector:
+            c = math::normalize(p) * 0.5f + float3(0.5f);
+            break;
+    }
+
+    c *= scale;
+    c = math::pow(c, exp);
+    
+    return color(c);
+}
+
+export material show_state(
+    state_function s = uvw,
+    color_function c = pass_through,
+    float3 scale = float3(1.0f),
+    float3 col_scale = float3(1.0f),
+    float3 col_exp = float3(1.0f),
+    float opacity = 1.0f                [[anno::hard_range(0.0, 1.0)]]
+    )
+= let {    
+    color col = color_func(c, state_func(s) * scale, col_scale, col_exp);
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: col)
+        ),
+    geometry: material_geometry(
+        cutout_opacity: opacity
+        )
+    );
+
+export material show_state_position(
+    bool object_space = false,
+    bool apply_frac = false
+) 
+= let 
+{
+    float3 p = object_space 
+        ? state::transform_point(state::coordinate_internal, state::coordinate_object, state::position())
+        : state::transform_point(state::coordinate_internal, state::coordinate_world, state::position());
+    float3 c = apply_frac ? math::frac(p) : p;
+
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: color(c))
+        ),
+    geometry: material_geometry(
+        displacement: c
+        )
+    );

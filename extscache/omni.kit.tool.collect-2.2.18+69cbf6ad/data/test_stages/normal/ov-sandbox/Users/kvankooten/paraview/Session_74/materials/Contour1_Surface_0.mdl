@@ -1,0 +1,41 @@
+
+mdl 1.4;
+
+import ::df::*;
+import ::base::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+import ::tex::*;
+import OmniPBR_Opacity::OmniPBR_Opacity;
+
+
+export material Contour1_Surface_0(*) = OmniPBR_Opacity::OmniPBR_Opacity(
+  diffuse_color_constant: color( 1.0000000f, 1.0000000f, 1.0000000f),
+  diffuse_texture: texture_2d("../textures/Contour1_Surface_1.bmp", ::tex::gamma_default),
+  emissive_color: color( 1.0000000f, 1.0000000f, 1.0000000f),
+  emissive_intensity: 0,
+  enable_emission: false,
+  opacity_constant: 1,
+  opacity_texture: texture_2d(),
+  enable_opacity_texture: false,
+  reflection_roughness_constant : 0.3,
+  reflectionroughness_texture : texture_2d(),
+  reflection_roughness_texture_influence : 0.f,
+  metallic_constant : 0,
+  metallic_texture : texture_2d(),
+  metallic_texture_influence : 0.f,
+  albedo_add: 0.f,
+  albedo_brightness: 1.f,
+  ao_texture : texture_2d(),
+  ao_to_diffuse : 0.f,
+  specular_level : 0.5f,
+  normalmap_texture : texture_2d(),
+  bump_factor : 1.f,
+  project_uvw : false,
+  world_or_object : false,
+  uv_space_index : 0,
+  texture_translate : float2(0.f),
+  texture_rotate : 0.f,
+  texture_scale : float2(1.f)
+);

@@ -1,0 +1,86 @@
+{
+    "version": 1,
+    "apiVersion": "1.1",
+    "name": "Magic Leap Controller",
+    "interactionProfile": "/interaction_profiles/ml/ml2_controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceType": "controller"
+                },
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "menu",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "home",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "click",
+                        "value"
+                    ]
+                },
+                {
+                    "input": "trackpad",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "force",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "shoulder",
+                    "gestures": [
+                        "click"
+                    ]
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "grip_surface"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "grip"
+        }
+    ]
+}

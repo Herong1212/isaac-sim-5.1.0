@@ -1,0 +1,275 @@
+#usda 1.0
+(
+    """ This file contains a schema for omniverse skeleton.
+    """
+    subLayers = [
+        @usdGeom/schema.usda@,
+        @usdSkel/schema.usda@,
+    ]
+)
+
+over "GLOBAL" (
+	customData = {
+	string libraryName = "omniSkelSchema"
+	string libraryPath = "./"
+	string libraryPrefix = "OmniSkelSchema"
+	}
+)
+{
+}
+
+class OmniSkelBaseType "OmniSkelBaseType"
+(
+    doc = """based class of omniskeltype"""
+    inherits = </Typed>
+)
+{
+
+}
+
+class "OmniSkelBaseAPI"
+(
+    doc = """based class of omniskelschemaAPI"""
+    inherits = </APISchemaBase>
+)
+{
+
+}
+
+class "OmniSkeletonAPI"
+(
+    doc = """omniverse skeleton API"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI"]
+    customData = {
+        token apiSchemaType = "singleApply"
+    }
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdSkel/skeleton.h"
+"""
+    }
+)
+{
+    uniform token upAxis(
+        allowedTokens = ["X", "Y", "Z", "MINUS X", "MINUS Y", "MINUS Z"]
+        customData = {
+            string apiName = "upAxis"
+        }
+        doc = """Skeleton's rigging upAxis."""
+        displayName = "Up Axis"
+    )
+
+    uniform token forwardAxis(
+        allowedTokens = ["X", "Y", "Z", "MINUS X", "MINUS Y", "MINUS Z"]
+        customData = {
+            string apiName = "forwardAxis"
+        }
+        doc = """Skeleton's rigging forwardAxis."""
+        displayName = "Forward Axis"
+    )   
+}
+
+class OmniJoint "OmniJoint"
+(
+    doc = """omniverse skelton joint"""
+    inherits = </Xform>
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdSkel/skeleton.h"
+"""
+    }
+)
+{
+    uniform float3 bindTranslation = (0.0, 0.0, 0.0) (
+        doc = """Translation of the joint's bindTransform in local space."""
+        displayName = "Bind Translation"
+    )
+    uniform float3 bindRotation = (0.0, 0.0, 0.0) (
+        doc = """Euler rotation of the joint's bindTransform in local space, XYZ order."""
+        displayName = "Bind Rotation"
+    )
+    uniform float3 bindScale = (1.0, 1.0, 1.0) (
+        doc = """Scale of the joint's bindTransform in local space."""
+        displayName = "Bind Scale"
+    )
+
+    uniform token retargetTag(
+        doc = """Tag name of this joint, used for retargeting."""
+        displayName = "Retarget Tag"
+    )
+
+    uniform float3 retargetTranslation = (0.0, 0.0, 0.0) (
+        doc = """Translation of the joint's retargetTransform in local space."""
+        displayName = "Retarget Translation"
+    )
+    uniform float3 retargetRotation = (0.0, 0.0, 0.0) (
+        doc = """Euler rotation of the joint's retargetTransform in local space, XYZ order."""
+        displayName = "Retarget Rotation"
+    )
+    uniform float3 retargetScale = (1.0, 1.0, 1.0) (
+        doc = """Scale of the joint's retargetTransform in local space."""
+        displayName = "Retarget Scale"
+    )
+
+    uniform float3 restTranslation = (0.0, 0.0, 0.0) (
+        doc = """Translation of the joint's restTransform in local space."""
+        displayName = "Rest Translation"
+    )
+    uniform float3 restRotation = (0.0, 0.0, 0.0) (
+        doc = """Euler rotation of the joint's restTransform in local space, XYZ order."""
+        displayName = "Rest Rotation"
+    )
+    uniform float3 restScale = (1.0, 1.0, 1.0) (
+        doc = """Scale of the joint's restTransform in local space."""
+        displayName = "Rest Scale"
+    )
+}
+
+class "OmniJointLimitsAPI"
+(
+    doc = """omniverse skeleton joint limits"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI"]
+)
+{
+    uniform float swingHorizontalAngle = 0.0 (
+        doc = """swing horizontal angle in degree."""
+        displayName = "Swing Horizontal Angle"
+    )
+
+    uniform float swingVerticalAngle = 0.0 (
+        doc = """swing swingHorizontalAngle angle in degree."""
+        displayName = "Swing Vertical Angle"
+    )
+
+    uniform float twistMinimumAngle = 0.0 (
+        doc = """minimum twist angle in degree."""
+        displayName = "Twist Mininum Angle"
+    )
+
+    uniform float twistMaximumAngle = 0.0 (
+        doc = """maximum twist angle in degree."""
+        displayName = "Twist Maximum Angle"
+    )
+
+    uniform double3 offsetRotation = (0, 0, 0) (
+        doc = """rotation represented with EulerXYZ in local space"""
+        displayName = "Offset Rotation"
+    )
+
+    uniform bool enabled = true (
+        doc = """joint limits enabled or not"""
+        displayName = "Enabled"
+    )
+}
+
+class "OmniJointShapeAPI" (
+    doc = """base class of different kinds of omniverse skeleton joint shapes"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI"]
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdGeom/gprim.h"
+"""
+    }
+)
+{
+    uniform double3 xformOp:translate = (0, 0, 0) (
+        doc = """ranslation in local space."""
+    )
+    uniform double3 xformOp:rotateXYZ = (0, 0, 0) (
+        doc = """rotation represented with EulerXYZ in local space"""
+    )
+    uniform double3 xformOp:scale = (1, 1, 1) (
+        doc = """scale in local space."""
+    )
+    
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"] (
+        doc = """Xform Order."""
+    )
+}
+
+
+class "OmniJointBoxShapeAPI"
+(
+    doc = """omniverse skeleton joint box shape"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI", "OmniJointShapeAPI"]
+    customData = {
+        token apiSchemaType = "singleApply"
+    }
+
+    customData = {
+        string extraIncludes = """
+#include "./omniJointShapeAPI.h"
+#include "pxr/usd/usdGeom/cube.h"
+#include "pxr/usd/usdGeom/xformCache.h"
+"""
+    }
+)
+{
+
+}
+
+class "OmniJointSphereShapeAPI"
+(
+    doc = """omniverse skeleton joint sphere shape"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI", "OmniJointShapeAPI"]
+    customData = {
+        token apiSchemaType = "singleApply"
+    }
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdGeom/sphere.h"
+#include "pxr/usd/usdGeom/xformCache.h"
+"""
+    }
+)
+{
+}
+
+class "OmniJointCapsuleShapeAPI"
+(
+    doc = """omniverse skeleton joint capsule shape"""
+    inherits = </APISchemaBase>
+    prepend apiSchemas = ["OmniSkelBaseAPI", "OmniJointShapeAPI"]
+    customData = {
+        token apiSchemaType = "singleApply"
+    }
+
+    customData = {
+        string extraIncludes = """
+#include "pxr/usd/usdGeom/capsule.h"
+#include "pxr/usd/usdGeom/xformCache.h"
+"""
+    }
+)
+{
+
+}
+
+class "OmniSkelWeightedBlendAPI"
+(
+    doc = """Provides API for authoring and extracting blend weights for a weighted blend skinning implementation of skeletal deformation."""
+    inherits = </APISchemaBase>
+    customData = {
+        token apiSchemaType = "singleApply"
+    }
+)
+{
+    uniform float[] primvars:omni:skel:skinningBlendWeights (
+        customData = {
+            string apiName = "skinningBlendWeights"
+        }
+        doc = """Weights for weighted blend skinning method used when OmniWeightedBlendAPI is applied to a prim
+        The primvar can have either *constant* or *vertex* interpolation.
+        Constant interpolation means every vertex shares the same blend weight.
+        Vertex interpolation means every vertex has their own blend weight, and the element size should match the vertex count."""
+    )
+}

@@ -1,0 +1,10 @@
+#usda 1.0
+
+over "World" (
+    prepend references = [
+        @assets/Cone.usda@,
+    ]
+)
+{
+}
+

@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.anim.navigation.ui-107.3.6%2B107.3.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229672.69cbf6ad.gl"
+        date = 1759765446
+        buildNumber = "107.3.3+release.12808.8364d14a.gl"
+        repoName = "animation-tools"
+        signed = 1

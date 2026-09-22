@@ -1,0 +1,284 @@
+{
+    "MatrixMultiply": {
+        "version": 1,
+        "description": [
+           "Computes the matrix product of the inputs. Inputs must be compatible. ",
+           "Also accepts tuples (treated as vectors) as inputs. Tuples in input 'A' will be treated as row vectors. ",
+           "Tuples in input 'B' will be treated as column vectors. ",
+           "Arrays of inputs will be computed element-wise with broadcasting if necessary. "
+        ],
+        "uiName": "Matrix Multiply",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["matrices", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]",
+                    "decimal_tuples", "double[2][]", "double[3][]", "double[4][]",
+                    "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]"],
+                "description": "First matrix or row vector to multiply as A*B",
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["matrices", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]",
+                    "decimal_tuples", "double[2][]", "double[3][]", "double[4][]",
+                    "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]"],
+                "description": "Second matrix or column vector to multiply as A*B",
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "output": {
+                "type": ["matrices", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]",
+                    "decimal_tuples", "double[2][]", "double[3][]", "double[4][]",
+                    "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]",
+                    "float", "double", "half", "float[]", "double[]", "half[]"],
+                "description": "Product of the two matrices/vectors A*B",
+                "uiName": "Product"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "inputs:b": {"type": "matrixd[2]", "value": [5,6, 7,8]},
+                "outputs:output": {"type": "matrixd[2]", "value": [19,22, 43,50]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "inputs:b": {"type": "matrixd[3]", "value": [10,11,12, 13,14,15, 16,17,18]},
+                "outputs:output": {"type": "matrixd[3]", "value": [84,90,96, 201,216,231, 318,342,366]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]},
+                "inputs:b": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "outputs:output": {"type": "matrixd[4]", "value": [1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "inputs:b": {"type": "double[2]", "value": [5, 6]},
+                "outputs:output": {"type": "double[2]", "value": [17, 39]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [5, 6]},
+                "inputs:b": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "outputs:output": {"type": "double[2]", "value": [23, 34]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "inputs:b": {"type": "double[3]", "value": [5, 6, 7]},
+                "outputs:output": {"type": "double[3]", "value": [38, 92, 146]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [5, 6, 7]},
+                "inputs:b": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "outputs:output": {"type": "double[3]", "value": [78, 96, 114]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "inputs:b": {"type": "double[4]", "value": [1,2,3,4]},
+                "outputs:output": {"type": "double[4]", "value": [1,2,3,4]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1,2,3,4]},
+                "inputs:b": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "outputs:output": {"type": "double[4]", "value": [1,2,3,4]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [1,2]},
+                "inputs:b": {"type": "double[2]", "value": [1,2]},
+                "outputs:output": {"type": "double", "value": 5.0}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "double[3]", "value": [1,2,3]},
+                "outputs:output": {"type": "double", "value": 14.0}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1,2,3,4]},
+                "inputs:b": {"type": "double[4]", "value": [1,2,3,4]},
+                "outputs:output": {"type": "double", "value": 30}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "inputs:b": {"type": "matrixd[2]", "value": [5,6, 7,8]},
+                "outputs:output": {"type": "matrixd[2][]", "value": [[19,22, 43,50]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "inputs:b": {"type": "matrixd[3]", "value": [10,11,12, 13,14,15, 16,17,18]},
+                "outputs:output": {"type": "matrixd[3][]", "value": [[84,90,96, 201,216,231, 318,342,366]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [[1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]]},
+                "inputs:b": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "outputs:output": {"type": "matrixd[4][]", "value": [[1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "inputs:b": {"type": "double[2]", "value": [5, 6]},
+                "outputs:output": {"type": "double[2][]", "value": [[17, 39]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[5, 6]]},
+                "inputs:b": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "outputs:output": {"type": "double[2][]", "value": [[23, 34]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "inputs:b": {"type": "double[3]", "value": [5, 6, 7]},
+                "outputs:output": {"type": "double[3][]", "value": [[38, 92, 146]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [ [5, 6, 7]]},
+                "inputs:b": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "outputs:output": {"type": "double[3][]", "value": [[78, 96, 114]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "inputs:b": {"type": "double[4]", "value": [1,2,3,4]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1,2,3,4], [1,2,3,4]]},
+                "inputs:b": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4], [1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[1,2]]},
+                "inputs:b": {"type": "double[2]", "value": [1,2]},
+                "outputs:output": {"type": "double[]", "value": [5.0]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[1,2,3]]},
+                "inputs:b": {"type": "double[3]", "value": [1,2,3]},
+                "outputs:output": {"type": "double[]", "value": [14.0]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "inputs:b": {"type": "double[4]", "value": [1,2,3,4]},
+                "outputs:output": {"type": "double[]", "value": [30]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[5,6, 7,8]]},
+                "outputs:output": {"type": "matrixd[2][]", "value": [[19,22, 43,50]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [[10,11,12, 13,14,15, 16,17,18]]},
+                "outputs:output": {"type": "matrixd[3][]", "value": [[84,90,96, 201,216,231, 318,342,366]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "outputs:output": {"type": "matrixd[4][]", "value": [[1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1,2, 3,4]},
+                "inputs:b": {"type": "double[2][]", "value": [[5, 6]]},
+                "outputs:output": {"type": "double[2][]", "value": [[17, 39]]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [5, 6]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "outputs:output": {"type": "double[2][]", "value": [[23, 34]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1,2,3, 4,5,6, 7,8,9]},
+                "inputs:b": {"type": "double[3][]", "value": [[5, 6, 7]]},
+                "outputs:output": {"type": "double[3][]", "value": [[38, 92, 146]]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [5, 6, 7]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "outputs:output": {"type": "double[3][]", "value": [[78, 96, 114]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
+                "inputs:b": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1,2,3,4]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1], [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4], [1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [1,2]},
+                "inputs:b": {"type": "double[2][]", "value": [[1,2]]},
+                "outputs:output": {"type": "double[]", "value": [5.0]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [1,2,3]},
+                "inputs:b": {"type": "double[3][]", "value": [[1,2,3]]},
+                "outputs:output": {"type": "double[]", "value": [14.0]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1,2,3,4]},
+                "inputs:b": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "outputs:output": {"type": "double[]", "value": [30]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[5,6, 7,8]]},
+                "outputs:output": {"type": "matrixd[2][]", "value": [[19,22, 43,50]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [[10,11,12, 13,14,15, 16,17,18]]},
+                "outputs:output": {"type": "matrixd[3][]", "value": [[84,90,96, 201,216,231, 318,342,366]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [[1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "outputs:output": {"type": "matrixd[4][]", "value": [[1,2,3,4, 1,2,3,4, 1,2,3,4, 1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "inputs:b": {"type": "double[2][]", "value": [[5, 6]]},
+                "outputs:output": {"type": "double[2][]", "value": [[17, 39]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[5, 6]]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[1,2, 3,4]]},
+                "outputs:output": {"type": "double[2][]", "value": [[23, 34]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "inputs:b": {"type": "double[3][]", "value": [[5, 6, 7]]},
+                "outputs:output": {"type": "double[3][]", "value": [[38, 92, 146]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[5, 6, 7]]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [[1,2,3, 4,5,6, 7,8,9]]},
+                "outputs:output": {"type": "double[3][]", "value": [[78, 96, 114]]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "inputs:b": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1,2,3,4], [1,2,3,4]]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1], [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]]},
+                "outputs:output": {"type": "double[4][]", "value": [[1,2,3,4], [1,2,3,4]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[1,2]]},
+                "inputs:b": {"type": "double[2][]", "value": [[1,2]]},
+                "outputs:output": {"type": "double[]", "value": [5.0]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[1,2,3]]},
+                "inputs:b": {"type": "double[3][]", "value": [[1,2,3]]},
+                "outputs:output": {"type": "double[]", "value": [14.0]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "inputs:b": {"type": "double[4][]", "value": [[1,2,3,4]]},
+                "outputs:output": {"type": "double[]", "value": [30]}
+            }
+        ]
+    }
+}

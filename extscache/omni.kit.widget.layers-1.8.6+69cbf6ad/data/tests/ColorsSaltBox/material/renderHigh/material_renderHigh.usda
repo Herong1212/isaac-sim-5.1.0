@@ -1,0 +1,63 @@
+#usda 1.0
+(
+    defaultPrim = "SaltBox"
+)
+
+def "SaltBox"
+{
+    def Scope "Looks"
+    {
+        uniform token purpose = "render"
+
+        def Material "SaltBox_Paper1"
+        {
+            token outputs:mdl:surface.connect = </SaltBox/Looks/SaltBox_Paper1/Shader.outputs:out>
+
+
+            def Shader "Shader" (
+                kind = "Material"
+            )
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+          
+                float inputs:albedo_brightness = 0.32999998 (
+                    customData = {
+                        float default = 1
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Brightness"
+                    doc = "Multiplier for the diffuse color "
+                    hidden = false
+                )
+                color3f inputs:diffuse_color_constant = (0, 0, 1)
+    
+                bool inputs:enable_opacity = 1 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "Opacity"
+                    displayName = "Enable Opacity"
+                    doc = "Enables the use of cutout opacity"
+                    hidden = false
+                )
+                bool inputs:excludeFromWhiteMode = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "Material Flags"
+                    displayName = "Exclude from White Mode"
+                    hidden = false
+                )
+
+                token outputs:out
+            }
+        }
+    }
+}
+

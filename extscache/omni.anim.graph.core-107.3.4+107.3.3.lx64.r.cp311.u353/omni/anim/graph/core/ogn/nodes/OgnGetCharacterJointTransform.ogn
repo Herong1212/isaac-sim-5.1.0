@@ -1,0 +1,30 @@
+{
+    "omni.anim.graph.GetCharacterJointTransform": {
+        "version": 1,
+        "description": ["Get the joint transform in world space from the Animation Graph on the specified UsdSkelRoot prim."],
+        "uiName": "Get Animation Graph Joint Transform",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+            "skelRootPath": {
+                "uiName": "Skel Root Path",
+                "type": "token",
+                "description": "The prim path of a UsdSkelRoot to which has the AnimationGraph applied and assigned to it."
+            },
+            "joint": {
+                "uiName": "Joint",
+                "type": "token",
+                "description": "The joint name to query."
+            }
+        },
+        "outputs": {
+            "transform": {
+                "uiName": "Transform",
+                "description": [
+                "Joint transform in the world space."
+                ],
+                "type": "matrixd[4]",
+                "default": [[1.0,0.0,0.0,0.0], [0.0,1.0,0.0,0.0], [0.0,0.0,1.0,0.0], [0.0,0.0,0.0,1.0]]
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/isaacsim.replicator.caption.core-0.0.32%2B107.3.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.225012.f3364ed0.gl"
+        date = 1757099576
+        buildNumber = "0.1.3+510.12176.48c9898f.gl"
+        repoName = "isaacsim.action_and_event_data_generation"

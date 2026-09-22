@@ -1,0 +1,19 @@
+{
+    "omni.graph.action.ExitApplication": {
+        "version": 1,
+        "description": [
+            "Immediately exits the application. Uses a fast shutdown to avoid any cleanup that would",
+            "otherwise be triggered."
+        ],
+        "uiName": "Exit Application",
+        "language": "python",
+        "categories": ["graph:action","flowControl"],
+        "exclude": ["tests"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed, exiting the application."
+            }
+        }
+    }
+}

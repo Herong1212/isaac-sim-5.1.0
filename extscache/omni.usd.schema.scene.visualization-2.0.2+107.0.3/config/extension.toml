@@ -1,0 +1,37 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+version = "2.0.2"
+category = "Visualization"
+authors = ["NVIDIA"]
+title = "USD Scene Visualization Schema"
+description = "USD schema for scene visualization"
+repository = ""
+keywords = ["visualization", "debugdraw"]
+toggleable = false
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[package.writeTarget]
+kit = true
+
+[dependencies]
+"omni.usd.libs" = {}
+
+[[python.module]]
+name = "usd.schema.scene.visualization"
+
+[[test]]
+args = [
+    "--no-window"
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.usd"
+]

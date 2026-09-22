@@ -1,0 +1,119 @@
+#usda 1.0
+(
+    defaultPrim = "VibrationTableTop"
+    metersPerUnit = 0.01
+    upAxis = "Z"
+)
+
+def Xform "VibrationTableTop" (
+    kind = "component"
+)
+{
+    def Scope "Looks"
+    {
+        def Material "lambert1MDL"
+        {
+            def Shader "Shader" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "bolts"
+        {
+            def Shader "bolts" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "rubber"
+        {
+            def Shader "rubber" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "weld"
+        {
+            def Shader "weld" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "nameplate_metal"
+        {
+            def Shader "nameplate_metal" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "vibration_table_top"
+        {
+            def Shader "vibration_table_top" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "vibrationtable_walls"
+        {
+            def Shader "vibrationtable_walls" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+
+        def Material "Rubber_Smooth"
+        {
+            def Shader "Shader"
+            {
+            }
+        }
+    }
+
+    def Mesh "vibration_table_top" (
+    )
+    {
+    }
+
+    def "logo_plate" (
+        instanceable = false
+        prepend references = @./logo_plate.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "polySurface88"
+        {
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        over "Looks"
+        {
+            over "nameplate_metal"
+            {
+                over "nameplate_metal"
+                {
+                }
+            }
+        }
+    }
+}
+

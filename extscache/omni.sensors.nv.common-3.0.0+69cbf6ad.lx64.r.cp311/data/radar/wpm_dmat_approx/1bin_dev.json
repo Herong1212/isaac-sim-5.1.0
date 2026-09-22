@@ -1,0 +1,103 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Example 1 bin",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+    "WaveLengthMm": 3.9,
+    "TraceTreeDepth": 5,
+    "FrameDurationNs": 40000000,
+    "InstanceTimeOffsetUsec": 5000,
+    "CfarMode": "2D",
+    "AntennaGainMode": "CONSTANT",
+    "ConfigReloadIntervalFrames": 0,
+    "CfarVisParams": [
+      {
+        "offset": 1.0,
+        "scale": [
+          1.0,
+          1.0,
+          100000000000000.0
+        ],
+        "P_user": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Q_user": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "ScanCfgs": [
+        {
+            "RaysPerDeg": 10,
+            "TimeOffsetUsec": 0,
+            "PowerFactor": 1.0,
+            "BinsFromSpec": false,
+            "EnAngAliasing": true,
+            "DetValFromBinIdx": false,
+            "ElevMode": "NO_EL",
+            "MaxRangeM": 260,
+            "MaxAzAngDeg": 3,
+            "MaxElAngDeg": 3,
+            "RangeResM": 0.2,
+            "VelResMps": 0.1194,
+            "BoreAzResDeg": 3.2,
+            "BoreElResDeg": 10,
+            "RBins": 1,
+            "VBins": 1,
+            "AzBins": 1,
+            "ElBins": 1,
+            "CfarRnT": 1,
+            "CfarRnG": 0,
+            "CfarVnT": 1,
+            "CfarVnG": 0,
+            "CfarAznT": 1,
+            "CfarAznG": 0,
+            "CfarElnT": 1,
+            "CfarElnG": 0,
+            "CfarMinVal": 0,
+            "CfarOffset": 1.0,
+            "CfarNoiseMean": 0,
+            "CfarNoiseSDev": 0,
+            "MaxVelMpsSequence": [
+                16.33,
+                14.625,
+                15.26,
+                16.035,
+                14.515,
+                15.43,
+                16.115,
+                14.69,
+                15.5,
+                16.22,
+                14.555,
+                15.215,
+                16.115,
+                14.69,
+                15.355,
+                16.25,
+                14.755,
+                15.455
+            ],
+            "__comment": "0: detections with RCS in dBsm lower than this threshold will be removed; 1: multiplied with RCS before conversion to dBsm. Set to 1 if no change is needed; 2: standard deviation of rcs noise in dBsm. Set to 0 if no noise is needed.",
+            "RcsTuningCoefficients": [
+                -300,
+                1.0,
+                0
+            ],
+
+            "AzimuthRadNoiseMean": 0.0,
+            "AzimuthRadNoiseSDev": 0.0,
+            "RangeNoiseMean": 0.0,
+            "RangeNoiseSDev": 0,
+            "exponentialDecayFactor": 1.0
+        }
+    ]
+  }
+}

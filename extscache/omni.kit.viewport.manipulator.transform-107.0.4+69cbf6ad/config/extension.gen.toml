@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.viewport.manipulator.transform-017a04fab3311295.zip"
+
+    [package.publish]
+        kitVersion = "107.4.0+master.198049.100345e5.gl"
+        date = 1757755123
+        buildNumber = "107.4.0+master.198049.100345e5.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

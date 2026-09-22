@@ -1,0 +1,101 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnRaycast.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_Raycast" (
+        docs="""Perform intersection tests against a bundle of obstacle prims. The intersection test can be a raycast or a sweep operation,  and the source of the test can be a prim from a bundle or a point and direction. If 'Source Type' is 'Point and Direction' and 'Query Type' is 'Raycast', then a ray is created from the input point and direction  and cast against the meshes in the obstacles bundle.  If 'Source Type' is 'Point and Direction' and 'Query Type' is 'Sweep', then a sphere with 'radius' is swept out from the input point and direction  If 'Source Type' is 'Bundle Prim' and 'Query Type' is 'Raycast', then for each prim in the input bundle a ray is generated from the origin and z-axis  of the prim transformed into world space.  If 'Source Type' is 'Bundle Prim' and 'Query Type' is 'Sweep', then for each mesh prim in the input bundle a bounding sphere is fit to the prim's  points and that sphere is used for the sweep. """
+    )
+    {
+        token node:type = "omni.genproc.core.Raycast"
+        int node:typeVersion = 1
+
+        # 10 attributes
+        custom bool inputs:closestHitOnly = true (
+            docs="""If true, only the closest hit will be reported. Otherwise multiple ray intersections may be returned. 
+            (Note that this value only matters for raycast queries. Sweep queries will never return more than one hit.)"""
+        )
+        custom float3 inputs:direction = (0, 0, 1) (
+            docs="""Direction of raycast. 
+            When 'Point and Direction' is specified as the source type, this direction is used in world space. 
+            When 'Bundle Prim' is the source type, this direction is considered to be in the prim's local space 
+            (in other words, the prim's transform is applied to this direction before the raycast)."""
+        )
+        custom rel inputs:obstacleBundle (
+            docs="""Bundle containing intersection geometry for raycasting / sweeping"""
+        )
+        custom float3 inputs:point = (0, 0, 0) (
+            docs="""Origin of raycast (when 'Point and Direction' is specified as the source type)"""
+        )
+        custom rel inputs:primBundle (
+            docs="""Bundle containing prim data for use in raycast / sweep (when 'Bundle Prim' is specified as the source type)"""
+        )
+        custom int inputs:queryType = 0 (
+            docs="""0 = raycast, 1 = sweep"""
+        )
+        custom float inputs:radius = 1.0 (
+            docs="""Radius of sphere used in sweep query (when 'Point and Direction' is specified as the source type)"""
+        )
+        custom float inputs:range = 0.0 (
+            docs="""If positive, this value specifies the maximum distance considered for intersection tests. 
+            otherwise 'infinite' distance is used for intersection tests."""
+        )
+        custom int inputs:sourceType = 0 (
+            docs="""0 = bundle prim, 1 = point and direction"""
+        )
+        custom bool inputs:verbose = false (
+            docs="""Print intersection information."""
+        )
+
+        # 5 attributes
+        custom float[] outputs:distances (
+            docs="""Distances to intersection points"""
+        )
+        custom int[] outputs:faceIndices (
+            docs="""Face indices of intersection points"""
+        )
+        custom float3[] outputs:normals (
+            docs="""Surface normals of intersection points"""
+        )
+        custom token[] outputs:paths (
+            docs="""Paths to prims hit by raycast / sweep"""
+        )
+        custom float3[] outputs:points (
+            docs="""One or more (in the case of raycasting from multiple source prims or with closestHitOnly enabled) intersection points."""
+        )
+
+        # 8 attributes
+        custom bool state:prevClosestHitOnly (
+            docs="""Previous closestHitOnly value for recompute test"""
+        )
+        custom float3 state:prevDirection (
+            docs="""Previous direction value for recompute test"""
+        )
+        custom float3 state:prevPoint (
+            docs="""Previous point value for recompute test"""
+        )
+        custom int state:prevQueryType (
+            docs="""Previous queryType value for recompute test"""
+        )
+        custom float state:prevRadius (
+            docs="""Previous radius value for recompute test"""
+        )
+        custom float state:prevRange (
+            docs="""Previous range value for recompute test"""
+        )
+        custom int state:prevSourceType (
+            docs="""Previous sourceType value for recompute test"""
+        )
+        custom bool state:prevVerbose (
+            docs="""Previous verbose value for recompute test"""
+        )
+    }
+}

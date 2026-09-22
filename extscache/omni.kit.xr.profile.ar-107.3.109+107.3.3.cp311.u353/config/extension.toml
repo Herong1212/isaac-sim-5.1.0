@@ -1,0 +1,54 @@
+[package]
+version = "107.3.109"
+title = "AR Experience [ALPHA]"
+description="Setup XR to stream to an augmented reality display over OpenXR"
+readme  = "docs/README.md"
+category = "XR"
+keywords = ["XR", "AR", "Augmented Reality", "OpenXR", "HMD", "Opt out of nSpect"]
+changelog="docs/CHANGELOG.md"
+
+authors = ["NVIDIA"]
+icon = "data/icon/iconxr.png"
+preview_image = "data/icon/preview.png"
+repository = ""
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.commands" = {}
+"omni.kit.xr.profile.common" = { version = "=107.3.109" }
+"omni.kit.xr.ui.stage" = { version = "=107.3.109" }
+"omni.kit.xr.system.openxr" = { version = "=107.3.109" }
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+[[python.module]]
+name = "omni.kit.xr.profile.ar"
+
+[settings]
+xr.profile.ar.displayName = "AR"
+xr.profile.ar.enableRecording = true
+xr.profile.ar.cloudxr.mode = "vr"
+xr.profile.ar.system.displayMode = "HmdAR"
+defaults.xr.profile.ar.controllers.visible = false
+
+defaults.xr.profile.ar.system.display = "OpenXR"
+
+defaults.xr.profile.ar.renderer.disablePostprocessing = true
+defaults.xr.profile.ar.renderQuality = "balanced"
+
+defaults.xr.profile.ar.foveation.mode = "warped"
+defaults.xr.profile.ar.anchorMode = "custom anchor"
+defaults.xr.profile.ar.enableNavigationControls = false
+
+defaults.xr.profile.ar.gui.layers = []
+defaults.xr.profile.ar.tools.layout = ""
+
+[[test]]
+pythonTests.exclude = ["*test_extensions_api_md_is_uptodate"]
+
+[documentation]
+python_api_hidden = true

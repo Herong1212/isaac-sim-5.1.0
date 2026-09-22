@@ -1,0 +1,667 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            string enableDistanceDelay = "off"
+            string enableDoppler = "off"
+            string enableInterauralDelay = "off"
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-372.1866275511657, 238.93109887098183, 624.3257046464565)
+                double3 target = (292.5024597936551, 5.870231625773215, -44.78526096139126)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./mm_path_point.usda"
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:index:backgroundColor" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMax" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMin" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_position" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_reflectivity" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (3.4028235e38, 3.4028235e38, 3.4028235e38)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:lensFlares:spectralBlurWavelengthRange" = (380, 550, 770)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            bool "rtx:raytracing:fractionalCutoutOpacity" = 1
+            float3 "rtx:raytracing:indexdirect:svoBrickSize" = (32, 32, 32)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        custom uniform float3[] anim:graph:variable:PathPoints
+        delete rel inputs:pose = [
+            </World/AnimationGraph/stand_walk_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_wave_loop_skelanim>,
+            </World/AnimationGraph/Blend>,
+        ]
+        prepend rel inputs:pose = </World/AnimationGraph/MotionMatching>
+        rel skel:skeleton = </World/Character/Root>
+
+        def MotionMatching "MotionMatching"
+        {
+            prepend rel inputs:clips = [
+                </World/Animations/stand_walk_1_skelanim>,
+                </World/Animations/stand_walk_1_mirror_skelanim>,
+                </World/Animations/stand_walk_2_skelanim>,
+                </World/Animations/stand_walk_2_mirror_skelanim>,
+                </World/Animations/stand_walk_3_skelanim>,
+                </World/Animations/stand_walk_3_mirror_skelanim>,
+                </World/Animations/stand_walk_4_skelanim>,
+                </World/Animations/stand_walk_4_mirror_skelanim>,
+                </World/Animations/stand_walk_5_skelanim>,
+                </World/Animations/stand_walk_5_mirror_skelanim>,
+                </World/Animations/stand_walk_7_skelanim>,
+                </World/Animations/stand_walk_7_mirror_skelanim>,
+            ]
+            token[] inputs:joints = ["L_Ball", "R_Ball", "Pelvis"]
+            float[] inputs:jointsPositionWeights = [0.75, 0.75, 0]
+            prepend rel inputs:pathPoints = </World/AnimationGraph/PathPoints>
+            custom uniform float2 ui:position = (-269.65387, 5.830662)
+        }
+
+        def ReadVariable "PathPoints"
+        {
+            token inputs:variableName = "PathPoints"
+            custom uniform float2 ui:position = (-561.08496, 24.885159)
+        }
+    }
+
+    def OmniGraph "ActionGraph"
+    {
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageOnDemand"
+
+        def ComputeGraphSettings "computegraphSettings" (
+            active = false
+        )
+        {
+            custom token evaluator:type = "execution"
+            custom int2 fileFormatVersion = (1, 3)
+            custom token flatCacheBacking = "Shared"
+            custom token pipelineStage = "pipelineStageOnDemand"
+        }
+
+        def OmniGraphNode "write_animation_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_tick_01.outputs:tick>
+            custom rel inputs:graph = </World/AnimationGraph> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            custom token inputs:skelRootPath = ""
+            prepend token inputs:skelRootPath.connect = </World/ActionGraph/graph_target.outputs:primPath>
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = [
+                </World/ActionGraph/make_array.outputs:array>,
+                </World/ActionGraph/make_array_01.outputs:array>,
+            ]
+            custom token inputs:variableName = "PathPoints"
+            token node:type = "omni.anim.graph.WriteAnimationGraphVariable"
+            int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (964.66, 82.56509)
+        }
+
+        def OmniGraphNode "graph_target" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:targetPath = "/World/biped_demo"
+            token node:type = "omni.graph.nodes.GraphTarget"
+            int node:typeVersion = 1
+            custom token outputs:primPath
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (566, 173)
+        }
+
+        def OmniGraphNode "get_translation" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:matrix
+            prepend token inputs:matrix.connect = </World/ActionGraph/get_prim_local_to_world_transform.outputs:localToWorldTransform>
+            token node:type = "omni.graph.nodes.GetMatrix4Translation"
+            int node:typeVersion = 1
+            custom token outputs:translation
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (69.8606, 283.30356)
+        }
+
+        def OmniGraphNode "to_float" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:role (
+                allowedTokens = ["None", "Color", "Normal", "Point", "Quaternion", "TexCoord", "Vector"]
+            )
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/get_translation.outputs:translation>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (307.94388, 282.89343)
+        }
+
+        def OmniGraphNode "to_float_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:role (
+                allowedTokens = ["None", "Color", "Normal", "Point", "Quaternion", "TexCoord", "Vector"]
+            )
+            custom token inputs:value
+            prepend token inputs:value.connect = </World/ActionGraph/get_translation_01.outputs:translation>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (305.60593, 403.29715)
+        }
+
+        def OmniGraphNode "to_float_02" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:role (
+                allowedTokens = ["None", "Color", "Normal", "Point", "Quaternion", "TexCoord", "Vector"]
+            )
+            custom token inputs:value
+            prepend token inputs:value.connect = </World/ActionGraph/get_translation_02.outputs:translation>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (303.26804, 519.0254)
+        }
+
+        def OmniGraphNode "to_float_03" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:role (
+                allowedTokens = ["None", "Color", "Normal", "Point", "Quaternion", "TexCoord", "Vector"]
+            )
+            custom token inputs:value
+            prepend token inputs:value.connect = </World/ActionGraph/get_translation_03.outputs:translation>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (302.09897, 639.42914)
+        }
+
+        def OmniGraphNode "get_prim_local_to_world_transform" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:prim = None (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            custom token inputs:primPath = "/World/PathPoints/PathPoint01"
+            custom bool inputs:usePath = 1
+            token node:type = "omni.graph.nodes.GetPrimLocalToWorldTransform"
+            int node:typeVersion = 2
+            custom matrix4d outputs:localToWorldTransform
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-271.86404, 252.50026)
+        }
+
+        def OmniGraphNode "get_prim_local_to_world_transform_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:prim = None (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            custom token inputs:primPath = "/World/PathPoints/PathPoint02"
+            custom bool inputs:usePath = 1
+            token node:type = "omni.graph.nodes.GetPrimLocalToWorldTransform"
+            int node:typeVersion = 2
+            custom matrix4d outputs:localToWorldTransform
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-273.03302, 420.8315)
+        }
+
+        def OmniGraphNode "get_prim_local_to_world_transform_02" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:prim = None (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            custom token inputs:primPath = "/World/PathPoints/PathPoint03"
+            custom bool inputs:usePath = 1
+            token node:type = "omni.graph.nodes.GetPrimLocalToWorldTransform"
+            int node:typeVersion = 2
+            custom matrix4d outputs:localToWorldTransform
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-277.37042, 582.686)
+        }
+
+        def OmniGraphNode "get_prim_local_to_world_transform_03" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:prim = None (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            custom token inputs:primPath = "/World/PathPoints/PathPoint04"
+            custom bool inputs:usePath = 1
+            token node:type = "omni.graph.nodes.GetPrimLocalToWorldTransform"
+            int node:typeVersion = 2
+            custom matrix4d outputs:localToWorldTransform
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-280.62247, 742.4554)
+        }
+
+        def OmniGraphNode "get_translation_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:matrix = ""
+            prepend token inputs:matrix.connect = </World/ActionGraph/get_prim_local_to_world_transform_01.outputs:localToWorldTransform>
+            token node:type = "omni.graph.nodes.GetMatrix4Translation"
+            int node:typeVersion = 1
+            custom token outputs:translation
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (64.27033, 414.27405)
+        }
+
+        def OmniGraphNode "get_translation_02" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:matrix = ""
+            prepend token inputs:matrix.connect = </World/ActionGraph/get_prim_local_to_world_transform_02.outputs:localToWorldTransform>
+            token node:type = "omni.graph.nodes.GetMatrix4Translation"
+            int node:typeVersion = 1
+            custom token outputs:translation
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (62.30447, 549.92584)
+        }
+
+        def OmniGraphNode "get_translation_03" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:matrix
+            prepend token inputs:matrix.connect = </World/ActionGraph/get_prim_local_to_world_transform_03.outputs:localToWorldTransform>
+            token node:type = "omni.graph.nodes.GetMatrix4Translation"
+            int node:typeVersion = 1
+            custom token outputs:translation
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (56.406742, 689.509)
+        }
+
+        def OmniGraphNode "on_tick_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:framePeriod = 0
+            custom bool inputs:onlyPlayback = 1
+            token node:type = "omni.graph.action.OnTick"
+            int node:typeVersion = 2
+            custom double outputs:absoluteSimTime
+            custom double outputs:deltaSeconds = 0
+            custom double outputs:frame = 0
+            custom bool outputs:isPlaying = 0
+            custom uint outputs:tick = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time = 0
+            custom double outputs:timeSinceStart = 0
+            custom double state:accumulatedSeconds
+            custom uint state:frameCount
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-237.73334, -43.824482)
+        }
+
+        def OmniGraphNode "make_array_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom int inputs:arraySize = 5
+            custom token inputs:arrayType (
+                allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+            )
+            custom token inputs:input0
+            delete token inputs:input0.connect = </World/ActionGraph/to_float.outputs:converted>
+            prepend token inputs:input0.connect = </World/ActionGraph/to_float.outputs:converted>
+            custom token inputs:input1 (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        }
+                    }
+                }
+            )
+            prepend token inputs:input1.connect = </World/ActionGraph/to_float_01.outputs:converted>
+            custom token inputs:input2 (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        }
+                    }
+                }
+            )
+            prepend token inputs:input2.connect = </World/ActionGraph/to_float_02.outputs:converted>
+            custom token inputs:input3 (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        }
+                    }
+                }
+            )
+            prepend token inputs:input3.connect = </World/ActionGraph/to_float_03.outputs:converted>
+            custom token inputs:input4 (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            string resolvedType = "float[3]"
+                        }
+                    }
+                }
+            )
+            prepend token inputs:input4.connect = </World/ActionGraph/to_float.outputs:converted>
+            token node:type = "omni.graph.nodes.ConstructArray"
+            int node:typeVersion = 1
+            custom token outputs:array
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (653.2004, 347.624)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_walk_1_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_1.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_1_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_1_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_2_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_2.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_2_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_2_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_3_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_3.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_3_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_3_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_4_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_4.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_4_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_4_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_5_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_5.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_5_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_5_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_7_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_7.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_7_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_7_mirror.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def Scope "PathPoints"
+    {
+        def Mesh "PathPoint01"
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 0, 4, 5, 1, 1, 5, 6, 3, 2, 3, 6, 7, 0, 2, 7, 4, 4, 7, 6, 5]
+            normal3f[] normals = [(0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, -50), (50, -50, -50), (-50, -50, 50), (50, -50, 50), (-50, 50, -50), (50, 50, -50), (50, 50, 50), (-50, 50, 50)]
+            float2[] primvars:st = [(1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.1, 0.1, 0.1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Mesh "PathPoint02"
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 0, 4, 5, 1, 1, 5, 6, 3, 2, 3, 6, 7, 0, 2, 7, 4, 4, 7, 6, 5]
+            normal3f[] normals = [(0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, -50), (50, -50, -50), (-50, -50, 50), (50, -50, 50), (-50, 50, -50), (50, 50, -50), (50, 50, 50), (-50, 50, 50)]
+            float2[] primvars:st = [(1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.1, 0.1, 0.1)
+            double3 xformOp:translate = (0, 0, 200)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Mesh "PathPoint03"
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 0, 4, 5, 1, 1, 5, 6, 3, 2, 3, 6, 7, 0, 2, 7, 4, 4, 7, 6, 5]
+            normal3f[] normals = [(0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, -50), (50, -50, -50), (-50, -50, 50), (50, -50, 50), (-50, 50, -50), (50, 50, -50), (50, 50, 50), (-50, 50, 50)]
+            float2[] primvars:st = [(1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.1, 0.1, 0.1)
+            double3 xformOp:translate = (600, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Mesh "PathPoint04"
+        {
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 0, 4, 5, 1, 1, 5, 6, 3, 2, 3, 6, 7, 0, 2, 7, 4, 4, 7, 6, 5]
+            normal3f[] normals = [(0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, -50), (50, -50, -50), (-50, -50, 50), (50, -50, 50), (-50, 50, -50), (50, 50, -50), (50, 50, 50), (-50, 50, 50)]
+            float2[] primvars:st = [(1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.1, 0.1, 0.1)
+            double3 xformOp:translate = (300, 0, -300)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "Character" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo.usd@
+    )
+    {
+        custom float3[] anim:graph:variable:PathPoints
+        rel animationGraph = </World/AnimationGraph>
+        custom rel inputs:pose
+        rel omniGraphs = </World/ActionGraph>
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

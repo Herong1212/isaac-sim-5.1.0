@@ -1,0 +1,37 @@
+[package]
+title = "Omniverse Collaboration Telemetry"
+category = "Telemetry"
+version = "1.1.0"
+description = "Telemetry support for the 'omni.kit.collaboration.*' extensions."
+readme = "docs/Overview.md"
+changelog = "docs/CHANGELOG.md"
+repository = ""
+authors = ["NVIDIA"]
+keywords = ["telemetry", "structured logging", "collaboration"]
+support_level = "Sample"
+
+# publish to each platform separately.  This is to work around a bug in some of the extension
+# publishing tools where extensions without native plugins are only published once assuming
+# that all is python and all is good.  This forces the plugin to be packaged as-is for each
+# platform.
+writeTarget.platform = true
+
+# these settings ensure the extension is named and categorized properly when publishing.
+# These are necessary due to the above bug workaround since this extension only consists of
+# a python bindings module.
+writeTarget.config = true
+writeTarget.python = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+[[python.module]]
+name = "omni.kit.collaboration.telemetry"
+
+
+[[test]]
+pythonTests.unreliable = [
+]

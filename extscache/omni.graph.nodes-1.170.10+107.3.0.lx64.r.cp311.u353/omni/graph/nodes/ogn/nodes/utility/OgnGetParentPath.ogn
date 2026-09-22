@@ -1,0 +1,61 @@
+{
+    "GetParentPath": {
+        "version": 1,
+        "description": ["Generates a parent path token from another path token. (ex. /World/Cube -> /World)"],
+        "uiName": "Get Parent Path",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "path": {
+                "type": ["token", "token[]"],
+                "description": "One or more path tokens to compute a parent path from. (ex. /World/Cube)"
+            }
+        },
+        "outputs": {
+            "parentPath": {
+                "type": ["token", "token[]"],
+                "description": "Parent path token (ex. /World)"
+            }
+        },
+        "state": {
+            "path": {
+                "type": "token",
+                "description": "Snapshot of previously seen path"
+            }
+        },
+        "tests": [
+            {
+                "inputs:path": {"type": "token","value": ""},
+                "outputs:parentPath": {"type": "token","value": ""}
+            },
+            {
+                "inputs:path": {"type": "token","value": "/"},
+                "outputs:parentPath": {"type": "token","value": ""}
+            },
+            {
+                "inputs:path": {"type": "token","value": "/World"},
+                "outputs:parentPath": {"type": "token","value": "/"}
+            },
+            {
+                "inputs:path": {"type": "token","value": "/World/foo"},
+                "outputs:parentPath": {"type": "token","value": "/World"}
+            },
+            {
+                "inputs:path": {"type": "token","value": "/World/foo/bar"},
+                "outputs:parentPath": {"type": "token","value": "/World/foo"}
+            },
+            {
+                "inputs:path": {"type": "token","value": "/World/foo/bar.attrib"},
+                "outputs:parentPath": {"type": "token","value": "/World/foo/bar"}
+            },
+            {
+                "inputs:path": {"type": "token[]","value": [ "/World1/foo", "/World2/bar" ]},
+                "outputs:parentPath": {"type": "token[]","value": [ "/World1", "/World2" ]}
+            },
+            {
+                "inputs:path": {"type": "token[]","value": [ "", "/World2/bar" ]},
+                "outputs:parentPath": {"type": "token[]","value": [ "", "/World2" ]}
+            }
+        ]
+    }
+}

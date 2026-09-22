@@ -1,0 +1,33 @@
+{
+    "OgnSampleCombine": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node takes in any sample nodes' output or number as input, and output them.",
+        "metadata":
+        {
+           "uiName": "Sample Combine"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "numInputNodes": {
+                "description": ["Number of input sample nodes"],
+                "type": "int"
+            },
+            "numSamples": {
+                "description": ["number of samples to generate"],
+                "type": "int",
+                "default": 1
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["sampled results"],
+                "type": "any"
+            }
+        }
+    }
+}

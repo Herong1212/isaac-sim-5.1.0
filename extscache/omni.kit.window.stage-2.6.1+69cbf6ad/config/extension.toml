@@ -1,0 +1,42 @@
+[package]
+title = "Stage Window"
+description = "Omniverse Kit Stage Window"
+version = "2.6.1"
+category = "Tools"
+feature = true
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["stage", "outliner", "scene"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.widget.stage_icons" = {}
+"omni.kit.window.drop_support" = { optional = true }
+"omni.kit.menu.utils" = {}
+
+[[python.module]]
+name = "omni.kit.window.stage"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--reset-user",
+]
+
+dependencies = [
+    "omni.kit.context_menu",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test"
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

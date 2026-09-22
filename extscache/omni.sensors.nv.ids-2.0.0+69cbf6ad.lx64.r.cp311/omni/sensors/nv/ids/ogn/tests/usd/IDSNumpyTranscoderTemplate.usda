@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file IDSNumpyTranscoder.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_ids_IDSNumpyTranscoder" (
+        docs="""Receives Radar data and prepares a buffer for it from the buffer manager, and passes it to output"""
+    )
+    {
+        token node:type = "omni.sensors.nv.ids.IDSNumpyTranscoder"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom uint64 inputs:cudaStreamIn = 0 (
+            docs="""Cuda Stream Input"""
+        )
+        custom string inputs:fileName = "" (
+            docs="""File name in which data is going to be stored"""
+        )
+        custom uint64 inputs:in = 0 (
+            docs="""Source Buffer"""
+        )
+        custom uint64 inputs:metaDataIn = 0 (
+            docs="""Source Buffer"""
+        )
+    }
+}

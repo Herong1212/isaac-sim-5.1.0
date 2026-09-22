@@ -1,0 +1,60 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World" (
+    instanceable = false
+)
+{
+    token ui:displayGroup = "Material Graphs"
+    token ui:displayName = "bolt_m4_tight_obj"
+    int ui:order = 1024
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Mesh "M20_Bolt_Tight_SDF" (
+        instanceable = true
+    )
+    {
+    }
+
+    def Scope "Looks" (
+        instanceable = true
+    )
+    {
+        def Material "OmniSurface_BrushedMetal" (
+            instanceable = true
+        )
+        {
+            def Shader "Shader"
+            {
+            }
+        }
+
+        def Material "M20_Bolt"
+        {
+            def Shader "Shader" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+    }
+
+    def "M20_Bolt_Tight_Visual" (
+        instanceable = true
+        prepend references = @./M20_Bolt.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (90, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

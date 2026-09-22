@@ -1,0 +1,60 @@
+
+mdl 1.7;
+
+import ::df::*;
+import ::state::*;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+
+export material simple_texture
+(
+    uniform texture_2d diffuse_texture = texture_2d() [[
+        anno::display_name("Diffuse Texture"),
+        anno::description("Albedo Map")
+    ]],
+
+    float roughness = 0.0
+    [[
+        anno::display_name("Diffuse roughness"),
+        anno::hard_range(0.0,1.),
+        anno::description("Higher roughness values lead a powdery appearance")
+    ]],
+    float3 normal = state::normal()
+    [[
+        anno::display_name("Input Normal"),
+        anno::description("Attach bump or normal maps here")
+    ]]
+)
+= let {
+
+
+    // Texture Space - 0 = UV, 1 = World, 2 = Object
+    int texture_space = 0; // UV space
+
+    // from base.mdl
+    // Creates texture_coordinate_info which contains the uvw and tangents
+    base::texture_coordinate_info coordinate =  base::coordinate_source(texture_space: texture_space);
+
+
+    // from base.mdl use file_texture function to lookup a texture passed into shader using coordinate.
+    // value is returned in a texture_return struct
+    base::texture_return diffuse_texture_return_struct =  base::file_texture( texture: diffuse_texture, uvw: coordinate );
+
+    // fetch the color from the texture_return object
+    color diffuse_color = diffuse_texture_return_struct.tint;
+
+
+    // from df.mdl use diffuse brdf with roughness and diffuse_color
+    bsdf diffuse_bsdf = df::weighted_layer(
+            weight: 1.0,
+            layer: df::diffuse_reflection_bsdf( roughness: roughness, tint: diffuse_color ),
+            base: bsdf(),
+            normal: normal
+    );
+
+} in material (
+    surface: material_surface(
+        scattering: diffuse_bsdf
+    )
+);

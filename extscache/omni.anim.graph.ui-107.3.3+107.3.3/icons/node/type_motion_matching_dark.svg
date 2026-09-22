@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="MotionMatching_" data-name="MotionMatching " transform="translate(-82 -30)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(82 30)" fill="none"/>
+    <path id="bgr" d="M9,0H40a0,0,0,0,1,0,0V31a9,9,0,0,1-9,9H0a0,0,0,0,1,0,0V9A9,9,0,0,1,9,0Z" transform="translate(82 30)" fill="#1e2931"/>
+    <path id="icon" d="M10.573,21.1l1.305-6.385,1.849,1.481-1.849,5.431L6.735,28.033Zm7.619-2.967-6.051-4.781L14.384,2.583l2.348.328L14.856,12l4.873,5.18L21.171,27.72Zm-9.38-12.8,4.52-2.62-.663,2.719-2.7.749L6.877,12.55Zm9.137,4.711L16.7,7.807l.585-2.663L18.6,8.74l4.879,2.287ZM13.1-1.235a2.751,2.751,0,0,1,2.689-2.808,2.751,2.751,0,0,1,2.689,2.808,2.75,2.75,0,0,1-2.689,2.808A2.75,2.75,0,0,1,13.1-1.235Z" transform="translate(88.048 38.005)" fill="#7f9f8e"/>
+  </g>
+</svg>

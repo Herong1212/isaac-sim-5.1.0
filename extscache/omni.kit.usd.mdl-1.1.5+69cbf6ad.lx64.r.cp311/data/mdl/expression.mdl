@@ -1,0 +1,118 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+import ::state::*;
+
+export float3 test_call_expression
+(
+    float3 param = state::normal()
+)
+{
+    return param;
+}
+
+export float3 test_call_expression_with_args
+(
+    float3 param = state::texture_tangent_v(0)
+)
+{
+    return param;
+}
+
+export int test_parameter_expression
+(
+    int a = 1,
+
+    int b = 1234,
+
+    int param = b
+)
+{
+    return a + b + param;
+}
+
+export int test_multi_parameter_expression
+(
+    int a = 789,
+
+    int b = a,
+
+    int param = b
+)
+{
+    return a + b + param;
+}
+
+export float3[4] test_call_expression_array
+(
+    float3 pFloat3 = float3(0.123, 0.456, 0.789),
+
+    float3[4] param = float3[](
+        state::position(),
+        state::normal(),
+        float3(0.6, 0.7, 0.8),
+        pFloat3
+    )
+)
+{
+    return param;
+}
+
+export float3 test_parameter_call_expression
+(
+    float3 a = state::position(),
+
+    float3 b = a,
+
+    float3 param = b
+)
+{
+    return param;
+}
+
+export double2x2 test_parameter_expression_double_matrix
+(
+    double pDouble = 0.999,
+
+    double2x2 param = double2x2(0.1, pDouble, 0.3, 0.4)
+)
+{
+    return param;
+}
+
+export float2x2 test_parameter_expression_float_matrix
+(
+    float pFloat = 0.999,
+
+    float2x2 param = float2x2(0.1, pFloat, 0.3, 0.4)
+)
+{
+    return param;
+}
+
+export color test_parameter_expression_color
+(
+    float pFloat = 0.999,
+
+    color param = color(0.1, pFloat, 0.3)
+)
+{
+    return param;
+}
+
+export bool4 test_parameter_expression_vector_bool4
+(
+    bool pBool = true,
+
+    bool4 param = bool4(true, pBool, true, false)
+)
+{
+    return param;
+}

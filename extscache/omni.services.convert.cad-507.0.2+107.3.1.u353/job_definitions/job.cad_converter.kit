@@ -1,0 +1,20 @@
+
+[settings.app.exts.folders]
+'++' = ["${job}/exts-job.cad_converter"]
+
+[job."cad-converter"]
+job_type = "kit-service"
+name = "cad-converter"
+command = "${kit}/kit${exe_ext}"
+args = [
+    "--enable omni.services.convert.cad",
+    # "--enable omni.kit.converter.hoops_core",
+    "--enable omni.kit.converter.jt_core",
+]
+
+# task_function maps to a path defined by a service api router.
+task_function = "convert.cad.process"
+headless = true
+env = {}
+log_to_stdout = true
+job_spec_path = "omni.services.convert.cad"

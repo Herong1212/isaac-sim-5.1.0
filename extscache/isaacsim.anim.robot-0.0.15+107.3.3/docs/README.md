@@ -1,0 +1,3 @@
+# Animated Robot Controller
+
+"Isaacsim.Anim.Robot" is an extension that enables realistic robot animation through the playback of captured simulation motion data. This module bridges the gap between physics-based simulation and animation, allowing users to recreate precise robot movements without the computational overhead of real-time physics calculations. It provides tools for converting physics-enabled robot models into animated representations while preserving their kinematic accuracy and visual fidelity.

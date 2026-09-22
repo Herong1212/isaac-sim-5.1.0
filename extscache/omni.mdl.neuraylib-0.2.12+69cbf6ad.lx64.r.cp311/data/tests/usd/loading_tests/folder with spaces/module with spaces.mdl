@@ -1,0 +1,33 @@
+/******************************************************************************
+ * Copyright 2024 NVIDIA Corporation. All rights reserved.
+ ******************************************************************************/
+
+mdl 1.6;
+
+import ::df::*;
+import ::tex::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+
+export material main_body()
+= material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: tex::lookup_color(
+                texture_2d("./grid.jpg", tex::gamma_srgb),
+                float2(state::texture_coordinate(0).x, state::texture_coordinate(0).y)
+                ),
+            roughness: 0.0)));
+
+export material main_param(
+    uniform texture_2d tex = texture_2d("./grid.jpg", tex::gamma_srgb)
+)
+= material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: tex::lookup_color(
+                tex,
+                float2(state::texture_coordinate(0).x, state::texture_coordinate(0).y)
+                ),
+            roughness: 0.0)));

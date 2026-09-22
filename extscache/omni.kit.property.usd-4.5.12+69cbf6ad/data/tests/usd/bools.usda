@@ -1,0 +1,61 @@
+#usda 1.0
+
+def Material "mtl_booleans"
+{
+    def Shader "shader_bool"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "boolean"
+    }
+
+    def Shader "shader_bool2"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "vector_bool2"
+    }
+
+    def Shader "shader_bool3"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "vector_bool3"
+    }
+
+    def Shader "shader_bool4"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "vector_bool4"
+    }
+
+    def Shader "shader_array_bool"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "bool_array"
+    }
+
+    def Shader "shader_array_bool2"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "bool2_array"
+    }
+
+    def Shader "shader_array_bool3"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "bool3_array"
+    }
+
+    def Shader "shader_array_bool4"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/booleans.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "bool4_array"
+    }
+}
+

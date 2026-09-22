@@ -1,0 +1,237 @@
+#usda 1.0
+(
+    metersPerUnit = 1.0
+    upAxis = "Z"
+    defaultPrim = "Root"
+)
+
+def SkelRoot "Root" (
+    prepend apiSchemas = ["SkelBindingAPI"]
+    prepend references = @./baseSkinning.usda@
+)
+{
+    def Skeleton "Skeleton"
+    {
+        uniform token[] joints = ["Root", "Root/Hip", "Root/Hip/Spine02", "Root/Hip/Spine02/NeckTwist01", "Root/Hip/Spine02/NeckTwist01/Head",
+                                  "Root/Hip/Spine02/L_Upperarm", "Root/Hip/Spine02/L_Upperarm/L_Forearm", "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand",
+                                  "Root/Hip/Spine02/R_Upperarm", "Root/Hip/Spine02/R_Upperarm/R_Forearm", "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand",
+                                  "Root/Hip/L_Thigh", "Root/Hip/L_Thigh/L_Calf", "Root/Hip/L_Thigh/L_Calf/L_Foot",
+                                  "Root/Hip/R_Thigh", "Root/Hip/R_Thigh/R_Calf", "Root/Hip/R_Thigh/R_Calf/R_Foot",
+                                  "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Thumb3",
+                                  "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Thumb3",
+                                  "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Index3",
+                                  "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Index3",
+                                  "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Mid3",
+                                  "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Mid3",
+                                  "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Ring3",
+                                  "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Ring3",
+                                  "Root/Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Pinky3",
+                                  "Root/Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Pinky3",
+                                  "Root/Hip/L_Thigh/L_Calf/L_Foot/L_ToeBase",
+                                  "Root/Hip/R_Thigh/R_Calf/R_Foot/R_ToeBase"
+                                ]
+        uniform matrix4d[] bindTransforms = [
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.0, 1.)),    # Root
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.4, 1.)),    # Hip
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.9, 1.)),    # Chest
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.95, 1.)),   # Neck
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 1.05, 1.)),   # Head
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0.8, 1.)),    # Left_Shoulder
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.35, 0., 0.8, 1.)),    # Left_Elbow
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Hand
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0.8, 1.)),   # Right_Shoulder
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.35, 0., 0.8, 1.)),   # Right_Elbow
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Hand
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0.4, 1.)),    # Left_Thigh
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0.2, 1.)),   # Left_Knee
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0, 1.)),   # Left_Foot
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0.4, 1.)),   # Right_Thigh
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0.2, 1.)),  # Right_Knee
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0., 1.)),  # Right_Foot
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Thumb
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Thumb
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Index
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Index
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Mid
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Mid
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Ring
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Ring
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.55, 0., 0.8, 1.)),    # Left_Pinky
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.55, 0., 0.8, 1.)),   # Right_Pinky
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0., 1.)),    # Left_Toe
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0., 1.)),   # Right_Toe
+        ]
+        uniform matrix4d[] restTransforms = [
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0., 1.)),    # Root
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0.4, 1.)),    # Hip
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0.5, 1.)),    # Chest
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0.05, 1.)),   # Neck
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0.1, 1.)),    # Head
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., -0.1, 1.)),    # Left_Shoulder
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.2, 0., 0., 1.)),    # Left_Elbow
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.2, 0., 0., 1.)),    # Left_Hand
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., -0.1, 1.)),   # Right_Shoulder
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.2, 0., 0., 1.)),   # Right_Elbow
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.2, 0., 0., 1.)),   # Right_Hand
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.15, 0., 0., 1.)),    # Left_Thigh
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., -0.2, 1.)),   # Left_Knee
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., -0.2, 1.)),   # Left_Foot
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.15, 0., 0., 1.)),   # Right_Thigh
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., -0.2, 1.)),  # Right_Knee
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., -0.2, 1.)),  # Right_Foot
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Thumb
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Thumb
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Index
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Index
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Mid
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Mid
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Ring
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Ring
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Pinky
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Pinky
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.00, 0., 0.0, 1.)),    # Left_Toe
+            ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (-0.00, 0., 0.0, 1.)),   # Right_Toe
+        ]
+    }
+    
+    over "Geometry"
+    {
+        over "torso" (prepend apiSchemas = ["SkelBindingAPI"])
+        {
+            int[] primvars:skel:jointIndices= [1, 1, 1, 1, 2, 2, 2, 2] (interpolation = "vertex") # Hip and Chest
+            float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+            bool doubleSided = 1
+            prepend rel skel:skeleton = </Root/Skeleton>
+            matrix4d primvars:skel:geomBindTransform = ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0., 0., 0.4, 1.))
+        }
+
+        over "neck" (prepend apiSchemas = ["SkelBindingAPI"])
+        {
+            int[] primvars:skel:jointIndices = [3, 3, 3, 3, 3, 3, 3, 3] (interpolation = "vertex") # Neck
+            float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+            prepend rel skel:skeleton = </Root/Skeleton>
+            bool doubleSided = 1
+            matrix4d primvars:skel:geomBindTransform = ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.9, 1.))
+        }
+
+        over "head" (prepend apiSchemas = ["SkelBindingAPI"])
+        {
+            int[] primvars:skel:jointIndices = [4, 4, 4, 4, 4, 4, 4, 4] (interpolation = "vertex") # Head
+            float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+            prepend rel skel:skeleton = </Root/Skeleton>
+            bool doubleSided = 1
+            matrix4d primvars:skel:geomBindTransform = ((1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., 1., 0.), (0.0, 0.0, 0.93, 1.))
+        }
+
+        over "left_arm"
+        {
+            over "upper_arm" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                int[] primvars:skel:jointIndices = [5, 5, 5, 5, 6, 6, 6, 6] (interpolation = "vertex") # Shoulder / Elbow
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((0, 0., -1.0, 0.), (0., 1., 0., 0.), (1.0, 0., 0., 0.), (0.15, 0.0, 0.8, 1.))
+            }
+
+            over "lower_arm" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [6, 6, 6, 6, 7, 7, 7, 7] (interpolation = "vertex") # Elbow / Hand
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((0, 0., -1.0, 0.), (0., 1., 0., 0.), (1.0, 0., 0., 0.), (0.35, 0.0, 0.8, 1.))
+            }
+        }
+
+        over "right_arm"
+        {
+            over "upper_arm" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [8, 8, 8, 8, 9, 9, 9, 9] (interpolation = "vertex") # Shoulder / Elbow
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((0, 0., 1.0, 0.), (0., 1., 0., 0.), (-1.0, 0., 0., 0.), (-0.15, 0.0, 0.8, 1.))
+            }
+
+            over "lower_arm" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [9, 9, 9, 9, 10, 10, 10, 10] (interpolation = "vertex") # Shoulder / Elbow
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((0., 0., 1., 0.), (0., 1., 0., 0.), (-1., 0., 0., 0.), (-0.35, 0.0, 0.8, 1.))
+            }
+        }
+
+        over "left_leg"
+        {
+            over "upper_leg" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [11, 11, 11, 11, 12, 12, 12, 12] (interpolation = "vertex") # Thigh / Knee
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                 matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (0.1, 0.0, 0.4, 1.))
+            }
+
+            over "lower_leg" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [12, 12, 12, 12, 13, 13, 13, 13] (interpolation = "vertex") # Knee / Foot
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (0.1, 0.0, 0.2, 1.))
+            }
+
+            over "foot" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [13, 13, 13, 13, 13, 13, 13, 13] (interpolation = "vertex") # Foot
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (0.1, 0.0, 0., 1.))
+            }
+        }
+
+        over "right_leg"
+        {
+            over "upper_leg" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [14, 14, 14, 14, 15, 15, 15, 15] (interpolation = "vertex") # Thigh / Knee
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (-0.1, 0.0, 0.4, 1.))
+            }
+
+            over "lower_leg" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [15, 15, 15, 15, 16, 16, 16, 16] (interpolation = "vertex") # Knee / Foot
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (-0.1, 0.0, 0.2, 1.))
+            }
+
+            over "foot" (prepend apiSchemas = ["SkelBindingAPI"])
+            {
+                rel skel:skeleton = </Root/Skeleton>
+                int[] primvars:skel:jointIndices = [16, 16, 16, 16, 16, 16, 16, 16] (interpolation = "vertex") # Foot
+                float[] primvars:skel:jointWeights = [1., 1., 1., 1., 1., 1., 1., 1.] (interpolation = "vertex")
+                prepend rel skel:skeleton = </Root/Skeleton>
+                bool doubleSided = 1
+                matrix4d primvars:skel:geomBindTransform = ((-1., 0., 0., 0.), (0., 1., 0., 0.), (0., 0., -1., 0.), (-0.1, 0.0, 0., 1.))
+            }
+        }
+    }
+}

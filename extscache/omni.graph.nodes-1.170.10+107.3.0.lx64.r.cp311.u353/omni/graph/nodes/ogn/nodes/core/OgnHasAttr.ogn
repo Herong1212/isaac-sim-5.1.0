@@ -1,0 +1,37 @@
+{
+    "HasAttribute": {
+        "version": 1,
+        "description": ["Inspect an input bundle for a named attribute, setting output to true if it exists"],
+        "metadata": {
+            "uiName": "Has Attribute"
+        },
+        "categories": ["bundle"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "attrName": {
+                "type": "token",
+                "description": "Name of the attribute to look for in the bundle",
+                "default": "points",
+                "metadata": {
+                    "uiName": "Attribute To Find"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes that may contain the named attribute",
+                "metadata": {
+                    "uiName": "Bundle To Check"
+                }
+            }
+        },
+        "outputs": {
+            "output": {
+                "type": "bool",
+                "description": "True if the named attribute was found in the bundle",
+                "metadata": {
+                    "uiName": "Is Attribute In Bundle"
+                }
+            }
+        }
+    }
+}

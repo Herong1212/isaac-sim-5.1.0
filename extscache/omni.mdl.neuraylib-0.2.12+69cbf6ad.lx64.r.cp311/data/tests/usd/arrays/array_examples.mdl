@@ -1,0 +1,72 @@
+mdl 1.7;
+
+import ::anno::*;
+import ::base::*;
+import ::df::*;
+import ::math::*;
+import ::state::*;
+import ::tex::*;
+import ::scene::*;
+import ::limits::*;
+
+//--------------------------------------------------------------------------------------------------
+
+// test function to attach
+export color[3] GetColorArrayThree()
+{
+    return color[](
+        color(0.0, 0.247, 0.361),
+        color(0.737, 0.314, 0.565),
+        color(1.0, 0.651, 0.0)
+    );
+}
+
+export color[5] GetColorArrayFive()
+{
+    return color[](
+        color(0.0, 0.247, 0.361),
+        color(0.345, 0.314, 0.553),
+        color(0.737, 0.314, 0.565),
+        color(1.0, 0.388, 0.380),
+        color(1.0, 0.651, 0.0)
+    );
+}
+
+// takes a static sized array
+export material MainColorArray(
+    color[3] data = color[](
+        color(0.098, 0.518, 0.773),
+        color(0.655, 0.835, 0.929),
+        color(0.467, 0.420, 0.804)
+    ),
+    int index = 0
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: (index < 0 || index >= 3) ? color(0.05, 0.05, 0.05) : data[index]
+            )
+    )
+);
+
+export material MainColorArrayDefaultGraph(
+    color[3] data = GetColorArrayThree(),
+    int index = 0
+) = MainColorArray(data: data, index: index);
+
+
+// takes a dynamic sized array
+export material MainColorArrayDynamic(
+    color[<N>] data = color[](),
+    int index = 0
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: (index < 0 || index >= N) ? color(0.05, 0.05, 0.05) : data[index]
+            )
+    )
+);
+
+export material MainColorArrayDynamicDefaultGraph(
+    color[<N>] data = GetColorArrayFive(),
+    int index = 0
+) = MainColorArrayDynamic(data: data, index: index);

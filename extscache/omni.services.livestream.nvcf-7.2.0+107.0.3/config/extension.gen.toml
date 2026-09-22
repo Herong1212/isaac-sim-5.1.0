@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.services.livestream.nvcf-7.2.0%2B107.0.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+1070.167568.d3ccd29a.gl"
+        date = 1737679630
+        buildNumber = "107.0+master.910.d84a50e3.gl"
+        repoName = "kit-livestream"
+        signed = 1

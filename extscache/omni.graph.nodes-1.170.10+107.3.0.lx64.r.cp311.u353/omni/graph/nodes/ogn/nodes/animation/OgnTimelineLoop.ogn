@@ -1,0 +1,30 @@
+{
+    "LoopTimeline": {
+        "version": 1,
+        "description": "Controls looping playback of the main timeline",
+        "metadata": {
+            "uiName": "Set playback looping"
+        },
+        "categories": [ "time" ],
+        "scheduling": "compute-on-request",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "loop": {
+                "type": "bool",
+                "description": "Enable or disable playback looping?",
+                "uiName": "Loop"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            }
+        }
+    }
+}

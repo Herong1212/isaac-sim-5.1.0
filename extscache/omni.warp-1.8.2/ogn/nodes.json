@@ -1,0 +1,109 @@
+{
+    "nodes": {
+        "WarpMeshFromVolume": {
+            "description": "Converts a volume into a mesh.",
+            "version": 1,
+            "uiName": "Mesh From Volume",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpSampleMeshDeform": {
+            "description": "Deforms a geometry mesh.",
+            "version": 1,
+            "uiName": "Sample Mesh Deform",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpOgnBundleInspectChanges": {
+            "description": "Inspects the changes made to an attribute.",
+            "version": 1,
+            "uiName": "Bundle Inspect Changes",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpSampleProceduralVolume": {
+            "description": "Generates a procedural volume.",
+            "version": 1,
+            "uiName": "Sample Procedural Volume",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpWaveSolve": {
+            "description": "Creates a grid geometry simulated with a wave equation solver.",
+            "version": 1,
+            "uiName": "Wave Solve",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpTextureWrite": {
+            "description": "Writes a texture.",
+            "version": 1,
+            "uiName": "Texture Write",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpParticlesFromMesh": {
+            "description": "Generates particles inside a mesh.",
+            "version": 1,
+            "uiName": "Particles From Mesh",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpClothSimulate": {
+            "description": "Simulates cloth.",
+            "version": 1,
+            "uiName": "Cloth Simulate (Deprecated)",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpKernel": {
+            "description": "Runs a single Warp kernel.",
+            "version": 2,
+            "uiName": "Warp Kernel",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpNoiseDeform": {
+            "description": "Deforms points using a noise.",
+            "version": 1,
+            "uiName": "Noise Deform",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpSamplePrimFlocking": {
+            "description": "Meet the flockers.",
+            "version": 1,
+            "uiName": "Flocking Simulation",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "FixedTime": {
+            "description": "Retrieves a time with a fixed time step.",
+            "version": 1,
+            "uiName": "",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpParticlesSimulate": {
+            "description": "Simulates particles.",
+            "version": 1,
+            "uiName": "Particles Simulate (Deprecated)",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpGridCreate": {
+            "description": "Creates a geometry mesh grid.",
+            "version": 1,
+            "uiName": "Grid Create",
+            "extension": "omni.warp",
+            "language": "Python"
+        },
+        "WarpSampleOceanDeform": {
+            "description": "Mesh deformer modeling ocean waves.",
+            "version": 1,
+            "uiName": "Ocean Deform",
+            "extension": "omni.warp",
+            "language": "Python"
+        }
+    }
+}

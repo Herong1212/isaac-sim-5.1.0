@@ -1,0 +1,41 @@
+{
+    "OgnCameraPositionLookAtPrim": {
+        "version": 1,
+        "language": "python",
+        "categories": {"ReplicatorYAML": "ReplicatorYAML nodes"},
+        "description": "Compute proper camera positions when it looks at a prim.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Calculate camera position when looking at a prim."
+        },
+        "inputs": {
+            "targetPrim": {
+                "description": ["prim to be looked at"],
+                "type": "target"
+            },
+            "axes": {
+                "description": ["Axes that the camera is aligned to."],
+                "type": "float[3][]"
+            },
+            "scale": {
+                "description": ["Scale determines how far away the camera is from the target prim."],
+                "type": "float"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "samples": {
+                "description": ["New positions of each prim in the world space"],
+                "type": "float[3][]"
+            }
+        }
+    }
+}

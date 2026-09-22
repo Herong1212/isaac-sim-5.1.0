@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.vdb_timesample_editor-0.2.0.zip"
+
+    [package.publish]
+        kitVersion = "107.1.0+master.166709.8ec09e4d.gl"
+        date = 1736959299
+        buildNumber = "107.1+flowusd-master.784.623ed62a.gl"
+        repoName = "flow-usd"
+        signed = 1

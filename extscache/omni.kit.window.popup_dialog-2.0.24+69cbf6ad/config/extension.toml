@@ -1,0 +1,39 @@
+[package]
+title = "Simple Popup Dialogs with Input Fields"
+version = "2.0.24"
+description = "A variety of simple Popup Dialogs for taking in user inputs"
+category = "Internal"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+
+[[python.module]]
+name = "omni.kit.window.popup_dialog"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+[[python.scriptFolder]]
+path = "scripts"
+
+[[test]]
+args = [
+   "--/app/window/width=256",
+   "--/app/window/height=256",
+   "--/app/window/dpiScaleOverride=1.0",
+   "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+]

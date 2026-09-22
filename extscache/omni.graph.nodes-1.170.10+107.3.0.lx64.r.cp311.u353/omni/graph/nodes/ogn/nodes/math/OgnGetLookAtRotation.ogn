@@ -1,0 +1,72 @@
+{
+    "GetLookAtRotation": {
+        "version": 1,
+        "description": [
+            "Computes the rotation angles to align the 'Forward' direction vector to the vector formed by",
+            "starting at 'From' and pointing at 'Target'. The 'Forward' vector is the current orientation of",
+            "the Prim being rotated which usually starts at +X or +Z. The 'Up' vector defines the desired",
+            "orientation of the rotation."
+        ],
+        "uiName": "Get Look At Rotation",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "start": {
+                "type": "pointd[3]",
+                "uiName": "From",
+                "description": ["The position to look from"]
+                },
+            "target": {
+                "type": "pointd[3]",
+                "uiName": "Target",
+                "description": ["The position to look at"]
+            },
+            "forward": {
+                "type": "double[3]",
+                "uiName": "Forward",
+                "description": ["The direction vector which is to be aligned"],
+                "default": [0.0, 0.0, 1.0]
+            },
+            "up": {
+                "type": "double[3]",
+                "uiName": "Up",
+                "description": ["The direction of the up vector, if not specified USD scene-up will be used."],
+                "optional": true
+            }
+        },
+        "outputs": {
+            "rotateXYZ": {
+                "type": "double[3]",
+                "uiName": "Rotation (XYZ)",
+                "description": ["The calculated rotation vector, as XYZ"]
+            },
+            "orientation": {
+                "type": "quatd[4]",
+                "uiName": "Orientation",
+                "description": ["The calculated orientation quaternion, which is equivalent to 'Rotation (XYZ)'"]
+            }
+        },
+        "tests": [
+            {
+                "inputs:start": [0.0, 0.0, 0.0], "inputs:target": [100.0, 0.0, 0.0], "inputs:forward": [1.0, 0.0, 0.0],
+                "outputs:rotateXYZ": [0.0, 0.0, 0.0], "outputs:orientation": [0.0, 0.0, 0.0, 1.0]
+            },
+            {
+                "inputs:start": [0.0, 0.0, 0.0], "inputs:target": [100.0, 0.0, 0.0], "inputs:forward": [0.0, 0.0, 1.0],
+                "outputs:rotateXYZ": [0.0, 90, 0.0], "outputs:orientation": [0.0, 0.70710678, 0.0, 0.70710678]
+            },
+            {
+                "inputs:start": [0.0, 0.0, 0.0], "inputs:target": [100.0, 0.0, 100.0],"inputs:forward": [1.0, 0.0, 0.0],
+                "outputs:rotateXYZ": [0.0, -45.0, 0.0], "outputs:orientation": [0.0, -0.3826834, 0.0, 0.92387953]
+            },
+            {
+                "inputs:start": [100.0, 0.0, 100.0], "inputs:target": [200.0, 0.0, 100.0], "inputs:forward": [1.0, 0.0, 0.0],
+                "outputs:rotateXYZ": [0.0, 0.0, 0.0], "outputs:orientation": [0.0, 0.0, 0.0, 1.0]
+            },
+            {
+                "inputs:start": [100.0, 0.0, -100.0], "inputs:target": [-100.0, 200.0, -300.0], "inputs:forward": [1.0, 0.0, 0.0],
+                "outputs:rotateXYZ": [150.0, 35.26439, 135.0], "outputs:orientation": [0.27984814, 0.88047624, 0.115916896, 0.3647052]
+            }
+        ]
+    }
+}

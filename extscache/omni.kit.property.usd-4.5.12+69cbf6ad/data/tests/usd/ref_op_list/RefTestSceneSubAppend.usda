@@ -1,0 +1,10 @@
+#usda 1.0
+
+over "World" (
+    append references = [
+        @assets/Cylinder.usda@,
+        @assets/Capsule.usda@
+    ]
+)
+{
+}

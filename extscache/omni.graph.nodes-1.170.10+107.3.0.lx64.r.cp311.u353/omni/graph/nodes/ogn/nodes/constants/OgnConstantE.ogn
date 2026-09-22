@@ -1,0 +1,37 @@
+{
+    "ConstantE": {
+        "description": "Computes the mathematical constant \"e\" to the power of \"Exponent\".",
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "exponent": {
+                "type": "double",
+                "description": "The power to which to raise the mathematical constant \"e\".",
+                "uiName": "Exponent",
+                "default": 1.0
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "double",
+                "description": "The mathematical constant \"e\" raised to the 'Exponent' power.",
+                "uiName": "Value"
+            }
+        },
+        "tests": [
+            {
+                "inputs:exponent": 1,
+                "outputs:value": 2.7182818
+            },
+            {
+                "inputs:exponent": 2,
+                "outputs:value": 7.389056
+            },
+            {
+                "inputs:exponent": 0.5,
+                "outputs:value": 1.648721
+            }
+        ]
+    }
+}

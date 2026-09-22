@@ -1,0 +1,45 @@
+{
+    "OgnWriteSemantics": {
+        "version": 3,
+        "language": "python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node writes the supplied semantics to specified prims.",
+        "metadata":
+        {
+           "uiName": "Write Semantics"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to set semantics"],
+                "type": "target"
+            },
+            "semantics": {
+                "description": ["Semantic key-value pairs separated by a colon (eg. class:car). DEPRECATED: Use the new semantics format instead."],
+                "type": "token[]"
+            },
+            "semantics_values": {
+                "description": ["Dictionary of semantic key and values as a string. Eg. `\"{'class': ['car', 'vehicle'], 'material': 'metal'}\"`"],
+                "type": "string"
+            },
+            "mode": {
+                "description": ["Semantics modification mode. Select from [add, replace, clear]"],
+                "type": "token",
+                "default": "add",
+                "metadata": {
+                    "allowedTokens": ["add", "replace", "clear"]
+                }
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

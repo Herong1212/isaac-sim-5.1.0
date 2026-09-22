@@ -1,0 +1,47 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnDebugDrawRayCast.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_isaacsim_util_debug_draw_DebugDrawRayCast" (
+        docs="""Take arrays of ray start and end points as input and display it in the scene."""
+    )
+    {
+        token node:type = "isaacsim.util.debug_draw.DebugDrawRayCast"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom point3f[] inputs:beamEndPoints = [] (
+            docs="""Array containing end points of each ray"""
+        )
+        custom point3f[] inputs:beamOrigins = [] (
+            docs="""Array containing origins of each ray"""
+        )
+        custom float inputs:beamWidth = 0.02 (
+            docs="""Width of rays"""
+        )
+        custom color4f inputs:color = (0.75, 0.75, 1, 1) (
+            docs="""Color of rays"""
+        )
+        custom bool inputs:doTransform = true (
+            docs="""Translate and Rotate rays by transform"""
+        )
+        custom uint inputs:exec (
+            docs="""The input execution port"""
+        )
+        custom int inputs:numRays = 0 (
+            docs="""The number of rays to draw"""
+        )
+        custom matrix4d inputs:transform = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""The matrix to transform the rays by"""
+        )
+    }
+}

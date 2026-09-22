@@ -1,0 +1,114 @@
+[package]
+title = "OmniGraph Action Graph Editor"
+description = "Editor window for Action Graphs"
+version = "1.50.2"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["graph", "action"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+readme = "docs/README.md"
+category = "Graph"
+feature = true
+icon = "data/icon.svg"
+writeTarget.kit = true
+support_level = "Sample"
+
+[dependencies]
+"omni.graph.core" = { version = ">=2.177.1" }
+"omni.graph" = { version = ">=1.139.0" }
+"omni.graph.tools" = { version = ">=1.77.0" }
+"omni.graph.window.core" = {version=">=1.80.0"}
+"omni.graph.ui" = {version=">=1.5.0"}
+
+[[python.module]]
+name = "omni.graph.window.action"
+
+[[test]]
+stdoutFailPatterns.exclude = [
+    # Workaround for OM-47134
+    "*[Error] [asyncio]*Task exception was never retrieved*",
+    "*[Ignore this error/warning]*",
+    "*'NoneType' object is not subscriptable*"
+]
+
+dependencies = [
+    "omni.graph.bundle.action",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test"
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/fastShutdown=true",
+    "--/app/window/scaleToMonitor=false",
+    "--reset-user",
+    "--no-window",
+    # Rasterized nodes are drawn differently from non-rasterized. E.g. they use different antialiasing.
+    # This can result in large differences which cause golden image comparisons to fail.
+    # For now we shut off rasterization. Once OM-92215 and OM-89375 are done and we are able to maintain
+    # separate branches of this extension for different releases of Kit we can enable it in the branches
+    # where it is supported and update any affected golden images.
+    # In the meantime, if a test wishes to explicitly test with rasterized nodes it may do so by explicitly
+    # setting /exts/omni.kit.widget.graph/raster_nodes true in the test before creating the GraphView.
+    "--/exts/omni.kit.widget.graph/raster_nodes=false",
+]
+
+pythonTests.exclude = [
+    "omni.graph.window.action.tests.test_ui_nodes.*"
+]
+
+
+[[test]]
+# Tests which require a viewport.
+name = "viewport"
+
+stdoutFailPatterns.exclude = [
+    # Workaround for OM-47134
+    "*[Error] [asyncio]*Task exception was never retrieved*",
+    "*[Ignore this error/warning]*",
+    "*'NoneType' object is not subscriptable*"
+]
+dependencies = [
+    "omni.graph.bundle.action",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.window",
+    "omni.kit.viewport.rtx",
+    "omni.kit.ui_test"
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/enabled='rtx'",
+    "--/renderer/active='rtx'",
+    "--reset-user",
+    "--no-window",
+    # Changes to the HUD visibility setting are ignored within the test so we have to set it here.
+    # The default viewport name is 'Viewport Next', which is what we'll get when the test is run standalone.
+    # But apps often rename it to just 'Viewport' so we need to handle that as well so that the test will work
+    # when run from within an app (e.g. using Test Runner).
+    "--/app/viewport/Viewport Next/Viewport0/hud/visible=false",
+    "--/app/viewport/Viewport/Viewport0/hud/visible=false",
+    # Rasterized nodes are drawn differently from non-rasterized. E.g. they use different antialiasing.
+    # This can result in large differences which cause golden image comparisons to fail.
+    # For now we shut off rasterization. Once OM-92215 and OM-89375 are done and we are able to maintain
+    # separate branches of this extension for different releases of Kit we can enable it in the branches
+    # where it is supported and update any affected golden images.
+    # In the meantime, if a test wishes to explicitly test with rasterized nodes it may do so by explicitly
+    # setting /exts/omni.kit.widget.graph/raster_nodes true in the test before creating the GraphView.
+    "--/exts/omni.kit.widget.graph/raster_nodes=false",
+]
+
+pythonTests.include = [
+    "omni.graph.window.action.tests.test_ui_nodes.*"
+]
+
+[documentation]
+deps = [
+    ["omni.graph.window.core", "_build/docs/omni.graph.window.core/latest"],
+]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

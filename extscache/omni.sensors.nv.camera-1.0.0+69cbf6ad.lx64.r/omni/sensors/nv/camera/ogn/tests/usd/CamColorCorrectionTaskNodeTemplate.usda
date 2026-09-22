@@ -1,0 +1,103 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamColorCorrectionTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_ColorCorrectionTaskNode" (
+        docs="""Corrects the color mapping of a camera image."""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.ColorCorrectionTaskNode"
+        int node:typeVersion = 1
+
+        # 21 attributes
+        custom float inputs:Bb = 1.0 (
+            docs="""Blue_blue"""
+        )
+        custom float inputs:Bg = 0.0 (
+            docs="""Blue_green"""
+        )
+        custom float inputs:Br = 0.0 (
+            docs="""Blue_red"""
+        )
+        custom float inputs:Gb = 0.0 (
+            docs="""Green_blue"""
+        )
+        custom float inputs:Gg = 1.0 (
+            docs="""Green_green"""
+        )
+        custom float inputs:Gr = 0.0 (
+            docs="""Green_red"""
+        )
+        custom float inputs:Rb = 0.0 (
+            docs="""Red_blue"""
+        )
+        custom float inputs:Rg = 0.0 (
+            docs="""Red_green"""
+        )
+        custom float inputs:Rr = 1.0 (
+            docs="""Red_red"""
+        )
+        custom bool inputs:applySaturation = false (
+            docs="""indicates whether black and fullwell shall be applied"""
+        )
+        custom float inputs:black = 0.0 (
+            docs="""Black floor level"""
+        )
+        custom float inputs:fullwell_black = 1.0 (
+            docs="""maximal allowed value of the input array until it saturates"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom bool inputs:output_float16 = false (
+            docs="""indicates whether the output should be float16"""
+        )
+        custom bool inputs:redBlueSwap = false (
+            docs="""indicates whether the first and the third component shall be swapped"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom bool inputs:useInteractiveMode = false (
+            docs="""the CCM could be changed after the intialization (Linux only), uses cuda managed memory, only for sensor setup. Don't use in simulation scenarios"""
+        )
+        custom float3 inputs:whiteBalance = (1.0, 1.0, 1.0) (
+            docs="""white balance correction of the light source"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

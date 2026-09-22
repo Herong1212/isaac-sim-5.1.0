@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.anim.widget.timeline-0.1.14%2B107.3.2.u353.zip"
+
+    [package.target]
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.kit]
+            0 = "107.3.2"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.214668.960036eb.gl"
+        date = 1753696024
+        buildNumber = "107.3.1+release.4004.250618f3.gl"
+        repoName = "animation-authoring"
+        signed = 1

@@ -1,0 +1,84 @@
+{
+    "omni.graph.nodes.RenderPostProcessEntry": {
+        "version": 3,
+        "description": [ "Deprecated: use OgnGpuInteropCudaEntry instead." ],
+        "metadata": {
+            "uiName": "Render Postprocess Entry",
+            "hidden": "true"
+        },
+        "categories": ["internal", "graph:postRender"],
+        "inputs": {
+            "sourceName": {
+                "type": "string",
+                "description": "Source name of the AOV",
+                "default": "ldrColor"
+            }
+        },
+        "outputs": {
+            "cudaMipmappedArray": {
+                "type": "uint64",
+                "description": "Pointer to the CUDA Mipmapped Array",
+                "metadata": {
+                    "uiName": "cudaMipmappedArray"
+                }
+            },
+            "width": {
+                "type": "uint",
+                "description": "Width",
+                "metadata": {
+                    "uiName": "width"
+                }
+            },
+            "height": {
+                "type": "uint",
+                "description": "Height",
+                "metadata": {
+                    "uiName": "height"
+                }
+            },
+            "mipCount": {
+                "type": "uint",
+                "description": "Mip Count",
+                "metadata": {
+                    "uiName": "mipCount"
+                }
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format",
+                "metadata": {
+                    "uiName": "format"
+                }
+            },
+            "simTime": {
+                "type": "double",
+                "description": "Simulation time",
+                "metadata": {
+                    "uiName": "simTime"
+                }
+            },
+            "rationalTimeOfSimNumerator": {
+                "type": "int64",
+                "description": "Rational time of simulation used to fetch data from Fabric"
+            },
+            "rationalTimeOfSimDenominator": {
+                "type": "uint64",
+                "description": "Rational time of simulation used to fetch data from Fabric"
+            },
+            "hydraTime": {
+                "type": "double",
+                "description": "Hydra time in stage",
+                "metadata": {
+                    "uiName": "hydraTime"
+                }
+            },
+            "stream": {
+                "type": "uint64",
+                "description": "Pointer to the CUDA Stream",
+                "metadata": {
+                    "uiName": "stream"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.facilities.monitoring.progress-0.2.4.zip"
+
+    [package.publish]
+        buildNumber = "104.0.0+master.2804.f7cf66c4.tc"
+        date = 1677628274
+        kitVersion = "105.0+master.103480.0029c5ae.tc"

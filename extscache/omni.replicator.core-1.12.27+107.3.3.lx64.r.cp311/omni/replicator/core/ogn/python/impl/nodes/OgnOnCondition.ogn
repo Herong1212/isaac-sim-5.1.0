@@ -1,0 +1,49 @@
+{
+    "OgnOnCondition": {
+        "description": [
+            "Triggers when the evaluated condition is True"
+        ],
+        "version": 1,
+        "uiName": "On Condition",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "condition": {
+                "type": "bool",
+                "description": "Trigger condition. If evaluates to `True`, trigger is enabled. If `False`, trigger is disabled."
+            },
+            "maxExecs": {
+                "type": "int",
+                "description": "Maximum number of executions",
+                "default": -1
+            },
+            "rt_subframes": {
+                "type": "uint64",
+                "description": ["Determines how many subframes to render in RealTime render mode on each trigger",
+                                "to reduce artifacts caused by sudden scene changes."],
+                "default": 16
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Output Execution"
+            },
+            "execCounts": {
+                "type": "int",
+                "description": "The number of times the trigger has executed."
+            },
+            "referenceTimeNumerator": {
+                "type": "int64",
+                "description": "Reference time represented as a rational number : numerator"
+            },
+            "referenceTimeDenominator": {
+                "type": "uint64",
+                "description": "Reference time represented as a rational number : denominator"
+            }
+        }
+    }
+}

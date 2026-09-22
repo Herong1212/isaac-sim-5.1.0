@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnIsPrimActive.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_IsPrimActive" (
+        docs="""Query if a Prim is active or not in the stage."""
+    )
+    {
+        token node:type = "omni.graph.nodes.IsPrimActive"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom string inputs:prim = "" (
+            docs="""The prim path to be queried"""
+        )
+        custom rel inputs:primTarget (
+            docs="""The prim to be queried"""
+        )
+
+        # 1 attribute
+        custom bool outputs:active (
+            docs="""Whether the prim is active or not"""
+        )
+    }
+}

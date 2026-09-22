@@ -1,0 +1,104 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order higher than -1000
+order = -1000
+
+[package]
+version = "1.0.7"
+category = "Internal"
+support_level = "Core"
+authors = ["NVIDIA"]
+title = "MaterialX"
+description = "MaterialX + OpenPBR libraries."
+repository = ""
+keywords = ["MaterialX", "OpenPBR"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+
+# Note: these same libraries are also loaded by the omni.usd.libs extension
+# However they need to be loaded here in order for the Python bindings to function
+
+[[python.module]]
+name = "omni.materialx.libs"
+
+[[native.library]]
+path = "bin/${lib_prefix}MaterialXCore${lib_ext}"
+
+[[native.library]]
+path = "bin/${lib_prefix}MaterialXFormat${lib_ext}"
+
+[[python.module]]
+name = "MaterialX"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+# do not generate docs for the MaterialX python bindings that ship with the package
+python_api_hidden = true
+
+
+[[test]]
+pyCoverageEnabled = false
+name = "render_rtx"
+pythonTests.include = [
+    "omni.materialx.libs.tests.all_renderer.*",
+    "omni.materialx.libs.tests.rtx.*"
+]
+
+timeout = 900 # required for debug runs of large scenes
+args = [
+    # rtx settings
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/rtx/rendermode='PathTracing'",
+    "--/rtx/pathtracing/spp=4",         # can not be set from python
+    "--/rtx/pathtracing/totalSpp=128",  # can not be set from python
+    # common
+    # "--info",
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.commands",
+    "omni.kit.renderer.capture",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.mdl",
+    "omni.rtx.tests",
+    "omni.usd",
+]
+
+[[test]]
+name = "render_iray"
+pyCoverageEnabled = false
+enabled = false  # crashing
+pythonTests.include = [
+    "omni.materialx.libs.tests.all_renderer.*",
+    "omni.materialx.libs.tests.iray.*"
+]
+timeout = 300
+args = [
+    # iray settings
+    "--/renderer/enabled=iray",
+    "--/renderer/active=iray",
+    "--/rtx/iray/min_samples_per_update=4",                # can not be set from python
+    "--/rtx/iray/progressive_rendering_max_samples=128",   # can not be set from python
+    "--/iray/device/forceCPU=true",                        # can not be set from python (drivers too old)
+    "--/iray/device/cpuEnabled=true",                      # can not be set from python
+    # common
+    "--info",
+    "--/plugins/neuraylib/log_level=info",
+]
+dependencies = [
+    "omni.hydra.iray",
+    "omni.kit.commands",
+    "omni.kit.renderer.capture",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.mdl",
+    "omni.rtx.tests",
+    "omni.usd",
+]

@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnDeformerTimeBased.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_DeformerTimeBased" (
+        docs="""This is an example of a simple deformer with time based input to control a time dependent sine wave deformation. """
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.DeformerTimeBased"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom float inputs:multiplier = 1 (
+            docs="""The multiplier for the amplitude of the sine wave"""
+        )
+        custom point3f[] inputs:points = [] (
+            docs="""The input points to be deformed"""
+        )
+        custom double inputs:time = 0.0 (
+            docs="""Time value to modulate the offset in sine curve execution"""
+        )
+        custom float inputs:wavelength = 1 (
+            docs="""The wavelength of the sine wave"""
+        )
+
+        # 1 attribute
+        custom point3f[] outputs:points (
+            docs="""The deformed output points"""
+        )
+    }
+}

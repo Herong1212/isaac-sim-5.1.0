@@ -1,0 +1,131 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (516.165266194357, 328.37250574371853, 1228.1577284910734)
+                double3 target = (215.15312926640615, 172.0235942269995, 1134.5582207505092)
+            }
+            dictionary Right = {
+                double3 position = (0, -50000, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./JointAssetValidator.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def SphereLight "SphereLight"
+    {
+        float intensity = 30000
+        float radius = 150
+        double3 xformOp:translate = (650, 0, 1150)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def PhysicsScene "physicsScene"
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 981
+    }
+
+    def Xform "articulation" (
+        prepend apiSchemas = ["PhysicsArticulationRootAPI"]
+    )
+    {
+        def Cube "box0" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsRigidBodyAPI"]
+        )
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            color3f[] primvars:displayColor = [(0.64705884, 0.08235294, 0.08235294)]
+            double size = 100
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.1, 1, 0.1)
+            double3 xformOp:translate = (0, 0, 1000)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Cube "box1" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            vector3f physics:angularVelocity = (0, 0, 0)
+            vector3f physics:velocity = (0, 0, 0)
+            color3f[] primvars:displayColor = [(0.2784314, 0.64705884, 1)]
+            double size = 100
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.1, 1, 0.1)
+            double3 xformOp:translate = (0, 120, 1000)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def PhysicsFixedJoint "rootJoint"
+        {
+            rel physics:body1 = </World/articulation/box0>
+            point3f physics:localPos0 = (0, 0, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "revoluteJoint" (
+            prepend apiSchemas = ["PhysicsJointStateAPI:angular"]
+        )
+        {
+            uniform token physics:axis = "X"
+            rel physics:body0 = </World/articulation/box0>
+            rel physics:body1 = </World/articulation/box1>
+            point3f physics:localPos0 = (0, 60, 0)
+            point3f physics:localPos1 = (0, -60, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -90
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 45
+            float state:angular:physics:velocity = 0
+        }
+    }
+
+    def Cube "Cube" (
+        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        bool physics:collisionEnabled = 1
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-13, 67, 1085)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

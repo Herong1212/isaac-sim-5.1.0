@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.scene.optimizer.ui-107.3.12%2B107.3.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.190955.64501597.gl"
+        date = 1758848874
+        buildNumber = "107.3.12+107-3-12.9955.c90a0690.gl"
+        repoName = "scene-optimizer"
+        signed = 1

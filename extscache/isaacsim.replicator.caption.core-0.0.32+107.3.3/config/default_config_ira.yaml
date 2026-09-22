@@ -1,0 +1,69 @@
+isaacsim.replicator.agent:
+  version: 0.7.0
+  global:
+    seed: 123456
+    simulation_length: 5
+  sensor:
+    camera_num: 4
+  character:
+    asset_path:
+    command_file: default_command.txt
+    num: 8
+  robot:
+    command_file: default_robot_command.txt
+    nova_carter_num: 0
+    iw_hub_num: 0
+    write_data: false
+  replicator:
+    writer: SceneGraphWriter
+    parameters:
+      object_info_bounding_box_2d_tight: false
+      object_info_bounding_box_2d_loose: false
+      object_info_bounding_box_3d: false
+      agent_info_skeleton_data: false
+      output_dir: IRA_OUTPUT_PATH
+      semantic_filter_predicate: class:character|robot;id:*
+      image_output_format: png
+      rgb: true
+      camera_params: true
+      semantic_segmentation: true
+      instance_id_segmentation: true
+      instance_segmentation: true
+      distance_to_camera: false
+      distance_to_image_plane: false
+      colorize_depth: false
+      colorize_semantic_segmentation: true
+      colorize_instance_id_segmentation: true
+      colorize_instance_segmentation: true
+      occlusion: false
+      normals: false
+      motion_vectors: false
+      pointcloud: true
+      pointcloud_include_unlabelled: false
+      use_common_output_dir: false
+      caption_config:
+        pruning_ratio: 1.0
+        global_caption: true
+        qa_caption: false
+        brief_caption: true
+        export_edges: true
+        visualize_caption: true
+        max_object_capacity: 100
+        save_full_scene_graph: true
+        save_pruned_scene_graph: true
+        export_world: false
+        attach_label_to_usd: false
+        caption_only: false
+        use_ai_label: false
+        verbose: true
+        random_seed: 0
+      caption_interval: 1000
+      scene_graph_interval: 1
+      skip_frames: 0
+      writer_interval: 1
+      export_point_cloud: false
+      export_depth: true
+  response:
+    response_list: []
+  incident:
+    incident_list: []

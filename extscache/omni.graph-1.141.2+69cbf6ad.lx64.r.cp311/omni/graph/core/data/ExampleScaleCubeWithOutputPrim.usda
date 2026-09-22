@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    doc = """Generated from Composed Stage of root layer 
+"""
+)
+
+def Xform "World"
+{
+    def Xform "inputPrim"
+    {
+        custom float value = 0.5
+    }
+
+    def ComputeNode "SimpleNode"
+    {
+		custom float input:value
+        prepend float input:value.connect = </World/inputPrim.value>
+        custom float multiplier = 3
+        custom token node:type = "omni.graph.examples.cpp.ScaleCubeWithOutputPrim"
+        custom int node:typeVersion = 1
+        
+        def Output "output"
+        {
+            custom double output:value
+        }
+    }
+
+    def Cube "Cube"
+    {
+        prepend double size.connect = </World/SimpleNode/output.output:value>    
+    }
+}
+

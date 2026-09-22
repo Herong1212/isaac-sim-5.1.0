@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.widget.extended_searchfield-1.0.31.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.185040.fcf988ef.gl"
+        date = 1744843822
+        buildNumber = "106.0.1+master.755.dd27272c.gl"
+        repoName = "kit-widgets"
+        signed = 1

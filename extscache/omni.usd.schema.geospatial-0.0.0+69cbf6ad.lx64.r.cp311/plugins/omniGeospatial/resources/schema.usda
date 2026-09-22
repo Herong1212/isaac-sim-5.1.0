@@ -1,0 +1,89 @@
+#usda 1.0
+(
+    """
+    This file describes a proposal for supporting geodetic coordinates based
+    on a WSG84 external reference frame.
+    """
+    subLayers = [
+        @usd/schema.usda@,
+        @usdGeom/schema.usda@
+    ]
+)
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "omniGeospatial"
+        string libraryPath = "./"
+    }
+)
+{
+}
+
+class "OmniWGS84ReferencePositionAPI" (
+    inherits = </APISchemaBase>
+    customData = {
+        token apiSchemaType = "singleApply"
+        token[] apiSchemaCanOnlyApplyTo = ["Xformable"]
+        string className = "WGS84ReferencePositionAPI"
+    }
+
+    doc = """Defines parameters for a target reference point for translating geodetic WGS84 positions represented 
+             as (longitude, latitude, altitude) to Cartesian (x, y, z) coordinates in the specified tangent plane.
+             Altitude units are defined in meters regardless of the stage metersPerUnit value.  This reference point
+             corresponds to a cartesian point by first transforming the geodetic coordinates to the Earth Centered Earth Fixed
+             (ECEF) coordinate system followed by a transformation to either the ENU or NED local coordinate system, depending
+             on the value of the tangentPlane attribute."""
+)
+{
+    uniform token omni:geospatial:wgs84:reference:tangentPlane = "ENU" (
+        customData = {
+            string apiName = "tangentPlane"
+        }
+        doc = """Name of the tangent plane target coordinate frame for the geodetic transform.  This can be either East-North-Up (ENU) or North-East-Down (NED)."""
+        allowedTokens = ["ENU", "NED"]
+        displayName = "Tangent Plane"
+    )
+    uniform double3 omni:geospatial:wgs84:reference:referencePosition = (0.0, 0.0, 0.0) (
+        customData = {
+            string apiName = "referencePosition"
+        }
+        doc = """Geodetic coordinate represented as (latitude, longitude, altitude) defining the point from which the tangent plane target is derived."""
+        displayName = "Reference Position"
+    )
+    uniform double3 omni:geospatial:wgs84:reference:orientation = (0.0, 0.0, 0.0) (
+        customData = {
+            string apiName = "orientation"
+        }
+        doc = """Orientation by Yaw, Pitch, and Roll (YPR) rotations about z, y, x axes."""
+        displayName = "Orientation"
+    )
+
+    # NOTE: Might also want to support quaternion defined rotations here.
+}
+
+class "OmniWGS84LocalPositionAPI" (
+    inherits = </APISchemaBase>
+    customData = {
+        token apiSchemaType = "singleApply"
+        token[] apiSchemaCanOnlyApplyTo = ["Xformable"]
+        string className = "WGS84LocalPositionAPI"
+    }
+
+    doc = """Defines a local geodetic WGS84 style position represented as (longitude, latitude, altitude).  This position is always
+             relative to a reference position defined by the same or parent prim using the OmniGeospatialWGS84ReferencePositionAPI schema.  
+             If no prim is defined in the parent hierarchy with a reference position definition, this schema should be ignored.  Otherwise,
+             the cartesian position of this prim should be calculated relative to the first reference position in the parent hierarchy.
+             
+             NOTE: It is undefined to have both a WGS84ReferencePositionAPI and WGSLocalPositionAPI schema applied to the same prim."""
+)
+{
+    double3 omni:geospatial:wgs84:local:position = (0.0, 0.0, 0.0) (
+        customData = {
+            string apiName = "Position"
+        }
+        doc = """Specifies the geodetic position of the prim (relative to a reference position in the prim hierarhcy) as a WGS84 coordinate as 
+                 (latitude, longitude, altitude) where longitude and latitude are defined in degrees and altitude as height in meters above the surface.
+                 This height is always in meters, regardless of what is defined as metersPerUnit for the stage."""
+        displayName = "Position"
+    )
+}

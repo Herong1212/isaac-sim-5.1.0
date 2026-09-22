@@ -1,0 +1,248 @@
+/***************************************************************************************************
+ * Copyright 2023 NVIDIA Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *  * Neither the name of NVIDIA CORPORATION nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **************************************************************************************************/
+
+mdl 1.8;
+
+import ::df::*;
+import ::state::*;
+import ::math::*;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+import ::scene::*;
+import ::replicator_definitions::*;
+
+import ::nvidia::core_definitions::file_texture;
+import ::nvidia::core_definitions::normalmap_texture;
+
+
+export material ProjectPBRMaterial(
+
+    //  Albdeo  //
+
+//diffuse_texture
+    uniform texture_2d diffuse_texture = texture_2d() [[
+		anno::display_name("Albedo Map"),
+		anno::description("This is the albedo base color"),
+		anno::in_group("Albedo")
+    ]],
+
+//diffuse_color_constant
+	color diffuse_color_constant = color(0.2) [[
+		anno::display_name("Albedo Color"),
+		anno::description("This is the albedo base color"),
+		anno::in_group("Albedo")
+	]],
+//diffuse_tint
+	color diffuse_tint = color(1.0) [[
+		anno::display_name("Color Tint"),
+		anno::description("When enabled, this color value is multiplied over the final albedo color"),
+		anno::in_group("Albedo")
+	]],
+	
+	//  Reflecitivity //
+//reflectionroughness_texture
+    uniform texture_2d reflectionroughness_texture = texture_2d() [[
+		anno::display_name("Roughness Map"),
+		anno::description("Higher roughness values lead to more blurry reflections"),
+		anno::in_group("Reflectivity")
+    ]],
+//reflection_roughness_constant
+	float reflection_roughness_constant = float(0.0) [[
+		anno::display_name("Roughness Amount"),
+		anno::description("Higher roughness values lead to more blurry reflections"),
+		anno::in_group("Reflectivity")
+	]],
+//metallic_texture
+    uniform texture_2d metallic_texture = texture_2d() [[
+		anno::display_name("Metallic Map"),
+		anno::description("Indicates a dielectric or metallic reflection"),
+		anno::in_group("Reflectivity")
+    ]],
+//metallic_constant
+	float metallic_constant = float(0.0) [[
+		anno::display_name("Metallic Amount"),
+		anno::description("Bias towards pure specular reflection"),
+		anno::in_group("Reflectivity"),
+		anno::hard_range(float(0.0), float(1.0))
+	]],	
+    //  Geometry Opacity  //
+//enable_opacity
+    uniform bool enable_opacity = true [[
+		anno::display_name("Enable Opacity"),
+		anno::description("Enables the use of opacity from the alpha channel of the Diffuse Texture"),
+		anno::in_group("Opacity")
+	]],
+//normalmap_texture
+    uniform texture_2d normalmap_texture = texture_2d() [[
+        anno::display_name("Normal Map"),
+        anno::in_group("Geometry"),
+        anno::usage("normal")
+    ]],
+
+    // Projection Primvars
+    uniform string projection_position = string("projection_position") [[
+        anno::display_name("Projection Position"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_quat = string("projection_quat") [[
+        anno::display_name("Projection Quaternion"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_scale = string("projection_scale") [[
+        anno::display_name("Projection Scale"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_unitscale = string("projection_unitscale") [[
+        anno::display_name("Projection StageMetersPerUnit"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]]
+)
+
+[[
+	anno::display_name("Project PBR Material"),
+    anno::in_group("Replicator"),
+	anno::author("NVIDIA CORPORATION")
+]]
+
+= let {
+
+    // Get the primvars for the projection
+    float3 p_position = ::scene::data_lookup_float3(projection_position, float3(1.0));
+    float3 p_scale = ::scene::data_lookup_float3(projection_scale, float3(1.0));
+    float4 p_quat = ::scene::data_lookup_float4(projection_quat, float4(1.0));
+    float p_unitscale = ::scene::data_lookup_float(projection_unitscale, float(0.01));
+
+    // Use quat to get forward, up, right vectors for projection
+    float3 p_right = replicator_definitions::mul_quat_by_vector(p_quat, float3(1.0,0.0,0.0));
+    float3 p_up = replicator_definitions::mul_quat_by_vector(p_quat, float3(0.0,1.0,0.0));
+    float3 p_forward = replicator_definitions::mul_quat_by_vector(p_quat, float3(0.0,0.0,-1.0));
+
+    // Calculate the projection UVs
+    float2 uv = replicator_definitions::projectionuvs(p_position, p_scale, p_forward, p_right, p_up, p_unitscale);
+
+    //  Difuse Bsdf  //
+
+    // Mask out normals that face away from the projection
+    float normal_clip = math::ceil(math::max(math::dot(state::normal(), p_right*-1.0) * -1.0f, 0.0f));
+    float xmax = (uv.x >= 1.0) ? 0.0 : 1.0;
+    float xmin = (uv.x <= 0.0) ? 0.0 : 1.0;
+    float ymax = (uv.y >= 1.0) ? 0.0 : 1.0;
+    float ymin = (uv.y <= 0.0) ? 0.0 : 1.0;
+    float uv_bounds = xmax * xmin * ymax * ymin * normal_clip;
+    
+    float4 diff_pixel = tex::lookup_float4(diffuse_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+    color diff_color = math::lerp(diffuse_color_constant, color(diff_pixel.x, diff_pixel.y, diff_pixel.z), uv_bounds);
+    color base_color = tex::texture_isvalid(diffuse_texture) ? diff_color * diffuse_tint : diffuse_color_constant * diffuse_tint;
+
+    // Calculate the correct normals
+    float3 normaltex_pixel = tex::lookup_float3(normalmap_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+    float3 u = math::normalize((p_forward * replicator_definitions::remap(normaltex_pixel.x, 0.0, 1.0, -1.0, 1.0)) + (p_up * replicator_definitions::remap(normaltex_pixel.y, 0.0, 1.0, -1.0, 1.0)) + (p_right * normaltex_pixel.z));
+    float3 t = state::normal();
+    float3 axis = float3(0.0, 0.0, 1.0);
+    float3 s = (p_forward * axis.x) + (p_up * axis.y) + (p_right * axis.z);
+    float3 normal_pixel = math::lerp(state::normal(), replicator_definitions::reorient_normal(t, u, s), diff_pixel.w * normal_clip);
+
+    // Get the Roughness Map
+    float r_pixel = math::lerp(reflection_roughness_constant, tex::lookup_float(reflectionroughness_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0), uv_bounds * normal_clip);
+    float roughness_pixel = tex::texture_isvalid(reflectionroughness_texture) ? r_pixel : reflection_roughness_constant;
+
+    // Get the Metal Map
+    float metal_pixel = tex::texture_isvalid(metallic_texture) ? tex::lookup_float(metallic_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0) : metallic_constant;
+
+    bsdf diffuse_bsdf = df::weighted_layer(
+		weight: 1.0,
+		layer:  df::diffuse_reflection_bsdf(
+			        tint:       base_color,
+			        roughness:  float(0.0)
+                ),
+		base:   bsdf(),
+		normal: normal_pixel
+	);
+
+	//  Glossy Reflection Bsdf  //
+
+	bsdf ggx_smith_bsdf = df::microfacet_ggx_smith_bsdf(
+		roughness_u:    roughness_pixel,
+		roughness_v:    roughness_pixel,
+		tint:           color(1.0),
+		mode:           df::scatter_reflect
+	);
+	
+	bsdf custom_curve_layer_bsdf = df::custom_curve_layer(
+		normal_reflectivity:  0.08,		
+		grazing_reflectivity: 1.0,
+		exponent:	          5.0,
+		weight:	              0.5,
+		layer:                ggx_smith_bsdf,
+		base:	              diffuse_bsdf,
+		normal:               normal_pixel
+	);
+	
+	bsdf directional_factor_bsdf = df::tint(base_color, ggx_smith_bsdf);
+	
+	//  Clear Coat  // 
+
+	bsdf omni_PBR_bsdf = df::weighted_layer(
+        weight:     metal_pixel,
+        layer:	    directional_factor_bsdf,
+		base:	    custom_curve_layer_bsdf,
+		normal:     normal_pixel
+	);
+	
+    //bsdf final_bsdf = enable_coat ? omni_PBR_coated_bsdf : omni_PBR_bsdf;
+    //bsdf final_bsdf = enable_coat ? omni_PBR_coated_bsdf : omni_PBR_bsdf;
+                                    
+    color emission_value = color(0.0); //enable_emission ? emission_color * color(emission_intensity) : color(0.0);
+
+	float opacity_value = diff_pixel.w * normal_clip;
+    float cutout_opacity = enable_opacity ? (tex::texture_isvalid(diffuse_texture) ? opacity_value : 1.0) : 1.0;
+ 
+    material_emission emission = material_emission(
+                                    df::diffuse_edf(),
+                                    intensity: emission_value 
+                                    );
+
+    material_surface surface =  material_surface(
+		                            scattering: omni_PBR_bsdf,
+		                            emission:   emission
+		                            );
+
+    material_geometry geometry = material_geometry(
+                                    normal: state::normal(),
+                                    cutout_opacity: cutout_opacity
+                                    );
+
+} in material(
+    surface:  surface,
+    geometry: geometry
+);

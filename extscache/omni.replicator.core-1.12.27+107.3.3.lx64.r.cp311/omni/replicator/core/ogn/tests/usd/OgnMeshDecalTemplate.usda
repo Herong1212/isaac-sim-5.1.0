@@ -1,0 +1,76 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMeshDecal.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnMeshDecal" (
+        docs="""Mesh decal node"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnMeshDecal"
+        int node:typeVersion = 1
+
+        # 16 attributes
+        custom rel inputs:decalPrim (
+            docs="""Existing decal mesh to modify."""
+        )
+        custom token inputs:diffuse = "" (
+            docs="""Diffuse texture path of the decal material."""
+        )
+        custom uint inputs:execIn (
+            docs="""Input execution."""
+        )
+        custom rel inputs:materialPrim (
+            docs="""Material to apply to decal mesh."""
+        )
+        custom token inputs:metallic = "" (
+            docs="""Metallic texture path of the decal material."""
+        )
+        custom token inputs:normal = "" (
+            docs="""Normal texture path of the decal material."""
+        )
+        custom float inputs:offsetDepth = 0.0 (
+            docs="""Offset depth of the decal."""
+        )
+        custom float inputs:offsetNormal = 0.1 (
+            docs="""Offset along the normal of the decal."""
+        )
+        custom token inputs:opacity = "" (
+            docs="""Opacity texture path of the decal material."""
+        )
+        custom float3 inputs:position = (0, 0, 0) (
+            docs="""Position override of the decal."""
+        )
+        custom rel inputs:prims (
+            docs="""Prim to create a mesh decal on."""
+        )
+        custom float3 inputs:rotation = (0, 0, 0) (
+            docs="""Rotation override of the decal."""
+        )
+        custom token inputs:roughness = "" (
+            docs="""Roughness texture path of the decal material."""
+        )
+        custom float3 inputs:scale = (1, 1, 1) (
+            docs="""Scale override of the decal."""
+        )
+        custom token inputs:semantics = "" (
+            docs="""Semantics to apply to decal."""
+        )
+        custom token[] inputs:textureGroup = [] (
+            docs="""Group of diffuse, normal, roughness and/or metallic textures."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Output execution."""
+        )
+    }
+}

@@ -1,0 +1,84 @@
+[package]
+title = "Telemetry"
+category = "Telemetry"
+version = "0.5.2"
+description = "Telemetry for Omniverse Kit."
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["telemetry", "structured logging"]
+support_level = "Core"
+readme = "docs/KitTelemetry.md"
+
+[core]
+order = -1000
+
+[documentation]
+pages = [
+    "docs/KitTelemetry.md",
+    "docs/CHANGELOG.md",
+]
+
+[[python.module]]
+name = "omni.kit.telemetry"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[dependencies]
+"omni.kit.pip_archive" = {}
+
+[settings]
+telemetry.logging.warnFilter = ["*"]
+telemetry.enableNVDF = false
+# enable this following option to send to the 'test' NVDF endpoint instead.
+# telemetry.nvdfTestEndpoint = true
+
+# change this setting to override the default cloud log output path for the transmitter.
+# The following example value contains the current default path for this log (note that
+# this path must be a file URI, not just a local file path and filename):
+# telemetry.cloudLogEndpoint = "file:///${omni_logs}/kit.transmitter.out.log"
+
+# Enable sending stack traces to Sentry
+telemetry.enableSentry = false
+telemetry.removePIISentry = false
+telemetry.appRootPath = ""
+telemetry.dsn = "https://b61f14dfc36f4beabadf4d9dba8e492b@sentry.perflab.nvidia.com/834"
+
+# Additional settings used for open telemetry endpoints.  These are inactive when not in 'open
+# endpoint' mode.  Note that the schema ID extra field needs to be set in a config file or on
+# the command line.  If it is set here, the extra field won't be present for some of the early
+# startup events.
+#telemetry.useOpenEndpoint = false
+telemetry.openEndpointUrl = "https://opentelemetry.analytics.nvidiagrid.net/api/v3/topic/omniverse-team.open.omni-open-collector"
+telemetry.openTestEndpointUrl = "https://opentelemetry.analytics.nvidiagrid.net/api/v3/topic/omniverse-team.open.omni-test-open-collector"
+telemetry.enterpriseOpenEndpointUrl = "https://opentelemetry.analytics.nvidiagrid.net/api/v3/topic/omniverse-team.open.omni-ove-open-collector"
+telemetry.enterpriseOpenTestEndpointUrl = "https://opentelemetry.analytics.nvidiagrid.net/api/v3/topic/omniverse-team.open.omni-ove-test-open-collector"
+
+[[test]]
+name = "startup"
+args = [
+    "--/exts/omni.kit.telemetry/skipDeferredStartup=true", # TODO(anov): ask about it
+]
+
+
+[[test]]
+# in the tests we'll be intentionally emitting error and fatal messages that will need to be
+# ignored.  List their patterns here.
+stdoutFailPatterns.exclude = [
+    "*error log message*",
+    "*error apple muffin*",
+    "*fatal log message*",
+    "*fatal apple muffin*",
+    "*carb::memory::PooledAllocator*",
+]
+
+# the privacy settings for internal builds needs to be overridden so we can more reliably
+# retrieve the session ID for some of the tests.
+args = [
+    "--/privacy/extraDiagnosticDataOptIn=externalBuilds",
+    "--/exts/omni.kit.telemetry/skipDeferredStartup=true",
+]
+
+pythonTests.unreliable = [
+    "*test_sysinfo_messages*", # OMPE-39003
+]

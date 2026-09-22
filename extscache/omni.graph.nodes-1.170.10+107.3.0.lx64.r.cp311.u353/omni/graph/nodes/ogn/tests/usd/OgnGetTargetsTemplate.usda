@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetTargets.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetTargets" (
+        docs="""Returns targets from an array at an index in range [-arrayLength, arrayLength). If the given index is negative it will be an offset from the end of the array."""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetTargets"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom int inputs:count = 1 (
+            docs="""The number of paths to return. 
+            Only returns as many paths as possible until the end of the array. 
+            A value of -1 will return values until the end of the array"""
+        )
+        custom int inputs:index = 0 (
+            docs="""The index into the array in range [-arrayLength, arrayLength).
+            A negative value indexes from the end of the array."""
+        )
+        custom rel inputs:targets (
+            docs="""The input target array."""
+        )
+
+        # 1 attribute
+        custom rel outputs:targets (
+            docs="""The targets found starting at the given index."""
+        )
+    }
+}

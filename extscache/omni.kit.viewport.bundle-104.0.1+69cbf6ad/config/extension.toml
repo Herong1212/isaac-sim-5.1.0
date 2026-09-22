@@ -1,0 +1,74 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "104.0.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Viewport Bundle"
+description="A bundle of Viewport extensions that creates a baseline interactive Viewport."
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "viewport", "hydra", "render"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+
+category = "UI"
+support_level = "Sample"
+feature = true
+
+[dependencies]
+# Load the actual ViewportWindow extension
+"omni.kit.viewport.window" = {}
+# Load the camera-manipulator (navigation)
+"omni.kit.manipulator.camera" = {}
+# Load the prim-manipulator (translate, rotate, scale)
+"omni.kit.manipulator.prim" = {}
+# Load the selection-manipulator (selecteable prims)
+"omni.kit.manipulator.selection" = {}
+# Load drag-drop support of external files
+"omni.kit.window.drop_support" = {}
+# Load the stats HUD (resoltuin, fsp, etc..)
+"omni.hydra.engine.stats" = {}
+# Load the viewport settings menu
+"omni.kit.viewport.menubar.settings" = {}
+# Load the renderer selection menu
+"omni.kit.viewport.menubar.render" = {}
+# Load the view-from-camera menu
+"omni.kit.viewport.menubar.camera" = {}
+# Load the display type menu
+"omni.kit.viewport.menubar.display" = {}
+# Load the legacy grid and gizmo drawing for now
+"omni.kit.viewport.legacy_gizmos" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.viewport.bundle".
+# [[python.module]]
+# name = "omni.kit.viewport.bundle"
+
+
+[settings]
+# Setup Kit to create 'omni.kit.viewport.window' Windows named Viewport
+exts."omni.kit.viewport.window".startup.windowName = "Viewport"
+# Setting to disable opening a Window instance when loaded
+exts."omni.kit.viewport.window".startup.disableWindowOnLoad = false
+# Collapse the additional camera control area
+persistent.exts."omni.kit.viewport.menubar.camera".expand = false
+# Default legacy display options for any consumers (all visible but Skeletons)
+persistent.app.viewport.displayOptions = 32255
+
+[[test]]
+# This is just a collection of extensions, they should be tested indivdiually for now
+waiver = ""

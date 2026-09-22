@@ -1,0 +1,459 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            token enableDistanceDelay = "off"
+            token enableDoppler = "off"
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Perspective = {
+                double3 position = (246.1116308044915, -207.13330990790217, 226.32404512683922)
+                double3 target = (-8.560529141881318, 4.767526306623807, 62.56011436431527)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:dynamicDiffuseGI:probeCounts" = (6, 6, 6)
+            float3 "rtx:dynamicDiffuseGI:probeGridOrigin" = (-210, -250, -10)
+            float3 "rtx:dynamicDiffuseGI:volumeSize" = (600, 440, 300)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:lightspeed:material:overrideAlbedo" = (0.5, 0.5, 0.5)
+            float3 "rtx:lightspeed:material:overrideEmissiveColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            double "rtx:post:lensDistortion:cameraFocalLength" = 18.14756202697754
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            double "rtx:post:tonemap:cameraShutter" = 125
+            double "rtx:post:tonemap:cm2Factor" = 2.4000000953674316
+            double "rtx:post:tonemap:fNumber" = 4
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "Dolly"
+    metersPerUnit = 0.01
+    upAxis = "Z"
+)
+
+def Xform "Dolly" (
+    instanceable = false
+    variants = {
+        string boxVariant = "off"
+        string paletteVariant = "Palette_A_1"
+    }
+    prepend variantSets = ["paletteVariant", "boxVariant"]
+)
+{
+    def Xform "InstancedDolly_Blueprint_196" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+    }
+
+    def Xform "Wheel_Back_Right" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (0.8965967893600464, -0, 0, -0.44284787774086)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-35.203125, -50.48046875, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Wheel_Front_Right" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (-0.320107638835907, -0, 0, -0.9473811388015747)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (35.609375, -50.3671875, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Wheel_Front_Left" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (-0.35117584466934204, -0, 0, -0.9363095164299011)
+        double3 xformOp:scale = (0.9999997019767761, 0.9999997019767761, 1)
+        double3 xformOp:translate = (35.53125, 50, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Wheel_Back_Left" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (0.5886042714118958, -0, 0, 0.80842125415802)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-35.171875, 50, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box1" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (18, -34, 55.24773025512695)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box2" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (18, -34, 55.24773025512695)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box3" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (0.75, 1.25, 1)
+        double3 xformOp:translate = (20, 25, 55.24773025512695)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box4" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (0.75, 1.25, 1)
+        double3 xformOp:translate = (-18, 25, 55.24773025512695)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box5" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (0.7372764348983765, -0, 0, -0.6755911111831665)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (-1.078125, 30.83203125, 80.24772644042969)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box6" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (-8.940696716308594e-7, -0, 0, -1)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (17.1875, -17.984375, 80.24772644042969)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box7" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (-8.940696716308594e-7, -0, 0, -1)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (-20.3515625, -24.30859375, 80.24772644042969)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "PurpleGitterOpen" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (0.7071053981781006, -0, 0, 0.7071081399917603)
+        double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+        double3 xformOp:translate = (0, -1.7265625, 41)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "BMWSmallGitter_w_Corflute__v2_BMW_Small_Gitter"
+    {
+        quatd xformOp:orient = (0.7071069478988647, -0, 0, 0.7071065902709961)
+        double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+        double3 xformOp:translate = (0, -0.8359375, 40.72126007080078)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "InstancedBMWSmallGitter_w_Corflute__v2_BMW_Small_Gitter" (
+            instanceable = true
+            prepend payload = @Funky_Cart.usda@
+        )
+        {
+        }
+
+        def Xform "BMWSmallGitter_w_Corflute__v2_Cube" (
+            instanceable = true
+            prepend payload = @Funky_Cart.usda@
+        )
+        {
+            token visibility = "invisible"
+            quatd xformOp:orient = (1, -0, 0, -0)
+            double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+            double3 xformOp:translate = (-0.00390625, 0.0078125, 0.000003814697265625)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def Xform "BMWSmallGitter_w_Corflute__v2_Cube_Cardboard" (
+            instanceable = true
+            prepend payload = @Funky_Cart.usda@
+        )
+        {
+            token visibility = "invisible"
+            quatd xformOp:orient = (1, -0, 0, -0)
+            double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+            double3 xformOp:translate = (-0.00390625, 0.0078125, 0.000003814697265625)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "_104444_Open_PLASTICSHEET_LOW" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        token visibility = "invisible"
+        quatd xformOp:orient = (0.7071067690849304, -0, 0, 0.7071067690849304)
+        double3 xformOp:scale = (0.9999998807907104, 0.9999998807907104, 1)
+        double3 xformOp:translate = (-0.484375, -1.88671875, 40.99135208129883)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Closed_Gitter_Plastic_Sheet_LOW" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        token visibility = "invisible"
+        quatd xformOp:orient = (0.7071067690849304, -0, 0, 0.7071067690849304)
+        double3 xformOp:scale = (0.9999998807907104, 0.9999998807907104, 1)
+        double3 xformOp:translate = (0, -1.453125, 40.86422348022461)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "CT_GLT_foldingblackbox" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        token visibility = "invisible"
+        quatd xformOp:orient = (0.7071069478988647, -0, 0, 0.7071065902709961)
+        double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+        double3 xformOp:translate = (0, -0, 40.96913528442383)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "_200_CT_BlackStripedGitter_OPEN_v2" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        token visibility = "invisible"
+        quatd xformOp:orient = (0.7071069478988647, -0, 0, 0.7071065902709961)
+        double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+        double3 xformOp:translate = (0, -0, 40.992183685302734)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "_200_CT_BlackStripedGitter_CLOSED_v2" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        token visibility = "invisible"
+        quatd xformOp:orient = (0.7071067094802856, -0, 0, -0.7071068286895752)
+        double3 xformOp:scale = (0.9999999403953552, 0.9999999403953552, 1)
+        double3 xformOp:translate = (0, -0, 40.741817474365234)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "FOF_Mesh_Palette_A_1" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, -0, 41.10025405883789)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "FOF_Mesh_Palette_A_2" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, -0, 41.10025405883789)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "FOF_Mesh_Palette_B" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, -0, 41.10025405883789)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Cardboard_Box" (
+        instanceable = true
+        prepend payload = @Funky_Cart.usda@
+    )
+    {
+        quatd xformOp:orient = (1, -0, 0, -0)
+        double3 xformOp:scale = (0.75, 1, 1)
+        double3 xformOp:translate = (-22, -32, 55.24773025512695)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+    variantSet "boxVariant" = {
+        "off" {
+            over "Cardboard_Box"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box1"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box2"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box3"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box4"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box5"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box6"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Cardboard_Box7"
+            {
+                token visibility = "invisible"
+            }
+
+        }
+        "on" {
+
+        }
+    }
+    variantSet "paletteVariant" = {
+        "Palette_A_1" {
+            over "FOF_Mesh_Palette_A_2"
+            {
+                token visibility = "invisible"
+            }
+
+            over "FOF_Mesh_Palette_B"
+            {
+                token visibility = "invisible"
+            }
+
+        }
+        "Palette_A_2" {
+            over "FOF_Mesh_Palette_A_1"
+            {
+                token visibility = "invisible"
+            }
+
+            over "FOF_Mesh_Palette_B"
+            {
+                token visibility = "invisible"
+            }
+
+        }
+        "Palette_B" {
+            over "FOF_Mesh_Palette_A_1"
+            {
+                token visibility = "invisible"
+            }
+
+            over "FOF_Mesh_Palette_A_2"
+            {
+                token visibility = "invisible"
+            }
+
+        }
+    }
+}
+

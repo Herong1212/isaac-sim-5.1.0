@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.window.material-1.7.2%2B107.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3"
+
+    [package.publish]
+        kitVersion = "108.0.0+feature.217967.1c73315e.gl"
+        date = 1757152004
+        buildNumber = "108.0.0+main.258.078167a7.gl"
+        repoName = "kit-sample-extensions"
+        signed = 1

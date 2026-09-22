@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetPrimDirectionVector.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetPrimDirectionVector" (
+        docs="""Given a prim, find its direction vectors (up vector, forward vector, right vector, etc.)"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetPrimDirectionVector"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom rel inputs:prim (
+            docs="""The connection to the input prim - this attribute is used when 'usePath' is false"""
+        )
+        custom token inputs:primPath = "" (
+            docs="""The path of the input prim - this attribute is used when 'usePath' is true"""
+        )
+        custom bool inputs:usePath = true (
+            docs="""When true, it will use the 'primPath' attribute as the path to the prim, otherwise it will read the connection at the 'prim' attribute"""
+        )
+
+        # 6 attributes
+        custom double3 outputs:backwardVector (
+            docs="""The backward vector of the prim"""
+        )
+        custom double3 outputs:downVector (
+            docs="""The down vector of the prim"""
+        )
+        custom double3 outputs:forwardVector (
+            docs="""The forward vector of the prim"""
+        )
+        custom double3 outputs:leftVector (
+            docs="""The left vector of the prim"""
+        )
+        custom double3 outputs:rightVector (
+            docs="""The right vector of the prim"""
+        )
+        custom double3 outputs:upVector (
+            docs="""The up vector of the prim"""
+        )
+    }
+}

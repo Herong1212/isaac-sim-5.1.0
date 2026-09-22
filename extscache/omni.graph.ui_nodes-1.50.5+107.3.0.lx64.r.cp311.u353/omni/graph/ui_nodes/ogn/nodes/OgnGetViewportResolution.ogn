@@ -1,0 +1,25 @@
+{
+    "GetViewportResolution": {
+        "version": 1,
+        "description": "Gets the resolution of the target viewport.",
+        "language": "Python",
+        "uiName": "Get Viewport Resolution",
+        "categories": [ "viewport" ],
+        "exclude": ["tests"],
+        "inputs": {
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            }
+        },
+        "outputs": {
+            "resolution": {
+                "type": "int[2]",
+                "uiName": "Resolution",
+                "description": "The resolution of the target viewport"
+            }
+        }
+    }
+}

@@ -1,0 +1,173 @@
+{
+    "TransformVector": {
+        "version": 1,
+        "description": [
+            "Applies a transformation matrix to a row vector, returning the result. returns 'Vector' * 'Matrix'.",
+            "If the vector is one dimension smaller than the matrix (eg a 4x4 matrix and a 3d vector), ",
+            "the last component of the vector will be treated as a 1. The result is then projected back to a 3-vector. ",
+            "Supports mixed array inputs, eg a single matrix and an array of vectors."
+        ],
+        "uiName": "Transform Vector",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[4]", "matrixd[4][]", "matrixd[3]", "matrixd[3][]"],
+                "uiName": "Matrix",
+                "description": "The transformation matrix to be applied"
+            },
+            "vector": {
+                "type": ["vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]"],
+                "uiName": "Vector",
+                "description": "The row vector(s) to be translated"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]"],
+                "uiName": "Vector",
+                "description": "The transformed row vector(s)"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectord[3]", "value": [81, 32, 3]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorf[3]", "value": [81, 32, 3]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorh[3]", "value": [81, 32, 3]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3]", "value": [0, -1, 0]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectord[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorf[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorh[3]", "value": [0, 0, 1]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,0,1, 0,-1,0]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectord[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]]
+                },
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[81, 32, 3], [81, 32, 3]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectord[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectord[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorf[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorf[3][]", "value": [[0, -1, 0]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [[1,0,0, 0,0,1, 0,-1,0]]},
+                "inputs:vector": {"type": "vectorh[3][]", "value": [[0, 0, 1]]},
+                "outputs:result": {"type":"vectorh[3][]", "value": [[0, -1, 0]]}
+            }
+        ]
+    }
+}

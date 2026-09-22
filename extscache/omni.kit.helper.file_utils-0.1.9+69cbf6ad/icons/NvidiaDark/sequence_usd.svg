@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.354" height="16.419" viewBox="0 0 14.354 16.419">
+  <g id="Sequence" transform="translate(-3048.775 -1127.411)">
+    <g id="Group_1568" data-name="Group 1568" transform="translate(3048.775 1127.411)">
+      <path id="Path_3185" data-name="Path 3185" d="M-.214,0h13.8V10.026a.835.835,0,0,1-.835.835H.622a.835.835,0,0,1-.835-.835Z" transform="translate(0.771 5.558)" fill="#878787"/>
+      <path id="Subtraction_6" data-name="Subtraction 6" d="M13.773,2.246h-2L13.264,0h.509V2.246Zm-4.71,0H7.193L8.686,0h1.87L9.063,2.246Zm-4.578,0H2.616L4.108,0h1.87L4.485,2.246ZM0,2.107H0V0H1.4L0,2.106Z" transform="translate(0.555 5.558)" fill="#e0e0e0"/>
+      <g id="Group_1565" data-name="Group 1565" transform="matrix(0.966, -0.259, 0.259, 0.966, 0, 3.565)">
+        <rect id="Rectangle_780" data-name="Rectangle 780" width="13.729" height="2.246" transform="translate(0 0)" fill="#878787"/>
+        <path id="Subtraction_7" data-name="Subtraction 7" d="M13.773,0h-2l1.493,2.246h.509V0ZM9.063,0H7.193L8.686,2.246h1.87L9.063,0ZM4.485,0H2.616L4.108,2.246h1.87L4.485,0ZM0,.139H0V2.246H1.4L0,.14Z" transform="translate(0 0)" fill="#e0e0e0"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.969" height="11.124" viewBox="0 0 10.969 11.124">
+  <g id="mixed_properties" data-name="mixed properties" transform="translate(-5979.019 1599.845)">
+    <g id="Group_1771" data-name="Group 1771" transform="translate(-54 -1871)">
+      <path id="Path_2890" data-name="Path 2890" d="M394.441,245.663v6.971l-.014.2-.032.2-.046.185-.062.2-.077.171-.109.171-.125.169-.139.155-.155.155-.171.125-.169.109-.171.077-.187.062-.185.062-.2.03h-7.283l-.185-.03-.2-.062-.187-.062-.169-.077-.171-.109-.171-.125-.155-.155-.139-.155-.125-.169-.109-.171-.077-.171-.062-.2-.046-.185-.03-.2-.016-.2v-6.971l.016-.2.03-.217.046-.185.062-.187.077-.185.109-.171.125-.155.139-.171.155-.139.171-.139.171-.094.169-.093.187-.062.2-.046.185-.03H392.6l.2.03.185.046.187.062.171.093.169.094.171.139.155.139.139.171.125.155.109.171.077.185.062.187.046.185.032.217Z" transform="translate(5649.546 27.568)" fill="#1f2123" fill-rule="evenodd"/>
+    </g>
+    <line id="Line_664" data-name="Line 664" y2="7" transform="translate(5981 -1597.5)" fill="none" stroke="#679ec8" stroke-linecap="round" stroke-width="2"/>
+    <line id="Line_667" data-name="Line 667" y2="7" transform="translate(5988.205 -1597.5)" fill="none" stroke="#679ec8" stroke-linecap="round" stroke-width="2"/>
+    <line id="Line_665" data-name="Line 665" x2="3.603" y2="5" transform="translate(5981 -1597.5)" fill="none" stroke="#679ec8" stroke-linecap="round" stroke-width="2"/>
+    <line id="Line_666" data-name="Line 666" x1="3.603" y2="5" transform="translate(5984.603 -1597.5)" fill="none" stroke="#679ec8" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

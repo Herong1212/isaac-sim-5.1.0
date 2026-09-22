@@ -1,0 +1,129 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "0.6.19"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "RTX Settings Window"
+description="Core extension for renderers which use the carbonite settings framework "
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Rendering"
+support_level = "Core"
+feature = true
+
+# Keywords for the extension
+keywords = ["kit", "rtx", "rendering"]
+
+# Location of change log file in target (final) folder of extension, relative to the root. Can also be just a content
+# of it instead of file path. More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.widget.searchable_combobox" = {}
+"omni.kit.widget.settings" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.window.file_importer" = {}
+"omni.kit.window.file_exporter" = {}
+"omni.kit.widget.prompt" = { optional = true }
+
+[settings]
+# this enable to decide where the menu for the settings window will be located
+exts."omni.rtx.window.settings".window_menu = "Rendering"
+# enable to create window when extension is loaded
+exts."omni.rtx.window.settings".startup.autoCreateWindow = true
+# enable to make window wait until renderer generates 1st frame.
+# This can be a problem as some renderer's don't register all of
+# the settings initially and showing the window with incomplete
+# settings can generate errors or warnings.
+exts."omni.rtx.window.settings".startup.waitForHydra1stFrame = true
+
+[[python.module]]
+name = "rtx.settings"
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.rtx.window.settings"
+
+[[test]]
+pythonTests.exclude = ["omni.rtx.window.settings.tests.test_widget*"]
+
+args = [
+    "--/renderer/enabled=iray",
+    "--/renderer/active=iray",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.hydra.iray",
+    "omni.kit.viewport.window",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    # driver to old
+    "*[Error] [rtx.neuraylib.plugin] [IRAY:RENDER]   1.0   IRAY   rend error: Cannot render: found no usable devices. Please update your NVIDIA driver (www.nvidia.com) to at least *, or enable CPU rendering.*",
+]
+
+[[test]]
+name = "widget"
+pythonTests.exclude = ["omni.rtx.window.settings.tests.test_defaults*", "omni.rtx.window.settings.tests.test_ui*"]
+pythonTests.incldue = ["omni.rtx.window.settings.tests.test_widget*"]
+
+args = [
+    "--/renderer/enabled=iray",
+    "--/renderer/active=iray",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.rtx.window.settings/startup/autoCreateWindow=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.hydra.iray",
+    "omni.iray.settings.core",
+    "omni.kit.viewport.window",
+    "omni.kit.widget.prompt",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    # driver to old
+    "*[Error] [rtx.neuraylib.plugin] [IRAY:RENDER]   1.0   IRAY   rend error: Cannot render: found no usable devices. Please update your NVIDIA driver (www.nvidia.com) to at least *, or enable CPU rendering.*",
+]
+
+[documentation]
+pages = ["docs/CHANGELOG.md"]

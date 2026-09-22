@@ -1,0 +1,57 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def OmniGraph "TestGraph"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "push"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 7)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "get_rotation" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:matrix (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            int64 attrValue = 0
+                            string resolvedType = "matrixd[4]"
+                        }
+                    }
+                }
+            )
+            prepend token inputs:matrix.connect = </World/TestGraph/make_transformation_matrix_from_trs.outputs:transform>
+            token node:type = "omni.graph.nodes.GetMatrix4Rotation"
+            int node:typeVersion = 1
+            custom token outputs:rotation
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (359.60007, 72.8)
+        }
+
+        def OmniGraphNode "make_transformation_matrix_from_trs" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom vector3d inputs:rotationXYZ = (30, 45, 10)
+            custom vector3d inputs:scale
+            custom vector3d inputs:translation
+            token node:type = "omni.graph.nodes.MakeTransform"
+            int node:typeVersion = 1
+            custom matrix4d outputs:transform
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-5.1294065, 9.399641)
+        }
+    }
+}

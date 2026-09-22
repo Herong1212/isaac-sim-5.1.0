@@ -1,0 +1,56 @@
+{
+    "OgnPerAxisPose": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Generate 3-Dimension array values from per axis input values",
+        "metadata":
+        {
+           "uiName": "Per axis pose"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["The prims that their pose needs to be changed."],
+                "type": "target"
+            },
+            "mode": {
+                "description": ["String value indicating which parameter to modify."],
+                "type": "token"
+            },
+            "numSamples": {
+                "description": ["Number of samples"],
+                "type": "int"
+            },
+            "fullValues": {
+                "description": ["Value on all three axes. Cannot co-exist with xValue, yValue or zValue."],
+                "type": "float[3][]"
+            },
+            "xValue": {
+                "description": ["Value of the x axis."],
+                "type": "float[]"
+            },
+            "yValue": {
+                "description": ["Value of the y axis."],
+                "type": "float[]"
+            },
+            "zValue": {
+                "description": ["Value of the z axis."],
+                "type": "float[]"
+            },
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "samples": {
+                "description": ["3 Dimensional values on each axis."],
+                "type": "double[3][]"
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+
+[package]
+title = "Ramp evaluator and widget"
+category = "UI"
+version = "107.0.1"
+
+icon = "data/icon.png"
+preview_image = "data/icon.png"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/index.rst"
+description="Ramp evaluation and UI widget."
+authors = ["NVIDIA"]
+
+# URL of the extension source repository.
+repository = ""
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.ramp"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.py"]
+
+# Keywords for the extension
+keywords = ["ramp"]
+
+# Extensions required to load before this one
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.commands" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Avoid test failure due to error message in ImageProvider when renderer
+# interface cannot be acquired
+[[test]]
+args = [
+    "--no-window"
+]
+
+dependencies = [
+    "omni.kit.test",
+    # "omni.particle.system.core"   # deprecated
+]
+
+[package.writeTarget]
+kit = true
+usd = true

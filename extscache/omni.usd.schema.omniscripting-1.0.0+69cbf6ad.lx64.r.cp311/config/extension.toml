@@ -1,0 +1,40 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD OmniScripting Schema"
+description="USD Schemas defined for the objects in OmniScripting"
+version = "1.0.0"
+changelog="docs/CHANGELOG.md"
+keywords = ["usd", "schema", "scripting"]
+support_level = "Sample"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+# thunk for old pxr.OmniScriptingSchema namespace
+[[python.module]]
+name = "pxr"
+
+[[python.module]]
+name = "OmniScriptingSchema"
+
+[[python.module]]
+name = "OmniScriptingSchemaTools"
+
+[[python.module]]
+name = "usd.schema.omniscripting"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniScriptingSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniScriptingSchema${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniScriptingSchemaTools${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniScriptingSchemaTools${lib_ext}"
+
+[[test]]
+waiver = "USD Schema, tested externally"

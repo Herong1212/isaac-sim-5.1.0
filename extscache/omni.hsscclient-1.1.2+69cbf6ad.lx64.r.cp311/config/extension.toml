@@ -1,0 +1,42 @@
+[package]
+title = "HSSC Client"
+category = "Internal"
+version = "1.1.2"
+description = "Extension that wraps and tests the carb.hsscclient plugin; this provides a client interface to the High Speed Static Cache for UJITSO and other systems."
+keywords = ["HSSC", "cache"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.blobkey" = {}
+
+[[native.plugin]]
+path = "bin/deps/carb.hsscclient.plugin"
+
+[settings]
+
+[[python.module]]
+name = "omni.hsscclient"
+
+[[test]]
+unreliable = true
+name = "Integration"
+timeout = 600
+pythonTests.include = [ "omni.hsscclient.*" ]
+pythonTests.unreliable = [
+    "*test_tex_remote_image", # OM-97641
+]
+dependencies = [
+    "omni.kit.core.tests", # For helper functions to launch Kit process
+    "omni.kit.test_suite.helpers", # For wait_stage_loading
+    "omni.ui" # For helper functions to compare
+]
+stdoutFailPatterns.exclude = ["*Asset path*not found*", "*References an asset that can not be found*", "*OvTextureFile : Failed to retrieve cached mip*", "*TextureAssset : Failed to load OVTex for*"] # https://omniverse-jirasw.nvidia.com/browse/OM-93934 is for making this apply different patterns for different tests
+
+"filter:platform"."linux-x86_64".enabled = true
+"filter:platform"."linux-aarch64".enabled = false
+"filter:platform"."windows-x86_64".enabled = false
+"filter:platform"."macos-universal".enabled = false
+
+[documentation]
+pages = ["docs/Overview.md"]

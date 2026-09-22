@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetPrimsAtPath.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetPrimsAtPath" (
+        docs="""DEPRECATED - Use ToTarget"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetPrimsAtPath"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom token inputs:path (
+            docs="""A token or token array to compute representing a path."""
+        )
+
+        # 1 attribute
+        custom rel outputs:prims (
+            docs="""The output prim paths"""
+        )
+
+        # 1 attribute
+        custom token state:path (
+            docs="""Snapshot of previously seen path"""
+        )
+    }
+}

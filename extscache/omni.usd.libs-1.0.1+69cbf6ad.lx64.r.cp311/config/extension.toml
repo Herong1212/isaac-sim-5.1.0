@@ -1,0 +1,357 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order higher than -1000
+order = -1000
+
+[package]
+title = "Omni USD Libraries"
+version = "1.0.1"
+category = "Internal"
+description = "Extension to load native USD binaries."
+keywords = ["usd", "libraries"]
+support_level = "Core"
+
+[dependencies]
+"omni.usd.config" = {}
+"omni.gpucompute.plugins" = { optional = true } # omni.fabric.plugin
+
+[[python.module]]
+path = "."
+
+[[native.library]]
+path = "bin/libOpenEXRCore.so"
+
+[[native.library]]
+path = "bin/libMaterialXCore.so"
+
+[[native.library]]
+path = "bin/libMaterialXFormat.so"
+
+[[native.library]]
+path = "bin/libMaterialXGenShader.so"
+
+[[native.library]]
+path = "bin/libMaterialXRender.so"
+
+[[native.library]]
+path = "bin/libMaterialXRenderOsl.so"
+
+[[native.library]]
+path = "bin/libusd_arch.so"
+
+[[native.library]]
+path = "bin/libtbb.so"
+
+[[native.library]]
+path = "bin/libboost_python311.so"
+
+[[native.library]]
+path = "bin/libusd_tf.so"
+
+[[native.library]]
+path = "bin/libusd_garch.so"
+
+[[native.library]]
+path = "bin/libusd_work.so"
+
+[[native.library]]
+path = "bin/libusd_js.so"
+
+[[native.library]]
+path = "bin/libusd_trace.so"
+
+[[native.library]]
+path = "bin/libusd_plug.so"
+
+[[native.library]]
+path = "bin/libusd_gf.so"
+
+[[native.library]]
+path = "bin/libusd_vt.so"
+
+[[native.library]]
+path = "bin/libusd_ar.so"
+
+[[native.library]]
+path = "bin/libusd_hio.so"
+
+[[native.library]]
+path = "bin/libusd_sdf.so"
+
+[[native.library]]
+path = "bin/libusd_glf.so"
+
+[[native.library]]
+path = "bin/libosdCPU.so"
+
+[[native.library]]
+path = "bin/libusd_pxOsd.so"
+
+[[native.library]]
+path = "bin/libusd_geomUtil.so"
+
+[[native.library]]
+path = "bin/libusd_cameraUtil.so"
+
+[[native.library]]
+path = "bin/libusd_hf.so"
+
+[[native.library]]
+path = "bin/libusd_ndr.so"
+
+[[native.library]]
+path = "bin/libusd_sdr.so"
+
+[[native.library]]
+path = "bin/libusd_hd.so"
+
+[[native.library]]
+path = "bin/libusd_kind.so"
+
+[[native.library]]
+path = "bin/libusd_pcp.so"
+
+[[native.library]]
+path = "bin/libusd_usd.so"
+
+[[native.library]]
+path = "bin/libusd_usdGeom.so"
+
+[[native.library]]
+path = "bin/libusd_hdsi.so"
+
+[[native.library]]
+path = "bin/libusd_hgi.so"
+
+[[native.library]]
+path = "bin/libusd_hgiGL.so"
+
+[[native.library]]
+path = "bin/libusd_hgiInterop.so"
+
+[[native.library]]
+path = "bin/libusd_usdUI.so"
+
+[[native.library]]
+path = "bin/libusd_usdShade.so"
+
+[[native.library]]
+path = "bin/libusd_usdUtils.so"
+
+[[native.library]]
+path = "bin/libusd_usdMtlx.so"
+
+[[native.library]]
+path = "bin/libusd_hdMtlx.so"
+
+[[native.library]]
+path = "bin/libosdGPU.so"
+
+[[native.library]]
+path = "bin/libMaterialXGenGlsl.so"
+
+[[native.library]]
+path = "bin/libMaterialXGenMsl.so"
+
+[[native.library]]
+path = "bin/libusd_hdSt.so"
+
+[[native.library]]
+path = "bin/libusd_hdx.so"
+
+[[native.library]]
+path = "bin/libusd_hdar.so"
+
+[[native.library]]
+path = "bin/libusd_usdLux.so"
+
+[[native.library]]
+path = "bin/libusd_usdRender.so"
+
+[[native.library]]
+path = "bin/libusd_usdVol.so"
+
+[[native.library]]
+path = "bin/libusd_usdImaging.so"
+
+[[native.library]]
+path = "bin/libusd_usdImagingGL.so"
+
+[[native.library]]
+path = "bin/libImath-3_1.so"
+
+[[native.library]]
+path = "bin/libAlembic.so"
+
+[[native.library]]
+path = "bin/libusd_hdGp.so"
+
+[[native.library]]
+path = "bin/libIex.so"
+
+[[native.library]]
+path = "bin/libIex-3_3.so"
+
+[[native.library]]
+path = "bin/libIlmThread-3_3.so"
+
+[[native.library]]
+path = "bin/libOpenEXRCore-3_3.so"
+
+[[native.library]]
+path = "bin/libOpenEXR-3_3.so"
+
+[[native.library]]
+path = "bin/libOpenEXRUtil.so"
+
+[[native.library]]
+path = "bin/libjpeg.so"
+
+[[native.library]]
+path = "bin/libMaterialXGenMdl.so"
+
+[[native.library]]
+path = "bin/libMaterialXRenderHw.so"
+
+[[native.library]]
+path = "bin/libboost_filesystem.so"
+
+[[native.library]]
+path = "bin/libusd_usdPhysics.so"
+
+[[native.library]]
+path = "bin/libboost_system.so"
+
+[[native.library]]
+path = "bin/libusd_usdProc.so"
+
+[[native.library]]
+path = "bin/libz.so"
+
+[[native.library]]
+path = "bin/libpng.so"
+
+[[native.library]]
+path = "bin/libusd_usdSemantics.so"
+
+[[native.library]]
+path = "bin/libMaterialXGenOsl.so"
+
+[[native.library]]
+path = "bin/libusd_usdMedia.so"
+
+[[native.library]]
+path = "bin/libImath.so"
+
+[[native.library]]
+path = "bin/libtiff.so"
+
+[[native.library]]
+path = "bin/libtiffxx.so"
+
+[[native.library]]
+path = "bin/libboost_thread.so"
+
+[[native.library]]
+path = "bin/libusd_usdSkel.so"
+
+[[native.library]]
+path = "bin/libusd_usdVolImaging.so"
+
+[[native.library]]
+path = "bin/libtbbmalloc.so"
+
+[[native.library]]
+path = "bin/libboost_chrono.so"
+
+[[native.library]]
+path = "bin/libboost_date_time.so"
+
+[[native.library]]
+path = "bin/libusd_usdSkelImaging.so"
+
+[[native.library]]
+path = "bin/libusd_usdProcImaging.so"
+
+[[native.library]]
+path = "bin/libtbbmalloc_proxy.so"
+
+[[native.library]]
+path = "bin/libMaterialXRenderGlsl.so"
+
+[[native.library]]
+path = "bin/libboost_program_options.so"
+
+[[native.library]]
+path = "bin/libOpenEXRUtil-3_3.so"
+
+[[native.library]]
+path = "bin/libusd_usdRiPxrImaging.so"
+
+[[native.library]]
+path = "bin/libboost_container.so"
+
+[[native.library]]
+path = "bin/libturbojpeg.so"
+
+[[native.library]]
+path = "bin/libusd_usdRi.so"
+
+[[native.library]]
+path = "bin/libusd_usdHydra.so"
+
+[[native.library]]
+path = "bin/libboost_atomic.so"
+
+[[native.library]]
+path = "bin/libusd_usdAppUtils.so"
+
+[[native.library]]
+path = "bin/libOpenEXR.so"
+
+[[native.library]]
+path = "bin/libboost_regex.so"
+
+[[native.library]]
+path = "bin/libpng16.so"
+
+[[native.library]]
+path = "bin/libusd_ts.so"
+
+[[native.library]]
+path = "bin/libIlmThread.so"
+
+[[native.library]]
+path = "bin/libusd_usdBakeMtlx.so"
+
+[[native.library]]
+path = "bin/libdraco.so"
+
+
+[[native.plugin]]
+path = "bin/deps/omni.usd-abi.plugin"
+
+[[native.plugin]]
+path = "bin/deps/omni.usd.hydra.renderproduct.plugin"
+
+[[native.plugin]]
+path = "bin/deps/omni.tbb.globalcontrol.plugin"
+
+[[native.plugin]]
+path = "bin/fabric/omni.fabric.plugin"
+
+[[native.library]]
+path = "bin/usd/usdAbc${lib_ext}"
+
+[[native.library]]
+path = "bin/usd/usdDraco${lib_ext}"
+
+[[test]]
+waiver = "Bundle extension that pulls all USD libs. Any tests will be covered in omni.usd/tests/test_usd_bootstrap.py"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]

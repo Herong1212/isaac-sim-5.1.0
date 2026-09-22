@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.usd.schema.render_settings.rtx-323539e2c27907cc.zip"
+
+    [package.publish]
+        kitVersion = "107.3.1+production.205118.343ae301.gl"
+        date = 1757755130
+        buildNumber = "107.3.1+1073.205118.343ae301.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

@@ -1,0 +1,48 @@
+{
+    "ReadViewportScrollState": {
+        "version": 1,
+        "description": [
+            "Read the state of the last viewport scroll event from the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Viewport Scroll State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of the 2D position output are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for scroll events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            }
+        },
+        "outputs": {
+            "scrollValue": {
+                "type": "float",
+                "description": "The number of mouse wheel clicks scrolled up if positive, or scrolled down if negative",
+                "uiName": "Scroll Value"
+            },
+            "position": {
+                "type": "double[2]",
+                "description": "The last position at which a viewport scroll event occurred in the specified viewport",
+                "uiName": "Position"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

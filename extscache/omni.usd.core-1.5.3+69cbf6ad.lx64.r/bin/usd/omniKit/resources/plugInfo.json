@@ -1,0 +1,87 @@
+{
+    "Plugins": [
+        {
+            "Info": {
+                "SdfMetadata": {
+                    "hide_in_stage_window": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    },
+                    "no_delete": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    },
+                    "always_pick_model": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    },
+                    "ignore_material_updates": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    },
+                    "no_selection_outline": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    },
+                    "variant_sets_ui_hints": {
+                        "type": "dictionary",
+                        "appliesTo": "prims"
+                    },
+                    "omni:kit:hideInUI": {
+                        "type": "bool",
+                        "appliesTo": "prims",
+                        "default": 0
+                    }
+                }
+            },
+            "Name": "Omniverse Kit Editor Extension",
+            "Type": "resource"
+        },
+        {
+            "Info": {
+                "Types": {
+                    "omni::usd::audio::LegacySoundAdapter": {
+                            "bases": [
+                                "UsdImagingGprimAdapter"
+                            ],
+                            "primTypeName": "Sound"
+                    },
+                    "omni::usd::audio::SoundAdapter": {
+                            "bases": [
+                                "UsdImagingGprimAdapter"
+                            ],
+                            "primTypeName": "OmniSound"
+                    },
+                    "omni::usd::audio::LegacyListenerAdapter": {
+                            "bases": [
+                                "UsdImagingGprimAdapter"
+                            ],
+                            "primTypeName": "Listener"
+                    },
+                    "omni::usd::audio::ListenerAdapter": {
+                            "bases": [
+                                "UsdImagingGprimAdapter"
+                            ],
+                            "primTypeName": "OmniListener"
+                    },
+                    "omni::usd::physics::TetrahedralMeshAdapter": {
+                            "bases": [
+                                "UsdImagingGprimAdapter"
+                            ],
+                            "primTypeName": "TetrahedralMesh"
+                    }	
+                }
+            },
+            "LibraryPath": "../../libomni.usd.so",
+            "Name": "Omniverse Kit UsdImaging Adapters",
+            "ResourcePath": "resources",
+            "Root": "..",
+            "Type": "library"
+        }
+    ]
+}

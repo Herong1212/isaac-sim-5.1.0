@@ -1,0 +1,17 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary renderSettings = {
+            bool "rtx:post:tvNoise:enableScanlines" = 1
+            bool "rtx:post:tvNoise:enabled" = 1
+            double "rtx:post:tvNoise:scanlineSpread" = 0.1234567
+        }
+    }
+    defaultPrim = "World"
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+
+}

@@ -1,0 +1,89 @@
+{
+    "MakeTransform": {
+        "version": 2,
+        "description": "Make a transformation matrix that performs a translation, rotation (in euler angles), and scale in that order",
+        "uiName": "Make Transformation Matrix from TRS",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "translation": {
+                "type": "vectord[3]",
+                "uiName": "Translation",
+                "description": "The desired translation as a vector",
+                "default": [0, 0, 0]
+            },
+            "rotationXYZ": {
+                "type": "vectord[3]",
+                "description": "The desired orientation in euler angles XYZ",
+                "uiName": "Rotation",
+                "default": [0, 0, 0]
+            },
+            "rotationOrder" : {
+                "type": "token",
+                "uiName": "Rotation Order",
+                "description": "The order the rotation should be applied",
+                "default" : "XYZ",
+                "metadata": {
+                    "allowedTokens": ["XYZ", "XZY", "YXZ", "YZX", "ZXY", "ZYX"]
+                }
+            },
+            "scale": {
+                "type": "vectord[3]",
+                "uiName": "Scale",
+                "description": "The desired scaling factor about the X, Y, and Z axis respectively",
+                "default": [1, 1, 1]
+            }
+        },
+        "outputs": {
+            "transform": {
+                "type": "matrixd[4]",
+                "uiName": "Transform",
+                "description": "The computed transformation matrix"
+            }
+        },
+        "tests": [
+            {
+                "inputs:rotationXYZ": [0, 0, 0],
+                "inputs:translation": [0, 0, 0],
+                "outputs:transform": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]
+            },
+            {
+                "inputs:rotationXYZ": [0, 0, 0],
+                "inputs:translation": [1, 2, 3],
+                "outputs:transform": [1,0,0,0, 0,1,0,0, 0,0,1,0, 1,2,3,1]
+            },
+            {
+                "inputs:rotationXYZ": [20, 0, 30],
+                "inputs:translation": [1, -2, 3],
+                "outputs:transform": [ 8.66025404e-01, 5.00000000e-01, 4.16333634e-17, 0.00000000e+00,
+                                      -4.69846310e-01, 8.13797681e-01, 3.42020143e-01, 0.00000000e+00,
+                                       1.71010072e-01,-2.96198133e-01, 9.39692621e-01, 0.00000000e+00,
+                                       1.00000000e+00,-2.00000000e+00, 3.00000000e+00, 1.00000000e+00]
+            },
+            {
+                "inputs:scale": [10, 5, 2],
+                "outputs:transform": [10, 0, 0, 0, 0, 5, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1]
+            },
+            {
+                "inputs:translation": [1, -2, 3],
+                "inputs:rotationXYZ": [20, 0, 30],
+                "inputs:scale": [10, 5, 2],
+                "outputs:transform": [ 8.66025404e+00, 5.00000000e+00, 0.00000000e+00, 0.00000000e+00,
+                                      -2.34923155e+00, 4.06898841e+00, 1.71010072e+00, 0.00000000e+00,
+                                       3.42020140e-01,-5.92396270e-01, 1.87938524e+00, 0.00000000e+00,
+                                       1.00000000e+00,-2.00000000e+00, 3.00000000e+00, 1.00000000e+00]
+            },
+            {
+                "inputs:rotationXYZ": [90, 0, 90],
+                "inputs:rotationOrder": "XYZ",
+                "outputs:transform": [0,1,0,0, 0,0,1,0, 1,0,0,0, 0,0,0,1]
+
+            },
+            {
+                "inputs:rotationXYZ": [90, 0, 90],
+                "inputs:rotationOrder": "ZYX",
+                "outputs:transform": [0,0,1,0, -1,0,0,0, 0,-1,0,0, 0,0,0,1]
+            }
+        ]
+    }
+}

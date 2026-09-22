@@ -1,0 +1,41 @@
+{
+    "GetStringLength": {
+        "version": 1,
+        "description": [
+            "Return the length of the provided string."
+        ],
+        "uiName": "Get String Length",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token", "token[]"],
+                "description": "The input string."
+            }
+        },
+        "outputs": {
+            "length": {
+                "type": ["int", "int[]"],
+                "description": "The length of the string."
+            }
+        },
+        "tests": [
+            {
+                "inputs:string": {"type": "string", "value": ""},
+                "outputs:length": {"type": "int", "value": 0}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a test string"},
+                "outputs:length": {"type": "int", "value": 21}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a test token"},
+                "outputs:length": {"type": "int", "value": 20}
+            },
+            {
+                "inputs:string": {"type": "token[]", "value": ["Foo", "Bar", "Long", "Token"]},
+                "outputs:length": {"type": "int[]", "value": [3, 3, 4, 5]}
+            }
+        ]
+    }
+}

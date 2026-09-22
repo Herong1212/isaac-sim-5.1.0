@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadStageSelection.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadStageSelection" (
+        docs="""Outputs the current stage selection as a list of paths"""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadStageSelection"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom token[] outputs:selectedPrims (
+            docs="""The currently selected path(s)"""
+        )
+    }
+}

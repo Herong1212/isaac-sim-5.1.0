@@ -1,0 +1,131 @@
+{
+    "Tan": {
+        "version": 1,
+        "description": [
+            "Compute the trigonometric tangent value of a scalar, array of scalars, vector, or array of vectors; in",
+            "the latter three cases the tangent function is applied to every single scalar element in the",
+            "corresponding structures. All input scalar elements are assumed to be angles that are measured in degrees."
+        ],
+        "uiName": "Tangent",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["decimals"],
+                "description": [
+                    "The value(s) for which the trigonometric tangent is to be computed. Each scalar element of the",
+                    "value is an angle, measured in degrees."
+                ]
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["decimals"],
+                "description": [
+                    "The original input \"Value\" with the trigonometric tangent operator applied to each scalar",
+                    "value, all of which will have values lying in the range [-1, 1].",
+                    "The structure of the result, arrays and tuples, will mirror that of the input."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "double", "value": 45.0},
+                "outputs:value": {"type": "double", "value": 1.0}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 45.0},
+                "outputs:value": {"type": "float", "value": 1.0}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 45.0},
+                "outputs:value": {"type": "half", "value": 1.0}
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [45.0, 45.0]},
+                "outputs:value": {"type": "double[2]", "value": [1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "double[3]", "value": [1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [45.0, 45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "double[4]", "value": [1.0, 1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [45.0, 45.0]},
+                "outputs:value": {"type": "float[2]", "value": [1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "float[3]", "value": [1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [45.0, 45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "float[4]", "value": [1.0, 1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [45.0, 45.0]},
+                "outputs:value": {"type": "half[2]", "value": [1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "half[3]", "value": [1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [45.0, 45.0, 45.0, 45.0]},
+                "outputs:value": {"type": "half[4]", "value": [1.0, 1.0, 1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": [-45.0, 45.0]},
+                "outputs:value": {"type": "double[]", "value": [-1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [-45.0, 45.0]},
+                "outputs:value": {"type": "float[]", "value": [-1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [-45.0, 45.0]},
+                "outputs:value": {"type": "half[]", "value": [-1.0, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[-45.0, -45.0]]},
+                "outputs:value": {"type": "double[2][]", "value": [[-1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[-45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "double[3][]", "value": [[-1.0, -1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "double[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[-45.0, -45.0]]},
+                "outputs:value": {"type": "float[2][]", "value": [[-1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[-45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "float[3][]", "value": [[-1.0, -1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "float[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value": [[-45.0, -45.0]]},
+                "outputs:value": {"type": "half[2][]", "value": [[-1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[-45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "half[3][]", "value": [[-1.0, -1.0, -1.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]},
+                "outputs:value": {"type": "half[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "Increment": {
+        "version": 1,
+        "description": [
+            "Add a double argument to any type (element-wise). This includes simple values, tuples, arrays,",
+            "and arrays of tuples.",
+            "The output type/shape is always the same as the input \"Value\"'s type/shape.",
+            "For example, a \"Value\" input of type tuple with an \"Increment amount\" type double will compute a",
+            "tuple. Fractional values are used for approximation. For example: (int)4 + 3.2 will return 7.",
+            "The default increment value is 1.0."
+        ],
+        "uiName": "Increment",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["numerics"],
+                "description": "The operand that is to be increased by the \"Increment amount\".",
+                "uiName": "Value"
+            },
+            "increment": {
+                "type": "double",
+                "description": "The number added to the first operand \"Value\" (in an element-wise fashion where appropriate).",
+                "uiName": "Increment amount",
+                "default": 1.0
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "Result of the increment; should have the same type and shape as the input \"Value\".",
+                "uiName": "Result"
+            }
+        },
+       "tests": [
+            {
+                "inputs:value": {"type": "float[2]", "value": [1.0, 2.0]},
+                "inputs:increment": 0.5,
+                "outputs:result": {"type": "float[2]", "value": [ 1.5, 2.5 ] }
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 10},
+                "inputs:increment": 1.2,
+                "outputs:result": {"type": "int64", "value": 11}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[10, 5], [1, 1]]},
+                "inputs:increment": 5.4,
+                "outputs:result": {"type": "double[2][]", "value": [[ 15.4, 10.4 ],[ 6.4, 6.4 ]]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[10, 5], [1, 1]]},
+                "inputs:increment": 5,
+                "outputs:result": {"type": "double[2][]", "value": [[15, 10], [6, 6]]}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 2.22045e-16},
+                "outputs:result": {"type": "double", "value": 1.000000000000000222045}
+            }
+        ]
+    }
+}

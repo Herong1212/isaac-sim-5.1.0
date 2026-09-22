@@ -1,0 +1,64 @@
+[package]
+title = "OmniGraph Action Graph Core"
+version = "1.1.7"
+category = "Graph"
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+# Path (relative to the root) of the main documentation file.
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains nodes for Omnigraph Action Graphs."
+repository = ""
+support_level = "Core"
+keywords = ["omnigraph", "nodes", "action"]
+python.import_mode = "ParallelThread"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.action_core"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.graph.core" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+name="no_window"
+timeout = 300
+
+stdoutFailPatterns.exclude = [
+    # Exclude carb.events leak that only shows up locally
+    "*[Error] [carb.events.plugin]*PooledAllocator*",
+    "*Ignore this error/warning*",  # Exclude messages which say they should be ignored
+]
+dependencies = [
+    "omni.graph"
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+cpp_api = [
+    "../../../include/omni/graph/action/IActionGraph.h",
+    "../../../include/omni/graph/action/IActionGraph.gen.h",
+    "../../../include/omni/graph/action/unstable/IActionGraphNodes.h",
+    "../../../include/omni/graph/action/unstable/IActionGraphNodes.gen.h",
+]
+
+cpp_api_exclude_warnings = [
+    ".*warning:.* is not documented",
+    "warning: unable to resolve reference to",
+    "warning: Internal inconsistency",
+    "^  parameter '",
+]

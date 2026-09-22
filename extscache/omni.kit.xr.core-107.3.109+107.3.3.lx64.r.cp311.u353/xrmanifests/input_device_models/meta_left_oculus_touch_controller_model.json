@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "name": "Left Oculus Touch Controller Model",
+    "priority": 15,
+    "tags": [ "left_oculus_touch_components" ],
+    "inputDevices": "/user/hand/left",
+    "asset": "{quest.controllers}/q2_left/model.usd"
+}

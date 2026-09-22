@@ -1,0 +1,12 @@
+<AnimationGraph version="1.0.1" name="AnimationGraph">
+  <variable name="BlendWeight" type="float" />
+  <pose type="rel">stand_idle_wave_loop_skelanim</pose>
+  <skeleton type="rel">skeleton_Root.xml</skeleton>
+  <AnimationClip name="stand_idle_wave_loop_skelanim" type="node">
+    <backwards type="bool">False</backwards>
+    <endTime type="float">0.0</endTime>
+    <loop type="bool">True</loop>
+    <startTime type="float">0.0</startTime>
+    <animationSource type="rel">source_stand_idle_wave_loop_skelanim.xml</animationSource>
+  </AnimationClip>
+</AnimationGraph>

@@ -1,0 +1,353 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+)
+
+def Xform "vehicle"
+{
+    token omni:simready:vehicle:longitudinalAxis = "posY" (
+        allowedTokens = ["negX", "negY", "negZ", "posX", "posY", "posZ"]
+    )
+
+    def Scope "Geometry" (
+        prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+    )
+    {
+        def Xform "body" (
+           prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+        )
+        {
+
+            matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0.001, -0.0999, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            string semantic:wikidata_qcode:params:semanticData = "Q731988"
+            string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+            token[] semantics:labels:wikidata_qcode = ["Q731988"]
+
+            def Cube "body"
+            {
+                matrix4d xformOp:transform = ( (0.5, 0, 0, 0), (0, 0.6, 0, 0), (0, 0, 0.2, 0), (0, 0, 0.5, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Plane "window_shield"
+            {
+                matrix4d xformOp:transform = ( (0.5, 0, 0, 0), (0, 0.2298133329356934, -0.19283628290596178, 0), (0, 0.6427876096865393, 0.766044443118978, 0), (0, 0.7, 0.5, 1) )
+                uniform token[] xformOpOrder = ["xformOp:transform"]
+            }
+
+            def Xform "door_l" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q1276284"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q1276284"]
+
+                def Cube "door_l"
+                {
+                    float3[] extent = [(0.49, 0.18, 0.16), (0.52, 0.42, 0.48)]
+                    matrix4d xformOp:transform = ( (0.01, 0, 0, 0), (0, 0.4, 0, 0), (0, 0, 0.25, 0), (-0.5, 0, 0.4, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+
+                def Xform "window_l"
+                {
+                    def Cube "window_l"
+                    {
+                        float3[] extent = [(-0.52, -0.38, 0.35), (-0.49, -0.2, 0.45)]
+                        matrix4d xformOp:transform = ( (0.01, 0, 0, 0), (0, 0.04, 0, 0), (0, 0, 0.1, 0), (-0.5, 0, 0.4, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform"]
+                    }
+                }
+            }
+
+            def Xform "door_r" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q1276284"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q1276284"]
+
+                def Cube "door_r"
+                {
+                    float3[] extent = [(0.49, -0.42, 0.16), (0.52, -0.18, 0.48)]
+                    matrix4d xformOp:transform = ( (0.01, 0, 0, 0), (0, 0.4, 0, 0), (0, 0, 0.25, 0), (0.5, 0, 0.4, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                    point3f[] points = [(0.52, -0.42, 0.32), (0.52, -0.42, 0.16), (0.52, -0.18, 0.16), (0.52, -0.18, 0.48), (0.52, -0.32, 0.48), (0.49, -0.42, 0.32), (0.49, -0.42, 0.16), (0.49, -0.18, 0.16), (0.49, -0.18, 0.48), (0.49, -0.32, 0.48)]
+                }
+
+                def Xform "window_r"
+                {
+                    def Cube "window_r"
+                    {
+                        float3[] extent = [(0.49, -0.38, 0.35), (0.52, -0.2, 0.45)]
+                        matrix4d xformOp:transform = ( (0.01, 0, 0, 0), (0, 0.04, 0, 0), (0, 0, 0.1, 0), (0.5, 0, 0.4, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform"]
+                    }
+                }
+            }
+
+            def Xform "trunk" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q1142905"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q1142905"]
+
+                def Cube "trunk"
+                {
+                    float3[] extent = [(-0.52, -1.02, 0.25), (0.52, -0.65, 0.35)]
+                    matrix4d xformOp:transform = ( (0.5, 0, 0, 0), (0, 0.13, 0, 0), (0, 0, 0.06, 0), (0, -0.8, 0.3, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+
+            def Xform "interior" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q60998096"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q60998096"]
+
+
+                def Cube "seat_f"
+                {
+                    float3[] extent = [(0.15, 0.15, 0.15), (0.35, 0.35, 0.35)]
+                    matrix4d xformOp:transform = ( (0.5, 0, 0, 0), (0, 0.13, 0, 0), (0, 0, 0.06, 0), (0, 0.5, 0.3, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+
+                def Cube "seat_r"
+                {
+                    float3[] extent = [(-0.35, -0.35, 0.15), (-0.15, -0.15, 0.35)]
+                    matrix4d xformOp:transform = ( (0.5, 0, 0, 0), (0, 0.13, 0, 0), (0, 0, 0.06, 0), (0, -0.5, 0.3, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+
+            }
+
+            def Xform "brakeLights" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q908406"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q908406"]
+
+                def SphereLight "brakeLights_rr" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+
+                def SphereLight "brakeLights_rl" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+            }
+
+            def Xform "headLights" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q869713"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q869713"]
+
+                def SphereLight "headLights_fl" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+
+                def SphereLight "headLights_fr" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+            }
+
+
+            def Xform "signalLights" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q1464545"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q1464545"]
+
+                def SphereLight "signalLights_fr" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+
+                def SphereLight "signalLights_fl" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+
+                def SphereLight "signalLights_rr" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+
+                def SphereLight "signalLights_rl" (
+                    apiSchemas = ["ShapingAPI"]
+                )
+                {
+                    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+                    double3 xformOp:rotateXYZ = (90, 0, 90)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+            }
+
+        }
+
+        def Xform "wheel"
+        {
+            def Xform "wheel_fl" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q446"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+                def Cube "wheel_fl"
+                {
+                    float3[] extent = [(-0.52, 0.5, 0), (-0.48, 0.7, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (-0.5, 0.6, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+
+                def Xform "brake_fl" (
+                    prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+                )
+                {
+                    string semantic:wikidata_qcode:params:semanticData = "Q1534839"
+                    string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                    token[] semantics:labels:wikidata_qcode = ["Q1534839"]
+
+                    def Cube "brake_fl"
+                    {
+                        float3[] extent = [(-0.52, 0.58, 0.08), (-0.38, 0.62, 0.12)]
+                        matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.03, 0, 0), (0, 0, 0.03, 0), (-0.4, 0.6, 0.0, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform"]
+                    }
+                }
+            }
+
+            def Xform "wheel_fr" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q446"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+                def Cube "wheel_fr"
+                {
+                    float3[] extent = [(0.48, 0.5, 0), (0.52, 0.7, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.5, 0.6, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+
+                def Xform "brake_fr" (
+                    prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+                )
+                {
+                    string semantic:wikidata_qcode:params:semanticData = "Q1534839"
+                    string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                    token[] semantics:labels:wikidata_qcode = ["Q1534839"]
+
+                    def Cube "brake_fr"
+                    {
+                        float3[] extent = [(0.38, 0.58, 0.08), (0.52, 0.62, 0.12)]
+                        matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.03, 0, 0), (0, 0, 0.03, 0), (0.4, 0.6, 0.0, 1) )
+                        uniform token[] xformOpOrder = ["xformOp:transform"]
+                    }
+                }
+            }
+
+            def Xform "wheel_rl" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q446"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+                def Cube "wheel_rl"
+                {
+                    float3[] extent = [(-0.52, -0.7, 0), (-0.48, -0.5, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (-0.5, -0.6, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+
+            def Xform "wheel_rr" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q446"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+                def Cube "wheel_rr"
+                {
+                    float3[] extent = [(0.48, -0.7, 0), (0.52, -0.5, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.5, -0.6, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "version": 1,
+    "name": "htc_vive_focus3_profile",
+    "requiredInteractionProfile": [
+        "/interaction_profiles/htc/vive_focus3_controller"
+    ]
+}

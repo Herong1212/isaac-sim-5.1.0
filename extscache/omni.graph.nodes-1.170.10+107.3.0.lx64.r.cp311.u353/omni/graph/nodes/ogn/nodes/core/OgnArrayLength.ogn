@@ -1,0 +1,38 @@
+{
+    "ArrayLength": {
+        "version": 1,
+        "description": ["Outputs the length of a specified array attribute in an input bundle,",
+                        "or 1 if the attribute is not an array attribute"],
+        "metadata": {
+            "uiName": "Extract Attribute Array Length"
+        },
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "attrName": {
+                "type": "token",
+                "description": "Name of the attribute whose array length will be queried",
+                "default": "points",
+                "metadata": {
+                    "uiName": "Attribute Name"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes that may contain the named attribute",
+                "metadata": {
+                    "uiName": "Attribute Bundle"
+                }
+            }
+        },
+        "outputs": {
+            "length": {
+                "type": "uint64",
+                "description": "The length of the array attribute in the input bundle",
+                "metadata": {
+                    "uiName": "Array Length"
+                }
+            }
+        }
+    }
+}

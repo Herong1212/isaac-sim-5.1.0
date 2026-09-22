@@ -1,0 +1,159 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (50000.00000000006, -1.387778780781447e-11, 0)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Perspective = {
+                double3 position = (13.041042477758262, -27.96613681560434, 1937.1159701794775)
+                double radius = 611.4021740499114
+                double3 target = (14.655238118154415, -27.966136815604578, 0.011383726926851523)
+            }
+            dictionary Right = {
+                double3 position = (0, -50000, -1.1102230246251565e-11)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./composition_basics.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            double "rtx:directLighting:sampledLighting:maxRayUnexposedIntensity" = 7999999.5
+            double "rtx:indirectDiffuse:maxRayUnexposedIntensity" = 7999999.5
+            float3 "rtx:iray:environment_dome_rotation_axis" = (0, 1, 0)
+            double "rtx:pathtracing:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3999999.75
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3999999.75
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3999999.75
+            double "rtx:post:lensDistortion:cameraFocalLength" = 18.14756202697754
+            double "rtx:post:tonemap:exposureTime" = 1
+            double "rtx:post:tonemap:fNumber" = 1
+            double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 255999984
+            double "rtx:reflections:sampledLighting:maxRayUnexposedIntensity" = 23999998
+            token "rtx:rendermode" = "PathTracing"
+            double "rtx:translucency:maxRayUnexposedIntensity" = 23999998
+        }
+    }
+    metersPerUnit = 0.009999999776482582
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def DomeLight "DomeLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+        kind = "model"
+    )
+    {
+        float colorTemperature = 6500
+        float exposure = 0
+        float intensity = 1
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        asset texture:file = @@
+        token texture:format = "latlong"
+        token visibility = "inherited"
+        float3 xformOp:rotateZYX = (0, 0, 180)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+    }
+}
+
+def Scope "Looks"
+{
+    def Material "Invalid"
+    {
+        token outputs:mdl:displacement.connect = </Looks/Invalid/Shader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/Invalid/Shader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/Invalid/Shader.outputs:out>
+
+        def Shader "Shader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @@
+            uniform token info:mdl:sourceAsset:subIdentifier = ""
+            token outputs:out (
+                renderType = "material"
+            )
+        }
+    }
+
+    def Material "OmniSurfaceNotBoundToPrim"
+    {
+        token outputs:mdl:displacement.connect = </Looks/OmniSurfaceNotBoundToPrim/ShaderKnobShader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/OmniSurfaceNotBoundToPrim/ShaderKnobShader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/OmniSurfaceNotBoundToPrim/ShaderKnobShader.outputs:out>
+
+        def Shader "ShaderKnobShader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @file:/G:/Github/kit/kit/_build/windows-x86_64/release/exts/omni.kit.stage.mdl_converter/data/usd/basics/basics.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "uv_grid_srgb"
+            token outputs:out
+        }
+    }
+
+    def Material "ShaderKnobMaterial"
+    {
+        token outputs:mdl:displacement.connect = </Looks/ShaderKnobMaterial/ShaderKnobShader.outputs:out>
+        token outputs:mdl:surface.connect = </Looks/ShaderKnobMaterial/ShaderKnobShader.outputs:out>
+        token outputs:mdl:volume.connect = </Looks/ShaderKnobMaterial/ShaderKnobShader.outputs:out>
+
+        def Shader "ShaderKnobShader"
+        {
+            uniform token info:implementationSource = "sourceAsset"
+            uniform asset info:mdl:sourceAsset = @./basics.mdl@
+            uniform token info:mdl:sourceAsset:subIdentifier = "uv_grid_srgb"
+            token outputs:out
+        }
+    }
+}
+
+def Mesh "Plane" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    float3[] extent = [(-50, -50, 0), (50, 50, 0)]
+    int[] faceVertexCounts = [4]
+    int[] faceVertexIndices = [0, 1, 3, 2]
+    rel material:binding = </Looks/ShaderKnobMaterial> (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-50, -50, 0), (50, -50, 0), (-50, 50, 0), (50, 50, 0)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (10, 10, 10)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+

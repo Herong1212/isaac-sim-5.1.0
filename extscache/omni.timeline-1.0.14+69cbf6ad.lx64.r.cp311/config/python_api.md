@@ -1,0 +1,121 @@
+# Public API for module omni.timeline:
+
+## Classes
+
+- class ITimeline
+  - def clear_tentative_time(self)
+  - def destroy_timeline(self, name: str) -> bool
+  - def forward_one_frame(self)
+  - def get_current_tick(self) -> int
+  - def get_current_time(self) -> float
+  - def get_end_time(self) -> float
+  - def get_fast_mode(self) -> bool
+  - def get_start_time(self) -> float
+  - def get_target_framerate(self) -> float
+  - def get_tentative_time(self) -> float
+  - def get_ticks_per_frame(self) -> int
+  - def get_ticks_per_second(self) -> float
+  - def get_time_codes_per_second(self) -> float
+  - def get_time_codes_per_seconds(self) -> float
+  - def get_timeline(self, name: str = '') -> Timeline
+  - def get_timeline_event_stream(self) -> carb.events._events.IEventStream
+  - def is_auto_updating(self) -> bool
+  - def is_looping(self) -> bool
+  - def is_playing(self) -> bool
+  - def is_prerolling(self) -> bool
+  - def is_stopped(self) -> bool
+  - def pause(self)
+  - def play(self, start_timecode: float = 0, end_timecode: float = 0, looping: bool = True)
+  - def rewind_one_frame(self)
+  - def set_auto_update(self, auto_update: bool)
+  - def set_current_time(self, time_in_seconds: float)
+  - def set_end_time(self, end_time: float)
+  - def set_fast_mode(self, fast_mode: bool)
+  - def set_looping(self, looping: bool)
+  - def set_prerolling(self, preroll: bool)
+  - def set_start_time(self, start_time: float)
+  - def set_target_framerate(self, target_framerate: float)
+  - def set_tentative_time(self, time_in_seconds: float)
+  - def set_ticks_per_frame(self, ticks_per_frame: int)
+  - def set_time_codes_per_second(self, time_codes_per_second: float)
+  - def stop(self)
+
+- class Timeline
+  - def clear_tentative_time(self)
+  - def clear_zoom(self)
+  - def commit(self)
+  - def commit_silently(self)
+  - def forward_one_frame(self)
+  - def get_current_tick(self) -> int
+  - def get_current_time(self) -> float
+  - def get_director(self) -> Timeline
+  - def get_end_time(self) -> float
+  - def get_fast_mode(self) -> bool
+  - def get_play_every_frame(self) -> bool
+  - def get_start_time(self) -> float
+  - def get_target_framerate(self) -> float
+  - def get_tentative_time(self) -> float
+  - def get_ticks_per_frame(self) -> int
+  - def get_ticks_per_second(self) -> float
+  - def get_time_codes_per_second(self) -> float
+  - def get_time_codes_per_seconds(self) -> float
+  - def get_timeline_event_stream(self) -> carb.events._events.IEventStream
+  - def get_zoom_end_time(self) -> float
+  - def get_zoom_start_time(self) -> float
+  - def is_auto_updating(self) -> bool
+  - def is_looping(self) -> bool
+  - def is_playing(self) -> bool
+  - def is_prerolling(self) -> bool
+  - def is_stopped(self) -> bool
+  - def is_zoomed(self) -> bool
+  - def pause(self)
+  - def play(self, start_timecode: float = 0, end_timecode: float = 0, looping: bool = True)
+  - def rewind_one_frame(self)
+  - def set_auto_update(self, auto_update: bool)
+  - def set_current_time(self, time_in_seconds: float)
+  - def set_director(self, timeline: Timeline)
+  - def set_end_time(self, end_time: float)
+  - def set_fast_mode(self, fast_mode: bool)
+  - def set_looping(self, looping: bool)
+  - def set_play_every_frame(self, play_every_frame: bool)
+  - def set_prerolling(self, preroll: bool)
+  - def set_start_time(self, start_time: float)
+  - def set_target_framerate(self, target_framerate: float)
+  - def set_tentative_time(self, time_in_seconds: float)
+  - def set_ticks_per_frame(self, ticks_per_frame: int)
+  - def set_time_codes_per_second(self, time_codes_per_second: float)
+  - def set_zoom_range(self, start_time: float, end_time: float)
+  - def stop(self)
+  - def time_code_to_time(self, arg0: float) -> float
+  - def time_to_time_code(self, arg0: float) -> float
+
+- class TimelineEventType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - AUTO_UPDATE_CHANGED: omni.timeline._timeline.TimelineEventType
+  - CURRENT_TIME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - CURRENT_TIME_TICKED: omni.timeline._timeline.TimelineEventType
+  - CURRENT_TIME_TICKED_PERMANENT: omni.timeline._timeline.TimelineEventType
+  - DIRECTOR_CHANGED: omni.timeline._timeline.TimelineEventType
+  - END_TIME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - FAST_MODE_CHANGED: omni.timeline._timeline.TimelineEventType
+  - LOOP_MODE_CHANGED: omni.timeline._timeline.TimelineEventType
+  - PAUSE: omni.timeline._timeline.TimelineEventType
+  - PLAY: omni.timeline._timeline.TimelineEventType
+  - PLAY_EVERY_FRAME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - PREROLLING_CHANGED: omni.timeline._timeline.TimelineEventType
+  - START_TIME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - STOP: omni.timeline._timeline.TimelineEventType
+  - TARGET_FRAMERATE_CHANGED: omni.timeline._timeline.TimelineEventType
+  - TENTATIVE_TIME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - TICKS_PER_FRAME_CHANGED: omni.timeline._timeline.TimelineEventType
+  - TIME_CODE_PER_SECOND_CHANGED: omni.timeline._timeline.TimelineEventType
+  - ZOOM_CHANGED: omni.timeline._timeline.TimelineEventType
+
+## Functions
+
+- def acquire_timeline_interface(plugin_name: str = None, library_path: str = None) -> ITimeline
+- def release_timeline_interface(arg0: ITimeline)
+- def get_timeline_interface(timeline_name: str = '') -> Timeline
+- def destroy_timeline(timeline_name: str)

@@ -1,0 +1,126 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Perspective = {
+                double3 position = (269597.88249153644, 269547.8824915365, 269597.8824915362)
+                double3 target = (0, -50, 0)
+            }
+            dictionary Right = {
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Top = {
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float "rtx:post:lensDistortion:cameraFocalLength" = 18.147562
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Scope "Looks"
+    {
+        def Material "GroundMat"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/GroundMat/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/GroundMat/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/GroundMat/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0.08, 0.08, 0.08)
+                color3f inputs:diffuse_tint = (1, 1, 1)
+                float inputs:metallic_constant = 0
+                float inputs:reflection_roughness_constant = 0.36
+                float inputs:specular_level = 0.25 (
+                    customData = {
+                        double default = 0.5
+                        dictionary range = {
+                            double max = 1
+                            double min = 0
+                        }
+                    }
+                    displayGroup = "Reflectivity"
+                    displayName = "Specular"
+                )
+                token outputs:out
+            }
+        }
+    }
+
+    def Cube "GroundCube"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding = </World/Looks/GroundMat> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+        bool primvars:doNotCastShadows = 1
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2000, 1, 2000)
+        double3 xformOp:translate = (0, -50, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        color3f inputs:color = (1, 1, 1)
+        float inputs:intensity = 2000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        double3 xformOp:rotateXYZ = (-113.97615051269531, 14.750445365905762, 29.791282653808594)
+        double3 xformOp:scale = (1, 1.0000003576278687, 1.0000003576278687)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DomeLight "DomeLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:intensity = 1000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus = 0
+        color3f shaping:focusTint = (0, 0, 0)
+        asset inputs:shaping:ies:file
+        float inputs:specular = 1
+        asset inputs:texture:file = @textures/sunflowers.hdr@
+        token inputs:texture:format = "latlong"
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (270, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

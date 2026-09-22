@@ -1,0 +1,44 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSendCustomEvent.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_action_SendCustomEvent" (
+        docs="""Sends a custom event, which will asynchronously trigger any 'On Custom Event' nodes which are listening for the same 'Event Name'."""
+    )
+    {
+        token node:type = "omni.graph.action.SendCustomEvent"
+        int node:typeVersion = 2
+
+        # 4 attributes
+        custom rel inputs:bundle (
+            docs="""Bundle of data with information that is to be sent with the event. The payload for the event
+            consists of a dictionary whose keys are the names of the attributes in this bundle and whose
+            values are the values of the named attribute in Python pickled format. Optionally the value
+            of the 'Path' attribute is also added to the payload."""
+        )
+        custom token inputs:eventName = "" (
+            docs="""The name of the custom event to be sent out."""
+        )
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:path = "" (
+            docs="""The path associated with the event. If specified, the path is added to the payload for the event
+            under the dictionary key '!path'."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+    }
+}

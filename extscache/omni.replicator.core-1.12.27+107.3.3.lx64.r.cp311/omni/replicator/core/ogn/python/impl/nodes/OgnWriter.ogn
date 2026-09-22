@@ -1,0 +1,54 @@
+{
+    "OgnWriter": {
+        "version": 2,
+        "description": "This node counts the number of times it is computed since being reset",
+        "language": "Python",
+        "uiName": "Writer",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "scheduling": "compute-on-request",
+        "state": {
+            "$comment": ["Internal state to store voxels of prims and avoid unnecessary re-calculations"]
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "writerId": {
+                "type": "string",
+                "description": "Unique id of writer",
+                "uiName": "Writer Id"
+            },
+            "writerName": {
+                "type": "token",
+                "description": "Name of writer",
+                "uiName": "Writer Name"
+            },
+            "renderProducts": {
+                "type": "token[]",
+                "description": "Reset the internal counter",
+                "uiName": "Reset"
+            },
+            "dataStructure": {
+                "type": "token",
+                "description": "Specify the type of data structure to produce.",
+                "default": "legacy",
+                "metadata": {
+                    "allowedTokens": [
+                        "legacy",
+                        "renderProduct",
+                        "annotator"
+                    ]
+                }
+            },
+            "referenceTimeNumerator": {
+                "type": "int64",
+                "description": "Reference time represented as a rational number : numerator"
+            },
+            "referenceTimeDenominator": {
+                "type": "uint64",
+                "description": "Reference time represented as a rational number : denominator"
+            }
+        }
+    }
+}

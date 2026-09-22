@@ -1,0 +1,91 @@
+{
+    "BreakMatrix4": {
+        "version": 1,
+        "description": [
+            "Split matrix into 4 vectors.",
+            "If the input is an array, the output will be arrays of vectors."
+        ],
+        "uiName": "Break Matrix4",
+        "categories": ["math:conversion"],
+        "tags": ["decompose", "separate", "isolate"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix": {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Matrix",
+                "description": "Input matrix(s)"
+            },
+            "outputType": {
+                "type": "token",
+                "uiName": "Output Type",
+                "description": "The type of output vector: Double3 or Double4",
+                "default" : "double[4]",
+                "metadata": {
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "Double_3": "double[3]",
+                        "Double_4": "double[4]"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "x": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "X",
+                "description": "The first row of the matrix"
+            },
+            "y": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "Y",
+                "description": "The second row of the matrix"
+            },
+            "z": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "Z",
+                "description": "The third row of the matrix"
+            },
+            "w": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "W",
+                "description": "The fourth row of the matrix"
+            }
+        },
+        "tests": [
+            {
+                "inputs:matrix": {"type": "matrixd[4]", "value":
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+                "inputs:outputType": "double[3]",
+                "outputs:x": {"type": "double[3]", "value": [1, 2, 3] },
+                "outputs:y": {"type": "double[3]", "value": [5, 6, 7] },
+                "outputs:z": {"type": "double[3]", "value": [9, 10, 11] },
+                "outputs:w": {"type": "double[3]", "value": [13, 14, 15] }
+            },
+            {
+                "inputs:matrix": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]] },
+                "inputs:outputType": "double[3]",
+                "outputs:x": {"type": "double[3][]", "value": [[1, 2, 3]] },
+                "outputs:y": {"type": "double[3][]", "value": [[5, 6, 7]] },
+                "outputs:z": {"type": "double[3][]", "value": [[9, 10, 11]] },
+                "outputs:w": {"type": "double[3][]", "value": [[13, 14, 15]] }
+            },
+            {
+                "inputs:matrix": {"type": "matrixd[4]", "value":
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+                "outputs:x": {"type": "double[4]", "value": [1, 2, 3, 4] },
+                "outputs:y": {"type": "double[4]", "value": [5, 6, 7, 8] },
+                "outputs:z": {"type": "double[4]", "value": [9, 10, 11, 12] },
+                "outputs:w": {"type": "double[4]", "value": [13, 14, 15, 16] }
+            },
+            {
+                "inputs:matrix": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]] },
+                "outputs:x": {"type": "double[4][]", "value": [[1, 2, 3, 4]] },
+                "outputs:y": {"type": "double[4][]", "value": [[5, 6, 7, 8]] },
+                "outputs:z": {"type": "double[4][]", "value": [[9, 10, 11, 12]] },
+                "outputs:w": {"type": "double[4][]", "value": [[13, 14, 15, 16]] }
+            }
+        ]
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "omni.graph.action.Branch": {
+        "version": 2,
+        "description": "Activates an execution output signal along a branch based on a boolean condition.",
+        "uiName": "Branch",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "condition": {
+                "type": "bool",
+                "description": "The boolean condition which determines the output direction.",
+                "uiName": "Condition"
+            },
+            "execIn": {
+                "type": "execution",
+                "uiName": "Input execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            }
+        },
+        "outputs": {
+            "execTrue": {
+                "type": "execution",
+                "description": "When 'Condition' is True signal to the graph that execution can continue downstream.",
+                "uiName": "True"
+            },
+            "execFalse": {
+                "type": "execution",
+                "description": "When 'Condition' is False signal to the graph that execution can continue downstream.",
+                "uiName": "False"
+            }
+        }
+    }
+}

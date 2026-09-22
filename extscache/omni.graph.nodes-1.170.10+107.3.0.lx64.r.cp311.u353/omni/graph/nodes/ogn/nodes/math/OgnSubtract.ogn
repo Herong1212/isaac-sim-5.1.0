@@ -1,0 +1,750 @@
+{
+    "Subtract": {
+        "version": 2,
+        "description": [
+            "Subtract two or more values of any numeric type (element-wise). This includes simple values, tuples,",
+            "arrays, and arrays of tuples. If one input has a higher dimension than the other, then the input with",
+            "lower dimension will be added to each element of the higher-dimension input.\n",
+            "Examples:\n",
+            "- tuple - scalar = resultTuple (where resultTuple is formed by subtracting scalar from each element in tuple).\n",
+            "- arrayOfTuples - tuple = resultArrayOfTuples (where resultArrayOfTuples is formed by subtracting each",
+            "  element in tuple from each corresponding element of each tuple in arrayOfTuples).\n",
+            "- arrayOfTuples - scalar = resultArrayOfTuples (where resultArrayOfTuples is formed by subtracting",
+            "  scalar from each element of every tuple in arrayOfTuples).\n",
+            "To add/remove subtrahends on this node, select the node and press the small \"+\"/\"-\" buttons in the",
+            "bottom-right corner of the \"Inputs\" widget in the \"Property\" window."
+        ],
+        "uiName": "Subtract",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["numerics"],
+                "description": "The initial value from which \"B\" is subtracted from.",
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["numerics"],
+                "description": "The value which is subtracted from the input \"A\".",
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "difference": {
+                "type": ["numerics"],
+                "description": "The element-wise difference of the input numerical values (with preserved typing).",
+                "uiName": "Difference"
+            }
+        },
+        "tests": [
+                {
+                    "inputs:a": {"type": "double", "value": 1.0},
+                    "inputs:b": {"type": "double", "value": 0.5},
+                    "outputs:difference": {"type": "double", "value": 0.5}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 1.0},
+                    "inputs:b": {"type": "float", "value": 0.5},
+                    "outputs:difference": {"type": "float", "value": 0.5}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 1.0},
+                    "inputs:b": {"type": "half", "value": 0.5},
+                    "outputs:difference": {"type": "half", "value": 0.5}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 10},
+                    "inputs:b": {"type": "int", "value": 6},
+                    "outputs:difference": {"type": "int", "value": 4}
+                },
+                {
+                    "inputs:a": {"type": "int64", "value": 10},
+                    "inputs:b": {"type": "int64", "value": 6},
+                    "outputs:difference": {"type": "int64", "value": 4}
+                },
+                {
+                    "inputs:a": {"type": "uchar", "value": 10},
+                    "inputs:b": {"type": "uchar", "value": 6},
+                    "outputs:difference": {"type": "uchar", "value": 4}
+                },
+                {
+                    "inputs:a": {"type": "uint", "value": 10},
+                    "inputs:b": {"type": "uint", "value": 6},
+                    "outputs:difference": {"type": "uint", "value": 4}
+                },
+                {
+                    "inputs:a": {"type": "uint64", "value": 10},
+                    "inputs:b": {"type": "uint64", "value": 6},
+                    "outputs:difference": {"type": "uint64", "value": 4}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double", "value": 10},
+                    "inputs:b": {"type": "double[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "double[]", "value": [4, -2]}
+                },
+                {
+                    "inputs:a": {"type": "float[]", "value": [2.0, 3.0]},
+                    "inputs:b": {"type": "float", "value": 1.0},
+                    "outputs:difference": {"type": "float[]", "value": [1.0, 2.0]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 1.0},
+                    "inputs:b": {"type": "float[]", "value": [1.0, 2.0]},
+                    "outputs:difference": {"type": "float[]", "value": [0.0, -1.0]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 10},
+                    "inputs:b": {"type": "half[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "half[]", "value": [4, -2]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 10},
+                    "inputs:b": {"type": "int[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "int[]", "value": [4, -2]}
+                },
+                {
+                    "inputs:a": {"type": "int64", "value": 10},
+                    "inputs:b": {"type": "int64[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "int64[]", "value": [4, -2]}
+                },
+                {
+                    "inputs:a": {"type": "uchar", "value": 10},
+                    "inputs:b": {"type": "uchar[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uchar[]", "value": [4, 254]}
+                },
+                {
+                    "inputs:a": {"type": "uint", "value": 10},
+                    "inputs:b": {"type": "uint[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uint[]", "value": [4, 4294967294]}
+                },
+                {
+                    "inputs:a": {"type": "uint64", "value": 10},
+                    "inputs:b": {"type": "uint64[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uint64[]", "value": [4, 18446744073709551614]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[]", "value": [10, 23]},
+                    "inputs:b": {"type": "double[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "double[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "float[]", "value": [10, 23]},
+                    "inputs:b": {"type": "float[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "float[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "half[]", "value": [10, 23]},
+                    "inputs:b": {"type": "half[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "half[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "int[]", "value": [10, 23]},
+                    "inputs:b": {"type": "int[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "int[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "int64[]", "value": [10]},
+                    "inputs:b": {"type": "int64[]", "value": [5]},
+                    "outputs:difference": {"type": "int64[]", "value": [5]}
+                },
+                {
+                    "inputs:a": {"type": "int64[]", "value": [10, 20]},
+                    "inputs:b": {"type": "int64[]", "value": [5, 10]},
+                    "outputs:difference": {"type": "int64[]", "value": [5, 10]}
+                },
+                {
+                    "inputs:a": {"type": "int64[]", "value": [10, 20, 30]},
+                    "inputs:b": {"type": "int64[]", "value": [5, 10, 15]},
+                    "outputs:difference": {"type": "int64[]", "value": [5, 10, 15]}
+                },
+                {
+                    "inputs:a": {"type": "int64[]", "value": [10, 20, 30, 40]},
+                    "inputs:b": {"type": "int64[]", "value": [5, 10, 15, 20]},
+                    "outputs:difference": {"type": "int64[]", "value": [5, 10, 15, 20]}
+                },
+                {
+                    "inputs:a": {"type": "uchar[]", "value": [10, 23]},
+                    "inputs:b": {"type": "uchar[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uchar[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "uint[]", "value": [10, 23]},
+                    "inputs:b": {"type": "uint[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uint[]", "value": [4, 11]}
+                },
+                {
+                    "inputs:a": {"type": "uint64[]", "value": [10, 23]},
+                    "inputs:b": {"type": "uint64[]", "value": [6, 12]},
+                    "outputs:difference": {"type": "uint64[]", "value": [4, 11]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "double[2]", "value": [1, 2]},
+                    "outputs:difference": {"type": "double[2]", "value": [2, 2]}
+                },
+                {
+                    "inputs:a": {"type": "double[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "double[3]", "value": [1, 2, 3]},
+                    "outputs:difference": {"type": "double[3]", "value": [3, 3, 3]}
+                },
+                {
+                    "inputs:a": {"type": "double[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "double[4]", "value": [1, 2, 3, 4]},
+                    "outputs:difference": {"type": "double[4]", "value": [4, 4, 4, 4]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2]", "value": [2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[2]", "value": [1, 1, 1, 1]},
+                    "outputs:difference": {"type": "matrixd[2]", "value": [1, 1, 1, 1]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[3]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                    "outputs:difference": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[4]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                    "outputs:difference": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+                },
+                {
+                    "inputs:a": {"type": "float[2]", "value": [1.0, 2.0]},
+                    "inputs:b": {"type": "float[2]", "value": [0.5, 1.0]},
+                    "outputs:difference": {"type": "float[2]", "value": [0.5, 1.0]}
+                },
+                {
+                    "inputs:a": {"type": "float[3]", "value": [1.0, 2.0, 3.0]},
+                    "inputs:b": {"type": "float[3]", "value": [0.5, 1.0, 1.5]},
+                    "outputs:difference": {"type": "float[3]", "value": [0.5, 1.0, 1.5]}
+                },
+                {
+                    "inputs:a": {"type": "float[4]", "value": [1.0, 2.0, 3.0, 4.0]},
+                    "inputs:b": {"type": "float[4]", "value": [0.5, 1.0, 1.5, 2.0]},
+                    "outputs:difference": {"type": "float[4]", "value": [0.5, 1.0, 1.5, 2.0]}
+                },
+                {
+                    "inputs:a": {"type": "half[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "half[2]", "value": [1, 2]},
+                    "outputs:difference": {"type": "half[2]", "value": [2, 2]}
+                },
+                {
+                    "inputs:a": {"type": "half[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "half[3]", "value": [1, 2, 3]},
+                    "outputs:difference": {"type": "half[3]", "value": [3, 3, 3]}
+                },
+                {
+                    "inputs:a": {"type": "half[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "half[4]", "value": [1, 2, 3, 4]},
+                    "outputs:difference": {"type": "half[4]", "value": [4, 4, 4, 4]}
+                },
+                {
+                    "inputs:a": {"type": "int[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "int[2]", "value": [1, 2]},
+                    "outputs:difference": {"type": "int[2]", "value": [2, 2]}
+                },
+                {
+                    "inputs:a": {"type": "int[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "int[3]", "value": [1, 2, 3]},
+                    "outputs:difference": {"type": "int[3]", "value": [3, 3, 3]}
+                },
+                {
+                    "inputs:a": {"type": "int[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "int[4]", "value": [1, 2, 3, 4]},
+                    "outputs:difference": {"type": "int[4]", "value": [4, 4, 4, 4]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "double[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "double[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "double[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "double[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "double[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "double[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "double[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "double[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2]", "value": [2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[3]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[4]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "matrixd[4][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[4][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "float[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "float[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "float[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "float[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "float[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "float[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "float[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "float[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "float[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "half[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "half[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "half[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "half[3]", "value": [4, 5, 6]},
+                    "inputs:b": {"type": "half[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "half[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "half[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "half[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "half[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "int[2][]", "value": [[10, 20], [30, 40], [50, 60]]},
+                    "inputs:b": {"type": "int[2]", "value": [5, 10]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[5, 10], [25, 30], [45, 50]]}
+                },
+                {
+                    "inputs:a": {"type": "int[2]", "value": [5, 10]},
+                    "inputs:b": {"type": "int[2][]", "value": [[10, 20], [30, 40], [50, 60]]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[-5, -10], [-25, -30], [-45, -50]]}
+                },
+                {
+                    "inputs:a": {"type": "int[3][]", "value": [[10, 20, 30], [40, 50, 60]]},
+                    "inputs:b": {"type": "int[3]", "value": [5, 10, 15]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[5, 10, 15], [35, 40, 45]]}
+                },
+                {
+                    "inputs:a": {"type": "int[3]", "value": [5, 10, 15]},
+                    "inputs:b": {"type": "int[3][]", "value": [[10, 20, 30], [40, 50, 60]]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[-5, -10, -15], [-35, -40, -45]]}
+                },
+                {
+                    "inputs:a": {"type": "int[4]", "value": [5, 6, 7, 8]},
+                    "inputs:b": {"type": "int[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "int[4][]", "value": [[4, 4, 4, 4]]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[2][]", "value": [[3, 4]]},
+                    "inputs:b": {"type": "double[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "double[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "double[3][]", "value": [[4, 5, 6]]},
+                    "inputs:b": {"type": "double[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "double[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "double[4][]", "value": [[5, 6, 7, 8]]},
+                    "inputs:b": {"type": "double[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "double[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2][]", "value": [[2, 2, 2, 2]]},
+                    "inputs:b": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[3][]", "value": [[2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "inputs:b": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[4][]", "value": [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "inputs:b": {"type": "matrixd[4][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]},
+                    "outputs:difference": {"type": "matrixd[4][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+                },
+                {
+                    "inputs:a": {"type": "float[2][]", "value": [[3, 4]]},
+                    "inputs:b": {"type": "float[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "float[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "float[3][]", "value": [[4, 5, 6]]},
+                    "inputs:b": {"type": "float[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "float[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "float[4][]", "value": [[5, 6, 7, 8]]},
+                    "inputs:b": {"type": "float[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "float[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "half[2][]", "value": [[3, 4]]},
+                    "inputs:b": {"type": "half[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "half[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "half[3][]", "value": [[4, 5, 6]]},
+                    "inputs:b": {"type": "half[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "half[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "half[4][]", "value": [[5, 6, 7, 8]]},
+                    "inputs:b": {"type": "half[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "half[4][]", "value": [[4, 4, 4, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "int[2][]", "value": [[3, 4]]},
+                    "inputs:b": {"type": "int[2][]", "value": [[1, 2]]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[2, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "int[3][]", "value": [[4, 5, 6]]},
+                    "inputs:b": {"type": "int[3][]", "value": [[1, 2, 3]]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[3, 3, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "int[4][]", "value": [[5, 6, 7, 8]]},
+                    "inputs:b": {"type": "int[4][]", "value": [[1, 2, 3, 4]]},
+                    "outputs:difference": {"type": "int[4][]", "value": [[4, 4, 4, 4]]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[2]", "value": [3, 4]},
+                    "outputs:difference": {"type": "double[2]", "value": [5, 4]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[3]", "value": [4, 5, 6]},
+                    "outputs:difference": {"type": "double[3]", "value": [4, 3, 2]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[4]", "value": [5, 6, 7, 8]},
+                    "outputs:difference": {"type": "double[4]", "value": [3, 2, 1, 0]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2]", "value": [8, 8, 8, 8]},
+                    "inputs:b": {"type": "double", "value": 2},
+                    "outputs:difference": {"type": "matrixd[2]", "value": [6, 6, 6, 6]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "matrixd[3]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "outputs:difference": {"type": "matrixd[3]", "value": [6, 6, 6, 6, 6, 6, 6, 6, 6]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "matrixd[4]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "outputs:difference": {"type": "matrixd[4]", "value":
+                        [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 1.0},
+                    "inputs:b": {"type": "float[2]", "value": [1.0, 2.0]},
+                    "outputs:difference": {"type": "float[2]", "value": [0.0, -1.0]}
+                },
+                {
+                    "inputs:a": {"type": "float[2]", "value": [2.0, 3.0]},
+                    "inputs:b": {"type": "float", "value": 1.0},
+                    "outputs:difference": {"type": "float[2]", "value": [1.0, 2.0]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 8},
+                    "inputs:b": {"type": "float[3]", "value": [4, 5, 6]},
+                    "outputs:difference": {"type": "float[3]", "value": [4, 3, 2]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 8},
+                    "inputs:b": {"type": "float[4]", "value": [5, 6, 7, 8]},
+                    "outputs:difference": {"type": "float[4]", "value": [3, 2, 1, 0]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[2]", "value": [3, 4]},
+                    "outputs:difference": {"type": "half[2]", "value": [5, 4]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[3]", "value": [4, 5, 6]},
+                    "outputs:difference": {"type": "half[3]", "value": [4, 3, 2]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[4]", "value": [5, 6, 7, 8]},
+                    "outputs:difference": {"type": "half[4]", "value": [3, 2, 1, 0]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[2]", "value": [3, 4]},
+                    "outputs:difference": {"type": "int[2]", "value": [5, 4]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[3]", "value": [4, 5, 6]},
+                    "outputs:difference": {"type": "int[3]", "value": [4, 3, 2]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[4]", "value": [5, 6, 7, 8]},
+                    "outputs:difference": {"type": "int[4]", "value": [3, 2, 1, 0]}
+                },
+
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[2][]", "value": [[3, 4]]},
+                    "outputs:difference": {"type": "double[2][]", "value": [[5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[3][]", "value": [[4, 5, 6]]},
+                    "outputs:difference": {"type": "double[3][]", "value": [[4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "double[4][]", "value": [[5, 6, 7, 8]]},
+                    "outputs:difference": {"type": "double[4][]", "value": [[3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2][]", "value": [[8, 8, 8, 8]]},
+                    "inputs:b": {"type": "double", "value": 2},
+                    "outputs:difference": {"type": "matrixd[2][]", "value": [[6, 6, 6, 6]]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "matrixd[3][]", "value": [[2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "outputs:difference": {"type": "matrixd[3][]", "value": [[6, 6, 6, 6, 6, 6, 6, 6, 6]]}
+                },
+                {
+                    "inputs:a": {"type": "double", "value": 8},
+                    "inputs:b": {"type": "matrixd[4][]", "value": [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "outputs:difference": {"type": "matrixd[4][]", "value": [
+                        [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 8},
+                    "inputs:b": {"type": "float[2][]", "value": [[3, 4]]},
+                    "outputs:difference": {"type": "float[2][]", "value": [[5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 8},
+                    "inputs:b": {"type": "float[3][]", "value": [[4, 5, 6]]},
+                    "outputs:difference": {"type": "float[3][]", "value": [[4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "float", "value": 8},
+                    "inputs:b": {"type": "float[4][]", "value": [[5, 6, 7, 8]]},
+                    "outputs:difference": {"type": "float[4][]", "value": [[3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[2][]", "value": [[3, 4]]},
+                    "outputs:difference": {"type": "half[2][]", "value": [[5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[3][]", "value": [[4, 5, 6]]},
+                    "outputs:difference": {"type": "half[3][]", "value": [[4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "half", "value": 8},
+                    "inputs:b": {"type": "half[4][]", "value": [[5, 6, 7, 8]]},
+                    "outputs:difference": {"type": "half[4][]", "value": [[3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[2][]", "value": [[3, 4]]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[3][]", "value": [[4, 5, 6]]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "int", "value": 8},
+                    "inputs:b": {"type": "int[4][]", "value": [[5, 6, 7, 8]]},
+                    "outputs:difference": {"type": "int[4][]", "value": [[3, 2, 1, 0]]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "double[2][]", "value": [[2, 3], [1, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "double[3]", "value": [3, 4, 5]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "double[3][]", "value": [[2, 3, 4], [1, 2, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "double[4]", "value": [3, 4, 5, 6]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "double[4][]", "value": [[2, 3, 4, 5], [1, 2, 3, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2]", "value": [2, 2, 2, 2]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[3]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "matrixd[3][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[4]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "matrixd[4][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "float[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "float[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "float[2][]", "value": [[2, 3], [1, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "float[3]", "value": [3, 4, 5]},
+                    "inputs:b": {"type": "float[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "float[3][]", "value": [[2, 3, 4], [1, 2, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "float[4]", "value": [3, 4, 5, 6]},
+                    "inputs:b": {"type": "float[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "float[4][]", "value": [[2, 3, 4, 5], [1, 2, 3, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "half[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "half[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "half[2][]", "value": [[2, 3], [1, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "half[3]", "value": [3, 4, 5]},
+                    "inputs:b": {"type": "half[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "half[3][]", "value": [[2, 3, 4], [1, 2, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "half[4]", "value": [3, 4, 5, 6]},
+                    "inputs:b": {"type": "half[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "half[4][]", "value": [[2, 3, 4, 5], [1, 2, 3, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "int[2]", "value": [3, 4]},
+                    "inputs:b": {"type": "int[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[2, 3], [1, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "int[3]", "value": [3, 4, 5]},
+                    "inputs:b": {"type": "int[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[2, 3, 4], [1, 2, 3]]}
+                },
+                {
+                    "inputs:a": {"type": "int[4]", "value": [3, 4, 5, 6]},
+                    "inputs:b": {"type": "int[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "int[4][]", "value": [[2, 3, 4, 5], [1, 2, 3, 4]]}
+                },
+
+
+                {
+                    "inputs:a": {"type": "double[]", "value": [10, 10]},
+                    "inputs:b": {"type": "double[2][]", "value": [[3, 4], [5, 6]]},
+                    "outputs:difference": {"type": "double[2][]", "value": [[7, 6], [5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "double[]", "value": [10, 10]},
+                    "inputs:b": {"type": "double[3][]", "value": [[3, 4, 5], [6, 7, 8]]},
+                    "outputs:difference": {"type": "double[3][]", "value": [[7, 6, 5], [4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "double[]", "value": [10, 10]},
+                    "inputs:b": {"type": "double[4][]", "value": [[3, 4, 5, 6], [7, 8, 9, 10]]},
+                    "outputs:difference": {"type": "double[4][]", "value": [[7, 6, 5, 4], [3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "matrixd[2][]", "value": [[2, 2, 2, 2], [2, 2, 2, 2]]},
+                    "inputs:b": {"type": "double[]", "value": [1, 2]},
+                    "outputs:difference": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "double[]", "value": [2, 2]},
+                    "inputs:b": {"type": "matrixd[3][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "outputs:difference": {"type": "matrixd[3][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "double[]", "value": [2, 2]},
+                    "inputs:b": {"type": "matrixd[4][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                    "outputs:difference": {"type": "matrixd[4][]", "value": [
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "float[]", "value": [10, 10]},
+                    "inputs:b": {"type": "float[2][]", "value": [[3, 4], [5, 6]]},
+                    "outputs:difference": {"type": "float[2][]", "value": [[7, 6], [5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "float[]", "value": [10, 10]},
+                    "inputs:b": {"type": "float[3][]", "value": [[3, 4, 5], [6, 7, 8]]},
+                    "outputs:difference": {"type": "float[3][]", "value": [[7, 6, 5], [4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "float[]", "value": [10, 10]},
+                    "inputs:b": {"type": "float[4][]", "value": [[3, 4, 5, 6], [7, 8, 9, 10]]},
+                    "outputs:difference": {"type": "float[4][]", "value": [[7, 6, 5, 4], [3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "half[]", "value": [10, 10]},
+                    "inputs:b": {"type": "half[2][]", "value": [[3, 4], [5, 6]]},
+                    "outputs:difference": {"type": "half[2][]", "value": [[7, 6], [5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "half[]", "value": [10, 10]},
+                    "inputs:b": {"type": "half[3][]", "value": [[3, 4, 5], [6, 7, 8]]},
+                    "outputs:difference": {"type": "half[3][]", "value": [[7, 6, 5], [4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "half[]", "value": [10, 10]},
+                    "inputs:b": {"type": "half[4][]", "value": [[3, 4, 5, 6], [7, 8, 9, 10]]},
+                    "outputs:difference": {"type": "half[4][]", "value": [[7, 6, 5, 4], [3, 2, 1, 0]]}
+                },
+                {
+                    "inputs:a": {"type": "int[]", "value": [10, 10]},
+                    "inputs:b": {"type": "int[2][]", "value": [[3, 4], [5, 6]]},
+                    "outputs:difference": {"type": "int[2][]", "value": [[7, 6], [5, 4]]}
+                },
+                {
+                    "inputs:a": {"type": "int[]", "value": [10, 10]},
+                    "inputs:b": {"type": "int[3][]", "value": [[3, 4, 5], [6, 7, 8]]},
+                    "outputs:difference": {"type": "int[3][]", "value": [[7, 6, 5], [4, 3, 2]]}
+                },
+                {
+                    "inputs:a": {"type": "int[]", "value": [10, 10]},
+                    "inputs:b": {"type": "int[4][]", "value": [[3, 4, 5, 6], [7, 8, 9, 10]]},
+                    "outputs:difference": {"type": "int[4][]", "value": [[7, 6, 5, 4], [3, 2, 1, 0]]}
+                }
+        ]
+    }
+}

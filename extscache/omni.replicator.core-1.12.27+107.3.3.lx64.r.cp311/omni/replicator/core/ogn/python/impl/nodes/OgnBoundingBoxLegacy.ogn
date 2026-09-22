@@ -1,0 +1,93 @@
+{
+    "BoundingBoxLegacy": {
+        "version": 1,
+        "description": "This node outputs the legacy bounding box data output",
+        "language": "Python",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "data": {
+                "description": "Extent data of bounding box.",
+                "type": "uchar[]"
+            },
+            "ids": {
+                "type": "uint[]",
+                "description": "Unoccluded semantic ids of the bounding box."
+            },
+            "semanticTypes": {
+                "type": "token[]",
+                "description": "Legacy attribute, ignored",
+                "default": ["class"]
+            },
+            "semanticFilterName": {
+                "type": "token",
+                "description": "name of Semantic Filter to use"
+            },
+            "labels": {
+                "type": "token[]",
+                "description": "Semantic labels of the bounding box."
+            },
+            "primPaths": {
+                "description": "Prim paths corresponding to each bounding box.",
+                "type": "token[]"
+            },
+            "bboxIds": {
+                "description": "Identifier associated with bounding box, used to link different types of bounding boxes to the same (eg. 2D Tight and 3D)",
+                "type": "uint[]"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "data": {
+                "description": "Extent data of bounding box.",
+                "type": "uchar[]"
+            },
+            "idToLabels": {
+                "description": "Mapping from id to semantic labels.",
+                "type": "string"
+            },
+            "primPaths": {
+                "description": "Prim paths corresponding to each bounding box.",
+                "type": "token[]"
+            },
+            "bboxIds": {
+                "description": "Identifier associated with bounding box, used to link different types of bounding boxes to the same (eg. 2D Tight and 3D)",
+                "type": "uint[]"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+
+        }
+    }
+}

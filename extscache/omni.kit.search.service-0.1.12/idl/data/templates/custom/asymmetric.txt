@@ -1,0 +1,1 @@
+{{ definition.name }} = {% if asymmetric.client %}{{ definition.client|py.type_name }}{% else %}{{ definition.server|py.type_name }}{% endif %}

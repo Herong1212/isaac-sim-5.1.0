@@ -1,0 +1,91 @@
+{
+    "NthRoot": {
+        "version": 1,
+        "description": [
+            "Computes the nth root of value. The result is the same type as the input value if the numerator",
+            "is a decimal type. Otherwise the result is a double.",
+            "If the input is a vector or matrix, then the node will calculate the square root of each element,",
+            "and output a vector or matrix of the same size.",
+            "Note that there are combinations of inputs that can result in a loss of precision due to different",
+            "value ranges. Taking roots of a negative number will give a result of NaN if \"Nth Root\" is even.",
+            "Setting \"Nth Root\" to zero will give a result of inf."
+        ],
+        "uiName": "Nth Root",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "nthRoot": {
+                "type": "int",
+                "description": [
+                    "The degree of the root for the mathematical operation. Equivalent to raising \"Value\" to the",
+                    "1/\"Nth Root\" power. Note that the result will be NaN if \"Nth Root\" is even and \"Value\" is",
+                    "negative. Also note that the result will be inf if \"Nth Root\" is set to zero."
+                ],
+                "uiName": "Nth Root",
+                "default": 2
+            },
+            "value": {
+                "type": ["numerics"],
+                "description": "The input value with which the nth root will be computed.",
+                "uiName": "Value"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "Result of taking the nth root of the input \"Value\".",
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "float", "value": 36.0},
+                "outputs:result": {"type": "float", "value": 6.0}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 27.0}, "inputs:nthRoot": 3,
+                "outputs:result": {"type": "double", "value": 3.0}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [0.25, 4.0]},
+                "outputs:result": {"type": "float[2]", "value": [0.5, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [1.331, 8.0]}, "inputs:nthRoot": 3,
+                "outputs:result": {"type": "float[]", "value": [1.1, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[4.0, 16.0], [2.25, 64.0]]},
+                "outputs:result": {"type": "float[2][]", "value": [[2.0, 4.0], [1.5, 8.0]]}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 9223372036854775807}, "inputs:nthRoot": 1,
+                "outputs:result": {"type": "double", "value": 9223372036854775807.0}
+            },
+            {
+                "inputs:value": {"type": "int", "value": 256}, "inputs:nthRoot": 4,
+                "outputs:result": {"type": "double", "value": 4.0}
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 8}, "inputs:nthRoot": 3,
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [0.125, 1.0]}, "inputs:nthRoot": 3,
+                "outputs:result": {"type": "half[2]", "value": [0.5, 1.0]}
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 25},
+                "outputs:result": {"type": "double", "value": 5.0}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 16}, "inputs:nthRoot": -2,
+                "outputs:result": {"type": "double", "value": 0.25}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 0.125}, "inputs:nthRoot": -3,
+                "outputs:result": {"type": "double", "value": 2}
+            }
+        ]
+    }
+}

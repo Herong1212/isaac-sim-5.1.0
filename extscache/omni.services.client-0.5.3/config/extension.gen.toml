@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.client-0.5.3.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.123029.47f9f660.tc"
+        date = 1693347043
+        buildNumber = "105.1.0+master.2264.d14b1e5b.gl"
+        repoName = "kit-services"
+        signed = 1

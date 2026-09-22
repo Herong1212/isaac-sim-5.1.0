@@ -1,0 +1,45 @@
+[package]
+title = "Nucleus Connector"
+version = "2.0.1"
+category = "Internal"
+description = "Helper extension for connecting to Nucleus servers"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui", "nucleus"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.window.popup_dialog" = {}
+"omni.client" = {}
+"omni.kit.pip_archive" = { optional=true }  # for optional qrcode support
+
+[[python.module]]
+name = "omni.kit.widget.nucleus_connector"
+
+[settings]
+exts."omni.kit.widget.nucleus_connector".device_auth_flow = false
+
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/SETTINGS.md",
+    "docs/USAGE_PYTHON.md",
+]
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.pip_archive",
+    "omni.kit.ui_test",
+]

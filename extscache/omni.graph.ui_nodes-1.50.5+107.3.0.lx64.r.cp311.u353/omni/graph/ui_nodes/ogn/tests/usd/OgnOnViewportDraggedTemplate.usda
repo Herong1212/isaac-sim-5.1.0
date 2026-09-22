@@ -1,0 +1,53 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnOnViewportDragged.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_OnViewportDragged" (
+        docs="""Event node which fires when a drag event occurs in the specified viewport. Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.OnViewportDragged"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom token inputs:gesture = "Left Mouse Drag" (
+            docs="""The input gesture to trigger viewport drag events."""
+        )
+        custom bool inputs:onlyPlayback = true (
+            docs="""When true, the node is only executed while Stage is being played"""
+        )
+        custom bool inputs:useNormalizedCoords = false (
+            docs="""When true, the components of 2D position outputs are scaled to between 0 and 1,
+            where 0 is top/left and 1 is bottom/right.
+            When false, components are in viewport render resolution pixels."""
+        )
+        custom token inputs:viewport = "Viewport" (
+            docs="""Name of the viewport window to watch for drag events."""
+        )
+
+        # 4 attributes
+        custom uint outputs:began (
+            docs="""When the drag begins, signal to the graph that execution can continue downstream on this path.
+            'Initial Position' will also be populated when this signal is set."""
+        )
+        custom uint outputs:ended (
+            docs="""When the drag ends, signal to the graph that execution can continue downstream on this path.
+            'Final Position' will also be populated when this signal is set."""
+        )
+        custom double2 outputs:finalPosition (
+            docs="""The mouse position at which the drag ended (valid when 'Ended' is enabled)."""
+        )
+        custom double2 outputs:initialPosition (
+            docs="""The mouse position at which the drag began (valid when either 'Began' or 'Ended' is enabled)."""
+        )
+    }
+}

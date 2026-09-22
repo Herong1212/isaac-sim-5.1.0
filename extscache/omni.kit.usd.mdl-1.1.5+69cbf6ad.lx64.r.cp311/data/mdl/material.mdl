@@ -1,0 +1,48 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+import ::df::*;
+import ::state::*;
+
+export material diffuse(
+    color diffuse_color = color(.8),
+    float roughness = 0.0,
+    float3 normal = state::normal()
+) =
+material(
+    thin_walled: true,
+    surface: material_surface(
+        scattering: df::weighted_layer(
+            weight: 1.,
+            normal: normal,
+            layer: df::diffuse_reflection_bsdf(
+                    roughness: roughness,
+                    tint: diffuse_color
+            )
+        )
+    )
+);
+
+export material test_material(
+    material param = diffuse(diffuse_color: color(0.))
+) =
+material(
+    surface: material_surface(
+        scattering: param.surface.scattering,
+        emission: material_emission(
+            emission: df::diffuse_edf(),
+            intensity: color(1000.f, 1000.f, 1000.f)
+        )
+    ),
+    volume: param.volume,
+    ior: param.ior,
+    thin_walled: param.thin_walled,
+    geometry: param.geometry
+);

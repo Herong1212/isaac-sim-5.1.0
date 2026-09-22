@@ -1,0 +1,66 @@
+{
+    "applyGlobalOrigin": false,
+    "attributes": [
+        {
+            "name": "foo1",
+            "prefix": "prefix",
+            "converted_name": "foobar1"
+        },
+        {
+            "name": "foo2",
+            "prefix": "",
+            "converted_name": "foobar2"
+        },
+        {
+            "name": "foo3",
+            "converted_name": "foobar3"
+        }
+    ],
+    "convertCurves": false,
+    "convertHidden": false,
+    "fallbackCurveWidth": -1,
+    "hiddenLevels": [
+        "level_foo",
+        "*vel_foo",
+        "level_bar*",
+        "*vel_bar*"
+    ],
+    "hideLevelsByList": true,
+    "importAttributesByList": true,
+    "instancing": true,
+    "instancingStyle": 1,
+    "levelExcludes": [],
+    "levelFilterStyle": 0,
+    "levelIncludes": [
+        "Default",
+        "level_foo",
+        "*vel_foo",
+        "level_ba*",
+        "*vel_ba*"
+    ],
+    "materialType": 1,
+    "mergeCurves": true,
+    "mergeMeshes": true,
+    "mergedAttributeStyle": 2,
+    "modelNamePatterns": [
+        "Default",
+        "model_foo",
+        "*del_foo",
+        "model_ba*",
+        "*del_ba*"
+    ],
+    "progressLogging": true,
+    "surfaceTolerance": 0.2,
+    "tessLOD": 2,
+    "triangulate": true,
+    "useMaterials": true,
+    "bInstancing": true,
+    "bConvertHidden": false,
+    "bMergeMeshes": true,
+    "bConvertCurves": false,
+    "dSurfaceTolerance": 0.2,
+    "sOptimizeConfig": "",
+    "bOptimize": true,
+    "iUpAxis": 0,
+    "dMetersPerUnit": 0.0
+}

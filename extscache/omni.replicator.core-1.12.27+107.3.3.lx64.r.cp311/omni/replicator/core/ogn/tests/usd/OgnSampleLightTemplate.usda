@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSampleLight.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSampleLight" (
+        docs="""This node randomizes the properties of light prims."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSampleLight"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom float3 inputs:colorMax = (1, 1, 1) (
+            docs="""The maximum R, G, B values of light color. Scale is from 0 to 1"""
+        )
+        custom float3 inputs:colorMin = (0, 0, 0) (
+            docs="""The minimum R, G, B values of light color. Scale is from 0 to 1"""
+        )
+        custom bool inputs:enableTemperature = false (
+            docs="""Enable if temperature of light needs to be randomized"""
+        )
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom float2 inputs:intensityRange = (1, 100000) (
+            docs="""First element contains the min value for intensity, second element contains max value"""
+        )
+        custom rel inputs:prims (
+            docs="""prim(s) to set location"""
+        )
+        custom int inputs:seed = -1 (
+            docs="""Random Number Generator seed. A value of less than 0 will indicate using the global seed."""
+        )
+        custom float2 inputs:temperatureRange = (1000, 10000) (
+            docs="""Range of light temperature randomization. Will only be used if inputs:enableTemperature is enabled"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

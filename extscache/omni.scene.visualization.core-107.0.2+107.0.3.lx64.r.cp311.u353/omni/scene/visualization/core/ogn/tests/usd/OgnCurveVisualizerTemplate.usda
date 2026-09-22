@@ -1,0 +1,50 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCurveVisualizer.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_scene_visualization_core_CurveVisualizer" (
+        docs="""Display Curve"""
+    )
+    {
+        token node:type = "omni.scene.visualization.core.CurveVisualizer"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom bool inputs:active = true (
+            docs="""Display curve data"""
+        )
+        custom rel inputs:curveBundle (
+            docs="""Input curve data"""
+        )
+        custom float inputs:scale = 1.0 (
+            docs="""Scale"""
+        )
+        custom int inputs:tessellation = 10 (
+            docs="""tessellation factor"""
+        )
+        custom bool inputs:visualizeControlPoints = false (
+            docs="""Visualize control points"""
+        )
+        custom bool inputs:visualizeCurveSegments = false (
+            docs="""Visualize curve segments"""
+        )
+        custom bool inputs:visualizeCurves = true (
+            docs="""Visualize curves"""
+        )
+        custom bool inputs:visualizeSampledTangents = false (
+            docs="""Visualize sampled tangents"""
+        )
+        custom bool inputs:visualizeTangents = false (
+            docs="""Visualize tangents"""
+        )
+    }
+}

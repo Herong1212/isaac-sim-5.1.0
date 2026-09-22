@@ -1,0 +1,19 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.graph.core-13ee74d054bf61bf.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.225767.eed22410.gl"
+        date = 1757755257
+        buildNumber = "107.3.3+1073.225767.eed22410.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

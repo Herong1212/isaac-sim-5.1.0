@@ -1,0 +1,36 @@
+[package]
+title = "Activity Pump"
+category = "Telemetry"
+version = "1.0.1"
+description = "The activity and the progress processor gets pumped every 0.25 seconds"
+authors = ["NVIDIA"]
+keywords = ["activity"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[[python.module]]
+name = "omni.activity.pump"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[dependencies]
+"omni.activity.core" = {}
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.renderer.capture",
+    "omni.ui",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

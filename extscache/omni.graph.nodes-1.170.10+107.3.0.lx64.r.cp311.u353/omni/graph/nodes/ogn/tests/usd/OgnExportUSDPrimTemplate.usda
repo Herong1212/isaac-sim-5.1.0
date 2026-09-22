@@ -1,0 +1,123 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExportUSDPrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ExportUSDPrim" (
+        docs="""Exports data from an input bundle into a USD prim This node is deprecated, Use WritePrim nodes instead"""
+    )
+    {
+        token node:type = "omni.graph.ExportUSDPrim"
+        int node:typeVersion = 1
+
+        # 14 attributes
+        custom bool inputs:applyTransform = false (
+            docs="""If true, apply the transform necessary to transform any transforming attributes from the space of the node into the space of the specified prim."""
+        )
+        custom token inputs:attrNamesToExport = "" (
+            docs="""Comma or space separated text, listing the names of attributes in the input data to be exported 
+            or empty to import all attributes."""
+        )
+        custom rel inputs:bundle (
+            docs="""The bundle from which data should be exported."""
+        )
+        custom token inputs:excludedAttrNames = "" (
+            docs="""Attributes to be excluded from being exported"""
+        )
+        custom bool inputs:exportToRootLayer = true (
+            docs="""If true, prims are exported in the root layer, otherwise the layer specified by "layerName" is used."""
+        )
+        custom token inputs:inputAttrNames = "" (
+            docs="""Comma or space separated text, listing the names of attributes in the input data to be renamed"""
+        )
+        custom token inputs:layerName = "" (
+            docs="""Identifier of the layer to export to if "exportToRootLayer" is false, or leave this blank to export to the session layer"""
+        )
+        custom bool inputs:onlyExportToExisting = false (
+            docs="""If true, only attributes that already exist in the specified output prim will have data transferred to them from the input bundle."""
+        )
+        custom token inputs:outputAttrNames = "" (
+            docs="""Comma or space separated text, listing the new names for the attributes listed in inputAttrNames"""
+        )
+        custom bool inputs:primPathFromBundle = false (
+            docs="""When true, if there is a "primPath" token attribute inside the bundle, that will be the path of the USD prim to write to, 
+            else the "outputs:prim" attribute below will be used for the USD prim path."""
+        )
+        custom bool inputs:removeMissingAttrs = false (
+            docs="""If true, any attributes on the USD prim(s) being written to, that aren't in the input data, 
+            will be removed from the USD prim(s)."""
+        )
+        custom bool inputs:renameAttributes = false (
+            docs="""If true, attributes listed in "inputAttrNames" will be exported to attributes with the names specified in "outputAttrNames". 
+            Note: to avoid potential issues with redundant attributes being created while typing, keep this off until after 
+            specifying all input and output attribute names."""
+        )
+        custom bool inputs:timeVaryingAttributes = false (
+            docs="""Check whether the USD attributes should be time-varying and if so, export their data to a time sample at the time "usdTimecode"."""
+        )
+        custom double inputs:usdTimecode = 0 (
+            docs="""The time at which to evaluate the transform of the USD prim for applyTransform."""
+        )
+
+        # 1 attribute
+        custom rel outputs_prim (
+            docs="""The USD prim(s) to which data should be exported if primPathFromBundle is false or if the bundle doesn't have a "primPath" token attribute.  
+            Note: this is really an input, since the node just receives the path to the prim.  The node does not contain the prim."""
+        )
+
+        # 15 attributes
+        custom bool state:prevApplyTransform (
+            docs="""Value of "applyTransform" input from previous run"""
+        )
+        custom token state:prevAttrNamesToExport (
+            docs="""Value of "attrNamesToExport" input from previous run"""
+        )
+        custom uint64 state:prevBundleDirtyID (
+            docs="""Dirty ID of input bundle from previous run"""
+        )
+        custom token state:prevExcludedAttrNames (
+            docs="""Value of "excludedAttrNames" input from previous run"""
+        )
+        custom bool state:prevExportToRootLayer (
+            docs="""Value of "exportToRootLayer" input from previous run"""
+        )
+        custom token state:prevInputAttrNames (
+            docs="""Value of "inputAttrNames" input from previous run"""
+        )
+        custom token state:prevLayerName (
+            docs="""Value of "layerName" input from previous run"""
+        )
+        custom bool state:prevOnlyExportToExisting (
+            docs="""Value of "onlyExportToExisting" input from previous run"""
+        )
+        custom token state:prevOutputAttrNames (
+            docs="""Value of "outputAttrNames" input from previous run"""
+        )
+        custom uint64[] state:prevPrimDirtyIDs (
+            docs="""Dirty IDs of input prims from previous run"""
+        )
+        custom bool state:prevPrimPathFromBundle (
+            docs="""Value of "primPathFromBundle" input from previous run"""
+        )
+        custom bool state:prevRemoveMissingAttrs (
+            docs="""Value of "removeMissingAttrs" input from previous run"""
+        )
+        custom bool state:prevRenameAttributes (
+            docs="""Value of "renameAttributes" input from previous run"""
+        )
+        custom bool state:prevTimeVaryingAttributes (
+            docs="""Value of "timeVaryingAttributes" input from previous run"""
+        )
+        custom double state:prevUsdTimecode (
+            docs="""Value of "usdTimecode" input from previous run"""
+        )
+    }
+}

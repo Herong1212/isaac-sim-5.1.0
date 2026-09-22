@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCopyAttr.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_CopyAttribute" (
+        docs="""Copies all attributes from one input bundle and specified attributes from a second input bundle to the output bundle."""
+    )
+    {
+        token node:type = "omni.graph.nodes.CopyAttribute"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom rel inputs:fullData (
+            docs="""Collection of attributes to fully copy to the output"""
+        )
+        custom token inputs:inputAttrNames = "" (
+            docs="""Comma or space separated text, listing the names of attributes to copy from partialData"""
+        )
+        custom token inputs:outputAttrNames = "" (
+            docs="""Comma or space separated text, listing the new names of attributes copied from partialData"""
+        )
+        custom rel inputs:partialData (
+            docs="""Collection of attributes from which to select named attributes"""
+        )
+
+        # 1 attribute
+        custom rel outputs_data (
+            docs="""Collection of attributes consisting of all attributes from input 'fullData' and
+            selected inputs from input 'partialData'"""
+        )
+    }
+}

@@ -1,0 +1,165 @@
+# Public API for module omni.kit.capture.viewport:
+
+## Classes
+
+- class CaptureExtension(omni.ext.IExt)
+  - def on_startup(self)
+  - class ReshadeUpdateState
+    - PRE_CAPTURE: int
+    - POST_CAPTURE: int
+    - POST_CAPTURE_READY: int
+  - def on_shutdown(self)
+  - [property] def options(self)
+  - [options.setter] def options(self, value)
+  - [property] def progress(self)
+  - [property] def show_default_progress_window(self)
+  - [show_default_progress_window.setter] def show_default_progress_window(self, value)
+  - [property] def progress_update_fn(self)
+  - [progress_update_fn.setter] def progress_update_fn(self, value)
+  - [property] def forward_one_frame_fn(self)
+  - [forward_one_frame_fn.setter] def forward_one_frame_fn(self, value)
+  - [property] def capture_finished_fn(self)
+  - [capture_finished_fn.setter] def capture_finished_fn(self, value)
+  - [property] def done(self) -> bool
+  - def start(self) -> bool
+  - def pause(self)
+  - def resume(self)
+  - def cancel(self)
+  - def get_outputs(self) -> List[str]
+  - static def get_instance()
+
+- class CaptureOptions
+  - INVALID_ANIMATION_FPS: Unknown
+  - def __init__(self, camera = 'camera', range_type = CaptureRangeType.FRAMES, capture_every_nth_frames = -1, fps = 24, start_frame = 1, end_frame = 48, start_time = 0, end_time = 2, res_width = 1920, res_height = 1080, render_preset = CaptureRenderPreset.PATH_TRACE, debug_material_type = CaptureDebugMaterialType.SHADED, spp_per_iteration = 1, path_trace_spp = 1, ptmb_subframes_per_frame = 1, ptmb_fso = 0.0, ptmb_fsc = 1.0, output_folder = '', file_name = 'Capture', file_name_num_pattern = '.####', file_type = '.png', save_alpha = False, hdr_output = False, show_pathtracing_single_frame_progress = False, preroll_frames = 0, overwrite_existing_frames = False, movie_type = CaptureMovieType.SEQUENCE, sunstudy_start_time = 0.0, sunstudy_current_time = 0.0, sunstudy_end_time = 0.0, sunstudy_movie_length_in_seconds = 2, sunstudy_player = None, real_time_settle_latency_frames = 0, renumber_negative_frame_number_from_0 = False, render_product = '', exr_compression_method = 'zips', mp4_encoding_bitrate = 16777216, mp4_encoding_iframe_interval = 60, mp4_encoding_preset = 'PRESET_DEFAULT', mp4_encoding_profile = 'H264_PROFILE_HIGH', mp4_encoding_rc_mode = 'RC_VBR', mp4_encoding_rc_target_quality = 0, mp4_encoding_video_full_range_flag = False, app_level_capture = False, animation_fps = INVALID_ANIMATION_FPS, rt_wait_for_render_resolve_in_seconds = -1, early_quit_time_limit_per_frame_in_minutes = -1)
+  - def to_dict(self)
+  - class def from_dict(cls, options)
+  - [property] def camera(self) -> str
+  - [camera.setter] def camera(self, value: str)
+  - [property] def range_type(self) -> CaptureRangeType
+  - [range_type.setter] def range_type(self, value: int)
+  - [property] def capture_every_Nth_frames(self) -> int
+  - [capture_every_Nth_frames.setter] def capture_every_Nth_frames(self, value: int)
+  - [property] def fps(self) -> float
+  - [fps.setter] def fps(self, value: float)
+  - [property] def start_frame(self) -> int
+  - [start_frame.setter] def start_frame(self, value: int)
+  - [property] def end_frame(self) -> int
+  - [end_frame.setter] def end_frame(self, value: int)
+  - [property] def start_time(self) -> float
+  - [start_time.setter] def start_time(self, value: float)
+  - [property] def end_time(self) -> float
+  - [end_time.setter] def end_time(self, value: float)
+  - [property] def res_width(self) -> int
+  - [res_width.setter] def res_width(self, value: int)
+  - [property] def res_height(self) -> int
+  - [res_height.setter] def res_height(self, value: int)
+  - [property] def render_preset(self) -> CaptureRenderPreset
+  - [render_preset.setter] def render_preset(self, value: CaptureRenderPreset)
+  - [property] def debug_material_type(self) -> CaptureDebugMaterialType
+  - [debug_material_type.setter] def debug_material_type(self, value: CaptureDebugMaterialType)
+  - [property] def spp_per_iteration(self) -> int
+  - [spp_per_iteration.setter] def spp_per_iteration(self, value: int)
+  - [property] def path_trace_spp(self) -> int
+  - [path_trace_spp.setter] def path_trace_spp(self, value: int)
+  - [property] def ptmb_subframes_per_frame(self) -> int
+  - [ptmb_subframes_per_frame.setter] def ptmb_subframes_per_frame(self, value: int)
+  - [property] def ptmb_fso(self) -> float
+  - [ptmb_fso.setter] def ptmb_fso(self, value: float)
+  - [property] def ptmb_fsc(self) -> float
+  - [ptmb_fsc.setter] def ptmb_fsc(self, value: float)
+  - [property] def output_folder(self) -> str
+  - [output_folder.setter] def output_folder(self, value: str)
+  - [property] def file_name(self) -> str
+  - [file_name.setter] def file_name(self, value: str)
+  - [property] def file_name_num_pattern(self) -> str
+  - [file_name_num_pattern.setter] def file_name_num_pattern(self, value: str)
+  - [property] def file_type(self) -> str
+  - [file_type.setter] def file_type(self, value: str)
+  - [property] def save_alpha(self) -> bool
+  - [save_alpha.setter] def save_alpha(self, value: bool)
+  - [property] def hdr_output(self) -> bool
+  - [hdr_output.setter] def hdr_output(self, value: bool)
+  - [property] def show_pathtracing_single_frame_progress(self) -> bool
+  - [show_pathtracing_single_frame_progress.setter] def show_pathtracing_single_frame_progress(self, value: bool)
+  - [property] def preroll_frames(self) -> int
+  - [preroll_frames.setter] def preroll_frames(self, value: int)
+  - [property] def overwrite_existing_frames(self) -> bool
+  - [overwrite_existing_frames.setter] def overwrite_existing_frames(self, value: bool)
+  - [property] def movie_type(self) -> CaptureMovieType
+  - [movie_type.setter] def movie_type(self, value: CaptureMovieType)
+  - [property] def sunstudy_start_time(self) -> float
+  - [sunstudy_start_time.setter] def sunstudy_start_time(self, value: float)
+  - [property] def sunstudy_current_time(self) -> float
+  - [sunstudy_current_time.setter] def sunstudy_current_time(self, value: float)
+  - [property] def sunstudy_end_time(self) -> float
+  - [sunstudy_end_time.setter] def sunstudy_end_time(self, value: float)
+  - [property] def sunstudy_movie_length_in_seconds(self) -> float
+  - [sunstudy_movie_length_in_seconds.setter] def sunstudy_movie_length_in_seconds(self, value: float)
+  - [property] def sunstudy_player(self)
+  - [sunstudy_player.setter] def sunstudy_player(self, value)
+  - [property] def real_time_settle_latency_frames(self) -> int
+  - [real_time_settle_latency_frames.setter] def real_time_settle_latency_frames(self, value: int)
+  - [property] def renumber_negative_frame_number_from_0(self) -> bool
+  - [renumber_negative_frame_number_from_0.setter] def renumber_negative_frame_number_from_0(self, value: bool)
+  - [property] def render_product(self) -> str
+  - [render_product.setter] def render_product(self, value: str)
+  - [property] def exr_compression_method(self) -> str
+  - [exr_compression_method.setter] def exr_compression_method(self, value: str)
+  - [property] def mp4_encoding_bitrate(self) -> int
+  - [mp4_encoding_bitrate.setter] def mp4_encoding_bitrate(self, value: int)
+  - [property] def mp4_encoding_iframe_interval(self) -> int
+  - [mp4_encoding_iframe_interval.setter] def mp4_encoding_iframe_interval(self, value: int)
+  - [property] def mp4_encoding_preset(self) -> str
+  - [mp4_encoding_preset.setter] def mp4_encoding_preset(self, value: str)
+  - [property] def mp4_encoding_profile(self) -> str
+  - [mp4_encoding_profile.setter] def mp4_encoding_profile(self, value: str)
+  - [property] def mp4_encoding_rc_mode(self) -> str
+  - [mp4_encoding_rc_mode.setter] def mp4_encoding_rc_mode(self, value: str)
+  - [property] def mp4_encoding_rc_target_quality(self) -> int
+  - [mp4_encoding_rc_target_quality.setter] def mp4_encoding_rc_target_quality(self, value: int)
+  - [property] def mp4_encoding_video_full_range_flag(self) -> bool
+  - [mp4_encoding_video_full_range_flag.setter] def mp4_encoding_video_full_range_flag(self, value: bool)
+  - [property] def app_level_capture(self) -> bool
+  - [app_level_capture.setter] def app_level_capture(self, value: bool)
+  - [property] def animation_fps(self) -> float
+  - [animation_fps.setter] def animation_fps(self, value: float)
+  - [property] def rt_wait_for_render_resolve_in_seconds(self) -> int
+  - [rt_wait_for_render_resolve_in_seconds.setter] def rt_wait_for_render_resolve_in_seconds(self, seconds_to_wait: int)
+  - [property] def early_quit_time_limit_per_frame_in_minutes(self) -> int
+  - [early_quit_time_limit_per_frame_in_minutes.setter] def early_quit_time_limit_per_frame_in_minutes(self, time_limit_per_frame: int)
+  - def is_video(self) -> bool
+  - def is_capturing_nth_frames(self) -> bool
+  - def is_capturing_pathtracing_single_frame(self) -> bool
+  - def is_capturing_single_frame(self) -> bool
+  - def is_capturing_rt_with_render_resolve_waiting(self) -> bool
+  - def is_capturing_frame(self) -> bool
+  - def get_full_path(self) -> str
+  - def is_valid(self) -> bool
+
+- class CaptureStatus(IntEnum)
+  - NONE: int
+  - CAPTURING: int
+  - PAUSED: int
+  - FINISHING: int
+  - TO_START_ENCODING: int
+  - ENCODING: int
+  - CANCELLED: int
+  - DONE: int
+
+- class CaptureRangeType(IntEnum)
+  - FRAMES: int
+  - SECONDS: int
+
+- class CaptureRenderPreset(IntEnum)
+  - PATH_TRACE: int
+  - RAY_TRACE: int
+  - IRAY: int
+  - REAL_TIME_PATHTRACING: int
+
+- class CaptureMovieType(IntEnum)
+  - SEQUENCE: int
+  - SUNSTUDY: int
+
+- class CaptureDebugMaterialType(IntEnum)
+  - SHADED: int
+  - WHITE: int

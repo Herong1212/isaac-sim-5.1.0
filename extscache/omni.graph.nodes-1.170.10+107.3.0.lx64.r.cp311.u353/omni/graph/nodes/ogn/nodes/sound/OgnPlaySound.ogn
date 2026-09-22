@@ -1,0 +1,32 @@
+{
+    "PlaySound": {
+        "version": 2,
+        "description": "Plays a sound",
+        "categories": [ "sound" ],
+        "uiName": "Play Sound",
+        "icon": {
+            "path": "PlaySound.svg"
+        },
+        "exclude": [ "tests" ],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "type": "target",
+                "description": "The sound Prim to play"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            },
+            "soundId": {
+                "type": "uint64",
+                "description": "The sound identifier"
+            }
+        }
+    }
+}

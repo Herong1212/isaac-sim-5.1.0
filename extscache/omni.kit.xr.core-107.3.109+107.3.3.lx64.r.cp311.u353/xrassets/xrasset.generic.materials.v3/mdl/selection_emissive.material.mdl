@@ -1,0 +1,24 @@
+mdl 1.3;
+
+import ::OmniPBR::*;
+
+export material BeamMat()
+ =
+	let {
+	color base_color = color(0.2442933174, 0.548654964, 0.96355214);
+	float metallic = 0.4;
+	float roughness = 0.5;
+	float specular = 0.5;
+	float opacity = 1.0;
+	color emissive_color = color(0.0042933174, 0.058654964, 0.12355214);
+
+	} in
+		OmniPBR::OmniPBR(
+			diffuse_color_constant: base_color,
+			metallic_constant: metallic,
+			reflection_roughness_constant: roughness,
+			specular_level: specular,
+            enable_emission: true,
+			emissive_color: emissive_color,
+            opacity_constant: opacity
+        );

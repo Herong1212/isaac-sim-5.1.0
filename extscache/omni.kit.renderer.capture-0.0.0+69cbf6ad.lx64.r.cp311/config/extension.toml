@@ -1,0 +1,38 @@
+[package]
+title = "Rendering Capture"
+category = "Rendering"
+description = "This is an extension to capture different graphics resources to a file. It can be used to save specific swapchain buffer, GUI texture, or RpResource into a file with specified compression parameters."
+keywords = ["renderer", "capture", "RpResource", "texture"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.kit.renderer.core" = {}
+
+[[python.module]]
+name = "omni.kit.renderer.capture"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+exts."omni.kit.renderer.capture".minAppWindowIdleCaptureFrameCount = 1
+exts."omni.kit.renderer.capture".idleCaptureFramePurgeTimeoutMs = 1000  # Milliseconds
+
+[[test]]
+args = [
+    "--/exts/omni.kit.renderer.core/autostartRenderer=false",
+    "--/exts/omni.kit.renderer.capture/autostartCapture=false",
+]
+dependencies = ["omni.kit.pip_archive"]
+
+stdoutFailPatterns.exclude = [
+    "*Exceeded maximum number of SyncScopeIds*",
+    "*Failed to allocate Renderer SyncScope*",
+]
+
+[documentation]
+cpp_api_hidden = true
+pages = [
+    "docs/Overview.md",
+]

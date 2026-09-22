@@ -1,0 +1,63 @@
+[package]
+version = "0.6.14"
+category = "Simulation"
+title = "RTX Sensors Placement"
+description = "RTX Sensors Placement and Calibration"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["metrosim", "metropolis", "camera", "calibration", "placement", "sdg", "synthetic data"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+writeTarget.kit = true
+
+[dependencies]
+"omni.kit.menu.utils" = {}
+# Navigation related extensions
+"omni.anim.navigation.core" = { version = "~107.3" }
+
+"omni.kit.mesh.raycast" = {}
+"omni.metropolis.utils" = { version = "^0.1.19" }
+"omni.kit.commands" = {}
+
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.scripting" = {}
+"omni.services.pip_archive" = {}
+"isaacsim.sensors.camera" = {}
+"isaacsim.sensors.rtx" = {}
+"omni.replicator.core" = {}
+
+[[python.module]]
+name = "isaacsim.sensors.rtx.placement"
+
+[settings]
+exts."isaacsim.sensors.rtx.placement".command_settings.top_vew_width = 1920
+exts."isaacsim.sensors.rtx.placement".command_settings.top_vew_height = 1080
+
+[[test]]
+dependencies = [
+    "isaacsim.replicator.agent.core"
+]
+
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+
+stdoutFailPatterns.exclude = [
+    "*FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead*",
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

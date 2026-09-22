@@ -1,0 +1,57 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+
+    subLayers = [
+        @./vehicle.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle has prims not in any component/group/collection/tag.
+    """
+)
+
+over "vehicle"
+{
+    def Xform "invalid_out_of_scope"
+    {
+        def Cube "invalid_part"
+        {
+            float3[] extent = [(0.48, -0.7, 0), (0.52, -0.5, 0.2)]
+            matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.0, 0.0, 0.0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+        def Cube "invalid_part_1"
+        {
+            float3[] extent = [(0.48, -0.7, 0), (0.52, -0.5, 0.2)]
+            matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.0, 0.0, 0.0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+    def Xform "valid"
+    {
+        def Cube "valid"
+        {
+            float3[] extent = [(0.48, -0.7, 0), (0.52, -0.5, 0.2)]
+            matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.0, 0.0, 0.0, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+        }
+    }
+    over "collections"
+    {
+        def Scope "break" (
+            prepend apiSchemas = ["CollectionAPI:break"]
+        )
+        {
+            string semantic:wikidata_qcode:params:semanticData = "Q1534839"
+            string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+            token[] semantics:labels:wikidata_qcode = ["Q1534839"]
+
+            uniform token collection:break:expansionRule = "expandPrims"
+            rel collection:break:includes = </vehicle/valid>
+            token omni:simready:vehicle = "break"
+        }
+    }
+}

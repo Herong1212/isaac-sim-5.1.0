@@ -1,0 +1,253 @@
+# Public API for module omni.kit.imgui_renderer:
+
+## Classes
+
+- class IImGuiRenderer
+  - def attach_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow) -> bool
+  - static def attach_app_window_with_imgui_context(*args, **kwargs) -> typing.Any
+  - def clear_cursor_shape_override(self, arg0: omni.appwindow._appwindow.IAppWindow)
+  - def detach_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow)
+  - def get_all_cursor_shape_names(self) -> typing.List[str]
+  - static def get_cursor_shape_override(*args, **kwargs) -> typing.Any
+  - static def get_cursor_shape_override_extend(*args, **kwargs) -> typing.Any
+  - static def get_window_set(*args, **kwargs) -> typing.Any
+  - def has_cursor_shape_override(self, arg0: omni.appwindow._appwindow.IAppWindow) -> bool
+  - def is_app_window_attached(self, arg0: omni.appwindow._appwindow.IAppWindow) -> bool
+  - def register_cursor_shape_extend(self, arg0: str, arg1: str)
+  - static def set_cursor_shape_override(*args, **kwargs) -> typing.Any
+  - def set_cursor_shape_override_extend(self, arg0: omni.appwindow._appwindow.IAppWindow, arg1: str)
+  - def shutdown(self)
+  - def startup(self)
+  - def unregister_cursor_shape_extend(self, arg0: str)
+
+## Functions
+
+- def acquire_imgui_renderer_interface(plugin_name: str = None, library_path: str = None) -> IImGuiRenderer
+- def release_imgui_renderer_interface(arg0: IImGuiRenderer)
+- def get_imgui_renderer_interface() -> IImGuiRenderer
+
+# Public API for module omni.kit.imgui:
+
+## Classes
+
+- class Condition
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ALWAYS: omni.kit.imgui.Condition
+  - APPEARING: omni.kit.imgui.Condition
+  - FIRST_USE_EVER: omni.kit.imgui.Condition
+  - ONCE: omni.kit.imgui.Condition
+
+- class Context
+
+- class ImGui
+  - def begin(self, arg0: str, arg1: bool, arg2: int) -> tuple
+  - def begin_child(self, arg0: str, arg1: carb._carb.Float2, arg2: bool, arg3: int) -> bool
+  - def begin_popup_modal(self, arg0: str, arg1: bool, arg2: int) -> bool
+  - def bullet(self)
+  - def button(self, arg0: str) -> bool
+  - def checkbox(self, arg0: str, arg1: bool) -> tuple
+  - def close_current_popup(self)
+  - def collapsing_header(self, arg0: str, arg1: int) -> bool
+  - def color_edit3(self, arg0: str, arg1: carb._carb.Float3) -> tuple
+  - def color_edit4(self, arg0: str, arg1: carb._carb.Float4) -> tuple
+  - def combo(self, arg0: str, arg1: int, arg2: typing.List[str]) -> tuple
+  - def dock_builder_dock_window(self, arg0: str, arg1: int)
+  - def dummy(self, arg0: carb._carb.Float2)
+  - def end(self)
+  - def end_child(self)
+  - def end_popup(self)
+  - def get_display_size(self) -> carb._carb.Float2
+  - def get_mouse_cursor(self) -> MouseCursor
+  - def get_style(self) -> Style
+  - def indent(self, arg0: float)
+  - def input_float(self, arg0: str, arg1: float, arg2: float) -> tuple
+  - def input_int(self, arg0: str, arg1: int, arg2: int) -> tuple
+  - def input_text(self, arg0: str, arg1: str, arg2: int) -> tuple
+  - def is_valid(self) -> bool
+  - def menu_item_ex(self, arg0: str, arg1: str, arg2: bool, arg3: bool) -> tuple
+  - def open_popup(self, arg0: str)
+  - def plot_lines(self, arg0: str, arg1: typing.List[float], arg2: int, arg3: int, arg4: str, arg5: float, arg6: float, arg7: carb._carb.Float2, arg8: int)
+  - def pop_id(self)
+  - def pop_item_width(self)
+  - def pop_style_color(self)
+  - def pop_style_var(self)
+  - def progress_bar(self, arg0: float, arg1: carb._carb.Float2, arg2: str)
+  - def push_id_int(self, arg0: int)
+  - def push_id_string(self, arg0: str)
+  - def push_item_width(self, arg0: float)
+  - def push_style_color(self, arg0: StyleColor, arg1: carb._carb.Float4)
+  - def push_style_var_float(self, arg0: StyleVar, arg1: float)
+  - def push_style_var_float2(self, arg0: StyleVar, arg1: carb._carb.Float2)
+  - def same_line(self)
+  - def same_line_ex(self, pos_x: float = 0.0, spacing_w: float = -1.0)
+  - def separator(self)
+  - def set_display_size(self, arg0: carb._carb.Float2)
+  - def set_mouse_cursor(self, arg0: MouseCursor)
+  - def set_next_window_pos(self, arg0: carb._carb.Float2, arg1: Condition, arg2: carb._carb.Float2)
+  - def set_next_window_size(self, arg0: carb._carb.Float2, arg1: Condition)
+  - def set_scroll_here_y(self, arg0: float)
+  - def set_style_colors(self, arg0: Style, arg1: StyleColorsPreset)
+  - def show_demo_window(self, arg0: bool)
+  - def show_style_editor(self, arg0: Style)
+  - def slider_float(self, arg0: str, arg1: float, arg2: float, arg3: float) -> tuple
+  - def slider_int(self, arg0: str, arg1: int, arg2: int, arg3: int) -> tuple
+  - def small_button(self, arg0: str) -> bool
+  - def spacing(self)
+  - def text(self, arg0: str)
+  - def text_unformatted(self, arg0: str)
+  - def text_wrapped(self, arg0: str)
+  - def tree_node_ptr(self, arg0: int, arg1: str) -> bool
+  - def tree_pop(self)
+  - def unindent(self, arg0: float)
+
+- class MouseCursor
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ARROW: omni.kit.imgui.MouseCursor
+  - CROSSHAIR: omni.kit.imgui.MouseCursor
+  - HAND: omni.kit.imgui.MouseCursor
+  - NONE: omni.kit.imgui.MouseCursor
+  - NOT_ALLOWED: omni.kit.imgui.MouseCursor
+  - RESIZE_ALL: omni.kit.imgui.MouseCursor
+  - RESIZE_EW: omni.kit.imgui.MouseCursor
+  - RESIZE_NESW: omni.kit.imgui.MouseCursor
+  - RESIZE_NS: omni.kit.imgui.MouseCursor
+  - RESIZE_NWSE: omni.kit.imgui.MouseCursor
+  - TEXT_INPUT: omni.kit.imgui.MouseCursor
+
+- class Style
+
+- class StyleColor
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Border: omni.kit.imgui.StyleColor
+  - BorderShadow: omni.kit.imgui.StyleColor
+  - Button: omni.kit.imgui.StyleColor
+  - ButtonActive: omni.kit.imgui.StyleColor
+  - ButtonHovered: omni.kit.imgui.StyleColor
+  - CheckMark: omni.kit.imgui.StyleColor
+  - ChildBg: omni.kit.imgui.StyleColor
+  - Count: omni.kit.imgui.StyleColor
+  - CustomText: omni.kit.imgui.StyleColor
+  - DockingEmptyBg: omni.kit.imgui.StyleColor
+  - DockingPreview: omni.kit.imgui.StyleColor
+  - DragDropTarget: omni.kit.imgui.StyleColor
+  - FrameBg: omni.kit.imgui.StyleColor
+  - FrameBgActive: omni.kit.imgui.StyleColor
+  - FrameBgHovered: omni.kit.imgui.StyleColor
+  - Header: omni.kit.imgui.StyleColor
+  - HeaderActive: omni.kit.imgui.StyleColor
+  - HeaderHovered: omni.kit.imgui.StyleColor
+  - MenuBarBg: omni.kit.imgui.StyleColor
+  - ModalWindowDimBg: omni.kit.imgui.StyleColor
+  - NavHighlight: omni.kit.imgui.StyleColor
+  - NavWindowingDimBg: omni.kit.imgui.StyleColor
+  - NavWindowingHighlight: omni.kit.imgui.StyleColor
+  - PlotHistogram: omni.kit.imgui.StyleColor
+  - PlotHistogramHovered: omni.kit.imgui.StyleColor
+  - PlotLines: omni.kit.imgui.StyleColor
+  - PlotLinesHovered: omni.kit.imgui.StyleColor
+  - PopupBg: omni.kit.imgui.StyleColor
+  - ResizeGrip: omni.kit.imgui.StyleColor
+  - ResizeGripActive: omni.kit.imgui.StyleColor
+  - ResizeGripHovered: omni.kit.imgui.StyleColor
+  - ScrollbarBg: omni.kit.imgui.StyleColor
+  - ScrollbarGrab: omni.kit.imgui.StyleColor
+  - ScrollbarGrabActive: omni.kit.imgui.StyleColor
+  - ScrollbarGrabHovered: omni.kit.imgui.StyleColor
+  - Separator: omni.kit.imgui.StyleColor
+  - SeparatorActive: omni.kit.imgui.StyleColor
+  - SeparatorHovered: omni.kit.imgui.StyleColor
+  - SliderGrab: omni.kit.imgui.StyleColor
+  - SliderGrabActive: omni.kit.imgui.StyleColor
+  - Tab: omni.kit.imgui.StyleColor
+  - TabActive: omni.kit.imgui.StyleColor
+  - TabHovered: omni.kit.imgui.StyleColor
+  - TabUnfocused: omni.kit.imgui.StyleColor
+  - TabUnfocusedActive: omni.kit.imgui.StyleColor
+  - TableBorderLight: omni.kit.imgui.StyleColor
+  - TableBorderStrong: omni.kit.imgui.StyleColor
+  - TableHeaderBg: omni.kit.imgui.StyleColor
+  - TableRowBg: omni.kit.imgui.StyleColor
+  - TableRowBgAlt: omni.kit.imgui.StyleColor
+  - Text: omni.kit.imgui.StyleColor
+  - TextDisabled: omni.kit.imgui.StyleColor
+  - TextSelectedBg: omni.kit.imgui.StyleColor
+  - TitleBg: omni.kit.imgui.StyleColor
+  - TitleBgActive: omni.kit.imgui.StyleColor
+  - TitleBgCollapsed: omni.kit.imgui.StyleColor
+  - WindowBg: omni.kit.imgui.StyleColor
+  - WindowShadow: omni.kit.imgui.StyleColor
+
+- class StyleColorsPreset
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Classic: omni.kit.imgui.StyleColorsPreset
+  - Count: omni.kit.imgui.StyleColorsPreset
+  - Dark: omni.kit.imgui.StyleColorsPreset
+  - Light: omni.kit.imgui.StyleColorsPreset
+  - NvidiaDark: omni.kit.imgui.StyleColorsPreset
+  - NvidiaLight: omni.kit.imgui.StyleColorsPreset
+
+- class StyleVar
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Alpha: omni.kit.imgui.StyleVar
+  - ButtonTextAlign: omni.kit.imgui.StyleVar
+  - CellPadding: omni.kit.imgui.StyleVar
+  - ChildBorderSize: omni.kit.imgui.StyleVar
+  - ChildRounding: omni.kit.imgui.StyleVar
+  - DockSplitterSize: omni.kit.imgui.StyleVar
+  - FrameBorderSize: omni.kit.imgui.StyleVar
+  - FramePadding: omni.kit.imgui.StyleVar
+  - FrameRounding: omni.kit.imgui.StyleVar
+  - GrabMinSize: omni.kit.imgui.StyleVar
+  - GrabRounding: omni.kit.imgui.StyleVar
+  - IndentSpacing: omni.kit.imgui.StyleVar
+  - ItemInnerSpacing: omni.kit.imgui.StyleVar
+  - ItemSpacing: omni.kit.imgui.StyleVar
+  - PopupBorderSize: omni.kit.imgui.StyleVar
+  - PopupRounding: omni.kit.imgui.StyleVar
+  - ScrollbarRounding: omni.kit.imgui.StyleVar
+  - ScrollbarSize: omni.kit.imgui.StyleVar
+  - SelectableTextAlign: omni.kit.imgui.StyleVar
+  - TabRounding: omni.kit.imgui.StyleVar
+  - WindowBorderSize: omni.kit.imgui.StyleVar
+  - WindowMinSize: omni.kit.imgui.StyleVar
+  - WindowPadding: omni.kit.imgui.StyleVar
+  - WindowRounding: omni.kit.imgui.StyleVar
+  - WindowTitleAlign: omni.kit.imgui.StyleVar
+
+## Functions
+
+- def acquire_imgui(plugin_name: str = None, library_path: str = None) -> ImGui
+
+## Variables
+
+- WINDOW_FLAG_ALWAYS_AUTO_RESIZE: int
+- WINDOW_FLAG_ALWAYS_HORIZONTAL_SCROLLBAR: int
+- WINDOW_FLAG_ALWAYS_USE_WINDOW_PADDING: int
+- WINDOW_FLAG_ALWAYS_VERTICAL_SCROLLBAR: int
+- WINDOW_FLAG_HORIZONTAL_SCROLLBAR: int
+- WINDOW_FLAG_MENU_BAR: int
+- WINDOW_FLAG_NO_BACKGROUND: int
+- WINDOW_FLAG_NO_BRING_TO_FRONT_ON_FOCUS: int
+- WINDOW_FLAG_NO_COLLAPSE: int
+- WINDOW_FLAG_NO_DOCKING: int
+- WINDOW_FLAG_NO_FOCUS_ON_APPEARING: int
+- WINDOW_FLAG_NO_MOUSE_INPUTS: int
+- WINDOW_FLAG_NO_MOVE: int
+- WINDOW_FLAG_NO_NAV_FOCUS: int
+- WINDOW_FLAG_NO_NAV_INPUTS: int
+- WINDOW_FLAG_NO_RESIZE: int
+- WINDOW_FLAG_NO_SAVED_SETTINGS: int
+- WINDOW_FLAG_NO_SCROLLBAR: int
+- WINDOW_FLAG_NO_SCROLL_WITH_MOUSE: int
+- WINDOW_FLAG_NO_TITLE_BAR: int
+- WINDOW_FLAG_UNSAVED_DOCUMENT: int

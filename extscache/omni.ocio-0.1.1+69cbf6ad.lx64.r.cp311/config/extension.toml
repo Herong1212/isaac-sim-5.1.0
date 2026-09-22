@@ -1,0 +1,44 @@
+[package]
+title = "Omni Ocio"
+version = "0.1.1"
+category = "Color"
+description = "Provides low level OpenColorIo functionality"
+detailedDescription = """ This is a low level plugin offering functionality exposed by OpenColorIo.
+"""
+authors = ["NVIDIA"]
+keywords = ["image", "core", "rtx", "ocio"]
+support_level = "Core"
+
+# Main python module this extension provides, it will be publicly available as "import <name>".
+[[python.module]]
+name = "omni.ocio"
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[dependencies]
+# We require the "carb.ocio.plugin" which is part of omni.hydra.rtx. It lives next to the rtx.postprocessing.plugin basically.
+"omni.hydra.rtx" = {}
+
+[[test]]
+name = "default_tests"
+
+pythonTests.unreliable = ["*UNSTABLE*",]
+
+args = []
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+]
+
+profiling = false
+timeout = 600
+
+stdoutFailPatterns.exclude = [
+
+]
+pythonTests.exclude = []
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

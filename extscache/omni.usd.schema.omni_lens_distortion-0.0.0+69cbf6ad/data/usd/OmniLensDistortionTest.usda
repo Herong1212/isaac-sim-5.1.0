@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+
+def Xform "World"
+{
+    def Camera "Camera1" (
+        prepend apiSchemas = ["OmniLensDistortionFthetaAPI"]
+    )
+    {
+        # Prim should inherit default value of 200
+        # float omni:lensdistortion:ftheta:maxFov = 200
+    }
+
+    def Camera "Camera2" (
+        prepend apiSchemas = ["OmniLensDistortionKannalaBrandtK3API"]
+    )
+    {
+        float omni:lensdistortion:kannalaBrandtK3:maxFov = 120
+    }
+
+    def Camera "Camera3" (
+        prepend apiSchemas = ["OmniLensDistortionRadTanThinPrismAPI"]
+    )
+    {
+        # float omni:lensdistortion:radTanThinPrism:s2 = 0.00019
+    }
+
+    def Camera "Camera4" (
+        prepend apiSchemas = ["OmniLensDistortionLutAPI"]
+    )
+    {
+        asset omni:lensdistortion:lut:rayEnterDirectionTexture = "dir.exr"
+        asset omni:lensdistortion:lut:rayExitPositionTexture = "pos.exr"
+    }
+
+    def Camera "Camera5" (
+        prepend apiSchemas = ["OmniLensDistortionOpenCvFisheyeAPI"]
+    )
+    {
+        float omni:lensdistortion:opencvFisheye:fx = 800
+        float omni:lensdistortion:opencvFisheye:fy = 700
+    }
+
+    def Camera "Camera6" (
+        prepend apiSchemas = ["OmniLensDistortionOpenCvPinholeAPI"]
+    )
+    {
+        float omni:lensdistortion:opencvPinhole:k1 = 1.5
+    }
+}

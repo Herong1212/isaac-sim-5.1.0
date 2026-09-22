@@ -1,0 +1,149 @@
+[package]
+title = "MDL Material Backend Python Bindings"
+version = "0.2.12"
+category = "Bindings"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Access the MDL shade nodes of the material system in OV."
+keywords = ["kit", "MDL", "binding", "python"]
+support_level = "Core"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+[dependencies]
+"omni.iray.libs" = {}
+"omni.mdl" = {}
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.mdl.neuraylib"
+
+[[native.plugin]]
+path = "bin/deps/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]
+
+# Settings. They are applied on the root of global settings. In case of conflict original settings are kept.
+[settings]
+
+# on windows, junctions are used by default, with this option use symlinks instead (which require special permissions)
+exts."omni.mdl.neuraylib".extSearchPath.forceSymlinks = false
+
+###############################################################################
+
+[[test]]
+name = "no-renderer"
+pythonTests.include = [ "omni.mdl.neuraylib.tests.norenderer.*" ]
+
+dependencies = [
+    "omni.usd",
+    "omni.kit.test_suite.helpers",
+    # "omni.kit.debug.vscode",  # do not commit with debug extenions enabled, it will break coverage tests
+]
+
+###############################################################################
+
+[[test]]
+name = "rtx"
+pythonTests.exclude = [ "omni.mdl.neuraylib.tests.norenderer.*" ]
+timeout = 1000 # because rtx is doing warmup for about 800 seconds some times
+args = [
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/exts/omni/mdl/neuraylib/tests/renderer=rtx",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx-transient/resourcemanager/texturestreaming/async=false",
+]
+dependencies = [
+    "omni.usd",
+    "omni.kit.commands",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx",
+    "omni.rtx.tests",
+    # "omni.kit.debug.vscode",  # do not commit with debug extenions enabled, it will break coverage tests
+]
+stdoutFailPatterns.exclude = [
+    # expected errors
+    "*[Error] [omni.hydra] Automatic type conversion from 'float4' to 'color' not supported*",
+    "*[Error] [omni.hydra] Automatic type conversion from '::*",
+    "*[Error] [omni.hydra] Automatic type conversion from 'color' to '::*",
+    "*[Error] [omni.hydra] Automatic type conversion from 'float4' to '::*",
+    "*Provided content path '*' does not exist.*",
+
+    # Test loading broken modules
+    "*[Error] [rtx.neuraylib.plugin] [MDLC:COMPILER] */loading_tests/WrongSyntaxTest.mdl*",
+    "*[Error] [rtx.mdltranslator.plugin] Texture file referenced in the material * wasn't resolved properly: '*/omni.mdl.neuraylib/data/tests/mdl/loading_tests/'*",
+    "*[Error] [rtx.neuraylib.plugin] [MDLC:COMPILER] *could not find module '::.::gltf::pbr' in module path*",
+    "*[Error] [omni.usd] USD_MDL: *'rtx::neuraylib::MdlModuleId' for './gltf/pbr.mdl' is Invalid*",
+    # "*INDEX  main error: * version * does not match libneuray.dll version *"
+
+    # known errors and limitations
+    "*[Error] [rtx.mdltranslator.plugin] *missing_body_resource.usdz:SubUSDs/textures/test_materials_1_6/missing_texture_placeholder.png*",
+    "*[Error] [rtx.neuraylib.plugin] Tiled textures in usdz are not supported yet*",
+    "*[Error] [rtx.mdltranslator.plugin] Texture file referenced in the material parameter defaults wasn't resolved properly: *udim.usdz:SubUSDs/textures/simple_udim_tex/cube.<UDIM>.png*",
+]
+
+###############################################################################
+
+[[test]]
+name = "iray"
+pythonTests.exclude = [ "omni.mdl.neuraylib.tests.norenderer.*" ]
+args = [
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=iray",
+    "--/renderer/active=iray",
+    "--/exts/omni/mdl/neuraylib/tests/renderer=iray",
+    "--/exts/omni.mdl.neuraylib/tests/legacyHydra=true", # diable tests that do not work with legacy.hydra anymore
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/plugins/neuraylib/log_level=info",
+    "--/rtx/iray/guided_sampling=false", # TODO: remove as soon as it is fixed in iray (OM-93683)
+    "--/iray/device/enableCPU=true", # avoid driver version tests because it's not important here TODO: check why ForceCPU does not stop
+    "--/iray/render_synchronous=true",
+    "--/iray/verifyDriverVersion/enabled=false",
+]
+dependencies = [
+    "omni.usd",
+    "omni.kit.commands",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.iray",
+    "omni.rtx.tests",
+    # "omni.kit.debug.vscode",  # do not commit with debug extenions enabled, it will break coverage tests
+]
+stdoutFailPatterns.exclude = [
+    # expected errors
+    "*[Error] [omni.hydra] Automatic type conversion from 'float4' to 'color' not supported*",
+    "*[Error] [omni.hydra] Automatic type conversion from '::*",
+    "*[Error] [omni.hydra] Automatic type conversion from 'color' to '::*",
+    "*[Error] [omni.hydra] Automatic type conversion from 'float4' to '::*",
+
+    # Test is not generating images, so ignore any driver-related errors loading IRAY
+    "*Cannot render: found no usable devices.*",
+    "*Provided content path '*' does not exist.*",
+
+    # Test loading broken modules
+    "*[Error] [rtx.neuraylib.plugin] [MDLC:COMPILER] */loading_tests/WrongSyntaxTest.mdl*",
+    "*[Error] [rtx.neuraylib.plugin] [MDLC:COMPILER] *could not find module '::.::gltf::pbr' in module path*",
+    "*[Error] [omni.usd] USD_MDL: *'rtx::neuraylib::MdlModuleId' for './gltf/pbr.mdl' is Invalid*",
+    # "*INDEX  main error: * version * does not match libneuray.dll version *"
+
+    # known errors and limitations
+    "*[Error] [rtx.mdltranslator.plugin] *missing_body_resource.usdz:SubUSDs/textures/test_materials_1_6/missing_texture_placeholder.png*",
+    "*[Error] [rtx.neuraylib.plugin] Tiled textures in usdz are not supported yet*",
+    "*[Error] [rtx.mdltranslator.plugin] Texture file referenced in the material parameter defaults wasn't resolved properly: *udim.usdz:SubUSDs/textures/simple_udim_tex/cube.<UDIM>.png*",
+]

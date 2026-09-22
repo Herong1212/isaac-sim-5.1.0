@@ -1,0 +1,25 @@
+{
+    "GetViewportRenderer": {
+        "version": 1,
+        "description": "Gets the renderer being used by the target viewport.",
+        "language": "Python",
+        "uiName": "Get Viewport Renderer",
+        "categories": [ "viewport" ],
+        "exclude": ["tests"],
+        "inputs": {
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            }
+        },
+        "outputs": {
+            "renderer": {
+                "type": "token",
+                "uiName": "Renderer",
+                "description": "The renderer being used by the target viewport"
+            }
+        }
+    }
+}

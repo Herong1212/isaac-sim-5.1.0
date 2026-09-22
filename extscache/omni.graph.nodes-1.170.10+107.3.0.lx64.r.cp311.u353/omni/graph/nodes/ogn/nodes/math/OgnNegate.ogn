@@ -1,0 +1,50 @@
+{
+    "Negate": {
+        "version": 1,
+        "description": [
+            "Computes the result of multiplying a vector, scalar, or array of vectors or scalars by -1.",
+            "The input must not be unsigned."
+        ],
+        "uiName": "Negate",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "input": {
+                "type": ["numerics"],
+                "description": "The vector(s) or scalar(s) to negate"
+            }
+        },
+        "outputs": {
+            "output": {
+                "type": ["numerics"],
+                "description": "The resulting negated value(s)"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:input": {"type": "double", "value": 1.0},
+                "outputs:output": {"type": "double", "value": -1.0}
+            },
+            {
+                "inputs:input": {"type": "float[2]", "value": [0.0, 1.0]},
+                "outputs:output": {"type": "float[2]", "value": [-0.0, -1.0]}
+            },
+            {
+                "inputs:input": {"type": "half[3]", "value": [-1.0, -0.0, 1.0]},
+                "outputs:output": {"type": "half[3]", "value": [1.0, 0.0, -1.0]}
+            },
+            {
+                "inputs:input": {"type": "int[4]", "value": [-1, 0, 1, 2]},
+                "outputs:output": {"type": "int[4]", "value": [1, 0, -1, -2]}
+            },
+            {
+                "inputs:input": {"type": "int64[]", "value": [-1, 0, 1, 2]},
+                "outputs:output": {"type": "int64[]", "value": [1, 0, -1, -2]}
+            },
+            {
+                "inputs:input": {"type": "double[][2]", "value": [[-1.0, 0.0], [1.0, 2.0]]},
+                "outputs:output": {"type": "double[][2]", "value": [[1.0, -0.0], [-1.0, -2.0]]}
+            }
+        ]
+    }
+}

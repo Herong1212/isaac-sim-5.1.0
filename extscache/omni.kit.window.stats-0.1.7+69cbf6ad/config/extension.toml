@@ -1,0 +1,27 @@
+[package]
+version = "0.1.7"
+category = "Utilities"
+support_level = "Sample"
+feature = true
+
+[dependencies]
+"omni.stats" = {}
+"omni.ui" = {}
+"omni.usd.libs" = {}
+"omni.kit.menu.utils" = {}
+
+[[python.module]]
+name = "omni.kit.window.stats"
+
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.usd"
+]

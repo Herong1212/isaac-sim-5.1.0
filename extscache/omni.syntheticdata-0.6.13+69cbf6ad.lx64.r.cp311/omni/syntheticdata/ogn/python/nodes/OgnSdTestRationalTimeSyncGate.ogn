@@ -1,0 +1,45 @@
+{
+    "SdTestRationalTimeSyncGate": {
+        "version": 1,
+        "description": ["This node triggers when all its input executions have triggered successively at the same rational time."],
+        "categories": ["graph:action","internal:test"],
+        "language": "Python",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "The input execution",
+                "uiName": "Execute In"
+            },
+            "rationalTimeNumerator": {
+                "type": "int64",
+                "description": "Numerator of the synchronization time.",
+                "uiName": "Sync Numerator"
+            },
+            "rationalTimeDenominator": {
+                "type": "uint64",
+                "description": "Denominator of the synchronization time.",
+                "uiName": "Sync Denominator"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "The output execution",
+                "uiName": "Execute Out"
+            },
+            "rationalTimeNumerator": {
+                "type": "int64",
+                "description": "Numerator of the synchronization time.",
+                "uiName": "Sync Numerator"
+            },
+            "rationalTimeDenominator": {
+                "type": "uint64",
+                "description": "Denominator of the synchronization time.",
+                "uiName": "Sync Denominator"
+            }
+        },
+        "exclude": [
+            "tests"
+        ]
+    }
+}

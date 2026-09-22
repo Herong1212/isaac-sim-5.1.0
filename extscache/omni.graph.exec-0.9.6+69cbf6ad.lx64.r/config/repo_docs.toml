@@ -1,0 +1,309 @@
+copyright_start = 2022
+sphinx_exclude_patterns = [  ]
+sphinx_dont_exclude_patterns = [  ]
+python_paths = [ ]
+library_paths = [ ]
+docs_root = "source/extensions/omni.graph.exec/docs"
+enhanced_search_enabled = true
+use_fast_doxygen_conversion = true
+api_output_directory = "api"
+auto_number_figures_enabled = true
+enable_dark_theme_switcher = false # we use images with white backgrounds that look bad on the dark bg
+
+doxygen_strip_from_path = [
+    "${root}/include",
+    "${docs_root}/undocumented",
+]
+
+doxygen_input = [
+    # our headers
+    "undocumented/Undocumented.h",
+    "../../../../include/omni/graph/exec/unstable/*",
+
+    # process the omni::core headers from carbonite. this will alllow our docs
+    # to inherit documentation from parent classes (e.g. omni::core::IObject)
+    # into our docs.
+    "../../../../_build/target-deps/carb_sdk_plugins/include/omni/core/*"
+]
+
+# this brings in an inventory of all of the linkable references contained in
+# external projects.  when we encounter a refernce that we can't resolve
+# locally, we look in this inventory to see if we can create a cross-link.
+deps = [
+    [ "carbonite", "../../../../_build/target-deps/carb_docs/_build/docs/carbonite/latest" ]
+]
+
+doxygen_output_exclude_regexes = [
+    # ignore warnings from external headers
+    ".*_build/target-deps/.*",
+    ".*packman-repo/.*", # linux
+    ".*/pm/chk/.*", # tc
+
+    # carbonite doesn't seem publish docs on this class
+    ".*unable to resolve reference to 'carb::cpp::string_view'.*",
+
+    # will be removed once carb_docs is updated
+    ".*warning: unable to resolve reference to 'omni::expected'.*",
+
+    # additional excludes
+    "warning: unable to resolve reference to",
+    "warning: @copydetails .* not found",
+    "warning: @copybrief .* not found",
+    "warning: .* is not documented",
+    "warning: Internal inconsistency: .* not found!",
+]
+
+doxygen_predefined = [
+    "OMNI_GRAPH_EXEC_DOC_BUILD=1",
+    "CARB_NODISCARD=''",
+]
+
+# we'll move these settings
+doxygen_conf_extra = """
+IMAGE_PATH+="."
+EXAMPLE_PATH+="."
+"""
+
+# when sphinx can't resolve a reference, we use this hook to look for the
+# reference in the inventories we loaded above.
+#
+# this is a temporary hook which will eventually be integrated into repo_docs
+sphinx_conf_py_extra = """
+def tokenize_cpp(s):
+    tokens = []
+    start = 0
+    end = 0
+    saw_colon = False
+    add_token = False
+    less_count = 0
+
+    i = 0
+    for i in range(len(s)):
+        c = s[i]
+        if c == '<':
+            saw_colon = False
+            less_count = less_count + 1
+        elif c == '>':
+            less_count = less_count - 1
+            if less_count == 0:
+                end = i + 1
+                add_token = True
+
+        if less_count == 0:
+            if saw_colon:
+                if c == ':':
+                    end = i - 1
+                    add_token = True
+                saw_colon = False
+            else:
+                saw_colon = (c == ':')
+
+        if add_token:
+            if end > start:
+                tokens.append(s[start:end])
+            add_token = False
+            start = i + 1
+
+    end = i + 1
+    if end > start:
+        tokens.append(s[start:end])
+
+    return tokens
+
+# called when sphinx can't resolve the reference
+def handle_missing_reference(app, env, node, contnode):
+    from docutils import nodes
+    from docutils.utils import relative_path
+    from sphinx.ext.intersphinx import InventoryAdapter
+    from os import path
+    import re
+
+    inventories = InventoryAdapter(app.builder.env)
+
+    reftarget = node['reftarget'] # the name of thing we're looking for
+
+    domain = node.get('refdomain')
+    if domain != "cpp" and domain != "c":
+        return None
+
+    # start to build up a list of targets to try
+    to_try = [reftarget]
+    if reftarget == "omni::core":
+        # carbonite uses "exhale" for rst generation which doesn't use the
+        # doxygennamespace directive but does create the explicit ref below
+        to_try.append("namespace_omni__core")
+    elif reftarget.startswith("omni::core::ObjectPtr<"):
+         # sometimes we'll see a target like:
+         #
+         #   omni::core::ObjectPtr<IExecutionController>
+         #
+         # when trying to find the target for the "ObjectPtr" token.
+        to_try.append("omni::core::ObjectPtr")
+    elif reftarget.startswith("omni::core::ObjectParam<"):
+         # sometimes we'll see a target like:
+         #
+         #   omni::core::ObjectParam<IExecutionController>
+         #
+         # when trying to find the target for the "ObjectParam" token.
+        to_try.append("omni::core::ObjectParam")
+    elif reftarget.startswith("omni::core::Inherits<"):
+         # sometimes we'll see a target like:
+         #
+         #   omni::core::Inherits<omni::graph::exec::unstable::IExecutionContext, OMNI_TYPE_ID("omni.kit.exec.core.unstable.IExecutionContext")>
+         #
+         # when trying to find the target for the "Inherits" token.
+        to_try.append("omni::core::Inherits")
+
+    full_qualified_name = None
+    if domain:
+        # use the domain to come up with a contextual name for the target. for example:
+        #
+        #   graph::exec::unstable::Status
+        #
+        # would become:
+        #
+        #   omni::kit::exec::core::unstable::ParallelSpawner::schedule::graph::exec::unstable::Status
+        #
+        full_qualified_name = env.get_domain(domain).get_full_qualified_name(node)
+        if full_qualified_name:
+            # the name we computed usually isn't what we want, but does tell us
+            # the context in which the target is being requested.
+            to_try.append(full_qualified_name)
+
+            # tokenize the string based on :: but be mindful of template arguments
+            #
+            #   input: '::j<a::b::g, a::x<a::b>>::b::c::d<e, a::f<>, a::b::g, h>::i::j<a::b::g>'
+            #  output: ['j<a::b::g, a::x<a::b>>', 'b', 'c', 'd<e, a::f<>, a::b::g, h>', 'i', 'j<a::b::g>']
+            tokens = tokenize_cpp(full_qualified_name)
+
+            if full_qualified_name.startswith("omni::core::Generated<"):
+                # breathe isn't able to figure out that targets in a
+                # omni::core::Generated specialization should look in the context of
+                # template argument of omni::core::Generated.  here we build up a
+                # list of potential targets.
+                #
+                # so, if our target is ITopology, and the context is
+                # omni::core::Generated<omni::graph::exec::INode_abi> we'll look
+                # for:
+                #
+                #  omni::graph::exec::INode_abi::ITopology
+                #  omni::graph::exec::ITopology
+                #  omni::graph::ITopology
+                #  omni::ITopology
+                tokens = tokenize_cpp(tokens[2])
+                template_arg = re.search(r"Generated<(.*)>", tokens[0]).group(1)
+
+                tokens = tokenize_cpp(template_arg)
+
+            for i in reversed(range(1, len(tokens) + 1)):
+                will_try = f"{'::'.join(tokens[:i])}::{reftarget}"
+                to_try.append(will_try)
+
+    # because breathe doesn't fully understand how c++ name lookups work, we
+    # explicity look in these namespaces
+    to_try.append(f"omni::graph::exec::unstable::{reftarget}")
+    to_try.append(f"omni::core::{reftarget}")
+
+    # now that we've come up with a bunch of targets to try, look them up in our
+    # current project
+    refdoc = node.get('refdoc', env.docname)
+    for target in to_try:
+        newnode = env.domains[domain].resolve_xref(env, refdoc, app.builder, node['reftype'], target, node, contnode)
+        if newnode:
+            return newnode
+
+    # couldn't find any of the target names.
+    #
+    # look up the target names in all of the external inventories we specified in repo.toml
+    for name in inventories.named_inventory.keys():
+        inventory = inventories.named_inventory[name]
+        for target in to_try:
+            for objtype in inventory.keys():
+                if target not in inventory[objtype]:
+                    continue
+                proj, version, uri, dispname = inventory[objtype][target]
+
+                # fix up the relative path
+                if '://' not in uri and node.get('refdoc'):
+                    # get correct path in case of subdirectories
+                    uri = path.join(relative_path(node['refdoc'], '.'), uri)
+
+                # create the hover-over tool-tip text
+                if version:
+                    reftitle = '(in %s v%s)' % (proj, version)
+                else:
+                    reftitle = '(in %s)' % (proj,)
+
+                newnode = nodes.reference('', '', internal=False, refuri=uri, reftitle=reftitle)
+                if node.get('refexplicit'):
+                    # use whatever title was given
+                    newnode.append(contnode)
+                else:
+                    # else use the given display name (used for :ref:)
+                    dispname = contnode.astext()
+                    newnode.append(contnode.__class__(dispname, dispname))
+
+                return newnode
+
+    # point to cppreference.com for some known built-in c++ types
+    integers = { "uint64_t", "int64_t", "uint32_t", "int32_t" }
+    if reftarget in integers:
+        newnode = nodes.reference('', '', internal=False, refuri="https://en.cppreference.com/w/cpp/types/integer")
+        dispname = contnode.astext()
+        newnode.append(contnode.__class__(dispname, dispname))
+        return newnode
+
+    return None
+
+sphinx_event_handlers.append(("missing-reference", handle_missing_reference))
+
+# this brings in custom CSS that is not yet approved by repo_docs (but we like)
+ef_css_path = "ef-style.css"
+try:
+    html_extra_path.append(ef_css_path)
+except NameError:
+    html_extra_path = [ ef_css_path ]
+html_css_files.append("../ef-style.css")
+
+# this brings in a pan/zoom script for svg images
+ef_js_path = "zoomable-svg.min.js"
+try:
+    html_extra_path.append(ef_js_path)
+except NameError:
+    html_extra_path = [ ef_js_path ]
+html_js_files.append("../zoomable-svg.min.js")
+
+pygments_style = 'material'
+"""
+
+# disable generation of docs pages for external projects
+api_item_filters = [
+    # tell rebreather to not generate dedicated .rst pages for any entities
+    # (e.g. class, struct) from external packages (e.g. carb headers).
+    #
+    # we'll use the "missing-reference" hook above to link references to these
+    # excluded classes/structs/etc to the original documentation in the external
+    # project.
+    { attribute="location.path", rule="exclude", matching="*/_build/target-deps/*" },
+    { attribute="location.path", rule="exclude", matching="*/packman-repo*" }, # linux
+    { attribute="location.path", rule="exclude", matching="*/pm/chk*" }, # tc
+
+    # rebreather will want to generate .rst pages for the directories in _build.
+    # here we tell rebreather to ignore these files.
+    { attribute="path", rule="exclude", matching="*/_build/*" },
+    { attribute="path", rule="exclude", matching="*/_build" },
+    { attribute="path", rule="exclude", matching="*packman-repo*" }, # linux
+    { attribute="path", rule="exclude", matching="*pm/chk*" }, # tc
+
+    # make sure undocumented.h doesn't show up in the TOC
+    { attribute="path", rule="exclude", matching="Undocumented.h" },
+
+    # remove docs for the std namespace
+    { attribute="full_name", rule="exclude", matching="std" },
+
+    # remove docs for std specialization (e.g. std::hash)
+    { attribute="full_name", rule="exclude", matching="std::*" },
+
+    # for some reason this is labeled as a namespace?!?
+    { attribute="full_name", rule="exclude", matching="EnumBitops" },
+]

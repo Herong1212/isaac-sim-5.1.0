@@ -1,0 +1,102 @@
+[core]
+reloadable = false
+
+[package]
+version = "7.6.1"
+category = "Runtime"
+title = "USDRT Scenegraph API"
+description = "The USDRT Scenegraph API for Kit"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["runtime", "scenegraph", "fabric", "usdrt", "api"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/overview.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+"omni.gpucompute.plugins" = {}
+
+[[native.plugin]]
+path = "bin/usdrt.scenegraph.plugin"
+
+[[native.plugin]]
+path = "bin/usdrt.xformcache.plugin"
+
+[[python.module]]
+name = "usdrt.helpers"
+
+[[python.module]]
+name = "usdrt.Gf"
+
+[[python.module]]
+name = "usdrt.Vt"
+
+[[python.module]]
+name = "usdrt.Sdf"
+
+[[python.module]]
+name = "usdrt.Usd"
+
+[[python.module]]
+name = "usdrt.UsdGeom"
+
+[[python.module]]
+name = "usdrt.Rt"
+
+[[python.module]]
+name = "usdrt.UsdPhysics"
+
+[[python.module]]
+name = "usdrt.PhysxSchema"
+
+[[python.module]]
+name = "usdrt.ForceFieldSchema"
+
+[[python.module]]
+name = "usdrt.UsdLux"
+
+[[python.module]]
+name = "usdrt.UsdMedia"
+
+[[python.module]]
+name = "usdrt.UsdRender"
+
+[[python.module]]
+name = "usdrt.UsdShade"
+
+[[python.module]]
+name = "usdrt.UsdSkel"
+
+[[python.module]]
+name = "usdrt.UsdUI"
+
+[[python.module]]
+name = "usdrt.UsdVol"
+
+[[python.module]]
+name = "usdrt.xformcache"
+
+[[python.module]]
+name = "usdrt.internal"
+
+[[test]]
+# Note: most USDRT tests occur in rendering as part of the
+# unit tests defined there.
+#
+# The tests here validate interactions between Kit and USDRT that
+# cannot be tested in rendering
+
+dependencies = [
+    "omni.usd",
+    "omni.hydra.usdrt_delegate",
+]
+
+args = [
+    "--/app/useFabricSceneDelegate=1",
+    "--/rtx/hydra/readTransformsFromFabricInRenderDelegate=1",
+]
+
+timeout = 1200

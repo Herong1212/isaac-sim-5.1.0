@@ -1,0 +1,91 @@
+{
+    "SetViewportMode": {
+        "version": 1,
+        "description": [
+            "Sets the mode of a specified viewport window to 'Scripted' mode or 'Default' mode when executed.\n",
+            "'Scripted' mode disables default viewport interaction and enables placing UI elements over the viewport.",
+            "'Default' mode is the default state of the viewport, and entering it will destroy any UI elements on the viewport.\n",
+            "Executing with 'Enable Viewport Mouse Events' set to true in 'Scripted' mode is required to allow the specified viewport",
+            "to be targeted by viewport mouse event nodes, including 'On Viewport Dragged' and 'Read Viewport Drag State'.\n",
+            "Executing with 'Enable Picking' set to true in 'Scripted' mode is required to allow the specified viewport",
+            "to be targeted by the 'On Picked' and 'Read Pick State' nodes."
+        ],
+        "uiName": "Set Viewport Mode (BETA)",
+        "language": "Python",
+        "categories": ["graph:action", "ui"],
+        "exclude": ["tests"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "mode": {
+                "type": "int",
+                "description": "The mode to set the specified viewport to when this node is executed (0: 'Default', 1: 'Scripted')",
+                "uiName": "Mode",
+                "default": 0
+            },
+            "enableViewportMouseEvents": {
+                "type": "bool",
+                "description": "Enable/Disable viewport mouse events on the specified viewport when in 'Scripted' mode",
+                "uiName": "Enable Viewport Mouse Events",
+                "default": false
+            },
+            "enablePicking": {
+                "type": "bool",
+                "description": "Enable/Disable picking prims in the specified viewport when in 'Scripted' mode",
+                "uiName": "Enable Picking",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to set the mode of",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            },
+            "passClicksThru": {
+                "type": "bool",
+                "description": [
+                    "Allow mouse clicks to affect the viewport while in 'Scripted' mode.\n",
+                    "In 'Scripted' mode mouse clicks are prevented from reaching the viewport to avoid accidentally",
+                    "selecting prims or interacting with the viewport's own UI. Setting this attribute true will",
+                    "allow clicks to reach the viewport. This is in addition to interacting with the widgets created",
+                    "by UI nodes so if a button widget appears on top of some geometry in the viewport, clicking on",
+                    "the button will not only trigger the button but could also select the geometry. To avoid this,",
+                    "put the button inside a Stack widget and use a WriteWidgetProperty node to set the Stack's",
+                    "'content_clipping' property to 1."
+                ],
+                "uiName": "Pass Clicks Thru",
+                "default": false
+            }
+        },
+        "outputs": {
+            "defaultMode": {
+                "type": "execution",
+                "description": [
+                    "When this node is successfully executed with 'Mode' set to 'Default',",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Default Mode"
+            },
+            "scriptedMode": {
+                "type": "execution",
+                "description": [
+                    "When this node is successfully executed with 'Mode' set to 'Scripted',",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Scripted Mode"
+            },
+            "widgetPath": {
+                "type": "token",
+                "description": [
+                    "When the viewport enters 'Scripted' mode, a container widget is created under which other UI may be parented.",
+                    "This attribute provides the absolute path to that widget, which can be used as the 'parentWidgetPath'",
+                    "input to various UI nodes, such as Button. When the viewport exits 'Scripted' mode,",
+                    "the container widget and all the UI within it will be destroyed."
+                ],
+                "uiName": "Widget Path"
+            }
+        }
+    }
+}

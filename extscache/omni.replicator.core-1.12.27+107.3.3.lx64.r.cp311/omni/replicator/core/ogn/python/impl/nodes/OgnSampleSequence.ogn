@@ -1,0 +1,43 @@
+{
+    "OgnSampleSequence": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates samples by returning items from a sample set sequentially.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Sequence Sampling"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "items": {
+                "description": ["The ordered items to be sampled"],
+                "type": "any"
+            },
+            "ordered": {
+                "description": ["Whether to return the item in ordered"],
+                "type": "bool",
+                "default": true
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "stride": {
+                "description": ["Number of values to pull from 'inputs:items' per sample."],
+                "type": "int",
+                "default": 1
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["Sampled results"],
+                "type": "any"
+            }
+        }
+    }
+}

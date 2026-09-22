@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMaximum.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Maximum" (
+        docs="""Computes the maximum of two or more inputs. If one input has a higher dimension than the others, then the input with lower dimension will be repeated to match the dimension of the higher dimension input (broadcasting). Examples: scalar * tuple -> tuple, tuple * array of tuples -> array of tuples, scalar * array of tuples -> array of tuples. To add/remove extra inputs on this node, select the node and press the small "+"/"-" buttons in the bottom-right corner of the "Inputs" widget in the "Property" window."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Maximum"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""First value in the set of all inputs from which the maximum will be computed."""
+        )
+        custom token inputs:b (
+            docs="""Second value in the set of all inputs from which the maximum will be computed."""
+        )
+
+        # 1 attribute
+        custom token outputs:maximum (
+            docs="""Maximum of all input values "A", "B", etc. This attribute's dimension will match the highest-
+            dimensioned input (e.g. if "A" is an array of tuples while "B" is a double, then the output
+            will also be an array of tuples)."""
+        )
+    }
+}

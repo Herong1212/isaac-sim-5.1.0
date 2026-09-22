@@ -1,0 +1,103 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Perspective = {
+                double3 position = (500, 500, 500)
+                double3 target = (0, 0, 0)
+            }
+            dictionary Front = {
+                double3 position = (0, 0, 150)
+            }
+            dictionary Right = {
+                double3 position = (-150, 0, 0)
+            }
+            dictionary Top = {
+                double3 position = (0, 150, 0)
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            bool "rtx:pathtracing:nrc:canRun" = 0
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Camera "Camera"
+    {
+        double3 xformOp:translate = (0, 0, 250)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+
+def Camera "OmniverseKit_Persp" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    float focalLength = 18.147562
+    float horizontalAperture = 20.955
+    float verticalAperture = 15.2908
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -866.0254037844387)
+    float3 xformOp:rotateXYZ = (-35.26439, 45, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (500, 500, 500)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Front" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    float horizontalAperture = 1500
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -150)
+    token projection = "orthographic"
+    float verticalAperture = 1500
+    float3 xformOp:rotateXYZ = (-0, 0, -0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 150)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Top" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    float horizontalAperture = 1500
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -150)
+    token projection = "orthographic"
+    float verticalAperture = 1500
+    float3 xformOp:rotateXYZ = (90, -4.961563e-15, 180)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 150, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Right" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    float horizontalAperture = 1500
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -150)
+    token projection = "orthographic"
+    float verticalAperture = 1500
+    float3 xformOp:rotateXYZ = (0, -90, -0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-150, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}

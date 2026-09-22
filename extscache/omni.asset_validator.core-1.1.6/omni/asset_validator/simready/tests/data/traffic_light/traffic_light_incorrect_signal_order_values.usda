@@ -1,0 +1,18 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset: signalOrder attribute has an item that is not in the allowed list
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom token omni:simready:signalType = "trafficLight"
+    custom token[] omni:simready:signalOrder = ["red", "amber", "unknown"]
+
+    def DiskLight "signal_unknown"
+    {
+        custom token omni:simready:signal = "unknown"
+    }
+}

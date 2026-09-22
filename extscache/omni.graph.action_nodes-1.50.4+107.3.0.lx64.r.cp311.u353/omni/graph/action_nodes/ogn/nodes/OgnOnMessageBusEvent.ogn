@@ -1,0 +1,44 @@
+{
+    "omni.graph.action.OnMessageBusEvent": {
+        "description": [
+            "Event node which fires when the specified event appears on the Application Message Bus.",
+            "The node uses a callback to monitor messages on the message bus and sets an internal state value",
+            "when an event named 'Event Name' was received."
+        ],
+        "version": 2,
+        "uiName": "On MessageBus Event",
+        "categories": ["graph:action", "event"],
+        "scheduling": "compute-on-request",
+        "state": {
+        },
+        "inputs": {
+            "eventName": {
+                "type": "token",
+                "description": "The name of the custom event.",
+                "uiName": "Event Name",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": [
+                    "After receipt of the named message on the application message bus",
+                    "signal to the graph that the message bus event was received and execution can continue downstream."
+                ],
+                "uiName": "Received"
+            }
+        }
+    }
+}

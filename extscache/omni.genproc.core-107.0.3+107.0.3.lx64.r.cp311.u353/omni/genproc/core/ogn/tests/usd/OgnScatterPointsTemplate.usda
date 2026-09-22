@@ -1,0 +1,214 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnScatterPoints.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_ScatterPoints" (
+        docs="""Scatters points on the input geometry with optional curve regions"""
+    )
+    {
+        token node:type = "omni.genproc.core.ScatterPoints"
+        int node:typeVersion = 1
+
+        # 32 attributes
+        custom bool inputs:active = true (
+            docs="""Is the Scatter Points node currently active?"""
+        )
+        custom bool inputs:binormals = true (
+            docs="""If this is true, it output the object indices."""
+        )
+        custom rel inputs:cameraPrim (
+            docs="""Camera prim"""
+        )
+        custom int inputs:curveTessellation = 10 (
+            docs="""curve tessellation factor"""
+        )
+        custom rel inputs:curvesBundle (
+            docs="""Input curve data"""
+        )
+        custom bool inputs:debugDraw = false (
+            docs="""No documentation provided"""
+        )
+        custom bool inputs:debugDrawCurveTriangulation = false (
+            docs="""No documentation provided"""
+        )
+        custom bool inputs:exclusive = true (
+            docs="""If this is true, it outputs the point cloud prim and the input bundles,
+            otherwise only the point cloud prim"""
+        )
+        custom bool inputs:filterUsingCamera = false (
+            docs="""If true, scattered points will be discarded if they are occluded by scattering geometry or are outside the viewing frustum of the provided camera prim."""
+        )
+        custom bool inputs:normals = true (
+            docs="""If this is true, it output the object indices."""
+        )
+        custom int inputs:numDesiredPoints = 100 (
+            docs="""The number of generated points desired."""
+        )
+        custom int inputs:objectIndex = 0 (
+            docs="""Object index is valid if you have multiple sources to output.
+            this number corresponds with the order you imported your sources."""
+        )
+        custom int inputs:objectIndexRandom = 0 (
+            docs="""Randomly pick an 'Object Index' source in a range."""
+        )
+        custom bool inputs:objectIndices = true (
+            docs="""If this is true, it output the object indices."""
+        )
+        custom rel inputs:occlusionPrim (
+            docs="""Geometry to use for occlusion test"""
+        )
+        custom bool inputs:playbackEvaluation = false (
+            docs="""If this is true, time for the simulation is from the timeline, not real time."""
+        )
+        custom int inputs:playbackStartFrame = 0 (
+            docs="""If 'playbackEvaluation' is true, this is the frame after which the simulation will start."""
+        )
+        custom rel inputs:prim (
+            docs="""Mesh geometry to use for point scattering"""
+        )
+        custom uint64 inputs:randomSeed = 0 (
+            docs="""No documentation provided"""
+        )
+        custom float3 inputs:rotation = (0, 0, 0) (
+            docs="""Rotate the point in x,y,z. """
+        )
+        custom float3 inputs:rotationRandom = (0, 0, 0) (
+            docs="""Randomly rotate the particle in x,y,z along a range. """
+        )
+        custom bool inputs:rotations = true (
+            docs="""If this is true, it output the rotations."""
+        )
+        custom float3 inputs:scale = (5, 5, 5) (
+            docs="""Change the size of the point in x,y,z. """
+        )
+        custom float inputs:scaleRandom = 0.0 (
+            docs="""Randomly change the size of the point in x,y,z."""
+        )
+        custom bool inputs:scales = true (
+            docs="""If this is true, it output the scales."""
+        )
+        custom bool inputs:scatterAcrossPoints = true (
+            docs="""If this is true, points will be generated at the vertices of the input mesh(es)."""
+        )
+        custom bool inputs:scatterInsideVolume = true (
+            docs="""If this is true, points will be generated inside the input mesh(es)."""
+        )
+        custom bool inputs:scatterOnSurface = true (
+            docs="""If this is true, points will be generated on the surface of the input mesh(es)."""
+        )
+        custom bool inputs:tangents = true (
+            docs="""If this is true, it output the object indices."""
+        )
+        custom double inputs:time = 0 (
+            docs="""Either the running clock or the timeline time or timeline time, depending on playbackEvaluation"""
+        )
+        custom double inputs:usdTimecode = 0 (
+            docs="""The USD timecode at the current playback point (timeline time * timecodes/sec)"""
+        )
+        custom bool inputs:useScatterGeometryAsOcclusionGeometry = true (
+            docs="""If true, prims connected to the 'prim' input of this node will also be used to occlude points when 
+            filtering using a camera. Otherwise, prims connected to the 'occlusionPrim' input will be used."""
+        )
+
+        # 2 attributes
+        custom rel outputs_bundle (
+            docs="""output bundle of points data"""
+        )
+        custom float2[] outputs:projectedPoints = [] (
+            docs="""If a camera prim is provided, this collection will be populated with points projected into the camera's screen space in the range [-1, 1]. 
+            If no camera prim is provided, this will be empty."""
+        )
+
+        # 27 attributes
+        custom rel state_cachedBundle (
+            docs="""cached curve triangulation"""
+        )
+        custom bool state:prevActive (
+            docs="""Previous active value for recompute test"""
+        )
+        custom bool state:prevBinormals (
+            docs="""Previous normals value for recompute test"""
+        )
+        custom int state:prevCurveTessellation (
+            docs="""Previous curveTessellation value for recompute test"""
+        )
+        custom bool state:prevExclusive (
+            docs="""Previous exclusive value for recompute test"""
+        )
+        custom bool state:prevFilterUsingCamera (
+            docs="""Previous filterUsingCamera value for recompute test"""
+        )
+        custom bool state:prevNormals (
+            docs="""Previous normals value for recompute test"""
+        )
+        custom int state:prevNumDesiredPoints (
+            docs="""Previous numDesiredPoints value for recompute test"""
+        )
+        custom int state:prevObjectIndex (
+            docs="""Previous objectIndex value for recompute test"""
+        )
+        custom int state:prevObjectIndexRandom (
+            docs="""Previous objectIndexRandom value for recompute test"""
+        )
+        custom bool state:prevObjectIndices (
+            docs="""Previous objectIndices value for recompute test"""
+        )
+        custom bool state:prevPlaybackEvaluation (
+            docs="""Previous playbackEvaluation value for recompute test"""
+        )
+        custom int state:prevPlaybackStartFrame (
+            docs="""Previous playbackStartFrame value for recompute test"""
+        )
+        custom uint64 state:prevRandomSeed (
+            docs="""Previous randomSeed value for recompute test"""
+        )
+        custom float3 state:prevRotation (
+            docs="""Previous rotation value for recompute test"""
+        )
+        custom float3 state:prevRotationRandom (
+            docs="""Previous rotation random value for recompute test"""
+        )
+        custom bool state:prevRotations (
+            docs="""Previous rotations value for recompute test"""
+        )
+        custom float3 state:prevScale (
+            docs="""Previous scale value for recompute test"""
+        )
+        custom float state:prevScaleRandom (
+            docs="""Previous scale random value for recompute test"""
+        )
+        custom bool state:prevScales (
+            docs="""Previous scales value for recompute test"""
+        )
+        custom bool state:prevScatterAcrossPoints (
+            docs="""Previous scatterAcrossPoints value for recompute test"""
+        )
+        custom bool state:prevScatterInsideVolume (
+            docs="""Previous scatterInsideVolume value for recompute test"""
+        )
+        custom bool state:prevScatterOnSurface (
+            docs="""Previous scatterOnSurface value for recompute test"""
+        )
+        custom bool state:prevTangents (
+            docs="""Previous tangents value for recompute test"""
+        )
+        custom double state:prevTime (
+            docs="""Previous time value for recompute test"""
+        )
+        custom double state:prevUsdTimecode (
+            docs="""Previous usdTimecode value for recompute test"""
+        )
+        custom bool state:prevUseScatterGeometryAsOcclusionGeometry (
+            docs="""Previous UseScatterGeometryAsOcclusionGeometry value for recompute test"""
+        )
+    }
+}

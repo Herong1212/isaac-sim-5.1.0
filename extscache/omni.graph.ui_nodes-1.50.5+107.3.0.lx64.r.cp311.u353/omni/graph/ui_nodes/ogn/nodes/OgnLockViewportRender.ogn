@@ -1,0 +1,54 @@
+{
+    "LockViewportRender": {
+        "version": 1,
+        "description": [
+            "Locks and unlocks viewport render. Viewport render is frozen at the frame when it",
+            "is locked, while computation and UI update are still executed as normal. It fades",
+            "out back to the current frame when it is unlocked, two output execution attributes",
+            "- fadeStarted and fadeComplete - will be triggered separately during the fading progress.",
+            "The node manages the lock state for its target viewport and takes action according",
+            "to the lock state when an input execution attribute is triggered. A node is able",
+            "to unlock the target viewort only if it has locked the target viewport."
+        ],
+        "language": "Python",
+        "uiName": "Lock Viewport Render",
+        "categories": [ "graph:action", "viewport" ],
+        "exclude": [ "tests" ],
+        "inputs": {
+            "lock": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed for locking the viewport render."
+            },
+            "unlock": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed for unlocking the viewport render."
+            },
+            "fadeTime": {
+                "type": "double",
+                "description": "The duration of fading in time (seconds) when being unlocked",
+                "uiName": "Fade Time",
+                "default": 1.0
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport",
+                "default": ""
+            }
+        },
+        "outputs": {
+            "locked": {
+                "type": "execution",
+                "description": "When viewport render is locked, signal to the graph that execution can continue downstream on this path."
+            },
+            "fadeStarted": {
+                "type": "execution",
+                "description": "When fading is started, signal to the graph that execution can continue downstream on this path."
+            },
+            "fadeComplete": {
+                "type": "execution",
+                "description": "When fading is complete, signal to the graph that execution can continue downstream on this path."
+            }
+        }
+    }
+}

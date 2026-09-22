@@ -1,0 +1,93 @@
+{
+    "AppendTargetPaths": {
+        "version": 1,
+        "description": [
+            "Generates new targets by appending relative paths.",
+            "Array inputs will be appended element-wise."
+        ],
+        "uiName": "Append Target Paths",
+        "categories": [ "sceneGraph" ],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "rootTargets": {
+                "type": "target",
+                "description": "The targets to append relative paths to.  If empty uses the stage root.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "input0": {
+                "type": ["string", "token", "token[]"],
+                "description": "The relative path to append. Must not start or end with /. (ex. Cube, Xform/Cube)."
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The new target with paths appended. (ex. /World/Cube)"
+            }
+        },
+        "tests": [
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "string", "value": ""},
+                "outputs:targets": ["/"]
+            },
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "string", "value": "A"},
+                "outputs:targets": ["/A"]
+            },
+            {
+                "inputs:rootTargets": ["/World"],
+                "inputs:input0": {"type": "string", "value": "A"},
+                "outputs:targets": ["/World/A"]
+            },
+            {
+                "inputs:rootTargets": ["/World1", "/World2", "/World3"],
+                "inputs:input0": {"type": "string", "value": "A"},
+                "outputs:targets": ["/World1/A", "/World2/A", "/World3/A"]
+            },
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "token", "value": ""},
+                "outputs:targets": ["/"]
+            },
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "token", "value": "A"},
+                "outputs:targets": ["/A"]
+            },
+            {
+                "inputs:rootTargets": ["/World"],
+                "inputs:input0": {"type": "token", "value": "A"},
+                "outputs:targets": ["/World/A"]
+            },
+            {
+                "inputs:rootTargets": ["/World1", "/World2", "/World3"],
+                "inputs:input0": {"type": "token", "value": "A"},
+                "outputs:targets": ["/World1/A", "/World2/A", "/World3/A"]
+            },
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "token[]", "value": []},
+                "outputs:targets": ["/"]
+            },
+            {
+                "inputs:rootTargets": [],
+                "inputs:input0": {"type": "token[]", "value": ["A", "B", "C"]},
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:rootTargets": ["/World"],
+                "inputs:input0": {"type": "token[]", "value": ["A", "B", "C"]},
+                "outputs:targets": ["/World/A", "/World/B", "/World/C"]
+            },
+            {
+                "inputs:rootTargets": ["/World1", "/World2", "/World3"],
+                "inputs:input0": {"type": "token[]", "value": ["A", "B", "C"]},
+                "outputs:targets": ["/World1/A", "/World2/B", "/World3/C"]
+            }
+        ]
+    }
+}

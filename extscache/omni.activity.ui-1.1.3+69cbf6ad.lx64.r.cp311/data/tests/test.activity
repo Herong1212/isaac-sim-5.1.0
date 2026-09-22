@@ -1,0 +1,1659 @@
+{
+    "begin": 16759807679515234,
+    "end": 16759807879741166,
+    "root": {
+        "children": [
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807679518044,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807679554144,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Open"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679917177,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680022352,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807680216328,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680237731,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Draw"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Create Legacy Viewport Overlays"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807680130012,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680169038,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807680169139,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680204002,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Legacy Controller"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Stage Widget Model"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Update"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "events": [],
+                                                "name": "Stage Update"
+                                            },
+                                            {
+                                                "children": [],
+                                                "events": [
+                                                    {
+                                                        "time": 16759807679640544,
+                                                        "type": "BEGAN"
+                                                    },
+                                                    {
+                                                        "time": 16759807679705382,
+                                                        "type": "ENDED"
+                                                    }
+                                                ],
+                                                "name": "Hydra"
+                                            }
+                                        ],
+                                        "events": [],
+                                        "name": "Attach Stage"
+                                    }
+                                ],
+                                "events": [
+                                    {
+                                        "time": 16759807679596742,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679706536,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "USD Context"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679708140,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679826176,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Widget"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679831283,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679843756,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Layer Window"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679864018,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679895242,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Hydra Texture"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Opened"
+                    }
+                ],
+                "events": [],
+                "name": "Stage"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "file:/home/mbabcock/work/profile/kit/kit/_build/linux-x86_64/release/resources/models/camera/camera.usd"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Resolve"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 28561974,
+                                        "time": 16759807679523044,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "size": 28561974,
+                                        "time": 16759807679541274,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Read"
+                    }
+                ],
+                "events": [],
+                "name": "USD"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807680273776,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807680425655,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807684419297,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807684523815,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807686832466,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807686942926,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807689114391,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807689199085,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Execute"
+                    },
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807680426232,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807682822711,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807684524729,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807686265511,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807686943766,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807688620601,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Post Sync"
+                    }
+                ],
+                "events": [],
+                "name": "Render Thread"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807682859855,
+                                        "type": "BEGAN"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/WarmStage.hdr"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807683002714,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "size": 236,
+                                        "time": 16759807683005600,
+                                        "type": "UPDATED"
+                                    },
+                                    {
+                                        "time": 16759807683453313,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "/tmp/carb.xrmx4F/Minus.20x20.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807683023674,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "size": 587,
+                                        "time": 16759807683025581,
+                                        "type": "UPDATED"
+                                    },
+                                    {
+                                        "time": 16759807683384439,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "/tmp/carb.xrmx4F/Scope.40x40.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807683030522,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "size": 1209,
+                                        "time": 16759807683033105,
+                                        "type": "UPDATED"
+                                    },
+                                    {
+                                        "time": 16759807683452821,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "/tmp/carb.xrmx4F/Light.40x40.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "cotton_roughly_woven_norm_71_1_1608000972_2530570_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "cotton_roughly_woven_rough_72_1_1608000994_3727699_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 23231028,
+                                        "time": 16759807686921003,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686938647,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Helmet_m_Normal_71_1_1608000796_23231028_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 2220074,
+                                        "time": 16759807686921711,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686932102,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Helmet_m_BaseColor_72_1_1608000827_2220074_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 507220,
+                                        "time": 16759807686924675,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686936306,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_accessoriesS_Metalness_71_1_1608000943_507220_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_accessoriesS_Roughness_71_1_1608000990_10398817_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_accessoriesS_BaseColor_72_1_1608000939_4186346_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpackLowS_Normal_71_1_1608000796_26848541_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpacktopS_Metalness_71_1_1608001011_16411_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpackLowS_Roughness_71_1_1608001028_7876506_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_jackletS_Normal_71_1_1608000796_40879123_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 4222341,
+                                        "time": 16759807686934674,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686947735,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_backpackLowS_BaseColor_72_1_1608001010_4222341_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_jackletS_Metalness_71_1_1608001107_162675_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Helmet_m_OcclusionRoughnessMetallic_71_1_1608000842_11403007_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 11535307,
+                                        "time": 16759807686938423,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686950505,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_jackletS_Roughness_71_1_1608001153_11535307_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 5938828,
+                                        "time": 16759807686939062,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686952322,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_jackletS_BaseColor_72_1_1608001115_5938828_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpacktopS_Normal_71_1_1608000796_45823805_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpacktopS_Metalness_71_1_1608001037_162675_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 11915960,
+                                        "time": 16759807686943058,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686956975,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_backpacktopS_Roughness_71_1_1608001118_11915960_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_backpacktopS_BaseColor_72_1_1608001045_6728476_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_GlovesS_Normal_71_1_1608000796_37587494_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_bootsS_Normal_71_1_1608000796_32127368_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_bootsS_Metalness_71_1_1608001125_162675_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_GlovesS_Metalness_71_1_1608000806_162675_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 27875411,
+                                        "time": 16759807686954851,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686966475,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "astronaut_04_pantsS_Normal_71_1_1608000796_27875411_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_bootsS_Roughness_71_1_1608000822_10027285_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_GlovesS_Roughness_71_1_1608000838_9940228_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_pantsS_Metalness_71_1_1608000832_16411_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_bootsS_BaseColor_72_1_1608001148_14619189_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_pantsS_Roughness_71_1_1608000870_6976122_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_GlovesS_BaseColor_72_1_1608000796_19739610_7.ovtex"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "astronaut_04_pantsS_BaseColor_72_1_1608000844_4767260_7.ovtex"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Load"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpacktopS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_BaseColor.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686924395,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686934760,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686925183,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686936507,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_OcclusionRoughnessMetallic.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686925651,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686936717,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686926695,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686937720,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_BaseColor.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686927772,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686938952,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686928784,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686939711,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686928931,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686940491,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686929385,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686943543,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_BaseColor.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686930816,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686947359,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686931421,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686947458,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686931831,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686948041,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686932174,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686950920,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686932697,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686952704,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Normal.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686933011,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686952833,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686933453,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686956816,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686933688,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686957199,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Metalness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686934002,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686958563,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_BaseColor.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686934242,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686959268,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Roughness.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686934523,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686960484,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_BaseColor.png"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807686934862,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807686961027,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_BaseColor.png"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Queue"
+                    }
+                ],
+                "events": [],
+                "name": "Textures"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807684445962,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684475774,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684487022,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684542059,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Compile"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Create Shader Variations"
+                            }
+                        ],
+                        "events": [],
+                        "name": "file:/home/mbabcock/work/profile/kit/kit/_build/linux-x86_64/release/mdl/core/Base/OmniGlass.mdl"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807684483410,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684486836,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684501445,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684509100,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684511862,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684513884,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684516741,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684517577,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684520838,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807684560411,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684595911,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684598837,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684614732,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684614794,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684623764,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684633274,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684633742,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807684634495,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Compile"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Create Shader Variations"
+                            }
+                        ],
+                        "events": [],
+                        "name": "file:/home/mbabcock/work/profile/kit/kit/_build/linux-x86_64/release/mdl/core/Base/OmniPBR.mdl"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686889447,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686957094,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backdrop_MDL/cotton_roughly_woven_norm.jpg"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686891202,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686944953,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backdrop_MDL/cotton_roughly_woven_rough.jpg"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Backdrop/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686893679,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686976721,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686894919,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686895637,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686970561,
+                                                "type": "ENDED"
+                                            },
+                                            {
+                                                "time": 16759807686970997,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/HelmetVisor/Shader (OmniGlass.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686908134,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686974887,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Accessories_MDL/astronaut_04_accessoriesS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686909432,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686968999,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Accessories_MDL/astronaut_04_accessoriesS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686910080,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686971873,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Accessories_MDL/astronaut_04_accessoriesS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Accessories/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686919332,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686972981,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686919826,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686974082,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpacktopS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686920251,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686975704,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686920598,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686982615,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_MDL/astronaut_04_backpackLowS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Backpack/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686922174,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686976973,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686922832,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686979769,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_OcclusionRoughnessMetallic.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686924005,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686970786,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Helmet_MDL/Helmet_m_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Helmet/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686922393,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686978697,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686923165,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686977876,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686924200,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686983613,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686925542,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686984957,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Body_MDL/astronaut_04_jackletS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Body/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686926767,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686981785,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686927457,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686980869,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686928024,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686987601,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686928592,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686985823,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Backpack_top_MDL/astronaut_04_backpacktopS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Backpack_top/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686929211,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686988441,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686930084,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686991034,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686931636,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686993643,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686932852,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686996239,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Gloves_MDL/astronaut_04_GlovesS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Gloves/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686929589,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686990096,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686930478,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686986661,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686931201,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686989276,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686932004,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686997116,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Boots_MDL/astronaut_04_bootsS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Boots/Shader (OmniPBR.mdl instance)"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686929757,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686994554,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Normal.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686930896,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686991883,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Metalness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686932426,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686995460,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_Roughness.png"
+                                    },
+                                    {
+                                        "children": [],
+                                        "events": [
+                                            {
+                                                "time": 16759807686933574,
+                                                "type": "BEGAN"
+                                            },
+                                            {
+                                                "time": 16759807686992823,
+                                                "type": "ENDED"
+                                            }
+                                        ],
+                                        "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Materials/Pants_MDL/astronaut_04_pantsS_BaseColor.png"
+                                    }
+                                ],
+                                "events": [],
+                                "name": "Load Textures"
+                            }
+                        ],
+                        "events": [],
+                        "name": "/Root/Looks/Pants/Shader (OmniPBR.mdl instance)"
+                    }
+                ],
+                "events": [],
+                "name": "Materials"
+            }
+        ],
+        "events": [],
+        "name": "Root"
+    },
+    "stage": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+}

@@ -1,0 +1,39 @@
+{
+    "ExtractAttribute": {
+        "version": 1,
+        "description": ["Copies a single attribute from an input bundle to an output attribute directly on the node",
+                        "if it exists in the input bundle and matches the type of the output attribute"],
+        "metadata": {
+            "uiName": "Extract Attribute"
+        },
+        "categories": ["bundle"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "attrName": {
+                "type": "token",
+                "description": "Name of the attribute to look for in the bundle",
+                "default": "points",
+                "metadata": {
+                    "uiName": "Attribute To Extract"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes from which the named attribute is to be extracted",
+                "metadata": {
+                    "uiName": "Bundle For Extraction"
+                }
+            }
+        },
+        "outputs": {
+            "output": {
+                "type": "any",
+                "description": "The single attribute extracted from the input bundle",
+                "metadata": {
+                    "uiName": "Extracted Attribute"
+                },
+                "unvalidated": true
+            }
+        }
+    }
+}

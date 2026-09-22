@@ -1,0 +1,21 @@
+{
+    "ReadSetting": {
+        "version": 1,
+        "description": ["Node that reads a value from a kit application setting"],
+        "uiName": "Read Setting",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "settingPath": {
+                "type": "string",
+                "description": "The path of the setting"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["arrays", "array_elements", "bool", "bool[]"],
+                "description": "The value of the setting that is returned"
+            }
+        }
+    }
+}

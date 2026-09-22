@@ -1,0 +1,54 @@
+[package]
+title = "The Kit Main Window setup"
+category = "Internal"
+version = "1.0.3"
+description = "The extension manages the main window of the application. It provides methods to set up the main window docking, show or hide the main menu bar and status bar."
+keywords = ["main window", "window", "menu bar", "status bar", "docking"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[core]
+order = -500
+
+[dependencies]
+# We need Omni UI
+"omni.ui" = { }
+
+[[python.module]]
+name = "omni.kit.mainwindow"
+
+[settings]
+ext."omni.kit.mainwindow".margin.width = 0
+ext."omni.kit.mainwindow".margin.height = 0
+ext."omni.kit.mainwindow".backgroundColor = 0xFF1F2124
+ext."omni.kit.mainwindow".startup.dockWindows = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/SETTINGS.md",
+    "docs/USAGE_PYTHON.md",
+]
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/hideUi=true",
+    "--/app/viewport/showSettingMenu=false",
+    "--/app/viewport/showCameraMenu=false",
+    "--/app/viewport/showRendererMenu=false",
+    "--/app/viewport/showHideMenu=false",
+    "--/app/viewport/showLayerMenu=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test"
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to find a plugin at*",
+    "*Duplicated plugin name*",
+    "*failed to load native plugin*",
+]

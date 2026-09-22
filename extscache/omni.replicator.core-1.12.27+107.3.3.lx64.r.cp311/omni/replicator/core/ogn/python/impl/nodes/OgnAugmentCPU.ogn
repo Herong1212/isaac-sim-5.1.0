@@ -1,0 +1,125 @@
+{
+    "OgnAugmentCPU" : {
+        "version": 1,
+        "language": "python",
+        "cudaPointers": "cpu",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "description": [
+            "This node performs augmentation on an AOV"
+        ],
+        "metadata": {
+           "uiName": "Augment"
+        },
+        "inputs": {
+            "data": {
+                "type": "uchar[]",
+                "optional": true,
+                "memoryType": "cpu",
+                "description": "Input data, can be used instead of dataPtr pattern",
+                "default": []
+            },
+            "width": {
+                "type": "uint",
+                "description": "Width"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Height"
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Execution in"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "augmentationScript": {
+                "type": "string",
+                "description": "Augmentation script"
+            },
+            "augmentationFunctionName": {
+                "type": "token",
+                "description": "Name of augmentation function to run when computing node"
+            },
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "dataType": {
+                "type": "token",
+                "description": "Defines the data type"
+            },
+            "dataShape": {
+                "type": "int[]",
+                "description": "Input array dimensions"
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format"
+            }
+        },
+        "outputs": {
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "dataType": {
+                "type": "token",
+                "description": "Defines the data type",
+                "default": "uint8"
+            },
+            "dataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)",
+                "default": [0, 0]
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Execution out"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+        },
+        "state": {
+            "omni_initialized": {
+                "type": "bool",
+                "description": "Hidden state attribute used internally to control when the setup script is executed"
+            }
+        }
+    }
+}

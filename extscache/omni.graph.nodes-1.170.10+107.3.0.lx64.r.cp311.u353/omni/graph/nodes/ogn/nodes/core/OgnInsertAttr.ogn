@@ -1,0 +1,44 @@
+{
+    "InsertAttribute": {
+        "version": 1,
+        "description": ["Copies all attributes from an input bundle to the output bundle, as well as copying an",
+                        "additional 'attrToInsert' attribute from the node itself with a specified name."],
+        "metadata": {
+            "uiName": "Insert Attribute"
+        },
+        "categories": ["bundle"],
+        "inputs": {
+            "attrToInsert": {
+                "type": "any",
+                "description": "The the attribute to be copied from the node to the output bundle",
+                "metadata": {
+                    "uiName": "Attribute To Insert"
+                }
+            },
+            "outputAttrName": {
+                "type": "token",
+                "description": "The name of the new output attribute in the bundle",
+                "default": "attr0",
+                "metadata": {
+                    "uiName": "Attribute Name"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Initial bundle of attributes",
+                "metadata": {
+                    "uiName": "Original Bundle"
+                }
+            }
+        },
+        "outputs": {
+            "data": {
+                "type": "bundle",
+                "description": "Bundle of input attributes with the new one inserted with the specified name",
+                "metadata": {
+                    "uiName": "Bundle With Inserted Attribute"
+                }
+            }
+        }
+    }
+}

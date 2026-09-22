@@ -1,0 +1,36 @@
+[package]
+title = "Collector"
+description = "Collects all dependencies of a USD file."
+version = "2.4.5"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# URL of the extension source repository.
+repository = ""
+keywords = ["usd", "dependencies", "collect"]
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+category = "Utilities"
+support_level = "Core"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+[dependencies]
+"omni.usd" = {}
+"omni.client" = {}
+"omni.mdl.neuraylib" = {}
+
+[[python.module]]
+name = "omni.kit.usd.collect"
+
+[[test]]
+stdoutFailPatterns.exclude = ["*Cannot copy from*"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

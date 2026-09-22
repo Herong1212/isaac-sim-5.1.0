@@ -1,0 +1,65 @@
+{
+    "OgnScatter2D": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Randomly scatters the prim locations of inputs:prims onto the polygons in inputs:surfacePrims.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Scatter Node: 2D Polygon Scattering"
+        },
+        "state": {
+            "$comment": ["Internal state to store triangles of prims and distribution weightings"]
+        },
+        "inputs": {
+            "surfacePrims": {
+                "description": ["prim(s) from which to sample"],
+                "type": "target"
+            },
+            "noCollPrims": {
+                "description": ["existing prim(s) to prevent collisions with"],
+                "type": "target"
+            },
+            "prims": {
+                "description": ["prim(s) to set location"],
+                "type": "target"
+            },
+            "normalOffset": {
+                "description": ["optional offset for sampled prims along surface normal"],
+                "type": "float",
+                "default": 0
+            },
+            "checkForCollisions": {
+                "description": ["whether sampling procedure should ensure that no prims overlap"],
+                "type": "bool",
+                "default": false
+            },
+            "minSamp": {
+                "description": ["minimum position in global space to sample from"],
+                "type": "float[3]",
+                "default": [-3.4028235e+38, -3.4028235e+38, -3.4028235e+38]
+            },
+            "maxSamp": {
+                "description": ["maximum position in global space to sample from"],
+                "type": "float[3]",
+                "default": [3.4028235e+38, 3.4028235e+38, 3.4028235e+38]
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

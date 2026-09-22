@@ -1,0 +1,31 @@
+[package]
+version = "1.0.0"
+title = "Actions Core"
+category = "Internal"
+description = "Core framework for generic actions."
+authors = ["NVIDIA"]
+readme = "docs/README.md"
+keywords = ["kit", "action"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[[python.module]]
+name = "omni.kit.actions.core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/USAGE_CPP.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "../../../include/omni/kit/actions/core/IActionRegistry.h",
+     "../../../include/omni/kit/actions/core/IAction.h",
+     "../../../include/omni/kit/actions/core/Action.h",
+     "../../../include/omni/kit/actions/core/LambdaAction.h",
+]

@@ -1,0 +1,26 @@
+[package]
+title = "Hydra Scene Delegates"
+category = "Internal"
+description = "Custom Hydra scene delegates for fast update of USD scene"
+version = "0.3.4"
+authors = ["NVIDIA"]
+keywords = ["Hydra", "scene delegate", "usd"]
+support_level = "Core"
+
+[dependencies]
+"omni.client" = {}
+"omni.gpu_foundation" = {}
+"omni.usd.libs" = {}
+"omni.usd.core" = {}
+"omni.usd.schema.semantics" = { optional = true }
+"omni.usd.schema.audio" = { optional = true }
+"omni.usd.schema.anim" = { optional = true }
+"omni.usd.schema.geospatial" = {}
+"omni.usd.schema.omni_nurec_types" = { optional = true }
+"omni.gpucompute.plugins" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[test]]
+waiver = "Covered in omni.rtx.tests"

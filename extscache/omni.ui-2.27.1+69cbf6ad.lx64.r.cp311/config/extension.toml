@@ -1,0 +1,260 @@
+[core]
+reloadable = false
+
+[package]
+title = "UI Framework"
+category = "Internal"
+description = "The Omniverse UI Framework"
+version = "2.27.1"
+changelog="docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+keywords = ['ui', 'core']
+support_level = "Core"
+
+[dependencies]
+"omni.appwindow" = {}
+"omni.kit.renderer.imgui" = {}
+
+[[native.plugin]]
+path = "bin/omni.ui"
+
+[[python.module]]
+name = "omni.ui"
+
+[settings]
+# Set this flag to true to draw a rectangle on top of rasterized widgets to
+# visualize the rasterized area
+exts."omni.ui".raster.draw_debug = false
+
+# Number of frames to wait before rasterizing a widget. This is necessary
+# because widgets are fully updated several frames after they have been dirtied.
+exts."omni.ui".raster.delay = 2
+
+# Used to enable or disable the rasterization of windows in an application as a
+# default rasterization policy. When this variable is set to true, the
+# rasterization of windows will be enabled by default, and the rasterization
+# policy of each window will depend on this variable unless an explicit policy
+# has been set for the window. If the variable is set to false, the
+# rasterization of windows will be disabled by default, and the windows will be
+# drawn directly to the screen without being rasterized first unless an explicit
+# policy has been set for the window.
+exts."omni.ui".raster.default_rasterpolicy_enabled = false
+
+# Allows to enable or disable the draw freezing functionality when setting the
+# workspace. This provides a smoother user experience by reducing visual
+# "blinking" during rapid layout changes.
+exts."omni.ui".workpace.draw_freeze.enabled = false
+
+# lets specify the number of frames the UI will wait after a workspace change
+# before it resumes normal drawing operations. This allows more control over the
+# amount of time the workspace change will take effect visually.
+exts."omni.ui".workpace.draw_freeze.frames = 5
+
+# delay before tooltip is shown, in seconds. Any value greater that 60 seconds disables tooltips.
+exts."omni.ui".tooltip_delay = 0.5
+
+[[test]]
+pythonTests.exclude = [
+    "omni.ui.tests.test_no_gpu.*",
+    "omni.ui.tests.test_image.*",
+    "omni.ui.tests.test_tooltip_fast.*",
+    "omni.ui.tests.test_tooltip_disabled.*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/exts/omni.ui/raster/draw_debug=true",
+    "--/renderer/decoupledPresent/supported=true",
+    "--/renderer/decoupledPresent/unittest=true",
+    "--/exts/omni.kit.renderer.core/imgui/csvDump/enabled=true",
+    "--/exts/omni.kit.renderer.core/imgui/csvDump/path=\"\"",
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.ui_test",
+    # "omni.warp",  # outside kit repo, uncomment to run test_byteimageprovider_from_warp locally
+    "omni.kit.pip_archive"
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+    "*Duplicated plugin name:*",
+    "*failed to load native plugin:*",
+    "*Failed to load the texture*",
+    "*[omni.ui]*::*had no model*",
+    "*[omni.ui]*subscription was invalid*",
+    "*[omni.ui]*Invalid font path*IDoNotExist.ttf*",
+    "*carb::omniclient::IOmniClient*failed to be resolved*",
+    "*[omni.ui]*was called during an event or draw, this is not supported*",
+    "*[py stderr]:*",
+]
+
+pythonTests.unreliable = [
+    "*test_modal1", # OM-77815
+]
+
+[[test]]
+# Force 0 GPU configuration
+name="no-gpu"
+pythonTests.exclude = [
+    "omni.ui.tests.test_image.*",
+    "omni.ui.tests.test_tooltip_fast.*",
+    "omni.ui.tests.test_tooltip_disabled.*",
+]
+
+pythonTests.include = [
+    "omni.ui.tests.test_no_gpu.*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/maxGpuCount=0",
+]
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.ui_test",
+]
+stdoutFailPatterns.exclude = [
+    "*VkResult: UNKNOWN_ERROR*",
+    "*vkEnumeratePhysicalDevices failed. No physical device is found.*",
+    "*No physical device is found*",
+    "*No device could be created. Some known system issues*",
+    "*No physical device (adapter) is found*",
+    "*carb::graphics::createInstance failed.*",
+    "*Failed to create any GPU devices, including an attempt with compatibility mode*",
+    "*GPU Foundation is not initialized*",
+    "*_prepareDefaultWindow: invalid device attached to the default window*",
+]
+
+[[test]]
+# Force 0 GPU configuration on Vulkan (for Windows)
+name="no-gpu-vulkan"
+pythonTests.include = [
+    "omni.ui.tests.test_no_gpu.*",
+]
+args = [
+    "--vulkan",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/maxGpuCount=0",
+]
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.ui_test",
+]
+stdoutFailPatterns.exclude = [
+    "*VkResult: UNKNOWN_ERROR*",
+    "*vkEnumeratePhysicalDevices failed. No physical device is found.*",
+    "*No physical device is found*",
+    "*No device could be created. Some known system issues*",
+    "*No physical device (adapter) is found*",
+    "*carb::graphics::createInstance failed.*",
+    "*Failed to create any GPU devices, including an attempt with compatibility mode*",
+    "*GPU Foundation is not initialized*",
+    "*_prepareDefaultWindow: invalid device attached to the default window*",
+]
+
+[[test]]
+name="mipmap-tests"
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/exts/omni.ui/raster/draw_debug=true",
+    "--/exts/omni.ui/Image/syncTextureLoad=true",
+    "--/renderer/decoupledPresent/supported=true",
+    "--/renderer/decoupledPresent/unittest=true",
+    "--/exts/omni.kit.renderer.core/imgui/csvDump/enabled=true",
+    "--/exts/omni.kit.renderer.core/imgui/csvDump/path=\"\"",
+    "--/exts/omni.kit.renderer.core/imgui/enableMips=true",
+]
+
+pythonTests.include = [
+    "omni.ui.tests.test_image.*",
+]
+
+dependencies = [
+    "omni.kit.pipapi",
+    "omni.kit.test",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+    "*Duplicated plugin name:*",
+    "*failed to load native plugin:*",
+    "*Failed to load the texture*",
+    "*[omni.ui]*::*had no model*",
+    "*[omni.ui]*subscription was invalid*",
+    "*[omni.ui]*Invalid font path*IDoNotExist.ttf*"
+]
+
+[[test]]
+name="tooltip-tests-fast"
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/exts/omni.ui/tooltip_delay=0.0",
+]
+
+pythonTests.include = [
+    "omni.ui.tests.test_tooltip_fast.*",
+]
+
+dependencies = [
+    "omni.kit.pipapi",
+    "omni.kit.test",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+]
+
+[[test]]
+name="tooltip-tests-disabled"
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/exts/omni.ui/tooltip_delay=999",
+]
+
+pythonTests.include = [
+    "omni.ui.tests.test_tooltip_disabled.*",
+]
+
+dependencies = [
+    "omni.kit.pipapi",
+    "omni.kit.test",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+]
+
+
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "../../../include/omni/ui/Alignment.h",
+     "../../../include/omni/ui/Workspace.h",
+     "../../../include/omni/ui/WindowHandle.h",
+]
+cpp_api_exclude_warnings = [
+    ".*warning:.* is not documented",
+]

@@ -1,0 +1,55 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+set_gravity:
+  functional.physics.create_physics_scene:
+    gravity_magnitude: 0.0
+
+4d_camera:
+  inherit: camera
+
+4d_render_products:
+  inherit: render_products
+
+trigger:
+  trigger.on_time:
+    max_execs: 100
+
+with_trigger:
+  with.trigger:
+    4d_objs:
+      inherit: objs
+
+    modify_4d_objs:
+      inherit: modify_objs
+
+      with.4d_objs:
+        physics.collider: null
+        physics.rigid_body:
+          velocity:
+            distribution.normal:
+              mean: [0, 0, 0]
+              std: [1, 1, 1]
+          angular_velocity:
+            distribution.normal:
+              mean: [0, 0, 0]
+              std: [20, 20, 20]
+          overwrite: True
+
+writer:
+  writers.get:
+    name: "ReplicatorYAMLWriter"
+    init_params:
+      output_dir: "_flying_things_4d"
+      rgb: True
+    render_products: 4d_render_products
+
+profiles:
+  property: file_path
+  value:
+    - data/parameters/profiles/flying_things_3d.yaml

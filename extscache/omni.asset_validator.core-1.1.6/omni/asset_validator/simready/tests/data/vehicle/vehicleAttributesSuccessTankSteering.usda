@@ -1,0 +1,19 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    subLayers = [
+        @./vehicleAttributesSuccess.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle with correct attributes
+    """
+)
+
+over "vehicle"
+{
+    token omni:simready:vehicle:steering = "front" (
+        allowedTokens = ["front", "back", "all", "tank"]
+    )
+}

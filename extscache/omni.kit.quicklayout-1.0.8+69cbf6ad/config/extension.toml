@@ -1,0 +1,35 @@
+[package]
+version = "1.0.8"
+authors = ["NVIDIA"]
+title = "Layout Control Tools"
+description = "Set of tools for controlling layout."
+readme  = "docs/README.md"
+repository = ""
+category = "Core"
+keywords = ["layout", "workspace"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+support_level = "Sample"
+
+[dependencies]
+"omni.kit.mainwindow" = {}
+"omni.kit.window.filepicker" = { optional = true }
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.notification_manager" = {}
+
+[[python.module]]
+name = "omni.kit.quicklayout"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test"
+]

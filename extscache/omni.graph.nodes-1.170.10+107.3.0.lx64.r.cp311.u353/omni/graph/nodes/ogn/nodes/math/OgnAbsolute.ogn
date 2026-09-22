@@ -1,0 +1,131 @@
+{
+    "Absolute":
+    {
+        "version": 1,
+        "description": [
+            "Compute the absolute value of a scalar, array of scalars, vector, or array of vectors; in the",
+            "latter three cases the operator is applied to every single scalar element in the corresponding",
+            "structures."
+        ],
+        "uiName": "Absolute",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "tags": ["absolute"],
+        "inputs": {
+            "input": {
+                "type": ["decimals", "integrals"],
+                "description": "The scalar(s) or vector(s) to take the absolute value of."
+            }
+        },
+        "outputs": {
+            "absolute": {
+                "type": ["decimals", "integrals"],
+                "description": [
+                    "The original \"Input Value\" with the absolute value operator applied to each scalar",
+                    "value. The structure of the result, arrays and tuples, will mirror that of the input."
+                ]
+            }
+        },
+        "tests": [
+            {
+                "inputs:input": {"type": "double", "value": -10.0},
+                "outputs:absolute": {"type": "double", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "float", "value": -10.0},
+                "outputs:absolute": {"type": "float", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "half", "value": -10.0},
+                "outputs:absolute": {"type": "half", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "int", "value": -10},
+                "outputs:absolute": {"type": "int", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "int64", "value": -10},
+                "outputs:absolute": {"type": "int64", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uchar", "value": 10},
+                "outputs:absolute": {"type": "uchar", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uint", "value": 10},
+                "outputs:absolute": {"type": "uint", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uint64", "value": 10},
+                "outputs:absolute": {"type": "uint64", "value": 10}
+            },
+
+            {
+                "inputs:input": {"type": "double[3]", "value": [-1.0, -2.0, -3.0]},
+                "outputs:absolute": {"type": "double[3]", "value": [1.0, 2.0, 3.0]}
+            },
+            {
+                "inputs:input": {"type": "float[4]", "value": [-2.0, 2.0, -2.0, 2.0]},
+                "outputs:absolute": {"type": "float[4]", "value": [2.0, 2.0, 2.0, 2.0]}
+            },
+            {
+                "inputs:input": {"type": "int[2]", "value": [3, -4]},
+                "outputs:absolute": {"type": "int[2]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "half[2]", "value": [3.0, -4.0]},
+                "outputs:absolute": {"type": "half[2]", "value": [3.0, 4.0]}
+            },
+
+            {
+                "inputs:input": {"type": "double[]", "value": [-1.0, -2.0, -2.0]},
+                "outputs:absolute": {"type": "double[]", "value": [1.0, 2.0, 2.0]}
+            },
+            {
+                "inputs:input": {"type": "float[]", "value": [-2.0, 2.0, -2.0, 2.0]},
+                "outputs:absolute": {"type": "float[]", "value": [2.0, 2.0, 2.0, 2.0]}
+            },
+            {
+                "inputs:input": {"type": "half[]", "value": [3.0, -4.0]},
+                "outputs:absolute": {"type": "half[]", "value": [3.0, 4.0]}
+            },
+            {
+                "inputs:input": {"type": "int[]", "value": [3, -4]},
+                "outputs:absolute": {"type": "int[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "int64[]", "value": [3, -4]},
+                "outputs:absolute": {"type": "int64[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uchar[]", "value": [3, 4]},
+                "outputs:absolute": {"type": "uchar[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uint[]", "value": [3, 4]},
+                "outputs:absolute": {"type": "uint[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uint64[]", "value": [3, 4]},
+                "outputs:absolute": {"type": "uint64[]", "value": [3, 4]}
+            },
+
+            {
+                "inputs:input": {"type": "int[3][]", "value": [[1, -2, -2], [-4, 2, 6], [3, -2, 4], [1, -4, 2]]},
+                "outputs:absolute": {"type": "int[3][]", "value": [[1, 2, 2], [4, 2, 6], [3, 2, 4], [1, 4, 2]]}
+            },
+            {
+                "inputs:input": {"type": "double[3][]", "value": [[1.0, -2.0, -2.0], [-4.0, 2.0, 6.0], [3.0, -2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:absolute": {"type": "double[3][]", "value":  [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, 4.0, 2.0]]}
+            },
+            {
+                "inputs:input": {"type": "float[3][]", "value": [[1.0, -2.0, -2.0], [-4.0, 2.0, 6.0], [3.0, -2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:absolute": {"type": "float[3][]", "value":  [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, 4.0, 2.0]]}
+            },
+            {
+                "inputs:input": {"type": "half[3][]", "value": [[1.0, -2.0, -2.0], [-4.0, 2.0, 6.0], [3.0, -2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:absolute": {"type": "half[3][]", "value":  [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, 4.0, 2.0]]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+[package]
+title = "Text Editor"
+category = "Internal"
+description = "Bindings to ImGuiColorTextEdit"
+version = "1.1.1"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+support_level = "Sample"
+
+[dependencies]
+"omni.ui" = {}
+
+[[native.library]]
+path = "bin/${lib_prefix}omni.kit.widget.text_editor${lib_ext}"
+
+[[python.module]]
+name = "omni.kit.widget.text_editor"
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

@@ -1,0 +1,38 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Continental ARS540",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+    "NearScanMaxRangeM": "300.0",
+    "NearScanMaxVelMpsSequence":[22.82, 27.97, 25.78, 23.73, 27.22, 24.59, 23.19, 26.71],
+    "NearScanMaxAzAngRad": "0.873",
+    "NearScanMaxElevAngRad": "0.157",
+
+    "NearScanRangeSepM": "0.44",
+    "NearScanVelSepMps": "0.2",
+    "NearScanBoreAzSepRad": "0.0418",
+    "NearScanBoreElevSepRad": "0.0802",
+
+    "NearScanElevMode": "2",
+
+
+    "FarScanMaxRangeM": "300.0",
+    "FarScanMaxVelMpsSequence":[22.82, 27.97, 25.78, 23.73, 27.22, 24.59, 23.19, 26.71],
+    "FarScanMaxAzAngRad": "0.873",
+    "FarScanMaxElevAngRad": "0.157",
+
+    "FarScanRangeSepM": "0.44",
+    "FarScanVelSepMps": "0.2",
+    "FarScanBoreAzSepRad": "0.0418",
+    "FarScanBoreElevSepRad": "0.0802",
+
+    "FarScanElevMode": "2",
+
+
+    "NumRaysPerDeg": "10.0",
+    "NumExtraThreads": "5",
+    "FrameDurationNs": 50000000
+  }
+}

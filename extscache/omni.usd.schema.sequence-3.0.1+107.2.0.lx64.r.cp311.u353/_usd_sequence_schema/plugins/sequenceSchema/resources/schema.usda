@@ -1,0 +1,106 @@
+#usda 1.0
+(
+    subLayers = [
+        @usdGeom/schema.usda@
+    ]
+    doc = """To generate files use this command: usdGenSchema schema.usda."""
+) 
+
+over "GLOBAL" (
+    customData = {
+        string libraryName       = "UsdSequence"
+        string libraryPath       = "."
+
+        dictionary libraryTokens = {
+            dictionary weight = {
+                string doc = ""
+            }
+        }
+    }
+) {
+}
+
+class Sequence "Sequence"(
+    inherits = </Imageable>
+    doc = """A Sequence prim is the root prim of all other typs of prims in sequence system. A sequence contains tracks. Tracks contains clips. Clips do things such as playing animations, switching cameras, switching skeleton animations, etc. Tracks are containers to help users to make clips organized."""
+)
+{
+}
+
+class Track "Track"(
+    inherits = </Imageable>
+    doc = """Track prims help users to organize and manage clips. They are parent prims of clip prims. """
+)
+{
+    uniform token label (
+        doc = """A user specified name. """
+    )
+    uniform token trackType (
+        doc = """A user specified type. """
+    )
+}
+
+class "ClipBase"(
+    inherits = </Imageable>
+    doc = """Base class of other clip types in sequence. Clip is the most important thing of sequence. A clip does certain things at a given time and stops at another given time. These things are playing animations, switching cameras, etc."""
+)
+{
+    uniform timecode startTime = 0 (
+        doc = """Time when the clip start."""
+    )
+    uniform timecode endTime = 0 (
+        doc = """Time when the clip stops."""
+    )
+}
+
+class "AssetClipBase"(
+    inherits = </ClipBase>
+    doc = """Base class of asset clips. An asset clip grabs time samples from "animation" prim and applies these time samples to "assetPrim". If "assetPrim" is Skeleton and "animation" is SkelAnimation, AssetClip sets "animation" to "skel:animationSource" relationship of "assetPrim"."""
+)
+{
+    rel assetPrim (
+        doc = """The prim to which the AssetClip applies animation."""
+    )
+    rel animation (
+        doc = """The prim from which the AssetClip grabs time samples. If it's empty, AssetClip grabs time samples from the "assetPrim". """
+    )
+	uniform timecode playOffset = nan (
+        doc = """The time of animation when the clip starts to play. It should be between playStart and playEnd."""
+    )
+    uniform timecode playStart = nan (
+        doc = """Start time of the range in animation that is used by clip."""
+    )
+    uniform timecode playEnd = nan (
+        doc = """End time of the range in animation that is used by clip."""
+    )
+    uniform bool loop = false(
+        doc = """Indicates whether animation loop."""
+    )
+    uniform float playRate = 1 (
+        doc = """Indicates how fast animation is played."""
+    )
+}
+
+class AssetClip "AssetClip"(
+    inherits = </AssetClipBase>
+    doc = """Concrete prim schema for an asset clip, which implements AssetClipBase"""
+)
+{
+}
+
+class ShotClip "ShotClip" (
+    inherits = </AssetClipBase>
+    doc = """A ShotClip indicates a camera prim should be the current camera for rendering."""
+) 
+{
+}
+
+class SequenceClip "SequenceClip" (
+    inherits = </ClipBase>
+    doc = """A SequenceClip plays another sequence in current sequence. Current sequence is like master sequence. The other sequence is like a sub sequence."""
+) 
+{
+    rel sequence (
+        doc = """The Sequence prim that the SequenceClip plays. """
+    )
+}

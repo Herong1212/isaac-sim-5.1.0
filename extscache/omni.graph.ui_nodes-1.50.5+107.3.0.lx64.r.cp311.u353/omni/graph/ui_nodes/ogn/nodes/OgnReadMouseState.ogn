@@ -1,0 +1,67 @@
+{
+    "ReadMouseState": {
+        "description": [
+            "Reads the current state of the mouse.",
+            "You can choose which mouse element this node is associated with.",
+            "When mouse element is chosen to be a button, only outputs:isPressed is meaningful.",
+            "When coordinates are chosen, only outputs:coords and outputs:window are meaningful.\n",
+            "Pixel coordinates are the position of the mouse cursor in screen pixel units with (0,0) top left.",
+            "Normalized coordinates are values between 0-1 where 0 is top/left and 1 is bottom/right.",
+            "By default, coordinates are relative to the application window, but if 'Use Relative Coords'",
+            "is set to true, then coordinates are relative to the workspace window containing the mouse pointer."
+        ],
+        "version": 1,
+        "uiName": "Read Mouse State",
+        "categories": ["input:mouse"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "mouseElement": {
+                "type": "token",
+                "description": "The mouse input to check the state of",
+                "uiName": "Mouse Element",
+                "default": "Left Button",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftButton": "Left Button",
+                        "RightButton": "Right Button",
+                        "MiddleButton": "Middle Button",
+                        "ForwardButton": "Forward Button",
+                        "BackButton": "Back Button",
+                        "MouseCoordsNormalized": "Normalized Mouse Coordinates",
+                        "MouseCoordsPixel": "Pixel Mouse Coordinates"
+                    }
+                }
+            },
+            "useRelativeCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the output 'coords' is made relative to the workspace window containing the",
+                    "mouse pointer instead of the entire application window"
+                ],
+                "uiName": "Use Relative Coords"
+            }
+        },
+        "outputs": {
+            "isPressed": {
+                "type": "bool",
+                "description": [
+                    "True if the button is currently pressed, false otherwise. If the mouse element selected",
+                    "is a coordinate, this will output false."
+                ]
+            },
+            "coords": {
+                "type": "float[2]",
+                "description": "The coordinates of the mouse. If the mouse element selected is a button, this will output a zero vector."
+            },
+            "window": {
+                "type": "token",
+                "description": [
+                    "The name of the workspace window containing the mouse pointer if 'Use Relative Coords' is true",
+                    "and the mouse element selected is a coordinate"
+                ]
+            }
+        }
+    }
+}

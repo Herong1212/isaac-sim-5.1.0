@@ -1,0 +1,6 @@
+<svg id="Icon_Base" data-name="Icon Base" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect width="24" height="24" fill="none"/>
+  <path d="M7,15a2,2,0,1,0,2,2,2,2,0,0,0-2-2Z" transform="translate(0)" fill="#fff"/>
+  <path d="M17,5a2,2,0,1,0,2,2,2,2,0,0,0-2-2Z" transform="translate(0)" fill="#fff"/>
+  <path d="M12,10a2,2,0,1,0,2,2,2,2,0,0,0-2-2Z" transform="translate(0)" fill="#fff"/>
+</svg>

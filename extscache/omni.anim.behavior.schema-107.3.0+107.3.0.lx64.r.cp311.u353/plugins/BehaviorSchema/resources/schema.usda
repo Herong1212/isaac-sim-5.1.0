@@ -1,0 +1,133 @@
+#usda 1.0
+(
+    subLayers = [
+        @usdSkel/schema.usda@,
+    ]
+)
+
+over "GLOBAL" (
+	customData = {
+	string libraryName = "behaviorSchema"
+	string libraryPath = "./"
+	string libraryPrefix = "BehaviorSchema"
+    bool useLiteralIdentifier = 0
+	}
+)
+{
+}
+
+class "BehaviorAgentAPI"
+(
+    doc = """Represents an api that when applied on a UsdSkel.Root, enables behavior tasks and conditions to be performed in association with motion library processing."""
+    inherits =</APISchemaBase>
+)
+{
+    rel behavior:motionLibrary (
+        doc = """The motion library."""
+        displayName = "Motion Library"
+    )
+}
+
+class "BehaviorInteractiveObjectAPI"
+(
+    doc = """Represents an api applied to objects used in interactive tasks."""
+    inherits =</APISchemaBase>
+)
+{
+    rel behavior:interactive:tasks (
+        doc = """Task information and markers for object interaction."""
+        displayName = "Tasks"
+    )
+}
+
+class "BehaviorInteractiveTaskAPI"
+(
+    doc = """Represents an api applied to a USD prim to specify the xform and interactive contact information for a task."""
+    inherits =</APISchemaBase>
+)
+{
+    string behavior:interactive:task:name (
+        doc = """The task name. Ex. PickupObject, RideObject."""
+        displayName = "Task Name"
+    )
+    rel behavior:interactive:task:effectorHips (
+        doc = """The relationship for hips effector."""
+        displayName = "Effector Hips"
+    )
+    rel behavior:interactive:task:effectorRightHand (
+        doc = """The relationship for a right hand effector."""
+        displayName = "Effector Right Hand"
+    )
+    rel behavior:interactive:task:effectorLeftHand (
+        doc = """The relationship for a left hand effector."""
+        displayName = "Effector Left Hand"
+    )
+    rel behavior:interactive:task:effectorRightFoot (
+        doc = """The relationship for a right foot effector."""
+        displayName = "Effector Right Foot"
+    )
+    rel behavior:interactive:task:effectorLeftFoot (
+        doc = """The relationship for a left foot effector."""
+        displayName = "Effector Left Foot"
+    )
+}
+
+class BehaviorMotionLibrary "BehaviorMotionLibrary"
+(
+    doc = """Describes a motion library that contains animations for performing behaviors with motion matching."""
+    inherits = </Scope>
+)
+{
+    rel skeleton (
+        doc = """The skeleton."""
+        displayName = "Skeleton"
+    )
+    float sampleRate = 60.0 (
+        doc = """The sample rate."""
+        displayName = "Sample Rate"
+    )
+    int sampleCount = 3 (
+        doc = """The number of samples across the time horizon."""
+        displayName = "Sample Count"
+    )
+    float timeHorizon = 1.0 (
+        doc = """The time horizon."""
+        displayName = "Time Horizon"
+    )
+    token[] joints (
+        doc = """The joints to match the motions against."""
+        displayName = "Joints"
+    )
+    float[] jointPositionWeights (
+        doc = """The normalized position weight per joint (0.0 - 1.0)."""
+        displayName = "Joint Position Weights"
+    )
+    float[] jointVelocityWeights (
+        doc = """The normalized velocity weight per joint (0.0 - 1.0)."""
+        displayName = "Joint Velocity Weights"
+    )
+    token[] contactJoints (
+        doc = """The joints to track contacts for."""
+        displayName = "Contact Joints"
+    )
+    token[] contactJointTags (
+        doc = """The corresponding joint tag per contact joint."""
+        displayName = "Contact Joint Tags"
+    )
+}
+
+class BehaviorAction "BehaviorAction"
+(
+    doc = """Represents an action to be performed by an agent and the motion descriptor for associated animations."""
+	inherits = </Typed>
+)
+{
+    string behavior:action:name (
+        doc = """The name of the action to be performed."""
+        displayName = "Name"
+    )
+    token[] behavior:action:interactiveEffectors (
+        doc = """The interactive effectors that can be used ("Hips", "RightHand", "LeftHand", "RightFoot", "LeftFoot")."""
+        displayName = "Interactive Effectors"
+    )
+}

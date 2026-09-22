@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.viewport.menubar.waypoint-104.2.16.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.129875.5679d611.tc"
+        date = 1697572876
+        buildNumber = "104.0+master.1002.ab4f4339.gl"
+        repoName = "kit-viewport-menubars"
+        signed = 1

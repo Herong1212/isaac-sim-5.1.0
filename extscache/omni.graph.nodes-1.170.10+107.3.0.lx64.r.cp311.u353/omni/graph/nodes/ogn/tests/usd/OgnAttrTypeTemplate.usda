@@ -1,0 +1,51 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnAttrType.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_AttributeType" (
+        docs="""Queries information about the type of a specified attribute in an input bundle"""
+    )
+    {
+        token node:type = "omni.graph.nodes.AttributeType"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:attrName = "input" (
+            docs="""The name of the attribute to be queried"""
+        )
+        custom rel inputs:data (
+            docs="""Bundle of attributes to examine"""
+        )
+
+        # 5 attributes
+        custom int outputs:arrayDepth (
+            docs="""Zero for a single value, one for an array, two for an array of arrays.
+            Set to -1 if the named attribute was not in the bundle."""
+        )
+        custom int outputs:baseType (
+            docs="""An integer representing the type of the individual components.
+            Set to -1 if the named attribute was not in the bundle."""
+        )
+        custom int outputs:componentCount (
+            docs="""Number of components in each tuple, e.g. one for float, three for point3f, 16 for
+            matrix4d. Set to -1 if the named attribute was not in the bundle."""
+        )
+        custom int outputs:fullType (
+            docs="""A single int representing the full type information.
+            Set to -1 if the named attribute was not in the bundle."""
+        )
+        custom int outputs:role (
+            docs="""An integer representing semantic meaning of the type, e.g. point3f vs. normal3f vs. vector3f vs. float3.
+            Set to -1 if the named attribute was not in the bundle."""
+        )
+    }
+}

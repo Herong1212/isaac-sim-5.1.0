@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="graph_action_node_dropdown_dark" transform="translate(-120 -308)">
+    <path id="Icon_Base" d="M0,0H24V24H0Z" transform="translate(120 308)" fill="none"/>
+    <g id="Path_5413" data-name="Path 5413" transform="translate(124 312)">
+      <path id="Path_5924" data-name="Path 5924" d="M10.81,15H1V5A3.962,3.962,0,0,1,4.914,1h9.81V11A3.962,3.962,0,0,1,10.81,15Z" fill="#1e2931"/>
+      <path id="Path_5925" data-name="Path 5925" d="M4.914,2A2.961,2.961,0,0,0,2,5v9h8.81a2.961,2.961,0,0,0,2.914-3V2H4.914m0-2h10.81V11a4.957,4.957,0,0,1-4.914,5H0V5A4.957,4.957,0,0,1,4.914,0Z" fill="#37916a"/>
+    </g>
+    <rect id="Rectangle_1446" data-name="Rectangle 1446" width="13" height="4" transform="translate(126 313)" fill="#37916a"/>
+    <circle id="Ellipse_237" data-name="Ellipse 237" cx="2" cy="2" r="2" transform="translate(124 319)" fill="#37916a"/>
+    <g id="Ellipse_238" data-name="Ellipse 238" transform="translate(135.7 318)" fill="#1e2931" stroke="#37916a" stroke-width="1">
+      <circle cx="3" cy="3" r="3" stroke="none"/>
+      <circle cx="3" cy="3" r="2.5" fill="none"/>
+    </g>
+    <path id="flyout_indicator_dark" d="M2416,882.964h4v-4Z" transform="translate(-2276 -550.964)" fill="#d6d6d6"/>
+  </g>
+</svg>

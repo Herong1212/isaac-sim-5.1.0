@@ -1,0 +1,63 @@
+{
+    "omni.graph.BundleToUSDA": {
+        "description": [ "Outputs a represention of the content of a bundle as usda text" ],
+        "metadata": {
+            "uiName": "Bundle to USDA Text"
+        },
+        "scheduling": ["threadsafe"],
+        "categories": ["bundle"],
+        "version": 1,
+        "inputs": {
+            "bundle": {
+                "description": [ "The bundle to convert to usda text." ],
+                "type": "bundle"
+            },
+            "usePrimvarMetadata": {
+                "default": true,
+                "description": [ "Identify attributes representing metadata like the interpolation type for primvars, and include them as usda metadata in the output text." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "usePrimType": {
+                "default": true,
+                "description": [ "Use the attribute named \"primType\" for the usda prim type name." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "usePrimPath": {
+                "default": true,
+                "description": [ "Use the attribute named \"primPath\" for the usda prim path." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "outputAncestors": {
+                "default": false,
+                "description": [ "If usePath is true and this is also true, ancestor \"primPath\" entries will be output." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "outputValues": {
+                "default": true,
+                "description": [ "If true, the values of attributes will be output, else values will be omitted." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            }
+        },
+        "outputs": {
+            "text": {
+                "description": [ "Output usda text representing the bundle contents." ],
+                "type": "token"
+            }
+        }
+    }
+}

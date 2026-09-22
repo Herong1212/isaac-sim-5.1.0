@@ -1,0 +1,47 @@
+isaacsim.replicator.object:
+  version: 0.4.12
+  parent_config: global
+  dome_light:
+    type: light
+    subtype: dome
+    intensity: 1000
+  permutate_H:
+    harmonizer_type: permutate
+  num_frames: 5
+  oro:
+    count: 3
+    type: geometry
+    subtype: mesh
+    usd_path: $[/path_to_oro]
+    permutated_index:
+      distribution_type: harmonized
+      harmonizer_name: permutate_H
+      pitch: $[../index]
+    transform_operators:
+    - translate:
+      - ($[../permutated_index] % $[../count] - 1) * 600
+      - 0
+      - 0
+    - rotateY: ($[../index] - 1) * 60
+    - scale:
+      - 150
+      - 150
+      - 150
+    - translate_local:
+      - 0
+      - 0
+      - 0
+  default_camera:
+    type: camera
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate_global:
+      - 0
+      - 0
+      - 0
+    - rotateY: 0
+    - rotateX: -30
+    - translate:
+      - 0
+      - 0
+      - 1200

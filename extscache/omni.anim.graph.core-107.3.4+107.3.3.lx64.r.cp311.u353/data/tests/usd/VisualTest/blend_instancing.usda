@@ -1,0 +1,537 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            string enableDistanceDelay = "off"
+            string enableDoppler = "off"
+            string enableInterauralDelay = "off"
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-362.3963702819879, 146.28846258479976, 691.3464022248187)
+                double3 target = (90.00893840435282, 66.5700832526932, 61.88676231229397)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./blend_instancing.usda"
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            bool "rtx:raytracing:fractionalCutoutOpacity" = 1
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        custom uniform float anim:graph:variable:BlendWeight
+        delete rel inputs:pose = [
+            </World/AnimationGraph/stand_walk_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_wave_loop_skelanim>,
+            </World/AnimationGraph/Blend>,
+            </World/AnimationGraph/LookAtIK>,
+        ]
+        prepend rel inputs:pose = </World/AnimationGraph/Blend>
+        rel skel:skeleton = </World/Character_Left/Root>
+
+        def AnimationClip "stand_idle_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_idle_loop_skelanim>
+            custom uniform float2 ui:position = (-602.552, 8.534868)
+        }
+
+        def ReadVariable "BlendWeight"
+        {
+            token inputs:variableName = "BlendWeight"
+            custom uniform float2 ui:position = (-576.7565, 214.75232)
+        }
+
+        def Blend "Blend"
+        {
+            prepend rel inputs:blendWeight = </World/AnimationGraph/BlendWeight>
+            prepend rel inputs:pose0 = </World/AnimationGraph/stand_idle_loop_skelanim>
+            prepend rel inputs:pose1 = </World/AnimationGraph/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-259.27295, 17.252579)
+        }
+
+        def AnimationClip "stand_walk_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-605.0105, 109.14826)
+        }
+    }
+
+    def OmniGraph "ActionGraph"
+    {
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 6)
+        custom float graph:variable:BlendWeight (
+            customData = {
+                token scope = "private"
+            }
+            displayName = "BlendWeight"
+        )
+        custom string graph:variable:MoveKey (
+            customData = {
+                token scope = "private"
+            }
+            displayName = "MoveKey"
+        )
+        token pipelineStage = "pipelineStageOnDemand"
+
+        def ComputeGraphSettings "computegraphSettings" (
+            active = false
+        )
+        {
+            custom token evaluator:type = "execution"
+            custom int2 fileFormatVersion = (1, 3)
+            custom token flatCacheBacking = "Shared"
+            custom token pipelineStage = "pipelineStageOnDemand"
+        }
+
+        def OmniGraphNode "write_animation_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_tick.outputs:tick>
+            custom rel inputs:graph = </World/AnimationGraph>
+            custom token inputs:skelRootPath = ""
+            prepend token inputs:skelRootPath.connect = </World/ActionGraph/graph_target.outputs:primPath>
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/clamp.outputs:result>
+            custom token inputs:variableName = "BlendWeight"
+            token node:type = "omni.anim.graph.WriteAnimationGraphVariable"
+            int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (749, 110)
+        }
+
+        def OmniGraphNode "on_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:framePeriod = 0
+            custom bool inputs:onlyPlayback = 1
+            token node:type = "omni.graph.action.OnTick"
+            int node:typeVersion = 1
+            custom double outputs:absoluteSimTime = 0
+            custom double outputs:deltaSeconds = 0.014918999746441841
+            custom double outputs:frame = 43.71418380737305
+            custom bool outputs:isPlaying = 1
+            custom uint outputs:tick = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time = 1.8214243650436401
+            custom double outputs:timeSinceStart = 608.3399658203125
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-765.421, 97.8051)
+        }
+
+        def OmniGraphNode "graph_target" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:targetPath = "/World/Character_Right"
+            token node:type = "omni.graph.nodes.GraphTarget"
+            int node:typeVersion = 1
+            custom token outputs:primPath = "/World/Character_Right"
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (440.10788, 197.89389)
+        }
+
+        def OmniGraphNode "write_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_stage_event.outputs:execOut>
+            custom rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character_Right"
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/constant_float_01.inputs:value>
+            custom token inputs:variableName = "BlendWeight"
+            token node:type = "omni.graph.core.WriteVariable"
+            int node:typeVersion = 1
+            custom uint outputs:execOut = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom token outputs:value
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-165.11108, -203.14246)
+        }
+
+        def OmniGraphNode "on_stage_event" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:eventName (
+                allowedTokens = ["Assets Loaded", "Assets Load Aborted", "Closed", "Closing", "Gizmo Tracking Changed", "MDL Param Loaded", "Opened", "Open Failed", "Saved", "Save Failed", "Selection Changed", "Settings Saving", "OmniGraph Start Play", "OmniGraph Stop Play", "Simulation Start Play", "Simulation Stop Play", "Animation Start Play", "Animation Stop Play"]
+            )
+            custom bool inputs:onlyPlayback
+            token node:type = "omni.graph.action.OnStageEvent"
+            int node:typeVersion = 2
+            custom uint outputs:execOut = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-753.7385, -235.09651)
+        }
+
+        def OmniGraphNode "constant_float_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 0
+            token node:type = "omni.graph.nodes.ConstantFloat"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-757.1022, -85.41696)
+        }
+
+        def OmniGraphNode "read_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:graph
+            prepend rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character_Right"
+            custom token inputs:variableName = "BlendWeight"
+            token node:type = "omni.graph.core.ReadVariable"
+            int node:typeVersion = 1
+            custom token outputs:value
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-164.82594, 561.31757)
+        }
+
+        def OmniGraphNode "constant_float_02" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 1
+            token node:type = "omni.graph.nodes.ConstantFloat"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-627.3422, 493.3355)
+        }
+
+        def OmniGraphNode "constant_float_03" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 0
+            token node:type = "omni.graph.nodes.ConstantFloat"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (240.2368, 585.51666)
+        }
+
+        def OmniGraphNode "constant_float_04" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 1
+            token node:type = "omni.graph.nodes.ConstantFloat"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (235.14093, 721.0579)
+        }
+
+        def OmniGraphNode "to_float" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/on_tick.outputs:deltaSeconds>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-488.27103, 297.29147)
+        }
+
+        def OmniGraphNode "multiply" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:a = ""
+            prepend token inputs:a.connect = </World/ActionGraph/to_float.outputs:converted>
+            custom token inputs:b = ""
+            prepend token inputs:b.connect = </World/ActionGraph/constant_float_02.inputs:value>
+            token node:type = "omni.graph.nodes.Multiply"
+            int node:typeVersion = 1
+            custom token outputs:product
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-234.72363, 376.81036)
+        }
+
+        def OmniGraphNode "increment" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float __resolved_outputs:result = -0.014919
+            custom double inputs:increment = 1
+            prepend double inputs:increment.connect = </World/ActionGraph/to_float_01.outputs:converted>
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/read_graph_variable.outputs:value>
+            token node:type = "omni.graph.nodes.Increment"
+            int node:typeVersion = 1
+            custom token outputs:result
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (234.48788, 399.2067)
+        }
+
+        def OmniGraphNode "clamp" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float __resolved_outputs:result = 0
+            custom token inputs:input = ""
+            prepend token inputs:input.connect = </World/ActionGraph/increment.outputs:result>
+            custom token inputs:lower = ""
+            prepend token inputs:lower.connect = </World/ActionGraph/constant_float_03.inputs:value>
+            custom token inputs:upper = ""
+            prepend token inputs:upper.connect = </World/ActionGraph/constant_float_04.inputs:value>
+            token node:type = "omni.graph.nodes.Clamp"
+            int node:typeVersion = 1
+            custom token outputs:result
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (480.10706, 396.4461)
+        }
+
+        def OmniGraphNode "write_graph_variable_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/write_animation_graph_variable.outputs:execOut>
+            custom rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character_Right"
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/clamp.outputs:result>
+            custom token inputs:variableName = "BlendWeight"
+            token node:type = "omni.graph.core.WriteVariable"
+            int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom token outputs:value
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (1194.6726, 311.0804)
+        }
+
+        def OmniGraphNode "to_float_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom double __resolved_outputs:converted = -0.014918999746441841
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/multiply.outputs:product>
+            token node:type = "omni.graph.nodes.ToFloat"
+            int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-19.841515, 378.88248)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_idle_loop_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_idle_loop.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_loop_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_loop.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def "Character_Left" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo_no_material.usd@
+    )
+    {
+        custom quatf _worldOrientation = (0.99991906, 0, 0.012723559, 0)
+        custom double3 _worldPosition = (-152.2460479736328, 0, 66.93445587158203)
+        custom vector3f _worldScale = (1, 1, 1)
+        custom float anim:graph:variable:BlendWeight
+        rel animationGraph = </World/AnimationGraph>
+        custom uint64 Character = 2261114462656
+        custom float graph:variable:BlendWeight
+        custom string graph:variable:MoveKey = "A"
+        rel omniGraphs = </World/ActionGraph>
+        double3 xformOp:translate = (-150, 0, 0)
+
+        over "Root"
+        {
+            over "Biped_Demo"
+            {
+                float[] blendShapeWeights = []
+                custom uint64 Character = 2642344534144
+                quatf[] rotations = [(1.0000001, 0, 0, 0), (0.99791765, 0.06424483, -0.00036663268, -0.0057288795), (0.53162956, 0.4836406, 0.514021, 0.46823516), (0.9999629, -0.0047809794, -0.00188638, 0.0069224415), (-0.68276775, 0.14289492, 0.024351249, 0.7161119), (0.9999619, 1.2902303e-8, 1.12596696e-10, 0.008726535), (1.0000001, 9.899434e-19, -1.129009e-18, -1.2382035e-18), (1.0000001, -5.498728e-34, 2.0745328e-18, -6.1910173e-19), (-0.4659797, 0.5373235, -0.49155617, 0.50251293), (0.99987936, 0.0039110403, -0.00019213237, 0.015038499), (-0.6819087, 0.062278263, 0.035572395, 0.72791237), (0.99996203, -3.0897543e-19, 1.4303994e-17, 0.008726536), (1.0000001, -9.930404e-19, -3.0955086e-19, 2.476407e-18), (1.0000001, -4.7107477e-18, 6.206502e-19, 7.4168333e-19), (0.010356814, 0.7079813, 0.7060833, -0.010079039), (0.9996882, -0.00038717664, -0.024822962, 0.0026853185), (0.9996882, -0.00038718025, -0.024822986, 0.0026850034), (0.9956336, -0.00020210427, -0.09330887, 0.0027054006), (0.98505384, -5.91363e-19, 0.17224751, -1.9374638e-18), (0.99956834, -0.020576509, -0.018450087, -0.009973097), (0.99872, -0.029715601, -0.026541999, -0.031165216), (0.66596925, 0.19881026, -0.04892921, 0.71733236), (0.76314265, 0.08819103, 0.09247411, 0.63347024), (0.9922091, 0.008821161, 0.12251054, 0.020853963), (0.98299223, 0.09929175, 0.021645537, -0.15296735), (-0.11284482, 0.8713236, 0.20961003, -0.4290981), (0.9271635, -0.1461952, 0.34398052, 0.025932645), (0.9451997, -0.13671286, 0.29619882, -0.013179602), (1.0000001, -2.476407e-18, -3.9721614e-18, -9.868464e-19), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9540156, -0.038762905, 0.29551026, -0.032024376), (0.8727749, -0.03377659, 0.4862131, -0.026836995), (0.7500684, 0.01900184, 0.65109205, -0.11452448), (0.99939096, -0.0348995, -1.5982335e-17, 1.7109582e-19), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.90926135, 0.0071853725, 0.41598055, 0.0123538), (0.6187296, -0.012067494, 0.7820904, -0.07322998), (0.95255053, 0.0073620984, 0.30413377, -0.009793326), (1.0000001, -5.9458545e-18, -3.9597736e-18, -1.9860807e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.8937392, 0.05784266, 0.4435997, 0.033226665), (0.73567516, -0.001319881, 0.67727786, 0.008670356), (0.7274863, -0.011241221, 0.68597025, -0.009079687), (1.0000001, 4.952814e-18, 2.7005766e-17, -1.4864636e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8492899, -0.0022790348, 0.52530605, 0.05248826), (0.7561591, 0.007912264, 0.64912325, 0.08246221), (0.7432294, -0.013017325, 0.66426426, 0.07870079), (1.0000001, 3.9721614e-18, -1.6421681e-17, -2.7277641e-18), (1.0000001, 0, -2.9667333e-18, 3.9690645e-18), (1.0000001, -1.9860807e-18, 4.965202e-19, 2.0756941e-18), (0.07088175, 0.7087759, 0.6649226, -0.22470123), (0.7501979, 0.03418816, 0.1487007, 0.64336824), (0.9967314, 0.06931677, 0.0041813445, 0.04128263), (0.98821247, 0.09466724, -0.056500547, -0.10621743), (-0.36060145, 0.7966654, 0.19984104, -0.44198957), (0.9307757, -0.14661562, 0.33392593, 0.025577512), (0.96847695, -0.12943092, 0.20839724, -0.04325358), (1.0000001, 1.387779e-17, 1.9823643e-17, 5.9458545e-18), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9675561, -0.017956078, 0.24393508, 0.06331427), (0.6735353, -0.051387593, 0.73234713, -0.085892275), (0.78066945, 0.018784983, 0.61541045, -0.10711), (0.99939096, -0.0348995, -2.8410507e-18, 8.548254e-18), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.91208994, 0.007640902, 0.40970975, 0.013104484), (0.8475902, -0.010269746, 0.528678, -0.04455654), (0.7802221, 0.013993657, 0.62372255, -0.045036092), (1.0000001, 1.4901163e-8, -6.438785e-20, 5.823272e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.88989973, 0.005810094, 0.45089257, -0.06885416), (0.6958946, -0.0013667007, 0.71808577, 0.009053528), (0.7592892, -0.010415719, 0.6505933, -0.010012631), (1.0000001, -7.919547e-18, -1.31624304e-17, -8.434649e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8573675, -0.09661134, 0.49085355, -0.121038355), (0.7864167, 0.008886824, 0.6126124, 0.07858767), (0.77420145, -0.013744568, 0.628372, 0.074646726), (1.0000001, 4.952814e-18, -2.7324096e-18, 5.4555283e-18), (1.0000001, 6.598474e-33, 7.441609e-18, 3.0877662e-19), (1.0000001, -1.9860807e-18, 1.9860807e-18, -3.654868e-18)]
+                float3[] translations = [(0, 0, 0), (2.4764067e-17, 95.60929, 1.5849003e-16), (-10.9802, -2.9857564, -0.3240227), (-40.555355, 0.0022127093, -0.00012093125), (-44.377678, -0.00018623452, -0.000047130623), (-12.8396015, -5.196396, 0.0000041871835), (-22.188847, 0.000004195402, -0.00002083283), (-20.277695, 3.284048e-7, -0.000027203077), (10.980233, -2.9857554, -0.32402137), (40.555374, -0.020739488, -0.0013309395), (44.377655, 0.0002586901, 0.000013561036), (12.839607, 5.1963916, -9.70341e-8), (22.188831, 0.0000018184098, 0.0000074586733), (20.27771, 0.0000014822796, 0.000013763244), (-3.4931406e-7, 7.1649265, -0.03027128), (7.6855125, 0.000001567497, -0.0010594404), (7.425258, 4.3651312e-8, 3.302851e-7), (7.4252443, 8.8016407e-7, -3.737047e-8), (21.118437, 1.4743762e-13, -1.0168732e-15), (9.46639, 3.7847917e-7, -0.000060031925), (9.4665985, -1.6183063e-7, 0.0000063621487), (20.167353, 2.0642, -6.6077642), (18.504387, 0.000009620075, 0.0000010071369), (25.945269, -0.0011403976, -0.00081671047), (24.61597, 0.00002705196, 0.00006979582), (4.556068, 2.2611096, -1.3579592), (4.1626434, 0.000007951364, -0.000002545647), (4.698605, 0.0000053309204, 8.01851e-7), (3.2958682, -4.2889954e-14, 1.54292e-13), (2.0390744, 0.99647707, -2.250915), (8.204935, 0.0000013973489, 8.3410833e-7), (4.722095, 0.0000011260432, 0.0000035247965), (3.566355, -0.0000017568475, -0.0000032623548), (3.3892083, -1.31939815e-14, -1.7053026e-13), (1.7855899, 0.556005, -0.863907), (8.782155, 1.9817794e-7, -0.0000013131979), (5.1402926, -9.2438864e-7, 0.0000032006756), (3.6478612, -5.617223e-7, -0.0000017227081), (3.7557986, -1.314504e-13, -1.9895197e-13), (1.6597939, 0.36503005, 0.6625385), (8.194731, 1.786925e-7, -0.0000035128423), (4.623648, 1.9253139e-7, 0.000017199329), (3.1222663, -0.0000012871155, -0.0000140665825), (4.354937, -1.4654944e-14, -1.4109167e-13), (1.2460148, 0.39649308, 2.6250029), (7.892784, -0.28027472, 0.0047127353), (3.7906194, -2.7792407e-7, -0.0000032824837), (2.5108502, -7.654892e-7, -0.0000043853743), (2.8535109, -4.409194e-14, 8.272929e-14), (12.307983, 8.554349e-8, -9.4983e-7), (12.972641, -4.511657e-8, 9.526065e-7), (20.167837, -2.0641963, -6.6078377), (-18.504374, -0.0002099711, -0.0000060251787), (-25.945644, 0.00074752164, 0.0011672203), (-24.61605, -0.00001982949, -0.000113404705), (-4.555921, -2.260995, 1.3580298), (-4.1627393, 0.00011099801, 0.0003391128), (-4.698551, 0.000029436507, -0.000114775205), (-3.2954993, -0.000025984991, -0.00008808277), (-2.0387678, -0.99614733, 2.2510743), (-8.205302, -0.0001052173, 0.00040099074), (-4.7218566, 0.00005206978, -0.00032820474), (-3.5663002, 0.00002506347, 0.000007737011), (-3.3892043, -0.000016954276, 0.00003278386), (-1.7852926, -0.5557352, 0.8640568), (-8.782382, -0.00009559245, 0.00013482662), (-5.1401286, 0.000041267504, -0.00011531047), (-3.64788, 0.0000014598781, 0.000052705258), (-3.7558215, -0.0000034813615, 0.000018702085), (-1.6596663, -0.36485922, -0.6624691), (-8.194411, 0.0001560868, -0.0003646887), (-4.6238856, -0.00006862445, 0.000332682), (-3.1222181, 0.000010649766, 0.000011766351), (-4.35496, -0.0000090187295, -0.000033554123), (-1.2455893, -0.39606014, -2.6247895), (-7.893255, 0.28013942, -0.004383603), (-3.7903745, 0.00006405775, -0.0001543369), (-2.510901, -0.000010461763, 0.0000080004875), (-2.8534305, 0.000010552463, 0.000019014433), (-12.308022, -0.000052735864, -0.000025980124), (-12.972828, -0.00013671229, 0.000004271456)]
+            }
+        }
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def "Character_Center" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo_no_material.usd@
+    )
+    {
+        custom quatf _worldOrientation = (0.99991906, 0, 0.012723559, 0)
+        custom double3 _worldPosition = (-2.2460744380950928, 0, 66.93445587158203)
+        custom vector3f _worldScale = (1, 1, 1)
+        custom float anim:graph:variable:BlendWeight
+        rel animationGraph = </World/AnimationGraph>
+        custom uint64 Character = 2261114449872
+        custom float graph:variable:BlendWeight
+        custom string graph:variable:MoveKey = "S"
+        rel omniGraphs = </World/ActionGraph>
+
+        over "Root"
+        {
+            over "Biped_Demo"
+            {
+                float[] blendShapeWeights = []
+                custom uint64 Character = 2642344528160
+                quatf[] rotations = [(1.0000001, 0, 0, 0), (0.99791765, 0.06424483, -0.00036663268, -0.0057288795), (0.53162956, 0.4836406, 0.514021, 0.46823516), (0.9999629, -0.0047809794, -0.00188638, 0.0069224415), (-0.68276775, 0.14289492, 0.024351249, 0.7161119), (0.9999619, 1.2902303e-8, 1.12596696e-10, 0.008726535), (1.0000001, 9.899434e-19, -1.129009e-18, -1.2382035e-18), (1.0000001, -5.498728e-34, 2.0745328e-18, -6.1910173e-19), (-0.4659797, 0.5373235, -0.49155617, 0.50251293), (0.99987936, 0.0039110403, -0.00019213237, 0.015038499), (-0.6819087, 0.062278263, 0.035572395, 0.72791237), (0.99996203, -3.0897543e-19, 1.4303994e-17, 0.008726536), (1.0000001, -9.930404e-19, -3.0955086e-19, 2.476407e-18), (1.0000001, -4.7107477e-18, 6.206502e-19, 7.4168333e-19), (0.010356814, 0.7079813, 0.7060833, -0.010079039), (0.9996882, -0.00038717664, -0.024822962, 0.0026853185), (0.9996882, -0.00038718025, -0.024822986, 0.0026850034), (0.9956336, -0.00020210427, -0.09330887, 0.0027054006), (0.98505384, -5.91363e-19, 0.17224751, -1.9374638e-18), (0.99956834, -0.020576509, -0.018450087, -0.009973097), (0.99872, -0.029715601, -0.026541999, -0.031165216), (0.66596925, 0.19881026, -0.04892921, 0.71733236), (0.76314265, 0.08819103, 0.09247411, 0.63347024), (0.9922091, 0.008821161, 0.12251054, 0.020853963), (0.98299223, 0.09929175, 0.021645537, -0.15296735), (-0.11284482, 0.8713236, 0.20961003, -0.4290981), (0.9271635, -0.1461952, 0.34398052, 0.025932645), (0.9451997, -0.13671286, 0.29619882, -0.013179602), (1.0000001, -2.476407e-18, -3.9721614e-18, -9.868464e-19), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9540156, -0.038762905, 0.29551026, -0.032024376), (0.8727749, -0.03377659, 0.4862131, -0.026836995), (0.7500684, 0.01900184, 0.65109205, -0.11452448), (0.99939096, -0.0348995, -1.5982335e-17, 1.7109582e-19), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.90926135, 0.0071853725, 0.41598055, 0.0123538), (0.6187296, -0.012067494, 0.7820904, -0.07322998), (0.95255053, 0.0073620984, 0.30413377, -0.009793326), (1.0000001, -5.9458545e-18, -3.9597736e-18, -1.9860807e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.8937392, 0.05784266, 0.4435997, 0.033226665), (0.73567516, -0.001319881, 0.67727786, 0.008670356), (0.7274863, -0.011241221, 0.68597025, -0.009079687), (1.0000001, 4.952814e-18, 2.7005766e-17, -1.4864636e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8492899, -0.0022790348, 0.52530605, 0.05248826), (0.7561591, 0.007912264, 0.64912325, 0.08246221), (0.7432294, -0.013017325, 0.66426426, 0.07870079), (1.0000001, 3.9721614e-18, -1.6421681e-17, -2.7277641e-18), (1.0000001, 0, -2.9667333e-18, 3.9690645e-18), (1.0000001, -1.9860807e-18, 4.965202e-19, 2.0756941e-18), (0.07088175, 0.7087759, 0.6649226, -0.22470123), (0.7501979, 0.03418816, 0.1487007, 0.64336824), (0.9967314, 0.06931677, 0.0041813445, 0.04128263), (0.98821247, 0.09466724, -0.056500547, -0.10621743), (-0.36060145, 0.7966654, 0.19984104, -0.44198957), (0.9307757, -0.14661562, 0.33392593, 0.025577512), (0.96847695, -0.12943092, 0.20839724, -0.04325358), (1.0000001, 1.387779e-17, 1.9823643e-17, 5.9458545e-18), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9675561, -0.017956078, 0.24393508, 0.06331427), (0.6735353, -0.051387593, 0.73234713, -0.085892275), (0.78066945, 0.018784983, 0.61541045, -0.10711), (0.99939096, -0.0348995, -2.8410507e-18, 8.548254e-18), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.91208994, 0.007640902, 0.40970975, 0.013104484), (0.8475902, -0.010269746, 0.528678, -0.04455654), (0.7802221, 0.013993657, 0.62372255, -0.045036092), (1.0000001, 1.4901163e-8, -6.438785e-20, 5.823272e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.88989973, 0.005810094, 0.45089257, -0.06885416), (0.6958946, -0.0013667007, 0.71808577, 0.009053528), (0.7592892, -0.010415719, 0.6505933, -0.010012631), (1.0000001, -7.919547e-18, -1.31624304e-17, -8.434649e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8573675, -0.09661134, 0.49085355, -0.121038355), (0.7864167, 0.008886824, 0.6126124, 0.07858767), (0.77420145, -0.013744568, 0.628372, 0.074646726), (1.0000001, 4.952814e-18, -2.7324096e-18, 5.4555283e-18), (1.0000001, 6.598474e-33, 7.441609e-18, 3.0877662e-19), (1.0000001, -1.9860807e-18, 1.9860807e-18, -3.654868e-18)]
+                float3[] translations = [(0, 0, 0), (2.4764067e-17, 95.60929, 1.5849003e-16), (-10.9802, -2.9857564, -0.3240227), (-40.555355, 0.0022127093, -0.00012093125), (-44.377678, -0.00018623452, -0.000047130623), (-12.8396015, -5.196396, 0.0000041871835), (-22.188847, 0.000004195402, -0.00002083283), (-20.277695, 3.284048e-7, -0.000027203077), (10.980233, -2.9857554, -0.32402137), (40.555374, -0.020739488, -0.0013309395), (44.377655, 0.0002586901, 0.000013561036), (12.839607, 5.1963916, -9.70341e-8), (22.188831, 0.0000018184098, 0.0000074586733), (20.27771, 0.0000014822796, 0.000013763244), (-3.4931406e-7, 7.1649265, -0.03027128), (7.6855125, 0.000001567497, -0.0010594404), (7.425258, 4.3651312e-8, 3.302851e-7), (7.4252443, 8.8016407e-7, -3.737047e-8), (21.118437, 1.4743762e-13, -1.0168732e-15), (9.46639, 3.7847917e-7, -0.000060031925), (9.4665985, -1.6183063e-7, 0.0000063621487), (20.167353, 2.0642, -6.6077642), (18.504387, 0.000009620075, 0.0000010071369), (25.945269, -0.0011403976, -0.00081671047), (24.61597, 0.00002705196, 0.00006979582), (4.556068, 2.2611096, -1.3579592), (4.1626434, 0.000007951364, -0.000002545647), (4.698605, 0.0000053309204, 8.01851e-7), (3.2958682, -4.2889954e-14, 1.54292e-13), (2.0390744, 0.99647707, -2.250915), (8.204935, 0.0000013973489, 8.3410833e-7), (4.722095, 0.0000011260432, 0.0000035247965), (3.566355, -0.0000017568475, -0.0000032623548), (3.3892083, -1.31939815e-14, -1.7053026e-13), (1.7855899, 0.556005, -0.863907), (8.782155, 1.9817794e-7, -0.0000013131979), (5.1402926, -9.2438864e-7, 0.0000032006756), (3.6478612, -5.617223e-7, -0.0000017227081), (3.7557986, -1.314504e-13, -1.9895197e-13), (1.6597939, 0.36503005, 0.6625385), (8.194731, 1.786925e-7, -0.0000035128423), (4.623648, 1.9253139e-7, 0.000017199329), (3.1222663, -0.0000012871155, -0.0000140665825), (4.354937, -1.4654944e-14, -1.4109167e-13), (1.2460148, 0.39649308, 2.6250029), (7.892784, -0.28027472, 0.0047127353), (3.7906194, -2.7792407e-7, -0.0000032824837), (2.5108502, -7.654892e-7, -0.0000043853743), (2.8535109, -4.409194e-14, 8.272929e-14), (12.307983, 8.554349e-8, -9.4983e-7), (12.972641, -4.511657e-8, 9.526065e-7), (20.167837, -2.0641963, -6.6078377), (-18.504374, -0.0002099711, -0.0000060251787), (-25.945644, 0.00074752164, 0.0011672203), (-24.61605, -0.00001982949, -0.000113404705), (-4.555921, -2.260995, 1.3580298), (-4.1627393, 0.00011099801, 0.0003391128), (-4.698551, 0.000029436507, -0.000114775205), (-3.2954993, -0.000025984991, -0.00008808277), (-2.0387678, -0.99614733, 2.2510743), (-8.205302, -0.0001052173, 0.00040099074), (-4.7218566, 0.00005206978, -0.00032820474), (-3.5663002, 0.00002506347, 0.000007737011), (-3.3892043, -0.000016954276, 0.00003278386), (-1.7852926, -0.5557352, 0.8640568), (-8.782382, -0.00009559245, 0.00013482662), (-5.1401286, 0.000041267504, -0.00011531047), (-3.64788, 0.0000014598781, 0.000052705258), (-3.7558215, -0.0000034813615, 0.000018702085), (-1.6596663, -0.36485922, -0.6624691), (-8.194411, 0.0001560868, -0.0003646887), (-4.6238856, -0.00006862445, 0.000332682), (-3.1222181, 0.000010649766, 0.000011766351), (-4.35496, -0.0000090187295, -0.000033554123), (-1.2455893, -0.39606014, -2.6247895), (-7.893255, 0.28013942, -0.004383603), (-3.7903745, 0.00006405775, -0.0001543369), (-2.510901, -0.000010461763, 0.0000080004875), (-2.8534305, 0.000010552463, 0.000019014433), (-12.308022, -0.000052735864, -0.000025980124), (-12.972828, -0.00013671229, 0.000004271456)]
+            }
+        }
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def "Character_Right" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo_no_material.usd@
+    )
+    {
+        custom quatf _worldOrientation = (0.99991906, 0, 0.012723559, 0)
+        custom double3 _worldPosition = (147.7539520263672, 0, 66.93445587158203)
+        custom vector3f _worldScale = (1, 1, 1)
+        custom float anim:graph:variable:BlendWeight
+        rel animationGraph = </World/AnimationGraph>
+        custom uint64 Character = 2261114450416
+        custom float graph:variable:BlendWeight
+        custom string graph:variable:MoveKey = "D"
+        rel omniGraphs = </World/ActionGraph>
+        double3 xformOp:translate = (150, 0, 0)
+
+        over "Root"
+        {
+            over "Biped_Demo"
+            {
+                float[] blendShapeWeights = []
+                custom uint64 Character = 2642344542032
+                quatf[] rotations = [(1.0000001, 0, 0, 0), (0.99791765, 0.06424483, -0.00036663268, -0.0057288795), (0.53162956, 0.4836406, 0.514021, 0.46823516), (0.9999629, -0.0047809794, -0.00188638, 0.0069224415), (-0.68276775, 0.14289492, 0.024351249, 0.7161119), (0.9999619, 1.2902303e-8, 1.12596696e-10, 0.008726535), (1.0000001, 9.899434e-19, -1.129009e-18, -1.2382035e-18), (1.0000001, -5.498728e-34, 2.0745328e-18, -6.1910173e-19), (-0.4659797, 0.5373235, -0.49155617, 0.50251293), (0.99987936, 0.0039110403, -0.00019213237, 0.015038499), (-0.6819087, 0.062278263, 0.035572395, 0.72791237), (0.99996203, -3.0897543e-19, 1.4303994e-17, 0.008726536), (1.0000001, -9.930404e-19, -3.0955086e-19, 2.476407e-18), (1.0000001, -4.7107477e-18, 6.206502e-19, 7.4168333e-19), (0.010356814, 0.7079813, 0.7060833, -0.010079039), (0.9996882, -0.00038717664, -0.024822962, 0.0026853185), (0.9996882, -0.00038718025, -0.024822986, 0.0026850034), (0.9956336, -0.00020210427, -0.09330887, 0.0027054006), (0.98505384, -5.91363e-19, 0.17224751, -1.9374638e-18), (0.99956834, -0.020576509, -0.018450087, -0.009973097), (0.99872, -0.029715601, -0.026541999, -0.031165216), (0.66596925, 0.19881026, -0.04892921, 0.71733236), (0.76314265, 0.08819103, 0.09247411, 0.63347024), (0.9922091, 0.008821161, 0.12251054, 0.020853963), (0.98299223, 0.09929175, 0.021645537, -0.15296735), (-0.11284482, 0.8713236, 0.20961003, -0.4290981), (0.9271635, -0.1461952, 0.34398052, 0.025932645), (0.9451997, -0.13671286, 0.29619882, -0.013179602), (1.0000001, -2.476407e-18, -3.9721614e-18, -9.868464e-19), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9540156, -0.038762905, 0.29551026, -0.032024376), (0.8727749, -0.03377659, 0.4862131, -0.026836995), (0.7500684, 0.01900184, 0.65109205, -0.11452448), (0.99939096, -0.0348995, -1.5982335e-17, 1.7109582e-19), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.90926135, 0.0071853725, 0.41598055, 0.0123538), (0.6187296, -0.012067494, 0.7820904, -0.07322998), (0.95255053, 0.0073620984, 0.30413377, -0.009793326), (1.0000001, -5.9458545e-18, -3.9597736e-18, -1.9860807e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.8937392, 0.05784266, 0.4435997, 0.033226665), (0.73567516, -0.001319881, 0.67727786, 0.008670356), (0.7274863, -0.011241221, 0.68597025, -0.009079687), (1.0000001, 4.952814e-18, 2.7005766e-17, -1.4864636e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8492899, -0.0022790348, 0.52530605, 0.05248826), (0.7561591, 0.007912264, 0.64912325, 0.08246221), (0.7432294, -0.013017325, 0.66426426, 0.07870079), (1.0000001, 3.9721614e-18, -1.6421681e-17, -2.7277641e-18), (1.0000001, 0, -2.9667333e-18, 3.9690645e-18), (1.0000001, -1.9860807e-18, 4.965202e-19, 2.0756941e-18), (0.07088175, 0.7087759, 0.6649226, -0.22470123), (0.7501979, 0.03418816, 0.1487007, 0.64336824), (0.9967314, 0.06931677, 0.0041813445, 0.04128263), (0.98821247, 0.09466724, -0.056500547, -0.10621743), (-0.36060145, 0.7966654, 0.19984104, -0.44198957), (0.9307757, -0.14661562, 0.33392593, 0.025577512), (0.96847695, -0.12943092, 0.20839724, -0.04325358), (1.0000001, 1.387779e-17, 1.9823643e-17, 5.9458545e-18), (0.5727022, 0.81639755, 0.062039424, -0.040725738), (0.9675561, -0.017956078, 0.24393508, 0.06331427), (0.6735353, -0.051387593, 0.73234713, -0.085892275), (0.78066945, 0.018784983, 0.61541045, -0.10711), (0.99939096, -0.0348995, -2.8410507e-18, 8.548254e-18), (0.6494288, 0.7598795, 0.01460949, -0.024746865), (0.91208994, 0.007640902, 0.40970975, 0.013104484), (0.8475902, -0.010269746, 0.528678, -0.04455654), (0.7802221, 0.013993657, 0.62372255, -0.045036092), (1.0000001, 1.4901163e-8, -6.438785e-20, 5.823272e-18), (0.7178843, 0.6950276, -0.022385681, 0.03283095), (0.88989973, 0.005810094, 0.45089257, -0.06885416), (0.6958946, -0.0013667007, 0.71808577, 0.009053528), (0.7592892, -0.010415719, 0.6505933, -0.010012631), (1.0000001, -7.919547e-18, -1.31624304e-17, -8.434649e-18), (0.70849913, 0.70129025, -0.02777619, 0.073822305), (0.8573675, -0.09661134, 0.49085355, -0.121038355), (0.7864167, 0.008886824, 0.6126124, 0.07858767), (0.77420145, -0.013744568, 0.628372, 0.074646726), (1.0000001, 4.952814e-18, -2.7324096e-18, 5.4555283e-18), (1.0000001, 6.598474e-33, 7.441609e-18, 3.0877662e-19), (1.0000001, -1.9860807e-18, 1.9860807e-18, -3.654868e-18)]
+                float3[] translations = [(0, 0, 0), (2.4764067e-17, 95.60929, 1.5849003e-16), (-10.9802, -2.9857564, -0.3240227), (-40.555355, 0.0022127093, -0.00012093125), (-44.377678, -0.00018623452, -0.000047130623), (-12.8396015, -5.196396, 0.0000041871835), (-22.188847, 0.000004195402, -0.00002083283), (-20.277695, 3.284048e-7, -0.000027203077), (10.980233, -2.9857554, -0.32402137), (40.555374, -0.020739488, -0.0013309395), (44.377655, 0.0002586901, 0.000013561036), (12.839607, 5.1963916, -9.70341e-8), (22.188831, 0.0000018184098, 0.0000074586733), (20.27771, 0.0000014822796, 0.000013763244), (-3.4931406e-7, 7.1649265, -0.03027128), (7.6855125, 0.000001567497, -0.0010594404), (7.425258, 4.3651312e-8, 3.302851e-7), (7.4252443, 8.8016407e-7, -3.737047e-8), (21.118437, 1.4743762e-13, -1.0168732e-15), (9.46639, 3.7847917e-7, -0.000060031925), (9.4665985, -1.6183063e-7, 0.0000063621487), (20.167353, 2.0642, -6.6077642), (18.504387, 0.000009620075, 0.0000010071369), (25.945269, -0.0011403976, -0.00081671047), (24.61597, 0.00002705196, 0.00006979582), (4.556068, 2.2611096, -1.3579592), (4.1626434, 0.000007951364, -0.000002545647), (4.698605, 0.0000053309204, 8.01851e-7), (3.2958682, -4.2889954e-14, 1.54292e-13), (2.0390744, 0.99647707, -2.250915), (8.204935, 0.0000013973489, 8.3410833e-7), (4.722095, 0.0000011260432, 0.0000035247965), (3.566355, -0.0000017568475, -0.0000032623548), (3.3892083, -1.31939815e-14, -1.7053026e-13), (1.7855899, 0.556005, -0.863907), (8.782155, 1.9817794e-7, -0.0000013131979), (5.1402926, -9.2438864e-7, 0.0000032006756), (3.6478612, -5.617223e-7, -0.0000017227081), (3.7557986, -1.314504e-13, -1.9895197e-13), (1.6597939, 0.36503005, 0.6625385), (8.194731, 1.786925e-7, -0.0000035128423), (4.623648, 1.9253139e-7, 0.000017199329), (3.1222663, -0.0000012871155, -0.0000140665825), (4.354937, -1.4654944e-14, -1.4109167e-13), (1.2460148, 0.39649308, 2.6250029), (7.892784, -0.28027472, 0.0047127353), (3.7906194, -2.7792407e-7, -0.0000032824837), (2.5108502, -7.654892e-7, -0.0000043853743), (2.8535109, -4.409194e-14, 8.272929e-14), (12.307983, 8.554349e-8, -9.4983e-7), (12.972641, -4.511657e-8, 9.526065e-7), (20.167837, -2.0641963, -6.6078377), (-18.504374, -0.0002099711, -0.0000060251787), (-25.945644, 0.00074752164, 0.0011672203), (-24.61605, -0.00001982949, -0.000113404705), (-4.555921, -2.260995, 1.3580298), (-4.1627393, 0.00011099801, 0.0003391128), (-4.698551, 0.000029436507, -0.000114775205), (-3.2954993, -0.000025984991, -0.00008808277), (-2.0387678, -0.99614733, 2.2510743), (-8.205302, -0.0001052173, 0.00040099074), (-4.7218566, 0.00005206978, -0.00032820474), (-3.5663002, 0.00002506347, 0.000007737011), (-3.3892043, -0.000016954276, 0.00003278386), (-1.7852926, -0.5557352, 0.8640568), (-8.782382, -0.00009559245, 0.00013482662), (-5.1401286, 0.000041267504, -0.00011531047), (-3.64788, 0.0000014598781, 0.000052705258), (-3.7558215, -0.0000034813615, 0.000018702085), (-1.6596663, -0.36485922, -0.6624691), (-8.194411, 0.0001560868, -0.0003646887), (-4.6238856, -0.00006862445, 0.000332682), (-3.1222181, 0.000010649766, 0.000011766351), (-4.35496, -0.0000090187295, -0.000033554123), (-1.2455893, -0.39606014, -2.6247895), (-7.893255, 0.28013942, -0.004383603), (-3.7903745, 0.00006405775, -0.0001543369), (-2.510901, -0.000010461763, 0.0000080004875), (-2.8534305, 0.000010552463, 0.000019014433), (-12.308022, -0.000052735864, -0.000025980124), (-12.972828, -0.00013671229, 0.000004271456)]
+            }
+        }
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

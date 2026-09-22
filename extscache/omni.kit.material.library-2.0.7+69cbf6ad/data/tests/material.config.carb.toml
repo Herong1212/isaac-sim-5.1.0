@@ -1,0 +1,9 @@
+[tests]
+paths = [
+ "C:/some/project/materials",
+ "omniverse://another/project/materials",
+ "/my/own/materials",
+]
+string = "coffee"
+float = 24.0
+bool = true

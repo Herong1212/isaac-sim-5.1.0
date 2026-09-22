@@ -1,0 +1,66 @@
+{
+    "OgnOnFrame": {
+        "description": [
+            "Triggers when there is a new frame available for the given viewport. Note that the graph will",
+            "run asynchronously to the new frame event"
+        ],
+        "version": 2,
+        "uiName": "On Frame",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "renderProduct": {
+                "type": "token",
+                "description": "Name of the render product, or empty for the default render product",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "interval": {
+                "type": "uint",
+                "description": "Frame interval between executions",
+                "default": 1
+            },
+            "maxExecs": {
+                "type": "uint",
+                "description": "Number of frames triggered before stopping. If 0, continue indefinitely.",
+                "default": 0
+            },
+            "run": {
+                "type": "bool",
+                "description": "Run"
+            },
+            "rtSubframes": {
+                "type": "uint64",
+                "description": ["Determines how many subframes to render in RealTime render mode on each trigger",
+                                "to reduce artifacts caused by sudden scene changes."],
+                "default": 1
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output Execution"
+            },
+            "frameNumber": {
+                "type": "int",
+                "description": "Deprecated, unused"
+            },
+            "execCounts": {
+                "type": "int",
+                "description": "The number of times the trigger has executed."
+            },
+            "referenceTimeNumerator": {
+                "type": "int64",
+                "description": "Reference time represented as a rational number : numerator"
+            },
+            "referenceTimeDenominator": {
+                "type": "uint64",
+                "description": "Reference time represented as a rational number : denominator"
+            }
+        }
+    }
+}

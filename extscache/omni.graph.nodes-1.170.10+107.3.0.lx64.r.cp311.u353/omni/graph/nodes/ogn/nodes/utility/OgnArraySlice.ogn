@@ -1,0 +1,236 @@
+{
+    "ArraySlice": {
+        "version": 1,
+        "description": [
+            "Returns a section of the input \"Array\" between the index values of \"Start Index\" and \"End Index\"",
+            "(or the end of \"Array\" if the input \"Use Length\" is true). The index values will be truncated to be",
+            "within the range of the input array. If \"Start Index\" is greater than or equal to \"End Index\" then an",
+            "empty array will be outputted. Note that the element at \"End Index\" (assuming said index is not greater",
+            "than or equal to the input \"Array\" length) will not be included in the final result."
+        ],
+        "uiName": "Get Array Slice",
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "The original array, before the slicing operation is applied.",
+                "uiName": "Array"
+            },
+            "start": {
+                "type": "int",
+                "description": [
+                    "The start index into the input array. If this value is greater than \"End Index\" an empty array",
+                    "will be returned. A negative value indexes from the end of the array. Values less than",
+                    "-arrayLength will be treated as 0, while values greater than arrayLength will be treated as",
+                    "arrayLength."
+                ],
+                "uiName": "Start Index"
+            },
+            "useLength": {
+                "type": "bool",
+                "description": [
+                    "If true, use the length of the array as the value for the \"End Index\" rather than the actual",
+                    "value stored on the attribute. If false, simply use the actual value stored on the \"End Index\"",
+                    "attribute."
+                ],
+                "default": true,
+                "uiName": "Use Length"
+            },
+            "end": {
+                "type": "int",
+                "description": [
+                    "The end index into the input array. If this value is less than or equal to \"Start Index\" an",
+                    "empty array will be returned. A negative value indexes from the end of the array. Values less",
+                    "than -arrayLength will be treated as 0, while values greater than arrayLength will be treated as",
+                    "arrayLength."
+                ],
+                "uiName": "End Index"
+            }
+        },
+        "outputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "A new array containing a subsection of the specified input \"Array\".",
+                "uiName": "Array"
+            }
+        },
+        "tests": [
+            {
+                "inputs:array": {"type": "bool[]", "value": [true, false, true]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:array": {"type": "double[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": -2,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "double[]", "value": [4, 5]}
+            },
+            {
+                "inputs:array": {"type": "float[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": 1,
+                "inputs:end": -1,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "float[]", "value": [2, 3, 4]}
+            },
+            {
+                "inputs:array": {"type": "half[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": 1,
+                "inputs:end": 3,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "half[]", "value": [2, 3]}
+            },
+            {
+                "inputs:array": {"type": "int[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": 3,
+                "inputs:end": 1,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "int[]", "value": []}
+            },
+            {
+                "inputs:array": {"type": "int64[]", "value": []},
+                "inputs:useLength": true,
+                "outputs:array": {"type": "int64[]", "value": []}
+            },
+            {
+                "inputs:array": {"type": "string", "value": "Test String"},
+                "inputs:start": 5,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "string", "value": "String"}
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["Foo", "Bar", "Rar", "Car", "Far"]},
+                "inputs:start": -3,
+                "inputs:end": 3,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "token[]", "value": ["Rar"]}
+            },
+            {
+                "inputs:array": {"type": "uchar[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": -10,
+                "inputs:end": 10,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "uchar[]", "value": [1, 2, 3, 4, 5]}
+            },
+            {
+                "inputs:array": {"type": "uint[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": 1,
+                "inputs:end": 3,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "uint[]", "value": [2, 3]}
+            },
+            {
+                "inputs:array": {"type": "uint64[]", "value": [1, 2, 3, 4, 5]},
+                "inputs:start": 1,
+                "inputs:end": 3,
+                "inputs:useLength": false,
+                "outputs:array": {"type": "uint64[]", "value": [2, 3]}
+            },
+            {
+                "inputs:array": {"type": "double[2][]", "value": [[1, 1], [2, 2], [3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "double[2][]", "value": [[2, 2], [3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "double[3][]", "value": [[1, 1, 1], [2, 2, 2], [3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "double[3][]", "value": [[2, 2, 2], [3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "double[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "double[4][]", "value": [[2, 2, 2, 2], [3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "matrixd[2][]", "value": [[2, 2, 2, 2], [3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[3][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2], [3, 3, 3, 3, 3, 3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "matrixd[3][]", "value": [
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2], [3, 3, 3, 3, 3, 3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "matrixd[4][]", "value": [
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "float[2][]", "value": [[1, 1], [2, 2], [3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "float[2][]", "value": [[2, 2], [3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "float[3][]", "value": [[1, 1, 1], [2, 2, 2], [3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "float[3][]", "value": [[2, 2, 2], [3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "float[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "float[4][]", "value": [[2, 2, 2, 2], [3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "half[2][]", "value": [[1, 1], [2, 2], [3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "half[2][]", "value": [[2, 2], [3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "half[3][]", "value": [[1, 1, 1], [2, 2, 2], [3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "half[3][]", "value": [[2, 2, 2], [3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "half[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "half[4][]", "value": [[2, 2, 2, 2], [3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "int[2][]", "value": [[1, 1], [2, 2], [3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "int[2][]", "value": [[2, 2], [3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "int[3][]", "value": [[1, 1, 1], [2, 2, 2], [3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "int[3][]", "value": [[2, 2, 2], [3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "int[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "int[4][]", "value": [[2, 2, 2, 2], [3, 3, 3, 3]]}
+            },
+            {
+                "inputs:array": {"type": "pointd[3][]", "value": [[1, 1, 1], [2, 2, 2], [3, 3, 3]]},
+                "inputs:start": 1,
+                "inputs:useLength": true,
+                "outputs:array": {"type": "pointd[3][]", "value": [[2, 2, 2], [3, 3, 3]]}
+            }
+        ]
+    }
+}

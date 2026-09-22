@@ -1,0 +1,16 @@
+mdl 1.6;
+
+import ::df::*;
+import ::math::*;
+import ::tex::*;
+import ::state::*;
+import ..::subfolder2::some_functions::get_corn_flower_blue;
+
+export material main(
+    float scale = 1.0f
+) = material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf(
+            tint: subfolder2::some_functions::get_corn_flower_blue(scale))
+    )
+);

@@ -1,0 +1,58 @@
+{
+    "FindTarget": {
+        "version": 1,
+        "description": [
+            "Returns the index of the first occurrence of a target, or -1 if not found."
+        ],
+        "uiName": "Find Target",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "searchTarget": {
+                "type": "target",
+                "description": "The target to search for."
+            }
+        },
+        "outputs": {
+            "index": {
+                "type": "int",
+                "description": "The index of the first occurrence of \"searchTarget\", or -1 if not found",
+                "uiName": "Index"
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": ["/A", "/B"],
+                "inputs:searchTarget": "/A",
+                "outputs:index": 0
+            },
+            {
+                "inputs:targets": ["/A", "/B"],
+                "inputs:searchTarget": "/B",
+                "outputs:index": 1
+            },
+            {
+                "inputs:targets": ["/A", "/B"],
+                "inputs:searchTarget": [],
+                "outputs:index": -1
+            },
+            {
+                "inputs:targets": [],
+                "inputs:searchTarget": "/C",
+                "outputs:index": -1
+            },
+            {
+                "inputs:targets": ["/A", "/B"],
+                "inputs:searchTarget": "/C",
+                "outputs:index": -1
+            }
+        ]
+    }
+}

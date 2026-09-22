@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.sequencer.usd-108.0.2%2B107.2.0.u353.zip"
+
+    [package.target]
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.kit]
+            0 = "107.2.0"
+
+    [package.publish]
+        kitVersion = "107.2.0+feature.184551.88dd4d99.gl"
+        date = 1747890319
+        buildNumber = "102.0.0+master.131.1274ab5f.gl"
+        repoName = "kit-sequencer"
+        signed = 1

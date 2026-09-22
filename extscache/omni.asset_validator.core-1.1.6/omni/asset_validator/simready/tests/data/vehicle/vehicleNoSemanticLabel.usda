@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+    subLayers = [
+        @./vehicle.usda@,
+    ]
+
+    """
+    This USD presents a simready vehicle with prims have no semantic labels
+    """
+)
+
+over "vehicle"
+{
+    over "collections"
+    {
+        def Scope "other" (
+            prepend apiSchemas = ["CollectionAPI:other"]
+        )
+        {
+            uniform token collection:other:expansionRule = "expandPrims"
+            rel collection:other:includes = </vehicle/Geometry/other>
+            token omni:simready:vehicle = "other"
+        }
+    }
+
+    over "Geometry"
+    {
+        def Xform "other"
+        {
+            def Cube "other"
+            {
+            }
+        }
+    }
+}

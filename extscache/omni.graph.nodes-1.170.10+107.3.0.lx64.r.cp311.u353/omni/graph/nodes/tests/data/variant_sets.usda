@@ -1,0 +1,91 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (500, 500, 500)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Cube "InputPrim" (
+        apiSchemas = ["MaterialBindingAPI"]
+        variants = {
+            string color = "default_color"
+            string material = "blueMtl"
+            string size = "default_size"
+        }
+        prepend variantSets = ["color", "size", "material"]
+    )
+    {
+        variantSet "color" = {
+            "blue" {
+
+            }
+            "green" {
+
+            }
+            "red" {
+
+            }
+        }
+        variantSet "size" = {
+            "large" {
+
+            }
+            "medium" {
+
+            }
+            "small" {
+
+            }
+        }
+        variantSet "material" = {
+            "redMtl" {
+                prepend rel material:binding = </World/Looks/RedMtl>
+            }
+            "greenMtl" {
+                rel material:binding = </World/Looks/GreenMtl>
+            }
+            "blueMtl" {
+                rel material:binding = </World/Looks/blueMtl>
+            }
+        }
+    }
+
+    def Scope "Looks"
+    {
+        def Material "RedMtl"
+        {
+        }
+
+        def Material "GreenMtl"
+        {
+        }
+
+        def Material "BlueMtl"
+        {
+        }
+    }
+}

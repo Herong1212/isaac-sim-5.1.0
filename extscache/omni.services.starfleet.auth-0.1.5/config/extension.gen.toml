@@ -1,0 +1,7 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.starfleet.auth-0.1.5.zip"
+
+    [package.publish]
+        date = 1678385934
+        kitVersion = "105.0+master.103480.0029c5ae.tc"

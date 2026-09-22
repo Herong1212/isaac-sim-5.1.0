@@ -1,0 +1,48 @@
+[package]
+title = "MDL Python Bindings"
+version = "56.0.3"
+category = "Bindings"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "A SWIG generated Python binding for the native MDL SDK."
+keywords = ["kit", "MDL", "binding", "python"]
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+support_level = "Core"
+
+# Main module for the Python interface of the MDL SDK
+[[python.module]]
+name = "omni.mdl.pymdlsdk"
+
+[[python.module]]
+name = "omni.mdl.extensions"
+
+[[python.module]]
+name = "omni.mdl.pymdl"
+
+# Other extensions that need to load in order for this one to work
+[dependencies]
+# "omni.mdl.neuraylib" = {} # not as a build dependency but without it can not be used
+"omni.kit.pip_archive" = {} # to get numpy
+"omni.client" = {}
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]
+# sphinx is failing for the genrerated bindings. disable it for now.
+python_api_hidden = true
+
+[[test]]
+dependencies = [
+    "omni.mdl.neuraylib"
+]
+stdoutFailPatterns.exclude = [
+    "*C120 could not find module '::NOT_EXISTING'*",
+]

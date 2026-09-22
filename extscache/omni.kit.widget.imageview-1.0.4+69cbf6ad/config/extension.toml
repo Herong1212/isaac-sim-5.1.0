@@ -1,0 +1,23 @@
+[package]
+version = "1.0.4"
+category = "Internal"
+title = "ImageView Widget"
+description="The widget that allows to view image in a canvas."
+changelog = "docs/CHANGELOG.md"
+support_level = "Sample"
+
+[dependencies]
+"omni.ui" = {}
+
+[[python.module]]
+name = "omni.kit.widget.imageview"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+]

@@ -1,0 +1,81 @@
+[package]
+version = "0.1.2"
+title = "Video Encoding Extension"
+category = "Internal"
+support_level = "Sample"
+
+[dependencies]
+"omni.assets.plugins" = {} # required for carb.imaging
+
+[[python.module]]
+name = "video_encoding"
+
+[[native.plugin]]
+# Native plugin from RTX build
+path = "bin/deps/omni.videoencoding.plugin"
+
+[settings]
+# Video encoding bitrate.
+exts."omni.videoencoding".bitrate = 16777216
+
+# Video encoding framerate. Can be overridden by setting the framerate argument of start_encoding()
+exts."omni.videoencoding".framerate = 60.0
+
+# I-Frame interval (every nth frame is an I-Frame)
+exts."omni.videoencoding".iframeinterval = 60
+
+# Largest expected frame width
+exts."omni.videoencoding".maxEncodeWidth = 4096
+
+# Largest expected frame height
+exts."omni.videoencoding".maxEncodeHeight = 4096
+
+# Video encoding preset. Choices are:
+# "PRESET_DEFAULT"
+# "PRESET_HP"
+# "PRESET_HQ"
+# "PRESET_BD"
+# "PRESET_LOW_LATENCY_DEFAULT"
+# "PRESET_LOW_LATENCY_HQ"
+# "PRESET_LOW_LATENCY_HP"
+# "PRESET_LOSSLESS_DEFAULT"
+# "PRESET_LOSSLESS_HP"
+exts."omni.videoencoding".preset = "PRESET_DEFAULT"
+
+# Video encoding profile. Choices are:
+# "H264_PROFILE_BASELINE"
+# "H264_PROFILE_MAIN"
+# "H264_PROFILE_HIGH"
+# "H264_PROFILE_HIGH_444"
+# "H264_PROFILE_STEREO"
+# "H264_PROFILE_SVC_TEMPORAL_SCALABILITY"
+# "H264_PROFILE_PROGRESSIVE_HIGH"
+# "H264_PROFILE_CONSTRAINED_HIGH"
+# "HEVC_PROFILE_MAIN"
+# "HEVC_PROFILE_MAIN10"
+# "HEVC_PROFILE_FREXT"
+exts."omni.videoencoding".profile = "H264_PROFILE_HIGH"
+
+# Rate control mode. Choices are:
+# "RC_CONSTQP"
+# "RC_VBR"
+# "RC_CBR"
+# "RC_CBR_LOWDELAY_HQ"
+# "RC_CBR_HQ"
+# "RC_VBR_HQ"
+exts."omni.videoencoding".rcMode = "RC_VBR"
+
+# Rate control target quality. Range: 0-51, with 0-automatic
+exts."omni.videoencoding".rcTargetQuality = 0
+
+# Specifies the output range of the luma and chroma samples(as defined in Annex E of the ITU-T Specification).
+exts."omni.videoencoding".vui.videoFullRangeFlag = false
+
+[[test]]
+dependencies = [
+]
+args = [
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]

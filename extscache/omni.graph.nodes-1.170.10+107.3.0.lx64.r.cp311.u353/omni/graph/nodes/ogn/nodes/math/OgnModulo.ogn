@@ -1,0 +1,50 @@
+{
+    "Modulo": {
+        "version": 1,
+        "description": [
+            "Computes the modulo of integer inputs (\"A\" % \"B\"), which is the remainder of \"A\" / \"B\".",
+            "If \"B\" is zero, then the final result is zero. Note that truncated division is utilized to determine",
+            "the remainder behind-the-hood, i.e. \"Result\" = \"A\" - \"B\" * trunc(\"A\" / \"B\"), where the trunc",
+            "operation simply says to round the resultant of \"A\" / \"B\" towards zero (i.e. down if positive, and",
+            "up if negative). As a consequence of this, if \"A\" > 0 and \"B\" < 0, then \"Result\" > 0, but if",
+            "\"A\" < 0 and \"B\" > 0, then \"Result\" < 0."
+        ],
+        "uiName": "Modulo",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["integral_scalers"],
+                "description": "The dividend of the (\"A\" % \"B\") operation, i.e. \"A\".",
+                "uiName": "A"
+            },
+            "b": {
+                "type":["integral_scalers"],
+                "description": [
+                    "The divisor of the (\"A\" % \"B\") operation, i.e. \"B\". If \"B\" is zero, then the final result",
+                    "will be zero."
+                ],
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["integral_scalers"],
+                "description": [
+                    "Modulo (\"A\" % \"B\"), i.e. the remainder of the division operation \"A\" / \"B\"."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "uint64", "value": 4}, "inputs:b": {"type": "uint64", "value": 3},
+                "outputs:result": {"type": "uint64", "value": 1}
+            },
+            {
+                "inputs:a": {"type": "int", "value": 4}, "inputs:b": {"type": "int", "value": 0},
+                "outputs:result": {"type": "int", "value": 0}
+            }
+        ]
+    }
+}

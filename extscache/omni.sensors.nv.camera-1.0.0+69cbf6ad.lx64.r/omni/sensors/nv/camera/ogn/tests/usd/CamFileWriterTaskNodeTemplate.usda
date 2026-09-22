@@ -1,0 +1,53 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamFileWriterTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamFileWriterTaskNode" (
+        docs="""Writes a camera raw file"""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamFileWriterTaskNode"
+        int node:typeVersion = 1
+
+        # 10 attributes
+        custom token inputs:binHeader = "/tmp/headertest.raw" (
+            docs="""A binary header which shall be added to the output file"""
+        )
+        custom bool inputs:eachFrameOneFile = false (
+            docs="""indicates whether all frames shall be stored as a separate file"""
+        )
+        custom token inputs:filename = "/tmp/test.raw" (
+            docs="""File path to the video raw file"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom bool inputs:onlyLastFrame = false (
+            docs="""Save only the most recent frame. Only works when combined with the 'eachFrameOneFile' option."""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom bool inputs:useHeader = false (
+            docs="""indicates whether an header shall be added to the file"""
+        )
+    }
+}

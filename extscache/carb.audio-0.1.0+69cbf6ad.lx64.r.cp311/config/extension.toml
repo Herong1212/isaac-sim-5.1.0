@@ -1,0 +1,39 @@
+[package]
+title = "Core Audio"
+version = "0.1.0"
+category = "Audio"
+description = "A low level audio plugin for Omniverse applications"
+readme="docs/CarbAudioWrapper.md"
+
+repository = ""
+detailedDescription = """ This is a low level audio plugin that is used by other Omniverse extensions.
+This extension does not have a complete python API; users of this plugin must
+integrate it through its C++ API.
+
+The python API of this extension is intended to be used to provide additional
+functionality to users of this plugin, such as omni.usd.audio.
+"""
+authors = ["NVIDIA"]
+keywords = ["audio", "core", "playback", "capture"]
+support_level = "Core"
+
+[documentation]
+pages = [
+    "docs/CarbAudioWrapper.md",
+    "docs/Examples.md",
+    "docs/Settings.md",
+    "docs/CHANGELOG.md",
+]
+
+[dependencies]
+"omni.assets.plugins" = {} # for carb.assets.plugin
+
+[[python.module]]
+path = "."
+name = ""
+
+[[native.plugin]]
+path = "bin/carb.audio-forge.plugin"
+
+[[test]]
+waiver = "Tested in Carbonite"

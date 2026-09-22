@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamEmbeddedLinesSlicerTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamEmbeddedLinesSlicerTaskNode" (
+        docs="""Slices the embedded Lines to the camera image (intended for file output or SiL interface scenarios)"""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamEmbeddedLinesSlicerTaskNode"
+        int node:typeVersion = 1
+
+        # 7 attributes
+        custom uint64 inputs:embeddedSrc = 0 (
+            docs="""Source Buffer Embedded Lines"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom token inputs:resultingImageLocation = "GPU" (
+            docs="""location of the resulting image: GPU or HOST (default: GPU)"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

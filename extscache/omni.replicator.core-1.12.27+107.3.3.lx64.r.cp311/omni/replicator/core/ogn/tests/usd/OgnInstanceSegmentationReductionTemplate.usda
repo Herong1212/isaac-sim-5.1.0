@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnInstanceSegmentationReduction.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_InstanceSegmentationReduction" (
+        docs="""This node outputs reduced instance segmentation."""
+    )
+    {
+        token node:type = "omni.replicator.core.InstanceSegmentationReduction"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom bool inputs:colorize = false (
+            docs="""If true, convert instance IDs into colors."""
+        )
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 inputs:filteredSemanticLabelTokenCudaPtr = 0 (
+            docs="""Array containing filtered semantics of numSemantics uint64_t representing the semantic label of the semantic prim"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom uint64 inputs:instanceMapSDCudaPtr = 0 (
+            docs="""cuda uint16_t buffer pointer of size numInstances containing the instance parent semantic index"""
+        )
+        custom uint64 inputs:instanceMappingInfoSDPtr = 0 (
+            docs="""uint buffer pointer containing the following information : [numInstances, minInstanceId, numSemantics, minSemanticId, numProtoSemantic]"""
+        )
+        custom uint64 inputs:instancePrimTokenSDCudaPtr = 0 (
+            docs="""cuda uint64_t buffer pointer of size numInstances containing the instance path token"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom uint64 inputs:semanticMapSDCudaPtr = 0 (
+            docs="""cuda uint16_t buffer pointer of size numSemantics containing the semantic parent semantic index"""
+        )
+
+        # 3 attributes
+        custom uint outputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 outputs:instanceSegmentationReductionSDCudaPtr (
+            docs="""Cuda buffer containing the reduced instance ids of the viewport."""
+        )
+        custom uint64 outputs:uniqueInstanceSegmentationIdsSDCudaPtr (
+            docs="""Cuda buffer containing the unique instance ids of the viewport."""
+        )
+    }
+}

@@ -1,0 +1,60 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCountdown.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_action_Countdown" (
+        docs="""This type of node will activate when 'Exec In' is first set and will remain active for a total of 'Duration' ticks, where a 'tick' is an execution of the node. Every 'Period' ticks the output 'Tick' will activate and after the final tick 'Finished' will activate.
+For example if 'Duration' is set to 10 and 'Period' is set to 3 then after activation the 'Tick' signal will activate after 3, 6, and 9 executions, and 'Finished' will activate after the 10th.
+If 'Exec In' is activated again before the current countdown has finished, the countdown will be reset to the start.
+The first execution is considered number 0 and does not generate an activation signal."""
+    )
+    {
+        token node:type = "omni.graph.action.Countdown"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom int inputs:duration = 5 (
+            docs="""The duration of the delay in ticks."""
+        )
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom int inputs:period = 1 (
+            docs="""The period of the pulse in ticks."""
+        )
+
+        # 4 attributes
+        custom float outputs:alpha (
+            docs="""On first execution this is set to 0, indicating that there is no progress on the countdown.
+            For every subsequent execution it is set to the normalized progress of the countdown as a value
+            between 0 and 1 computed as 'Tick Value'/'Duration'. After the countdown is complete it keeps
+            a value of 1 until the next time the countdown is reset by activating 'Exec In'."""
+        )
+        custom uint outputs:finished (
+            docs="""After 'Duration' ticks of this node have completed since 'Exec In' was activated
+            signal the graph that execution can continue downstream."""
+        )
+        custom uint outputs:tick (
+            docs="""Every 'Period' ticks after 'Exec In' has been activated signal the graph
+            that execution can continue downstream."""
+        )
+        custom int outputs:tickValue (
+            docs="""The current tick value, active in the range [1, 'Duration']."""
+        )
+
+        # 1 attribute
+        custom int state:count = -1 (
+            docs="""The number of ticks elapsed. The first tick is 0. A value of -1 means execution has not yet
+            been activated."""
+        )
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "omni.graph.action.OnLoaded": {
+        "description": [
+            "Activates the output on the first update of the graph after it is created or loaded.",
+            "This will run before any other event node, and will only run once after this",
+            "node is created."
+        ],
+        "version": 2,
+        "uiName": "On Loaded",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "inputs": {
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "On first create or load of the graph signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

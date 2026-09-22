@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMotionPath.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_MotionPath" (
+        docs="""Constraint an xformable prim to the given curve  User offer the u value to specify the point on the curve  The output is the transform matrix."""
+    )
+    {
+        token node:type = "omni.genproc.core.MotionPath"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom float3 inputs:aimRotation = (0.0, 0.0, 0.0) (
+            docs="""Pitch, Roll, Yaw"""
+        )
+        custom rel inputs:curveBundle (
+            docs="""Bundle containing curves data"""
+        )
+        custom bool inputs:cycle = true (
+            docs="""If true, the input U value would be cycled between 0.0 and 1.0
+            If false, the input U value would be clamped between 0.0 and 1.0"""
+        )
+        custom int inputs:forwardAxis = 0 (
+            docs="""Object Forward Axis"""
+        )
+        custom float inputs:uValue = 0.0 (
+            docs="""Value from zero to one along curve at which we want to get a point"""
+        )
+        custom int inputs:upAxis = 1 (
+            docs="""Object Up Axis"""
+        )
+        custom rel inputs:worldUpObject (
+            docs="""Bundle containing the world up object xformable prim"""
+        )
+        custom int inputs:worldUpType = 0 (
+            docs="""World Up Type"""
+        )
+        custom float3 inputs:worldUpVector = (0.0, 1.0, 0.0) (
+            docs="""World Up Vector"""
+        )
+
+        # 1 attribute
+        custom matrix4d outputs:transform = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""output World transform"""
+        )
+
+        # 1 attribute
+        custom float state:prevUValue (
+            docs="""Previous uValue value for recompute test"""
+        )
+    }
+}

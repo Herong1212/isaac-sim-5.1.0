@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file AnimCurve.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_anim_curve_core_AnimCurve" (
+        docs="""Evaluates curve animation"""
+    )
+    {
+        token node:type = "omni.anim.curve.core.AnimCurve"
+        int node:typeVersion = 5
+
+        # 4 attributes
+        custom string inputs:IndividualOutputs = "" (
+            docs="""Uses wildcard matching to select curves that are outputed individually."""
+        )
+        custom rel inputs:Prim (
+            docs="""Target prim that is directly animated by node."""
+        )
+        custom timecode inputs:Time = 0.0 (
+            docs="""Time used to evaluate values. Nan value uses global time."""
+        )
+        custom bool inputs:UseGlobalTime = true (
+            docs="""Whether use global time or custom time to evaluate curve values."""
+        )
+
+        # 1 attribute
+        custom rel outputs_AnimFrame (
+            docs="""Evaluated curve value at given time."""
+        )
+    }
+}

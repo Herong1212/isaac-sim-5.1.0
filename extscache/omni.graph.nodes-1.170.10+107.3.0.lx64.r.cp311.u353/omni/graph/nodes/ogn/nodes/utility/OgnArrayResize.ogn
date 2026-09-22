@@ -1,0 +1,188 @@
+{
+    "ArrayResize": {
+        "version": 1,
+        "description": [
+            "Creates a copy of an input array with a new size. If the new size is larger than the input array's",
+            "length, then zero values will be added to the end of the output array. \"New Size\" values less than 0",
+            "will be treated as being equal to 0."
+        ],
+        "uiName": "Resize Array",
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "The array that serves as the starting point for the resized output array.",
+                "uiName": "Array"
+            },
+            "newSize": {
+                "type": "int",
+                "description": [
+                    "The new size of the output array. Negative values are treated as a size of 0, which will",
+                    "create an empty output array."
+                ],
+                "minimum": 0,
+                "uiName": "New Size"
+            }
+        },
+        "outputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "An array computed from the input array with the resizing operation applied.",
+                "uiName": "Array"
+            }
+        },
+        "tests": [
+            {
+                "inputs:array": {"type": "bool[]", "value": [true, true]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "bool[]", "value": [true]}
+            },
+            {
+                "inputs:array": {"type": "double[]", "value": [41, 42]},
+                "inputs:newSize": 0,
+                "outputs:array": {"type": "double[]", "value": []}
+            },
+            {
+                "inputs:array": {"type": "float[]", "value": [41, 42]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "float[]", "value": [41, 42, 0]}
+            },
+            {
+                "inputs:array": {"type": "half[]", "value": [41, 42]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "half[]", "value": [41]}
+            },
+            {
+                "inputs:array": {"type": "int[]", "value": [41, 42]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "int[]", "value": [41]}
+            },
+            {
+                "inputs:array": {"type": "int64[]", "value": []},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "int64[]", "value": [0]}
+            },
+            {
+                "inputs:array": {"type": "string", "value": "TestString"},
+                "inputs:newSize": 4,
+                "outputs:array": {"type": "string", "value": "Test"}
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["Foo", "Bar"]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "token[]", "value": ["Foo", "Bar"]}
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["Foo", "Bar"]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "token[]", "value": ["Foo", "Bar"]}
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["Foo", "Bar"]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "token[]", "value": ["Foo", "Bar", ""]}
+            },
+            {
+                "inputs:array": {"type": "uchar[]", "value": [41, 42]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "uchar[]", "value": [41]}
+            },
+            {
+                "inputs:array": {"type": "uint[]", "value": [41, 42]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "uint[]", "value": [41]}
+            },
+            {
+                "inputs:array": {"type": "uint64[]", "value": [41, 42]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "uint64[]", "value": [41]}
+            },
+            {
+                "inputs:array": {"type": "double[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "double[2][]", "value": [[1, 2], [3, 4], [0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "double[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "double[3][]", "value": [[1, 2, 3]]}
+            },
+            {
+                "inputs:array": {"type": "double[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "double[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2], [0, 0, 0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[3][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]}
+            },
+            {
+                "inputs:array": {"type": "float[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "float[2][]", "value": [[1, 2], [3, 4], [0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "float[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "float[3][]", "value": [[1, 2, 3]]}
+            },
+            {
+                "inputs:array": {"type": "float[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "float[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]}
+            },
+            {
+                "inputs:array": {"type": "half[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "half[2][]", "value": [[1, 2], [3, 4], [0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "half[3][]", "value": []},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "half[3][]", "value": [[0, 0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "half[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "half[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]}
+            },
+            {
+                "inputs:array": {"type": "int[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:newSize": 3,
+                "outputs:array": {"type": "int[2][]", "value": [[1, 2], [3, 4], [0, 0]]}
+            },
+            {
+                "inputs:array": {"type": "int[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "int[3][]", "value": [[1, 2, 3]]}
+            },
+            {
+                "inputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:newSize": 2,
+                "outputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]}
+            },
+            {
+                "inputs:array": {"type": "pointd[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:newSize": 1,
+                "outputs:array": {"type": "pointd[3][]", "value": [[1, 2, 3]]}
+            }
+        ]
+    }
+}

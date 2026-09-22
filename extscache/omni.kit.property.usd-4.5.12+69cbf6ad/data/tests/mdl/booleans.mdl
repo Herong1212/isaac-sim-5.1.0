@@ -1,0 +1,83 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+export bool boolean
+(
+    bool param = true
+)
+{
+    return param;
+}
+
+export bool2 vector_bool2
+(
+    bool2 param = bool2(true, false)
+)
+{
+    return param;
+}
+
+export bool3 vector_bool3
+(
+    bool3 param = bool3(true, false, true)
+)
+{
+    return param;
+}
+
+export bool4 vector_bool4
+(
+    bool4 param = bool4(true, false, true, false)
+)
+{
+    return param;
+}
+
+export bool[4] bool_array
+(
+    bool[4] param = bool[](
+        true,
+        false,
+        true,
+        false)
+)
+{
+    return param;
+}
+
+export bool2[2] bool2_array
+(
+    bool2[2] param = bool2[](
+        bool2(true, false),
+        bool2(false, true))
+)
+{
+    return param;
+}
+
+export bool3[2] bool3_array
+(
+    bool3[2] param = bool3[](
+        bool3(true, false, true),
+        bool3(false, true, false))
+)
+{
+    return param;
+}
+
+export bool4[2] bool4_array
+(
+    bool4[2] param = bool4[](
+        bool4(true, false, true, false),
+        bool4(false, true, false, true))
+)
+{
+    return param;
+}

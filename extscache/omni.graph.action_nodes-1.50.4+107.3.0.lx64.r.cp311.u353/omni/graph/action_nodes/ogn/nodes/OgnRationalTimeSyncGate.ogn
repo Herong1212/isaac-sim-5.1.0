@@ -1,0 +1,57 @@
+{
+    "omni.graph.action.RationalTimeSyncGate": {
+        "version": 2,
+        "description": [
+            "Activate the downstream graphs after all of the input signals have been triggered with the same",
+            "synchronization value. An internal count is maintained that resets whenever a new synchronization value",
+            "is encountered. If the count reaches a number equal to the number of 'Execute In' inputs then the",
+            "'Execute Out' activation signals to the downstream graph that it is ready to be executed.\n",
+            "The synchronization value is expressed as a rational number, conceptually equal to",
+            "'Sync Numerator' / 'Sync Denominator', although a zero denominator is accepted because the division",
+            "is not actually performed. The comparison is made between two rational values by first reducing them",
+            "by their greatest common denominators and then comparing numerator and denominator individually.\n",
+            "This means, for example, that 1/2 and 3/6 will be considered the same, but 1/0 and 2/0 will not since",
+            "they cannot be reduced."
+        ],
+        "uiName": "Rational Sync Gate",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "uiName": "Execute In",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "rationalTimeNumerator": {
+                "type": "int64",
+                "description": "Numerator of the synchronization time.",
+                "uiName": "Sync Numerator"
+            },
+            "rationalTimeDenominator": {
+                "type": "uint64",
+                "description": "Denominator of the synchronization time.",
+                "uiName": "Sync Denominator"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": [
+                    "After all 'Execute In' connections have been activated at the same rational time, signal",
+                    "to the graph that execution can continue downstream."
+                ],
+                "uiName": "Execute Out"
+            },
+            "rationalTimeNumerator": {
+                "type": "int64",
+                "description": "Numerator of the synchronization time, whether 'Execute Out' was activated or not.",
+                "uiName": "Sync Numerator"
+            },
+            "rationalTimeDenominator": {
+                "type": "uint64",
+                "description": "Denominator of the synchronization time, whether 'Execute Out' was activated or not.",
+                "uiName": "Sync Denominator"
+            }
+        }
+    }
+}

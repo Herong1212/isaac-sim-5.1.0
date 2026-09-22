@@ -1,0 +1,72 @@
+{
+    "ReadGamepadState": {
+        "description": [
+            "Reads the current state of the ID-specified gamepad device (i.e. which buttons are being pressed,",
+            "the orientation of the joystick(s), etc.)."
+        ],
+        "version": 1,
+        "uiName": "Read Gamepad State",
+        "categories": ["input:gamepad"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "gamepadId": {
+                "type": "uint",
+                "description": "Gamepad ID number starting from 0. Used to identify a given gamepad device.",
+                "uiName": "Gamepad ID",
+                "default": 0
+            },
+            "gamepadElement": {
+                "type": "token",
+                "description": "The gamepad element whose state is to be checked.",
+                "uiName": "Element",
+                "default": "Left Stick X Axis",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftStickXAxis": "Left Stick X Axis",
+                        "LeftStickYAxis": "Left Stick Y Axis",
+                        "RightStickXAxis": "Right Stick X Axis",
+                        "RightStickYAxis": "Right Stick Y Axis",
+                        "LeftTrigger": "Left Trigger",
+                        "RightTrigger": "Right Trigger",
+                        "FaceButtonBottom": "Face Button Bottom",
+                        "FaceButtonRight": "Face Button Right",
+                        "FaceButtonLeft": "Face Button Left",
+                        "FaceButtonTop": "Face Button Top",
+                        "LeftShoulder": "Left Shoulder",
+                        "RightShoulder": "Right Shoulder",
+                        "SpecialLeft": "Special Left",
+                        "SpecialRight": "Special Right",
+                        "LeftStickButton": "Left Stick Button",
+                        "RightStickButton": "Right Stick Button",
+                        "DpadUp": "D-Pad Up",
+                        "DpadRight": "D-Pad Right",
+                        "DpadDown": "D-Pad Down",
+                        "DpadLeft": "D-Pad Left"
+                    }
+                }
+            },
+            "deadzone": {
+                "type": "float",
+                "description": "Threshold from [0, 1] that the value must pass for it to be registered as input.",
+                "uiName": "Deadzone",
+                "default": 0.1,
+                "minimum": 0.0,
+                "maximum": 1.0
+            }
+        },
+        "outputs": {
+            "isPressed": {
+                "type": "bool",
+                "description": "True if the gamepad element is currently pressed, false otherwise."
+            },
+            "value": {
+                "type": "float",
+                "description": [
+                    "Value denoting how \"much\" the gamepad element is being pressed. Valid ranges are",
+                    "[0, 1] for buttons and [-1, 1] for stick and trigger."
+                ]
+            }
+        }
+    }
+}

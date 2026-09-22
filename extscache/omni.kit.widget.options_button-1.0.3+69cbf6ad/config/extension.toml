@@ -1,0 +1,57 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.0.3"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Option button"
+description="A option button widget includes a popup window to show options."
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "widget", "option"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icons/settings.svg"
+
+category = "Internal"
+support_level = "Core"
+
+# We only depend on testing framework currently:
+[dependencies]
+"omni.ui" = {}
+"omni.kit.widget.options_menu" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.widget.options_button".
+[[python.module]]
+name = "omni.kit.widget.options_button"
+
+[[test]]
+args = [
+   "--/app/window/width=256",
+   "--/app/window/height=256",
+   "--/app/window/dpiScaleOverride=1.0",
+   "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

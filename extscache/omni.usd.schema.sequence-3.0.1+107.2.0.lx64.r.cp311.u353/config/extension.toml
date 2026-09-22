@@ -1,0 +1,36 @@
+[package]
+version = "3.0.1"
+title = "USD sequence schema"
+description = "USD sequence schema"
+repository = ""
+category = "Internal"
+keywords = ["kit", "machinima", "sequencer", "schema"]
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[dependencies]
+"omni.usd.libs" = {}
+
+[[python.module]]
+"name" = "usd.schema.sequence"
+"path"="python"
+
+[[python.module]]
+"name" = "SequenceSchema"
+"path" = "python"
+
+[[native.library]]
+"filter:platform"."windows-x86_64"."path" = "_usd_sequence_schema/bin/${lib_prefix}sequenceSchema${lib_ext}"
+"filter:platform"."linux-x86_64"."path" = "_usd_sequence_schema/lib/${lib_prefix}sequenceSchema${lib_ext}"
+"filter:platform"."linux-aarch64"."path" = "_usd_sequence_schema/lib/${lib_prefix}sequenceSchema${lib_ext}"

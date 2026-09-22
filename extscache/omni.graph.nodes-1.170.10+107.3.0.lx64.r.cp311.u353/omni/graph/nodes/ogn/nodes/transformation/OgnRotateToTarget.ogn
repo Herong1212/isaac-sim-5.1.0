@@ -1,0 +1,80 @@
+{
+    "RotateToTarget": {
+        "version": 2,
+        "description": [
+            "This node smoothly rotates a prim object to match a target prim object given a speed and easing factor. ",
+            "At the end of the maneuver, the source prim will have the rotation as the target prim.\n",
+            "Note: The Prim must have xform:orient in transform stack in order to interpolate rotations"
+            ],
+        "uiName": "Rotate To Target",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write", "threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "stop": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to stop the maneuver.",
+                "uiName": "Stop"
+            },
+            "sourcePrim": {
+                "type": "target",
+                "description": "The source prim to be transformed",
+                "optional": true
+            },
+            "useSourcePath": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'sourcePrimPath' attribute is used, otherwise it will read the connection at the 'sourcePrim' attribute",
+                "deprecated": "Use sourcePrim input with a ToTarget node instead"
+            },
+            "sourcePrimPath": {
+                "type": "path",
+                "description": "The source prim to be transformed, used when 'useSourcePath' is true",
+                "optional": true,
+                "deprecated": "Use sourcePrim input with a ToTarget node instead"
+            },
+            "targetPrim": {
+                "type": "target",
+                "description": "The destination prim. The target's rotation will be matched by the sourcePrim",
+                "optional": true
+            },
+            "useTargetPath": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'targetPrimPath' attribute is used, otherwise it will read the connection at the 'targetPrim' attribute",
+                "deprecated": "Use targetPrim input with a ToTarget node instead"
+            },
+            "targetPrimPath": {
+                "type": "path",
+                "description": "The destination prim. The target's rotation will be matched by the sourcePrim, used when 'useTargetPath' is true",
+                "optional": true,
+                "deprecated": "Use targetPrim input with a ToTarget node instead"
+            },
+            "speed": {
+                "type": "double",
+                "description": "The peak speed of approach (Units / Second)",
+                "minimum": 0.0,
+                "default": 1.0
+            },
+            "exponent": {
+                "type": "float",
+                "description": ["The blend exponent, which is the degree of the ease curve",
+                               " (1 = linear, 2 = quadratic, 3 = cubic, etc). "],
+                "minimum": 1.0,
+                "maximum": 10.0,
+                "default": 2.0
+            }
+        },
+        "outputs": {
+            "finished": {
+                "type": "execution",
+                "description": "When the maneuver is completed, signal to the graph that execution can continue downstream.",
+                "uiName": "Finished"
+            }
+        }
+    }
+}

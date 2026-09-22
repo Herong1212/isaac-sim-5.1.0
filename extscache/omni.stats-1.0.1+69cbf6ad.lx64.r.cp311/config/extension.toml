@@ -1,0 +1,27 @@
+[package]
+version = "1.0.1"
+title = "Statistics"
+category = "Internal"
+description = "Concise overview window accounting for various statistics, including scene complexity, as well as GPU compute and memory utilization."
+keywords = ["statistics", "overview", "utilization"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md"
+]
+
+[[python.module]]
+name = "omni.stats"
+
+[[native.plugin]]
+path = "bin/deps/carb.stats.plugin"
+
+[[test]]
+waiver = "validated in omni.window.stats"

@@ -1,0 +1,91 @@
+{
+    "name": "RepMaterialTest",
+    "nodes": {
+        "a": {
+            "type": "material"
+        },
+        "b": {
+            "type": "blend",
+            "out_type": "Token"
+        },
+        "c": {
+           "type": "diffuse",
+           "name": "base",
+           "out_type": "Token"
+        },
+        "d": {
+            "type": "diffuse",
+            "name": "layer1",
+            "out_type": "Token"
+        },
+        "e": {
+            "type": "perlin_noise_texture"
+        }
+    },
+    "edges": {
+        "1": {
+            "output": {
+                "node": "b",
+                "pin": "out"
+            },
+            "input": {
+                "node": "a",
+                "pin": "surface"
+            }
+        },
+        "2": {
+            "output": {
+                "node": "c",
+                "pin": "out"
+            },
+            "input": {
+                "node": "b",
+                "pin": "base"
+            }
+        },
+        "3": {
+            "output": {
+                "node": "d",
+                "pin": "out"
+            },
+            "input": {
+                "node": "b",
+                "pin": "blend"
+            }
+        },
+        "4": {
+            "input": {
+                "node": "c",
+                "values": {
+                    "diffuse_color": [0.0, 0.0, 1.0]
+                }
+            }
+        },
+        "5": {
+            "input": {
+                "node": "d",
+                "values": {
+                    "diffuse_color": [1.0, 1.0, 0.0]
+                }
+            }
+        },
+        "6": {
+            "output": {
+                "node": "e",
+                "pin": "mono"
+            },
+            "input": {
+                "node": "b",
+                "pin": "weight"
+            }
+        },
+        "7": {
+            "input": {
+                "node": "e",
+                "values": {
+                    "scaling": [10.0, 10.0, 10.0]
+                }
+            }
+        }
+    }
+}

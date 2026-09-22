@@ -1,0 +1,77 @@
+#usda 1.0
+(
+    """
+    SimReady Environment Light asset: fails validation of the material assigned to the Mesh representing a light bulb
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    def Xform "env_light_no_mtl_binding" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb" (
+            """
+            No material binding
+            """
+        )
+        {
+            rel material:binding = None
+            custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        }
+    }
+
+    def Xform "env_light_ups_mtl" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "materials"
+        {
+            over "emission"
+            {
+                token outputs:mdl:displacement.connect = </RootNode/env_light_ups_mtl/materials/emission/emission_preview.outputs:surface>
+                token outputs:mdl:surface.connect = </RootNode/env_light_ups_mtl/materials/emission/emission_preview.outputs:surface>
+                token outputs:mdl:volume.connect = </RootNode/env_light_ups_mtl/materials/emission/emission_preview.outputs:surface>
+                def Shader "emission_preview"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    token outputs:surface
+                }
+            }
+        }
+        over "mesh_light_bulb"
+        {
+            custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        }
+    }
+
+    def Xform "env_light_emission_off" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "materials"
+        {
+            over "emission"
+            {
+                over "emission"
+                {
+                    bool inputs:enable_emission = 0
+                }
+            }
+        }
+        over "mesh_light_bulb"
+        {
+            custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        }
+    }
+
+    def Mesh "behaviors_attr_on_guide_mesh"
+    {
+        uniform token purpose = "guide"
+        custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        point3f[] points = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0), (0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "GetTargetsSize": {
+        "version": 1,
+        "description": [
+            "Returns the size of the target array."
+        ],
+        "uiName": "Get Targets Size",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            }
+        },
+        "outputs": {
+            "size": {
+                "type": "int",
+                "description": "The size of the target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [], "outputs:size": 0
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"], "outputs:size": 3
+            }
+        ]
+    }
+}

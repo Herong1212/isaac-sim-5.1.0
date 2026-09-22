@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    """
+    SimReady Environment Light asset: passes all validation rules
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+
+    def Xform "env_lights" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        }
+        def DiskLight "disk_light"
+        {
+            custom token[] omni:simready:behaviors = ["TimeOfDay"]
+        }
+    }
+}

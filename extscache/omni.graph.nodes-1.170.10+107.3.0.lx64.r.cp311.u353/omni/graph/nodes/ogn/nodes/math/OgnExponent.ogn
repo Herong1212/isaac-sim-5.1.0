@@ -1,0 +1,79 @@
+{
+    "Exponent": {
+        "version": 1,
+        "description": [
+            "Computes the base input raised to the power of the exponent. The result is the same type as the base",
+            "input for floating point types. The result is double for integral values to allow for negative exponents.",
+            "If the input is a vector or matrix, then the node calculates the exponent for each element and computes",
+            "a vector or matrix of the same size."
+        ],
+        "uiName": "Exponent",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "base": {
+                "type": ["numerics"],
+                "description": "Base value that will be raised to the power of exponent.",
+                "uiName": "Base"
+            },
+            "exponent": {
+                "type": "int",
+                "description": [
+                    "Power to raise the base value \"Base\" to. If \"Base\" consists of an array, vector, or matrix,",
+                    "then the exponent will be applied to each member of the aforementioned data structures."
+                ],
+                "uiName": "Exponent",
+                "default": 2
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "Result of \"Base\" raised to the value in \"Exponent\".",
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:base": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "float", "value": 4.0}
+            },
+            {
+                "inputs:base": {"type": "double", "value": 0.5}, "inputs:exponent": 3,
+                "outputs:result": {"type": "double", "value": 0.125}
+            },
+            {
+                "inputs:base": {"type": "half[2]", "value": [5.0, 0.5]}, "inputs:exponent": 3,
+                "outputs:result": {"type": "half[2]", "value": [125.0, 0.125]}
+            },
+            {
+                "inputs:base": {"type": "float[]", "value": [1.0, 3.0]}, "inputs:exponent": 3,
+                "outputs:result": {"type": "float[]", "value": [1.0, 27.0]}
+            },
+            {
+                "inputs:base": {"type": "float[2][]", "value": [[1.0, 0.3], [0.5, 3.0]]},
+                "outputs:result": {"type": "float[2][]", "value": [[1.0, 0.09], [0.25, 9.0]]}
+            },
+            {
+                "inputs:base": {"type": "int", "value": 2147483647}, "inputs:exponent": 0,
+                "outputs:result": {"type": "double", "value": 1.0}
+            },
+            {
+                "inputs:base": {"type": "int64", "value": 9223372036854775807}, "inputs:exponent": 1,
+                "outputs:result": {"type": "double", "value": 9223372036854775807.0}
+            },
+            {
+                "inputs:base": {"type": "int", "value": 5}, "inputs:exponent": -1,
+                "outputs:result": {"type": "double", "value": 0.2}
+            },
+            {
+                "inputs:base": {"type": "float", "value": -2.0},
+                "outputs:result": {"type": "float", "value": 4.0}
+            },
+            {
+                "inputs:base": {"type": "float", "value": -2.0}, "inputs:exponent": 3,
+                "outputs:result": {"type": "float", "value": -8.0}
+            }
+        ]
+    }
+}

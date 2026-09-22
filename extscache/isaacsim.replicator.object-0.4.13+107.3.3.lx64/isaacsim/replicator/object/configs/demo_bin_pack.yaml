@@ -1,0 +1,35 @@
+isaacsim.replicator.object:
+  version: 0.4.12
+  parent_config: standard
+  seed: 20
+  bin_pack_H:
+    harmonizer_type: bin_pack
+    bin_size:
+    - 400
+    - 200
+    - 200
+  mesh:
+    count: 20
+    #physics: rigidbody
+    subtype: mesh
+    tracked: true
+    transform_operators:
+    - transform:
+        distribution_type: harmonized
+        harmonizer_name: bin_pack_H
+        pitch: local_aabb
+    - scale:
+        distribution_type: range
+        start:
+        - 1.2
+        - 1.2
+        - 1.2
+        end:
+        - 1.25
+        - 1.25
+        - 1.25
+    type: geometry
+    usd_path:
+      distribution_type: folder
+      suffix: usd
+      value: $[/path_to_boxes]

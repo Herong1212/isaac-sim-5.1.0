@@ -1,0 +1,54 @@
+[package]
+title = "OmniGraph C++ Examples"
+version = "1.50.2"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains a set of sample OmniGraph nodes implemented in C++."
+repository = ""
+keywords = ["kit", "omnigraph", "nodes"]
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+python.import_mode = "ParallelThread"
+writeTarget.kit = true
+writeTarget.usd = true
+support_level = "Sample"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.examples.cpp"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load in order for this one to work
+[dependencies]
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph.tools" = { version = "1.77.0" }
+"omni.kit.exec.core" = {}
+"omni.kit.pip_archive" = {}
+"omni.graph.image.nodes" = {}  # For backwards compatibility to pick up nodes that have moved
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+pythonTests.unreliable = [
+    "*test_om_43835*",  # OM-67457; adding '*' to catch all execution backends
+]
+dependencies = [
+    "omni.graph.action",
+    "omni.graph.nodes",
+    "omni.graph.scriptnode",
+    # Needed for tests which use Fabric Scene Delegate
+    "omni.hydra.usdrt_delegate",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

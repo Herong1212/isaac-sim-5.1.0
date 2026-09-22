@@ -1,0 +1,31 @@
+{
+    "WriteSetting": {
+        "version": 1,
+        "description": ["Node that writes a value to a kit application setting. Issues an error if input::value type",
+                        " does not match setting type."
+                        ],
+        "uiName": "Write Setting",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write"],
+        "inputs": {
+            "settingPath": {
+                "type": "string",
+                "description": "The path of the setting to be modified"
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "value": {
+                "type": ["arrays", "array_elements", "bool", "bool[]"],
+                "description": "The new value to be written"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

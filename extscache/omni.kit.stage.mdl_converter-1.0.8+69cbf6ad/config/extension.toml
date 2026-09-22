@@ -1,0 +1,52 @@
+[package]
+version = "1.0.8"
+authors = ["NVIDIA"]
+title = "USD Material MDL Export"
+description="The ability to export USD Material to MDL"
+readme  = "docs/README.md"
+repository = ""
+category = "USD"
+keywords = ["usd", "mdl", "export", "stage"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+# icon = "data/icon.png"
+support_level = "Sample"
+
+[dependencies]
+"omni.appwindow" = {}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.pip_archive" = {}
+"omni.usd" = {}
+"omni.mdl.usd_converter" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.widget.filebrowser" = {}
+
+[[python.module]]
+name = "omni.kit.stage.mdl_converter"
+
+[[test]]
+pyCoverageThreshold = 40  # extension only has ~100 lines mostly UI
+args = [
+    "--/exts/omni.mdl.usd_converter/enableNewDemangling=true",
+    "--/exts/omni.mdl.usd_converter/tests/debugdumps=true",
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx-transient/resourcemanager/texturestreaming/async=false",
+]
+dependencies = [
+    "omni.kit.window.stage",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.utility",
+    "omni.hydra.rtx",
+    "omni.rtx.tests",
+    "omni.kit.viewport.window",
+]
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = []

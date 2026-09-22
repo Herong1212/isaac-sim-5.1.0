@@ -1,0 +1,110 @@
+{
+    "InstanceSegmentationLegacy": {
+        "version": 1,
+        "description": "This node outputs the legacy instance segmentation data output",
+        "language": "Python",
+        "categories": {
+            "Replicator": "Instance segmentation Legacy"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "colorize": {
+                "type": "bool",
+                "description" : "If true, convert semantic IDs into colors.",
+                "default": false
+            },
+            "dataType": {
+                "type": "token",
+                "description": "Defines the data type"
+            },
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw instance segmentation reduction data.",
+                "default": 0
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for instance segmentation."
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "semanticFilterName": {
+                "type": "token",
+                "description": "name of Semantic Filter to use"
+            },
+            "ids": {
+                "type": "uint[]",
+                "description": "Unoccluded semantic u ids (or color, if `colorize` is set to True)."
+            },
+            "labels": {
+                "type": "token[]",
+                "description": "Prim path of the prim."
+            },
+            "semantics": {
+                "type": "token[]",
+                "description": "Semantic labels that correspeond to the ids."
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "data": {
+                "type": "uchar[]",
+                "memoryType": "cpu",
+                "description": "Instance segmentation data",
+                "default": []
+            },
+            "dataType": {
+                "type": "token",
+                "description": "Defines the data type"
+            },
+            "dataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "idToLabels": {
+                "description": "Mapping from id to prim paths of the prim.",
+                "type": "string"
+            },
+            "idToSemantics": {
+                "type": "string",
+                "description": "Mapping from id to semantic labels."
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+[package]
+version = "107.3.0"
+title = "Animation Asset Compiler (BETA)"
+authors = ["NVIDIA"]
+keywords = ["animation", "animgraph", "anim", "graph", "assetCompiler", "asset"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Compile, store and load animation assets."
+category = "Animation"
+# preview_image = "data/preview.png"
+# icon = "data/icon.png"
+
+[settings]
+exts."omni.anim.asset".asset.cache.enableUjitso = true
+
+[dependencies]
+"omni.client" = {}
+"omni.anim.behavior.schema" = {}
+"omni.usd.schema.anim" = {}
+"omni.anim.graph.schema" = {}
+"omni.usd" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[[test]]
+waiver = "Tested externally. Will add tests in the futrue."

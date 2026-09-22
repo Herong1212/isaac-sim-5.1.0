@@ -1,0 +1,50 @@
+
+[package]
+title = "Scene optimizer UI"
+category = "content"
+version = "107.3.12"
+readme = "docs/README.md"
+changelog ="docs/CHANGELOG.md"
+description = "Panel for setup and execution of scene optimization operations"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+[[python.module]]
+name = "omni.scene.optimizer.ui"
+
+[dependencies]
+"omni.scene.optimizer.core" = {}
+"omni.kit.commands" = {}
+"omni.client" = {}
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.widget.filebrowser" = {}
+"omni.kit.window.cursor" = {}
+
+[fswatcher.patterns]
+include = ["*.py"]
+
+[[test]]
+pyCoverageEnabled = true
+pyCoverageIncludeModules = true
+pyCoverageIncludeDependencies = false
+pyCoverageIncludeTestDependencies = false
+
+pyCoverageOmit = [
+    "*/tests/*",
+]
+
+dependencies = [
+	"omni.kit.ui_test"
+]
+
+# Keywords for the extension
+keywords = ["scene.optimizer"]
+
+[package.writeTarget]
+kit = true

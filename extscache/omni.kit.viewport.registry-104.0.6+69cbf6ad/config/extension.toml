@@ -1,0 +1,43 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "104.0.6"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Viewport Registry"
+description="Registration for items that want to be added to all viewports"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "viewport", "ui.scene"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+category = "Rendering"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.viewport.registry".
+[[python.module]]
+name = "omni.kit.viewport.registry"
+
+[settings]
+# exts."omni.kit.viewport.registry".xxx = ""
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md"
+]

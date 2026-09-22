@@ -1,0 +1,43 @@
+{
+    "ReadTime": {
+        "version": 1,
+        "description": "Holds the values related to the current global time and the timeline.",
+        "uiName": "Read Time",
+        "categories": "time",
+        "scheduling": ["threadsafe"],
+        "inputs": {
+        },
+        "outputs": {
+            "isPlaying": {
+                "type": "bool",
+                "description": "True during global animation timeline playback.",
+                "uiName": "Is Playing"
+            },
+            "deltaSeconds": {
+                "type": "double",
+                "description": "The number of seconds elapsed since the last OmniGraph update.",
+                "uiName": "Delta (Seconds)"
+            },
+            "timeSinceStart": {
+                "type": "double",
+                "description": "Elapsed time since the App started.",
+                "uiName": "Time Since Start (Seconds)"
+            },
+            "time": {
+                "type": "double",
+                "description": "The global animation time in seconds during playback.",
+                "uiName": "Animation Time (Seconds)"
+            },
+            "frame": {
+                "type": "double",
+                "description": "The global animation time in frames, equivalent to (time * fps), during playback.",
+                "uiName": "Animation Time (Frames)"
+            },
+            "absoluteSimTime": {
+                "type": "double",
+                "description": "The accumulated total of elapsed times between rendered frames.",
+                "uiName": "Absolute Simulation Time (Seconds)"
+            }
+        }
+    }
+}

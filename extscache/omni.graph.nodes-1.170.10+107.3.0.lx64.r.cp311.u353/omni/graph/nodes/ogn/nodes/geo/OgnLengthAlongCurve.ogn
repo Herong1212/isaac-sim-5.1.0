@@ -1,0 +1,83 @@
+{
+    "LengthAlongCurve": {
+        "version": 1,
+        "description": "Find the length along the curve of a subset of points on the curve.",
+        "metadata": {
+            "uiName": "Length Along Curve"
+        },
+        "categories": ["geometry:analysis"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "curveVertexStarts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex index starting points for each curve subsection whose length is to be computed.",
+                    "Must have the same number of elements as 'Curve Vertex Counts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Starts"
+                }
+            },
+            "curveVertexCounts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex counts for each curve subsection whose length is to be computed.",
+                    "Must have the same number of elements as 'Curve Vertex Starts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Counts"
+                }
+            },
+            "curvePoints": {
+                "type": "float[3][]",
+                "description": "Points on the curve for which the lengths are to be computed.",
+                "metadata": {
+                    "uiName": "Curve Points"
+                }
+            },
+            "normalize": {
+                "type": "bool",
+                "description": "If true then normalize the curve length to a 0, 1 range.",
+                "metadata": {
+                    "uiName": "Normalize"
+                }
+            }
+        },
+        "outputs": {
+            "length": {
+                "type": "float[]",
+                "description": "List of lengths along the curve corresponding to the input point specifications."
+            }
+        },
+        "tests": [
+            {
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [4],
+                "inputs:curvePoints": [[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 4.0, 4.0], [12.0, 13.0, 4.0]],
+                "inputs:normalize": false,
+                "outputs:length": [0.0, 1.0, 6.0, 21.0]
+            },
+            {
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:curvePoints": [[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 1.0, 1.0]],
+                "inputs:normalize": true,
+                "outputs:length": [0.0, 0.5, 1.0]
+            },
+            {
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [0],
+                "inputs:curvePoints": [],
+                "inputs:normalize": true,
+                "outputs:length": []
+            },
+            {
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [1],
+                "inputs:curvePoints": [[0.0, 0.0, 0.0]],
+                "inputs:normalize": false,
+                "outputs:length": [0]
+            }
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "omni.graph.action.Sequence": {
+        "version": 2,
+        "description": [
+            "Activates one of two downstream graphs, alternating between the two. No consideration is made whether",
+            "there is actually a graph downstream of either output."
+        ],
+        "uiName": "Sequence",
+        "metadata": {"hidden": "true"},
+        "categories": ["graph:action", "flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            }
+        },
+        "outputs": {
+            "a": {
+                "type": "execution",
+                "description": "On odd-numbered executions, signal to the graph that execution can continue downstream.",
+                "uiName": "A"
+            },
+            "b": {
+                "type": "execution",
+                "description": "On even-numbered executions, signal to the graph that execution can continue downstream.",
+                "uiName": "B"
+            }
+        },
+        "state": {}
+    }
+}

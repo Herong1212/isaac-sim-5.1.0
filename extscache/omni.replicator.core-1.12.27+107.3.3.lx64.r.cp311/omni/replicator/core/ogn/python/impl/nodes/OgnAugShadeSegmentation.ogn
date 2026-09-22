@@ -1,0 +1,127 @@
+{
+    "OgnAugShadeSegmentation": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "description": "This node randomizes the background using alpha channel.",
+        "language": "Python",
+        "cudaPointers": "cpu",
+        "categories": {
+            "Replicator": "OgnAugShadeSegmentation"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "normalData": {
+                "type": "uchar[]",
+                "memoryType": "cuda",
+                "description": "Buffer array data",
+                "default": []
+            },
+            "normalDataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "normalCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "normalStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "normalBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "segmentationData": {
+                "type": "uchar[]",
+                "memoryType": "cuda",
+                "description": "Buffer array data",
+                "default": []
+            },
+            "segmentationDataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "segmentationCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "segmentationStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "segmentationBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "lightSource": {
+                "type": "float[3]",
+                "description": "Light source direction",
+                "default": [0.0, 0.0, 1.0]
+            },
+            "width": {
+                "type": "uint",
+                "description": "Width"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Height"
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format"
+            },
+            "useCandyColours": {
+                "type": "bool",
+                "description": "If true, replace segmentation colours with random candy colours",
+                "default": false
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "format": {
+                "type": "uint",
+                "description": "Format"
+            }
+        }
+    }
+}

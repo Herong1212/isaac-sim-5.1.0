@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.uiapp-9c47f1d908b37db2.zip"
+
+    [package.publish]
+        kitVersion = "107.4.0+master.196708.3fc36398.gl"
+        date = 1757755122
+        buildNumber = "107.4.0+master.196708.3fc36398.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

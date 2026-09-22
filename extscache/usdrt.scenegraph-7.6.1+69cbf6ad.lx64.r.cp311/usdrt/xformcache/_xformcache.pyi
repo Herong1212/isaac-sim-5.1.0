@@ -1,0 +1,43 @@
+from __future__ import annotations
+import usdrt.xformcache._xformcache
+import typing
+import omni.core._core
+import usdrt.Gf._Gf
+import usdrt.helpers._helpers
+
+__all__ = [
+    "ISharedXformCache",
+    "IXformCache"
+]
+
+
+class ISharedXformCache(_ISharedXformCache, omni.core._core.IObject):
+    @typing.overload
+    def __init__(self, arg0: omni.core._core.IObject) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
+    def clear(self) -> bool: ...
+    def get_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> IXformCache: ...
+    def get_or_create_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> IXformCache: ...
+    def has_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> bool: ...
+    pass
+class IXformCache(_IXformCache, omni.core._core.IObject):
+    @typing.overload
+    def __init__(self, arg0: omni.core._core.IObject) -> None: ...
+    @typing.overload
+    def __init__(self) -> None: ...
+    def attach_to_stage(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> bool: ...
+    def compute_world_xform(self, path: usdrt.helpers._helpers.PathC) -> usdrt.Gf._Gf.Matrix4d: ...
+    def get_latest_world_xform(self, path: usdrt.helpers._helpers.PathC) -> usdrt.Gf._Gf.Matrix4d: ...
+    def sync_targeted_xforms(self, target_path: usdrt.helpers._helpers.PathC) -> None: ...
+    def sync_xforms(self) -> None: ...
+    @property
+    def stage_id(self) -> usdrt.helpers._helpers.UsdStageId:
+        """
+        :type: usdrt.helpers._helpers.UsdStageId
+        """
+    pass
+class _ISharedXformCache(omni.core._core.IObject):
+    pass
+class _IXformCache(omni.core._core.IObject):
+    pass

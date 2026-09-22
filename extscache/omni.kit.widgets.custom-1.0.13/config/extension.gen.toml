@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.widgets.custom-1.0.13.zip"
+
+    [package.publish]
+        kitVersion = "108.0.0+mr37350.191069.c82efd5a.gl"
+        date = 1747289648
+        buildNumber = "106.0.1+master.799.79ae21a1.gl"
+        repoName = "kit-widgets"
+        signed = 1

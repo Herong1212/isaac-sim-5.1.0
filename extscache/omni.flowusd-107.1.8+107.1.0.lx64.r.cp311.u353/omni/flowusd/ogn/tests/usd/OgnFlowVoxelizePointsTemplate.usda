@@ -1,0 +1,55 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnFlowVoxelizePoints.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_flowusd_FlowVoxelizePoints" (
+        docs="""Voxelize points to NanoVDB."""
+    )
+    {
+        token node:type = "omni.flowusd.FlowVoxelizePoints"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom float inputs:cellSize = 0.1 (
+            docs="""Voxel size"""
+        )
+        custom color3f[] inputs:colors = [] (
+            docs="""Point colors"""
+        )
+        custom matrix4d inputs:localToWorld = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Local to World Transform"""
+        )
+        custom uint inputs:maxBlocks = 16384 (
+            docs="""Maximum Flow Block used during voxelization"""
+        )
+        custom point3f[] inputs:points = [] (
+            docs="""Point positions"""
+        )
+
+        # 5 attributes
+        custom uint[] outputs:alphaNanoVdb (
+            docs="""NanoVDB with alpha channel"""
+        )
+        custom uint[] outputs:blueNanoVdb (
+            docs="""NanoVDB with blue channel"""
+        )
+        custom uint outputs:execOut (
+            docs="""Executes when values are updated"""
+        )
+        custom uint[] outputs:greenNanoVdb (
+            docs="""NanoVDB with green channel"""
+        )
+        custom uint[] outputs:redNanoVdb (
+            docs="""NanoVDB with red channel"""
+        )
+    }
+}

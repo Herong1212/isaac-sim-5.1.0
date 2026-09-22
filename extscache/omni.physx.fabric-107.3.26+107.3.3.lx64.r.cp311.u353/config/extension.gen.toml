@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.physx.fabric-107.3.26%2B107.3.3.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.234387.55afe930.gl"
+        date = 1759523293
+        buildNumber = "107.3.26+release.47132.3a61992c.gl"
+        repoName = "omni.physics"
+        signed = 1

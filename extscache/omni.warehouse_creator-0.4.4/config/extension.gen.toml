@@ -1,0 +1,9 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.warehouse_creator-0.4.4.zip"
+
+    [package.publish]
+        kitVersion = "106.5.0+release.162521.d02c707b.gl"
+        date = 1736780184
+        buildNumber = "2022.2.0-beta.5+master.46.4ca0a801.gl"
+        repoName = "kit-template"

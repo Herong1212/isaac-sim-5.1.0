@@ -1,0 +1,49 @@
+{
+    "PrintText": {
+        "version": 1,
+        "description": "Prints some text to the system log or to the screen",
+        "language": "Python",
+        "categories": "debug",
+        "uiName": "Print Text",
+        "exclude": ["tests"],
+        "tags": ["logging", "toast", "debug"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "In"
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport if printing to screen, or empty for the default viewport",
+                "uiName": "Viewport"
+            },
+            "text": {
+                "type": "string",
+                "description": "The text to print",
+                "uiName": "Text"
+            },
+            "toScreen": {
+                "type": "bool",
+                "description": "When true, displays the text on the viewport for a few seconds, as well as the log",
+                "uiName": "To Screen"
+            },
+            "logLevel": {
+                "type": "token",
+                "description": "The logging level for the message [Info, Warning, Error]",
+                "uiName": "Log Level",
+                "metadata": {
+                    "allowedTokens": ["Info", "Warning", "Error"]
+                },
+                "default": "Info"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Out"
+            }
+        }
+    }
+}

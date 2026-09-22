@@ -1,0 +1,21 @@
+{
+    "ConstantFrame": {
+        "description": [
+            "Container for a 4x4 double-precision floating-point matrix value with the 'frame' role,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "inputs": {
+            "value": {
+                "type": "frame[4]",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.anim.graph.core-107.3.4%2B107.3.3.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.226910.d1d0c19e.gl"
+        date = 1757087277
+        buildNumber = "107.3.3+main.12690.bfb87d5b.gl"
+        repoName = "animation-tools"
+        signed = 1

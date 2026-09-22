@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.search.service-0.1.12.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.126783.96529284.tc"
+        date = 1698420916
+        buildNumber = "105.1+master.234.6522b3b3.gl"
+        repoName = "kit-searchservice"
+        signed = 1

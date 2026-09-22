@@ -1,0 +1,38 @@
+[core]
+reloadable = false
+
+[package]
+title = "Omni USD Resolver"
+version = "1.0.0"
+category = "Internal"
+description = "The Omniverse Kit Resolver allows USD to work with files in Omniverse."
+keywords = ["usd", "resolver", "files"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.client" = {}
+"omni.usd.libs" = {}
+
+[[native.plugin]]
+"filter:os".linux.path = "lib/*.plugin"
+recursive=false
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive=false
+
+[[python.module]]
+name = "omni.usd_resolver"
+
+[[python.module]]
+name = "omni.spectree"
+
+[[test]]
+waiver = "Tested in Usd Resolver Repository."
+
+[documentation]
+python_api_hidden = true
+pages = [
+    "docs/Overview.md",
+]

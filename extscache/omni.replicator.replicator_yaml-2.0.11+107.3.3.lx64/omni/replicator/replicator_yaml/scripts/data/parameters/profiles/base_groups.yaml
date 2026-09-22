@@ -1,0 +1,38 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+# The stage settings can also be moved to another yaml.
+
+flying_objs:
+  randomizer.instantiate:
+    paths: warehouse_assets  # how to combine two different list of assets?
+
+flying_shapes:
+  randomizer.instantiate:
+    paths: shape_assets
+
+flying_lights:
+  create.light:
+    intensity:
+      distribution.uniform:
+        lower: 0
+        upper: 100000
+    light_type: sphere
+    # radius:  radius is not supported yet.
+    #   distribution.uniform:
+    #     lower: 0.5
+    #     upper: 1
+
+
+profiles:
+  property: file_path
+  value:
+    - data/parameters/profiles/warehouse_assets.yaml
+    - data/parameters/profiles/hospital_assets.yaml
+    - data/parameters/profiles/office_assets.yaml
+    - data/parameters/profiles/shape_assets.yaml

@@ -1,0 +1,32 @@
+[package]
+title = "Browser Bar Widget"
+version = "2.0.10"
+category = "Internal"
+description = "Treeview browser bar as embeddable widget"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.widget.path_field" = {}
+
+[[python.module]]
+name = "omni.kit.widget.browser_bar"
+
+[[test]]
+args = [
+   "--/app/window/dpiScaleOverride=1.0",
+   "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

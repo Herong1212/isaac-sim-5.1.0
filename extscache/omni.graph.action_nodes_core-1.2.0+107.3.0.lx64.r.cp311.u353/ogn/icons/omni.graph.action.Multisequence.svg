@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="type_multisequence_noBorder_dark" transform="translate(-12 -990)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(12 990)" fill="none"/>
+    <circle id="out_3" cx="4" cy="4" r="4" transform="translate(38 1017)" fill="#9a9a9a"/>
+    <circle id="out_2" cx="4" cy="4" r="4" transform="translate(38 1006)" fill="#9a9a9a"/>
+    <circle id="out_1" cx="4" cy="4" r="4" transform="translate(38 995)" fill="#9a9a9a"/>
+    <path id="arrow" d="M658.068,4594.761l-2.629-4.508a.5.5,0,0,1,.432-.752h1.63V4566a1,1,0,1,1,2,0v23.5h1.63a.5.5,0,0,1,.431.752l-2.629,4.508a.5.5,0,0,1-.864,0Z" transform="translate(-626.5 -3570)" fill="#747c57"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "name": "htc_vive_wand_profile",
+    "requiredInteractionProfile": [
+        "/interaction_profiles/htc/vive_controller",
+        "/interaction_profiles/htc/vive_pro"
+    ]
+}

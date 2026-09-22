@@ -1,0 +1,75 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "0.1.28"
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Event Generation"
+description="Physical Space Event Generation"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Synthetic Data Generation"
+
+# Keywords for the extension
+keywords = ["IRI", "incident", "synthetic data", "anomaly", "spill", "fire", "topple", "event", "physical space"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/iri_preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# pip prebundle makes this extension os specific
+writeTarget.platform = true
+writeTarget.kit = true
+
+# Use omni.ui to build simple UI
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.physx" = {}
+"omni.usd.core" = {}
+"omni.kit.renderer.core" = {}
+"omni.kit.viewport.window" = {}
+"omni.timeline" = {}
+"omni.kit.property.usd" = {}
+"omni.anim.navigation.core" = { version = "~107.3" }
+"omni.metropolis.utils" = { version = "^0.1.19"}
+"omni.flowusd" = {version = "^107.1.4"}
+
+# Main python module this extension provides, it will be publicly available as "import isaacsim.replicator.incident".
+[[python.module]]
+name = "isaacsim.replicator.incident"
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

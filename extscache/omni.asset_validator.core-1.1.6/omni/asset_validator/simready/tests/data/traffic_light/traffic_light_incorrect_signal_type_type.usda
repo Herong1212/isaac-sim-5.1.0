@@ -1,0 +1,18 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset: signalType attribute has incorrect type
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom string omni:simready:signalType = "trafficLight"
+    custom token[] omni:simready:signalOrder = ["green"]
+
+    def DiskLight "signal_green"
+    {
+        custom token omni:simready:signal = "green"
+    }
+}

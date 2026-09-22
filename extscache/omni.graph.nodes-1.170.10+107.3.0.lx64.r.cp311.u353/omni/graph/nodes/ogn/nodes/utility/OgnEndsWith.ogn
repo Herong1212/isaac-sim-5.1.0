@@ -1,0 +1,50 @@
+{
+    "EndsWith": {
+        "version": 1,
+        "description": [
+            "Determines if a string ends with a given string value"
+        ],
+        "uiName": "Ends With",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "suffix": {
+                "type": "string",
+                "description": "The suffix to test"
+            },
+            "value": {
+                "type": "string",
+                "description": "The string to check"
+            }
+        },
+        "outputs": {
+            "isSuffix": {
+                "type": "bool",
+                "description": "True if 'value' ends with 'suffix'"
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": "", "inputs:suffix": "", "outputs:isSuffix": true
+            },
+            {
+                "inputs:value": "a", "inputs:suffix": "", "outputs:isSuffix": true
+            },
+            {
+                "inputs:value": "", "inputs:suffix": "a", "outputs:isSuffix": false
+            },
+            {
+                "inputs:value": "aa", "inputs:suffix": "a", "outputs:isSuffix": true
+            },
+            {
+                "inputs:value": "ab", "inputs:suffix": "ab", "outputs:isSuffix": true
+            },
+            {
+                "inputs:value": "aa", "inputs:suffix": "aaa", "outputs:isSuffix": false
+            },
+            {
+                "inputs:value": "aba", "inputs:suffix": "ba", "outputs:isSuffix": true
+            }
+        ]
+    }
+}

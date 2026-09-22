@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="PoseProvider_" data-name="PoseProvider " transform="translate(-82 -200)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(82 200)" fill="none"/>
+    <path id="bgr" d="M9,0H40a0,0,0,0,1,0,0V31a9,9,0,0,1-9,9H0a0,0,0,0,1,0,0V9A9,9,0,0,1,9,0Z" transform="translate(82 200)" fill="#1e2931"/>
+    <g id="skeleton_dark" transform="translate(-3724.171 -3652.171)">
+      <g id="Group_3215" data-name="Group 3215" transform="translate(3816.115 3856.827)">
+        <circle id="Ellipse_143" data-name="Ellipse 143" cx="3.5" cy="3.5" r="3.5" transform="translate(6.056 0.344)" fill="#7f9f8e"/>
+        <path id="Rectangle_1257" data-name="Rectangle 1257" d="M1.75,0h3.5A1.75,1.75,0,0,1,7,1.75V6.5A3.5,3.5,0,0,1,3.5,10h0A3.5,3.5,0,0,1,0,6.5V1.75A1.75,1.75,0,0,1,1.75,0Z" transform="translate(6.056 8.344)" fill="#7f9f8e"/>
+        <line id="Line_848" data-name="Line 848" x2="4.328" y2="6.492" transform="translate(15.149 9.616)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_850" data-name="Line 850" x2="0.541" y2="9.738" transform="translate(12.985 19.896)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_851" data-name="Line 851" x1="0.541" y2="9.738" transform="translate(5.951 19.896)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+        <line id="Line_849" data-name="Line 849" x1="4.328" y2="6.492" transform="translate(0 10.157)" fill="none" stroke="#7f9f8e" stroke-linecap="round" stroke-width="2"/>
+      </g>
+      <rect id="Rectangle_1258" data-name="Rectangle 1258" width="35" height="35" transform="translate(3808.171 3854.171)" fill="none"/>
+    </g>
+  </g>
+</svg>

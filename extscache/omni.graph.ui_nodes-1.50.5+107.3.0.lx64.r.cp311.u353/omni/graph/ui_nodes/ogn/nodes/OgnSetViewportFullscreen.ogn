@@ -1,0 +1,41 @@
+{
+    "SetViewportFullscreen": {
+        "version": 1,
+        "description": "Toggles fullscreen on/off for viewport(s) and visibility on/off for all other panes.",
+        "uiName": "Set Viewport Fullscreen",
+        "categories": [ "graph:action", "viewport" ],
+        "scheduling": ["usd-write"],
+        "exclude": ["tests"],
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "mode": {
+                "type": "token",
+                "uiName": "Mode",
+                "description": [
+                    "The mode to toggle fullscreen on/off for viewport(s) and visibility on/off for all other panes:",
+                    "",
+                    "\"Default\" - Windowed viewport(s) with all other panes shown.",
+                    "\"Fullscreen\" - Fullscreen viewport(s) with all other panes hidden.",
+                    "\"Hide UI\" - Windowed viewport(s) with all other panes hidden."
+                ],
+                "default": "Default",
+                "metadata": {
+                    "allowedTokens": {
+                        "Default": "Default",
+                        "Fullscreen": "Fullscreen",
+                        "HideUI": "Hide UI"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

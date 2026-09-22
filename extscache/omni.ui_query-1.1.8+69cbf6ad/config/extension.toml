@@ -1,0 +1,34 @@
+[package]
+title = "omni.ui Query API"
+description = "Find UI elements from queries/expressions, and vice versa. Available as omni.ui.query"
+version = "1.1.8"
+category = "Developer"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["omni.ui", "test", "automation"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/TUTORIAL.md"
+support_level = "Sample"
+
+[dependencies]
+"omni.ui" = {}
+
+[[python.module]]
+name = "omni.ui_query"
+
+[[test]]
+ args = [
+    "--/exts/omni.rtx.window.settings/startup/waitForHydra1stFrame=false",
+ ]
+
+dependencies = [
+    "omni.rtx.window.settings",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to load texture*",
+    "*dictionary changed size*",
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md", "docs/TUTORIAL.md"]

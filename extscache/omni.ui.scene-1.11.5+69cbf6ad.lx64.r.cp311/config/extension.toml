@@ -1,0 +1,74 @@
+[package]
+title = "3D UI Framework"
+category = "Internal"
+description = "The Omniverse 3D UI Framework"
+version = "1.11.5"
+changelog="docs/CHANGELOG.md"
+keywords = ['ui', 'scene']
+support_level = "Core"
+readme = "docs/Overview.md"
+[dependencies]
+"omni.ui" = {}
+
+[[native.library]]
+path = "bin/${lib_prefix}omni.ui.scene${lib_ext}"
+
+[[python.module]]
+name = "omni.ui.scene"
+
+[[python.module]]
+name = "omni.ui_scene"
+
+[settings]
+# Amount of time (in milliseconds) to wait for a single click (when no multi-click gestures are present)
+exts."omni.ui".clickGesture.singleClickWait=10
+# Amount of time (in milliseconds) to wait for a multi click gesture to complete before triggering a single click
+exts."omni.ui".clickGesture.multiClickWait=100
+# number frames to force redrawing for ui.Widget with update_policy=Widget.UpdatePolicy.ON_DEMAND
+exts."omni.ui.scene".widget.framesToDemand=5
+# number frames to force redrawing for ui.Widget with update_policy=Widget.UpdatePolicy.ON_MOUSE_HOVERED
+exts."omni.ui.scene".widget.framesToHover=5
+# Time (in milliseconds) to wait for multi-device texture copy (0 is no wait)
+exts."omni.ui.scene".widget.multiGPU.timeout=10
+# Whether to force the usage of a texture-pool (possible ignoring the draw-system's request)
+exts."omni.ui.scene".widget.multiGPU.pooled=false
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+]
+
+pythonTests.unreliable = [
+    "*test_intersection_scalability", # OM-54412
+    "*test_linear_curve_scalability", # OM-55533
+    "*test_bezier_segment_scalability", # OM-77234
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Containers.md",
+    "docs/Example.md",
+    "docs/Gestures.md",
+    "docs/Manipulator.md",
+    "docs/Scene.md",
+    "docs/Shapes.md",
+    "docs/CHANGELOG.md",
+]
+args = []
+menu = "Help/Omni UI Scene Doc"
+title = "Omni UI Scene"

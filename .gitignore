@@ -25,7 +25,6 @@
 /exts/omni.isaac.ml_archive/pip_prebundle/torch/lib/libtorch_cuda_linalg.so
 
 # extscache/：15 个超过 100 MiB 的文件
-extscache/
 /extscache/omni.genproc.core-107.0.3+107.0.3.lx64.r.cp311.u353/bin/libomni.genproc.core.plugin.so
 /extscache/omni.hydra.rtx-1.0.0+69cbf6ad.lx64.r/bin/deps/libnrend.so
 /extscache/omni.index.libs-380600.8087.0+69cbf6ad.lx64.r/bin/nvindex-libs/libnvindex.so

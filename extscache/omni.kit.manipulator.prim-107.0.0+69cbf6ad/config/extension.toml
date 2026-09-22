@@ -1,0 +1,27 @@
+[package]
+version = "107.0.0"
+authors = ["NVIDIA"]
+description = "Prim Manipulator Extension Bundle"
+title = "Prim Manipulator Bundle"
+readme = "docs/Overview.md"
+repository = ""
+category = "Scene"
+keywords = ["kit", "manipulator", "usd", "prim"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Core"
+
+[dependencies]
+"omni.kit.manipulator.prim.core" = {}
+"omni.kit.manipulator.prim.usd" = {}
+"omni.kit.manipulator.prim.fabric" = {}
+
+[[test]]
+waiver = "Bundle extension without any code"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

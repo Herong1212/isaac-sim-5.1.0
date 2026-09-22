@@ -1,0 +1,84 @@
+{
+    "OgnScatter3D": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates random points within any 3D mesh.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Scatter Node: 3D Scattering"
+        },
+        "state": {
+            "$comment": ["Internal state to store voxels of prims and avoid unnecessary re-calculations"]
+        },
+        "inputs": {
+            "volumePrims": {
+                "description": ["prim(s) from which to sample"],
+                "type": "target"
+            },
+            "noCollPrims": {
+                "description": ["existing prim(s) to prevent collisions with - if any prims are passed they will be checked for collisions which may slow down compute, regardless if checkForCollisions is True/False"],
+                "type": "target"
+            },
+            "volumeExclPrims": {
+                "description": ["prim(s) from which to exclude from sampling. similar effect to noCollPrims, but more efficient and less accurate"],
+                "type": "target"
+            },
+            "prims": {
+                "description": ["prim(s) to set location"],
+                "type": "target"
+            },
+            "checkForCollisions": {
+                "description": ["whether sampling procedure should ensure that no sampled prims overlap"],
+                "type": "bool",
+                "default": false
+            },
+            "preventVolOverlap": {
+                "description": ["If true, prevent double sampling even when multiple enclosing volumes overlap, so that the entire enclosed volume is sampled uniformly. If false, it allows overlapped sampling with higher density in overlapping areas."],
+                "type": "bool",
+                "default": true
+            },
+            "minSamp": {
+                "description": ["minimum position in global space to sample from"],
+                "type": "float[3]",
+                "default": [-3.4028235e+38, -3.4028235e+38, -3.4028235e+38]
+            },
+            "maxSamp": {
+                "description": ["maximum position in global space to sample from"],
+                "type": "float[3]",
+                "default": [3.4028235e+38, 3.4028235e+38, 3.4028235e+38]
+            },
+            "vizSampledVoxels": {
+                "description": ["Visualize the voxel space that input prim positions are sampled from"],
+                "type": "bool",
+                "default": false
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "resolutionScaling": {
+                "description": ["Amount the default voxel resolution used in sampling should be scaled. More complex meshes may require higher resolution. Default voxel resolution is 30 for the longest side of the mean sized volumePrim mesh provided."],
+                "type": "float",
+                "default": 1.0
+            },
+            "voxelSize": {
+                "description": ["Voxel size used to compute the resolution. If this is provided, then resolutionScaling is ignored, otherwise (if it is zero by default) resolutionScaling is used."],
+                "type": "float",
+                "default": 0.0
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

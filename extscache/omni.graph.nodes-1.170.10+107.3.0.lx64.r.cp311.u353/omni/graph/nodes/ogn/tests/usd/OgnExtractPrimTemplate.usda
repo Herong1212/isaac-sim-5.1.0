@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExtractPrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ExtractPrim" (
+        docs="""Extract a child bundle that contains a primitive with requested path/prim. This node is designed to work with Multiple Primitives in a Bundle. It searches for a child bundle in the input bundle, with 'sourcePrimPath' that matches 'inputs:prim' or 'inputs:primPath'. The found child bundle will be provided to 'outputs_primBundle', or invalid, bundle otherwise."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ExtractPrim"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom rel inputs:prim (
+            docs="""The prim to be extracted from Multiple Primitives in Bundle."""
+        )
+        custom string inputs:primPath = "" (
+            docs="""The path of the prim to be extracted from Multiple Primitives in Bundle."""
+        )
+        custom rel inputs:prims (
+            docs="""The Multiple Primitives in Bundle to extract from."""
+        )
+
+        # 1 attribute
+        custom rel outputs_primBundle (
+            docs="""The extracted Single Primitive in Bundle"""
+        )
+    }
+}

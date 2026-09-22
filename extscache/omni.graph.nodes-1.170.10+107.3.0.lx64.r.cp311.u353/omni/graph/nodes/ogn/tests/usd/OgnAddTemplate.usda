@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnAdd.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Add" (
+        docs="""Add two or more values of any numeric type (element-wise). This includes simple values, tuples, arrays, and arrays of tuples. If one input has a higher dimension than the other, then the input with lower dimension will be added to each element of the higher-dimension input.
+Examples:
+- scalar + tuple = resultTuple (where resultTuple is formed by adding scalar to each element in tuple).
+- tuple + arrayOfTuples = resultArrayOfTuples (where resultArrayOfTuples is formed by adding each   element in tuple with each corresponding element of each tuple in arrayOfTuples).
+- scalar + arrayOfTuples = resultArrayOfTuples (where resultArrayOfTuples is formed by adding scalar to   each element of every tuple in arrayOfTuples).
+To add/remove addends on this node, select the node and press the small "+"/"-" buttons in the bottom-right corner of the "Inputs" widget in the "Property" window."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Add"
+        int node:typeVersion = 2
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""First number or collection of numbers to add."""
+        )
+        custom token inputs:b (
+            docs="""Second number or collection of numbers to add."""
+        )
+
+        # 1 attribute
+        custom token outputs:sum (
+            docs="""The element-wise sum of the input numerical values (with preserved typing)."""
+        )
+    }
+}

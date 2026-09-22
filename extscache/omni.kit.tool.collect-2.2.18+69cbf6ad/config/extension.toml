@@ -1,0 +1,60 @@
+[package]
+title = "Project Collector"
+description = "It's a tool that could be used to collect and gather all dependencies an USD depends on."
+version = "2.2.18"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# URL of the extension source repository.
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+category = "Utilities"
+keywords = ["collect", "USD", "dependencies", "tool"]
+support_level = "Core"
+feature = true
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+[dependencies]
+"omni.kit.usd.collect" = {}
+"omni.usd" = {}
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.window.file_exporter" = {}
+"omni.kit.window.content_browser" = { optional=true }
+"omni.kit.widget.prompt" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.pip_archive" = {}
+
+[[python.module]]
+name = "omni.kit.tool.collect"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]
+
+[[test]]
+timeout=300
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/omni.kit.plugin.syncUsdLoads=true",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.menu.file"
+]
+stdoutFailPatterns.exclude = ["*Cannot copy from*"]

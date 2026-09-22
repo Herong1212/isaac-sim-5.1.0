@@ -1,0 +1,61 @@
+{
+    "OgnDecal": {
+        "version": 1,
+        "description": "Mesh decal node",
+        "language": "Python",
+        "cudaPointers": "cpu",        
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Input execution."
+            },            
+            "mesh": {
+                "type": "bundle",
+                "description": "Cloth geometry"
+            },
+            "clip_xform": {
+                "type": "matrixd[4]",
+                "description": "Collider mesh"
+            },
+            "clip_width": {
+                "type": "float",
+                "description": "Width along the x-axis of the clip volume",
+                "default": 100.0
+            },
+            "clip_height": {
+                "type": "float",
+                "description": "Height along the y-axis of the clip volume",
+                "default": 100.0
+            },
+            "clip_depth": {
+                "type": "float",
+                "description": "Depth along the z-axis of the clip volume",
+                "default": 100.0
+            },            
+            "offset_normal": {
+                "type": "float",
+                "description": "",
+                "default": 0.1
+            },
+            "offset_depth": {
+                "type": "float",
+                "description": "",
+                "default": 0.0
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution."
+            },            
+            "mesh": {
+                "type": "bundle",
+                "description": "Decal mesh geometry",
+                "memoryType": "cpu"
+            }
+        },
+        "state": {
+            "$comment": "The existence of this state section, even if it contains no attributes, means there is internal state that is entirely managed by the node"
+        }
+    }
+}

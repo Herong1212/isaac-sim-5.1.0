@@ -1,0 +1,53 @@
+[package]
+title = "Hydra USDRT Scene Delegates"
+category = "Internal"
+description = "Custom Hydra scene delegates for fast update of USD scene, using USDRT"
+version = "7.5.1"
+repository = ""
+authors = ["NVIDIA"]
+keywords = ["runtime", "hydra", "delegate", "scene", "fabric", "usdrt"]
+support_level = "Core"
+
+[dependencies]
+"omni.client" = {}
+"omni.gpu_foundation" = {}
+"omni.usd.core" = {}
+"omni.usd.schema.semantics" = { optional = true }
+"omni.usd.schema.audio" = {optional = true }
+"omni.usd.schema.anim" = {}
+"omni.usd.schema.omni_nurec_types" = { optional = true }
+"omni.gpucompute.plugins" = {}
+"omni.resourcemonitor" = {}
+"omni.activity.core" = {}
+"usdrt.scenegraph" = {}
+
+[[native.plugin]]
+path = "plugins/usdrt.population.plugin"
+
+[[native.plugin]]
+path = "plugins/usdrt.geopriority.plugin"
+
+[[native.plugin]]
+path = "plugins/usdrt.hierarchy.plugin"
+
+# Bootstrap this within omni.hydra.usdrt_delegate.plugin to avoid
+# TC loading failure re: OM-81359
+# Fails without when launching with /renderer/active=pxr, see OM-102130
+# [[native.plugin]]
+# path = "plugins/usdrt.hydra.fabric_scene_delegate.plugin"
+
+[[native.plugin]]
+path = "bin/omni.hydra.usdrt_delegate.plugin"
+
+[[python.module]]
+name = "usdrt.population"
+
+[[python.module]]
+name = "usdrt.hierarchy"
+
+[[test]]
+waiver = "Extension is tested in rendering repo"
+
+dependencies = [
+    "omni.usd.schema.semantics",
+]

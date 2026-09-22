@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 20,
+    "name": "Valve Right Index Controller Model (Placeholder)",
+    "tags": "valve_index_components",
+    "inputDevices": [ "/user/hand/right"],
+    "asset": "{valve.controllers}/index_controller_right/model.usd"
+}

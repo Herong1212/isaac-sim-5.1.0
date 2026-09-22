@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.window.file_importer-18ecf6e5ea0418e3.zip"
+
+    [package.publish]
+        kitVersion = "107.4.0+master.201864.96bc0fdc.gl"
+        date = 1757755127
+        buildNumber = "107.4.0+master.201864.96bc0fdc.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

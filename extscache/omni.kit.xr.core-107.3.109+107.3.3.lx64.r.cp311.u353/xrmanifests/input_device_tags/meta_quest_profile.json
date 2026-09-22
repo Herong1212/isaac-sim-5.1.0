@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "name": "meta_quest_profile",
+    "requiredInteractionProfile": [
+        "/interaction_profiles/oculus/touch_controller",
+        "/interaction_profiles/facebook/touch_controller_pro",
+        "/interaction_profiles/oculus/go_controller",
+        "/interaction_profiles/meta/touch_plus_controller",
+        "/interaction_profiles/meta/touch_pro_controller"
+    ]
+}

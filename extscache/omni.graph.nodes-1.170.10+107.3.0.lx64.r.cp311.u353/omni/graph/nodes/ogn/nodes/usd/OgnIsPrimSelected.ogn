@@ -1,0 +1,28 @@
+{
+    "IsPrimSelected": {
+        "version": 1,
+        "description": [
+            "Checks if the prim at the given path is currently selected"
+        ],
+        "uiName": "Is Prim Selected",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-read"],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The prim path to check",
+                "deprecated": "Use prim input instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim to check"
+            }
+        },
+        "outputs": {
+            "isSelected": {
+                "type": "bool",
+                "description": "True if the given path is in the current stage selection"
+            }
+        }
+    }
+}

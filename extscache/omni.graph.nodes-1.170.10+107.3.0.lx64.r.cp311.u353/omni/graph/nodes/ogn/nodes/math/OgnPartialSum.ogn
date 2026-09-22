@@ -1,0 +1,33 @@
+{
+    "PartialSum": {
+        "version": 1,
+        "description": [
+            "Compute the partial sums of the input integer array named \"Array\" and put the result in",
+            "an output integer array named \"PartialSum\". A partial sum is the sum of all of the elements",
+            "up to but not including a certain point in an array, so output element 0 is always 0,",
+            "element 1 is array[0], element 2 is array[0] + array[1], etc."
+        ],
+        "metadata" : {
+            "uiName": "Compute Integer Array Partial Sums"
+        },
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "description": "List of integers whose partial sum is to be computed.",
+                "type": "int[]",
+                "default": []
+            }
+        },
+        "outputs": {
+            "partialSum": {
+                "description": "Array whose nth value equals the nth partial sum of the input \"Array\".",
+                "type": "int[]",
+                "default": []
+            }
+        },
+        "tests": [
+            { "inputs:array": [1, 2, 3, 4, 5], "outputs:partialSum": [0, 1, 3, 6, 10, 15] }
+        ]
+    }
+}

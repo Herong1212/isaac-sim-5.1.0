@@ -1,0 +1,30 @@
+{
+    "FlowBlocks": {
+        "version": 1,
+        "categories": "FlowUsd",
+        "categoryDefinitions": "FlowNodeCategories.json",
+        "description": "Count of currently used Flow resources",
+        "metadata": {
+            "uiName": "Flow Blocks"
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Executes when values are updated"
+            },
+            "activeBlockCount": {
+                "type": "uint",
+                "description": "Number of active Flow blocks",
+                "uiName": "Active Blocks",
+                "default": 0
+            },
+            "maxBlockCount": {
+                "type": "uint",
+                "description": "Number of maximum confignured Flow blocks",
+                "uiName": "Max Blocks",
+                "default": 0
+            }
+        },
+        "exclude": ["tests"]
+    }
+}

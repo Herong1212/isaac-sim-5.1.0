@@ -1,0 +1,11 @@
+#usda 1.0
+
+over "World" (
+    delete references = [
+        @../assets/Cube.usda@,
+        @../assets/Capsule.usda@
+    ]
+)
+{
+}
+

@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    subLayers = [
+        @./vehicleNoSemanticLabelSuccess.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle with incorrect attribute types
+    """
+)
+
+over "vehicle"
+{
+    string omni:simready:vehicle:drivetrain = "RWD" (
+        allowedTokens = ["4WD", "AWD", "FWD", "RWD"]
+    )
+    string omni:simready:vehicle:steering = "front" (
+        allowedTokens = ["front", "back", "all", "none"]
+    )
+    string omni:simready:vehicle:longitudinalAxis = "posY" (
+        allowedTokens = ["negX", "negY", "negZ", "posX", "posY", "posZ"]
+    )
+    over "Geometry"
+    {
+        def Xform "group_test"
+        {
+            string omni:simready:vehicle:group = "group_test"
+            string omni:simready:vehicle:subgroup = "subgroup_test"
+            string omni:simready:vehicle:parent = "parent_test"
+            string omni:simready:vehicle:pivot = "pivot_test"
+        }
+        def Xform "task_test"
+        {
+            string[] omni:simready:tasks = ["pickupObject", "touchObject", "sitDown", "rideObject"]
+            string omni:simready:tasks:effector = "leftHand" (
+                allowedTokens = ["leftHand", "rightHand", "leftFoot", "rightFoot", "pelvis"]
+            )
+            string omni:simready:tasks:group = "Passenger"
+        }
+        over "body"
+        {
+            string omni:simready:vehicle = "body"
+            over "headLights"
+            {
+                token[] omni:simready:light = ["headLights"]
+                color3d omni:simready:light:color = (1, 1, 1)
+                double2 omni:simready:light:intensityDomain = (0, 3500)
+                float omni:simready:light:duration = 1.2
+            }
+            over "brakeLights"
+            {
+                string[] omni:simready:light = ["brakeLights"]
+                color3d[] omni:simready:light:color:brakeLights = [(1, 1, 1)]
+                float2[] omni:simready:light:intensityDomain:brakeLights = [(0, 3500)]
+                float[] omni:simready:light:duration:brakeLights = [1.2]
+            }
+        }
+    }
+}

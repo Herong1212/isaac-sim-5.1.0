@@ -1,0 +1,61 @@
+{
+    "omni.graph.action.OnStageEvent": {
+        "version": 4,
+        "description": [
+            "Activates the downstream graph execution when the specified 'Event Name' from the Stage occurs.",
+            "Stage Events are emitted when certain USD stage-related actions are performed by the system:\n",
+            "Saved: USD file saved.\n",
+            "Selection Changed: USD Prim selection has changed.\n",
+            "Hierarchy Changed: USD stage hierarchy has changed, e.g. a prim is added, deleted or moved.\n",
+            "OmniGraph Start Play: OmniGraph started.\n",
+            "OmniGraph Stop Play: OmniGraph stopped.\n",
+            "Simulation Start Play: Simulation started.\n",
+            "Simulation Stop Play: Simulation stopped.\n",
+            "Animation Start Play: Animation playback has started.\n",
+            "Animation Stop Play: Animation playback has stopped."
+        ],
+        "uiName": "On Stage Event",
+        "language": "Python",
+        "categories": ["graph:action", "event"],
+        "scheduling": "compute-on-request",
+        "state": {
+        },
+        "inputs": {
+            "eventName": {
+                "type": "token",
+                "description": "The event of interest",
+                "metadata": {
+                    "allowedTokens": {
+                        "Saved": "Saved",
+                        "SelectionChanged": "Selection Changed",
+                        "HierarchyChanged": "Hierarchy Changed",
+                        "OmniGraphStart": "OmniGraph Start Play",
+                        "OmniGraphStop": "OmniGraph Stop Play",
+                        "SimulationStart": "Simulation Start Play",
+                        "SimulationStop": "Simulation Stop Play",
+                        "AnimationStart": "Animation Start Play",
+                        "AnimationStop": "Animation Stop Play"
+                    },
+                    "default": "Animation Start Play",
+                    "displayGroup": "parameters",
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "After the stage event is received, signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

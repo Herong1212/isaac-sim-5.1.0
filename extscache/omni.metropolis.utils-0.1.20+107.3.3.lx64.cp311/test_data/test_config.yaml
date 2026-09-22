@@ -1,0 +1,6 @@
+omni.metropolis.utils.test_config_file:
+  version: 0.0.1
+  test_section_01:
+    test_int: 10
+  test_section_02:
+    test_str: "my string"

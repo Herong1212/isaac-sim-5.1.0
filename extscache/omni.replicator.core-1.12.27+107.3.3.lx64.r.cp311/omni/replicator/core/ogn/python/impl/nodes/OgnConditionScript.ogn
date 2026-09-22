@@ -1,0 +1,33 @@
+{
+    "OgnConditionScript" : {
+        "version": 1,
+        "language": "python",
+        "cudaPointers": "cpu",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "description": [
+            "Condition node returns True or False based on supplied script"
+        ],
+        "metadata": {
+           "uiName": "Condition"
+        },
+        "inputs": {
+            "conditionScript": {
+                "type": "string",
+                "description": "Condition script",
+                "uiName": "Script"
+            }
+        },
+        "outputs": {
+            "isConditionMet": {
+                "type": "bool",
+                "description": "Result of condition evaluation"
+            }
+        },
+        "state": {
+            "omni_initialized": {
+                "type": "bool",
+                "description": "Hidden state attribute used internally to control when the setup script is executed"
+            }
+        }
+    }
+}

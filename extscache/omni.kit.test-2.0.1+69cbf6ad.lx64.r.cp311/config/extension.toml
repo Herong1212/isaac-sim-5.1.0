@@ -1,0 +1,297 @@
+[core]
+reloadable = false
+order = -1000
+
+[package]
+support_level = "Core"
+title = "Testing System"
+category = "Internal"
+description = "Python asyncio-centric testing system."
+keywords = ["test"]
+version = "2.0.1"
+readme = "docs/omni_test_registry.rst"
+
+[dependencies]
+"omni.kit.async_engine" = {}
+"omni.kit.loop" = {}
+"omni.kit.pip_archive" = {}
+
+[[python.module]]
+name = "omni.kit.test"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+
+# Wait few updates (to allow all extensions to load), run tests to completion and quit.
+exts."omni.kit.test".runTestsAndQuit = false
+
+# Do not quit after. Failure won't be communicated with app return value, use for debugging only.
+exts."omni.kit.test".doNotQuit = false
+
+# Wait few updates (to allow all extensions to load), and print all tests in stdout and quit
+exts."omni.kit.test".printTestsAndQuit = false
+
+# Filter which tests to run: python's fnmatch is used. Use `*`, `?` etc. Test ids look like this [module].[class].[method].
+# E.g.: "omni.client.tests.test_client.TestClient.test_list_async"
+exts."omni.kit.test".includeTests = []
+exts."omni.kit.test".excludeTests = []
+
+# To select subset of tests to run uncomment specify string with wildcards to filter tests. `includeTests` and `excludeTests`
+# above are used by extension testing system to select tests from extension in question. So for user filtering tests to run
+# even further (within one extension) use this one: (Shortcut: `-f`)
+exts."omni.kit.test".runTestsFilter = ""
+
+# Path to playlist of tests to run. Use to replay tests in a specific order or a subset of tests.
+# Note each test run will generate a playlist file named `exttest_<extension_name>_<run_count>.log`
+exts."omni.kit.test".runTestsFromFile = ""
+
+# Path to output test data (logs, crash dumps, profile traces). Relative to CWD.
+exts."omni.kit.test".testExtOutputPath = "${omni_data}/_testoutput"
+
+# Delete all content from output path before each test run
+exts."omni.kit.test".testExtCleanOutputPath = false
+
+# App used for extension tests
+exts."omni.kit.test".testExtApp = "${omni.kit.test}/apps/omni.app.test_ext.kit"
+
+# Select test process ([[test]] entries) to run by name. (Shortcut: `-n`)
+exts."omni.kit.test".testExtTestNameFilter = ""
+
+# If passed extension is kit file it will replace `testExtApp` if true. If false treat kit file as regular extensions,
+# allowing to run kit file in context of other app (kit file)
+exts."omni.kit.test".testExtUseKitFileAsApp = true
+
+# Run UI with list of python tests instead of autorunning them. Useful for running single tests. Shortcut: `--dev`
+exts."omni.kit.test".testExtUIMode = false
+
+# Extra args to pass to extension test process cmd
+exts."omni.kit.test".testExtArgs = []
+
+# Max ext test process to run at the same time, if < 0 use CPU count.
+exts."omni.kit.test".testExtMaxParallelProcesses = 1
+
+# Capture profile trace for extension test process
+exts."omni.kit.test".testExtEnableProfiler = false
+
+# Read REPO_TEST_CONTEXT env var for 'changed_files'. If found, decide if test needs to run.
+exts."omni.kit.test".testExtCodeChangeAnalyzerEnabled = true
+
+# Enable extra test sanity checks, like checking that test dependencies are not redundant.
+exts."omni.kit.test".testExtSanityChecksEnabled = true
+
+# Default extension test timeout (can be overridden by extensions), in seconds:
+exts."omni.kit.test".testExtDefaultTimeout = 300
+
+# Maximum timeout (applied if not 0) and applied after the override of extensions, in seconds:
+exts."omni.kit.test".testExtMaxTimeout = 0
+
+# Set to true to shuffle tests in random order before running them
+exts."omni.kit.test".testExtRandomOrder = false
+
+# Tests Sampling factor [0.0 to 1.0] set to 1.0 to execute all tests (no sampling)
+# Can be overridden per extension like this:
+# [[test]]
+# samplingFactor = 0.5
+exts."omni.kit.test".testExtSamplingFactor = 1.0
+
+# Tests Sampling Context, choices are:
+# any               -> always run with tests sampling
+# local             -> only run tests sampling locally
+# ci                -> only run tests sampling on CI
+exts."omni.kit.test".testExtSamplingContext = "ci"
+
+# Tests Sampling Seed, use the same seed to get the same tests sampling, ignored if set to < 0
+exts."omni.kit.test".testExtSamplingSeed = -1
+
+# Global override to allow/disallow all tests sampling
+exts."omni.kit.test".useSampling = true
+
+# Extension test retry strategy, choices are:
+# no-retry            -> run once
+# retry-on-failure    -> run up to N times, stop at first success (N = testExtMaxTestRunCount)
+# iterations          -> run N times (N = testExtMaxTestRunCount)
+# rerun-until-failure -> run up to N times, stop at first failure (N = testExtMaxTestRunCount)
+exts."omni.kit.test".testExtRetryStrategy = "no-retry"
+
+# Maximum test run count when using retry-on-failure/iterations/rerun-until-failure retry strategies
+exts."omni.kit.test".testExtMaxTestRunCount = 1
+
+# Maximum test duration that is allowed for a retry, set to 0 to allow any duration, in seconds:
+# For example if set to 300 it means any extension test failing with a duration over 300 seconds will not retry.
+exts."omni.kit.test".testExtMaxDurationForRetry = 0
+
+# By default don't run "unreliable" tests. If set to 1 run ONLY "unreliable" tests. If set to 2 then run both.
+exts."omni.kit.test".testExtRunUnreliableTests = 0
+
+# Run Flaky tests
+exts."omni.kit.test".testExtRunFlakyTests = false
+
+# Number of days of data to query
+exts."omni.kit.test".flakyTestsQueryDays = 30
+
+# Sync and include registry extensions for test run
+exts."omni.kit.test".testExtUseRegistry = false
+
+# Match versions by string comparison instead of semver rules. E.g. `omni.foo-1.2` will match `omni.foo-1.2.1`, but not
+# `omni.foo-1.3.0` if `true`.
+exts."omni.kit.test".testExtMatchVersionAsString = true
+
+# Name for type of test run, used when building test id
+exts."omni.kit.test".testExtTestType = ""
+
+# Name of test bucket
+exts."omni.kit.test".testExtTestBucket = ""
+
+# Separate execution mode to generate test report from previous runs
+exts."omni.kit.test".testExtGenerateReport = false
+
+# Support for code coverage, the report will be generated after running all tests
+exts."omni.kit.test".testExtGenerateCoverageReport = false
+
+# List of extension to run test on. Runs separate process with single extension test for each of them. Wildcard can be
+# used in both `testExts` and `excludeExts`.
+exts."omni.kit.test".testExts = []
+exts."omni.kit.test".excludeExts = [
+    # NOTE: Look into repo.toml -> `[[repo_test.suites.pythontests.group]]` for the list of tests that runs
+]
+
+# Do not print stdout when ext test passes (TC service messages are still printed)
+exts."omni.kit.test".testExtTrimStdoutOnSuccess = false
+
+# Stdout parse fail patterns. Includes and excludes.
+exts."omni.kit.test".stdoutFailPatterns.include = ["*[error]*", "*[fatal]*"]
+exts."omni.kit.test".stdoutFailPatterns.exclude = [
+	"*Leaking graphics objects*",  # Exclude grahics leaks until fixed
+	"*leaking memory. Missing call to destroyResourceBindingSignature*",
+    "*[carb.launcher.plugin] [parent]: timed out waiting for the child process*", # CC-507 carb.launchr intermittent error
+    "*[carb.launcher.plugin] failed to fork the child process*", # CC-507 carb.launchr intermittent error
+    "*[rtx.optixdenoising.plugin] [Optix] [DiskCacheDatabase] Failed to prepare statement: file is not a database*", # OM-50198 intermittent error, tests still pass
+    "*[rtx.optixdenoising.plugin] [Optix] [WARNING] Error when configuring the database.*", # OM-50198 intermittent error, tests still pass
+    "*[carb.crashreporter-breakpad.plugin] [previous crash]*", # Ignore crashes from previous runs
+]
+# Remove excluded messages from stdout (replace with some generic message to avoid confusion when people search for [error] etc.)
+exts."omni.kit.test".stdoutFailPatterns.trimExcludedMessages = true
+
+# Enables or disables Python test coverage
+# Note that enabling coverage for an extension(s) will prevent it from debugging
+# Use [[test]] section in the extension configuration to enable/disable it for the selected extension
+# Ex:
+# [[test]]
+# pyCoverageEnabled = false
+exts."omni.kit.test".pyCoverageEnabled = false
+
+# Code coverage threshold in percent: above or equal is good, below needs more test coverage.
+# As a general guideline for extension coverage, 60% is acceptable, 75% is commendable and 90% is exemplary.
+# If for a selected extension this option needs to be changed, use [[test]] section in the extension configuration
+# Ex:
+# [[test]]
+# pyCoverageThreshold = 50
+exts."omni.kit.test".pyCoverageThreshold = 60
+
+# Filter flags to include extensions modules and dependencies to the coverage filter
+# Use [[test]] section in the extension configuration to modify it for the selected extension
+# Ex:
+# [[test]]
+# pyCoverageIncludeDependencies = false
+exts."omni.kit.test".pyCoverageIncludeModules = true
+exts."omni.kit.test".pyCoverageIncludeDependencies = true
+exts."omni.kit.test".pyCoverageIncludeTestDependencies = false
+
+# Sets a custom filter for paths/modules to collect coverage data from Python tests
+# NOTE: if this option is set then the filter flags mentioned above will be ignored
+# If for a selected extension this option needs to be changed, use [[test]] section in the extension configuration
+# Ex:
+# [[test]]
+# pyCoverageFilter = ["some_module", "some_other_module", "some_path"]
+
+# exts."omni.kit.test".pyCoverageFilter = []
+
+# Omit files or path for the Coverage. The file name patterns follow typical shell syntax: * matches any number of characters and ? matches a single character.
+# NOTE: To avoid side effects all patterns should start from the root folder of the extension, for example omni/kit/test/file.py
+#
+# Ex:
+# [[test]]
+# pyCoverageOmit = ["omni/kit/test/path/to/some_file.py", "omni/kit/test/all_files_under_path/*"]
+
+# exts."omni.kit.test".pyCoverageOmit = []
+
+# Sets output formats for the Coverage report. Possible values are "stdout", "json", "html"
+# If nothing is set then defaults to "json"
+exts."omni.kit.test".pyCoverageFormats = ["json", "html"]
+
+# If this flag is true then previously collected Python internal coverage data will be loaded from
+# coverage output dir and will be used during generation of the coverage report to produce a single combined JSON report
+# file instead of several files
+exts."omni.kit.test".pyCoverageCombinedReport = true
+
+# Waiver for extensions with no tests
+# Use [[test]] section in the extension configuration to set the reason
+# Ex:
+# [[test]]
+# waiver = "Reason why the extension contains no test"
+
+#
+exts."omni.kit.test".testLibraries = []
+
+# If this flag is true, then the test timings will be reported in reggie format and the defaults for
+# the test method prefix will change from "test" to "benchmark"
+exts."omni.kit.test".runAsBenchmark = false
+
+# Key/Value pairs to describe benchmarking environments, results will only be compared within the same finger prints.
+# Ex:
+# [[test]]
+# benchmarkFingerPrint = { platform = "linux-x86_64", GPU = "G80" }
+exts."omni.kit.test".benchmarkFingerPrint = {}
+
+# Auto-add --no-window if running on CI:
+exts."omni.kit.test".autoAddNoWindowArgOnCI = true
+
+# Test testing config itself, pass various test settings
+[[test]]
+args = ["--/extra_arg_passed/param=123"]
+stdoutFailPatterns.exclude = [
+    "*message will not fail*",
+]
+pythonTests.exclude = [
+    "*test_that_is_excluded*",
+    "*test_test_other_settings*",
+]
+pythonTests.unreliable = [
+    "*test_that_is_unreliable*"
+]
+
+# It has some tests, but many of the files have 0 coverage measured because of chicken and egg problem.
+# It is hard to measure the coverage, because it starts coverage (and testing) itself. Also, being test system naturally
+# most of it is tested by just using it for all other tests, hence lowering the threshold.
+pyCoverageOmit = [
+    "omni/kit/test/__init__.py",
+    "omni/kit/test/async_unittest.py",
+    "omni/kit/test/code_change_analyzer.py",
+    "omni/kit/test/crash_process.py",
+    "omni/kit/test/ext_test_generator.py",
+    "omni/kit/test/ext_utils.py",
+    "omni/kit/test/exttests.py",
+    "omni/kit/test/flaky.py",
+    "omni/kit/test/nvdf.py",
+    "omni/kit/test/reporter.py",
+    "omni/kit/test/teamcity.py",
+    "omni/kit/test/test_coverage.py",
+    "omni/kit/test/test_populators.py",
+    "omni/kit/test/test_reporters.py",
+    "omni/kit/test/unittests.py",
+    "omni/kit/test/utils.py",
+]
+pyCoverageThreshold = 40
+samplingFactor = 1.0  # No test sampling for this extension
+
+
+# Multiple tests configs are supported, useful to run different tests and/or the same tests with different arguments.
+[[test]]
+name="another-test-config"
+args = ["--/extra_arg_passed/param=456"]
+pythonTests.include = [
+    "omni.kit.test.tests.test_kit_test.TestKitTest.test_test_other_settings*"
+]
+pyCoverageEnabled = false

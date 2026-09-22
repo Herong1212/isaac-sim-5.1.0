@@ -1,0 +1,430 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (606.0269665137665, 617.5200188545695, 674.9080788552742)
+                double3 target = (217.43010269710902, 189.60584620090486, 30.01898895377144)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        int refinementOverrideImplVersion = 0
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Scope "Looks"
+    {
+        def Material "OmniGlass"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:absorption_coeff", "inputs:use_glass_color_texture", "inputs:glass_color", "inputs:glass_color_texture", "inputs:frosting_roughness", "inputs:glass_ior", "inputs:thin_walled", "inputs:depth", "inputs:roughness_texture_influence", "inputs:roughness_texture", "inputs:reflection_color_texture", "inputs:reflection_color", "inputs:normal_map_texture", "inputs:normal_map_strength", "inputs:flip_tangent_u", "inputs:flip_tangent_v", "inputs:enable_opacity", "inputs:cutout_opacity", "inputs:cutout_opacity_texture", "inputs:cutout_opacity_mono_source", "inputs:opacity_threshold", "inputs:project_uvw", "inputs:world_or_object", "inputs:uv_space_index", "inputs:texture_translate", "inputs:texture_rotate", "inputs:texture_scale"]
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                color3f inputs:glass_color = (0, 1, 0) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (0, 0, 0)
+                        }
+                    }
+                    displayGroup = "Color"
+                    displayName = "Glass Color"
+                    doc = "Sets the color of the glass"
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "OmniPBR"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:diffuse_color_constant", "inputs:diffuse_texture", "inputs:albedo_desaturation", "inputs:albedo_add", "inputs:albedo_brightness", "inputs:diffuse_tint", "inputs:reflection_roughness_constant", "inputs:reflection_roughness_texture_influence", "inputs:reflectionroughness_texture", "inputs:metallic_constant", "inputs:metallic_texture_influence", "inputs:metallic_texture", "inputs:specular_level", "inputs:enable_ORM_texture", "inputs:ORM_texture", "inputs:ao_to_diffuse", "inputs:ao_texture", "inputs:enable_emission", "inputs:emissive_color", "inputs:emissive_color_texture", "inputs:emissive_mask_texture", "inputs:emissive_intensity", "inputs:enable_opacity", "inputs:opacity_texture", "inputs:opacity_constant", "inputs:enable_opacity_texture", "inputs:opacity_mode", "inputs:opacity_threshold", "inputs:geometry_normal_roughness_strength", "inputs:bump_factor", "inputs:normalmap_texture", "inputs:detail_bump_factor", "inputs:detail_normalmap_texture", "inputs:flip_tangent_u", "inputs:flip_tangent_v", "inputs:project_uvw", "inputs:world_or_object", "inputs:uv_space_index", "inputs:texture_translate", "inputs:texture_rotate", "inputs:texture_scale", "inputs:detail_texture_translate", "inputs:detail_texture_rotate", "inputs:detail_texture_scale"]
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_tint = (1, 0, 0) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Color Tint"
+                    doc = "When enabled, this color value is multiplied over the final albedo color"
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "OmniPBRBase"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBRBase/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBRBase/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBRBase/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:diffuse_reflection_color", "inputs:diffuse_tint", "inputs:specular_reflection_roughness", "inputs:metalness", "inputs:specular_level", "inputs:enable_emission", "inputs:emission_color", "inputs:emission_intensity", "inputs:enable_opacity", "inputs:geometry_opacity", "inputs:geometry_opacity_threshold", "inputs:enable_coat", "inputs:coat_weight", "inputs:coat_color", "inputs:coat_transparency", "inputs:coat_roughness", "inputs:coat_ior", "inputs:clearcoat_geometry_normal", "inputs:geometry_normal"]
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBRBase.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBRBase"
+                color3f inputs:coat_color = (0.32592595, 0, 0) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayGroup = "Clearcoat"
+                    displayName = "Clearcoat Tint"
+                    doc = "Clearcoat is tinted and affects the underlying material"
+                    hidden = false
+                )
+                color3f inputs:diffuse_tint = (0, 0.22024322, 1) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Tint"
+                    doc = "When enabled, this color value is multiplied over the final albedo color"
+                    hidden = false
+                )
+                color3f inputs:emission_color = (2, 0, 0) (
+                    customData = {
+                        float3 default = (1, 0.1, 0.1)
+                    }
+                    displayGroup = "Emissive"
+                    displayName = "Emissive Color"
+                    doc = "The emission color"
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "OmniPBR_ClearCoat"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:diffuse_color_constant", "inputs:diffuse_texture", "inputs:albedo_desaturation", "inputs:albedo_add", "inputs:albedo_brightness", "inputs:diffuse_tint", "inputs:reflection_roughness_constant", "inputs:reflection_roughness_texture_influence", "inputs:reflectionroughness_texture", "inputs:metallic_constant", "inputs:metallic_texture_influence", "inputs:metallic_texture", "inputs:specular_level", "inputs:enable_ORM_texture", "inputs:ORM_texture", "inputs:ao_to_diffuse", "inputs:ao_texture", "inputs:enable_emission", "inputs:emissive_color", "inputs:emissive_color_texture", "inputs:emissive_mask_texture", "inputs:emissive_intensity", "inputs:enable_opacity", "inputs:opacity_texture", "inputs:opacity_constant", "inputs:enable_opacity_texture", "inputs:opacity_mode", "inputs:opacity_threshold", "inputs:enable_clearcoat", "inputs:clearcoat_weight", "inputs:clearcoat_tint", "inputs:clearcoat_transparency", "inputs:clearcoat_reflection_roughness", "inputs:clearcoat_ior", "inputs:clearcoat_bump_factor", "inputs:clearcoat_normalmap_texture", "inputs:clearcoat_flatten", "inputs:geometry_normal_roughness_strength", "inputs:bump_factor", "inputs:normalmap_texture", "inputs:detail_bump_factor", "inputs:detail_normalmap_texture", "inputs:flip_tangent_u", "inputs:flip_tangent_v", "inputs:project_uvw", "inputs:world_or_object", "inputs:uv_space_index", "inputs:texture_translate", "inputs:texture_rotate", "inputs:texture_scale", "inputs:detail_texture_translate", "inputs:detail_texture_rotate", "inputs:detail_texture_scale", "inputs:clearcoat_texture_translate", "inputs:clearcoat_texture_rotate", "inputs:clearcoat_texture_scale"]
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR_ClearCoat.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR_ClearCoat"
+                color3f inputs:diffuse_tint = (2, 2, 0) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Color Tint"
+                    doc = "When enabled, this color value is multiplied over the final albedo color"
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+            }
+        }
+    }
+
+    def Mesh "Plane"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        float2[] primvars:st = [(0, 0), (0, 1), (1, 1), (1, 0)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (57.31288509224793, 1, 57.31288509224793)
+        double3 xformOp:translate = (0, -64.83179317780726, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_01_A"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBR> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_01_B>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (334.7120973586348, -5.684341886080802e-14, -526.1394598025479)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_02_A"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBR_ClearCoat> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_02_B>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (90.55294467376177, 4.547473508864641e-12, -793.0186897063384)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_00_A"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniGlass> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_00_B>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (101.89699772979338, -5.684341886080802e-14, -526.1394598025479)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_03_A"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBRBase> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_03_B>
+        custom uniform asset reference_test
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-182.19558206275968, -8.355982572538778e-12, -480.5094719448132)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_01_B"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBR> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_01_A>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (316.36272850960677, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_02_B"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBR_ClearCoat> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_02_A>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (72.20357582473375, 4.604316927725449e-12, -266.8792299037905)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_03_B"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniPBRBase> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_03_A>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-200.54495091178765, -8.29913915367797e-12, 45.62998785773476)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_00_B"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 4, 5, 1, 0, 6, 2, 3, 7, 4, 0, 2, 6, 5, 7, 3, 1]
+        rel material:binding = </World/Looks/OmniGlass> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (0, 1), (1, 1), (1, 0), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (0, 0), (0, 1), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        rel proxyPrim = </World/Cube_00_A>
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (83.54762888076536, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+
+def Xform "Environment"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

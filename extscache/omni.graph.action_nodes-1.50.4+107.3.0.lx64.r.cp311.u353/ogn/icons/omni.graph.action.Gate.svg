@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="type_gate_noBorder_dark" transform="translate(-12 -990)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(12 990)" fill="none"/>
+    <g id="gate" transform="translate(5 -9)">
+      <path id="boom" d="M1,0H1A1,1,0,0,1,2,1V11a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V1A1,1,0,0,1,1,0Z" transform="translate(35 1017) rotate(90)" fill="#cb6a6a"/>
+      <path id="post" d="M659,4694h-4v-7a2,2,0,1,1,4,0v7Zm-2-7a1,1,0,1,0,1,1A1,1,0,0,0,657,4687Z" transform="translate(-634 -3670)" fill="#9a9a9a"/>
+    </g>
+  </g>
+</svg>

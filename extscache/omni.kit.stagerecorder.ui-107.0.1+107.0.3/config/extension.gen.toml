@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.stagerecorder.ui-107.0.1%2B107.0.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.180992.c3eccf10.gl"
+        date = 1749861072
+        buildNumber = "107.0.0+master.6959.8255761e.gl"
+        repoName = "particle-system"
+        signed = 1

@@ -1,0 +1,53 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnWritePrimMaterial.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_WritePrimMaterial" (
+        docs="""Given a path to a prim and a path to a material on the current USD stage,  assigns the material to the prim.  Gives an error if the given prim or material  can not be found."""
+    )
+    {
+        token node:type = "omni.graph.nodes.WritePrimMaterial"
+        int node:typeVersion = 2
+
+        # 6 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:layerIdentifier = "" (
+            docs="""Identifier of the USD layer to export data to.
+            Identifier can be empty, "<Session Layer>", "<Root Layer>" or the identifier of a sublayer.
+            If empty or invalid, data will be exported to the current layer."""
+        )
+        custom rel inputs:material (
+            docs="""The material to be assigned to the prim"""
+        )
+        custom string inputs:materialPath = "" (
+            docs="""The path of the material to be assigned to the prim"""
+        )
+        custom rel inputs:prim (
+            docs="""Prim to be assigned a material."""
+        )
+        custom string inputs:primPath = "" (
+            docs="""Path of the prim to be assigned a material."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+
+        # 1 attribute
+        custom token state:layerIdentifier (
+            docs="""The prefetched layer Identifier."""
+        )
+    }
+}

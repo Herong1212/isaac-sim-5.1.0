@@ -1,0 +1,47 @@
+{
+    "SetTimeline": {
+        "version": 1,
+        "description": "Set properties of the main timeline",
+        "metadata": {
+            "uiName": "Set main timeline"
+        },
+        "categories": [ "time" ],
+        "scheduling": "compute-on-request",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "propValue": {
+                "type": "double",
+                "description": "The value of the property to set.",
+                "uiName": "Property Value"
+            },
+            "propName": {
+                "type": "token",
+                "description": "The name of the property to set.",
+                "uiName": "Property Name",
+                "default": "Frame",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": [ "Frame", "Time", "StartFrame", "StartTime", "EndFrame", "EndTime", "FramesPerSecond" ]
+                }
+
+            }
+        },
+        "outputs": {
+            "clamped": {
+                "type": "bool",
+                "description": "Was the input frame or time clamped to the playback range?",
+                "uiName": "Clamp to range"
+            },
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            }
+        }
+    }
+}

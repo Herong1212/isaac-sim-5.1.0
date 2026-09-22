@@ -1,0 +1,25 @@
+{
+    "OgnGroup": {
+        "description": [
+            "Node containing prims"
+        ],
+        "version": 1,
+        "uiName": "Group",
+        "language": "Python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "primsIn": {
+                "type": "target",
+                "description": "prims"
+            }
+        },
+        "outputs": {
+            "prims": {
+                "type": "target",
+                "description": "prims"
+            }
+        }
+    }
+}

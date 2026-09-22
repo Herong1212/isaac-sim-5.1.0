@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnArrayReplaceValue.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ArrayReplaceValue" (
+        docs="""Creates a copy of an input array where the first occurrence of "Value" is replaced with "New Value" in said array copy. If "Replace All" is true then all occurrences of the value are replaced."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ArrayReplaceValue"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom token inputs:array (
+            docs="""The array that serves as the starting point for the modified output array."""
+        )
+        custom token inputs:newValue (
+            docs="""The value to replace "Value" with in the output array."""
+        )
+        custom bool inputs:replaceAllFound = false (
+            docs="""If true, replaces all occurrences of "Value" with "New Value"."""
+        )
+        custom token inputs:value (
+            docs="""The value to be replaced in the output array."""
+        )
+
+        # 2 attributes
+        custom token outputs:array (
+            docs="""An array computed from the input array with some values replaced."""
+        )
+        custom bool outputs:found (
+            docs="""Set to true if a value was replaced, false otherwise."""
+        )
+    }
+}

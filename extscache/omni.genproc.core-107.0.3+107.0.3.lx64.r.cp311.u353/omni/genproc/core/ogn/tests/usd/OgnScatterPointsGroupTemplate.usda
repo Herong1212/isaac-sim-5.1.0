@@ -1,0 +1,160 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnScatterPointsGroup.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_ScatterPointsGroup" (
+        docs="""Scatters points from grouped sources."""
+    )
+    {
+        token node:type = "omni.genproc.core.ScatterPointsGroup"
+        int node:typeVersion = 1
+
+        # 24 attributes
+        custom bool inputs:active = true (
+            docs="""Is the Scatter Points Group node currently active?"""
+        )
+        custom rel inputs:bases (
+            docs="""Scatter base meshes."""
+        )
+        custom rel inputs:camera (
+            docs="""Camera to filter the scattered points."""
+        )
+        custom rel inputs:curveSources (
+            docs="""Scatter curve sources."""
+        )
+        custom uint64 inputs:curveStepsPerSegment = 10 (
+            docs="""Steps per segment for curve tessellation."""
+        )
+        custom bool inputs:filterUsingCamera = false (
+            docs="""If true, the scattered points will be discarded if they are outside the viewing frustum of the provided cameras."""
+        )
+        custom double inputs:frustumOffset = 0 (
+            docs="""Offset to enlarge the frustum filtering the points."""
+        )
+        custom rel inputs:groups (
+            docs="""Scatter groups."""
+        )
+        custom int[] inputs:objectIndicesRampInterpolations = [] (
+            docs="""Interpolation method between keys.
+            Linear creates a flat curve from point to point.
+            Smooth creates an ease in or ease out curve from point to point."""
+        )
+        custom float[] inputs:objectIndicesRampPositions = [] (
+            docs="""Positions over the normalized elevation of the base meshes from 0 to 1."""
+        )
+        custom token[] inputs:objectIndicesRampTags = [] (
+            docs="""Possible tag values for ramp"""
+        )
+        custom float[] inputs:objectIndicesRampValues = [] (
+            docs="""Values of the object indices ramp at the corresponding positions"""
+        )
+        custom bool inputs:playbackEvaluation = false (
+            docs="""If this is true, time for the simulation is from the timeline, not real time."""
+        )
+        custom int inputs:playbackStartFrame = 0 (
+            docs="""If 'playbackEvaluation' is true, this is the frame after which the simulation will start."""
+        )
+        custom rel inputs:prototypes (
+            docs="""The Paths of the prototypes."""
+        )
+        custom uint64 inputs:randomSeed = 0 (
+            docs="""Random seed."""
+        )
+        custom rel inputs:textureFilters (
+            docs="""Configuration of texture filters"""
+        )
+        custom rel inputs:textures (
+            docs="""Textures can be used to filter the scattered points for each bases"""
+        )
+        custom double inputs:time = 0 (
+            docs="""Either the running clock or the timeline time or timeline time, depending on playbackEvaluation."""
+        )
+        custom double inputs:usdTimecode = 0 (
+            docs="""The USD timecode at the current playback point (timeline time * timecodes/sec)."""
+        )
+        custom rel inputs:volumeSources (
+            docs="""Scatter volume sources."""
+        )
+        custom int[] inputs:weightsRampInterpolations = [] (
+            docs="""Interpolation method between keys.
+            Linear creates a flat curve from point to point.
+            Smooth creates an ease in or ease out curve from point to point."""
+        )
+        custom float[] inputs:weightsRampPositions = [] (
+            docs="""Positions over the normalized elevation of the base meshes from 0 to 1."""
+        )
+        custom float[] inputs:weightsRampValues = [] (
+            docs="""Values of the weights ramp at the corresponding positions"""
+        )
+
+        # 1 attribute
+        custom rel outputs_bundle (
+            docs="""output bundle of points data"""
+        )
+
+        # 18 attributes
+        custom rel state_cachedBaseMeshes (
+            docs="""Cached base meshes"""
+        )
+        custom rel state_cachedCurveSources (
+            docs="""Cached curve sources"""
+        )
+        custom rel state_cachedVolumeSources (
+            docs="""Cached volume sources"""
+        )
+        custom bool state:prevActive (
+            docs="""Previous active value for recompute test"""
+        )
+        custom uint64 state:prevCurveStepsPerSegment (
+            docs="""Previous curve steps per segment value for recompute test"""
+        )
+        custom bool state:prevFilterUsingCamera (
+            docs="""Previous filter using camera value for recompute test"""
+        )
+        custom double state:prevFrustumOffset (
+            docs="""Previous frustum offset value for recompute test"""
+        )
+        custom int[] state:prevObjectIndicesRampInterpolations (
+            docs="""Previous object indices ramp interpolations for recompute test"""
+        )
+        custom float[] state:prevObjectIndicesRampPositions (
+            docs="""Previous object indices ramp positions values for recompute test"""
+        )
+        custom float[] state:prevObjectIndicesRampValues (
+            docs="""Previous object indices ramp values for recompute test"""
+        )
+        custom bool state:prevPlaybackEvaluation (
+            docs="""Previous playbackEvaluation value for recompute test"""
+        )
+        custom int state:prevPlaybackStartFrame (
+            docs="""Previous playbackStartFrame value for recompute test"""
+        )
+        custom uint64 state:prevRandomSeed (
+            docs="""Previous randomSeed value for recompute test"""
+        )
+        custom double state:prevTime (
+            docs="""Previous time value for recompute test"""
+        )
+        custom double state:prevUsdTimecode (
+            docs="""Previous usdTimecode value for recompute test"""
+        )
+        custom int[] state:prevWeightsRampInterpolations (
+            docs="""Previous weights ramp interpolations for recompute test"""
+        )
+        custom float[] state:prevWeightsRampPositions (
+            docs="""Previous weights ramp positions values for recompute test"""
+        )
+        custom float[] state:prevWeightsRampValues (
+            docs="""Previous weights ramp values for recompute test"""
+        )
+    }
+}

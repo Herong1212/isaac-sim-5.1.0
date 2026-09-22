@@ -1,0 +1,47 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file VizTranscoderUltrasonic.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_ultrasonic_VizTranscoderUltrasonic" (
+        docs="""Receives Radar data and prepares a buffer for it from the buffer manager, and passes it to output"""
+    )
+    {
+        token node:type = "omni.sensors.nv.ultrasonic.VizTranscoderUltrasonic"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom int inputs:averagePeriod = 4 (
+            docs="""number of frames to average signal over"""
+        )
+        custom uint64 inputs:cudaStreamIn = 0 (
+            docs="""Cuda Stream Input"""
+        )
+        custom double inputs:hydraTime = 0.0 (
+            docs="""hydra timestamp input as double in [ns]"""
+        )
+        custom uint64 inputs:in = 0 (
+            docs="""Source Buffer"""
+        )
+        custom uint64 inputs:meta = 0 (
+            docs="""Meta Source Buffer"""
+        )
+        custom int inputs:sendDataId = 0 (
+            docs="""Send data buffer id to distinguish data on receiver side"""
+        )
+        custom double inputs:simTime = 0.0 (
+            docs="""simTime timestamp input as double in [ns]"""
+        )
+        custom uint64 inputs:targetPID = 0 (
+            docs="""Target process ID to send data stream to"""
+        )
+    }
+}

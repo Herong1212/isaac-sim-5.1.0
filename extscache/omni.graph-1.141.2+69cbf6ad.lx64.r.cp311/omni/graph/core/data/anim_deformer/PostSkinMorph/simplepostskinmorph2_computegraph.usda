@@ -1,0 +1,81 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    endTimeCode = 120
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def "Root" (
+    references = @./simplepostskinmorph2.usda@</Root>
+)
+{
+    over "group1"
+    {
+        over "base"
+        {
+            rel deformedPrim = </Root/group1/pCylinder1_deformed>
+            uniform token skel:skinningMethod = "ClassicLinear"
+            token visibility = "invisible"
+        }
+
+        def Mesh "base_deformed" (
+            references = </Root/group1/base>
+        )
+        {
+            point3f[] points.connect = </Root/group1/Morph.output:points>
+            token visibility = "inherited"
+        }
+
+        def ComputeNode "SkeletonTransforms"
+        {
+            rel input:skelAnim = </Root/group1/joint1/Animation>
+            rel input:skeleton = </Root/group1/joint1>
+            custom token node:type = "SkeletonTransforms"
+            matrix4d[] output:jointLocalBindTransforms
+            matrix4d[] output:jointLocalTransforms
+            int[] output:jointParentIndices
+            matrix4d[] output:jointSkelBindTransforms
+            matrix4d[] output:jointSkelTransforms
+            matrix4d output:skelLocalToWorld
+        }
+
+        def ComputeNode "Skinning"
+        {
+            rel input:mesh = </Root/group1/base>
+            point3f[] input:restPoints.connect = </Root/group1/base.points>
+            token[] input:skinningJoints.connect = </Root/group1/base.skel:joints>
+            int[] input:jointIndices.connect = </Root/group1/base.primvars:skel:jointIndices>
+            float[] input:jointWeights.connect = </Root/group1/base.primvars:skel:jointWeights>
+            float[] input:blendWeights
+            token input:skinningMethod.connect = </Root/group1/base.skel:skinningMethod>
+            matrix4d input:geomBindTransform.connect = </Root/group1/base.primvars:skel:geomBindTransform>
+            matrix4d input:meshWorldToLocal
+            token[] input:skelFullJoints.connect = </Root/group1/joint1.joints>
+            matrix4d[] input:skelTransforms.connect = </Root/group1/SkeletonTransforms.output:jointSkelTransforms>
+            matrix4d[] input:skelBindTransforms.connect = </Root/group1/joint1.bindTransforms>
+            matrix4d input:skelLocalToWorld.connect = </Root/group1/SkeletonTransforms.output:skelLocalToWorld>
+            int[] output:skinningJointsMap
+            int output:skinningMethod
+            matrix4d[] output:skinningTransforms
+            float[] output:skinningDualQuats
+            point3f[] output:points
+            custom token node:type = "Skinning"
+        }
+
+        def ComputeNode "Morph"
+        {
+            token[] input:joints.connect = </Root/group1/joint1.joints>
+            matrix4d[] input:jointSkelTransforms.connect = </Root/group1/SkeletonTransforms.output:jointSkelTransforms>
+            point3f[] input:points.connect = </Root/group1/Skinning.output:points>
+            rel input:restMesh = </Root/group1/base>
+            custom token node:type = "Morph"
+            point3f[] output:points
+            point3f[] output:offsets
+            int[] output:jointIndicesMap
+        }
+    }
+}
+

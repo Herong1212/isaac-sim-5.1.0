@@ -1,0 +1,25 @@
+[package]
+title = "Wave Propagation Model Extension"
+description = "Wave Propagation Model Extension"
+version = "3.0.0"
+authors = ["NVIDIA"]
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors","wpm"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.sensors.nv.common" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Main module for the Python interface
+# [[python.module]]
+# name = "omni.sensors.nv.wpm"

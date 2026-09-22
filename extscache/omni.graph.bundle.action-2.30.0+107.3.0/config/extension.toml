@@ -1,0 +1,70 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "2.30.0"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title description fields are primarily for displaying extension info in UI
+title = "Action Graph Bundle"
+description="Load all extensions necessary for using OmniGraph action graphs"
+category = "Graph"
+
+feature = true
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "omnigraph", "action", "bundle"]
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.svg"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) of the main documentation file.
+readme  = "docs/README.md"
+
+# Always target the SDK version of Kit
+writeTarget.kit = true
+
+# Support only as a sample
+support_level = "Sample"
+
+# Main module for the Python interface. This is how the module will be imported.
+[[python.module]]
+name = "omni.graph.bundle.action"
+
+[dependencies]
+"omni.graph.action" = {}
+"omni.graph.nodes" = {}
+"omni.graph.ui" = {}
+"omni.graph.ui_nodes" = {}
+
+# There is no Python code in this extension to test
+[[test]]
+
+# Force the unit test to run with a quick shutdown sequence to address OM-113797 (python GC attempting to
+# call into code containing dangling references to now-deleted OmniGraph objects).
+args = [
+    "--/app/fastShutdown=true",
+]
+
+[documentation]
+deps = [
+    ["omni.graph", "https://docs.omniverse.nvidia.com/kit/docs/omni.graph/latest"],
+    ["omni.graph.action_nodes", "_build/docs/omni.graph.action_nodes/latest"],
+    ["omni.graph.action", "_build/docs/omni.graph.action/latest"],
+    ["omni.graph.nodes", "_build/docs/omni.graph.nodes/latest"],
+    ["omni.graph.ui", "_build/docs/omni.graph.ui/latest"],
+    ["omni.graph.ui_nodes", "_build/docs/omni.graph.ui_nodes/latest"],
+]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

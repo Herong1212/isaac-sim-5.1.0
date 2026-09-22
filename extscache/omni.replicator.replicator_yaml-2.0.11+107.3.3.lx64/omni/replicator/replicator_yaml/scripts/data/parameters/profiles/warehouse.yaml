@@ -1,0 +1,154 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+nucleus_server: "omniverse://localhost/"
+
+# The stage settings can also be moved to another yaml.
+
+scenario:
+  create.from_usd:
+    usd:
+      property: nucleus_path
+      value: "NVIDIA/Assets/Isaac/2023.1.0/Isaac/Environments/Simple_Warehouse/warehouse.usd"
+    semantics: [["class", "scenario"]]
+
+camera:
+  create.stereo_camera:
+    stereo_baseline: 0.2
+    position:
+      distribution.combine:
+        distributions:
+          - 0
+          - 0
+          - distribution.uniform:
+              lower: 0.2
+              upper: "bad"
+
+    rotation:
+      distribution.combine:
+        distributions:
+          - distribution.normal:
+              mean: 0
+              std: 1
+          - 0
+          - distribution.uniform:
+              lower: 0
+              upper: 360
+
+render_products:
+  create.render_product:
+    camera: camera # May need to modify replicator to handle stereo camera pair
+    resolution: [1920, 1080]
+
+writer:
+  writers.get:
+    name: "ReplicatorYAMLWriter"
+    init_params:
+      output_dir: "_warehouse"
+      rgb: True
+      bounding_box_2d_tight: True
+      distance_to_camera: True
+      semantic_segmentation: True
+      bounding_box_2d_tight: True
+    render_products: render_products
+
+# End of writer
+
+
+lights:
+  create.light:
+    count: 2  # create.light cannot takes a replicator item for now.
+      # distribution.uniform:
+      #   lower: 0
+      #   upper: 2
+    light_type: "sphere"
+    # radius: 1 # TODO: support radius for creating a light
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    warehouse_objects:
+      randomizer.instantiate:
+        paths: warehouse_assets # Can points to another yaml
+        size:
+          distribution.uniform:
+            lower: 5
+            upper: 10
+        mode: reference
+
+    with.warehouse_objects:
+      modify.semantics:
+        semantics: [["class", "warehouse_objects"]]
+      physics.collider: null
+
+      modify.pose:
+        scale:
+          distribution.uniform:
+            lower: 0.75
+            upper: 1.25
+        rotation:
+          distribution.combine:
+            distributions:
+              - distribution.normal:
+                  mean: 0
+                  std: 45
+              - distribution.normal:
+                  mean: 0
+                  std: 45
+              - distribution.uniform:
+                  lower: 0
+                  upper: 360
+
+      modify.pose_camera_relative:
+        camera: camera
+        render_product: render_products
+        distance:
+          distribution.uniform:
+            lower: 3
+            upper: 5
+        vertical_location:
+          distribution.uniform:
+            lower: 0
+            upper: 0.5
+
+    with.lights:
+      modify.pose:
+        position:
+          distribution.combine:
+            distributions:
+              - distribution.uniform:
+                  lower: -2
+                  upper: 2
+              - distribution.uniform:
+                  lower: -2
+                  upper: 2
+              - 5
+      modify_color:
+        modify.attribute:
+          name: color
+          value:
+            distribution.uniform:
+              lower: [0, 0, 0]
+              upper: [1, 1, 1]
+      modify_intensity:
+        modify.attribute:
+          name: intensity
+          value:
+            distribution.uniform:
+              lower: 0
+              upper: 300000
+
+
+# Other yaml files to inherit
+profiles:
+  property: file_path
+  value:
+    - data/parameters/profiles/warehouse_assets.yaml

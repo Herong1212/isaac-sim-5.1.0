@@ -1,0 +1,118 @@
+{
+    "omni.graph.nodes.GpuInteropCudaEntry": {
+        "version": 3,
+        "description": [
+            "Entry node for post-processing hydra render results for a single view. ",
+            "It outputs the properties of a RenderVar as attributes accessible to downstream nodes. ",
+            "All downstream nodes are scheduled as CUDA commands."
+        ],
+        "categories": ["graph:postRender", "rendering"],
+        "uiName": "GPU Interop: Cuda Entry",
+        "inputs": {
+            "sourceName": {
+                "type": "string",
+                "description": "The name of the source RenderVar (AOV). The properties of this AOV are the output of this node.",
+                "default": "ldrColor",
+                "uiName": "Source Name"
+            }
+        },
+        "outputs": {
+            "cudaMipmappedArray": {
+                "type": "uint64",
+                "description": "The RenderVar data, which is represented as a CUDA Mipmapped Array.",
+                "uiName": "RenderVar Data"
+            },
+            "width": {
+                "type": "uint",
+                "description": [
+                    "The width of the selected texture RenderVar. ",
+                    "If the RenderVar is an arbitrary buffer, it is 0."
+                ],
+                "uiName": "Width"
+            },
+            "height": {
+                "type": "uint",
+                "description": [
+                    "The width of the selected texture RenderVar. ",
+                    "If the RenderVar is an arbitrary buffer, it is 0."
+                ],
+                "uiName": "Height"
+            },
+            "isBuffer": {
+                "type": "bool",
+                "description" : "True if the entry exposes an arbitrary buffer RenderVar as opposed to a texture RenderVar.",
+                "uiName": "Is Buffer"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size of the buffer, if the selected RenderVar is a buffer, otherwise it represents the texture depth.",
+                "uiName": "Buffer Size"
+            },
+            "mipCount": {
+                "type": "uint",
+                "description": "The number of levels of detail encoded in 'RenderVar Data'. If the RenderVar is not a texture, the value is 0.",
+                "uiName": "Mip Count"
+            },
+            "format": {
+                "type": "uint64",
+                "description": [
+                    "The texture format of the input image, matching the values of the enum carb::graphics::Format. ",
+                    "If the RenderVar is a buffer, the value is unknown."
+                ],
+                "uiName": "Texture Format"
+            },
+            "simTime": {
+                "type": "double",
+                "description": [
+                    "The time difference since the last simulation frame.",
+                    "May suffer from loss of precision and cannot be used as a deterministic identifier, ",
+                    "for example for fetching data from Fabric during the node compute - ",
+                    "use the Rational Time instead in that case."
+                ],
+                "uiName": "Simulation Time"
+            },
+            "rationalTimeOfSimNumerator": {
+                "type": "int64",
+                "description": [
+                    "The numerator of the simulation time expressed as rational time. ",
+                    "It is always valid and may be used to fetch data from Fabric during the node compute."
+                ],
+                "uiName": "Rational Time Of Sim Numerator"
+            },
+            "rationalTimeOfSimDenominator": {
+                "type": "uint64",
+                "description": [
+                    "The denominator of the simulation time expressed as rational time. ",
+                    "It is always valid and may be used to fetch data from Fabric during the node compute."
+                ],
+                "uiName": "Rational Time Of Sim Denominator"
+            },
+            "hydraTime": {
+                "type": "double",
+                "description": "The time difference since the last rendered frame.",
+                "uiName": "Renderer Time"
+            },
+            "externalTimeOfSimFrame": {
+                "type": "int64",
+                "description": [
+                    "The external time on the master node, matching the simulation frame used to render this frame. ",
+                    "It is only valid if the simulation and rendering are performed at the same, or different but constant rates."
+                ],
+                "uiName": "External Time Of Simulation Frame"
+            },
+            "frameId": {
+                "type": "int64",
+                "description": [
+                    "The frame number. ",
+                    "It is only valid if the simulation and rendering are performed at the same, or different but constant rates."
+                ],
+                "uiName": "Frame ID"
+            },
+            "stream": {
+                "type": "uint64",
+                "description": "The CUDA Stream used to order the CUDA commands scheduled by this graph execution.",
+                "uiName": "Stream"
+            }
+        }
+    }
+}

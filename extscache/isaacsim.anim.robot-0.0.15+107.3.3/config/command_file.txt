@@ -1,0 +1,5 @@
+Nova_Carter Idle 3
+Nova_Carter GoTo 10 -5 0
+iw_hub LiftUp
+iw_hub GoTo 5 5 0
+iw_hub LiftDown

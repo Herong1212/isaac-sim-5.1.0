@@ -1,0 +1,59 @@
+[package]
+version = "107.3.6"
+title = "Navigation UI (BETA)"
+description = "User Interface for Navigation"
+authors = ["NVIDIA"]
+category = "Animation"
+readme  = "docs/README.md"
+keywords = ["kit", "animation", "navigation"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.navigation.ui"
+
+[dependencies]
+"omni.usd" = {}
+"omni.client" = {}
+"omni.curve.manipulator" = {}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.kit.browser.sample" = {}
+"omni.kit.commands" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.usd_undo" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.viewport.menubar.core" = {}
+"omni.kit.viewport.menubar.display" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.registry" = {}
+"omni.kit.viewport.window" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.context_menu" = {}
+"omni.scene.visualization.core" = {}
+"omni.anim.navigation.core" = { version="~107.3" }
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.mainwindow",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx"
+]
+args = [
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/fastShutdown=true",
+    "--no-window"
+]
+stdoutFailPatterns.exclude = [
+    "*Empty typeName for </World/NavMeshVolume.box>*"
+]
+
+[package.writeTarget]
+kit = true
+
+[settings]
+exts."omni.anim.navigation".sample_folder = "https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/106.2/Samples/Navigation/"

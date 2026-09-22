@@ -1,0 +1,46 @@
+[package]
+version = "107.3.109"
+title = "AR Tablet Experience"
+description="Setup XR to stream to a tablet over OpenXR"
+readme  = "docs/README.md"
+category = "XR"
+keywords = ["XR", "AR", "Augmented Reality", "Tablet", "OpenXR", "Opt out of nSpect"]
+changelog="docs/CHANGELOG.md"
+
+authors = ["NVIDIA"]
+icon = "data/icon/iconxr.png"
+preview_image = "data/icon/preview.png"
+repository = ""
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.commands" = {}
+"omni.kit.widget.settings" = {}
+
+"omni.kit.xr.profile.common" = { version = "=107.3.109" }
+"omni.kit.xr.system.openxr" = { version = "=107.3.109" }
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+[[python.module]]
+name = "omni.kit.xr.profile.tabletar"
+
+[settings]
+xr.profile.tabletar.displayName = "Tablet AR"
+xr.profile.tabletar.system.displayMode = "TabletAR"
+defaults.xr.profile.tabletar.system.display = "OpenXR"
+
+defaults.xr.profile.tabletar.simulatedxr.refreshRate = 60.0
+defaults.xr.profile.tabletar.mirror.displayMode = "left"
+defaults.xr.profile.tabletar.anchorMode = "custom anchor"
+defaults.xr.profile.tabletar.enableNavigationControls = false
+
+[[test]]
+pythonTests.exclude = ["*test_extensions_api_md_is_uptodate"]
+
+[documentation]
+python_api_hidden = true

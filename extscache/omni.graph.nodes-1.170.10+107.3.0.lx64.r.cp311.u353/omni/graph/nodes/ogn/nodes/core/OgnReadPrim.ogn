@@ -1,0 +1,85 @@
+{
+    "ReadPrim": {
+        "version": 9,
+        "description": [
+            "DEPRECATED - use ReadPrimAttributes!"
+        ],
+        "uiName": "Read Prim",
+        "metadata": {
+            "hidden": "true"
+        },
+        "scheduling": [ "usd-read" ],
+        "categories": [ "sceneGraph", "bundle" ],
+        "inputs": {
+            "prim": {
+                "type": "bundle",
+                "description": "The prims to be read from when 'usePathPattern' is false",
+                "optional": true
+            },
+            "attrNamesToImport": {
+                "uiName": "Attributes To Import",
+                "type": "token",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match the attribute names that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']",
+                    "    '*' - match any",
+                    "    '* ^points' - match any, but exclude 'points'",
+                    "    '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"
+                ]
+            },
+            "usdTimecode": {
+                "uiName": "Time",
+                "type": "timecode",
+                "default": "NaN",
+                "description": "The time at which to evaluate the transform of the USD prim. A value of \"NaN\" indicates that the default USD time stamp should be used"
+            },
+            "computeBoundingBox": {
+                "uiName": "Compute Bounding Box",
+                "type": "bool",
+                "default": false,
+                "description": "For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."
+            }
+        },
+        "outputs": {
+            "primBundle": {
+                "type": "bundle",
+                "description": [
+                    "A bundle of the target Prim attributes.",
+                    "In addition to the data attributes, there is a token attribute named sourcePrimPath",
+                    "which contains the path of the Prim being read"
+                ]
+            }
+        },
+        "state": {
+            "primPath": {
+                "type": "uint64",
+                "description": "State from previous execution"
+            },
+            "primTypes": {
+                "type": "uint64",
+                "description": "State from previous execution"
+            },
+            "attrNamesToImport": {
+                "type": "uint64",
+                "description": "State from previous execution"
+            },
+            "usdTimecode": {
+                "type": "timecode",
+                "default": "NaN",
+                "description": "State from previous execution"
+            },
+            "computeBoundingBox": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            }
+        }
+    }
+}

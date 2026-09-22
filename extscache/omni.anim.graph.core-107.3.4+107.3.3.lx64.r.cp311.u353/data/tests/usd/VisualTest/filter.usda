@@ -1,0 +1,180 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-282.2961488597572, 145.284336679939, 412.97431649526493)
+                double3 target = (49.70302674292238, 103.37067135485182, -30.832204356153298)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:dynamicDiffuseGI:probeCounts" = (6, 6, 6)
+            float3 "rtx:dynamicDiffuseGI:probeGridOrigin" = (-210, -250, -10)
+            float3 "rtx:dynamicDiffuseGI:volumeSize" = (600, 440, 300)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:iray:environment_dome_ground_position" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_reflectivity" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (0, 1, 0)
+            float3 "rtx:lightspeed:material:overrideAlbedo" = (0.5, 0.5, 0.5)
+            float3 "rtx:lightspeed:material:overrideEmissiveColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            bool "rtx:raytracing:fractionalCutoutOpacity" = 1
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        custom uniform float anim:graph:variable:BlendWeight
+        prepend rel inputs:pose = </World/AnimationGraph/Blend>
+        rel skel:skeleton = </World/Character/Root>
+
+        def AnimationClip "stand_idle_wave_loop_mirror_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_idle_wave_loop_mirror_skelanim>
+            custom uniform float2 ui:position = (-1005.0043, -10.577606)
+        }
+
+        def AnimationClip "stand_walk_loop_in_place_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_in_place_skelanim>
+            custom uniform float2 ui:position = (-734.44055, 199.17096)
+        }
+
+        def Filter "Filter"
+        {
+            token[] inputs:joints = ["Chest"]
+            prepend rel inputs:pose = </World/AnimationGraph/stand_idle_wave_loop_mirror_skelanim>
+            custom uniform float2 ui:position = (-635.1425, -35.948135)
+        }
+
+        def Blend "Blend"
+        {
+            prepend rel inputs:blendWeight = </World/AnimationGraph/BlendWeight>
+            prepend rel inputs:pose0 = </World/AnimationGraph/Filter>
+            prepend rel inputs:pose1 = </World/AnimationGraph/stand_walk_loop_in_place_skelanim>
+            custom uniform float2 ui:position = (-246.41753, 21.188768)
+        }
+
+        def ReadVariable "BlendWeight"
+        {
+            token inputs:variableName = "BlendWeight"
+            custom uniform float2 ui:position = (-637.6462, 306.19293)
+        }
+
+        def AnimationClip "stand_walk_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-668.2841, 93.26326)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_walk_loop_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_loop.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_idle_wave_loop_mirror_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_idle_wave_loop_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_loop_in_place_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_loop_in_place.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def "Character" (
+        prepend apiSchemas = ["AnimationGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo_no_material.usd@
+    )
+    {
+        rel animationGraph = </World/AnimationGraph>
+        custom float anim:graph:variable:BlendWeight
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

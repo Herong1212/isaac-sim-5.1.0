@@ -1,0 +1,21 @@
+{
+    "ConstantHalf": {
+        "description": [
+            "Container for a half-precision floating-point value,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "inputs": {
+            "value": {
+                "type": "half",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

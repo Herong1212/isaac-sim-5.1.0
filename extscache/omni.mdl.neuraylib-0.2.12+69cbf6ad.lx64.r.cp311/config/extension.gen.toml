@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.mdl.neuraylib-4fafc63d6e2817ab.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.225012.f3364ed0.gl"
+        date = 1757755258
+        buildNumber = "107.3.3+1073.225012.f3364ed0.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

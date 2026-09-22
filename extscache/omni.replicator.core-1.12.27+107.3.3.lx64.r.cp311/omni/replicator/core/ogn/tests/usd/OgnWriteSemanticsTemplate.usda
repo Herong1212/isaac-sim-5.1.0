@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnWriteSemantics.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnWriteSemantics" (
+        docs="""This node writes the supplied semantics to specified prims."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnWriteSemantics"
+        int node:typeVersion = 3
+
+        # 5 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom token inputs:mode = "add" (
+            docs="""Semantics modification mode. Select from [add, replace, clear]"""
+        )
+        custom rel inputs:prims (
+            docs="""Prim(s) to set semantics"""
+        )
+        custom token[] inputs:semantics = [] (
+            docs="""Semantic key-value pairs separated by a colon (eg. class:car). DEPRECATED: Use the new semantics format instead."""
+        )
+        custom string inputs:semantics_values = "" (
+            docs="""Dictionary of semantic key and values as a string. Eg. `"{'class': ['car', 'vehicle'], 'material': 'metal'}"`"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

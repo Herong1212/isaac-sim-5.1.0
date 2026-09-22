@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Test Report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+
+<body id="ext_results">
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Results')" id="defaultTab">Results</button>
+        <button class="tablinks" onclick="openTab(event, 'Report')">Report</button>
+        <button class="tablinks" onclick="openTab(event, 'Coverage')">Coverage</button>
+    </div>
+
+    <div id="Results" class="tabcontent">
+        <h2>Extension Tests Results</h2>
+        <div style="width: 95%">
+            <input type="checkbox" id="show_successful" checked onclick="toggleShowSuccessful()">
+            <label>Show Successful Tests</label>
+        </div>
+        %%test_data%%
+    </div>
+
+    <div id="Report" class="tabcontent">
+        <h2>Extension Tests Report</h2>
+        <div style="width: 95%">
+            <input type="checkbox" id="show_colors" checked onclick="toggleColors()">
+            <label>Display colors (green=good, yellow=ok, red=bad)</label>
+            <a href="#" onclick="download_table_as_csv();" style="float: right">Download as CSV</a>
+        </div>
+        <table ov-results>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="2" ov-border>Extension Dictionary</th>
+                    <th colspan="9" ov-border>Test Results</th>
+                    <th colspan="5" ov-border>Python Coverage Results</th>
+                </tr>
+                <tr>
+                    <th ov-sortable ov-border id="ext_name">Extension</th>
+                    <th ov-sortable ov-border>Version</th>
+                    <th ov-sortable>Test waiver</th>
+                    <th ov-sortable ov-border>Passed</th>
+                    <th ov-sortable>Test count</th>
+                    <th ov-sortable>Total Duration (s)</th>
+                    <th ov-sortable>Startup Duration (s)</th>
+                    <th ov-sortable>Startup / Total (%)</th>
+                    <th ov-sortable>Tests Duration (s)</th>
+                    <th ov-sortable>Tests / Total (%)</th>
+                    <th ov-sortable>Timeout (s)</th>
+                    <th ov-sortable>Near Timeout (%)</th>
+                    <th ov-sortable ov-border>Coverage Enabled</th>
+                    <th ov-sortable>Coverage Threshold (%)</th>
+                    <th ov-sortable>Lines Total</th>
+                    <th ov-sortable>Lines Tested</th>
+                    <th ov-sortable>Coverage (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                %%table_data%%
+            </tbody>
+        </table>
+    </div>
+    <div id="Coverage" class="tabcontent">
+        <object
+            type="text/html"
+            data="./../pycov/combined_py_coverage_html/index.html"
+            width="100%"
+            height="1200">
+        </object>
+    </div>
+
+</body>
+
+</html>

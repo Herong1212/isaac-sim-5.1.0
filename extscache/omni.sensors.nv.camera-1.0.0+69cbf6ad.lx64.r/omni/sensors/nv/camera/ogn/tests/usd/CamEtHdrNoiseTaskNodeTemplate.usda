@@ -1,0 +1,76 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamEtHdrNoiseTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamEtHdrNoiseTask" (
+        docs="""Adds Dark Noise (spatital and temporal) to the image."""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamEtHdrNoiseTask"
+        int node:typeVersion = 1
+
+        # 12 attributes
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom float3[] inputs:hdrCombinationData = [] (
+            docs="""Array of (gain, exposure time, max linear value) of the HDR regions"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom bool inputs:realtime = false (
+            docs="""determines how the random values are generated (true= random per image (not yet implemented), false = random per pixel"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom float inputs:spatialNoiseFileExposureTime = 0.33 (
+            docs="""The exposure time in [s] """
+        )
+        custom float inputs:spatialNoiseFileGain = 1.0 (
+            docs="""The total gain applied of the noise file"""
+        )
+        custom uint64 inputs:spatialNoiseFilePedestal = 0 (
+            docs="""The pedestal used"""
+        )
+        custom token inputs:spatialNoiseFilename = "/temp/noise_ar0820.raw" (
+            docs="""File path to a UINT16 spatial noise file"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom float inputs:standardDeviationDarkShotNoise = 0.0 (
+            docs="""The temporal standard deviation of dark shot noise (0.0 to disable dark shot noise) """
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [s]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [s]"""
+        )
+    }
+}

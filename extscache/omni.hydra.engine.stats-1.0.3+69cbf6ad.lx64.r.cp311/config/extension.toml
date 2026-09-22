@@ -1,0 +1,21 @@
+[package]
+version = "1.0.3"
+title = "Omniverse Hydra Engine Stats Python Bindings"
+description = "Provide Python bindings to read GPU stats and performance info for rendering."
+category = "Rendering"
+keywords = ["Hydra", "stats", "gpu", "performance"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.usd" = {}
+"omni.gpu_foundation" = {}
+
+[[python.module]]
+name = "omni.hydra.engine.stats"
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

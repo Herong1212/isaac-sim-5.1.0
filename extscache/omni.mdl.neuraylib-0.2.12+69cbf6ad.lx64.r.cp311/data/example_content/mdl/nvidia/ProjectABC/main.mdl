@@ -1,0 +1,12 @@
+mdl 1.8;
+
+import ::df::*;
+
+export material example(
+    color tint = color(0.2)
+)
+= material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: tint)
+    )
+);

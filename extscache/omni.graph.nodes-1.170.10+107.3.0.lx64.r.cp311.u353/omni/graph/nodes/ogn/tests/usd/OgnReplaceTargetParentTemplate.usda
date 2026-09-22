@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReplaceTargetParent.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReplaceTargetParent" (
+        docs="""Replaces the old parent with a new parent in every target in an array.  If the old parent is not found, the target is unmodified."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReplaceTargetParent"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom rel inputs:newParent (
+            docs="""The new target parent. If empty, use the stage."""
+        )
+        custom rel inputs:oldParent (
+            docs="""The target parent to replace. If the old parent is not found, the target is unmodified."""
+        )
+        custom rel inputs:targets (
+            docs="""The target array to be modified"""
+        )
+
+        # 1 attribute
+        custom rel outputs:targets (
+            docs="""The modified target array."""
+        )
+    }
+}

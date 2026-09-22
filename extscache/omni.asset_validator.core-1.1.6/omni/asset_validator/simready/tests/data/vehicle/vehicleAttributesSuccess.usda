@@ -1,0 +1,68 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    subLayers = [
+        @./vehicleNoSemanticLabelSuccess.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle with correct attributes
+    """
+)
+
+over "vehicle"
+{
+    token omni:simready:vehicle:drivetrain = "RWD" (
+        allowedTokens = ["4WD", "AWD", "FWD", "RWD"]
+    )
+    token omni:simready:vehicle:steering = "front" (
+        allowedTokens = ["front", "back", "all", "none"]
+    )
+    token omni:simready:vehicle:longitudinalAxis = "posY" (
+        allowedTokens = ["negX", "negY", "negZ", "posX", "posY", "posZ"]
+    )
+    over "Geometry"
+    {
+        def Xform "group_test"
+        {
+            token omni:simready:vehicle:group = "group_test"
+            token omni:simready:vehicle:subgroup = "subgroup_test"
+            token omni:simready:vehicle:parent = "parent_test"
+            token omni:simready:vehicle:pivot = "pivot_test"
+        }
+        def Xform "task_test_left_hand"
+        {
+            token[] omni:simready:tasks = ["pickupObject", "touchObject", "sitDown", "rideObject"]
+            token omni:simready:tasks:effector = "leftHand" (
+                allowedTokens = ["leftHand", "rightHand", "leftFoot", "rightFoot", "pelvis"]
+            )
+            string omni:simready:tasks:group = "Passenger"
+        }
+        def Xform "task_test_right_hand"
+        {
+            custom string doc = "This Xform is used to test attributes without the allowedTokens attribute, which should pass validation without failures or warnings"
+            token[] omni:simready:tasks = ["pickupObject", "touchObject", "sitDown", "rideObject"]
+            token omni:simready:tasks:effector = "rightHand"
+            string omni:simready:tasks:group = "Passenger"
+        }
+        over "body"
+        {
+            token omni:simready:vehicle = "body"
+            over "brakeLights"
+            {
+                custom token[] omni:simready:light = ["brakeLights"]
+                custom color3f omni:simready:light:color:brakeLights = (1, 1, 1)
+                custom float2 omni:simready:light:intensityDomain:brakeLights = (0, 3500)
+                float omni:simready:light:duration:brakeLights = 1.2
+            }
+            over "headLights"
+            {
+                custom token[] omni:simready:light = ["headLights"]
+                custom color3d omni:simready:light:color = (1, 1, 1)
+                custom double2 omni:simready:light:intensityDomain = (0, 3500)
+                float omni:simready:light:duration = 1.2
+            }
+        }
+    }
+}

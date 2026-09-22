@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnModifyProjectionMaterial.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnModifyProjectionMaterial" (
+        docs="""This node prepares and/or projects a material on a bundle of prims."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnModifyProjectionMaterial"
+        int node:typeVersion = 1
+
+        # 10 attributes
+        custom token[] inputs:diffuse = [] (
+            docs="""Diffuse texture path of the projection."""
+        )
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom token[] inputs:metallic = [] (
+            docs="""Metallic texture path of the projection."""
+        )
+        custom token[] inputs:normal = [] (
+            docs="""Normal texture path of the projection."""
+        )
+        custom float3[] inputs:position = [] (
+            docs="""Position override of the projection."""
+        )
+        custom rel inputs:prims (
+            docs="""Projection prim to modify."""
+        )
+        custom float3[] inputs:rotation = [] (
+            docs="""Rotation override of the projection."""
+        )
+        custom token[] inputs:roughness = [] (
+            docs="""Roughness texture path of the projection."""
+        )
+        custom float3[] inputs:scale = [] (
+            docs="""Scale override of the projection."""
+        )
+        custom token[] inputs:textureGroup = [] (
+            docs="""Group of diffuse, normal, roughness and/or metallic textures."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

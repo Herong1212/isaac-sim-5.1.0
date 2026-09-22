@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExampleExtractFloat3Array.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_ExtractFloat3Array" (
+        docs="""Outputs a float[3][] attribute extracted from a bundle."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.ExtractFloat3Array"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom rel inputs:input (
+            docs="""Bundle containing a float[3][] attribute to be extracted to 'output'"""
+        )
+        custom token inputs:nameOfAttribute = "" (
+            docs="""Name of the attribute in 'input' that is to be extracted to 'output'"""
+        )
+
+        # 1 attribute
+        custom float3[] outputs:output (
+            docs="""The float[3][] attribute extracted from 'input'"""
+        )
+    }
+}

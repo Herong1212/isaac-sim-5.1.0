@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.environment.core-1.3.24.zip"
+
+    [package.publish]
+        kitVersion = "108.0.0+feature.217967.1c73315e.gl"
+        date = 1755583187
+        buildNumber = "108.0.0+main.144.50d75a43.gl"
+        repoName = "kit-sample-extensions"
+        signed = 1

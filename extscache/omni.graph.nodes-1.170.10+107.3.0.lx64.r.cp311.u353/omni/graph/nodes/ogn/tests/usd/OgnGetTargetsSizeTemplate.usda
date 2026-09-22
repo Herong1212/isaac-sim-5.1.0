@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetTargetsSize.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetTargetsSize" (
+        docs="""Returns the size of the target array."""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetTargetsSize"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom rel inputs:targets (
+            docs="""The input target array."""
+        )
+
+        # 1 attribute
+        custom int outputs:size (
+            docs="""The size of the target array."""
+        )
+    }
+}

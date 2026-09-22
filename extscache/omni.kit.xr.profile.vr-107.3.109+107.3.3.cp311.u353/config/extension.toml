@@ -1,0 +1,51 @@
+[package]
+version = "107.3.109"
+title = "VR Experience"
+description="Setup XR to stream a VR experience over OpenXR"
+readme  = "docs/README.md"
+category = "XR"
+keywords = ["XR", "VR", "Virtual Reality", "OpenXR", "HMD", "Headset", "Opt out of nSpect"]
+changelog="docs/CHANGELOG.md"
+
+authors = ["NVIDIA"]
+icon = "data/icon/iconxr.png"
+preview_image = "data/icon/preview.png"
+repository = ""
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.commands" = {}
+"omni.kit.xr.profile.common" = { version = "=107.3.109" }
+"omni.kit.xr.ui.stage" = { version = "=107.3.109" }
+"omni.kit.xr.system.openxr" = { version = "=107.3.109" }
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+[[python.module]]
+name = "omni.kit.xr.profile.vr"
+
+[[test]]
+pythonTests.exclude = ["*test_extensions_api_md_is_uptodate"]
+
+[settings]
+
+xr.profile.vr.displayName = "VR"
+xr.profile.vr.system.displayMode = "HmdVR"
+defaults.xr.profile.vr.system.display = "OpenXR"
+
+xr.profile.vr.enableRecording = true
+xr.profile.vr.cloudxr.mode = "vr"
+xr.profile.vr.gui.layers = ["controllers", "tooltips"]
+
+defaults.xr.profile.vr.tools.layout = "vr"
+defaults.xr.profile.vr.renderer.disablePostprocessing = true
+defaults.xr.profile.vr.renderQuality = "balanced"
+defaults.xr.profile.vr.foveation.mode = "warped"
+defaults.xr.profile.vr.adjustForUserHeight = true
+
+[documentation]
+python_api_hidden = true

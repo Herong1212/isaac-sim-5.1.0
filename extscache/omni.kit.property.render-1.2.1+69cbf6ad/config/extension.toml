@@ -1,0 +1,57 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.2.1"
+
+category = "Internal"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Render Prim Property Widgets"
+description="View and Edit Render Prim Property Values"
+
+# URL of the extension source repository.
+repository = ""
+support_level = "Core"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Keywords for the extension
+keywords = ["kit", "usd", "property", "render"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.window.property" = {}
+"omni.kit.property.usd" = {}
+
+[[python.module]]
+name = "omni.kit.property.render"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers"
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface*while unloading all plugins*"
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md"]

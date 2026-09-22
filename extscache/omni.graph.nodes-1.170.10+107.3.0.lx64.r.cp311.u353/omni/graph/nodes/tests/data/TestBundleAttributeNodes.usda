@@ -1,0 +1,778 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50020)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (212.6994512590177, 212.69945125901776, 182.69945125901748)
+                double3 target = (0, 0, -30)
+            }
+            dictionary Right = {
+                double3 position = (-50100, 0, -1.1124434706744069e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+    }
+    doc = "Virtual Prim Attribute Nodes Test"
+    metersPerUnit = 0.01
+)
+
+def Xform "defaultPrim"
+{
+    def Scope "asdf"
+    {
+    }
+
+    def Scope "foo"
+    {
+    }
+
+    def Scope "inputData"
+    {
+        bool[] boolArrayAttr = [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1]
+        bool boolAttr = 1
+        double2[] double2ArrayAttr = [(1.7, -1.7), (2, -2), (3, -3), (4, -4), (5, -5)]
+        double2 double2Attr = (12345.6, 98765)
+        double3 double3Attr = (12345.6, 98765, -192837)
+        double4 double4Attr = (12345.6, 98765, -192837, 16273.5)
+        double[] doubleArrayAttr = [1.7, -2, 3, -4, 5]
+        double doubleAttr = 12345.6
+        float2[] float2ArrayAttr = [(1.7, -1.7), (2, -2), (3, -3), (4, -4), (5, -5)]
+        float2 float2Attr = (12345.6, 98765)
+        float3 float3Attr = (12345.6, 98765, -192837)
+        float4 float4Attr = (12345.6, 98765, -192837, 16273.5)
+        float[] floatArrayAttr = [1.7, -2, 3, -4, 5]
+        float floatAttr = 12345.6
+        half2 half2Attr = (12344, 9872)
+        half3 half3Attr = (12344, 9872, -1928)
+        half4 half4Attr = (12344, 9872, -1928, 16272)
+        half halfAttr = 12344
+        int2[] int2ArrayAttr = [(1, -1), (2, -2), (3, -3), (4, -4), (5, -5)]
+        int2 int2Attr = (12345, 98765)
+        int3 int3Attr = (12345, 98765, -192837)
+        int4 int4Attr = (12345, 98765, -192837, 16273)
+        int64 int64Attr = 1234567890123456789
+        int[] intArrayAttr = [1, -2, 3, -4, 5]
+        int intAttr = 12345
+        matrix2d m2dAttr = ( (1.3, 2.6), (3.9, 4.2) )
+        matrix3d m3dAttr = ( (1.3, 2.6, 3.9), (4.2, -5.5, 6.8), (7.1, -8.4, 9.7) )
+        matrix4d m4dAttr = ( (1.3, 2.6, 3.9, 4.2), (-5.5, 6.8, 7.1, -8.4), (9.7, 10, 11.3, 12.6), (13.9, 14.2, -15.5, 16.8) )
+        point3f[] point3fArrayAttr = [(100, 0, 0), (100, 0, -80), (-100, 0, 20)]
+        quatd qdAttr = (12345.6, 98765, -192837, 16273.5)
+        quatf qfAttr = (12345.6, 98765, -192837, 16273.5)
+        quath qhAttr = (12344, 9872, -1928, 16272)
+        rel relSingleAttr = </defaultPrim/asdf>
+        string stringAttr = "asdfString"
+        token[] tokenArrayAttr = ["asdfToken0", "asdfToken1", "asdfToken2"]
+        token tokenAttr = "asdfToken"
+        uint64 uint64Attr = 18446744073709551615
+    }
+
+    def Mesh "outputData"
+    {
+        bool boolAttr.connect = </extractBool.outputs:output>
+        double2[] double2ArrayAttr.connect = </extractDouble2Array.outputs:output>
+        double2 double2Attr.connect = </extractDouble2.outputs:output>
+        double3 double3Attr.connect = </extractDouble3.outputs:output>
+        double4 double4Attr.connect = </extractDouble4.outputs:output>
+        double[] doubleArrayAttr.connect = </extractDoubleArray.outputs:output>
+        double doubleAttr.connect = </extractDouble.outputs:output>
+        int[] faceVertexCounts = [3]
+        int[] faceVertexIndices = [0, 2, 1]
+        float2[] float2ArrayAttr.connect = </extractFloat2Array.outputs:output>
+        float2 float2Attr.connect = </extractFloat2.outputs:output>
+        float3 float3Attr.connect = </extractFloat3.outputs:output>
+        float4 float4Attr.connect = </extractFloat4.outputs:output>
+        float[] floatArrayAttr.connect = </extractFloatArray.outputs:output>
+        float floatAttr.connect = </extractFloat.outputs:output>
+        half2 half2Attr.connect = </extractHalf2.outputs:output>
+        half3 half3Attr.connect = </extractHalf3.outputs:output>
+        half4 half4Attr.connect = </extractHalf4.outputs:output>
+        half halfAttr.connect = </extractHalf.outputs:output>
+        int2[] int2ArrayAttr.connect = </extractInt2Array.outputs:output>
+        int2 int2Attr.connect = </extractInt2.outputs:output>
+        int3 int3Attr.connect = </extractInt3.outputs:output>
+        int4 int4Attr.connect = </extractInt4.outputs:output>
+        int64 int64Attr.connect = </extractInt64.outputs:output>
+        int[] intArrayAttr.connect = </extractIntArray.outputs:output>
+        int intAttr.connect = </extractInt.outputs:output>
+        matrix2d m2dAttr.connect = </extractMatrix2Double.outputs:output>
+        matrix3d m3dAttr.connect = </extractMatrix3Double.outputs:output>
+        matrix4d m4dAttr.connect = </extractMatrix4Double.outputs:output>
+        point3f[] points = [(100, 0, 0), (100, 0, -80), (-100, 0, 20)]
+        point3f[] points.connect = </extractPoint3fArray.outputs:output>
+        quatd qdAttr.connect = </extractQuatDouble.outputs:output>
+        quatf qfAttr.connect = </extractQuatFloat.outputs:output>
+        quath qhAttr.connect = </extractQuatHalf.outputs:output>
+        string stringAttr.connect = </extractString.outputs:output>
+    }
+}
+
+def ComputeGraph "graph"
+{
+    def ComputeGraphSettings "computegraphSettings"
+    {
+        custom token evaluator:type = "dirty_push"
+        custom int2 fileFormatVersion = (1, 2)
+    }
+
+    def ComputeNode "copyattr"
+    {
+        rel inputs:fullData = </graph/inputDataReadBundle/outputs_primBundle>
+        token inputs:inputAttrNames = "intAttr int64Attr halfAttr floatAttr doubleAttr boolAttr tokenAttr int2Attr half2Attr float2Attr double2Attr int3Attr half3Attr float3Attr double3Attr int4Attr half4Attr float4Attr double4Attr qhAttr qfAttr qdAttr m2dAttr m3dAttr m4dAttr intArrayAttr floatArrayAttr doubleArrayAttr int2ArrayAttr float2ArrayAttr double2ArrayAttr point3fArrayAttr boolArrayAttr tokenArrayAttr stringAttr"
+        token inputs:outputAttrNames = "intAttr_copy int64Attr_copy halfAttr_copy floatAttr_copy doubleAttr_copy boolAttr_copy tokenAttr_copy int2Attr_copy half2Attr_copy float2Attr_copy double2Attr_copy int3Attr_copy half3Attr_copy float3Attr_copy double3Attr_copy int4Attr_copy half4Attr_copy float4Attr_copy double4Attr_copy qhAttr_copy qfAttr_copy qdAttr_copy m2dAttr_copy m3dAttr_copy m4dAttr_copy intArrayAttr_copy floatArrayAttr_copy doubleArrayAttr_copy int2ArrayAttr_copy float2ArrayAttr_copy double2ArrayAttr_copy point3fArrayAttr_copy boolArrayAttr_copy tokenArrayAttr_copy stringAttr_copy"
+        rel inputs:partialData = </graph/inputDataReadBundle/outputs_primBundle>
+        custom token node:type = "omni.graph.nodes.CopyAttribute"
+        custom int node:typeVersion = 1
+
+        def Output "outputs_data"
+        {
+        }
+    }
+
+    def ComputeNode "renameattr" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        rel inputs:data = </graph/copyattr/outputs_data>
+        token inputs:inputAttrNames.connect = </graph/copyattr.inputs:outputAttrNames>
+        token inputs:outputAttrNames = "intAttr_renamed int64Attr_renamed halfAttr_renamed floatAttr_renamed doubleAttr_renamed boolAttr_renamed tokenAttr_renamed int2Attr_renamed half2Attr_renamed float2Attr_renamed double2Attr_renamed int3Attr_renamed half3Attr_renamed float3Attr_renamed double3Attr_renamed int4Attr_renamed half4Attr_renamed float4Attr_renamed double4Attr_renamed qhAttr_renamed qfAttr_renamed qdAttr_renamed m2dAttr_renamed m3dAttr_renamed m4dAttr_renamed intArrayAttr_renamed floatArrayAttr_renamed doubleArrayAttr_renamed int2ArrayAttr_renamed float2ArrayAttr_renamed double2ArrayAttr_renamed point3fArrayAttr_renamed boolArrayAttr_renamed tokenArrayAttr_renamed stringAttr_renamed"
+        custom token node:type = "omni.graph.nodes.RenameAttribute"
+        custom int node:typeVersion = 1
+        uniform float2 ui:nodegraph:node:pos = (-610.00464, 157.5)
+
+        def Output "outputs_data"
+        {
+        }
+    }
+
+    def ComputeNode "getAttrNames1"
+    {
+        rel inputs:data = </graph/renameattr/outputs_data>
+        bool inputs:sort = 1
+        custom token node:type = "omni.graph.nodes.GetAttributeNames"
+        custom int node:typeVersion = 1
+        token[] outputs:output
+    }
+
+    def ComputeNode "attrType"
+    {
+        token inputs:attrName = "double2ArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.AttributeType"
+        custom int node:typeVersion = 1
+        int outputs:arrayDepth
+        int outputs:baseType
+        int outputs:componentCount
+        int outputs:fullType
+        int outputs:role
+    }
+
+    def ComputeNode "arrayLength"
+    {
+        token inputs:attrName = "double2ArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ArrayLength"
+        custom int node:typeVersion = 1
+        uint64 outputs:length
+    }
+
+    def ComputeNode "hasAttr1"
+    {
+        token inputs:attrName = "double2ArrayAttr_copy"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.HasAttribute"
+        custom int node:typeVersion = 1
+        bool outputs:output
+    }
+
+    def ComputeNode "hasAttr2"
+    {
+        token inputs:attrName = "double2ArrayAttr_copy"
+        rel inputs:data = </graph/copyattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.HasAttribute"
+        custom int node:typeVersion = 1
+        bool outputs:output
+    }
+
+    def ComputeNode "removeAttr"
+    {
+        token inputs:attrNamesToRemove = "double2ArrayAttr_copy"
+        rel inputs:data = </graph/copyattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.RemoveAttribute"
+        custom int node:typeVersion = 1
+
+        def Output "outputs_data"
+        {
+        }
+    }
+
+    def ComputeNode "hasAttr3"
+    {
+        token inputs:attrName = "double2ArrayAttr_copy"
+        rel inputs:data = </graph/removeAttr/outputs_data>
+        custom token node:type = "omni.graph.nodes.HasAttribute"
+        custom int node:typeVersion = 1
+        bool outputs:output
+    }
+
+    def ComputeNode "hasAttr4"
+    {
+        token inputs:attrName = "float2ArrayAttr_copy"
+        rel inputs:data = </graph/removeAttr/outputs_data>
+        custom token node:type = "omni.graph.nodes.HasAttribute"
+        custom int node:typeVersion = 1
+        bool outputs:output
+    }
+
+    def ComputeNode "insertAttr"
+    {
+        double2[] asdf = [(1.2, -1.2), (3.4, -5.6)]
+        custom token inputs:attrToInsert = "any"
+        rel inputs:data = </graph/removeAttr/outputs_data>
+        token inputs:outputAttrName = "double2ArrayAttr_copy"
+        custom token node:type = "omni.graph.nodes.InsertAttribute"
+        custom int node:typeVersion = 1
+
+        def Output "outputs_data"
+        {
+        }
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token inputs:attrToInsert = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "hasAttr5"
+    {
+        token inputs:attrName = "double2ArrayAttr_copy"
+        rel inputs:data = </graph/insertAttr/outputs_data>
+        custom token node:type = "omni.graph.nodes.HasAttribute"
+        custom int node:typeVersion = 1
+        bool outputs:output
+    }
+
+    def ComputeNode "extractInt"
+    {
+        token inputs:attrName = "intAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractInt64"
+    {
+        token inputs:attrName = "int64Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractHalf"
+    {
+        token inputs:attrName = "halfAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloat"
+    {
+        token inputs:attrName = "floatAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDouble"
+    {
+        token inputs:attrName = "doubleAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractBool"
+    {
+        token inputs:attrName = "boolAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractToken"
+    {
+        token inputs:attrName = "tokenAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractString"
+    {
+        token inputs:attrName = "stringAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractInt2"
+    {
+        token inputs:attrName = "int2Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractHalf2"
+    {
+        token inputs:attrName = "half2Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloat2"
+    {
+        token inputs:attrName = "float2Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDouble2"
+    {
+        token inputs:attrName = "double2Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractInt3"
+    {
+        token inputs:attrName = "int3Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractHalf3"
+    {
+        token inputs:attrName = "half3Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloat3"
+    {
+        token inputs:attrName = "float3Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDouble3"
+    {
+        token inputs:attrName = "double3Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractInt4"
+    {
+        token inputs:attrName = "int4Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractHalf4"
+    {
+        token inputs:attrName = "half4Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloat4"
+    {
+        token inputs:attrName = "float4Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDouble4"
+    {
+        token inputs:attrName = "double4Attr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractQuatHalf"
+    {
+        token inputs:attrName = "qhAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractQuatFloat"
+    {
+        token inputs:attrName = "qfAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractQuatDouble"
+    {
+        token inputs:attrName = "qdAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractMatrix2Double"
+    {
+        token inputs:attrName = "m2dAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractMatrix3Double"
+    {
+        token inputs:attrName = "m3dAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractMatrix4Double"
+    {
+        token inputs:attrName = "m4dAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractIntArray"
+    {
+        token inputs:attrName = "intArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloatArray"
+    {
+        token inputs:attrName = "floatArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDoubleArray"
+    {
+        token inputs:attrName = "doubleArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractInt2Array" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        token inputs:attrName = "int2ArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+        uniform float2 ui:nodegraph:node:pos = (-109.23026, 277.8696)
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractFloat2Array"
+    {
+        token inputs:attrName = "float2ArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractDouble2Array"
+    {
+        token inputs:attrName = "double2ArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractPoint3fArray"
+    {
+        token inputs:attrName = "point3fArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractBoolArray" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        token inputs:attrName = "boolArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+        uniform float2 ui:nodegraph:node:pos = (-105.88039, -670.4803)
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "extractTokenArray"
+    {
+        token inputs:attrName = "tokenArrayAttr_renamed"
+        rel inputs:data = </graph/renameattr/outputs_data>
+        custom token node:type = "omni.graph.nodes.ExtractAttribute"
+        custom int node:typeVersion = 1
+        custom token outputs:output = "any"
+
+        def ComputeNodeMetaData "metaData"
+        {
+            custom token outputs:output = "ExtendedAttributeType-->Any"
+        }
+    }
+
+    def ComputeNode "inputDataReadBundle" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        custom rel inputs:prim
+        prepend rel inputs:prim = </defaultPrim/inputData>
+        custom token inputs:primPath
+        custom bool inputs:usePath = 0
+        custom token node:type = "omni.graph.nodes.ReadPrimBundle"
+        custom int node:typeVersion = 1
+        uniform token ui:nodegraph:node:expansionState = "open"
+        uniform float2 ui:nodegraph:node:pos = (-1801.5941, -10.217863)
+
+        def Output "outputs_primBundle"
+        {
+        }
+    }
+}
+

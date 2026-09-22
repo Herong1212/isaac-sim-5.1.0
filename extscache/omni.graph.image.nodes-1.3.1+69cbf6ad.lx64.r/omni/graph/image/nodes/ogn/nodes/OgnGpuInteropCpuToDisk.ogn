@@ -1,0 +1,134 @@
+{
+    "omni.graph.examples.cpp.GpuInteropCpuToDisk": {
+        "version": 2,
+        "categories": ["graph:postRender", "rendering"],
+        "description": [
+            "Saves the specified CPU buffer to disk. ",
+            "The node assumes that the RenderVar (AOV) has already been copied to the host (CPU) memory."
+         ],
+        "metadata": {
+            "uiName": "GPU Interop: Cpu To Disk"
+        },
+        "inputs": {
+            "gpu": {
+                "type": "uint64",
+                "description": "The shared context containing GPU foundation interfaces.",
+                "uiName": "GPU Foundations"
+            },
+            "rp": {
+                "type": "uint64",
+                "description": "The render product for this view.",
+                "uiName": "Render Product"
+            },
+            "startFrame": {
+                "type": "uint64",
+                "description": "Frame number to begin saving to disk.",
+                "uiName": "Start Frame",
+                "default": 0
+            },
+            "frameCount": {
+                "type": "int64",
+                "description": "Number of frames to capture. If set to -1, the node execution never stops.",
+                "uiName": "Frame Count",
+                "default": -1
+            },
+            "active": {
+                "type": "bool",
+                "description": [
+                    "If true, the node computes once, then resets to false. ",
+                    "It is useful to use in runtime scripts or tests, where a single frame should be captured at a time."
+                ],
+                "uiName": "Active Reset",
+                "default": false
+            },
+            "skipInactive": {
+                "type": "bool",
+                "description": [
+                    "If true, the node will early out if 'isactive' is false. ",
+                    "If false, the node will be triggered even if 'active' is False but only ",
+                    "if the frame number of the render product is smaller than 'startFrame', ",
+                    "and if the 'frameCount' is larger or equal to the internal capture count."
+                ],
+                "uiName": "Skip Inactive Nodes",
+                "default": false
+            },
+            "saveLocation": {
+                "type": "string",
+                "description": "The path to save AOVs as AOV_FrameNumber.{exr,png}",
+                "uiName": "Save Location",
+                "default": ""
+            },
+            "fileType": {
+                "type": "string",
+                "description": "The file type of the saved images. The valid types are bmp, png and exr.",
+                "uiName": "File Type",
+                "default": "png"
+            },
+            "fileName": {
+                "type": "string",
+                "description": "Optional, name given to the output file. If specified the output filename will be 'File Name_{aovGpu}.{fileType}'.",
+                "uiName": "File Name",
+                "default": "",
+                "optional": true
+            },
+            "maxInflightWrites": {
+                "type": "int",
+                "description": [
+                    "Specifies the maximum allowed concurrent asynchronous file write operations dispatched by the node, ",
+                    "preventing potential blocking on file I/O for the Render thread. ",
+                    "This attribute controls the number of writes before waiting to dispatch a new I/O command.",
+                    "If the number of concurrent writes is reached, the Render Thread waits for the existing write commands to complete ",
+                    "before dispatching new commands."
+                ],
+                "uiName": "Max Concurrent Writes",
+                "default": 2
+            },
+            "aovGpu": {
+                "type": "string",
+                "description": "Name of AOV representing the GPU resource, used for querying format and properties.",
+                "uiName": "AOV GPU",
+                "default": ""
+            },
+            "aovCpu": {
+                "type": "string",
+                "description": [
+                    "Name of AOV representing the CPU buffer of GPU resource. ",
+                    "It is assumed that the CPU RenderVar is a copy of the GPU data.",
+                    "If the CPU AOV is invalid, the node does not output anything."
+                ],
+                "uiName": "AOV CPU",
+                "default": ""
+            },
+            "fileNumber": {
+                "type": "int",
+                "description": "Number that will be appended to the exported filename. If -1 then the render product's frame number will be used.",
+                "uiName": "File Number",
+                "default": -1
+            },
+            "autoFileNumber": {
+                "type": "int",
+                "description": "If non zero, this number will be the starting number for export. Each invocation of this node increases the number by 1.",
+                "uiName": "Auto File Number",
+                "default": -1
+            },
+            "saveFlags": {
+                "type": "uint64",
+                "description": "Flags that will be passed to carb::imaging::IImaging for file saving.",
+                "uiName": "Save Flags",
+                "default": 0
+            }
+        },
+        "outputs": {
+            "gpu": {
+                "type": "uint64",
+                "description": "The shared context containing GPU foundation interfaces.",
+                "uiName": "GPU Foundations"
+            },
+            "rp": {
+                "type": "uint64",
+                "description": "The render product for this view.",
+                "uiName": "Render Product"
+            }
+        }
+    }
+}

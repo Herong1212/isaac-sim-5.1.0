@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    """
+    Invalid environment: OpenDrive XODR file is not an xml file.
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom uniform asset omni:simready:openDrive = @./not_xml.xodr@
+}

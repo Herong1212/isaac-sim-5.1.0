@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+    subLayers = [
+        @./vehicleBase.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle without wheels
+    """
+)
+
+over "vehicle"
+{
+    over "Geometry"
+    {
+        over "wheel"
+        {
+            over "wheel_fl" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_fr" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_rl" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_rr" (
+                active = false
+            )
+            {
+            }
+        }
+    }
+}

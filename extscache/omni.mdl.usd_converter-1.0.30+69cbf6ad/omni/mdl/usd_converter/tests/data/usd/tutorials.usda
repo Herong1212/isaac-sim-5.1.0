@@ -1,0 +1,620 @@
+#usda 1.0
+(
+    "MDL to USD conversion"
+    defaultPrim = "blinker_material"
+)
+
+def Shader "example_struct"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_struct"
+    float inputs:param_float = 0
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_struct_param_int" (
+    customData = {
+        dictionary mdl = {
+            dictionary annotations = {
+                bool "::anno::hidden()" = 1
+            }
+        }
+    }
+    hidden = true
+)
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_struct.param_int"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_struct_param_float" (
+    customData = {
+        dictionary mdl = {
+            dictionary annotations = {
+                bool "::anno::hidden()" = 1
+            }
+        }
+    }
+    hidden = true
+)
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_struct.param_float"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_function"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_function"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "wave_height"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "wave_height"
+    float2[] inputs:wave_centers = [(0.2, 0.7), (0.6, 0.4), (0.35, 0.6)]
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "wave_gradient"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "wave_gradient"
+    float inputs:delta = 0.01
+    float inputs:factor = 1
+    token inputs:normal.connect = </wave_gradient/normal.outputs:out>
+    token inputs:uvw.connect = </wave_gradient/uvw.outputs:out>
+    float2[] inputs:wave_centers = [(0.2, 0.7), (0.6, 0.4), (0.35, 0.6)]
+    token outputs:out (
+        renderType = "material"
+    )
+
+    def Shader "uvw"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @base.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "texture_coordinate_info(float3,float3,float3)"
+        token inputs:position.connect = </wave_gradient/position.outputs:out>
+        token inputs:tangent_u.connect = </wave_gradient/tangent_u.outputs:out>
+        token inputs:tangent_v.connect = </wave_gradient/tangent_v.outputs:out>
+        token outputs:out
+    }
+
+    def Shader "position"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/support_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "texture_coordinate(int)"
+        int inputs:index = 0
+        token outputs:out
+    }
+
+    def Shader "tangent_u"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/support_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "texture_tangent_u(int)"
+        int inputs:index = 0
+        token outputs:out
+    }
+
+    def Shader "tangent_v"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/support_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "texture_tangent_v(int)"
+        int inputs:index = 0
+        token outputs:out
+    }
+
+    def Shader "normal"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/support_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "normal()"
+        token outputs:out
+    }
+}
+
+def Shader "checker_value"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "checker_value"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "checker_value_roughness" (
+    customData = {
+        dictionary mdl = {
+            dictionary annotations = {
+                bool "::anno::hidden()" = 1
+            }
+        }
+    }
+    hidden = true
+)
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "checker_value.roughness"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "checker_value_weight" (
+    customData = {
+        dictionary mdl = {
+            dictionary annotations = {
+                bool "::anno::hidden()" = 1
+            }
+        }
+    }
+    hidden = true
+)
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "checker_value.weight"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "Options"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "Options"
+    int inputs:v = 0 (
+        renderType = "::nvidia::sdk_examples::tutorials::Options"
+    )
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "int"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "int"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "checker"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "checker"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "color_checker"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "color_checker"
+    color3f inputs:a = (1, 1, 1)
+    color3f inputs:b = (0, 0, 0)
+    float inputs:scale = 1
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "fd_1"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "fd_1"
+    int inputs:param0 = 42
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "fd_default_call"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "fd_default_call"
+    int inputs:param0.connect = </fd_default_call/param0.outputs:out>
+    token outputs:out (
+        renderType = "material"
+    )
+
+    def Shader "param0"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "fd_1(int)"
+        int inputs:param0 = 42
+        token outputs:out
+    }
+}
+
+def Shader "fd_auto_uniform"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "fd_auto_uniform"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "fd_auto_varying"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "fd_auto_varying"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_material"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_material"
+    float inputs:roughness = 0
+    color3f inputs:tint = (1, 1, 1)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_compilation"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_compilation"
+    color3f inputs:tint = (1, 1, 1)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_execution1"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_execution1"
+    color3f inputs:tint = (1, 1, 1)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_execution2"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_execution2"
+    float3 inputs:light_pos = (-5, 3, 5)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_execution3"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_execution3"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_execution4"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_execution4"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_modulemdl_material_examples"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_modulemdl_material_examples"
+    asset inputs:profile = @nvidia/sdk_examples/resources/example_modules.ies@
+    color3f inputs:tint = (1, 1, 1)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_modules2"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_modules2"
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_df"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_df"
+    int inputs:add_checker = 1 (
+        renderType = "::nvidia::sdk_examples::tutorials::Options"
+    )
+    float inputs:anisotropy = 0.5 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    float inputs:checker_scale = 1
+    float inputs:clearcoat_ior = 1.5 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 10
+                    double "::anno::hard_range(float,float)::min" = 1
+                }
+            }
+        }
+    )
+    color3f inputs:diffuse_tint = (1, 0.5, 0.3)
+    float inputs:diffuse_weight = 0.25 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    color3f inputs:emission_intensity = (0.25, 0.5, 0.75)
+    float inputs:emission_intensity_scale = 0.5 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 10
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    string inputs:emission_usage = "full"
+    color3f inputs:glossy_tint = (0.3, 0.5, 1)
+    float inputs:glossy_weight = 1 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    float inputs:roughness = 0.1 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    asset inputs:tex = @nvidia/sdk_examples/resources/example.png@
+    float inputs:tex_coord_scale = 14
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_edf"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_edf"
+    float inputs:diffuse_emission_weight = 0.25 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    color3f inputs:diffuse_tint = (0, 0, 0)
+    color3f inputs:emission_intensity = (0.25, 0.5, 0.75)
+    float inputs:emission_intensity_scale = 1 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 10
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    float inputs:exponent = 32 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1024
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    float inputs:spot_emission_weight = 0.25 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 1
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    bool inputs:spot_global_distribution = 0
+    float inputs:spread = 3.1415927 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 3.1415927410125732
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_mod_rough"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_mod_rough"
+    float inputs:roughness = 0
+    color3f inputs:tint = (1, 1, 1)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "dxr_sphere_mat"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "dxr_sphere_mat"
+    float inputs:roughness_offset = 0.25
+    float inputs:roughness_scale = 1
+    color3f inputs:tint = (0.3, 0.3, 0.3)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_measured_bsdf"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_measured_bsdf"
+    asset inputs:mbsdf = @nvidia/sdk_examples/resources/example_modules.mbsdf@
+    int inputs:mode = 2 (
+        renderType = "::df::scatter_mode"
+    )
+    float inputs:multiplier = 1
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_measured_edf"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_measured_edf"
+    bool inputs:global_distribution = 0
+    float inputs:multiplier = 1 (
+        customData = {
+            dictionary mdl = {
+                dictionary annotations = {
+                    double "::anno::hard_range(float,float)::max" = 10
+                    double "::anno::hard_range(float,float)::min" = 0
+                }
+            }
+        }
+    )
+    asset inputs:profile = @nvidia/sdk_examples/resources/example_modules.ies@
+    color3f inputs:tint = (0, 0, 0)
+    token outputs:out (
+        renderType = "material"
+    )
+}
+
+def Shader "example_texture_lookup_bsdf" (
+    customData = {
+        dictionary mdl = {
+            dictionary annotations = {
+                string "::anno::author(string)::name" = "NVIDIA Corporation"
+                string "::anno::description(string)::description" = "test material"
+                string "::anno::display_name(string)::name" = "aaa"
+                bool "::anno::hidden()" = 1
+            }
+        }
+    }
+    hidden = true
+    sdrMetadata = {
+        dictionary ui = {
+            string description = "test material"
+            string displayName = "aaa"
+        }
+    }
+)
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "example_texture_lookup_bsdf"
+    asset inputs:tex = @nvidia/sdk_examples/resources/example.png@
+    asset inputs:tex2 = @nvidia/sdk_examples/resources/example.png@
+    token outputs:out (
+        renderType = "material"
+    )
+    uniform token ui:displayName = "aaa"
+}
+
+def Shader "blinker_material"
+{
+    uniform token info:implementationSource = "sourceAsset"
+    uniform asset info:mdl:sourceAsset = @nvidia/sdk_examples/tutorials.mdl@
+    uniform token info:mdl:sourceAsset:subIdentifier = "blinker_material"
+    color3f inputs:base = (0.1, 0.1, 0.1)
+    bool inputs:enabled = 1
+    color3f inputs:light = (1, 0.9, 0)
+    float inputs:speed = 5
+    token outputs:out (
+        renderType = "material"
+    )
+}
+

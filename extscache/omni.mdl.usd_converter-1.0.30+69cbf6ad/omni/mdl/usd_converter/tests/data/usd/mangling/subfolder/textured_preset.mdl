@@ -1,0 +1,17 @@
+mdl 1.6;
+
+import .::textured::*;
+
+// change defaults but keep parameters
+export material textured_preset(*)
+= textured::textured_default(
+    tex_file: texture_2d("../../resources/tile.1003.png"),
+    scale: 0.66f
+);
+
+// change defaults and fold parameters
+export material textured_preset_folded()
+= textured::textured_default(
+    tex_file: texture_2d("../../resources/tile.1004.png"),
+    scale: 0.77f
+);

@@ -1,0 +1,487 @@
+/***************************************************************************************************
+ * Copyright 2023 NVIDIA Corporation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *  * Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  * Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *  * Neither the name of NVIDIA CORPORATION nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **************************************************************************************************/
+
+mdl 1.8;
+
+import ::anno::*;
+import ::anno::author;
+import ::anno::copyright_notice;
+import ::anno::description;
+import ::anno::display_name;
+import ::anno::in_group;
+import ::anno::key_words;
+import ::anno::unused;
+import ::anno::usage;
+import ::base::*;
+import ::state::*;
+import ::tex::*;
+using ::tex import wrap_mode;
+import ::math::*;
+import ::state::normal;
+import ::state::position;
+import ::scene::*;
+import ::state::texture_coordinate;
+import ::df::diffuse_reflection_bsdf;
+
+export struct hextile_sample
+{
+    // Weights
+    float w_0 	  = 0.f;
+    float w_1 	  = 0.f;
+    float w_2 	  = 0.f;
+    // UV
+    float2 uv_0   = float2(0);
+    float2 uv_1   = float2(0);
+    float2 uv_2   = float2(0);
+    //Scale
+    float2 s_0   = float2(0);
+    float2 s_1   = float2(0);
+    float2 s_2   = float2(0);
+    // Rotations
+    float r_0 	  = 0.f;
+	float r_1 	  = 0.f;
+	float r_2 	  = 0.f;
+    //Translation
+    float2 t_0   = float2(0);
+    float2 t_1   = float2(0);
+    float2 t_2   = float2(0);
+};
+
+export float3 tbn(
+	float3 raw_normal,
+	uniform int uv_index = 0
+)[[ anno::hidden() ]]{
+	float3 normal 	 = raw_normal * 2.0 - 1.0;
+	float2 normal_xy = float2( normal.x, normal.y );
+	float normal_z   = math::sqrt( math::saturate( 1.0 - math::dot( normal_xy, normal_xy ) ) );
+	normal.z 		 = normal_z;
+
+	base::texture_coordinate_info coord_info_uvw = base::coordinate_source( coordinate_system:
+																			base::texture_coordinate_uvw,
+																			texture_space: uv_index );
+	float3 T = coord_info_uvw.tangent_u;
+	float3 B = coord_info_uvw.tangent_v;
+	float3 N = state::normal();
+
+	normal = normal.x * T + normal.y * B + normal.z * N;
+	return math::normalize( normal );
+}
+
+export float3 hash23(float2 uv)
+[[ anno::hidden() ]]
+{ 
+    float3 a = float3(uv.x, uv.y, uv.x);
+    float3 b = float3(uv.y, uv.x, uv.x);
+    float3 c = float3(uv.x, uv.y, uv.y);
+
+    float3 num1 = float3(127.1,311.7,74.7);
+    float3 num2 = float3(269.5,1183.3,246.1);
+    float3 num3 = float3(113.5,271.9,124.6);
+
+    float3 result = math::sin(float3(math::dot(a,num1), math::dot(b,num2), math::dot(c,num3))) * 43758.5453123;
+
+    return math::frac(result);
+}
+
+export float3 raw_to_normal(
+    float3 raw
+)[[ anno::hidden() ]]{
+	float3 normal = raw * 2.0 - 1.0;
+	float2 xy     = float2( normal.x, normal.y );
+	float  z      = math::sqrt( math::saturate( 1.0 - math::dot( xy, xy ) ) );
+    return math::normalize( float3( xy.x, xy.y, z ) );
+}
+
+export float3 normal_to_raw(
+    float3 normal
+)[[ anno::hidden() ]]{
+    return normal * 0.5 + 0.5;
+}
+
+export float3 rotate_normal(
+    float3 normal,
+    float angle
+)[[ anno::hidden() ]]{
+    float  c              = math::cos( angle );
+    float  s              = math::sin( angle );
+    float3 rotated_normal = normal;
+	rotated_normal.x      = c * normal.x + s * normal.y;
+	rotated_normal.y      = c * normal.y - s * normal.x;
+    return rotated_normal;
+}
+
+export float2 transform_uv(float2 uv, float2 offset, float rotation, float2 scale, float2 pivot)
+[[ anno::hidden() ]]
+{ 
+    // rotate
+    float costime = math::cos(rotation);
+    float sintime = math::sin(rotation);
+    float2 recentereduv = uv - pivot;
+    float2 result = float2((costime * recentereduv.x + sintime * recentereduv.y), (costime * recentereduv.y - sintime * recentereduv.x)) + pivot;
+
+    // scale
+    result = result * scale;
+
+    // translation
+    result = result + offset;
+
+    return result;
+}
+
+export float2 random_transform_uv(float2 uv, float2 minmaxrot, float2 minmaxscale, float2 seed)
+[[ anno::hidden() ]]
+{ 
+    float3 hashnum = hash23(seed);
+    float2 pivot = float2(0.5,0.5);
+    float ran_scale = math::lerp(minmaxscale.x, minmaxscale.y, hashnum.z);
+    float2 result = transform_uv(uv, float2(hashnum.x,hashnum.y), math::lerp(minmaxrot.x, minmaxrot.y, math::frac(hashnum.z * 16)), float2(ran_scale,ran_scale), pivot);
+    return result;
+}
+
+export hextile_sample hextile(float2 uv, float tilescale, float tilehardness, float2 hextile_rotlimits, float2 hextile_scalelimits)
+[[ anno::hidden() ]]
+{
+    hextile_sample hts;
+
+	float hexu = uv.x - (uv.y * (0.5/(1.732/2.0)));
+	float hexv = (uv.y * (1.0/(1.732/2.0)));
+	float2 hexuv = float2(hexu, hexv) / tilescale;
+
+	float2 scaleduv = math::floor(hexuv);
+
+	float sub_scaleduv = scaleduv.x - scaleduv.y; 
+    float3 scaleduv2 = math::frac(float3(0 + sub_scaleduv, 1 + sub_scaleduv, 2 + sub_scaleduv) * (0.3333333333333) + 1.6666667);
+
+	float2 frachex = math::frac(hexuv);
+	float derp2 = math::abs((frachex.x + frachex.y) - 1.0);
+	float A = (frachex.x + frachex.y) - 1.0;
+	float2 derp2b = (A > 0.0) ? (1.0 - float2(frachex.y, frachex.x)) : frachex;
+	float3 derp3 = float3(derp2, derp2b.x, derp2b.y);
+
+	float3 splituvs = math::round(scaleduv2);
+	float3 swizzleuvs1 = float3(splituvs.z, splituvs.x, splituvs.y);
+	float3 swizzleuvs2 = float3(splituvs.y, splituvs.z, splituvs.x);
+
+	float3 appendeduvs = float3(math::dot(swizzleuvs1, derp3),math::dot(swizzleuvs2, derp3),math::dot(splituvs, derp3));
+	float3 powhex = math::pow(appendeduvs, tilehardness);
+	powhex =  powhex / math::dot(powhex, float3(1.0,1.0,1.0));
+    hts.w_0 = powhex.x;
+    hts.w_1 = powhex.y;
+    hts.w_2 = powhex.z;
+
+    float3 separator = splituvs * (A > 0 ? 1.0 : 0.0);
+
+    // Do the uv transforms
+    float3 hash0 = hash23(float2(splituvs.x, splituvs.y) + (scaleduv + separator.z));
+    float3 hash1 = hash23(float2(splituvs.z, splituvs.x) + (scaleduv + separator.y));
+    float3 hash2 = hash23(float2(splituvs.y, splituvs.z) + (scaleduv + separator.x));
+
+    float2 pivot = float2(0.5,0.5);
+
+    // transforms/offsets
+    hts.t_0 = float2(hash0.x,hash0.y);
+    hts.t_1 = float2(hash1.x,hash1.y);
+    hts.t_2 = float2(hash2.x,hash2.y);
+
+    // rotations are tau for full rotation
+    hts.r_0 = math::lerp(hextile_rotlimits.x, hextile_rotlimits.y, math::frac(hash0.z * 16));
+    hts.r_1 = math::lerp(0.0, 0.0, math::frac(hash1.z * 16));
+    hts.r_2 = math::lerp(0.0, 0.0, math::frac(hash2.z * 16));
+
+    // scales
+    hts.s_0 = math::lerp(hextile_scalelimits.x, hextile_scalelimits.y, hash0.z);
+    hts.s_1 = math::lerp(hextile_scalelimits.x, hextile_scalelimits.y, hash1.z);
+    hts.s_2 = math::lerp(hextile_scalelimits.x, hextile_scalelimits.y, hash2.z);
+
+    // uv, offset, rotation, scale, pivot
+    hts.uv_0 = transform_uv(uv, hts.t_0, hts.r_0, hts.s_0, pivot);
+    hts.uv_1 = transform_uv(uv, hts.t_1, hts.r_1, hts.s_1, pivot);
+    hts.uv_2 = transform_uv(uv, hts.t_2, hts.r_2, hts.s_2, pivot);
+
+    return hts;
+}
+
+export float remap(float a=0., float start_old=0., float end_old=1., float start_new=0., float end_new=1.)
+[[ anno::hidden() ]]
+{return start_new + (a - start_old) * (end_new - start_new) / (end_old - start_old);}
+
+float3 inverse_transform_matrix(float3 basis_x, float3 basis_y, float3 basis_z, float3 vector) {
+    float3 result = float3(math::dot(basis_x, vector), math::dot(basis_y, vector), math::dot(basis_z, vector));
+    return result;
+}
+
+export float3 mul_quat_by_vector(float4 q, float3 v)
+[[ anno::hidden() ]]
+{
+    float ix =  q.w * v.x + q.y * v.z - q.z * v.y;
+    float iy =  q.w * v.y + q.z * v.x - q.x * v.z;
+    float iz =  q.w * v.z + q.x * v.y - q.y * v.x;
+    float iw = -q.x * v.x - q.y * v.y - q.z * v.z;
+
+    return float3(ix * q.w + iw * -q.x + iy * -q.z - iz * -q.y, iy * q.w + iw * -q.y + iz * -q.x - ix * -q.z, iz * q.w + iw * -q.z + ix * -q.y - iy * -q.x);
+}
+
+
+export float3 reorient_normal(float3 t, float3 u, float3 s)
+[[ anno::hidden() ]]
+{
+    float3 cross_st = math::cross(s, t);
+    float4 q = float4(cross_st.x, cross_st.y, cross_st.z, math::dot(s, t) + 1) / math::sqrt(2 * (math::dot(s, t) + 1));
+    float3 qxyz = float3(q.x, q.y, q.z);
+    // Rotate the normal
+    return math::normalize(u * (q.w * q.w - math::dot(qxyz, qxyz)) + 2 * qxyz * math::dot(qxyz, u) + 2 * q.w * math::cross(qxyz, u));
+}
+
+export float2 projectionuvs(float3 p_position, float3 p_scale, float3 p_forward, float3 p_right, float3 p_up, float p_unitscale) 
+[[ anno::hidden() ]]
+{
+    float3 tmat = inverse_transform_matrix(p_forward, p_up, p_right, state::position() - p_position);
+    float scalefac = (1.0 / p_unitscale) * 0.5;
+    float3 bounds = float3(scalefac,scalefac,scalefac);
+    float3 uvw = (tmat/(bounds * float3(p_scale.z, p_scale.y, p_scale.x)) + float3(1.0,1.0,1.0)) / 2.0;
+    return float2(uvw.x,uvw.y);
+}
+
+/*
+export float MultiBoxSDFMask(
+    uniform texture_2d diffuse_map,
+    uniform string sfx_up = string("_up"),
+    uniform string sfx_right = string("_right"),
+    uniform string sfx_forward = string("_forward"),
+    uniform string sfx_position = string("_position")
+)
+[[ anno::display_name("Multi Box SDF Mask"),
+   anno::thumbnail(".thumbs/hex.png"),
+   anno::in_group("Replicator"),
+   anno::author("NVIDIA CORPORATION")]]
+   {
+	float pixel = 0.5;//projected_lookup_float4(diffuse_map, wrap_u, wrap_v, projection_position, projection_scale, projection_forward, projection_right, projection_up);
+    return pixel;
+}
+*/
+
+export float3 ProjectNormal(
+    //normalmap_texture
+    uniform texture_2d normalmap_texture = texture_2d() [[
+        anno::display_name("Normal Map"),
+        anno::in_group("Geometry"),
+        anno::description("Projects a normal map along an axis. Masks by the alpha mask in RBGA.")
+    ]],
+    // Projection Primvars
+    uniform string projection_position = string("projection_position") [[
+        anno::display_name("Projection Position"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_quat = string("projection_quat") [[
+        anno::display_name("Projection Quaternion"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_scale = string("projection_scale") [[
+        anno::display_name("Projection Scale"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_unitscale = string("projection_unitscale") [[
+        anno::display_name("Projection StageMetersPerUnit"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]]
+)
+[[ anno::display_name("Project Normals"),
+   anno::thumbnail(".thumbs/hex.png"),
+   anno::in_group("Replicator"),
+   anno::author("NVIDIA CORPORATION")]]
+   {
+    // Get the primvars for the projection
+    float3 p_position = ::scene::data_lookup_float3(projection_position, float3(1.0));
+    float3 p_scale = ::scene::data_lookup_float3(projection_scale, float3(1.0));
+    float4 p_quat = ::scene::data_lookup_float4(projection_quat, float4(1.0));
+    float p_unitscale = ::scene::data_lookup_float(projection_unitscale, float(0.01));
+
+    // Use quat to get forward, up, right vectors for projection
+    float3 p_right = mul_quat_by_vector(p_quat, float3(1.0,0.0,0.0));
+    float3 p_up = mul_quat_by_vector(p_quat, float3(0.0,1.0,0.0));
+    float3 p_forward = mul_quat_by_vector(p_quat, float3(0.0,0.0,-1.0));
+    
+    //
+    float2 uv = projectionuvs(p_position, p_scale, p_forward, p_right, p_up, p_unitscale);
+
+    // Mask out normals that face away from the projection
+    float normal_clip = math::ceil(math::max(math::dot(state::normal(), p_right*-1.0) * -1.0f, 0.0f));
+
+    float xmax = (uv.x >= 1.0) ? 0.0 : 1.0;
+    float xmin = (uv.x <= 0.0) ? 0.0 : 1.0;
+    float ymax = (uv.y >= 1.0) ? 0.0 : 1.0;
+    float ymin = (uv.y <= 0.0) ? 0.0 : 1.0;
+    float uv_bounds = xmax * xmin * ymax * ymin * normal_clip;
+
+    float4 normaltex_pixel = tex::lookup_float4(normalmap_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+    
+    float3 u = math::normalize((p_forward * remap(normaltex_pixel.x, 0.0, 1.0, -1.0, 1.0)) + (p_up * remap(normaltex_pixel.y, 0.0, 1.0, -1.0, 1.0)) + (p_right * normaltex_pixel.z));
+    float3 t = state::normal();
+    float3 axis = float3(0.0, 0.0, 1.0);
+    float3 s = (p_forward * axis.x) + (p_up * axis.y) + (p_right * axis.z);
+
+    float3 normal_pixel = math::lerp(state::normal(), reorient_normal(t, u, s), normaltex_pixel.w * uv_bounds);
+    return float3(normal_pixel.x, normal_pixel.y, normal_pixel.z);
+}
+
+
+export float ProjectMask(
+    //mask_texture
+    uniform texture_2d mask_texture = texture_2d() [[
+        anno::display_name("Mask Map"),
+        anno::in_group("Geometry"),
+        anno::description("Projects a normal map along an axis. Masks by the alpha mask in RBGA.")
+    ]],
+    // Projection Primvars
+    uniform string projection_position = string("projection_position") [[
+        anno::display_name("Projection Position"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_quat = string("projection_quat") [[
+        anno::display_name("Projection Quaternion"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_scale = string("projection_scale") [[
+        anno::display_name("Projection Scale"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]],
+    uniform string projection_unitscale = string("projection_unitscale") [[
+        anno::display_name("Projection StageMetersPerUnit"),
+        anno::in_group("Projection"),
+        anno::usage("normal")
+    ]]
+)
+[[ anno::display_name("Project Mask"),
+   anno::thumbnail(".thumbs/hex.png"),
+   anno::in_group("Replicator"),
+   anno::author("NVIDIA CORPORATION")]]
+   {
+    // Get the primvars for the projection
+    float3 p_position = ::scene::data_lookup_float3(projection_position, float3(1.0));
+    float3 p_scale = ::scene::data_lookup_float3(projection_scale, float3(1.0));
+    float4 p_quat = ::scene::data_lookup_float4(projection_quat, float4(1.0));
+    float p_unitscale = ::scene::data_lookup_float(projection_unitscale, float(0.01));
+
+    // Use quat to get forward, up, right vectors for projection
+    float3 p_right = mul_quat_by_vector(p_quat, float3(1.0,0.0,0.0));
+    float3 p_up = mul_quat_by_vector(p_quat, float3(0.0,1.0,0.0));
+    float3 p_forward = mul_quat_by_vector(p_quat, float3(0.0,0.0,-1.0));
+    
+    //
+    float2 uv = projectionuvs(p_position, p_scale, p_forward, p_right, p_up, p_unitscale);
+
+    // Mask out normals that face away from the projection
+    float normal_clip = math::ceil(math::max(math::dot(state::normal(), p_right*-1.0) * -1.0f, 0.0f));
+
+    float xmax = (uv.x >= 1.0) ? 0.0 : 1.0;
+    float xmin = (uv.x <= 0.0) ? 0.0 : 1.0;
+    float ymax = (uv.y >= 1.0) ? 0.0 : 1.0;
+    float ymin = (uv.y <= 0.0) ? 0.0 : 1.0;
+    float uv_bounds = xmax * xmin * ymax * ymin * normal_clip;
+
+    float3 masktex_pixel = tex::lookup_float3(mask_texture, uv, tex::wrap_clamp, tex::wrap_clamp, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);  
+    return float(masktex_pixel.x * uv_bounds);
+}
+
+export float InfiniteMask(
+    //mask_texture
+    uniform texture_2d mask_texture = texture_2d() [[
+        anno::display_name("Mask Map"),
+        anno::in_group("Geometry"),
+        anno::description("Projects a normal map along an axis. Masks by the alpha mask in RBGA.")
+    ]],
+	float hextile_texturescale = float(5.0)
+	[[
+		anno::display_name("Hex Tile Texture Scale"),
+		anno::description(""),
+		anno::in_group("Infinite Tile")
+	]],
+	float hextile_hardness = float(6.0)
+	[[
+		anno::display_name("Hex Tile Blend Hardness"),
+		anno::description(""),
+		anno::in_group("Infinite Tile")
+	]],
+	float hextile_scale = float(0.5)
+	[[
+		anno::display_name("Hex Tile Scale"),
+		anno::description(""),
+		anno::in_group("Infinite Tile")
+	]],
+	float2 hextile_scalelimits = float2(0.75, 1.25)
+	[[
+		anno::display_name("Hex Tile Scale Limits"),
+		anno::description(""),
+		anno::in_group("Infinite Tile")
+	]],
+	float2 hextile_rotlimits = float2(0.0, 2 * math::PI)
+	[[
+		anno::display_name("Hex Tile Rotation Limits"),
+		anno::description(""),
+		anno::in_group("Infinite Tile")
+	]]
+)
+[[ anno::display_name("Infinite Texture Mask"),
+   anno::thumbnail(".thumbs/hex.png"),
+   anno::in_group("Replicator"),
+   anno::author("NVIDIA CORPORATION")]]
+   {
+
+    
+    // Calculate the projection UVs
+    float2 uv = float2(state::texture_coordinate(0).x, state::texture_coordinate(0).y) * hextile_texturescale;
+	hextile_sample hexstruct = hextile(uv, hextile_scale, hextile_hardness, hextile_rotlimits, hextile_scalelimits);
+
+    // ############### Get Depth Blend
+	float ht0_depth = tex::lookup_float(mask_texture, hexstruct.uv_0, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+	float ht1_depth = tex::lookup_float(mask_texture, hexstruct.uv_1, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+	float ht2_depth = tex::lookup_float(mask_texture, hexstruct.uv_2, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+
+	// Save the weights from the alpha of the diffuse
+	float3 alpha = float3(hexstruct.w_0, hexstruct.w_1, hexstruct.w_2) * (float3(ht0_depth, ht1_depth, ht2_depth) + 0.1);
+	float3 alphapow = math::pow(alpha, 10.0);
+	float alphasum = alphapow.x + alphapow.y + alphapow.z;
+	float3 alphapow2 = alphapow / alphasum;
+
+	// ############### Get Diffuse
+	float3 ht0_diffuse = tex::lookup_float3(mask_texture, hexstruct.uv_0, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+	float3 ht1_diffuse = tex::lookup_float3(mask_texture, hexstruct.uv_1, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+	float3 ht2_diffuse = tex::lookup_float3(mask_texture, hexstruct.uv_2, tex::wrap_repeat, tex::wrap_repeat, float2(0.0, 1.0), float2(0.0, 1.0), 0.0);
+
+
+
+	float3 blended_diff = (alphapow2.x * ht0_diffuse) + (alphapow2.y * ht1_diffuse) + (alphapow2.z * ht2_diffuse);
+    return float(blended_diff.x);
+}

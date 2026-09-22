@@ -1,0 +1,161 @@
+# Copyright (c) 2018-2020, NVIDIA CORPORATION.  All rights reserved.
+#
+# NVIDIA CORPORATION and its licensors retain all intellectual property
+# and proprietary rights in and to this software, related documentation
+# and any modifications thereto.  Any use, reproduction, disclosure or
+# distribution of this software and related documentation without an express
+# license agreement from NVIDIA CORPORATION is strictly prohibited.
+#
+"""UI Styles for widgets used in the extension."""
+import omni.ui as ui
+from pathlib import Path
+
+CURRENT_PATH = Path(__file__).parent.absolute()
+ICON_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("icons")
+THUMBNAIL_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("data").joinpath("thumbnails")
+
+UI_STYLES = {}
+
+UI_STYLES["NvidiaLight"] = {
+    "Rectangle::Splitter": {"background_color": 0xFFE0E0E0, "margin_width": 2},
+    "Rectangle::Splitter:hovered": {"background_color": 0xFFB0703B},
+    "Rectangle::Splitter:pressed": {"background_color": 0xFFB0703B},
+    "Splitter": {"background_color": 0xFFE0E0E0, "margin_width": 2},
+    "TreeView": {
+        "background_color": 0xFF535354,
+        "background_selected_color": 0xFF6E6E6E,
+        "secondary_color": 0xFFACACAC,
+    },
+    "TreeView:hovered": {"background_color": 0xFF6E6E6E},
+    "TreeView:selected": {"background_color": 0xFFBEBBAE},
+    "TreeView.Column": {"background_color": 0x0, "color": 0xFFD6D6D6, "margin": 0},
+    "TreeView.Header": {
+        "background_color": 0xFF535354,
+        "color": 0xFFD6D6D6,
+        "border_color": 0xFF707070,
+        "border_width": 0.5,
+    },
+    "TreeView.Header::name": {"margin": 3, "alignment": ui.Alignment.LEFT},
+    "TreeView.Header::date": {"margin": 3, "alignment": ui.Alignment.CENTER},
+    "TreeView.Header::size": {"margin": 3, "alignment": ui.Alignment.RIGHT},
+    "TreeView.Icon:selected": {"color": 0xFF535354},
+    "TreeView.Header.Icon": {"color": 0xFF8A8777},
+    "TreeView.Icon::default": {"color": 0xFF8A8777},
+    "TreeView.Icon::file": {"color": 0xFF8A8777},
+    "TreeView.Item": {"color": 0xFFD6D6D6},
+    "TreeView.Item:selected": {"color": 0xFF2A2825},
+    "TreeView.ScrollingFrame": {"background_color": 0xFF535354, "secondary_color": 0xFFE0E0E0},
+    "GridView.ScrollingFrame": {"background_color": 0xFF535354, "secondary_color": 0xFFE0E0E0},
+    "GridView.Grid": {"background_color": 0x0, "margin_width": 10},
+    "Card": {"background_color": 0x0, "margin": 8},
+    "Card:hovered": {"background_color": 0xFF6E6E6E, "border_color": 0xFF3A3A3A, "border_width": 0},
+    "Card:pressed": {"background_color": 0xFF6E6E6E, "border_color": 0xFF3A3A3A, "border_width": 0},
+    "Card:selected": {"background_color": 0xFFBEBBAE, "border_color": 0xFF8A8777, "border_width": 0},
+    "Card.Image": {
+        "background_color": 0xFFC9C9C9,
+        "color": 0xFFFFFFFF,
+        "corner_flag": ui.CornerFlag.TOP,
+        "alignment": ui.Alignment.CENTER,
+        "margin": 8,
+    },
+    "Card.Badge": {"background_color": 0xFFC9C9C9, "color": 0xFFFFFFFF},
+    "Card.Badge::shadow": {"background_color": 0xFFC9C9C9, "color": 0xDD444444},
+    "Card.Label": {
+        "background_color": 0xFFC9C9C9,
+        "color": 0xFFD6D6D6,
+        "font_size": 12,
+        "alignment": ui.Alignment.CENTER_TOP,
+        "margin_width": 8,
+        "margin_height": 2,
+    },
+    "Card.Label:checked": {"color": 0xFF23211F},
+    "ZoomBar": {"background_color": 0x0, "border_radius": 2},
+    "ZoomBar.Slider": {
+        "draw_mode": ui.SliderDrawMode.HANDLE,
+        "background_color": 0xFF23211F,
+        "secondary_color": 0xFF9D9D9D,
+        "color": 0x0,
+        "alignment": ui.Alignment.CENTER,
+        "padding": 0,
+        "margin": 5,
+        "font_size": 8,
+    },
+    "ZoomBar.Button": {"background_color": 0x0, "margin": 0, "padding": 0},
+    "ZoomBar.Button.Image": {"color": 0xFFFFFFFF, "alignment": ui.Alignment.CENTER},
+    "Recycle.Button.Label": {"color": 0xFF9E9E9E, "alignment": ui.Alignment.LEFT_CENTER},
+    "Recycle.Button.Image": {"image_url": "resources/glyphs/trash.svg", "background_color": 0xFF535354, "alignment": ui.Alignment.CENTER},
+    "Recycle.Button:hovered": {"background_color": 0xFF3A3A3A},
+    "RecycleFrame.Button": {"background_color": 0xFF23211F, "margin": 0, "padding": 0},
+    "RecycleFrame.Button:hovered": {"background_color": 0xFF3A3A3A},
+    "RecycleFrame.Button:checked": {"background_color": 0xFF3A3A3A},
+}
+
+UI_STYLES["NvidiaDark"] = {
+    "Splitter": {"background_color": 0x0, "margin_width": 0},
+    "Splitter:hovered": {"background_color": 0xFFB0703B},
+    "Splitter:pressed": {"background_color": 0xFFB0703B},
+    "TreeView.ScrollingFrame": {"background_color": 0xFF23211F},
+    "TreeView": {"background_color": 0xFF23211F, "background_selected_color": 0x663A3A3A},
+    "TreeView:selected": {"background_color": 0xFF8A8777},
+    "TreeView.Column": {"background_color": 0x0, "color": 0xFFADAC9F, "margin": 0},
+    "TreeView.Header": {"background_color": 0xFF343432, "color": 0xFF9E9E9E},
+    "TreeView.Icon": {"color": 0xFFFFFFFF, "padding": 0},
+    "TreeView.Icon::Cut": {"background_color": 0x0, "color": 0x88FFFFFF},
+    "TreeView.Icon::Cut:selected": {"background_color": 0x0, "color": 0x88FFFFFF},
+    "TreeView.Icon::shadow": {"background_color": 0x0, "color": 0xDD444444},
+    "TreeView.Icon::expand": {"color": 0xFFFFFFFF},
+    "TreeView.Icon:selected": {"color": 0xFFFFFFFF},
+    "TreeView.Item": {"color": 0xFF9E9E9E, "alignment": ui.Alignment.LEFT_CENTER},
+    "TreeView.Item:selected": {"color": 0xFF2A2825},
+    "TreeView.Item::Cut": {"color": 0x889E9E9E, "alignment": ui.Alignment.LEFT_CENTER},
+    "TreeView.Item::Cut:selected": {"color": 0x882A2825},
+    "GridView.ScrollingFrame": {"background_color": 0xFF23211F},
+    "GridView.Grid": {"background_color": 0x0, "margin_width": 10},
+    "Card": {"background_color": 0x0, "margin": 8},
+    "Card:hovered": {"background_color": 0xFF3A3A3A, "border_color": 0xFF3A3A3A, "border_width": 2},
+    "Card:pressed": {"background_color": 0xFF3A3A3A, "border_color": 0xFF42413F, "border_width": 2},
+    "Card:selected": {"background_color": 0xFF8A8777, "border_color": 0xFF8A8777, "border_width": 2},
+    "Card.Image": {
+        "background_color": 0x0,
+        "color": 0xFFFFFFFF,
+        "corner_flag": ui.CornerFlag.TOP,
+        "alignment": ui.Alignment.CENTER,
+        "margin": 8,
+    },
+    "Card.Image::Cut": {"color": 0x88FFFFFF},
+    "Card.Badge": {"background_color": 0x0, "color": 0xFFFFFFFF},
+    "Card.Badge::shadow": {"background_color": 0x0, "color": 0xDD444444},
+    "Card.Label": {
+        "background_color": 0x0,
+        "color": 0xFF9E9E9E,
+        "alignment": ui.Alignment.CENTER_TOP,
+        "margin_width": 8,
+        "margin_height": 2,
+    },
+    "Card.Label::Cut": {"color": 0x889E9E9E},
+    "Card.Label:checked": {"color": 0xFF23211F},
+    "Card.Label::Cut:checked": {"color": 0x8823211F},
+    "ZoomBar": {"background_color": 0xFF454545, "border_radius": 2},
+    "ZoomBar.Slider": {
+        "draw_mode": ui.SliderDrawMode.HANDLE,
+        "background_color": 0xDD23211F,
+        "secondary_color": 0xFF9E9E9E,
+        "color": 0x0,
+        "alignment": ui.Alignment.CENTER,
+        "padding": 0,
+        "margin": 3,
+    },
+    "ZoomBar.Button": {"background_color": 0x0, "margin": 0, "padding": 0},
+    "ZoomBar.Button.Image": {"color": 0xFFFFFFFF, "alignment": ui.Alignment.CENTER},
+    "Recycle.Button.Label": {"color": 0xFF9E9E9E, "alignment": ui.Alignment.LEFT_CENTER},
+    "Recycle.Button": {"background_color": 0x0, "margin": 0, "padding": 0},
+    "Recycle.Button.Image": {"image_url": "resources/glyphs/trash.svg","background_color": 0x0, "color": 0xFF9E9E9E, "alignment": ui.Alignment.CENTER},
+    "Recycle.Button.Image:hovered": {"background_color": 0x0,"color": 0xFFFFFFFF},
+    "Recycle.Button.Image:checked": {"background_color": 0x0,"color": 0xFFFFFFFF},
+    "Recycle.Rectangle": {"background_color": 0xFF23211F, "margin": 0, "padding": 0},
+    "RecycleFrame.Button": {"background_color": 0x0, "margin": 0, "padding": 0},
+    "RecycleFrame.Button:hovered": {"background_color": 0xFF3A3A3A},
+    "RecycleFrame.Button:checked": {"background_color": 0xFF3A3A3A},
+    "RecycleFrame.Button.Label": {"alignment": ui.Alignment.LEFT},
+    "RecycleView.Frame": {"background_color": 0x0},
+}

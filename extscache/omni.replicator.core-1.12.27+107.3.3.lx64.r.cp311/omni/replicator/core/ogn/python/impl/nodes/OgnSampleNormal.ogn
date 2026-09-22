@@ -1,0 +1,51 @@
+{
+    "OgnSampleNormal": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates samples from a normal distribution.",
+        "metadata":
+        {
+           "uiName": "Normal Distribution"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "mean": {
+                "description": ["the mean of the normal distribution"],
+                "type": "float[]"
+            },
+            "std": {
+                "description": ["the standard deviation of the normal distribution"],
+                "type": "float[]"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "numSamples": {
+                "description": ["number of samples to generate"],
+                "type": "int",
+                "default": 1
+            },
+            "outputType": {
+                "description": ["The helper attribute to resolve output's type"],
+                "type": "string"
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["sampled results"],
+                "type": "any"
+            },
+            "numSamples": {
+                "description": ["number of samples to generate"],
+                "type": "int",
+                "default": 1
+            }
+        }
+    }
+}

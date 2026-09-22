@@ -1,0 +1,35 @@
+{
+    "OgnWriteCarbSetting": {
+        "description": [
+            "Change carb renderer settings"
+        ],
+        "version": 1,
+        "uiName": "Write Carb Settings",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+
+        "inputs": {
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "setting": {
+                "type": "string",
+                "description": "Name of carb setting that is to be written"
+            },
+            "values": {
+                "type": "any",
+                "description": "Values to be assigned to the setting"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

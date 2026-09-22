@@ -1,0 +1,28 @@
+[package]
+title = "Activity Profiler"
+category = "Telemetry"
+version = "1.0.4"
+description = "Converts carb profiler events to omni activity events."
+authors = ["NVIDIA"]
+keywords = ["activity"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[core]
+reloadable = false
+
+[dependencies]
+"omni.activity.core" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[python.module]]
+name = "omni.activity.profiler"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]

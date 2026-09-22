@@ -1,0 +1,76 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExampleAdjacency.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_Adjacency" (
+        docs="""Computes chosen adjacency information from specified input mesh topology data."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.Adjacency"
+        int node:typeVersion = 1
+
+        # 16 attributes
+        custom bool inputs:computeDistances = false (
+            docs="""When enabled, the distances from each point to its neighbors is computed and stored in a 'float[]' attribute in 'output' as specified by 'nameOfDistancesOutputAttribute'."""
+        )
+        custom bool inputs:computeNeighborCounts = false (
+            docs="""When enabled, the number of neighbors of each point is computed and all are stored in an 'int[]' attribute in 'output' as specified by 'nameOfNeighborCountsOutputAttribute'."""
+        )
+        custom bool inputs:computeNeighborStarts = true (
+            docs="""When enabled, the beginning index of neighbors of each point within the arrays computed by either 'computeNeighbors' or 'computeDistances' is computed and all, plus an additional integer to indicate the end of the array, are stored in an 'int[]' attribute in 'output' as specified by 'nameOfNeighborStartsOutputAttribute'.  The extra integer at the end allows for easy computing of the number of neighbors of any single point, by subtracting the value in the array corresponding with the point, from the following value in the array."""
+        )
+        custom bool inputs:computeNeighbors = true (
+            docs="""When enabled, the neighbors of each point are computed and stored contiguously in an 'int[]' attribute in 'output' as specified by 'nameOfNeighborsOutputAttribute'."""
+        )
+        custom rel inputs:mesh (
+            docs="""Bundle containing topology data to be analysed"""
+        )
+        custom token inputs:nameOfDistancesOutputAttribute = "distances" (
+            docs="""Name of the 'float[]' attribute to be created in 'output' to contain the computed distances to each neighbor.  This is only used if 'computeDistances' is true."""
+        )
+        custom token inputs:nameOfNeighborCountsOutputAttribute = "neighborCounts" (
+            docs="""Name of the 'int[]' attribute to be created in 'output' to contain the number of neighbors of each point.  This is only used if 'computeNeighborCounts' is true.  A running sum of this array can be computed using 'computeNeighborStarts'.  The neighbors themselves can be computed using 'computeNeighbors'."""
+        )
+        custom token inputs:nameOfNeighborStartsOutputAttribute = "neighborStarts" (
+            docs="""Name of the 'int[]' attribute to be created in 'output' to contain the beginning index of neighbors of each point in the arrays computed by either 'computeNeighbors' or 'computeDistances'.  This is only used if 'computeNeighborStarts' is true."""
+        )
+        custom token inputs:nameOfNeighborsOutputAttribute = "neighbors" (
+            docs="""Name of the 'int[]' attribute to be created in 'output' to contain the neighbors of all points.  This is only used if 'computeNeighbors' is true.  The beginnings of each point's neighbors within this array can be computed using 'computeNeighborStarts'.  The number of neighbors of each point can be computed using 'computeNeighborCounts'."""
+        )
+        custom token inputs:nameOfPositionsInputAttribute = "points" (
+            docs="""Name of the 'point3f[]' attribute in 'mesh' containing the positions of each point.  This is only used if 'computeDistances' is true.  The element count of this array overrides 'pointCount', when used."""
+        )
+        custom token inputs:nameOfVertexCountsInputAttribute = "faceVertexCounts" (
+            docs="""Name of the 'int[]' attribute in 'mesh' containing the vertex counts of each face"""
+        )
+        custom token inputs:nameOfVertexIndicesInputAttribute = "faceVertexIndices" (
+            docs="""Name of the 'int[]' attribute in 'mesh' containing the vertex indices of each face"""
+        )
+        custom int inputs:pointCount = 0 (
+            docs="""Number of points being referred to in the vertex indices attribute.  This is only used if 'computeDistances' is false, otherwise this is overridden by the element count of the attribute specified by 'nameOfPositionsInputAttribute'."""
+        )
+        custom bool inputs:removeDuplicates = true (
+            docs="""When enabled, each neighbor of a point will be counted only once, instead of once per edge that connects the point to the neighbor."""
+        )
+        custom bool inputs:treatEdgesAsOneWay = false (
+            docs="""When enabled, if a face has an edge from A to B, B will be considered a neighbor of A, but A will not be considered a neighbor of B.  This can be useful as part of identifying unshared edges or inconsistent face winding order."""
+        )
+        custom bool inputs:treatFacesAsCurves = false (
+            docs="""When enabled, the input faces will be treated as curves, instead of closed polygons, i.e. no edge from the last vertex of each face to the first vertex of that face will be counted."""
+        )
+
+        # 1 attribute
+        custom rel outputs_mesh (
+            docs="""A copy of the input 'mesh' with the computed attributes added, as specified above."""
+        )
+    }
+}

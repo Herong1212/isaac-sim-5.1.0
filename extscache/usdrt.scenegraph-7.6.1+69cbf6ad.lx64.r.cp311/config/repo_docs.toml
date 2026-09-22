@@ -1,0 +1,112 @@
+project = "usdrt"
+name = "USDRT"
+copyright_start = 2021
+docs_root = "source/extensions/usdrt.scenegraph/docs"
+use_fast_doxygen_conversion = true
+api_output_directory = "api"
+config = "release"
+api_enabled = true
+
+doxygen_input = [
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/half.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/math.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/matrix.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/quat.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/range.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/rect.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/gf/vec.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/base/tf/token.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/base/vt/array.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/sdf/assetPath.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/sdf/path.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/sdf/types.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/sdf/valueTypeName.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/tokens.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/impl/usd_decl.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/attribute.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/common.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/prim.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/primRange.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/relationship.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/stage.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/timeCode.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/schemaRegistry.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/apiSchemaBase.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usd/*API.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/rt/tokens.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/rt/xformable.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/rt/boundable.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/rt/changeTracker.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/rt/primSelection.h",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/interface/AccessType.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/interface/Common.h",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdGeom/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdLux/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdMedia/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdPhysics/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdRender/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdShade/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdSkel/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdUI/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/usdVol/*",
+
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/forceFieldSchema/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/physxSchema/*",
+    "${root}/_build/${platform}/${config}/dev/fabric/include/usdrt/scenegraph/usd/semantics/*",
+
+     # TODO - FSD, population, geopriority
+]
+
+doxygen_strip_from_path = [
+    "${root}/_build/${platform}/${config}/dev/fabric/include/"
+]
+
+# Exclude error messaging from usd schemas.
+# References and examples are to files we are not including in our docs,
+# and others are specific doc errors from the source USD schema.usda files.
+doxygen_output_exclude_regexes = [
+  "^.*: warning: block marked with .* should appear twice in file .*",
+  "^.*: warning: included file examples.cpp is not found. Check your EXAMPLE_PATH",
+  "^.*: warning: unable to resolve reference to .*",
+  "^.*/usdShade/materialBindingAPI.h:[0-9]*: warning: unexpected end of comment while inside <ul> block*",
+  "^.*/usdShade/materialBindingAPI.h:[0-9]*: warning: end of comment block while expecting command </b>*",
+  "^.*/physxSchema/physxVehicleControllerAPI.h:[0-9]*: warning: Unsupported xml/html tag <D> found*",
+  "^.*/usdGeom/subset.h:[0-9]*: warning: found </b> tag without matching <b>*",
+]
+
+doxygen_predefined = [
+    "CUDA_CALLABLE=",
+]
+
+# Specify doxygen output is not case sensitive because rebreather and sphinx later transform refs to
+# lower case. This ensures usd/common.h and interface/Common.h output unique doxygen refids.
+doxygen_conf_extra = """
+WARN_IF_UNDOCUMENTED=NO
+IMAGE_PATH=${root}/source/extensions/usdrt.scenegraph/docs/schema_images
+CASE_SENSE_NAMES=NO
+"""
+
+sphinx_exclude_patterns = [
+    "source",
+    "include",
+    "PACKAGE-LICENSES",
+    "README.md",
+    "source/plugins/omni.fabric/docs/decisions",
+]
+
+sphinx_dont_exclude_patterns = [
+    "include/usdrt/gf",
+    "source/plugins/omni.fabric",
+]
+
+sphinx_conf_py_extra = """
+show_warning_types=True
+suppress_warnings=["misc.highlighting_failure", "autosectionlabel.*"]
+"""

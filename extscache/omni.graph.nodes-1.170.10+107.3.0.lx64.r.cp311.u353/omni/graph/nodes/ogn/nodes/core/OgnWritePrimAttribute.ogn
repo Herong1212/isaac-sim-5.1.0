@@ -1,0 +1,96 @@
+{
+    "WritePrimAttribute": {
+        "version": 3,
+        "description": ["Given a path to a prim on the current USD stage and the name of an attribute on",
+                        " that prim, sets the value of that attribute.  Does nothing if the given Prim or attribute",
+                        "can not be found.  If the attribute is found but it is not a compatible type,",
+                        "an error will be issued."
+                        ],
+        "uiName": "Write Prim Attribute",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write", "threadsafe"],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The path of the prim to be modified when 'usePath' is true",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "usePath": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim to be modified when 'usePath' is false",
+                "optional": true
+            },
+            "name": {
+                "uiName": "Attribute Name",
+                "type": "token",
+                "description": "The name of the attribute to set on the specified prim"
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "value": {
+                "type": "any",
+                "description": "The new value to be written"
+            },
+            "usdWriteBack": {
+                "uiName": "Persist To USD",
+                "type": "bool",
+                "default" :  true,
+                "description": "Whether or not the value should be written back to USD, or kept a Fabric only value"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": [
+                    "Identifier of the USD layer to export data to.",
+                    "Identifier can be empty, \"<Session Layer>\", \"<Root Layer>\" or the identifier of a sublayer.",
+                    "If empty or invalid, data will be exported to the current layer.",
+                    "This is only used when \"Persist To USD\" is enabled."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Identifier"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        },
+        "state": {
+            "correctlySetup": {
+                "type": "bool",
+                "description": "Whether or not the instance is properly setup",
+                "default": false
+            },
+            "destPath": {
+                "type": "uint64",
+                "description": "A PathC to the destination prim"
+            },
+            "destAttrib": {
+                "type": "uint64",
+                "description": "A TokenC to the destination attrib"
+            },
+            "destPathToken": {
+                "type": "uint64",
+                "description": "The TokenC version of destPath'"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": "The prefetched layer identifier."
+            },
+            "resolvedLayerIdentifier": {
+                "type": "token",
+                "description": "The prefetched full layer path."
+            }
+        }
+    }
+}

@@ -1,0 +1,161 @@
+{
+    "IsZero": {
+        "version": 1,
+        "description": [
+            "Outputs a boolean indicating if all of the input values are zero within a specified tolerance."
+        ],
+        "uiName": "Is Zero",
+        "categories": ["math:condition"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["numerics"],
+                "description": "Value(s) to check for zero.",
+                "uiName": "Value"
+            },
+            "tolerance": {
+                "type": "double",
+                "description": [
+                    "How close the value must be to 0 to be considered \"zero\"."
+                ],
+                "uiName": "Tolerance",
+                "minimum": 0.0
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": "bool",
+                "description": [
+                    "If 'value' is a scalar then 'result' will be true if 'value' is zero. If 'value' is non-scalar",
+                    "(array, tuple, matrix, etc) then 'result' will be true if all of its elements/components are zero."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "int", "value": 6},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int", "value": -3},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int", "value": 0},
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "float", "value": 42.5},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": -7.1},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": 0.0},
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "float", "value": 0.01},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": -0.01},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": 42.5},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": -7.1},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float", "value": 0.0},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "float", "value": 0.01},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "float", "value": -0.01},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int", "value": 6},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int", "value": -3},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int", "value": 0},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int", "value": 6},
+                "inputs:tolerance": 10.0,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int", "value": -3},
+                "inputs:tolerance": 10.0,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int", "value": 0},
+                "inputs:tolerance": 10.0,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [ 0, 0 ]},
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [ 0, 3 ]},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [ 3, 0 ]},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [ 3, 5 ]},
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [1.7, 0.05, -4.3]},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [0.02, 0.05, -0.03]},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [ [1.7, 0.05, -4.3], [0.02, 0.05, -0.03] ]},
+                "inputs:tolerance": 0.1,
+                "outputs:result": false
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [ [0.0, 0.0, 0.0], [0.02, 0.05, -0.03] ]},
+                "inputs:tolerance": 0.1,
+                "outputs:result": true
+            }
+         ]
+    }
+}

@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    endTimeCode = 240
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Camera "Camera_Frontal_50mm" (
+        prepend apiSchemas = ["AnimationDataAPI"]
+        no_delete = false
+    )
+    {
+        rel animationData:binding = </World/Camera_Frontal_50mm/animationData>
+        def AnimationData "animationData"
+        {
+        }
+    }
+
+    def Camera "Camera_Focal_Headlight_50mm" (
+        prepend apiSchemas = ["AnimationDataAPI"]
+        no_delete = false
+    )
+    {
+        rel animationData:binding = </World/Camera_Focal_Headlight_50mm/animationData>
+        def AnimationData "animationData"
+        {
+        }
+    }
+
+    def Camera "Camera_Establishing_28mm" (
+        prepend apiSchemas = ["AnimationDataAPI"]
+        no_delete = false
+    )
+    {
+        rel animationData:binding = </World/Camera_Establishing_28mm/animationData>
+        def AnimationData "animationData"
+        {
+        }
+    }
+
+    def Camera "Camera" (
+        no_delete = false
+    )
+    {
+    }
+}
+

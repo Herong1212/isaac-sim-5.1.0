@@ -1,0 +1,34 @@
+[package]
+version = "2.0.0"
+authors = ["NVIDIA"]
+title = "Non visual Materials"
+description = "Non visual Materials extension incl. utilities"
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors","materials"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+
+
+[dependencies]
+"omni.sensors.nv.common" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.sensors.nv.materials"
+
+[documentation]
+pages = [
+    "docs/materials_extension.rst",
+    "docs/material_manager.rst",
+    "docs/custom_materials.rst",
+    "docs/CHANGELOG.md",
+]

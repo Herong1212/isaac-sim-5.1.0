@@ -1,0 +1,48 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnArraySlice.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ArraySlice" (
+        docs="""Returns a section of the input "Array" between the index values of "Start Index" and "End Index" (or the end of "Array" if the input "Use Length" is true). The index values will be truncated to be within the range of the input array. If "Start Index" is greater than or equal to "End Index" then an empty array will be outputted. Note that the element at "End Index" (assuming said index is not greater than or equal to the input "Array" length) will not be included in the final result."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ArraySlice"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom token inputs:array (
+            docs="""The original array, before the slicing operation is applied."""
+        )
+        custom int inputs:end = 0 (
+            docs="""The end index into the input array. If this value is less than or equal to "Start Index" an
+            empty array will be returned. A negative value indexes from the end of the array. Values less
+            than -arrayLength will be treated as 0, while values greater than arrayLength will be treated as
+            arrayLength."""
+        )
+        custom int inputs:start = 0 (
+            docs="""The start index into the input array. If this value is greater than "End Index" an empty array
+            will be returned. A negative value indexes from the end of the array. Values less than
+            -arrayLength will be treated as 0, while values greater than arrayLength will be treated as
+            arrayLength."""
+        )
+        custom bool inputs:useLength = true (
+            docs="""If true, use the length of the array as the value for the "End Index" rather than the actual
+            value stored on the attribute. If false, simply use the actual value stored on the "End Index"
+            attribute."""
+        )
+
+        # 1 attribute
+        custom token outputs:array (
+            docs="""A new array containing a subsection of the specified input "Array"."""
+        )
+    }
+}

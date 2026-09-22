@@ -1,0 +1,27 @@
+{
+    "StopSound": {
+        "version": 1,
+        "description": "Stop playing a sound primitive",
+        "categories": [ "sound" ],
+        "uiName": "Stop Sound",
+        "icon": {
+            "path": "StopSound.svg"
+        },
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "soundId": {
+                "type": "uint64",
+                "description": "The sound identifier"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

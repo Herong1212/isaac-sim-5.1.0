@@ -1,0 +1,92 @@
+{
+    "InsertString": {
+        "version": 1,
+        "description": [
+            "Insert a string into a base string at an index."
+        ],
+        "uiName": "Insert String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The base string."
+            },
+            "value": {
+                "type": ["string", "token"],
+                "description": "The string to insert."
+            },
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index of the string in the range [0, stringLength]. ",
+                    "Index will be clamped to the valid range."
+                ]
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The modified string."
+            }
+        },
+        "tests": [
+            {
+                "inputs:string": {"type": "string", "value": ""},
+                "inputs:value": {"type": "string", "value": "String"},
+                "outputs:string": {"type": "string", "value": "String"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "String"},
+                "inputs:value": {"type": "string", "value": ""},
+                "outputs:string": {"type": "string", "value": "String"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:value": {"type": "string", "value": "good "},
+                "inputs:index": 10,
+                "outputs:string": {"type": "string", "value": "This is a good string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:value": {"type": "string", "value": "Hi, "},
+                "inputs:index": -6,
+                "outputs:string": {"type": "string", "value": "Hi, This is a string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:value": {"type": "string", "value": "."},
+                "inputs:index": 20,
+                "outputs:string": {"type": "string", "value": "This is a string."}
+            },
+            {
+                "inputs:string": {"type": "token", "value": ""},
+                "inputs:value": {"type": "token", "value": "Token"},
+                "outputs:string": {"type": "token", "value": "Token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "Token"},
+                "inputs:value": {"type": "token", "value": ""},
+                "outputs:string": {"type": "token", "value": "Token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a token"},
+                "inputs:value": {"type": "token", "value": "good "},
+                "inputs:index": 10,
+                "outputs:string": {"type": "token", "value": "This is a good token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a token"},
+                "inputs:value": {"type": "token", "value": "Hi, "},
+                "inputs:index": -6,
+                "outputs:string": {"type": "token", "value": "Hi, This is a token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a token"},
+                "inputs:value": {"type": "token", "value": "."},
+                "inputs:index": 20,
+                "outputs:string": {"type": "token", "value": "This is a token."}
+            }
+        ]
+    }
+}

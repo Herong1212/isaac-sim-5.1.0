@@ -1,0 +1,34 @@
+{
+    "GetVariantNames": {
+        "version": 2,
+        "categories": [
+            "graph:action",
+            "sceneGraph",
+            "variants"
+        ],
+        "icon": {
+            "path": "Variant.svg"
+        },
+        "scheduling": [
+            "usd-read"
+        ],
+        "description": "Get variant names from a variantSet on a prim",
+        "uiName": "Get Variant Names",
+        "inputs": {
+            "prim": {
+                "type": "target",
+                "description": "The prim with the variantSet"
+            },
+            "variantSetName": {
+                "type": "token",
+                "description": "The variantSet name"
+            }
+        },
+        "outputs": {
+            "variantNames": {
+                "type": "token[]",
+                "description": "List of variant names"
+            }
+        }
+    }
+}

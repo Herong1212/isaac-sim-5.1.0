@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnRefTime.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnRefTime" (
+        docs="""Reference Time Annotator"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnRefTime"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint inputs:exec (
+            docs="""exec"""
+        )
+        custom uint64 inputs:referenceTimeDenominator = 0 (
+            docs="""Reference time represented as a rational number : denominator"""
+        )
+        custom int64 inputs:referenceTimeNumerator = 0 (
+            docs="""Reference time represented as a rational number : numerator"""
+        )
+
+        # 3 attributes
+        custom uint outputs:exec (
+            docs="""exec"""
+        )
+        custom uint64 outputs:referenceTimeDenominator (
+            docs="""Reference time represented as a rational number : denominator"""
+        )
+        custom int64 outputs:referenceTimeNumerator (
+            docs="""Reference time represented as a rational number : numerator"""
+        )
+    }
+}

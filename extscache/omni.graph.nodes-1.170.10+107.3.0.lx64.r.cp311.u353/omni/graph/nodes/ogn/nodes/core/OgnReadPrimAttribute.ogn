@@ -1,0 +1,90 @@
+{
+    "ReadPrimAttribute": {
+        "version": 3,
+        "description": [
+            "Given a path to a prim on the current USD stage and the name of an attribute on",
+            "that prim, gets the value of that attribute, at the global timeline value."
+        ],
+        "uiName": "Read Prim Attribute",
+        "categories": [ "sceneGraph" ],
+        "scheduling": [ "usd-read", "threadsafe" ],
+        "exclude": [ "usd" ],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The path of the prim to be modified when \"Use Path\" is true.",
+                "optional": true,
+                "deprecated": "Use prim input with a ToTarget node instead."
+            },
+            "usePath": {
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "When true, the \"Prim Path\" attribute is used as the path to the prim being read, otherwise it",
+                    "will read the connection at the \"Prim\" attribute."
+                ],
+                "deprecated": "Use prim input with a ToTarget node instead."
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim to be read from when \"Use Path\" is false.",
+                "optional": true
+            },
+            "name": {
+                "uiName": "Attribute Name",
+                "type": "token",
+                "description": "The name of the attribute to get on the specified prim."
+            },
+            "usdTimecode": {
+                "uiName": "Time",
+                "type": "timecode",
+                "default": "NaN",
+                "description": [
+                    "The time at which to evaluate the transform of the USD prim attribute. A value of \"nan\"",
+                    "indicates that the default USD time stamp should be used."
+                ]
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "any",
+                "description": "The attribute value",
+                "unvalidated": true
+            }
+        },
+        "state": {
+            "correctlySetup": {
+                "type": "bool",
+                "description": "Whether or not the instance is properly setup",
+                "default": false
+            },
+            "srcPath": {
+                "type": "uint64",
+                "description": "A PathC to the source prim"
+            },
+            "srcPathAsToken": {
+                "type": "uint64",
+                "description": "A TokenC to the source prim"
+            },
+            "srcAttrib": {
+                "type": "uint64",
+                "description": "A TokenC to the source attribute"
+            },
+            "importPath": {
+                "type": "uint64",
+                "description": "Path at which data has been imported"
+            },
+            "time": {
+                "type": "double",
+                "description": "The timecode at which we have imported the value"
+            },
+            "reimportAtTime": {
+                "type": "bool",
+                "description": [
+                    "Internal flag that's used to help decide if the source attribute at the specified time",
+                    "needs to be reimported."
+                ]
+            }
+        }
+    }
+}

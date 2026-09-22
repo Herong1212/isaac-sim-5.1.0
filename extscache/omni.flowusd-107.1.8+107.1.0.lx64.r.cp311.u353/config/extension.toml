@@ -1,0 +1,85 @@
+[package]
+version = "107.1.8"
+title = "Flow USD"
+description = "Flow fluid simulation USD plugin"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["fluids", "fire", "smoke", "particles"]
+category = "simulation"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+preview_image = "data/flow_preview_image.png"
+icon = "icons/flow_icon.png"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/settings.rst"
+]
+menu = "Help/API/omni.kit.documentation.builder"
+title = "Omni Flow Documentation"
+
+[package.writeTarget]
+# The extension will only run with the same kit-sdk version it was built with
+kit = true
+usd = true
+
+# Main python module this extension provides, it will be publicly available as "import omni.flowusd"
+[[python.module]]
+name = "omni.flowusd"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.kit.property.usd" = { optional = true }
+"omni.usd" = {}
+"omni.usd.schema.flow" = {}
+"usdrt.scenegraph" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Load the nvflow shared libraries
+[[native.library]]
+path = "bin/${lib_prefix}nvflow${lib_ext}"
+[[native.library]]
+path = "bin/${lib_prefix}nvflowext${lib_ext}"
+
+# Watch the .ogn and .py files for hot reloading
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+[settings]
+exts."omni.flowusd".vdb_cache_size = 8589934592
+exts."omni.flowusd".enable_rtx_setting_auto_apply = true
+exts."omni.flowusd".voxelize_ring_buffer_count = 8
+exts."omni.flowusd".voxelize_interop_ring_buffer_count = 3
+exts."omni.flowusd".voxelize_velocity_high_precision = false
+exts."omni.flowusd".voxelize_interop_enabled = false
+exts."omni.flowusd".voxelize_readback_enabled = true
+exts."omni.flowusd".voxelize_device_index = 0
+exts."omni.flowusd".voxelize_device_align_to_rtx = true
+exts."omni.flowusd".voxelize_velocity_vec4 = true
+exts."omni.flowusd".voxelize_velocity_float = false
+
+[[test]]
+stdoutFailPatterns.exclude = [
+    "*RTX renderer not active*",
+]
+dependencies = [
+    "omni.graph.action",
+    "omni.graph.nodes",
+    "omni.volume",
+    "omni.hydra.rtx",
+    "omni.kit.uiapp",
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.window",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.renderer.capture",
+]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+]

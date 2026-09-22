@@ -1,0 +1,45 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+import ::state::*;
+import ::tex::*;
+
+export color test_texture2D
+(
+    uniform texture_2d param = texture_2d("./resources/one.png", ::tex::gamma_linear, "channelSelection")
+)
+{
+    float3 tex_coord3 = state::texture_coordinate(0);
+    return tex::lookup_color(param, float2(tex_coord3.x, tex_coord3.y));
+}
+
+export color test_texture3D
+(
+    uniform texture_3d param = texture_3d("./resources/one.vdb", ::tex::gamma_linear, "dataSetSelection")
+)
+{
+    return tex::lookup_color(param, state::texture_coordinate(0));
+}
+
+export color test_textureCube
+(
+    uniform texture_cube param =  texture_cube("./resources/one.hdr", ::tex::gamma_linear)
+)
+{
+    return tex::lookup_color(param, state::texture_coordinate(0));
+}
+
+export color test_texturePtex
+(
+    uniform texture_ptex param = texture_ptex("./resources/one.ptx", ::tex::gamma_linear)
+)
+{
+    return tex::lookup_color(param);
+}

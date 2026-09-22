@@ -1,0 +1,106 @@
+// SPDX-FileCopyrightText: Copyright (c) 2022-2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+//
+// NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+// property and proprietary rights in and to this material, related
+// documentation and any modifications thereto. Any use, reproduction,
+// disclosure or distribution of this material and related documentation
+// without an express license agreement from NVIDIA CORPORATION or
+// its affiliates is strictly prohibited.
+
+#include "ViewportClickNodeCommon.h"
+
+#include <omni/kit/IApp.h>
+#include <omni/ui/Workspace.h>
+
+#include <OgnReadViewportClickStateDatabase.h>
+
+namespace omni
+{
+namespace graph
+{
+namespace ui_nodes
+{
+class OgnReadViewportClickState
+{
+public:
+    struct InternalState
+    {
+        carb::events::ISubscriptionPtr clickSub;
+        ViewportClickEventPayloads eventPayloads;
+    } m_internalState;
+    exec::unstable::Stamp m_setStamp; // stamp set when the event occurs
+    exec::unstable::SyncStamp m_syncStamp; // stamp set by each instance
+
+    static void initialize(GraphContextObj const& context, NodeObj const& nodeObj)
+    {
+        OgnReadViewportClickState& state =
+            OgnReadViewportClickStateDatabase::sSharedState<OgnReadViewportClickState>(nodeObj);
+
+        // Subscribe to click events
+        if (omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>())
+        {
+            state.m_internalState.clickSub = carb::events::createSubscriptionToPushByType(
+                app->getMessageBusEventStream(), kClickEventType,
+                [nodeObj](carb::events::IEvent* e)
+                {
+                    if (e)
+                    {
+                        OgnReadViewportClickState& state =
+                            OgnReadViewportClickStateDatabase::sSharedState<OgnReadViewportClickState>(nodeObj);
+                        state.m_internalState.eventPayloads.setPayload(e->payload);
+                        state.m_setStamp.next();
+                    }
+                });
+        }
+    }
+
+    static void release(const NodeObj& nodeObj)
+    {
+        OgnReadViewportClickState& state =
+            OgnReadViewportClickStateDatabase::sSharedState<OgnReadViewportClickState>(nodeObj);
+
+        // Unsubscribe from click events
+        if (state.m_internalState.clickSub.get())
+            state.m_internalState.clickSub.detach()->unsubscribe();
+    }
+
+    static bool compute(OgnReadViewportClickStateDatabase& db)
+    {
+        OgnReadViewportClickState& sharedState = db.sharedState<OgnReadViewportClickState>();
+        OgnReadViewportClickState& perInstanceState = db.perInstanceState<OgnReadViewportClickState>();
+
+        if (perInstanceState.m_syncStamp.makeSync(sharedState.m_setStamp))
+        {
+            // Get the targeted viewport and gesture
+            char const* const viewportWindowName = db.tokenToString(db.inputs.viewport());
+            char const* const gestureName = db.tokenToString(db.inputs.gesture());
+
+            if (!omni::ui::Workspace::getWindow(viewportWindowName))
+            {
+                db.logWarning("Viewport window '%s' not found", viewportWindowName);
+            }
+
+            auto const* eventPayloadValuePtr =
+                sharedState.m_internalState.eventPayloads.getPayloadValue(viewportWindowName, gestureName);
+            if (eventPayloadValuePtr)
+            {
+                db.outputs.position() = db.inputs.useNormalizedCoords() ? eventPayloadValuePtr->positionNorm :
+                                                                          eventPayloadValuePtr->positionPixel;
+                db.outputs.isValid() = true;
+            }
+            else
+            {
+                db.outputs.position() = { 0.0, 0.0 };
+                db.outputs.isValid() = false;
+            }
+        }
+
+        return true;
+    }
+};
+
+REGISTER_OGN_NODE()
+} // ui
+} // graph
+} // omni

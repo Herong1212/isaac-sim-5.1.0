@@ -1,0 +1,35 @@
+[core]
+reloadable = false
+
+[package]
+version = "1.0.0"
+category = "Internal"
+description = "omni.gpu_foundation shader caches for Vulkan"
+support_level = "Core"
+readme = "docs/Overview.md"
+
+# compiled shaders are different per platform and per config
+writeTarget.platform = true
+writeTarget.config = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md"
+]
+
+[[python.module]]
+name = "omni.gpu_foundation.shadercache.vulkan"
+
+[[test]]
+name = "startup"
+# This extension can't run on its own. It is only brought by omni.gpu_foundation. Disable startup test:
+enabled = false
+
+[[test]]
+waiver = "Shader cache"
+
+dependencies = [
+    "omni.gpu_foundation",
+]

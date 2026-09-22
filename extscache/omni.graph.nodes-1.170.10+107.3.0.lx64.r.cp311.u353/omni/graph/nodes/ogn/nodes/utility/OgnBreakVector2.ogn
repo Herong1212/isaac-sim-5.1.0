@@ -1,0 +1,71 @@
+{
+    "BreakVector2": {
+        "version": 1,
+        "description": ["Split vector into 2 component values."],
+        "uiName": "Break 2-Vector",
+        "categories": ["math:conversion"],
+        "tags": ["decompose", "separate", "isolate"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "tuple": {
+                "type": ["double[2]", "double[2][]", "float[2]", "float[2][]", "half[2]", "half[2][]", "int[2]", "int[2][]"],
+                "uiName": "Vector",
+                "description": "2-vector to be broken"
+             }
+        },
+        "outputs": {
+            "x": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "X",
+                "description": "The first component of the vector"
+             },
+             "y": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Y",
+                "description": "The second component of the vector"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:tuple": {"type": "double[2]", "value": [42.0, 1.0]},
+                "outputs:x": {"type": "double", "value": 42.0},
+                "outputs:y": {"type": "double", "value": 1.0}
+            },
+            {
+                "inputs:tuple": {"type": "float[2]", "value": [42.0, 1.0]},
+                "outputs:x": {"type": "float", "value": 42.0},
+                "outputs:y": {"type": "float", "value": 1.0}
+            },
+            {
+                "inputs:tuple": {"type": "half[2]", "value": [42.0, 1.0]},
+                "outputs:x": {"type": "half", "value": 42.0},
+                "outputs:y": {"type": "half", "value": 1.0}
+            },
+            {
+                "inputs:tuple": {"type": "int[2]", "value": [42, -42]},
+                "outputs:x": {"type": "int", "value": 42},
+                "outputs:y": {"type": "int", "value": -42}
+            },
+            {
+                "inputs:tuple": {"type": "double[2][]", "value": [[42.0, 1.0]]},
+                "outputs:x": {"type": "double[]", "value": [42.0]},
+                "outputs:y": {"type": "double[]", "value": [1.0]}
+            },
+            {
+                "inputs:tuple": {"type": "float[2][]", "value": [[42.0, 1.0]]},
+                "outputs:x": {"type": "float[]", "value": [42.0]},
+                "outputs:y": {"type": "float[]", "value": [1.0]}
+            },
+            {
+                "inputs:tuple": {"type": "half[2][]", "value": [[42.0, 1.0]]},
+                "outputs:x": {"type": "half[]", "value": [42.0]},
+                "outputs:y": {"type": "half[]", "value": [1.0]}
+            },
+            {
+                "inputs:tuple": {"type": "int[2][]", "value": [[42, -42]]},
+                "outputs:x": {"type": "int[]", "value": [42]},
+                "outputs:y": {"type": "int[]", "value": [-42]}
+            }
+        ]
+    }
+}

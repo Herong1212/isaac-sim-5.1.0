@@ -1,0 +1,56 @@
+{
+    "RemoveAttribute": {
+        "version": 2,
+        "description": ["Copies all attributes from an input bundle to the output bundle, except for any specified to be removed."],
+        "metadata": {
+            "uiName": "Remove Attributes From Bundles"
+        },
+        "categories": ["bundle"],
+        "inputs": {
+            "attrNamesToRemove": {
+                "type": "token",
+                "description": [
+                    "A list of wildcard patterns used to match the attribute names that are to be removed from the output bundle",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']",
+                    "    '*' - match any",
+                    "    '* ^points' - match any, but exclude 'points'",
+                    "    '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Remove"
+                }
+            },
+            "allowRemovePrimInternal": {
+                "type": "bool",
+                "default": false,
+                "description": "When on, then primitive internal attributes can be removed('sourcePrimPath' etc...)",
+                "metadata": {
+                    "uiName": "Allow Remove Prim Internal"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes to be partially copied to the output",
+                "metadata": {
+                    "uiName": "Original Bundle"
+                }
+            }
+        },
+        "outputs": {
+            "data": {
+                "type": "bundle",
+                "description": ["Final bundle of attributes, with the attributes specified by attrNamesToRemove omitted"],
+                "metadata": {
+                    "uiName": "Bundle After Removal"
+                }
+            }
+        }
+    }
+}

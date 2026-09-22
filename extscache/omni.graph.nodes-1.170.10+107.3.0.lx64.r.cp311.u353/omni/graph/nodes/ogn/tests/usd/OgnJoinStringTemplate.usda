@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnJoinString.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_JoinString" (
+        docs="""Creates a string from an input array and a delimiter."""
+    )
+    {
+        token node:type = "omni.graph.nodes.JoinString"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom string inputs:delimiter = " " (
+            docs="""The delimiter string used to join the elements."""
+        )
+        custom token[] inputs:elements = [] (
+            docs="""The string elements to join."""
+        )
+
+        # 1 attribute
+        custom string outputs:string (
+            docs="""The output string."""
+        )
+    }
+}

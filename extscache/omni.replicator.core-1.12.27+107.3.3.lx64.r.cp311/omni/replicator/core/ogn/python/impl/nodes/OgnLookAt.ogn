@@ -1,0 +1,47 @@
+{
+    "OgnLookAt": {
+        "version": 2,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Set prim rotation to look at the target coordinates",
+        "metadata":
+        {
+           "uiName": "Make prim look at target"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "prims": {
+                "description": ["The prims whose orientation is to be changed"],
+                "type": "target"
+            },
+            "targetPrim": {
+                "description": ["The target prim(s) that the prim should look at"],
+                "type": "target"
+            },
+            "target": {
+                "description": ["The location of where the prim should look at"],
+                "type": "float[3]"
+            },
+            "upAxis": {
+                "description": ["The up axis to set to the input prims."],
+                "type": "float[3]"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "values": {
+                "description": ["Rotation to make prims look at the specified target(s)"],
+                "type": "double[3][]"
+            }
+        }
+    }
+}

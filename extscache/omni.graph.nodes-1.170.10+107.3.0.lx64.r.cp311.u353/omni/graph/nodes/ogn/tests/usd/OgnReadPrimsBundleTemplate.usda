@@ -1,0 +1,69 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadPrimsBundle.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadPrimsBundle" (
+        docs="""Reads primitives and outputs multiple primitive in a bundle."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadPrimsBundle"
+        int node:typeVersion = 3
+
+        # 5 attributes
+        custom string inputs:attrNamesToImport = "*" (
+            docs="""A list of wildcard patterns used to match the attribute names that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']
+                '*' - match any
+                '* ^points' - match any, but exclude 'points'
+                '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"""
+        )
+        custom token inputs:primPaths (
+            docs="""The paths of the prims to be read from when 'usePaths' is true"""
+        )
+        custom rel inputs:prims (
+            docs="""The prims to be read from when 'usePaths' is false"""
+        )
+        custom timecode inputs:usdTimecode = nan (
+            docs="""The time at which to evaluate the transform of the USD prim. A value of "NaN" indicates that the default USD time stamp should be used"""
+        )
+        custom bool inputs:usePaths = false (
+            docs="""When true, the 'primPaths' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute"""
+        )
+
+        # 1 attribute
+        custom rel outputs_primsBundle (
+            docs="""An output bundle containing multiple prims as children.
+            Each child contains data attributes and two additional token attributes named sourcePrimPath and sourcePrimType
+            which contain the path and the type of the Prim being read"""
+        )
+
+        # 4 attributes
+        custom string state:attrNamesToImport (
+            docs="""State from previous execution"""
+        )
+        custom uint64[] state:primPaths (
+            docs="""State from previous execution"""
+        )
+        custom timecode state:usdTimecode = nan (
+            docs="""State from previous execution"""
+        )
+        custom bool state:usePaths = false (
+            docs="""State from previous execution"""
+        )
+    }
+}

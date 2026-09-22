@@ -1,0 +1,7 @@
+<svg id="avatar_tint" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="iconBase" width="40" height="40" fill="none"/>
+  <g id="Avatar" transform="translate(8 6)">
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="6.732" cy="6.732" r="6.732" transform="translate(5.049)" fill="#fff"/>
+    <path id="Path_1407" data-name="Path 1407" d="M8.454,0H14.4a9.158,9.158,0,0,1,9.158,9.158v4.305H0V8.454A8.454,8.454,0,0,1,8.454,0Z" transform="translate(0 15.421)" fill="#fff"/>
+  </g>
+</svg>

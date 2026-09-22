@@ -1,0 +1,56 @@
+
+[package]
+title = "Scene Optimizer Core"
+category = "content"
+version = "107.3.12"
+readme = "docs/README.md"
+changelog ="docs/CHANGELOG.md"
+description = "A suite of commands that perform scene optimization"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+[[python.module]]
+name = "omni.scene.optimizer.core"
+
+[[python.module]]
+name = "omni.scene.optimizer.core.operation"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.usd" = {}
+
+[fswatcher.patterns]
+include = ["*.py"]
+
+# Keywords for the extension
+keywords = ["scene.optimizer"]
+
+[[native.plugin]]
+path = "bin/omni.scene.optimizer.core.plugin"
+recursive = false
+
+[[test]]
+timeout = 600
+pyCoverageEnabled = true
+pyCoverageIncludeModules = true
+pyCoverageIncludeDependencies = false
+pyCoverageIncludeTestDependencies = false
+stdoutFailPatterns.exclude = [
+    "*[ERROR]*Incorrect padding*",
+    "*[ERROR]*flattenHierarchy:*",
+    "*executeErrorPythonOperation*",
+    "*badExecutePythonOperation*",
+    "*Runtime Error: in SdfPathExpression*",
+    "*Error*scene.optimizer*Invalid Expression*",
+]
+
+pyCoverageOmit = [
+    "*/tests/*",
+]
+
+[package.writeTarget]
+kit = true
+usd = true

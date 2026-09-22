@@ -1,0 +1,63 @@
+{
+    "omni.graph.action.OnObjectChange": {
+        "version": 5,
+        "description": [
+            "Monitors a specific 'Property Name' on a connected 'Prim' target. When a change in the underlying",
+            "USD is detected, activates execution of the downstream graph."
+        ],
+        "uiName": "On USD Object Change",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "path": {
+                "type": "path",
+                "description": "The path of object of interest (property or prim). If the prim input has a target, this is ignored",
+                "uiName": "Path",
+                "optional": true,
+                "deprecated": "Use prim input instead",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "prim": {
+                "type": "target",
+                "description": "The USD prim being monitored.",
+                "uiName": "Prim",
+                "optional": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "name": {
+                "type": "token",
+                "description": "The name of the property of interest on the USD prim being monitored.",
+                "uiName": "Property Name",
+                "optional": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "changed": {
+                "type": "execution",
+                "description": "When the watched property changes signal to the graph that execution can continue downstream.",
+                "uiName": "Changed"
+            },
+            "propertyName": {
+                "type": "token",
+                "description": "The name of the property on which the change was detected.",
+                "uiName": "Property Name"
+            }
+        }
+    }
+}

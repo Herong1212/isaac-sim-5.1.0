@@ -1,0 +1,60 @@
+[package]
+# Semantic Versionning is used: https://semver.org/
+version = "1.0.3"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Highlight widgets"
+description="A label widget to show highlight word."
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "widget", "label", "hightlight"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.rst"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+category = "Internal"
+support_level = "Core"
+
+# We only depend on testing framework currently:
+[dependencies]
+"omni.ui" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.widget.searchfield".
+[[python.module]]
+name = "omni.kit.widget.highlight_label"
+
+[settings]
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+[documentation]
+pages = [
+    "docs/CHANGELOG.md",
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+]

@@ -1,0 +1,81 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (0, 300, 0)
+                double3 target = (0, 0, 0)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 279.7741455078125
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+            double "rtx:sceneDb:ambientLightIntensity" = 1.0
+            bool "rtx:indirectDiffuse:enabled" = 0
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    # MAke a Simple Cube whose top sits at -100 Y
+    def Cube "Plane"
+    {
+        color3f[] primvars:displayColor = [(1, 0, 0)] ( interpolation = "constant" )
+        # token visibility = "invisible"
+
+        double size = 400;
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 180)
+        double3 xformOp:scale = (1, 0.01, 1)
+        double3 xformOp:translate = (0, -102, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube"
+    {
+        color3f[] primvars:displayColor = [(0, 1, 0)] ( interpolation = "constant" )
+
+        double size = 100;
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-70, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_01"
+    {
+        color3f[] primvars:displayColor = [(0, 0, 1)] ( interpolation = "constant" )
+
+        double size = 100;
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (70, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

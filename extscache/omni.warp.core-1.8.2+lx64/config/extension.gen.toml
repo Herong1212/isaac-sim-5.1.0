@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.warp.core-1.8.2%2Blx64.zip"
+
+    [package.target]
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+    [package.publish]
+        kitVersion = "106.5.2+1065.170256.12577025.gl"
+        date = 1758770591
+        buildNumber = "1.8.2+release-18.12884.4ae3bac6.gl"
+        repoName = "warp"
+        signed = 1

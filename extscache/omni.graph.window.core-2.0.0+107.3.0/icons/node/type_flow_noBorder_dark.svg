@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="type_flow_noBorder_dark" transform="translate(-12 -990)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(12 990)" fill="none"/>
+    <path id="wire_3" d="M26.5,1001.5c5.367,0,2.529,9.529,9.5,9.529" transform="translate(0 8.971)" fill="none" stroke="#9a9a9a" stroke-width="1"/>
+    <line id="wire_2" x2="9.5" transform="translate(26.5 1010.5)" fill="none" stroke="#9a9a9a" stroke-width="1"/>
+    <path id="wire_1" d="M26.5,1010.529c5.367,0,2.529-9.029,9.5-9.029" fill="none" stroke="#9a9a9a" stroke-width="1"/>
+    <path id="node_4" d="M2,0H8A0,0,0,0,1,8,0V5A2,2,0,0,1,6,7H0A0,0,0,0,1,0,7V2A2,2,0,0,1,2,0Z" transform="translate(36 1016)" fill="#747c57" opacity="0.5"/>
+    <path id="node_3" d="M2,0H8A0,0,0,0,1,8,0V5A2,2,0,0,1,6,7H0A0,0,0,0,1,0,7V2A2,2,0,0,1,2,0Z" transform="translate(36 1007)" fill="#747c57" opacity="0.75"/>
+    <path id="node_2" d="M2,0H8A0,0,0,0,1,8,0V5A2,2,0,0,1,6,7H0A0,0,0,0,1,0,7V2A2,2,0,0,1,2,0Z" transform="translate(36 998)" fill="#747c57"/>
+    <path id="node_1" d="M2,0H8A0,0,0,0,1,8,0V5A2,2,0,0,1,6,7H0A0,0,0,0,1,0,7V2A2,2,0,0,1,2,0Z" transform="translate(19 1007)" fill="#747c57"/>
+  </g>
+</svg>

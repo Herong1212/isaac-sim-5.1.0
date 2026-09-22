@@ -1,0 +1,45 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGpuInteropGpuToCpuCopy.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_GpuInteropGpuToCpuCopy" (
+        docs="""Generates a new AOV representing a CPU copy of a GPU buffer"""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.GpuInteropGpuToCpuCopy"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom string inputs:aovGpu = "" (
+            docs="""Name of the RenderVar to copy from GPU to CPU. 
+            The RenderVar must be a valid texture on the RenderProduct, otherwise this node will not do anything."""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""The shared context containing GPU foundation interfaces."""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""The render product for this view."""
+        )
+
+        # 3 attributes
+        custom string outputs:aovCpu = "" (
+            docs="""The name of the RenderVar representing the CPU buffer of the GPU resource. 
+            It is composed from the AOV GPU name with "_host" appended at the end."""
+        )
+        custom uint64 outputs:gpu (
+            docs="""The shared context containing GPU foundation interfaces."""
+        )
+        custom uint64 outputs:rp (
+            docs="""The render product for this view."""
+        )
+    }
+}

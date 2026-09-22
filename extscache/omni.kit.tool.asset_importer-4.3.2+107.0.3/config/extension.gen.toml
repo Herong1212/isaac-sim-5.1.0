@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.tool.asset_importer-4.3.2%2B107.0.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.180518.a0a0bf7a.gl"
+        date = 1749074576
+        buildNumber = "107.0.3+master.702.85f77a7d.gl"
+        repoName = "kit-converters"
+        signed = 1

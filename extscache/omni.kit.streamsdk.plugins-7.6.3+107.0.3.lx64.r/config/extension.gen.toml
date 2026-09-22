@@ -1,0 +1,21 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.streamsdk.plugins-7.6.3%2B107.0.3.lx64.r.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+mr36087.171495.aeeb3d54.gl"
+        date = 1742553073
+        buildNumber = "107.0+master.995.996ad59f.gl"
+        repoName = "kit-livestream"
+        signed = 1

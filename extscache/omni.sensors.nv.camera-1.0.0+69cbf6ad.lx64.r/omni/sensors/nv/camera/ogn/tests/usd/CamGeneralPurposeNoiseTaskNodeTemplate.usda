@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamGeneralPurposeNoiseTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamGeneralPurposeNoiseTask" (
+        docs="""Adds dynamic noise to the image (photon shot noise and dark shot noise)."""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamGeneralPurposeNoiseTask"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom float inputs:darkShotNoiseGain = 1.0 (
+            docs="""gain of the dark shot noise"""
+        )
+        custom float inputs:darkShotNoiseSigma = 1.0 (
+            docs="""standard deviation (sigma) of the dark shot noise"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom float2[] inputs:hdrCombinationData = [] (
+            docs="""Array of (border value of HDR region end, applied HDR gain), describes the gains of the noise in the different HDR regions"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [s]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [s]"""
+        )
+    }
+}

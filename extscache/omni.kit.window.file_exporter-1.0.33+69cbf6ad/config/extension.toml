@@ -1,0 +1,68 @@
+[package]
+title = "File Exporter"
+version = "1.0.33"
+category = "core"
+description = "A dialog for exporting files"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+readme  = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.window.filepicker" = {}
+"omni.usd" = { optional=true }
+
+[[python.module]]
+name = "omni.kit.window.file_exporter"
+
+[settings]
+exts."omni.kit.window.file_exporter".appSettings = "/persistent/app/file_exporter"
+
+[[python.scriptFolder]]
+path = "scripts"
+
+[[test]]
+pythonTests.exclude = [
+    "*test_hide_window_destroys_detached_window",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.usd",
+    "omni.kit.test_suite.helpers"
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.kit.test/testExtUIMode=true",
+]
+
+[[test]]
+name = "ui-visible"
+pythonTests.include = [
+    "omni.kit.window.file_exporter.tests.test_extension.TestFileExporter.test_hide_window_destroys_detached_window",
+]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.usd",
+    "omni.kit.test_suite.helpers"
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--show-test-window"
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

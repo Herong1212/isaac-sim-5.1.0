@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.waypoint.core-1.4.62%2B107.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.191232.81092e5c.gl"
+        date = 1746810074
+        buildNumber = "105.1+master.1777.0114e2cd.gl"
+        repoName = "kit-windows"
+        signed = 1

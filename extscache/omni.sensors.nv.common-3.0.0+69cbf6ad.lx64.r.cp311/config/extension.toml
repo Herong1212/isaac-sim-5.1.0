@@ -1,0 +1,46 @@
+[package]
+version = "3.0.0"
+authors = ["NVIDIA"]
+title = "Omniverse Sensors NV Common"
+description="Common plugins, nodes and public headers for sensors extensions."
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+[[python.module]]
+name = "omni.sensors.nv.common"
+
+[[native.library]]
+"filter:os".linux.path = "bin/libnvrtc.so"
+"filter:platform"."windows-x86_64".path = "bin/nvrtc64_112_0.dll"
+
+[[native.library]]
+"filter:os".linux.path = "bin/libnvrtc-builtins.so"
+"filter:platform"."windows-x86_64".path = "bin/nvrtc-builtins64_118.dll"
+
+[[native.library]]
+"filter:os".linux.path = "bin/libcufft.so"
+"filter:platform"."windows-x86_64".path = "bin/cufft64_10.dll"
+
+
+
+[dependencies]
+"omni.graph.core" = {}
+"omni.graph.tools" = {}
+
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+
+[documentation]
+pages = [
+    "docs/common_extension.rst",
+    "docs/CHANGELOG.md",
+]

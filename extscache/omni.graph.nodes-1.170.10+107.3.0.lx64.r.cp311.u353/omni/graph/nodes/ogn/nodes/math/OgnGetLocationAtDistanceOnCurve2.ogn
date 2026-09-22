@@ -1,0 +1,72 @@
+{
+    "GetLocationAtDistanceOnCurve2": {
+        "version": 1,
+        "description": [
+            "Given a set of curve points and a normalized distance between 0-1.0,",
+            "return the location on a closed curve. 0 is the first point on the curve, 1.0 is also the first point",
+            "because the is an implicit segment connecting the first and last points. Values outside the range 0-1.0",
+            "will be wrapped to that range, for example -0.4 is equivalent to 0.6 and 1.3 is equivalent to 0.3.",
+            "This is a simplistic curve-following node, intended for curves in a plane, for prototyping purposes."
+        ],
+        "uiName": "Get Locations At Distances On Curve",
+        "categories": ["internal"],
+        "scheduling": [ "threadsafe" ],
+        "metadata": {"hidden": "true"},
+        "inputs": {
+            "curve": {
+                "type": "pointd[3][]",
+                "description": "The vertex values of the curve to be examined.",
+                "uiName": "Curve"
+            },
+            "distance": {
+                "type": "double",
+                "description": "The distance along the curve, normalized to the range 0-1.0.",
+                "uiName": "Distance"
+            },
+            "forwardAxis": {
+                "type": "token",
+                "description": [
+                    "The direction vector from which the returned rotation is relative. The legal values",
+                    "are 'X', 'Y', or 'Z'."
+                ],
+                "uiName": "Forward",
+                "default": "X"
+            },
+            "upAxis": {
+                "type": "token",
+                "description": [
+                    "The world Up vector, the curve should be in a plane perpendicular with this. The legal values",
+                    "are 'X', 'Y', or 'Z'."
+                ],
+                "uiName": "Up",
+                "default": "Y"
+            }
+        },
+        "outputs": {
+            "location": {
+                "type": "pointd[3]",
+                "description": "Location",
+                "uiName": "Location on curve at the given distance in world space."
+            },
+            "rotateXYZ": {
+                "type": "vectord[3]",
+                "description": "Rotations",
+                "uiName": "World space rotation of the curve at the given distance. It may not be smooth for some curves."
+            },
+            "orientation": {
+                "type": "quatf[4]",
+                "description": "Orientation",
+                "uiName": "World space orientation of the curve at the given distance. It may not be smooth for some curves."
+            }
+        },
+        "tokens": [
+            "x", "y", "z", "X", "Y", "Z"
+        ],
+        "tests": [
+            {"inputs:curve": [[1, 2, 3]], "inputs:distance": 0.5, "outputs:location": [1, 2, 3]},
+
+            {"inputs:curve": [[0, 0, 0], [0, 0, 1]], "inputs:distance": 0.75, "inputs:forwardAxis": "X", "inputs:upAxis": "Y",
+                "outputs:location": [0, 0, 0.5], "outputs:rotateXYZ": [0, 90, 0]}
+        ]
+    }
+}

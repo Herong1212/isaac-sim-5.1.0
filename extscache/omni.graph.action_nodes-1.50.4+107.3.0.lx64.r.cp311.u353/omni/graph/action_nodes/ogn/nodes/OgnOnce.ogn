@@ -1,0 +1,41 @@
+{
+    "omni.graph.action.Once": {
+        "description": [
+            "Controls flow of execution by activating the 'Once' signal on the first execution and",
+            "the 'After' signal for each successive execution."
+        ],
+        "version": 2,
+        "uiName": "Once",
+        "categories": ["graph:action", "flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "reset": {
+                "type": "execution",
+                "description": [
+                    "Signal to the node to reset the state so that 'Once' will be activated on the next",
+                    "'Exec In'."
+                ]
+            }
+        },
+        "outputs": {
+            "once": {
+                "type": "execution",
+                "description": [
+                    "On the very first execution, or the first execution after 'Reset' is activated",
+                    "signal to the graph that execution can continue downstream."
+                ]
+            },
+            "after": {
+                "type": "execution",
+                "description": [
+                    "On every execution after the first one, or the first execution after 'Reset' is activated",
+                    "signal to the graph that execution can continue downstream."
+                ]
+            }
+        }
+    }
+}

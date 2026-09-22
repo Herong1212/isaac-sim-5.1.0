@@ -1,0 +1,54 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.0.5"
+
+category = "Internal"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "External Drag & Drop"
+description="Drag & Drop support from outside kit"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "drag", "drop"]
+support_level = "Core"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+[dependencies]
+"omni.appwindow" = {}
+"omni.ui" = {}
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]
+
+[[python.module]]
+name = "omni.kit.window.drop_support"
+
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedStage=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.window",
+    "omni.kit.window.file",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+]

@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSampleRotation.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSampleRotation" (
+        docs="""This node assigns uniformly sampled rotations to the input prims."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSampleRotation"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom float3 inputs:maxAngle = (180.0, 180.0, 180.0) (
+            docs="""maximum value for Euler angles in XYZ form (degrees)"""
+        )
+        custom float3 inputs:minAngle = (-180.0, -180.0, -180.0) (
+            docs="""minimum value for Euler angles in XYZ form (degrees)"""
+        )
+        custom rel inputs:prims (
+            docs="""prim(s) to set rotation"""
+        )
+        custom int inputs:seed = -1 (
+            docs="""Random Number Generator seed. A value of less than 0 will indicate using the global seed."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

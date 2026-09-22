@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetPrimLocalToWorldTransform.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetPrimLocalToWorldTransform" (
+        docs="""Given a path to a prim on the current USD stage, returns the transformation matrix. that transforms a vector from the local frame to the global frame """
+    )
+    {
+        token node:type = "omni.graph.nodes.GetPrimLocalToWorldTransform"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom rel inputs:prim (
+            docs="""The prim used as the local coordinate system when 'Use Path' is false"""
+        )
+        custom token inputs:primPath = "" (
+            docs="""The path of the prim used as the local coordinate system when 'Use Path' is true"""
+        )
+        custom bool inputs:usePath = true (
+            docs="""When true, the 'Prim Path' attribute is used as the path to the prim being read
+            otherwise it will read the connection at the 'Prim' attribute"""
+        )
+
+        # 1 attribute
+        custom matrix4d outputs:localToWorldTransform (
+            docs="""The local to world transformation matrix for 'Prim'"""
+        )
+    }
+}

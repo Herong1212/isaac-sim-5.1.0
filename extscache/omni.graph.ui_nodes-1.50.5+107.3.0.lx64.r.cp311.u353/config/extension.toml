@@ -1,0 +1,146 @@
+# cSpell:disable
+[package]
+title = "OmniGraph UI Nodes"
+version = "1.50.5"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains a library of UI-related OmniGraph nodes"
+repository = ""
+keywords = ["omnigraph", "nodes"]
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+python.import_mode = "SerialThread" # the node OgnSetViewportMode depends on OgnVStack so they cannot be loaded in parallel threads
+writeTarget.kit = true
+writeTarget.usd = true
+support_level = "Core"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.ui_nodes"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph" = { version = "1.139.0" }
+"omni.graph.tools" = { version = "1.77.0" }
+"omni.kit.commands" = {}
+"omni.kit.viewport.utility" = {}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.usd" = {}
+"omni.timeline" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+deps = [
+    ["omni.ui", "https://docs.omniverse.nvidia.com/kit/docs/omni.ui/latest"],
+]
+
+[[test]]
+args = [
+    "--/app/fastShutdown=true",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window"
+]
+
+dependencies = [
+    "omni.graph.action",
+    "omni.graph.nodes",
+    "omni.graph.ui",  # When the viewport_next automatic test is generated it runs this version so it needs the UI too
+    "omni.hydra.pxr",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.ui_test",
+    "omni.kit.viewport.window",
+]
+
+# Exclude tests that require viewport
+pythonTests.exclude = [
+    "omni.graph.ui_nodes.tests.test_ui_nodes.*",
+]
+
+# These will be removed as soon as the Action Graph Samples have been updated to no longer use them.
+pyCoverageOmit = [
+    "OgnButton.py",
+    "OgnSlider.py",
+    "OgnOnWidgetClicked.py",
+    "OgnOnWidgetValueChanged.py"
+]
+
+
+[[test]]
+# Tests which require a viewport.
+name = "viewport"
+timeout = 600
+
+stdoutFailPatterns.exclude = [
+    # Workaround for OM-47134
+    "*[Error] [asyncio]*Task exception was never retrieved*",
+    "*[Ignore this error/warning]*",
+    "*'NoneType' object is not subscriptable*"
+]
+dependencies = [
+    "omni.graph.action",
+    "omni.graph.nodes",
+    # "omni.graph.ui",  # We don't want this because it can interfere with viewport screenshots
+    # "omni.kit.mainwindow",  # Some of these seem to be bringing in unwanted settings window
+    # "omni.kit.manipulator.selection",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.viewport.window",
+    "omni.kit.viewport.rtx",
+    "omni.kit.ui_test",
+]
+
+args = [
+    "--/app/fastShutdown=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/renderer/enabled=rtx,iray",
+    "--/renderer/active=rtx",
+    "--/app/asyncRendering=false",
+    "--reset-user",
+    "--no-window",
+    # Changes to the HUD visibility setting are ignored within the test so we have to set it here.
+    # The default viewport name is 'Viewport Next', which is what we'll get when the test is run standalone.
+    # But apps often rename it to just 'Viewport' so we need to handle that as well so that the test will work
+    # when run from within an app (e.g. using Test Runner).
+    "--/app/viewport/Viewport Next/Viewport0/hud/visible=false",
+    "--/app/viewport/Viewport/Viewport0/hud/visible=false",
+]
+
+# Include only tests that require a viewport
+pythonTests.include = [
+    "omni.graph.ui_nodes.tests.test_ui_nodes.*"
+]
+
+# These will be removed as soon as the Action Graph Samples have been updated to no longer use them.
+pyCoverageOmit = [
+    "OgnButton*.py",
+    "OgnSlider*.py",
+    "OgnOnWidgetClicked*.py",
+    "OgnOnWidgetValueChanged*.py",
+    "UINodeCommon.py"
+]

@@ -1,0 +1,57 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnTransformsToCurve.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_TransformsToCurve" (
+        docs="""Given a bundle of prims, use the transforms of those prims to create a spline curve."""
+    )
+    {
+        token node:type = "omni.genproc.core.TransformsToCurve"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom int inputs:basis = 0 (
+            docs="""Curve basis (0 - Bezier, 1 - BSpline, 2 - Catmull-Rom)"""
+        )
+        custom float inputs:tangentLength = 1.0 (
+            docs="""Scale factor applied to curve tangents (note that tangents are also scaled by the scale of the transformable prims in the transform bundle)"""
+        )
+        custom rel inputs:transformBundle (
+            docs="""Bundle containing transform data"""
+        )
+        custom int inputs:type = 1 (
+            docs="""Curve type (0 - linear, 1 - cubic)"""
+        )
+        custom int inputs:wrap = 0 (
+            docs="""Curve wrap setting (0 - nonperiodic, 1 - periodic, 2 - pinned)"""
+        )
+
+        # 1 attribute
+        custom rel outputs_curveBundle (
+            docs="""Bundle containing curves data"""
+        )
+
+        # 4 attributes
+        custom int state:prevBasis (
+            docs="""Previous basis value for recompute test"""
+        )
+        custom float state:prevTangentLength (
+            docs="""Previous tangentLength value for recompute test"""
+        )
+        custom int state:prevType (
+            docs="""Previous type value for recompute test"""
+        )
+        custom int state:prevWrap (
+            docs="""Previous wrap value for recompute test"""
+        )
+    }
+}

@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset: no prims with omni:simready:signal attribute
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom token omni:simready:signalType = "trafficLight"
+}

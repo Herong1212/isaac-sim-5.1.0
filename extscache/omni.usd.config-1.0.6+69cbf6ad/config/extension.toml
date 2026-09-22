@@ -1,0 +1,31 @@
+[core]
+
+[package]
+title = "Omni USD Config"
+version = "1.0.6"
+category = "Internal"
+description = "This extension sets environment variables that are used by other parts of the application."
+changelog = "docs/CHANGELOG.md"
+keywords = ["usd", "configuration", "environment", "variables"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[[python.module]]
+name = "omni.usd_config"
+
+[settings]
+usd.enableNestedGprims = true
+usd.disableCameraAdapter = false
+
+[dependencies]
+"omni.materialx.libs" = {optional = true}
+
+[[test]]
+waiver = "Covered in omni.usd/tests/test_usd_bootstrap.py"
+
+[documentation]
+pages = [
+    "docs/CHANGELOG.md",
+    "docs/Overview.md",
+    "docs/SETTINGS.md",
+]

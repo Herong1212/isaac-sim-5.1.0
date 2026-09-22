@@ -1,0 +1,254 @@
+[package]
+title = "Extensions Manager Window"
+description = "Customize and personalize Kit with extensions"
+version = "1.4.27"
+category = "Utilities"
+feature = true
+keywords = ["extensions", "window", "kit"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+support_level = "Core"
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md"]
+
+[dependencies]
+"omni.kit.async_engine" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.commands" = {}
+"omni.ui" = {}
+"omni.client" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.filter" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.pipapi" = {}
+"omni.kit.widget.text_editor" = { optional = true }
+
+[[trigger]]
+menu.name = "Window/Extensions"
+menu.priority = 100
+menu.window = "Extensions"
+
+[[python.module]]
+name = "omni.kit.window.extensions"
+
+[settings]
+# Enable publish and unpublish from UI feature:
+persistent.exts."omni.kit.window.extensions".publishingEnabled = false
+
+# Open folders and files in VSCode instead of OS file explorer:
+persistent.exts."omni.kit.window.extensions".openInVSCode = true
+
+exts."omni.kit.window.extensions".docUrlInternal = "http://omniverse-docs.s3-website-us-east-1.amazonaws.com/${extName}/${version}"
+exts."omni.kit.window.extensions".docUrlExternal = "https://docs.omniverse.nvidia.com/kit/docs/${extName}/${version}"
+
+# Show Community extensions tab. Just always show or have an option to manually enable.
+exts."omni.kit.window.extensions".communityTabEnabled = true
+exts."omni.kit.window.extensions".communityTabOption = true
+
+# Links to create menu entries for under '+'
+exts."omni.kit.window.extensions".openExampleLinks = [
+    ["Open Extension Template On Github", "https://github.com/NVIDIA-Omniverse/kit-extension-template"]
+]
+
+# Enable/disable downloading registry from nucleus
+exts."omni.kit.window.extensions".sync_registry = true
+
+# default filter
+exts."omni.kit.window.extensions".default_filter = ""
+
+exts."omni.kit.window.extensions".core_exts = [ # 2024/4/10
+    "omni.anim.curve.core",
+    "omni.graph.action",
+    "omni.graph.action_nodes",
+    "omni.graph.nodes",
+    "omni.graph.scriptnode",
+    "omni.graph.ui_nodes",
+    "omni.kit.gfn",
+    "omni.kit.livestream.messaging",
+    "omni.warp.core",
+    "omni.convexdecomposition",
+    "omni.kit.asset_converter",
+    "omni.kit.graph.delegate.modern",
+    "omni.kit.graph.delegate.neo",
+    "omni.kit.livestream.core",
+    "omni.kit.livestream.native",
+    "omni.kit.livestream.webrtc",
+    "omni.kit.streamsdk.plugins",
+    "omni.kit.tool.asset_importer",
+    "omni.kit.viewport.menubar.lighting",
+    "omni.kit.xr.core",
+    "omni.kvdb",
+    "omni.localcache",
+    "omni.physx",
+    "omni.physx.cooking",
+    "omni.physx.foundation",
+    "omni.physx.stageupdate",
+    "omni.usd.schema.physx",
+    "omni.usdphysics",
+    "omni.warp"
+]
+
+exts."omni.kit.window.extensions".example_exts = [ # 2024/4/09
+]
+
+exts."omni.kit.window.extensions".deprecated_exts = [ # 2024/4/09
+]
+
+exts."omni.kit.window.extensions".internal_exts = [ # 2024/4/09
+]
+exts."omni.kit.window.extensions".default_search_words=['@feature']
+
+# Featured extensions outside kit repo and may take more time to fixup and add feature flag.
+exts."omni.kit.window.extensions".kit_featured_exts = [
+    "omni.anim.curve.bundle",
+    "omni.anim.graph.bundle",
+    "omni.anim.motion_path.bundle",
+    "omni.anim.retarget.bundle",
+    "omni.anim.window.timeline",
+    "omni.asset_validator.ui",
+    "omni.flowusd.bundle",
+    "omni.graph.window.action",
+    "omni.kit.browser.material",
+    "omni.kit.converter.cad",
+    "omni.kit.livestream.webrtc",
+    "omni.kit.scripting",
+    "omni.kit.stagerecorder.bundle",
+    "omni.kit.tool.asset_exporter",
+    "omni.kit.tool.asset_importer",
+    "omni.kit.tool.markup",
+    "omni.kit.tool.measure",
+    "omni.kit.tool.paint.bundle",
+    "omni.kit.tool.teleport",
+    "omni.kit.usdz_export",
+    "omni.kit.variant.editor",
+    "omni.kit.variant.presenter",
+    "omni.kit.window.material_graph",
+    "omni.kit.window.movie_capture",
+    "omni.kit.window.section",
+    "omni.kit.window.sequencer",
+    "omni.kit.window.waypoint",
+    "omni.kit.xr.profile.ar",
+    "omni.kit.xr.profile.tabletar",
+    "omni.kit.xr.profile.vr",
+    "omni.physx.bundle",
+    "omni.replicator.core",
+    "omni.scene.optimizer.bundle",
+    "omni.usd.metrics.assembler.ui",
+    "omni.warp",
+]
+
+[[test]]
+name="all"
+pythonTests.exclude = [
+    "omni.kit.window.extensions.tests.test_default_filter*",
+    "omni.kit.window.extensions.tests.test_extension_toggling*",
+]
+timeout = 300
+args = [
+    "--reset-user",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.window.extensions/sync_registry=false",
+    "--/exts/omni.kit.window.extensions/featuredExts=['omni.kit.window.extensions']",
+    "--/exts/omni.kit.window.extensions/default_search_words=['']", # don't alter existing tests for default search words
+    "--/persistent/exts/omni.kit.window.extensions/openInVSCode=false",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=1",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.mainwindow",
+    "omni.kit.window.file_exporter",
+    "omni.kit.extpath.git",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface*while unloading all plugins*",
+]
+
+[[test]]
+name="featured"
+pythonTests.include = [
+    "omni.kit.window.extensions.tests.test_default_filter*",
+    "omni.kit.window.extensions.tests.test_markdown*",
+]
+timeout = 300
+args = [
+    "--reset-user",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.window.extensions/sync_registry=false",
+    "--/exts/omni.kit.window.extensions/featuredExts=['omni.kit.window.extensions']",
+    "--/persistent/exts/omni.kit.window.extensions/openInVSCode=false",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=1",
+    "--/exts/omni.kit.window.extensions/default_filter=['featured']",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.mainwindow",
+    "omni.kit.window.file_exporter",
+    "omni.kit.extpath.git",
+    "omni.kit.widget.text_editor",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface*while unloading all plugins*",
+]
+
+[[test]]
+name="extension-toggling"
+pythonTests.include = [
+    "omni.kit.window.extensions.tests.test_extension_toggling*",
+]
+timeout = 300
+args = [
+    "--reset-user",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.window.extensions/sync_registry=false",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=1",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file_exporter",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface*while unloading all plugins*",
+]

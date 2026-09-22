@@ -1,0 +1,169 @@
+{
+    "CurveTubeST": {
+        "version": 1,
+        "description" : [
+            "Compute curve tube ST values. S and T refer to the parameters in the 2-dimensional surface",
+            "space of the tube."
+        ],
+        "metadata": {
+            "uiName": "Curve Tube ST"
+        },
+        "categories": ["geometry:generator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "curveVertexStarts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex index starting points for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Counts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Starts"
+                }
+            },
+            "curveVertexCounts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex counts for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Starts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Counts"
+                }
+            },
+            "tubeSTStarts": {
+                "type": "int[]",
+                "description": "Vertex index values for the tube ST starting points.",
+                "metadata": {
+                    "uiName": "Tube ST Starts"
+                }
+            },
+            "tubeQuadStarts": {
+                "type": "int[]",
+                "description": "Vertex index values for the tube quad starting points.",
+                "metadata": {
+                    "uiName": "Tube Quad Starts"
+                }
+            },
+            "cols": {
+                "type": "int[]",
+                "description": "Columns of the tubes.",
+                "metadata": {
+                    "uiName": "Columns"
+                }
+            },
+            "t": {
+                "type": "float[]",
+                "description": "T values of the tubes.",
+                "metadata": {
+                    "uiName": "T Values"
+                }
+            },
+            "width": {
+                "type": "float[]",
+                "description": "Width of tube positions, if scaling T like S.",
+                "metadata": {
+                    "uiName": "Tube Widths"
+                }
+            },
+            "scaleTLikeS": {
+                "type": "bool",
+                "description": "If true then scale T the same as S.",
+                "metadata": {
+                    "uiName": "Scale T Like S"
+                }
+            }
+        },
+        "outputs": {
+            "primvars:st": {
+                "type": "float[2][]",
+                "description": "Array of computed ST values.",
+                "metadata": {
+                    "uiName": "ST Values"
+                }
+            },
+            "primvars:st:indices": {
+                "type": "int[]",
+                "description": "Array of computed ST indices.",
+                "metadata": {
+                    "uiName": "ST Indices"
+                }
+            }
+        },
+        "tests" : [
+            {
+                "$description": "Invalid tube arrays generates empty data",
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:tubeSTStarts": [0],
+                "inputs:tubeQuadStarts": [0],
+                "inputs:cols": [3],
+                "inputs:t": [0.1, 0.2, 0.3],
+                "inputs:width": [2.0],
+                "inputs:scaleTLikeS": false,
+                "outputs:primvars:st": [],
+                "outputs:primvars:st:indices": []
+            },
+            {
+                "$description": "Sample that generates valid ST data",
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:tubeSTStarts": [0, 12],
+                "inputs:tubeQuadStarts": [0, 12],
+                "inputs:cols": [3],
+                "inputs:t": [0.1, 0.2, 0.3],
+                "inputs:width": [2.0],
+                "inputs:scaleTLikeS": false,
+                "outputs:primvars:st": [
+                    [0.0, 0.1],
+                    [0.33333334, 0.1],
+                    [0.6666667,  0.1],
+                    [1, 0.1],
+                    [0, 0.2],
+                    [0.33333334, 0.2],
+                    [0.6666667, 0.2],
+                    [1, 0.2],
+                    [0, 0.3],
+                    [0.33333334, 0.3],
+                    [0.6666667, 0.3],
+                    [1, 0.3]
+                ],
+                "outputs:primvars:st:indices": [
+                    0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 4, 5, 9, 8, 5, 6, 10,
+                    9, 6, 7, 11, 10, 8, 9, 13, 12, 9, 10, 14, 13, 10, 11, 15,
+                    14, 12, 13, 17, 16, 13, 14, 18, 17, 14, 15, 19, 18
+                ]
+            },
+            {
+                "$description": "Sample that generates valid scaled ST data",
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:tubeSTStarts": [0, 12],
+                "inputs:tubeQuadStarts": [0, 12],
+                "inputs:cols": [3],
+                "inputs:t": [0.1, 0.2, 0.3],
+                "inputs:width": [2.0, 2.0, 2.0],
+                "inputs:scaleTLikeS": true,
+                "outputs:primvars:st": [
+                    [0.0, 0.01924501],
+                    [0.33333334, 0.01924501],
+                    [0.6666667, 0.01924501],
+                    [1, 0.01924501],
+                    [0, 0.03849002],
+                    [0.33333334, 0.03849002],
+                    [0.6666667, 0.03849002],
+                    [1, 0.03849002],
+                    [0, 0.05773503],
+                    [0.33333334, 0.05773503],
+                    [0.6666667, 0.05773503],
+                    [1, 0.05773503]
+                ],
+                "outputs:primvars:st:indices": [
+                    0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 4, 5, 9, 8, 5, 6, 10,
+                    9, 6, 7, 11, 10, 8, 9, 13, 12, 9, 10, 14, 13, 10, 11, 15,
+                    14, 12, 13, 17, 16, 13, 14, 18, 17, 14, 15, 19, 18
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "name": "Right Oculus Touch Controller Model",
+    "priority": 30,
+    "tags": [ "meta_quest_profile"],
+    "inputDevices": "/user/hand/right",
+    "asset": "{quest.controllers}/q2_right/model.usd"
+}

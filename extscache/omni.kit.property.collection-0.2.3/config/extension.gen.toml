@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.property.collection-0.2.3.zip"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.180676.45352709.gl"
+        date = 1753092023
+        buildNumber = "107.0.2+master.1635.6b38a3e7.gl"
+        repoName = "kit-usd"
+        signed = 1

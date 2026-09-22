@@ -1,0 +1,134 @@
+{
+    "ArrayGetSize": {
+        "version": 1,
+        "description": [
+            "Returns the number of elements in an array."
+        ],
+        "uiName": "Get Array Size",
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "The array whose size is to be determined.",
+                "uiName": "Array"
+            }
+        },
+        "outputs": {
+            "size": {
+                "type": "int",
+                "description": "The number of elements in the array.",
+                "uiName": "Size"
+            }
+        },
+        "tests": [
+            {
+                "inputs:array": {"type": "bool[]", "value": [false, true]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "double[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "float[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "half[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "int[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "int64[]", "value": [41]},
+                "outputs:size": 1
+            },
+            {
+                "inputs:array": {"type": "string", "value": "TestString"},
+                "outputs:size": 10
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": []},
+                "outputs:size": 0
+            },
+            {
+                "inputs:array": {"type": "uchar[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "uint[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "uint64[]", "value": [41, 42]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "double[2][]", "value": [[1, 2], [3, 4]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "double[3][]", "value": [[41, 42, 43], [43, 44, 56]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "double[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "matrixd[2][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "matrixd[3][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9], [3, 4, 5, 6, 7, 8, 9, 10, 11]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "float[2][]", "value": [[1, 2], [3, 4]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "float[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "float[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "half[2][]", "value": [[41, 42], [43, 44]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "half[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "half[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "int[2][]", "value": [[1, 2], [3, 4]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "int[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "outputs:size": 2
+            },
+            {
+                "inputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "outputs:size": 2
+            }
+        ]
+    }
+}

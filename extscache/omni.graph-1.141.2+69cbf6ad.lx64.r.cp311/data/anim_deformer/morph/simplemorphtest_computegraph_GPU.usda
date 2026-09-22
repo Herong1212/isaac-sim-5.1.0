@@ -1,0 +1,42 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    endTimeCode = 120
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def "Root" (
+    kind = "component"
+)
+{
+    def Xform "MorphMesh"(
+        references = @./simplemorphtest.usda@</Root>
+    )
+    {
+        over Mesh "base"
+        {
+            token visibility = "invisible"
+            rel deformedPrim = </Root/MorphMesh/base_deformed>
+        }
+        def Mesh "base_deformed" (
+            references = </Root/MorphMesh/base>
+        )
+        {
+            point3f[] points.connect = </Root/MorphMesh/Morph.output:points>
+            token visibility = "inherited"
+        }
+        def ComputeNode "Morph"
+        {
+            token[] input:joints
+            matrix4d[] input:jointSkelTransforms
+            point3f[] input:points.connect = </Root/MorphMesh/base.points>
+            rel input:restMesh = </Root/MorphMesh/base_deformed>
+            custom token node:type = "MorphGPU"
+            point3f[] output:points
+            point3f[] output:offsets
+        }
+    }
+}
+

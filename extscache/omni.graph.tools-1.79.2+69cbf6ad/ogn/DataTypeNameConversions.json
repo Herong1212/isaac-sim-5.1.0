@@ -1,0 +1,774 @@
+{
+    "LEGEND": {
+        "OGN TYPE": [
+            "USD TYPE",
+            "SDF TYPE",
+            "C++ TYPE",
+            "PYTHON TYPE",
+            "PYTHON TYPE ANNOTATION"
+        ]
+    },
+    "any": [
+        "token",
+        null,
+        "ogn::SimpleInput",
+        "any",
+        "omni.graph.core.types.any"
+    ],
+    "bool": [
+        "bool",
+        "Sdf.ValueTypeNames.Bool",
+        "ogn::SimpleInput",
+        "bool",
+        "omni.graph.core.types.bool"
+    ],
+    "bool[]": [
+        "bool[]",
+        "Sdf.ValueTypeNames.BoolArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.bool)",
+        "omni.graph.core.types.boolarray"
+    ],
+    "bundle": [
+        null,
+        null,
+        "ogn::BundleAttribute",
+        "omni.graph.core.BundleContents",
+        "omni.graph.core.types.bundle"
+    ],
+    "double": [
+        "double",
+        "Sdf.ValueTypeNames.Double",
+        "ogn::SimpleInput",
+        "float",
+        "omni.graph.core.types.double"
+    ],
+    "double[]": [
+        "double[]",
+        "Sdf.ValueTypeNames.DoubleArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.float64)",
+        "omni.graph.core.types.doublearray"
+    ],
+    "double[2]": [
+        "double2",
+        "Sdf.ValueTypeNames.Double2",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float64)",
+        "omni.graph.core.types.double2"
+    ],
+    "double[2][]": [
+        "double2[]",
+        "Sdf.ValueTypeNames.Double2Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float64)",
+        "omni.graph.core.types.double2array"
+    ],
+    "double[3]": [
+        "double3",
+        "Sdf.ValueTypeNames.Double3",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.double3"
+    ],
+    "double[3][]": [
+        "double3[]",
+        "Sdf.ValueTypeNames.Double3Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.double3array"
+    ],
+    "double[4]": [
+        "double4",
+        "Sdf.ValueTypeNames.Double4",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float64)",
+        "omni.graph.core.types.double4"
+    ],
+    "double[4][]": [
+        "double4[]",
+        "Sdf.ValueTypeNames.Double4Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float64)",
+        "omni.graph.core.types.double4array"
+    ],
+    "float": [
+        "float",
+        "Sdf.ValueTypeNames.Float",
+        "ogn::SimpleInput",
+        "float",
+        "omni.graph.core.types.float"
+    ],
+    "float[]": [
+        "float[]",
+        "Sdf.ValueTypeNames.FloatArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.float32)",
+        "omni.graph.core.types.floatarray"
+    ],
+    "float[2]": [
+        "float2",
+        "Sdf.ValueTypeNames.Float2",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float32)",
+        "omni.graph.core.types.float2"
+    ],
+    "float[2][]": [
+        "float2[]",
+        "Sdf.ValueTypeNames.Float2Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float32)",
+        "omni.graph.core.types.float2array"
+    ],
+    "float[3]": [
+        "float3",
+        "Sdf.ValueTypeNames.Float3",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.float3"
+    ],
+    "float[3][]": [
+        "float3[]",
+        "Sdf.ValueTypeNames.Float3Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.float3array"
+    ],
+    "float[4]": [
+        "float4",
+        "Sdf.ValueTypeNames.Float4",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float32)",
+        "omni.graph.core.types.float4"
+    ],
+    "float[4][]": [
+        "float4[]",
+        "Sdf.ValueTypeNames.Float4Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float32)",
+        "omni.graph.core.types.float4array"
+    ],
+    "half": [
+        "half",
+        "Sdf.ValueTypeNames.Half",
+        "ogn::SimpleInput",
+        "float",
+        "omni.graph.core.types.half"
+    ],
+    "half[]": [
+        "half[]",
+        "Sdf.ValueTypeNames.HalfArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.float16)",
+        "omni.graph.core.types.halfarray"
+    ],
+    "half[2]": [
+        "half2",
+        "Sdf.ValueTypeNames.Half2",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float16)",
+        "omni.graph.core.types.half2"
+    ],
+    "half[2][]": [
+        "half2[]",
+        "Sdf.ValueTypeNames.Half2Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float16)",
+        "omni.graph.core.types.half2array"
+    ],
+    "half[3]": [
+        "half3",
+        "Sdf.ValueTypeNames.Half3",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.half3"
+    ],
+    "half[3][]": [
+        "half3[]",
+        "Sdf.ValueTypeNames.Half3Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.half3array"
+    ],
+    "half[4]": [
+        "half4",
+        "Sdf.ValueTypeNames.Half4",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float16)",
+        "omni.graph.core.types.half4"
+    ],
+    "half[4][]": [
+        "half4[]",
+        "Sdf.ValueTypeNames.Half4Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float16)",
+        "omni.graph.core.types.half4array"
+    ],
+    "int": [
+        "int",
+        "Sdf.ValueTypeNames.Int",
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.int"
+    ],
+    "int[]": [
+        "int[]",
+        "Sdf.ValueTypeNames.IntArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.int32)",
+        "omni.graph.core.types.intarray"
+    ],
+    "int[2]": [
+        "int2",
+        "Sdf.ValueTypeNames.Int2",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.int32)",
+        "omni.graph.core.types.int2"
+    ],
+    "int[2][]": [
+        "int2[]",
+        "Sdf.ValueTypeNames.Int2Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.int32)",
+        "omni.graph.core.types.int2array"
+    ],
+    "int[3]": [
+        "int3",
+        "Sdf.ValueTypeNames.Int3",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.int32)",
+        "omni.graph.core.types.int3"
+    ],
+    "int[3][]": [
+        "int3[]",
+        "Sdf.ValueTypeNames.Int3Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.int32)",
+        "omni.graph.core.types.int3array"
+    ],
+    "int[4]": [
+        "int4",
+        "Sdf.ValueTypeNames.Int4",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.int32)",
+        "omni.graph.core.types.int4"
+    ],
+    "int[4][]": [
+        "int4[]",
+        "Sdf.ValueTypeNames.Int4Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.int32)",
+        "omni.graph.core.types.int4array"
+    ],
+    "int64": [
+        "int64",
+        "Sdf.ValueTypeNames.Int64",
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.int64"
+    ],
+    "int64[]": [
+        "int64[]",
+        "Sdf.ValueTypeNames.Int64Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.int64)",
+        "omni.graph.core.types.int64array"
+    ],
+    "objectId": [
+        "uint64",
+        null,
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.objectid"
+    ],
+    "objectId[]": [
+        "uint64[]",
+        null,
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.uint64)",
+        "omni.graph.core.types.objectidarray"
+    ],
+    "string": [
+        "string",
+        "Sdf.ValueTypeNames.String",
+        "ogn::ArrayInput",
+        "str",
+        "omni.graph.core.types.string"
+    ],
+    "target": [
+        null,
+        null,
+        "ogn::ArrayInput",
+        "list[usdrt::SdfPath]",
+        "omni.graph.core.types.target"
+    ],
+    "timecode": [
+        "timecode",
+        "Sdf.ValueTypeNames.TimeCode",
+        "ogn::SimpleInput",
+        "float",
+        "omni.graph.core.types.timecode"
+    ],
+    "timecode[]": [
+        "timecode[]",
+        "Sdf.ValueTypeNames.TimeCodeArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.float64)",
+        "omni.graph.core.types.timecodearray"
+    ],
+    "token": [
+        "token",
+        "Sdf.ValueTypeNames.Token",
+        "ogn::SimpleInput",
+        "str",
+        "omni.graph.core.types.token"
+    ],
+    "token[]": [
+        "token[]",
+        "Sdf.ValueTypeNames.TokenArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.str)",
+        "omni.graph.core.types.tokenarray"
+    ],
+    "uchar": [
+        "uchar",
+        "Sdf.ValueTypeNames.UChar",
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.uchar"
+    ],
+    "uchar[]": [
+        "uchar[]",
+        "Sdf.ValueTypeNames.UCharArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.uint8)",
+        "omni.graph.core.types.uchararray"
+    ],
+    "uint": [
+        "uint",
+        "Sdf.ValueTypeNames.UInt",
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.uint"
+    ],
+    "uint[]": [
+        "uint[]",
+        "Sdf.ValueTypeNames.UIntArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.uint32)",
+        "omni.graph.core.types.uintarray"
+    ],
+    "uint64": [
+        "uint64",
+        "Sdf.ValueTypeNames.UInt64",
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.uint64"
+    ],
+    "uint64[]": [
+        "uint64[]",
+        "Sdf.ValueTypeNames.UInt64Array",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,), dtype=numpy.uint64)",
+        "omni.graph.core.types.uint64array"
+    ],
+    "colord[3]": [
+        "color3d",
+        "Sdf.ValueTypeNames.Color3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.color3d"
+    ],
+    "colord[3][]": [
+        "color3d[]",
+        "Sdf.ValueTypeNames.Color3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.color3darray"
+    ],
+    "colord[4]": [
+        "color4d",
+        "Sdf.ValueTypeNames.Color4d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float64)",
+        "omni.graph.core.types.color4d"
+    ],
+    "colord[4][]": [
+        "color4d[]",
+        "Sdf.ValueTypeNames.Color4dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float64)",
+        "omni.graph.core.types.color4darray"
+    ],
+    "colorf[3]": [
+        "color3f",
+        "Sdf.ValueTypeNames.Color3f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.color3f"
+    ],
+    "colorf[3][]": [
+        "color3f[]",
+        "Sdf.ValueTypeNames.Color3fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.color3farray"
+    ],
+    "colorf[4]": [
+        "color4f",
+        "Sdf.ValueTypeNames.Color4f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float32)",
+        "omni.graph.core.types.color4f"
+    ],
+    "colorf[4][]": [
+        "color4f[]",
+        "Sdf.ValueTypeNames.Color4fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float32)",
+        "omni.graph.core.types.color4farray"
+    ],
+    "colorh[3]": [
+        "color3h",
+        "Sdf.ValueTypeNames.Color3h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.color3h"
+    ],
+    "colorh[3][]": [
+        "color3h[]",
+        "Sdf.ValueTypeNames.Color3hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.color3harray"
+    ],
+    "colorh[4]": [
+        "color4h",
+        "Sdf.ValueTypeNames.Color4h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float16)",
+        "omni.graph.core.types.color4h"
+    ],
+    "colorh[4][]": [
+        "color4h[]",
+        "Sdf.ValueTypeNames.Color4hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float16)",
+        "omni.graph.core.types.color4harray"
+    ],
+    "matrixd[2]": [
+        "matrix2d",
+        "Sdf.ValueTypeNames.Matrix2d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,2), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix2d"
+    ],
+    "matrixd[2][]": [
+        "matrix2d[]",
+        "Sdf.ValueTypeNames.Matrix2dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2,2), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix2darray"
+    ],
+    "matrixd[3]": [
+        "matrix3d",
+        "Sdf.ValueTypeNames.Matrix3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,3), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix3d"
+    ],
+    "matrixd[3][]": [
+        "matrix3d[]",
+        "Sdf.ValueTypeNames.Matrix3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3,3), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix3darray"
+    ],
+    "matrixd[4]": [
+        "matrix4d",
+        "Sdf.ValueTypeNames.Matrix4d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,4), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix4d"
+    ],
+    "matrixd[4][]": [
+        "matrix4d[]",
+        "Sdf.ValueTypeNames.Matrix4dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4,4), dtype=numpy.float64)",
+        "omni.graph.core.types.matrix4darray"
+    ],
+    "frame[4]": [
+        "frame4d",
+        "Sdf.ValueTypeNames.Frame4d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,4), dtype=numpy.float64)",
+        "omni.graph.core.types.frame4d"
+    ],
+    "frame[4][]": [
+        "frame4d[]",
+        "Sdf.ValueTypeNames.Frame4dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4,4), dtype=numpy.float64)",
+        "omni.graph.core.types.frame4darray"
+    ],
+    "normald[3]": [
+        "normal3d",
+        "Sdf.ValueTypeNames.Normal3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.normal3d"
+    ],
+    "normald[3][]": [
+        "normal3d[]",
+        "Sdf.ValueTypeNames.Normal3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.normal3darray"
+    ],
+    "normalf[3]": [
+        "normal3f",
+        "Sdf.ValueTypeNames.Normal3f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.normal3f"
+    ],
+    "normalf[3][]": [
+        "normal3f[]",
+        "Sdf.ValueTypeNames.Normal3fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.normal3farray"
+    ],
+    "normalh[3]": [
+        "normal3h",
+        "Sdf.ValueTypeNames.Normal3h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.normal3h"
+    ],
+    "normalh[3][]": [
+        "normal3h[]",
+        "Sdf.ValueTypeNames.Normal3hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.normal3harray"
+    ],
+    "pointd[3]": [
+        "point3d",
+        "Sdf.ValueTypeNames.Point3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.point3d"
+    ],
+    "pointd[3][]": [
+        "point3d[]",
+        "Sdf.ValueTypeNames.Point3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.point3darray"
+    ],
+    "pointf[3]": [
+        "point3f",
+        "Sdf.ValueTypeNames.Point3f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.point3f"
+    ],
+    "pointf[3][]": [
+        "point3f[]",
+        "Sdf.ValueTypeNames.Point3fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.point3farray"
+    ],
+    "pointh[3]": [
+        "point3h",
+        "Sdf.ValueTypeNames.Point3h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.point3h"
+    ],
+    "pointh[3][]": [
+        "point3h[]",
+        "Sdf.ValueTypeNames.Point3hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.point3harray"
+    ],
+    "quatd[4]": [
+        "quatd",
+        "Sdf.ValueTypeNames.Quatd",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float64)",
+        "omni.graph.core.types.quatd"
+    ],
+    "quatd[4][]": [
+        "quatd[]",
+        "Sdf.ValueTypeNames.QuatdArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float64)",
+        "omni.graph.core.types.quatdarray"
+    ],
+    "quatf[4]": [
+        "quatf",
+        "Sdf.ValueTypeNames.Quatf",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float32)",
+        "omni.graph.core.types.quatf"
+    ],
+    "quatf[4][]": [
+        "quatf[]",
+        "Sdf.ValueTypeNames.QuatfArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float32)",
+        "omni.graph.core.types.quatfarray"
+    ],
+    "quath[4]": [
+        "quath",
+        "Sdf.ValueTypeNames.Quath",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(4,), dtype=numpy.float16)",
+        "omni.graph.core.types.quath"
+    ],
+    "quath[4][]": [
+        "quath[]",
+        "Sdf.ValueTypeNames.QuathArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,4), dtype=numpy.float16)",
+        "omni.graph.core.types.quatharray"
+    ],
+    "texcoordd[2]": [
+        "texCoord2d",
+        "Sdf.ValueTypeNames.TexCoord2d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float64)",
+        "omni.graph.core.types.texcoord2d"
+    ],
+    "texcoordd[2][]": [
+        "texCoord2d[]",
+        "Sdf.ValueTypeNames.TexCoord2dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float64)",
+        "omni.graph.core.types.texcoord2darray"
+    ],
+    "texcoordd[3]": [
+        "texCoord3d",
+        "Sdf.ValueTypeNames.TexCoord3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.texcoord3d"
+    ],
+    "texcoordd[3][]": [
+        "texCoord3d[]",
+        "Sdf.ValueTypeNames.TexCoord3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.texcoord3darray"
+    ],
+    "texcoordf[2]": [
+        "texCoord2f",
+        "Sdf.ValueTypeNames.TexCoord2f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float32)",
+        "omni.graph.core.types.texcoord2f"
+    ],
+    "texcoordf[2][]": [
+        "texCoord2f[]",
+        "Sdf.ValueTypeNames.TexCoord2fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float32)",
+        "omni.graph.core.types.texcoord2farray"
+    ],
+    "texcoordf[3]": [
+        "texCoord3f",
+        "Sdf.ValueTypeNames.TexCoord3f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.texcoord3f"
+    ],
+    "texcoordf[3][]": [
+        "texCoord3f[]",
+        "Sdf.ValueTypeNames.TexCoord3fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.texcoord3farray"
+    ],
+    "texcoordh[2]": [
+        "texCoord2h",
+        "Sdf.ValueTypeNames.TexCoord2h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(2,), dtype=numpy.float16)",
+        "omni.graph.core.types.texcoord2h"
+    ],
+    "texcoordh[2][]": [
+        "texCoord2h[]",
+        "Sdf.ValueTypeNames.TexCoord2hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,2), dtype=numpy.float16)",
+        "omni.graph.core.types.texcoord2harray"
+    ],
+    "texcoordh[3]": [
+        "texCoord3h",
+        "Sdf.ValueTypeNames.TexCoord3h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.texcoord3h"
+    ],
+    "texcoordh[3][]": [
+        "texCoord3h[]",
+        "Sdf.ValueTypeNames.TexCoord3hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.texcoord3harray"
+    ],
+    "vectord[3]": [
+        "vector3d",
+        "Sdf.ValueTypeNames.Vector3d",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float64)",
+        "omni.graph.core.types.vector3d"
+    ],
+    "vectord[3][]": [
+        "vector3d[]",
+        "Sdf.ValueTypeNames.Vector3dArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float64)",
+        "omni.graph.core.types.vector3darray"
+    ],
+    "vectorf[3]": [
+        "vector3f",
+        "Sdf.ValueTypeNames.Vector3f",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float32)",
+        "omni.graph.core.types.vector3f"
+    ],
+    "vectorf[3][]": [
+        "vector3f[]",
+        "Sdf.ValueTypeNames.Vector3fArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float32)",
+        "omni.graph.core.types.vector3farray"
+    ],
+    "vectorh[3]": [
+        "vector3h",
+        "Sdf.ValueTypeNames.Vector3h",
+        "ogn::SimpleInput",
+        "numpy.ndarray(shape=(3,), dtype=numpy.float16)",
+        "omni.graph.core.types.vector3h"
+    ],
+    "vectorh[3][]": [
+        "vector3h[]",
+        "Sdf.ValueTypeNames.Vector3hArray",
+        "ogn::ArrayInput",
+        "numpy.ndarray(shape=(N,3), dtype=numpy.float16)",
+        "omni.graph.core.types.vector3harray"
+    ],
+    "execution": [
+        "execution",
+        null,
+        "ogn::SimpleInput",
+        "int",
+        "omni.graph.core.types.execution"
+    ]
+}

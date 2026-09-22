@@ -1,0 +1,59 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "106.0.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Selection Shape/Box Manipulator"
+description="Viewport / SceneUI selection box and shape manipulator"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "ui.scene", "selection", "manipulator"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+category = "Manipulator"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.usd.libs" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.manipulator.selection".
+[[python.module]]
+name = "omni.kit.manipulator.selection"
+
+[settings]
+# exts."omni.kit.manipulator.selection".xxx = ""
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.ui_test",
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

@@ -1,0 +1,297 @@
+{
+    "begin": 16759807679515234,
+    "end": 16759807879741166,
+    "root": {
+        "children": [
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807679518044,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807679554144,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Open"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679917177,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680022352,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807680216328,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680237731,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Draw"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Create Legacy Viewport Overlays"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807680130012,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680169038,
+                                        "type": "ENDED"
+                                    },
+                                    {
+                                        "time": 16759807680169139,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807680204002,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Legacy Controller"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "Stage Widget Model"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Update"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "children": [
+                                            {
+                                                "children": [],
+                                                "events": [],
+                                                "name": "Stage Update"
+                                            },
+                                            {
+                                                "children": [],
+                                                "events": [
+                                                    {
+                                                        "time": 16759807679640544,
+                                                        "type": "BEGAN"
+                                                    },
+                                                    {
+                                                        "time": 16759807679705382,
+                                                        "type": "ENDED"
+                                                    }
+                                                ],
+                                                "name": "Hydra"
+                                            }
+                                        ],
+                                        "events": [],
+                                        "name": "Attach Stage"
+                                    }
+                                ],
+                                "events": [
+                                    {
+                                        "time": 16759807679596742,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679706536,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "USD Context"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679708140,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679826176,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Viewport Widget"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679831283,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679843756,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Layer Window"
+                            },
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "time": 16759807679864018,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "time": 16759807679895242,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "Hydra Texture"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Opened"
+                    }
+                ],
+                "events": [],
+                "name": "Stage"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+                            },
+                            {
+                                "children": [],
+                                "events": [],
+                                "name": "file:/home/mbabcock/work/profile/kit/kit/_build/linux-x86_64/release/resources/models/camera/camera.usd"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Resolve"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "events": [
+                                    {
+                                        "size": 28561974,
+                                        "time": 16759807679523044,
+                                        "type": "BEGAN"
+                                    },
+                                    {
+                                        "size": 28561974,
+                                        "time": 16759807679541274,
+                                        "type": "ENDED"
+                                    }
+                                ],
+                                "name": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+                            }
+                        ],
+                        "events": [],
+                        "name": "Read"
+                    }
+                ],
+                "events": [],
+                "name": "USD"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807680273776,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807680425655,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807684419297,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807684523815,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807686832466,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807686942926,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807689114391,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807689199085,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Execute"
+                    },
+                    {
+                        "children": [],
+                        "events": [
+                            {
+                                "time": 16759807680426232,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807682822711,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807684524729,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807686265511,
+                                "type": "ENDED"
+                            },
+                            {
+                                "time": 16759807686943766,
+                                "type": "BEGAN"
+                            },
+                            {
+                                "time": 16759807688620601,
+                                "type": "ENDED"
+                            }
+                        ],
+                        "name": "Post Sync"
+                    }
+                ],
+                "events": [],
+                "name": "Render Thread"
+            }
+        ],
+        "events": [],
+        "name": "Root"
+    },
+    "stage": "omniverse://ov-content/NVIDIA/Samples/Astronaut/Astronaut.usd"
+}

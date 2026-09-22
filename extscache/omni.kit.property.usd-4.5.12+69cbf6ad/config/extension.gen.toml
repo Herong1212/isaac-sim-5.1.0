@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.property.usd-d5ee77765f63d892.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.228094.d3a598e6.gl"
+        date = 1757755120
+        buildNumber = "107.3.3+1073.228094.d3a598e6.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

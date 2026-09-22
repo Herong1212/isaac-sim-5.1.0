@@ -1,0 +1,2 @@
+# Preserve file visibility; large-file exclusions are managed in the root .gitignore.
+# Disabled: api

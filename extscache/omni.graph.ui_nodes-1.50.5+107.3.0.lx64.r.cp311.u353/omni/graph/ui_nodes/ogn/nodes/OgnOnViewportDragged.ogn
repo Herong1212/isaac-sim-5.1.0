@@ -1,0 +1,89 @@
+{
+    "OnViewportDragged": {
+        "version": 1,
+        "description": [
+            "Event node which fires when a drag event occurs in the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "On Viewport Dragged (BETA)",
+        "categories": ["graph:action", "ui"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of 2D position outputs are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for drag events.",
+                "uiName": "Viewport",
+                "default": "Viewport",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger viewport drag events.",
+                "uiName": "Gesture",
+                "default": "Left Mouse Drag",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "LeftMouseDrag": "Left Mouse Drag",
+                        "RightMouseDrag": "Right Mouse Drag",
+                        "MiddleMouseDrag": "Middle Mouse Drag"
+                    }
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while Stage is being played",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "began": {
+                "type": "execution",
+                "description": [
+                    "When the drag begins, signal to the graph that execution can continue downstream on this path.",
+                    "'Initial Position' will also be populated when this signal is set."
+                ],
+                "uiName": "Began"
+            },
+            "ended": {
+                "type": "execution",
+                "description": [
+                    "When the drag ends, signal to the graph that execution can continue downstream on this path.",
+                    "'Final Position' will also be populated when this signal is set."
+                ],
+                "uiName": "Ended"
+            },
+            "initialPosition": {
+                "type": "double[2]",
+                "description": "The mouse position at which the drag began (valid when either 'Began' or 'Ended' is enabled).",
+                "uiName": "Initial Position"
+            },
+            "finalPosition": {
+                "type": "double[2]",
+                "description": "The mouse position at which the drag ended (valid when 'Ended' is enabled).",
+                "uiName": "Final Position"
+            }
+        }
+    }
+}

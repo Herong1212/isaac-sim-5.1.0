@@ -1,0 +1,64 @@
+[package]
+title = "Converter Common"
+version = "507.1.2"
+description = "Converter Common extension contains common resource and classes that can be shared among other CAD converters."
+
+category = "Converter"
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+writeTarget.kit = true
+writeTarget.usd = true
+
+authors = ["NVIDIA"]
+
+# Keywords for the extension
+keywords = [
+    'CAD Converter',
+    'cad',
+    'utilities'
+]
+
+[dependencies]
+"omni.usdex.libs" = {version = "~1.2"}
+"omni.client" = {}
+"omni.scene.optimizer.core" = {}
+"omni.kit.window.popup_dialog" = { optional=true }
+
+[[python.module]]
+name = "omni.kit.converter.common"
+
+# Extension test settings
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    "--/app/fastShutdown=true",
+]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.window.popup_dialog"
+]
+stdoutFailPatterns.include = []
+
+ # Ignore errors purposely triggered in test.
+stdoutFailPatterns.exclude = [
+    "*Cannot copy*",
+    "*Cannot read*",
+    "*Cannot write*",
+]
+
+pyCoverageThreshold = 80
+pyCoverageFilter = ["omni.kit.converter.common"]
+pyCoverageOmit = ["omni/kit/converter/common/tests/*"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMakeTransformLookAt.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_MakeTransformLookAt" (
+        docs="""Make a transformation matrix from eye and center world-space positions and an up vector. Forward vector is negative Z direction computed from (eye - center) and normalized. Up is positive Y direction. Right is the positive X direction."""
+    )
+    {
+        token node:type = "omni.graph.nodes.MakeTransformLookAt"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom vector3d inputs:center = (0, 0, 0) (
+            docs="""The position of the center or target-position in world-space"""
+        )
+        custom vector3d inputs:eye = (1, 0, 0) (
+            docs="""The position of the eye, or from-position in world-space"""
+        )
+        custom vector3d inputs:up = (0, 1, 0) (
+            docs="""The direction of the up vector"""
+        )
+
+        # 1 attribute
+        custom matrix4d outputs:transform (
+            docs="""The calculated transformation matrix"""
+        )
+    }
+}

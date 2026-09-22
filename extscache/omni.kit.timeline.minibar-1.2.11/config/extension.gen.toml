@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.timeline.minibar-1.2.11.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.191232.81092e5c.gl"
+        date = 1747460895
+        buildNumber = "105.1+master.1807.03f5eacf.gl"
+        repoName = "kit-windows"
+        signed = 1

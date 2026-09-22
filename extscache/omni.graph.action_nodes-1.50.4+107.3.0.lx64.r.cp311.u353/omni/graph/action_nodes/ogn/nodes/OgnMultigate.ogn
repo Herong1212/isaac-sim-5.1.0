@@ -1,0 +1,34 @@
+{
+    "omni.graph.action.Multigate": {
+        "version": 2,
+        "description": [
+            "This node cycles through each of its N outputs. On each input, one output will be activated.",
+            "Outputs will be activated in sequence, eg: 0->1->2->3->4->0->1.... 'Output 0' is provided as",
+            "the first output to be activated. To add more to the sequence add new output attributes with",
+            "indexed unique names, such as 'outputs:output1', 'outputs:output2', etc."
+        ],
+        "uiName": "Multigate",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "reset": {
+                "type": "execution",
+                "description": [
+                    "Signal to the node to reset its internal counter. The next time 'Execute In' is activated",
+                    "it will go back to activating 'Output 0'. This will skip any other outputs present."
+                ]
+            }
+        },
+        "outputs": {
+            "output0": {
+                "type": "execution",
+                "description": "On the first execution signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

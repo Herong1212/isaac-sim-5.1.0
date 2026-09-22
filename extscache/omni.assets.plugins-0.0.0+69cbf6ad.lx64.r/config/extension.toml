@@ -1,0 +1,22 @@
+[package]
+title = "Assets plugins bundle"
+description = "Extension that loads Carbonite plugins, essential for working with assets: carb.assets, carb.datasource-file, carb.tasking and carb.imaging"
+category = "Internal"
+support_level = "Core"
+
+[dependencies]
+
+[[native.plugin]]
+path = "bin/carb.assets.plugin"
+
+[[native.plugin]]
+path = "bin/carb.datasource-file.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.imaging.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.progress.plugin"
+
+[[test]]
+waiver = "Tested in Carbonite"

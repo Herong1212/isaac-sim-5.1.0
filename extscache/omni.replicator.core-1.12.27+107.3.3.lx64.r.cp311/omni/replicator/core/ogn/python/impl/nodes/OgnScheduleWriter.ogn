@@ -1,0 +1,40 @@
+{
+    "OgnScheduleWriter": {
+        "description": [
+            "Schedule writer to automatically write annotator data."
+        ],
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "uiName": "Schedule Writer",
+        "language": "Python",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "state": {
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Execution in"
+            },
+            "writer_id": {
+                "type": "token",
+                "description": "Writer Identifier"
+            },
+            "rationalTimeOfSimNumerator" : {
+                "description" : ["rational time of simulation numerator."],
+                "type" : "int64",
+                "default" : 0
+            },
+            "rationalTimeOfSimDenominator" : {
+                "description" : ["rational time of simulation denominator."],
+                "type" : "uint64",
+                "default" : 0
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Execution out"
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Z"
+
+    """
+    This asset demonstrates a character that doesn't include a full list of expected joints.
+    """
+)
+
+def "Root" (
+    prepend references = @./baseSkeleton.usda@
+)
+{
+    over "Skeleton" ()
+    {
+        uniform token[] joints = ["Hip", "Hip/Spine02", "Hip/Spine02/NeckTwist01", "Hip/Spine02/NeckTwist01/Head",
+                                  "Hip/Spine02/L_Upperarm", "Hip/Spine02/L_Upperarm/L_Forearm", "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand",
+                                  "Hip/Spine02/R_Upperarm", "Hip/Spine02/R_Upperarm/R_Forearm", "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand",
+                                  "Hip/L_Thigh", "Hip/L_Thigh/L_Calf", "Hip/L_Thigh/L_Calf/L_Foot2",
+                                  "Hip/R_Thigh", "Hip/R_Thigh/R_Calf", "Hip/R_Thigh/R_Calf/R_Foot",
+                                  "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Thumb3",
+                                  "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Thumb3",
+                                  "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Index3",
+                                  "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Index3",
+                                  "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Mid3",
+                                  "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Mid3",
+                                  "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Ring3",
+                                  "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Ring3",
+                                  "Hip/Spine02/L_Upperarm/L_Forearm/L_Hand/L_Pinky3",
+                                  "Hip/Spine02/R_Upperarm/R_Forearm/R_Hand/R_Pinky3",
+                                  "Hip/L_Thigh/L_Calf/L_Foot/L_ToeBase",
+                                  "Hip/R_Thigh/R_Calf/R_Foot/R_ToeBase"
+                                ]
+   
+    }
+}

@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnInterpolator.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Interpolator" (
+        docs="""Time sample interpolator"""
+    )
+    {
+        token node:type = "omni.graph.nodes.Interpolator"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom float[] inputs:knots = [] (
+            docs="""Array of knots on the time sample curve"""
+        )
+        custom float inputs:param = 0.0 (
+            docs="""Time sample interpolation point"""
+        )
+        custom float[] inputs:values = [] (
+            docs="""Array of time sample values"""
+        )
+
+        # 1 attribute
+        custom float outputs:value (
+            docs="""Value in the time samples, interpolated at the given parameter location"""
+        )
+    }
+}

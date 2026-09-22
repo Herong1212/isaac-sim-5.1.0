@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.usd.schema.flow-107.1.1%2B107.1.0.u353.zip"
+
+    [package.target]
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.kit]
+            0 = "107.1.0"
+
+    [package.publish]
+        kitVersion = "107.1.0+master.179573.88d56421.gl"
+        date = 1742495944
+        buildNumber = "107.1+flowusd-master.991.e3fddea9.gl"
+        repoName = "flow-usd"
+        signed = 1

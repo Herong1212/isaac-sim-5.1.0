@@ -1,0 +1,61 @@
+{
+    "OgnModifyProjectionMaterial": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node prepares and/or projects a material on a bundle of prims.",
+        "metadata":
+        {
+           "uiName": "Modify Projection Material"
+        },
+        "inputs": {
+            "position": {
+                "description": ["Position override of the projection."],
+                "type": "float[3][]"
+            },
+            "rotation": {
+                "description": ["Rotation override of the projection."],
+                "type": "float[3][]"
+            },
+            "scale": {
+                "description": ["Scale override of the projection."],
+                "type": "float[3][]"
+            },
+            "diffuse": {
+                "description": ["Diffuse texture path of the projection."],
+                "type": "token[]"
+            },
+            "normal": {
+                "description": ["Normal texture path of the projection."],
+                "type": "token[]"
+            },
+            "roughness": {
+                "description": ["Roughness texture path of the projection."],
+                "type": "token[]"
+            },
+            "metallic": {
+                "description": ["Metallic texture path of the projection."],
+                "type": "token[]"
+            },
+            "textureGroup": {
+                "description": ["Group of diffuse, normal, roughness and/or metallic textures."],
+                "type": "token[]"
+            },
+            "prims": {
+                "description": ["Projection prim to modify."],
+                "type": "target"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

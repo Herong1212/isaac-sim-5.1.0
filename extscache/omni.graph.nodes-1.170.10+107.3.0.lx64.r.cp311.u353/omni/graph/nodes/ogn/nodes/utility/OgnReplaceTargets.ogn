@@ -1,0 +1,115 @@
+{
+    "ReplaceTargets": {
+        "version": 1,
+        "description": [
+            "Replaces all occurrences of the given targets with new targets in the input array. ",
+            "Targets are replaced element-wise."
+        ],
+        "uiName": "Replace Targets",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "replaceTargets": {
+                "type": "target",
+                "description": "The targets to replace.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "setTargets": {
+                "type": "target",
+                "description": "The new targets to set. If empty, targets will be removed.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The modified target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [],
+                "inputs:replaceTargets": [],
+                "inputs:setTargets": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:replaceTargets": "/B",
+                "inputs:setTargets": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:replaceTargets": [],
+                "inputs:setTargets": "/D",
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:replaceTargets": "/B",
+                "inputs:setTargets": "/D",
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": [],
+                "inputs:setTargets": [],
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": [],
+                "inputs:setTargets": "/D",
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": "/B",
+                "inputs:setTargets": [],
+                "outputs:targets": ["/A", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": "/D",
+                "inputs:setTargets": [],
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": ["/A", "/C"],
+                "inputs:setTargets": [],
+                "outputs:targets": ["/B"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": "/B",
+                "inputs:setTargets": "/D",
+                "outputs:targets": ["/A", "/D", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": "/D",
+                "inputs:setTargets": "/E",
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:replaceTargets": ["/A", "/C"],
+                "inputs:setTargets": ["/X", "/Y"],
+                "outputs:targets": ["/X", "/B", "/Y"]
+            }
+        ]
+    }
+}

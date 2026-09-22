@@ -1,0 +1,13 @@
+object_type: general category or type of the object. For example, it could be truck, airplane, toy, plant, etc. - all values should be returned comma separated.
+
+scene_type: context or setting in which the object is typically found. This could be warehouse, living room, office, etc. - all values should be returned comma separated.
+
+colors: colors of the object. Take into account both the base and accent colors. - all values should be returned comma separated.
+
+materials: appearance and texture visible in the thumbnails, speculate on the materials the object is made from. - all values should be returned comma separated.
+
+caption: Please summarize the features of the object into a short and precise caption, no more than 2 sentences. Focus on the object's unique attribute, such as its color, shape and material. Describe as if you are observing the object directly in 3D. Do not infer or use adjectives. - use singgular form.
+
+tags: searchable terms and keywords derived from the object_type, scene_type, colors, materials, and caption. These should encapsulate the essence of the 3D object, making it easily searchable and identifiable. - all values should be returned comma separated.
+
+semantic_label: the semantic label of the object. Use 1-2 words that uniquely represent the object. - use singgular form.

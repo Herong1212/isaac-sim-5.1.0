@@ -1,0 +1,29 @@
+[package]
+version = "107.3.1"
+title = "Metrics Assembler"
+description = "Helper functions to resolve divergent units on a USD stage."
+authors = ["NVIDIA"]
+category = "USD"
+repository = ""
+readme  = "docs/README.md"
+keywords = ["usd"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Core"
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.usd.libs" = {}
+"omni.usd.schema.metrics.assembler" = { }
+
+[[python.module]]
+name = "omni.metrics.assembler.core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false

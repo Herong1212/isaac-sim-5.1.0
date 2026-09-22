@@ -1,0 +1,71 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Example High Resolution",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+    "WaveLengthMm": 3.9,
+    "TraceTreeDepth": 3,
+    "FrameDurationNs": 50000000,
+    "InstanceTimeOffsetUsec": 5000,
+    "CfarMode": "4D",
+    "AntennaGainMode" : "COSINEFALLOFF",
+    "ConfigReloadIntervalFrames": 100,
+
+    "ScanCfgs": [
+      {
+        "RaysPerDeg": 10.0,
+        "TimeOffsetUsec": 0,
+        "PowerFactor": 1.0,
+        "BinsFromSpec": false,
+        "EnAngAliasing": false,
+        "DetValFromBinIdx": false,
+        "ElevMode": "FULL_EL",
+
+        "MaxRangeM": 100,
+        "MaxAzAngDeg": 75,
+        "MaxElAngDeg": 25,
+
+        "RangeResM": 0.5,
+        "VelResMps": 0.15,
+        "BoreAzResDeg": 0.5,
+        "BoreElResDeg": 1,
+
+        "RBins": 200,
+        "VBins": 100,
+        "AzBins": 300,
+        "ElBins": 50,
+
+        "CfarRnT": 6,
+        "CfarRnG": 0,
+        "CfarVnT": 1,
+        "CfarVnG": 0,
+        "CfarAznT": 3,
+        "CfarAznG": 1,
+        "CfarElnT": 3,
+        "CfarElnG": 1,
+        "CfarMinVal": 5e-17,
+        "CfarOffset": 1.0,
+        "CfarNoiseMean": 0,
+        "CfarNoiseSDev": 0,
+
+        "MaxVelMpsSequence":[15],
+
+        "__comment": "0: detections with RCS in dBsm lower than this threshold will be removed; 1: multiplied with RCS before conversion to dBsm. Set to 1 if no change is needed; 2: standard deviation of rcs noise in dBsm. Set to 0 if no noise is needed.",
+        "RcsTuningCoefficients": [-15, 200.0, 1.0],
+
+        "AzimuthRadNoiseMean": 0.0,
+        "AzimuthRadNoiseSDev": 0.00523599,
+        "RangeNoiseMean": 0.0,
+        "RangeNoiseSDev": 0.009,
+        "VelocityNoiseMean": 0.0,
+        "VelocityNoiseSDev": 0.0,
+        "ElevationRadNoiseMean": 0.0,
+        "ElevationRadNoiseSDev": 0.0,
+        "exponentialDecayFactor": 1.0
+
+      }
+    ]
+  }
+}

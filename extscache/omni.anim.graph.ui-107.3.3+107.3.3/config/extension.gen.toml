@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.anim.graph.ui-107.3.3%2B107.3.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.226910.d1d0c19e.gl"
+        date = 1757087083
+        buildNumber = "107.3.3+main.12690.bfb87d5b.gl"
+        repoName = "animation-tools"
+        signed = 1

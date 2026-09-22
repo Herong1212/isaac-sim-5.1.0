@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMakeTransform.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_MakeTransform" (
+        docs="""Make a transformation matrix that performs a translation, rotation (in euler angles), and scale in that order"""
+    )
+    {
+        token node:type = "omni.graph.nodes.MakeTransform"
+        int node:typeVersion = 2
+
+        # 4 attributes
+        custom token inputs:rotationOrder = "XYZ" (
+            docs="""The order the rotation should be applied"""
+        )
+        custom vector3d inputs:rotationXYZ = (0, 0, 0) (
+            docs="""The desired orientation in euler angles XYZ"""
+        )
+        custom vector3d inputs:scale = (1, 1, 1) (
+            docs="""The desired scaling factor about the X, Y, and Z axis respectively"""
+        )
+        custom vector3d inputs:translation = (0, 0, 0) (
+            docs="""The desired translation as a vector"""
+        )
+
+        # 1 attribute
+        custom matrix4d outputs:transform (
+            docs="""The computed transformation matrix"""
+        )
+    }
+}

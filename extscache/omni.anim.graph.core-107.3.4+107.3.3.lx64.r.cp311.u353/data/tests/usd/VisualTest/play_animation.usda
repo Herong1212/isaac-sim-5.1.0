@@ -1,0 +1,107 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-261.33523627108195, 117.13278339370468, 481.89740118892246)
+                double3 target = (402.0461868021297, 92.96356304742687, -645.1161687146117)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            bool "rtx:raytracing:fractionalCutoutOpacity" = 1
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        prepend rel inputs:pose = </World/AnimationGraph/stand_walk_loop_skelanim>
+        rel skel:skeleton = </World/Character/Root>
+
+        def AnimationClip "stand_walk_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-453.28476, 95.78384)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_idle_loop_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_idle_loop.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_loop_skelanim" (
+            prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Animations/NVIDIA/biped_demo/stand_walk_loop.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def "Character" (
+        prepend apiSchemas = ["AnimationGraphAPI"]
+        prepend references = @https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/105.0/Characters/NVIDIA/biped_demo_no_material.usd@
+    )
+    {
+        custom quatf _worldOrientation = (0.9999426, 0, -0.010720675, 0)
+        custom double3 _worldPosition = (-10.232438087463379, 0, 164.05133056640625)
+        custom vector3f _worldScale = (1, 1, 1)
+        rel animationGraph = </World/AnimationGraph>
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

@@ -1,0 +1,69 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadPrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadPrim" (
+        docs="""DEPRECATED - use ReadPrimAttributes!"""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadPrim"
+        int node:typeVersion = 9
+
+        # 4 attributes
+        custom token inputs:attrNamesToImport = "*" (
+            docs="""A list of wildcard patterns used to match the attribute names that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']
+                '*' - match any
+                '* ^points' - match any, but exclude 'points'
+                '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"""
+        )
+        custom bool inputs:computeBoundingBox = false (
+            docs="""For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."""
+        )
+        custom rel inputs:prim (
+            docs="""The prims to be read from when 'usePathPattern' is false"""
+        )
+        custom timecode inputs:usdTimecode = nan (
+            docs="""The time at which to evaluate the transform of the USD prim. A value of "NaN" indicates that the default USD time stamp should be used"""
+        )
+
+        # 1 attribute
+        custom rel outputs_primBundle (
+            docs="""A bundle of the target Prim attributes.
+            In addition to the data attributes, there is a token attribute named sourcePrimPath
+            which contains the path of the Prim being read"""
+        )
+
+        # 5 attributes
+        custom uint64 state:attrNamesToImport (
+            docs="""State from previous execution"""
+        )
+        custom bool state:computeBoundingBox = false (
+            docs="""State from previous execution"""
+        )
+        custom uint64 state:primPath (
+            docs="""State from previous execution"""
+        )
+        custom uint64 state:primTypes (
+            docs="""State from previous execution"""
+        )
+        custom timecode state:usdTimecode = nan (
+            docs="""State from previous execution"""
+        )
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Hella Gen6",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+    "NearScanMaxRangeM": "200",
+    "NearScanMaxVelMpsSequence":[25.96, 29.11, 27.45],
+    "NearScanMaxAzAngRad": "1.396",
+    "NearScanMaxElevAngRad": "0.314",
+
+    "NearScanRangeSepM": "0.18",
+    "NearScanVelSepMps": "0.4",
+    "NearScanBoreAzSepRad": "0.1954",
+    "NearScanBoreElevSepRad": "0.628",
+
+    "NearScanElevMode": "2",
+
+
+    "FarScanMaxRangeM": "200",
+    "FarScanMaxVelMpsSequence":[25.96, 29.11, 27.45],
+    "FarScanMaxAzAngRad": "1.396",
+    "FarScanMaxElevAngRad": "0.314",
+
+    "FarScanRangeSepM": "0.18",
+    "FarScanVelSepMps": "0.4",
+    "FarScanBoreAzSepRad": "0.1954",
+    "FarScanBoreElevSepRad": "0.628",
+
+    "FarScanElevMode": "2",
+
+
+    "NumRaysPerDeg": "10.0",
+    "NumExtraThreads": "5",
+    "FrameDurationNs": 50000000
+  }
+}

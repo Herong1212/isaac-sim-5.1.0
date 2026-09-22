@@ -1,0 +1,61 @@
+{
+    "GetPrimDirectionVector": {
+        "version": 2,
+        "description": [
+            "Given a prim, find its direction vectors (up vector, forward vector, right vector, etc.)"
+        ],
+        "uiName": "Get Prim Direction Vector",
+        "scheduling": ["usd-read", "threadsafe"],
+        "categories": ["sceneGraph"],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The path of the input prim - this attribute is used when 'usePath' is true",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "usePath": {
+                "type": "bool",
+                "default": true,
+                "description": "When true, it will use the 'primPath' attribute as the path to the prim, otherwise it will read the connection at the 'prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The connection to the input prim - this attribute is used when 'usePath' is false",
+                "optional": true
+            }
+        },
+        "outputs": {
+            "upVector": {
+                "type": "double[3]",
+                "description": "The up vector of the prim",
+                "uiName": "Up Vector"
+            },
+            "downVector": {
+                "type": "double[3]",
+                "description": "The down vector of the prim",
+                "uiName": "Down Vector"
+            },
+            "forwardVector": {
+                "type": "double[3]",
+                "description": "The forward vector of the prim",
+                "uiName": "Forward Vector"
+            },
+            "backwardVector": {
+                "type": "double[3]",
+                "description": "The backward vector of the prim",
+                "uiName": "Backward Vector"
+            },
+            "rightVector": {
+                "type": "double[3]",
+                "description": "The right vector of the prim",
+                "uiName": "Right Vector"
+            },
+            "leftVector": {
+                "type": "double[3]",
+                "description": "The left vector of the prim",
+                "uiName": "Left Vector"
+            }
+        }
+    }
+}

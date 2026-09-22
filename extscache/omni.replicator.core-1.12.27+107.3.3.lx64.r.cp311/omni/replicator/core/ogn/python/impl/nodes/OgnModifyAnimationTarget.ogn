@@ -1,0 +1,37 @@
+{
+    "OgnModifyAnimationTarget": {
+        "version": 2,
+        "language": "python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This modifies the target animation on a skeleton prim.",
+        "metadata":
+        {
+           "uiName": "Modify Animation Target"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Skeleton prims to set attribute."],
+                "type": "target"
+            },
+            "values": {
+                "description": ["Animation path value to be assigned to the skeleton."],
+                "type": "target"
+            },
+            "reset_timeline": {
+                "description": ["Whether to reset the timeline after setting the new animation."],
+                "type": "bool"
+            },
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

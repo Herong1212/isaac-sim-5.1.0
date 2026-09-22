@@ -1,0 +1,28 @@
+{
+    "IsPrimActive": {
+        "version": 1,
+        "description": [ "Query if a Prim is active or not in the stage." ],
+        "uiName": "Is Prim Active",
+        "scheduling": [ "usd-read", "threadsafe" ],
+        "categories": [ "sceneGraph" ],
+        "inputs": {
+            "prim": {
+                "uiName": "Prim Path",
+                "type": "path",
+                "description": "The prim path to be queried",
+                "deprecated": "Use primTarget instead"
+            },
+            "primTarget": {
+                "uiName": "Prim",
+                "type": "target",
+                "description": "The prim to be queried"
+            }
+        },
+        "outputs": {
+            "active": {
+                "type": "bool",
+                "description": "Whether the prim is active or not"
+            }
+        }
+    }
+}

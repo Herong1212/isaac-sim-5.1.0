@@ -1,0 +1,158 @@
+{
+    "FindPrims": {
+        "version": 2,
+        "description": ["Finds Prims on the stage which match the given criteria"],
+        "uiName": "Find Prims",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-read", "threadsafe"],
+        "inputs": {
+            "type": {
+                "uiName": "Prim Type Pattern",
+                "type": "token",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match the prim types that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['Mesh', 'Cone', 'Cube']",
+                    "    '*' - match any",
+                    "    '* ^Mesh' - match any, but exclude 'Mesh'",
+                    "    '* ^Cone ^Cube' - match any, but exclude 'Cone' and 'Cube'"
+                ]
+            },
+            "pathPattern": {
+                "uiName": "Prim Path Pattern",
+                "type": "token",
+                "description": [
+                    "A list of wildcard patterns used to match the prim paths",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['/Cube0', '/Cube1', '/Box']",
+                    "    '*' - match any",
+                    "    '* ^/Box' - match any, but exclude '/Box'",
+                    "    '* ^/Cube*' - match any, but exclude '/Cube0' and '/Cube1'"
+                ]
+            },
+            "rootPrimPath": {
+                "uiName": "Root Prim Path",
+                "type": "token",
+                "description": "Only children of the given prim will be considered. Empty will search the whole stage.",
+                "deprecated": "Use rootPrim input attribute instead"
+            },
+            "rootPrim": {
+                "uiName": "Root Prim",
+                "type": "target",
+                "description": "Only children of the given prim will be considered. If rootPrim is specified, rootPrimPath will be ignored."
+            },
+            "namePrefix": {
+                "uiName": "Prim Name Prefix",
+                "type": "token",
+                "description": "Only prims with a name starting with the given prefix will be returned."
+            },
+            "requiredAttributes": {
+                "uiName": "Attribute Names",
+                "type": "string",
+                "description": "A space-separated list of attribute names that are required to be present on matched prims"
+            },
+            "requiredRelationship": {
+                "uiName": "Relationship Name",
+                "type": "token",
+                "description": "The name of a relationship which must have a target specified by requiredRelationshipTarget or requiredTarget"
+            },
+            "requiredRelationshipTarget": {
+                "uiName": "Relationship Prim Path",
+                "type": "path",
+                "description": "The path that must be a target of the requiredRelationship",
+                "deprecated": "Use requiredTarget instead"
+            },
+            "requiredTarget": {
+                "uiName": "Relationship Prim",
+                "type": "target",
+                "description": "The target of the requiredRelationship"
+            },
+            "recursive": {
+                "type": "bool",
+                "description": "False means only consider children of the root prim, True means all prims in the hierarchy"
+            },
+            "ignoreSystemPrims": {
+                "type": "bool",
+                "description": "Ignore system prims such as omni graph nodes that shouldn't be considered during the import.",
+                "default": false
+            }
+        },
+        "outputs": {
+            "prims": {
+                "type": "target",
+                "description": "A list of Prim paths which match the given type"
+            },
+            "primPaths": {
+                "type": "token[]",
+                "description": "A list of Prim paths as tokens which match the given type"
+            }
+        },
+        "state": {
+            "inputType": { "type": "token" , "description": "last corresponding input seen"},
+            "rootPrimPath": { "type": "token" , "description": "last corresponding input seen"},
+            "rootPrim": { "type": "target", "description": "last corresponding input seen"},
+            "namePrefix": { "type": "token" , "description": "last corresponding input seen"},
+            "requiredRelationship": { "type": "token" , "description": "last corresponding input seen"},
+            "pathPattern": { "type": "token" , "description": "last corresponding input seen"},
+            "requiredAttributes": { "type": "string" , "description": "last corresponding input seen"},
+            "requiredRelationshipTarget": { "type": "string" , "description": "last corresponding input seen"},
+            "requiredTarget": { "type": "target", "description": "last corresponding input seen"},
+            "recursive": { "type": "bool" , "description": "last corresponding input seen"},
+            "ignoreSystemPrims": { "type": "bool", "description": "last corresponding input seen" }
+        },
+        "tests": [
+            {
+            "setup": {
+                "create_nodes": [
+                    ["TestNode", "omni.graph.nodes.FindPrims"]
+                ],
+                "create_prims": [
+                    ["Empty", {}],
+                    ["Xform1", {"_translate": ["pointd[3][]", [[1, 2, 3]]]}],
+                    ["Xform2", {"_translate": ["pointd[3][]", [[4, 5, 6]]]}],
+                    ["XformTagged1", {"foo": ["token", ""], "_translate": ["pointd[3][]", [[1, 2, 3]]]}],
+                    ["Tagged1", {"foo": ["token", ""]}]
+                ]
+            },
+            "inputs": {
+                "namePrefix": "Xform"
+            },
+            "outputs": {
+                "primPaths": ["/Xform1", "/Xform2", "/XformTagged1"]
+            }
+        },
+        {
+            "setup": {
+                "create_nodes": [
+                    ["TestNode", "omni.graph.nodes.FindPrims"]
+                ],
+                "create_prims": [
+                    ["Empty", {}],
+                    ["Xform1", {"_translate": ["pointd[3][]", [[1, 2, 3]]]}],
+                    ["Xform2", {"_translate": ["pointd[3][]", [[4, 5, 6]]]}],
+                    ["XformTagged1", {"foo": ["token", ""], "_translate": ["pointd[3][]", [[1, 2, 3]]]}],
+                    ["Tagged1", {"foo": ["token", ""]}]
+                ]
+            },
+            "inputs": {
+                "namePrefix": "",
+                "requiredAttributes": "foo _translate"
+            },
+            "outputs": {
+                "primPaths": ["/XformTagged1"]
+            }
+        }
+        ]
+    }
+}

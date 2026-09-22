@@ -1,0 +1,50 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnRandomUnitVector.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_RandomUnitVector" (
+        docs="""Generates a random vector with uniform distribution on the unit sphere."""
+    )
+    {
+        token node:type = "omni.graph.nodes.RandomUnitVector"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom bool inputs:isNoise = false (
+            docs="""Turn this node into a noise generator function.
+            For a given seed, it will always output the same number(s)."""
+        )
+        custom uint64 inputs:seed (
+            docs="""The input seed value for the random unit vector generator."""
+        )
+        custom bool inputs:useSeed = false (
+            docs="""Use the custom seed instead of a random one."""
+        )
+
+        # 2 attributes
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+        custom vector3f outputs:random (
+            docs="""The random unit vector that was generated."""
+        )
+
+        # 1 attribute
+        custom matrix3d state:gen (
+            docs="""Random number generator internal state. Not an actual matrix, the structure was chosen because
+            it was large enough to hold the internal data required for the computation."""
+        )
+    }
+}

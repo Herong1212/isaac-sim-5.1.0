@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.usd.schema.omni_lens_distortion-85345bc35ad900bc.zip"
+
+    [package.publish]
+        kitVersion = "108.2.0+master.228057.a88204d5.gl"
+        date = 1757755130
+        buildNumber = "108.2.0+master.228057.a88204d5.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

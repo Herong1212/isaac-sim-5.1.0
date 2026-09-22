@@ -1,0 +1,18 @@
+#usda 1.0
+(
+
+)
+
+def OmniGraph "pushGraph"
+{
+    custom token evaluator:type = "push"
+    custom int2 fileFormatVersion = (1, 4)
+    custom token fabricCacheBacking = "StageWithHistory"
+    custom token pipelineStage = "pipelineStagePreRender"
+
+    def OmniGraphNode "NoOp"
+    {
+        custom token node:type = "omni.graph.nodes.Noop"
+        custom int node:typeVersion = 1
+    }
+}

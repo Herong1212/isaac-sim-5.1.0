@@ -1,0 +1,24 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.livestream.webrtc-7.0.0%2B107.1.0.lx64.r.cp311.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.1.0"
+
+    [package.publish]
+        kitVersion = "107.1.0+mr35778.170876.b6548b9c.gl"
+        date = 1738485222
+        buildNumber = "107.0+mr374.951.7e1c75ad.gl"
+        repoName = "kit-livestream"
+        signed = 1

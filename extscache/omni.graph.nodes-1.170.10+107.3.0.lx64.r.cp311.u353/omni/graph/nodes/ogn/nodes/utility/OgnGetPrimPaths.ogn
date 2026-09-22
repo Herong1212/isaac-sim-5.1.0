@@ -1,0 +1,38 @@
+{
+    "GetPrimPaths": {
+        "version": 1,
+        "description": ["Generates a path array from the specified relationship. This is useful when absolute prim paths may change."],
+        "uiName": "Get Prim Paths",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "prims": {
+                "type": "target",
+                "description": "Relationship to prims on the stage",
+                "metadata": {
+                    "allowMultiInputs" : 1
+                }
+            }
+        },
+        "outputs": {
+            "primPaths": {
+                "type": "token[]",
+                "description": "The absolute paths of the given prims as a token array"
+            }
+        },
+        "tests": [
+            {
+                "inputs:prims": [],
+                "outputs:primPaths": []
+            },
+            {
+                "inputs:prims": "/A",
+                "outputs:primPaths": ["/A"]
+            },
+            {
+                "inputs:prims": ["/A", "/B"],
+                "outputs:primPaths": ["/A", "/B"]
+            }
+        ]
+    }
+}

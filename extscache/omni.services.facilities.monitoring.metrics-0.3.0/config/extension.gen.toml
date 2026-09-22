@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.facilities.monitoring.metrics-0.3.0.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.130326.afc2f8a4.tc"
+        date = 1698159804
+        buildNumber = "105.1.0+master.2456.65a97012.gl"
+        repoName = "kit-services"
+        signed = 1

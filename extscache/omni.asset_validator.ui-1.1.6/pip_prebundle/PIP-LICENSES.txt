@@ -1,0 +1,5 @@
+pyperclip-1.8.0
+---------------
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>B50VCS6ZT79VWBP9</RequestId><HostId>LnqC79If+3JOAHyjbL2n0DXFi21bsTrECMTQMjnc0y0tvxH2OtqSl0NZ6lXJRuTnASA2/CukjShK3HjqyPO5vQ==</HostId></Error>
+

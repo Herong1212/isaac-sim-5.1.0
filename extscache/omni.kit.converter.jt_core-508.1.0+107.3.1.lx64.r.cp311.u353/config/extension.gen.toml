@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.converter.jt_core-508.1.0%2B107.3.1.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.1"
+
+    [package.publish]
+        kitVersion = "107.3.1+production.206344.d26c4465.gl"
+        date = 1755753104
+        buildNumber = "203.0.0+main.3718.1495c948.gl"
+        repoName = "cad-converter"
+        signed = 1

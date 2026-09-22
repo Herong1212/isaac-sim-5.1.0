@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    doc = """Generated from Composed Stage of root layer
+"""
+)
+
+def Xform "World"
+{
+    def Xform "inputPrim"
+    {
+        custom float value = 0.5
+    }
+
+    def OmniGraph "graph"
+    {
+        custom token evaluator:type = "push"
+        custom int2 fileFormatVersion = (1, 4)
+        token fabricCacheBacking = "Shared"
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "NoOp"
+        {
+            custom token node:type = "omni.graph.nodes.Noop"
+            custom int node:typeVersion = 1
+        }
+    }
+
+    def Cube "Cube"
+    {
+        prepend double size.connect = </World/SimpleNode.outputs:value>
+    }
+}
+

@@ -1,0 +1,47 @@
+[package]
+version = "1.0.16"
+authors = ["NVIDIA"]
+title = "Material Preview Widget"
+description="Render material preview widget in the secondary USD Context"
+repository = ""
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+readme  = "docs/README.md"
+category = "Rendering"
+
+# Keywords for the extension
+keywords = ["kit", "remote", "renderer", "material", "preview"]
+
+[dependencies]
+"omni.kit.hydra_texture" = {}
+"omni.kit.renderer.capture" = {}
+"omni.ui" = {}
+"omni.usd" = {}
+
+[[python.module]]
+name = "omni.kit.widget.material_preview"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    "--/app/hydraEngine/waitIdle=true",
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Either omni::kit::renderer::IRenderer or carb::renderer::Renderer should be present*",
+    "*UsdManager::destroyContext invoked on context with active hydra engines*",
+    "*Duplicated plugin name: carb.renderer.plugin*",
+    "*failed to load native plugin*",
+    "*[omni.hydratexture.plugin] IHydraTextureFactoryImpl::shutdown: * HydraTexture instances leaked*",
+]

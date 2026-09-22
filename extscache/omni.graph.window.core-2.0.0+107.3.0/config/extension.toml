@@ -1,0 +1,78 @@
+[package]
+title = "OmniGraph Editor Core"
+description = "Shared framework for OmniGraph-based editors"
+version = "2.0.0"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["graph"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+readme = "docs/README.md"
+category = "Graph"
+feature = true
+icon = "data/icon.svg"
+writeTarget.kit = true
+support_level = "Sample"
+
+[dependencies]
+"omni.graph.core" = { version = ">=2.177.1" }
+"omni.graph" = { version = ">=1.139.0" }
+"omni.graph.tools" = { version = ">=1.77.0" }
+"omni.graph.ui" = {version=">=1.5.0"}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.graph.delegate.modern" = {version=">=1.8.0"}
+"omni.kit.graph.editor.core" = {version=">=1.5.0"}
+"omni.kit.graph.usd.commands" = {version=">=1.1.0"}
+"omni.kit.graph.widget.variables" = {version=">=2.0.0"}
+"omni.kit.property.usd" = {}
+"omni.kit.widget.graph" = {version=">=1.3.0"}
+"omni.kit.window.popup_dialog" = {}
+"omni.kit.window.preferences" = {}
+"omni.kit.window.quicksearch" = {optional=true, version=">=2.1.0"}
+"omni.usd" = {version="1.5"}
+"omni.ui" = {}
+
+
+[[python.module]]
+name = "omni.graph.window.core"
+
+[[test]]
+stdoutFailPatterns.exclude = [
+    # Workaround for OM-47134
+    "*[Error] [asyncio]*Task exception was never retrieved*",
+    # Workaround for OM-86183
+    "*[Error] [omni.graph.core.plugin] Data copy failed:*"
+]
+
+dependencies = [
+    "omni.graph.bundle.action",
+    "omni.kit.mainwindow",
+    "omni.graph.test",          # for OgnTestUI node
+    "omni.graph.tutorials",
+    "omni.kit.ui_test",
+    "omni.kit.window.stage",
+    "omni.kit.stage.copypaste",
+]
+
+args = [
+    "--/app/fastShutdown=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    # Rasterized nodes are drawn differently from non-rasterized. E.g. they use different antialiasing.
+    # This can result in large differences which cause golden image comparisons to fail.
+    # For now we shut off rasterization. Once OM-92215 and OM-89375 are done and we are able to maintain
+    # separate branches of this extension for different releases of Kit we can enable it in the branches
+    # where it is supported and update any affected golden images.
+    # In the meantime, if a test wishes to explicitly test with rasterized nodes it may do so by explicitly
+    # setting /exts/omni.kit.widget.graph/raster_nodes true in the test before creating the GraphView.
+    "--/exts/omni.kit.widget.graph/raster_nodes=false",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

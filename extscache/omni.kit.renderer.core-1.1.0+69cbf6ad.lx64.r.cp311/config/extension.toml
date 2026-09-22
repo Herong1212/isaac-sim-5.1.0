@@ -1,0 +1,80 @@
+[package]
+support_level = "Core"
+title = "Rendering Core"
+category = "Rendering"
+description = "This is a low level abstract GUI rendering extension, i.e. it manages (through carb::graphics) swapchains, basic resources like textures/buffers, and implements an event structure for higher level systems (e.g. ImGui renderer, which is just one of the possible GUI renderers in theory). It supports multi-window too, including virtual windows."
+version = "1.1.0"
+keywords = ["rendering", "core", "GUI", "swapchain", "texture", "buffer"]
+readme = "docs/Overview.md"
+changelog="docs/CHANGELOG.md"
+
+[dependencies]
+"omni.appwindow" = {}
+"omni.client" = {}
+"omni.kit.renderer.init" = {}
+
+[[python.module]]
+name = "omni.kit.renderer.bind"
+
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+exts."omni.kit.renderer.core".imgui.enableMips = false
+exts."omni.kit.renderer.core".threads.syncMainToPresent = false
+# Setting to control how present-thread Hz is limited
+# When set to "primary" present thread is capped at primary-monitor's refresh-rate
+# When empty or set to "" then no limit is applied.
+exts."omni.kit.renderer.core".present.displays.limit = "primary"
+# When /exts/omni.kit.renderer.core/present/enabled is set explicitly, the value set to will be honored.
+# If it is initially unset/undefined, the application will choose whether to auto-enable it or not.
+# exts."omni.kit.renderer.core".present.enabled = false
+
+[[test]]
+args = [
+    "--/exts/omni.kit.renderer.core/autostartRenderer=false",
+    "--/exts/omni.appwindow/autocreateAppWindow=false",
+    "--/app/window/saveSizeOnExit=false",
+    # OMPE-38241
+    "--show-test-window",
+]
+dependencies = ["omni.kit.test_helpers_gfx"]
+
+[[test]]
+name = "compatibility"
+args = [
+    "--/exts/omni.kit.renderer.core/autostartRenderer=false",
+    "--/exts/omni.appwindow/autocreateAppWindow=false",
+    "--/exts/omni.kit.renderer.core/compatibilityMode=true",
+    "--/app/window/saveSizeOnExit=false",
+    # OMPE-38241
+    "--show-test-window",
+]
+dependencies = ["omni.kit.test_helpers_gfx"]
+
+[[test]]
+name = "compatibility-vk"
+# We don't need to run Vulkan tests on Linux, default will be Vulkan anyway
+"filter:os".linux.enabled = false
+
+args = [
+    "--/exts/omni.kit.renderer.core/autostartRenderer=false",
+    "--/exts/omni.appwindow/autocreateAppWindow=false",
+    "--/exts/omni.kit.renderer.core/compatibilityMode=true",
+    "--/app/window/saveSizeOnExit=false",
+    "--vulkan",
+    # OMPE-38241
+    "--show-test-window",
+]
+dependencies = ["omni.kit.test_helpers_gfx"]
+
+[documentation]
+python_api_hidden = true
+cpp_api_hidden = true
+pages = [
+    "docs/Overview.md",
+    "docs/SETTINGS.md",
+    "docs/Events.md",
+    "docs/CHANGELOG.md",
+]

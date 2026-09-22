@@ -1,0 +1,43 @@
+[package]
+version = "1.1.0"
+title = "RTX Raycast Query"
+description = "An extension wraps around RTX Raycast Query to provide simpler raycast interface into the stage."
+authors = ["NVIDIA"]
+category = "Other"
+repository = ""
+readme = "docs/README.md"
+keywords = ["kit", "example"]
+changelog = "docs/CHANGELOG.md"
+support_level = "Core"
+
+[[python.module]]
+name = "omni.kit.raycast.query"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md"]
+
+[dependencies]
+"omni.usd" = {}
+"omni.hydra.rtx" = { optional = true } # though it's "optional" (for not dragging in rtx dependencies everywhere), the extension will not be able to return valid raycast result if rtx is missing.
+
+[[test]]
+dependencies = [
+  "omni.kit.renderer.core",
+  "omni.kit.viewport.window",
+  "omni.kit.viewport.utility",
+  "omni.hydra.rtx",
+  "omni.kit.ui_test",
+  "omni.kit.window.file"
+]
+
+args = [
+  "--/app/asyncRendering=false",
+  "--/app/file/ignoreUnsavedOnExit=true",
+  # test_ray_with_section_tool randomly fails, presumably because of timing
+  # of meshes coming in with geometry streaming
+  "--/UJITSO/geometry=false"
+]

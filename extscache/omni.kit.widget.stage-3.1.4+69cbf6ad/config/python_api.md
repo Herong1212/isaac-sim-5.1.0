@@ -1,0 +1,255 @@
+# Public API for module omni.kit.widget.stage:
+
+## Classes
+
+- class ContextMenu
+  - def __init__(self)
+  - def destroy(self)
+  - def on_mouse_event(self, event)
+  - def is_prim_active(objects)
+  - def is_prim_not_active(objects)
+  - def is_prim_sudo_root(objects)
+  - def has_default_prim(objects)
+  - def no_default_prim(objects)
+  - def is_hovered_prim_material(objects)
+  - def show_open_tree(objects)
+  - def show_close_tree(objects)
+  - def expand_all(objects)
+  - def expand_to(objects, kind)
+  - def collapse_all(objects)
+  - def collapse_to(objects, kind)
+  - def link_selected(link_or_unlink, layer_identifier, hierarchy, objects)
+  - def lock_selected(lock_or_unlock, hierarchy, objects)
+  - def select_linked_prims(objects)
+  - def select_locked_prims(objects)
+  - def clear_default_prim(objects)
+  - def set_default_prim(objects)
+  - def show_create_menu(objects)
+  - def bind_material_to_prim_dialog(objects)
+  - def bind_material_to_selected_prims(objects)
+  - def has_rename_function(objects)
+  - def rename_prim(objects)
+  - static def add_menu(menu_dict)
+  - static def add_create_menu(menu_dict)
+
+- class DragAndDropRegistry
+  - def __init__(self)
+  - def register_drop_handler(self, name: str, filter_fn: Callable[[Any], bool], handler_fn: Callable[[Any, Any], None])
+  - def deregister_drop_handler(self, name: str)
+  - def handle_drop_payload(self, source: Any, item: Any) -> bool
+  - def drop_accepted(self, source)
+
+- class StageIcons
+  - def __init__(self)
+  - def set(self, prim_type: str, icon_path: Optional[Union[str, Path]])
+  - def get(self, prim_type: str, default: Optional[Union[str, Path]] = None) -> str
+  - def subscribe_icons_changed(self, fn)
+
+- class StageWidget
+  - def __init__(self, stage: Usd.Stage, columns_accepted: List[str] = None, columns_enabled: List[str] = None, lazy_payloads: bool = False, **kwargs)
+  - def update_filter_menu_state(self, filter_type_list: list)
+  - def set_selection_watch(self, selection)
+  - def get_model(self) -> StageModel
+  - def expand(self, path: Sdf.Path)
+  - def collapse(self, path: Sdf.Path)
+  - def destroy(self)
+  - [property] def show_prim_display_name(self) -> bool
+  - [show_prim_display_name.setter] def show_prim_display_name(self, show: bool)
+  - [property] def show_inactive_prims(self) -> bool
+  - [show_inactive_prims.setter] def show_inactive_prims(self, show: bool)
+  - [property] def show_undefined_prims(self) -> bool
+  - [show_undefined_prims.setter] def show_undefined_prims(self, show: bool)
+  - [property] def show_abstract_prims(self) -> bool
+  - [show_abstract_prims.setter] def show_abstract_prims(self, show: bool)
+  - [property] def children_reorder_supported(self) -> bool
+  - [children_reorder_supported.setter] def children_reorder_supported(self, enabled: bool)
+  - [property] def auto_reload_prims(self) -> bool
+  - [auto_reload_prims.setter] def auto_reload_prims(self, enabled: bool)
+  - static def set_widget_visible(widget: ui.Widget, visible)
+  - def filter_by_visibility(self, enabled)
+  - def filter_by_active_state(self, enabled)
+  - def filter_by_abstract_state(self, enabled)
+  - def filter_by_def_state(self, enabled)
+  - def filter_by_type(self, usd_types, enabled)
+  - def filter_by_api_type(self, api_types, enabled)
+  - def filter_by_lambda(self, filters: dict, enabled)
+  - def filter_by_text(self, filter_text: str)
+  - def set_columns_widths(self)
+  - def set_fixed_width_columns(self)
+  - def subscribe_columns_changed(self, fn: Callable[[List[Tuple[str, bool]]], None]) -> EventSubscription
+  - def open_stage(self, stage: Usd.Stage)
+
+- class DefaultSelectionWatch(object)
+  - def __init__(self, tree_view = None, usd_context = None)
+  - def destroy(self)
+  - def set_tree_view(self, tree_view)
+  - def set_filtering(self, filter_string: Optional[str])
+  - def enable_filtering_checking(self, enable: bool)
+
+- class StageModel(ui.AbstractItemModel)
+  - def __init__(self, stage: Usd.Stage, flat = False, load_payloads = False, check_missing_references = False, **kwargs)
+  - [property] def usd_context(self) -> omni.usd.UsdContext
+  - [property] def stage(self) -> Usd.Stage
+  - [property] def root(self) -> StageItem
+  - [property] def exclusion_types(self) -> Optional[List[str]]
+  - [property] def flat(self) -> bool
+  - [flat.setter] def flat(self, value)
+  - def find(self, path: Sdf.Path) -> StageItem
+  - def find_full_chain(self, path: Optional[Union[Sdf.Path, str]]) -> Optional[List[StageItem]]
+  - def update_dirty(self)
+  - def get_item_children(self, item: Optional[StageItem]) -> Union[List[StageItem], StageItem]
+  - def can_item_have_children(self, item: Optional[StageItem]) -> bool
+  - def get_item_value_model_count(self, item: Optional[StageItem]) -> int
+  - def set_item_value_model_count(self, count: int)
+  - def drop_accepted(self, target_item, source, drop_location = -1) -> bool
+  - def drop(self, target_item, source, drop_location = -1)
+  - def get_drag_mime_data(self, item: StageItem) -> str
+  - def filter_by_text(self, filter_name_text)
+  - def filter(self, add = None, remove = None, clear = None) -> bool
+  - def get_filters(self) -> Dict
+  - def reset(self)
+  - def destroy(self)
+  - [property] def children_reorder_supported(self) -> bool
+  - [children_reorder_supported.setter] def children_reorder_supported(self, value: bool)
+  - [property] def show_prim_displayname(self) -> bool
+  - [show_prim_displayname.setter] def show_prim_displayname(self, value)
+  - [property] def show_inactive_prims(self) -> bool
+  - [show_inactive_prims.setter] def show_inactive_prims(self, value)
+  - [property] def show_undefined_prims(self) -> bool
+  - [show_undefined_prims.setter] def show_undefined_prims(self, value)
+  - [property] def show_abstract_prims(self) -> bool
+  - [show_abstract_prims.setter] def show_abstract_prims(self, value)
+  - def subscribe_stage_items_destroyed(self, fn: Callable[[List[StageItem]], None]) -> EventSubscription
+  - def rename_prim(self, prim_path: Sdf.Path, new_name: str) -> bool
+  - def set_items_sort_key_func(self, key_fn: Callable[[StageItem], None], reverse = False)
+  - def set_items_sort_policy(self, items_sort_policy: StageItemSortPolicy)
+  - def get_items_sort_policy(self) -> StageItemSortPolicy
+  - def subscribe_stage_items_selection_changed(self, fn: Callable[[], None]) -> EventSubscription
+  - def get_selected_stage_items(self) -> List[StageItem]
+  - def set_selected_stage_items(self, selections: List[StageItem], undo = False)
+  - def refresh_item_names(self)
+  - [property] def check_missing_references(self)
+  - [check_missing_references.setter] def check_missing_references(self, value)
+
+- class StageItemSortPolicy(Enum)
+  - DEFAULT: int
+  - NAME_COLUMN_NEW_TO_OLD: int
+  - NAME_COLUMN_OLD_TO_NEW: int
+  - NAME_COLUMN_A_TO_Z: int
+  - NAME_COLUMN_Z_TO_A: int
+  - TYPE_COLUMN_A_TO_Z: int
+  - TYPE_COLUMN_Z_TO_A: int
+  - VISIBILITY_COLUMN_INVISIBLE_TO_VISIBLE: int
+  - VISIBILITY_COLUMN_VISIBLE_TO_INVISIBLE: int
+
+- class StageItem(ui.AbstractItem)
+  - def __init__(self, path: Sdf.Path, stage, stage_model, flat = False, root_identifier = None, load_payloads = False, check_missing_references = False)
+  - def destroy(self)
+  - [property] def filtered(self) -> bool
+  - [filtered.setter] def filtered(self, value: bool)
+  - [property] def child_filtered(self) -> bool
+  - [child_filtered.setter] def child_filtered(self, value: bool)
+  - [property] def path(self) -> Sdf.Path
+  - [property] def stage_model(self)
+  - [property] def usd_context(self) -> Optional[omni.usd.UsdContext]
+  - [property] def stage(self) -> Optional[Usd.Stage]
+  - [property] def payrefs(self) -> List[str]
+  - [property] def is_default(self) -> bool
+  - [property] def is_outdated(self) -> bool
+  - [property] def in_session(self) -> bool
+  - [property] def auto_reload(self) -> bool
+  - [property] def root_identifier(self) -> Optional[str]
+  - [property] def instance_proxy(self) -> bool
+  - [property] def instanceable(self) -> bool
+  - [property] def visible(self) -> bool
+  - [property] def payloads(self) -> bool
+  - [property] def references(self) -> bool
+  - [property] def inherits(self) -> bool
+  - [property] def specializes(self) -> bool
+  - [property] def name(self) -> str
+  - [property] def display_name(self) -> str
+  - [property] def prim(self) -> Usd.Prim
+  - [property] def active(self) -> bool
+  - [property] def abstract(self) -> bool
+  - [property] def type_name(self) -> str
+  - [property] def is_class(self) -> bool
+  - [property] def has_missing_references(self) -> bool
+  - [property] def children(self)
+  - def update_flags(self, prim = None)
+  - [property] def name_model(self) -> PrimNameModel
+  - [property] def type_model(self) -> TypeModel
+  - [property] def visibility_model(self) -> VisibilityModel
+  - [property] def is_flat(self) -> bool
+  - [is_flat.setter] def is_flat(self, flat: bool)
+  - [property] def load_payloads(self) -> bool
+  - [property] def check_missing_references(self)
+  - [check_missing_references.setter] def check_missing_references(self, value)
+  - def set_default_prim(self, is_default)
+
+- class ReorderPrimCommand(omni.kit.commands.Command)
+  - def __init__(self, stage: Usd.Stage, prim_path: Sdf.Path, move_to_location: int)
+  - def do(self)
+  - def undo(self)
+
+- class ChangePrimDisplayNameCommand(omni.kit.commands.Command)
+  - def __init__(self, stage: Usd.Stage, prim_path: Sdf.Path, new_display_name: str)
+  - def do(self)
+  - def undo(self)
+
+- class AbstractStageColumnDelegate
+  - def destroy(self)
+  - [property] def initial_width(self) -> Union[ui.Pixel, ui.Fraction, ui.Percent]
+  - [property] def minimum_width(self) -> Union[ui.Pixel, ui.Fraction, ui.Percent]
+  - def build_header(self, **kwargs)
+  - async def build_widget(self, item: StageColumnItem, **kwargs)
+  - def on_header_hovered(self, hovered: bool)
+  - def on_stage_items_destroyed(self, items: List[StageItem])
+  - [property] def sortable(self) -> bool
+  - [property] def order(self) -> int
+  - [property] def resizable(self)
+
+- class StageColumnItem
+  - def __init__(self, path: Sdf.Path, stage: Usd.Stage, enabled: bool, expanded: bool = True)
+  - [property] def path(self) -> Sdf.Path
+  - [property] def stage(self) -> Usd.Stage
+  - [property] def enabled(self) -> bool
+  - [property] def expanded(self) -> bool
+
+- class StageColumnDelegateRegistry(StageColumnDelegateRegistryBase)
+  - def register_column_delegate(self, name: str, delegate: Callable[[], AbstractStageColumnDelegate]) -> _ColumnDelegateSubscription
+
+- class UsdPropertyWatch(UsdStageHelper)
+  - def __init__(self, stage: Usd.Stage, property_name: str, model_type: Type[UsdPropertyWatchModel] = UsdPropertyWatchModel)
+  - def destroy(self)
+  - def update_dirty(self)
+  - def get_model(self, path)
+
+- class UsdPropertyWatchModel(ui.AbstractValueModel, UsdStageHelper)
+  - def __init__(self, stage: Usd.Stage, path: Sdf.Path)
+  - def destroy(self)
+  - def on_usd_changed(self)
+  - def get_value_as_bool(self) -> Optional[bool]
+  - def get_value_as_float(self) -> Optional[float]
+  - def get_value_as_int(self) -> Optional[int]
+  - def get_value_as_string(self) -> Optional[str]
+  - def set_value(self, value: Any)
+
+- class AssetType
+  - def __init__(self)
+  - def destroy(self)
+  - def is_usd(self, asset)
+  - def is_mdl(self, asset)
+  - def is_audio(self, asset)
+  - def add_future(self, obj)
+  - async def get_first_material_name(self, mdl_file)
+
+- class UsdStageHelper
+  - def __init__(self, stage: Usd.Stage)
+
+- class UnicodeNormalizationMethod(StrEnum)
+  - DISABLED: str
+  - NFC: str
+
+## Functions
+
+- def get_unicode_normalization_method() -> UnicodeNormalizationMethod

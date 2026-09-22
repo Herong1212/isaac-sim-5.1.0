@@ -1,0 +1,78 @@
+{
+    "OnViewportClicked": {
+        "version": 1,
+        "description": [
+            "Event node which fires when a click event occurs in the specified viewport.",
+            "A press event differs from a click event only in timing. Press events are held down while click events are",
+            "pressed and then immediately (within a small amount of time) released.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "On Viewport Clicked (BETA)",
+        "categories": ["graph:action", "ui"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of the 2D position output are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for click events.",
+                "uiName": "Viewport",
+                "default": "Viewport",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger viewport click events.",
+                "uiName": "Gesture",
+                "default": "Left Mouse Click",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "LeftMouseClick": "Left Mouse Click",
+                        "RightMouseClick": "Right Mouse Click",
+                        "MiddleMouseClick": "Middle Mouse Click"
+                    }
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "clicked": {
+                "type": "execution",
+                "description": [
+                    "When the specified input gesture triggers a click event in the specified viewport,",
+                    "signal to the graph that execution can continue downstream."
+                ],
+                "uiName": "Clicked"
+            },
+            "position": {
+                "type": "double[2]",
+                "description": "The position at which the click event occurred.",
+                "uiName": "Position"
+            }
+        }
+    }
+}

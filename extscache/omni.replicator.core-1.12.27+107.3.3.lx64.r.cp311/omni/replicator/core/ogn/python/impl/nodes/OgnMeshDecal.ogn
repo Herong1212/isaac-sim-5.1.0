@@ -1,0 +1,91 @@
+{
+    "OgnMeshDecal": {
+        "version": 1,
+        "description": "Mesh decal node",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "language": "Python",
+        "cudaPointers": "cpu",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Input execution."
+            },
+            "prims": {
+                "description": ["Prim to create a mesh decal on."],
+                "type": "target"
+            },
+            "decalPrim": {
+                "description": ["Existing decal mesh to modify."],
+                "type": "target"
+            },
+            "materialPrim": {
+                "description": ["Material to apply to decal mesh."],
+                "type": "target"
+            },
+            "textureGroup": {
+                "description": ["Group of diffuse, normal, roughness and/or metallic textures."],
+                "type": "token[]"
+            },
+            "diffuse": {
+                "description": ["Diffuse texture path of the decal material."],
+                "type": "token"
+            },
+            "normal": {
+                "description": ["Normal texture path of the decal material."],
+                "type": "token"
+            },
+            "roughness": {
+                "description": ["Roughness texture path of the decal material."],
+                "type": "token"
+            },
+            "metallic": {
+                "description": ["Metallic texture path of the decal material."],
+                "type": "token"
+            },
+            "opacity": {
+                "description": ["Opacity texture path of the decal material."],
+                "type": "token"
+            },
+            "semantics": {
+                "description": ["Semantics to apply to decal."],
+                "type": "token",
+                "default": ""
+            },
+            "position": {
+                "description": ["Position override of the decal."],
+                "type": "float[3]",
+                "default": [0, 0, 0]
+            },
+            "rotation": {
+                "description": ["Rotation override of the decal."],
+                "type": "float[3]",
+                "default": [0, 0, 0]
+            },
+            "scale": {
+                "description": ["Scale override of the decal."],
+                "type": "float[3]",
+                "default": [1, 1, 1]
+            },
+            "offsetNormal": {
+                "type": "float",
+                "description": ["Offset along the normal of the decal."],
+                "default": 0.1
+            },
+            "offsetDepth": {
+                "type": "float",
+                "description": ["Offset depth of the decal."],
+                "default": 0.0
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution."
+            }
+        },
+        "state": {
+            "$comment": "The existence of this state section, even if it contains no attributes, means there is internal state that is entirely managed by the node"
+        }
+    }
+}

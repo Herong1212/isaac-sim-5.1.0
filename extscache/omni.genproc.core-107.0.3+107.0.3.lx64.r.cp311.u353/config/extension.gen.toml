@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.genproc.core-107.0.3%2B107.0.3.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.180992.c3eccf10.gl"
+        date = 1747360659
+        buildNumber = "107.0.0+107.6942.af8e4107.gl"
+        repoName = "particle-system"
+        signed = 1

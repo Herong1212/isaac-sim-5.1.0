@@ -1,0 +1,73 @@
+{
+    "ReplaceTargetParent": {
+        "version": 1,
+        "description": [
+            "Replaces the old parent with a new parent in every target in an array. ",
+            "If the old parent is not found, the target is unmodified."
+        ],
+        "uiName": "Replace Target Parent",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The target array to be modified",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "oldParent": {
+                "type": "target",
+                "description": "The target parent to replace. If the old parent is not found, the target is unmodified."
+            },
+            "newParent": {
+                "type": "target",
+                "description": "The new target parent. If empty, use the stage."
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The modified target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [],
+                "inputs:oldParent": [],
+                "inputs:newParent": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"],
+                "inputs:oldParent": [],
+                "inputs:newParent": [],
+                "outputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"]
+            },
+            {
+                "inputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"],
+                "inputs:oldParent": "/Foo",
+                "inputs:newParent": [],
+                "outputs:targets": ["/Xform1/Cube", "/Xform1/Cone", "/Xform1/Sphere"]
+            },
+            {
+                "inputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"],
+                "inputs:oldParent": [],
+                "inputs:newParent": "/Bar",
+                "outputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"]
+            },
+            {
+                "inputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"],
+                "inputs:oldParent": "/Foo",
+                "inputs:newParent": "/Bar",
+                "outputs:targets": ["/Bar/Xform1/Cube", "/Bar/Xform1/Cone", "/Bar/Xform1/Sphere"]
+            },
+            {
+                "inputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"],
+                "inputs:oldParent": "/Rar",
+                "inputs:newParent": "/Bar",
+                "outputs:targets": ["/Foo/Xform1/Cube", "/Foo/Xform1/Cone", "/Foo/Xform1/Sphere"]
+            }
+        ]
+    }
+}

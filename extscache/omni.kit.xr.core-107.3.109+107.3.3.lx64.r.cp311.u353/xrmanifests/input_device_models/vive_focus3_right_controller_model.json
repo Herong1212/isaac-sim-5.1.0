@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 20,
+    "name": "HTC Vive Focus3 Right Controller Model",
+    "tags": "htc_vive_focus3_profile",
+    "inputDevices": "/user/hand/right",
+    "asset": "{vive.controllers}/f3_right/model.usd"
+}

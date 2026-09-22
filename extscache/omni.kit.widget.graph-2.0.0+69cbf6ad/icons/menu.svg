@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24.548103mm"
+   height="24.433952mm"
+   viewBox="0 0 24.548103 24.433952"
+   version="1.1"
+   id="svg4537"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="menu.svg">
+  <defs
+     id="defs4531" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-97.234763"
+     inkscape:cy="44.014733"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="1"
+     fit-margin-left="9"
+     fit-margin-right="9"
+     fit-margin-bottom="1"
+     inkscape:window-width="2985"
+     inkscape:window-height="1226"
+     inkscape:window-x="440"
+     inkscape:window-y="440"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata4534">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(43.274052,-136.32315)">
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.26499999"
+       id="path5095"
+       cx="-31"
+       cy="140.5972"
+       r="3.2740517" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.26499999"
+       id="path5095-8"
+       cx="-31"
+       cy="148.49837"
+       r="3.2740517" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.26499999"
+       id="path5095-87"
+       cx="-31"
+       cy="156.48305"
+       r="3.2740517" />
+  </g>
+</svg>

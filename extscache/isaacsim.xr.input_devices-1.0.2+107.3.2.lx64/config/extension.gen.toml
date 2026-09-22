@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/isaacsim.xr.input_devices-1.0.2%2B107.3.2.lx64.zip"
+
+    [package.target]
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.2"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.221624.95ab655d.gl"
+        date = 1760669949
+        buildNumber = "5.0.0-alpha.54+develop.163.a40ce5f9.gl"
+        repoName = "omni-isaac-sim-internal"
+        signed = 1

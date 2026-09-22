@@ -1,0 +1,9 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.graph.widget.variables-2.1.0.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.124308.7d5002cc.tc"
+        date = 1695757634
+        buildNumber = "105.0.0+master.2135.a932f09a.tc"
+        repoName = "kit-graphs"

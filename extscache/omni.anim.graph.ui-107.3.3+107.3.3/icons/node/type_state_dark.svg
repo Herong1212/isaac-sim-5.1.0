@@ -1,0 +1,8 @@
+<svg id="type_state_dark" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="Icon_Base" width="40" height="40" fill="none"/>
+  <path id="bgr" d="M9,0H40V31a9,9,0,0,1-9,9H0V9A9,9,0,0,1,9,0Z" fill="#1e2931"/>
+  <g id="Group_4087" data-name="Group 4087" transform="translate(1051.501 3605.969)">
+    <path id="frame" d="M7.9,0H25.267V9.475a7.9,7.9,0,0,1-7.9,7.9H0V7.9A7.9,7.9,0,0,1,7.9,0Z" transform="translate(-1044.135 -3594.655)" fill="#769bb4"/>
+    <path id="body" d="M4.738,0H18.951V6.317a4.738,4.738,0,0,1-4.738,4.738H0V4.738A4.738,4.738,0,0,1,4.738,0Z" transform="translate(-1040.976 -3591.497)" fill="#1e2931"/>
+  </g>
+</svg>

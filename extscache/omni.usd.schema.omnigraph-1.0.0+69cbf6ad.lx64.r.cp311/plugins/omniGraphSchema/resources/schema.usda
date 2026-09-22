@@ -1,0 +1,329 @@
+#usda 1.0
+(
+    subLayers = [
+        @usd/schema.usda@
+    ]
+)
+
+over "GLOBAL" (
+    customData = {
+        string libraryName = "omniGraphSchema"
+        string libraryPath = "./"
+        string libraryPrefix = "OmniGraphSchema"
+        bool useLiteralIdentifier = 0
+    }
+)
+{
+}
+
+class OmniGraph "OmniGraph"
+(
+    customData = {
+        string className = "OmniGraph"
+    }
+    doc = "Base class for OmniGraph primitives containing the graph settings."
+    inherits = </Typed>
+)
+{
+    token evaluator:type  = "push" (
+        allowedTokens = ["dirty_push", "push", "execution"]
+        doc = """Type name for the evaluator used by the graph."""
+    )
+    int2 fileFormatVersion (
+        doc = """A pair of integers consisting of the major and minor versions of the
+                 file format under which the graph was saved."""
+    )
+    token fabricCacheBacking = "Shared" (
+        allowedTokens = ["Shared", "StageWithHistory", "StageWithoutHistory"]
+        doc = """Token that identifies the type of FabricCache backing used by the graph."""
+    )
+    bool allowAutoInstancing = true (
+        doc = """A boolean that specifies whether or not the graph is allowed to be auto-instanced."""
+    )
+    token pipelineStage = "pipelineStageSimulation" (
+        allowedTokens = ["pipelineStageSimulation", "pipelineStagePreRender", "pipelineStagePostRender", "pipelineStageOnDemand"]
+        doc = """Optional token which is used to indicate the role of a vector
+                 valued field. This can drive the data type in which fields
+                 are made available in a renderer or whether the vector values
+                 are to be transformed."""
+    )
+    token evaluationMode = "Automatic" (
+        allowedTokens = ["Automatic", "Standalone", "Instanced"]
+        doc = """Token that describes under what circumstances the graph should be evaluated. 
+                 Automatic mode will evaluate the graph in Standalone mode when 
+                 no Prims having a relationship to it exist. Otherwise it will be 
+                 evaluated in Instanced mode.
+                 Standalone mode evaluates the graph with itself as the graph
+                 target, and ignores any Prims having relationships to the graph Prim. 
+                 Use this mode with graphs that are expected to run only once per frame
+                 and use explicit paths to Prims on the stage. 
+                 Instanced graphs will only evaluate the graph when it is part of a 
+                 relationship from an OmniGraphAPI interface. Each Prim with a  
+                 relationship to the graph will cause a unique evaluation with the 
+                 graph target set to the path of the Prim having the relationship. 
+                 Use this mode when the graph represents an asset or template, and 
+                 parameterizes Prim paths through the use of the GraphTarget node,
+                 variables, or similar mechanisms. """
+    )
+}
+
+class "OmniGraphAPI"
+(
+    doc = """Constructs an OmniGraphAPI on a UsdPrim."""
+    inherits =</APISchemaBase>
+)
+{
+    rel omniGraphs (
+        doc = """Relationship to OmniGraph target graphs that will be evaluated for a UsdPrim.
+        for the UsdPrim"""
+    )
+}
+
+class OmniGraphNode "OmniGraphNode"
+(
+    customData = {
+        string className = "OmniGraphNode"
+    }
+    doc = "Base class for OmniGraph nodes."
+    inherits = </Typed>
+)
+{
+    token node:type (
+        doc = """Unique identifier for the name of the registered type for this node."""
+    )
+    int node:typeVersion (
+        doc = """Each node type is versioned for enabling backward compatibility. This value indicates which version of
+                 the node type definition was used to create this node. By convention the version numbers start at 1."""
+    )
+}
+
+class "OmniGraphNodeType"
+(
+    customData = { 
+        string className = "OmniGraphNodeType"
+    }
+
+    doc = """Abstract base class representing USD defined Node Types"""
+    inherits = </Typed>
+)
+{   
+    token omni:graph:namespace = "local.nodes" (
+        doc = """Prefix used when registering a node type. The final name used to register a node type with OmniGraph will be
+                 the prim name prefixed with the namespace. The namespace can be used to prevent conflicts when importing
+                 node types from multiple layers."""
+    )
+
+    string omni:graph:description (
+        doc = """Contains a description of the interfaces available on one or more OmniGraph Compute Nodes."""
+    )
+    
+    token[] omni:graph:categories = ["Compounds"] (
+        doc = """The list of categories to display the node in"""
+    )
+
+    token[] omni:graph:tags (
+        doc = """Single value or list of value to use as tags on the node"""
+    )
+
+    string omni:graph:uiName (
+        doc = """The name as it appears in the UI"""
+    )
+
+ }
+
+class OmniGraphCompoundNodeType "OmniGraphCompoundNodeType"
+(
+   customData = { 
+        string className = "OmniGraphCompoundNodeType"
+    }
+
+    doc = """Class representing USD defined Compound Node Type"""
+    inherits = </OmniGraphNodeType>
+)
+{   
+    rel omni:graph:asset (
+        doc = """The referenced graph representing a compound node"""
+    )
+
+    # Version 0
+
+    # Graph inputs and outputs are represented as relationships denoted with the prefix
+    # omni:graph:input: and omni:graph:output. The name of the input/output is taken
+    # directly from the name of the attribute
+    # e.g.
+    # rel omni:graph:input:input1 = </Root/Graph/multiply.inputs:a> (
+    #     description = "User defined description of input a"
+    #     uiName = "Display name for this input"
+    # )
+    # rel omni:graph:input:input2 = </Root/Graph/multiply.inputs:b>
+    # rel omni:graph:output:value = </Root/Graph/add.outputs:sum>
+}
+
+class OmniGraphCompoundNodeType_1 "OmniGraphCompoundNodeType_1"
+(
+    customData = { 
+        string className = "CompoundNodeType_1"
+    }
+
+
+    doc = """Version 1 of the class representing USD defined Compound Node Type. Compound Node Types with this version 
+             define their inputs and outputs using the OmniGraphInputDefAPI and OmniGraphOutputDefAPI schemas on the 
+             associated graph prim."""
+    inherits = </OmniGraphNodeType>
+ 
+    # Version 1
+
+    # Graph input and output definitions are no longer represented as relationships on the Compound 
+    # Node Type prim. 
+    # 
+    # Instead they are represented as MultiApplyAPI schemas on the Graph prim. This provides a 
+    # clear specification for each attribute definition and only writes non-default values to USD. 
+    #
+    # Additionally a compound node type can have several graphs associated with it, each with a unique
+    # attribute set.
+    #
+    # The typical USD hierarchy for a Compound Node Type is:
+    #
+    #   def CompoundNodeType "CompoundNode" 
+    #   {
+    #       prepend rel omni:graph:asset = </CompoundNode/Graph>
+    #       def OmniGraph "Graph" (
+    #          prepend apiSchemas = ["OmniGraphInputDefAPI:input1", "OmniGraphInputDefAPI:input2", "OmniGraphOutputDefAPI:value"]
+    #       )
+    #       {
+    #           append rel omniGraphInputDef:input1:connection = </Root/Graph/multiply.inputs:a>
+    #           string omniGraphInputDef:input1:uiName = "Input A"
+    #           append rel omniGraphInputDef:input2:connection = </Root/Graph/multiply.inputs:b>
+    #           append rel omniGraphOutputDef:value:connection = </Root/Graph/add.outputs:sum>
+    #       }         
+    #   }
+)
+{    
+    rel omni:graph:asset (
+        doc = """The referenced graph representing a compound node"""
+    )
+}
+
+class "OmniGraphCompoundNodeAPI" 
+(
+    doc = """API schema applied to an OmniGraphNode to indicate it is a compound container whose execution is defined by an OmniGraph."""
+    inherits =</APISchemaBase>
+    customData = {
+        string className = "CompoundNodeAPI"
+        token[] apiSchemaCanOnlyApplyTo = [ "OmniGraphNode" ]
+        token apiSchemaType = "singleApply"
+    }
+)
+{
+    rel omni:graph:compoundGraph (
+        doc = """Relationship to an OmniGraph prim representing the implementation used by this OmniGraphNode"""
+        customData = {
+            string apiName = "compoundGraph"
+        }
+    )
+    
+    token omni:graph:compoundType = "subgraph" (
+        allowedTokens = ["subgraph", "function", "nodetype"]
+        doc = """Represents the type of the compound graph referenced by this Compound Node"""
+        customData = {
+            string apiName = "compoundType"
+        }
+    )
+}
+
+class "OmniGraphInputDefAPI"
+(
+    doc = """Multiple Apply API schema that can be applied to an OmniGraph to define an attribute definition for an input attribute. 
+             An attribute definition is a description of the attribute that will be generated when a compound node is instantiated 
+             that references this graph. The connection relationship is used to specify the promoted node attributes that will be 
+             connected from the instantiated node."""
+    inherits = </APISchemaBase>
+	customData = {
+        string className = "InputDefAPI"
+		token apiSchemaType = "multipleApply"
+		token propertyNamespacePrefix = "omniGraphInputDef"
+        token[] apiSchemaCanOnlyApplyTo = ["OmniGraph"]
+	}
+)
+{
+	rel connection (
+		doc = "Input port definition"
+        # Custom data applied to the connection relationship:
+        #   omni:graph:default is the overridden default value for the attribute generated from the Connection
+	)
+
+    token[] allowedTokens (
+        doc = """Used only for attributes of type *token* and contains a list of the values that token is allowed to take."""
+    )
+
+    string type (
+        doc = """Specifies what type of data the generated attribute contains."""
+    )
+
+    string description (
+        doc = """Contains a description of the attribute. This is the value that will be applied to all attributes generated by this definition."""
+    )
+
+    bool hidden = False (
+        doc = """This is a hint to the application that the attribute should be hidden from the user."""
+    )
+
+ 	bool literalOnly = False (
+        doc = """Indicates that the value of the attribute can only be set to a literal."""
+    ) 
+
+    string uiName (
+        doc = """Used by the UI to present a more human-readable name for the generated attributes"""
+        displayName = "Display Name"
+    )
+
+    string uiType (
+        doc = """Used to provide a hint to the property panel as to how the property should be displayed."""
+        hidden = True
+    )
+}
+
+class "OmniGraphOutputDefAPI"
+(
+    doc = """Multiple Apply API schema that can be applied to an OmniGraph to define an attribute definition for an output attribute. 
+             An attribute definition is a description of the attribute that will be generated when a compound node is instantiated 
+             that references this graph. The connection relationship is used to specify the promoted node attributes that will be 
+             connected from the instantiated node."""
+
+	inherits = </APISchemaBase>
+	customData = {
+        string className = "OutputDefAPI"
+		token apiSchemaType = "multipleApply"
+		token propertyNamespacePrefix = "omniGraphOutputDef"
+        token[] apiSchemaCanOnlyApplyTo = ["OmniGraph"]
+	}
+)
+{
+	rel connection (
+		doc = "Output port definition"
+        # Custom data applied to the connection relationship:
+        #   omni:graph:default is the overridden default value for the attribute generated from the Connection
+	)
+
+    string type (
+        doc = """Specifies what type of data the generated attribute contains."""
+    )
+
+    string description (
+        doc = """Contains a description of the attribute. This is the value that will be applied to all attributes generated by this definition."""
+    )
+
+    bool hidden = False (
+        doc = """This is a hint to the application that the attribute should be hidden from the user."""
+    )
+
+    string uiName (
+        doc = """Used by the UI to present a more human-readable name for the generated attributes"""
+        displayName = "Display Name"
+    )
+
+    string uiType (
+        doc = """Used to provide a hint to the property panel as to how the property should be displayed."""
+        hidden = True
+    )
+}

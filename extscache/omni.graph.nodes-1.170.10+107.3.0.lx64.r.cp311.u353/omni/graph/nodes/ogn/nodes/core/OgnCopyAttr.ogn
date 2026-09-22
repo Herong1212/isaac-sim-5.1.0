@@ -1,0 +1,55 @@
+{
+    "CopyAttribute": {
+        "version": 1,
+        "description": ["Copies all attributes from one input bundle and specified attributes from a",
+                        "second input bundle to the output bundle."],
+        "metadata": {
+            "uiName": "Copy Attributes From Bundles"
+        },
+        "categories": ["bundle"],
+        "inputs": {
+            "fullData": {
+                "type": "bundle",
+                "description": "Collection of attributes to fully copy to the output",
+                "metadata": {
+                    "uiName": "Full Bundle To Copy"
+                }
+            },
+            "$constraint": "Length of inputAttrNames should always be equal to the length of outputAttrNames",
+            "inputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the names of attributes to copy from partialData",
+                "default": "",
+                "metadata": {
+                    "uiName": "Extracted Names For Partial Copy"
+                }
+            },
+            "outputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the new names of attributes copied from partialData",
+                "default": "",
+                "metadata": {
+                    "uiName": "New Names For Partial Copy"
+                }
+            },
+            "partialData": {
+                "type": "bundle",
+                "optional": true,
+                "description": "Collection of attributes from which to select named attributes",
+                "metadata": {
+                    "uiName": "Partial Bundle To Copy"
+                }
+            }
+        },
+        "outputs": {
+            "data": {
+                "type": "bundle",
+                "description": ["Collection of attributes consisting of all attributes from input 'fullData' and",
+                                "selected inputs from input 'partialData'"],
+                "metadata": {
+                    "uiName": "Bundle Of Copied Attributes"
+                }
+            }
+        }
+    }
+}

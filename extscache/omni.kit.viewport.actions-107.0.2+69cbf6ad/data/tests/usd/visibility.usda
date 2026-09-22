@@ -1,0 +1,263 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 120
+    framesPerSecond = 24
+    metersPerUnit = 0.01
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World" (
+    kind = "component"
+)
+{
+    def SkelRoot "SkelRoot"
+    {
+        def Skeleton "joint1" (
+            prepend apiSchemas = ["SkelBindingAPI"]
+            customData = {
+                dictionary Maya = {
+                    bool generated = 1
+                }
+            }
+        )
+        {
+            uniform matrix4d[] bindTransforms = [( (0, 1, 0, 0), (-1, 0, 0, 0), (0, 0, 1, 0), (-0.01180509681104433, -6.563633826940289, -0, 1) ), ( (0, 1, 0, 0), (-1, 0, 0, 0), (0, 0, 1, 0), (-0.01180509681104433, -2.266578587720388, -0, 1) ), ( (0, 1, 0, 0), (-1, 0, 0, 0), (0, 0, 1, 0), (-0.011805096811044332, 2.644341685673786, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-0.011805096811044328, 6.6580746014286385, 0, 1) )]
+            uniform token[] joints = ["joint1", "joint1/joint2", "joint1/joint2/joint3", "joint1/joint2/joint3/joint4"]
+            uniform matrix4d[] restTransforms = [( (0, 1, 0, 0), (-1, 0, 0, 0), (0, 0, 1, 0), (-0.01180509681104433, -6.563633826940289, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (4.297055239219901, 0, 0, 1) ), ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (4.910920273394174, 0, 0, 1) ), ( (0, -1, -0, 0), (1, 0, 0, 0), (0, -0, 1, 0), (4.0137329157548525, -3.469446951953614e-18, 0, 1) )]
+            rel skel:animationSource = </World/SkelRoot/joint1/Animation>
+
+            def SkelAnimation "Animation"
+            {
+                uniform token[] joints = ["joint1", "joint1/joint2", "joint1/joint2/joint3", "joint1/joint2/joint3/joint4"]
+                quatf[] rotations = [(0.70710677, 0, 0, 0.70710677), (1, 0, 0, 0), (1, 0, 0, 0), (-0.70710677, 0, 0, 0.70710677)]
+                half3[] scales = [(1, 1, 1), (1, 1, 1), (1, 1, 1), (1, 1, 1)]
+                float3[] translations = [(-0.011805097, -6.563634, 0), (4.2970552, 0, 0), (4.91092, 0, 0), (4.013733, -1.7347235e-18, 0)]
+            }
+        }
+    }
+
+    def Mesh "Mesh"
+    {}
+
+    def Cone "Cone"
+    {}
+
+    def Cube "Cube"
+    {}
+
+    def Cylinder "Cylinder"
+    {}
+
+    def Sphere "Sphere"
+    {}
+
+    def Capsule "Capsule"
+    {}
+
+    def Xform "Instances"
+    (
+        instanceable = true
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        over "SkelRoot"
+        (
+            references = </World/SkelRoot>
+        )
+        {}
+
+        over "Mesh"
+        (
+            references = </World/Mesh>
+        )
+        {}
+
+        over "Cone"
+        (
+            references = </World/Cone>
+        )
+        {}
+
+        over "Cube"
+        (
+            references = </World/Cube>
+        )
+        {}
+
+        over "Cylinder"
+        (
+            references = </World/Cylinder>
+        )
+        {}
+
+        over "Sphere"
+        (
+            references = </World/Sphere>
+        )
+        {}
+
+        over "Capsule"
+        (
+            references = </World/Capsule>
+        )
+        {}
+    }
+
+    def Xform "MeshInstances"
+    (
+        instanceable = true
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-5, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        over "Mesh"
+        (
+            references = </World/Mesh>
+        )
+        {}
+
+        def Xform "Shapes1"
+        {
+            over "Cone"
+            (
+                references = </World/Cone>
+            )
+            {}
+
+            over "Cube"
+            (
+                references = </World/Cube>
+            )
+            {}
+        }
+
+        def Xform "Shapes2"
+        {
+            over "Cylinder"
+            (
+                references = </World/Cylinder>
+            )
+            {}
+
+            over "Sphere"
+            (
+                references = </World/Sphere>
+            )
+            {}
+
+            over "Capsule"
+            (
+                references = </World/Capsule>
+            )
+            {}
+        }
+    }
+
+    def Xform "MeshInstancesWithLight"
+    (
+        instanceable = true
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (5, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+
+        over "Mesh"
+        (
+            references = </World/Mesh>
+        )
+        {}
+
+        def Xform "Shapes1"
+        {
+            over "Cone"
+            (
+                references = </World/Cone>
+            )
+            {}
+
+            over "Cube"
+            (
+                references = </World/Cube>
+            )
+            {}
+        }
+
+        def Xform "Shapes2"
+        {
+            over "Cylinder"
+            (
+                references = </World/Cylinder>
+            )
+            {}
+
+            over "Sphere"
+            (
+                references = </World/Sphere>
+            )
+            {}
+
+            over "Capsule"
+            (
+                references = </World/Capsule>
+            )
+            {}
+        }
+
+        def Points "Points"
+        {
+        }
+    }
+
+    def Xform "MeshInstances_01"
+    (
+        references = </World/MeshInstances>
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (-10, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Xform "MeshInstances_02"
+    (
+        references = </World/MeshInstancesWithLight>
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (10, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Xform "MeshInstances_03"
+    (
+        instanceable = true
+    )
+    {
+        over "Cube"
+        (
+            references = </World/MeshInstancesWithLight/Shapes1/Cube>
+        )
+        {}
+
+        over "Points"
+        (
+            references = </World/MeshInstancesWithLight/Points>
+        )
+        {}
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (15, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Xform "MeshInstances_04"
+    (
+        references = </World/MeshInstances_03>
+    )
+    {
+        matrix4d xformOp:transform = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (20, 0, 0, 1))
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}

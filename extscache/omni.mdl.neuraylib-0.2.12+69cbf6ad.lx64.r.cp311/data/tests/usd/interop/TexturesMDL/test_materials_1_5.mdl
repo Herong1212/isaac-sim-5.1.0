@@ -1,0 +1,95 @@
+mdl 1.5; // make sure this is 1.5 because we actually want to test the more complex old behavior
+
+import ::base::*;
+import ::math::*;
+import ::anno::*;
+import ::df::*;
+import ::tex::*;
+import state::*; // weak relative (till 1.5, tried as relative first then fallback to absolute)
+                 // with 1.6, no fallback anymore
+
+color textureReadColor(
+	uniform texture_2d file = texture_2d()
+	[[
+		anno::display_name("Texture")
+	]],
+    int tex_coord_index = 0
+    [[
+        anno::display_name("Texture Coordinate Set")
+    ]],
+    color fallback = color(1.0)
+    [[
+        anno::display_name("Fallback")
+    ]]
+)
+{
+    float3 tex_coord = state::texture_coordinate(tex_coord_index);
+    return tex::texture_isvalid(file)
+        ? tex::lookup_color(file, float2(tex_coord.x, tex_coord.y))
+        : fallback;
+}
+
+// ----------- BODY --------------
+
+export material BodyWeakExistingAbsolute() = let {
+    uniform texture_2d file = texture_2d("resources/missing_texture_placeholder.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: color(1.0) - textureReadColor(file) // pink black checker, make it green
+        )
+    )
+);
+
+export material BodyWeakExistingRelative() = let {
+    uniform texture_2d file = texture_2d("DensityTexture1.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material BodyWeakMissing() = let {
+    uniform texture_2d file = texture_2d("NOT_EXISTING.png");
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+
+// ----------- PARAM --------------
+
+export material ParamWeakExistingAbsolute(
+    uniform texture_2d file = texture_2d("resources/missing_texture_placeholder.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: color(1.0) - textureReadColor(file)
+        )
+    )
+);
+
+export material ParamWeakExistingRelative(
+    uniform texture_2d file = texture_2d("DensityTexture2.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);
+
+export material ParamWeakMissing(
+    uniform texture_2d file = texture_2d("NOT_EXISTING.png")
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: textureReadColor(file)
+        )
+    )
+);

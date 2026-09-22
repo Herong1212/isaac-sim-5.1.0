@@ -1,0 +1,165 @@
+{
+    "CurveTubePositions": {
+        "version": 1,
+        "description": [
+            "Take the points on a curve and a subset of vertex ranges and generate point geometry corresponding",
+            "to a tube that follows the curve positions. Imagine a curve that is the center of a straw. The tube",
+            "is constructed by inflating subsections of the curve."
+        ],
+        "metadata": {
+            "uiName": "Curve Tube Positions"
+        },
+        "categories": ["geometry:generator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "curveVertexStarts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex index starting points for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Counts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Starts"
+                }
+            },
+            "curveVertexCounts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex counts for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Starts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Counts"
+                }
+            },
+            "curvePoints": {
+                "type": "float[3][]",
+                "description": "Points on the curve from which the tubes are to be constructed.",
+                "metadata": {
+                    "uiName": "Curve Points"
+                }
+            },
+            "tubePointStarts": {
+                "type": "int[]",
+                "description": "Tube starting point index values. Must have the same number of elements as 'Columns'.",
+                "metadata": {
+                    "uiName": "Tube Point Starts"
+                }
+            },
+            "cols": {
+                "type": "int[]",
+                "description": "Index along the curve where the tube is to be constructed.",
+                "metadata": {
+                    "uiName": "Columns"
+                }
+            },
+            "up": {
+                "type": "float[3][]",
+                "description": "Up vectors on the constructed tube.",
+                "metadata": {
+                    "uiName": "Up Vectors"
+                }
+            },
+            "out": {
+                "type": "float[3][]",
+                "description": "Out vector directions on the constructed tube.",
+                "metadata": {
+                    "uiName": "Out Vectors"
+                }
+            },
+            "width": {
+                "type": "float[]",
+                "description": "Width of the constructed tube.",
+                "metadata": {
+                    "uiName": "Tube Widths"
+                }
+            }
+        },
+        "outputs": {
+            "points": {
+                "type": "float[3][]",
+                "description": "Points on the tube that was constructed.",
+                "metadata": {
+                    "uiName": "Points"
+                }
+            }
+        },
+        "tests": [
+            {
+                "$description": "No Vertices in returns empty list",
+                "inputs:curveVertexStarts": [],
+                "inputs:curveVertexCounts": [],
+                "inputs:curvePoints": [],
+                "inputs:tubePointStarts": [0, 6],
+                "inputs:cols": [2],
+                "inputs:up":  [[0, 0, 1]],
+                "inputs:out": [[0, 1, 0]],
+                "inputs:width": [1.0],
+                "outputs:points": []
+            },
+            {
+                "$description": "Only one tube point generates empty list",
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:curvePoints": [
+                    [-1, 1, 0], [0, 2, 0], [1, 1, 0]
+                ],
+                "inputs:tubePointStarts": [0],
+                "inputs:cols": [2],
+                "inputs:up":  [[0, 0, 1]],
+                "inputs:out": [[0, 1, 0]],
+                "inputs:width": [1.0],
+                "outputs:points": []
+            },
+            {
+                "$description": "Single curve list",
+                "inputs:curveVertexStarts": [0],
+                "inputs:curveVertexCounts": [3],
+                "inputs:curvePoints": [
+                    [-1, 1, 0], [0, 2, 0], [1, 1, 0]
+                ],
+                "inputs:tubePointStarts": [0, 6],
+                "inputs:cols": [2],
+                "inputs:up":  [[0, 0, 1]],
+                "inputs:out": [[0, 1, 0]],
+                "inputs:width": [2.0],
+                "outputs:points": [
+                    [-1.0, 2.0, 0.0],
+                    [-1.0, 0.0, 0.0],
+                    [ 0.0, 3.0, 0.0],
+                    [ 0.0, 1.0, 0.0],
+                    [ 1.0, 2.0, 0.0],
+                    [ 1.0, 0.0, 0.0]
+                ]
+            },
+            {
+                "$description": "Multiple curve list",
+                "inputs:curveVertexStarts": [0, 3],
+                "inputs:curveVertexCounts": [3, 3],
+                "inputs:curvePoints": [
+                    [-1, 1, 0], [0, 2, 0], [1, 1, 0],
+                    [0, 1, -1], [0, 2, 0], [0, 1, 1]
+                ],
+                "inputs:tubePointStarts": [0, 6, 12],
+                "inputs:cols": [2, 2],
+                "inputs:up":  [[0, 0, 1]],
+                "inputs:out": [[0, 1, 0]],
+                "inputs:width": [2.0],
+                "outputs:points": [
+                    [-1.0, 2.0, 0.0],
+                    [-1.0, 0.0, 0.0],
+                    [ 0.0, 3.0, 0.0],
+                    [ 0.0, 1.0, 0.0],
+                    [ 1.0, 2.0, 0.0],
+                    [ 1.0, 0.0, 0.0],
+                    [ 0.0, 2.0, -1.0],
+                    [ 0.0, 0.0, -1.0],
+                    [ 0.0, 3.0, 0.0],
+                    [ 0.0, 1.0, 0.0],
+                    [ 0.0, 2.0, 1.0],
+                    [ 0.0, 0.0, 1.0]
+                ]
+            }
+        ]
+    }
+}

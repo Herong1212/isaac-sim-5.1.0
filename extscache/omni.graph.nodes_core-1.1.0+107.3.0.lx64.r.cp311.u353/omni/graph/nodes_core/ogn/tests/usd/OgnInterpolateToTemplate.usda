@@ -1,0 +1,45 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnInterpolateTo.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_InterpolateTo" (
+        docs="""Computes the value "Result" after moving "Delta Seconds" forward in time at a given "Speed" from the "Current" value in the direction of a "Target" value. The interpolation provides an eased approach to the "Target", with options to adjust the "Speed" and "Exponent" to tweak the curve. The formula is: result = current + (target - current) * (1 - clamp(0, speed * deltaSeconds, 1))^exp. For quaternions, the node performs a spherical linear interpolation (SLERP) with alpha = (1 - clamp(0, speed * deltaSeconds, 1))^exp Vectors and arrays are interpolated component-wise, and interpolation can be applied to decimal types."""
+    )
+    {
+        token node:type = "omni.graph.nodes.InterpolateTo"
+        int node:typeVersion = 2
+
+        # 5 attributes
+        custom token inputs:current (
+            docs="""The initial value at which the dependent variable (i.e. the variable that's being interpolated
+            over) begins its current interpolation step."""
+        )
+        custom double inputs:deltaSeconds = 0.0 (
+            docs="""The time step for the interpolation (in seconds)."""
+        )
+        custom float inputs:exponent = 2.0 (
+            docs="""The blend exponent, which is the degree of the ease curve
+            (1 = linear, 2 = quadratic, 3 = cubic, etc)."""
+        )
+        custom double inputs:speed = 1.0 (
+            docs="""The peak speed of approach (in units per second)."""
+        )
+        custom token inputs:target (
+            docs="""The target value that the dependent variable will eventually reach (given enough time)."""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""The value of the dependent variable being interpolated after a single time-step."""
+        )
+    }
+}

@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.sensors.net-8c0f45588f05e593.zip"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.211951.6f5607ae.gl"
+        date = 1757755258
+        buildNumber = "107.3.2+1073.211951.6f5607ae.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

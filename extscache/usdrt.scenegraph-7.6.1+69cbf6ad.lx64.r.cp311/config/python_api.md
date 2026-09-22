@@ -1,0 +1,6286 @@
+# Public API for module usdrt.helpers:
+
+## Classes
+
+- class FabricId
+  - [property] def id(self) -> int
+
+- class PathC
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - [property] def path(self) -> int
+
+- class StageReaderWriterId
+  - [property] def id(self) -> int
+
+- class UsdStageId
+  - def __init__(self, arg0: int)
+  - [property] def id(self) -> int
+
+## Other
+
+- omni.core: public module
+
+# Public API for module usdrt.Gf:
+
+## Classes
+
+- class BBox3d
+  - static def Combine(b1: BBox3d, b2: BBox3d) -> BBox3d
+  - def ComputeAlignedBox(self) -> Range3d
+  - def ComputeAlignedRange(self) -> Range3d
+  - def ComputeCentroid(self) -> Vec3d
+  - def GetBox(self) -> Range3d
+  - def GetInverseMatrix(self) -> Matrix4d
+  - def GetMatrix(self) -> Matrix4d
+  - def GetRange(self) -> Range3d
+  - def GetVolume(self) -> float
+  - def HasZeroAreaPrimitives(self) -> bool
+  - def Set(self, range: Range3d, mat: Matrix4d) -> BBox3d
+  - def SetHasZeroAreaPrimitives(self, hasThem: bool)
+  - def SetMatrix(self, mat: Matrix4d) -> BBox3d
+  - def SetRange(self, range: Range3d) -> BBox3d
+  - def Transform(self, transform: Matrix4d) -> BBox3d
+  - def __init__(self)
+  - def __init__(self, arg0: BBox3d)
+  - def __init__(self, arg0: Range3d)
+  - def __init__(self, arg0: Range3d, arg1: Matrix4d)
+  - [property] def box(self) -> Range3d
+  - [box.setter] def box(self, arg1: Range3d)
+  - [property] def hasZeroAreaPrimitives(self) -> bool
+  - [hasZeroAreaPrimitives.setter] def hasZeroAreaPrimitives(self, arg1: bool)
+  - [property] def matrix(self) -> Matrix4d
+  - [matrix.setter] def matrix(self, arg1: Matrix4d)
+
+- class Frustum
+  - class ProjectionType
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - Orthographic: usdrt.Gf._Gf.Frustum.ProjectionType
+    - Perspective: usdrt.Gf._Gf.Frustum.ProjectionType
+  - def ComputeAspectRatio(self) -> float
+  - def ComputeCorners(self) -> typing.List[Vec3d]
+  - def ComputeCornersAtDistance(self, distance: float) -> typing.List[Vec3d]
+  - def ComputeLookAtPoint(self) -> Vec3d
+  - def ComputeNarrowedFrustum(self, point: Vec2d, halfSize: Vec2d) -> Frustum
+  - def ComputeNarrowedFrustum(self, worldPoint: Vec3d, halfSize: Vec2d) -> Frustum
+  - def ComputePickRay(self, windowPos: Vec2d) -> Ray
+  - def ComputePickRay(self, worldSpacePos: Vec3d) -> Ray
+  - def ComputeProjectionMatrix(self) -> Matrix4d
+  - def ComputeUpVector(self) -> Vec3d
+  - def ComputeViewDirection(self) -> Vec3d
+  - def ComputeViewFrame(self) -> tuple
+  - def ComputeViewInverse(self) -> Matrix4d
+  - def ComputeViewMatrix(self) -> Matrix4d
+  - def FitToSphere(self, center: Vec3d, radius: float, slack: float = 0.0)
+  - def GetFOV(self, isFovVertical: bool = False) -> float
+  - def GetNearFar(self) -> Range1d
+  - def GetOrthographic(self) -> tuple
+  - def GetPerspective(self, isFovVertical: bool = True) -> object
+  - def GetPosition(self) -> Vec3d
+  - static def GetProjectionType(*args, **kwargs) -> typing.Any
+  - static def GetReferencePlaneDepth() -> float
+  - def GetRotation(self) -> Rotation
+  - def GetViewDistance(self) -> float
+  - def GetWindow(self) -> Range2d
+  - static def Intersects(*args, **kwargs) -> typing.Any
+  - def Intersects(self, point: Vec3d) -> bool
+  - def Intersects(self, p0: Vec3d, p1: Vec3d) -> bool
+  - def Intersects(self, p0: Vec3d, p1: Vec3d, p2: Vec3d) -> bool
+  - static def IntersectsViewVolume(*args, **kwargs) -> typing.Any
+  - def SetNearFar(self, nearFar: Range1d)
+  - def SetOrthographic(self, left: float, right: float, bottom: float, top: float, nearPlane: float, farPlane: float)
+  - def SetPerspective(self, fovHeight: float, aspectRatio: float, nearDist: float, farDist: float)
+  - def SetPerspective(self, fov: float, isFovVertical: bool, aspectRatio: float, nearDist: float, farDist: float)
+  - def SetPosition(self, position: Vec3d)
+  - def SetPositionAndRotationFromMatrix(self, camToWorldXf: Matrix4d)
+  - static def SetProjectionType(*args, **kwargs) -> typing.Any
+  - def SetRotation(self, rotation: Rotation)
+  - def SetViewDistance(self, viewDistance: float)
+  - def SetWindow(self, window: Range2d)
+  - def Transform(self, matrix: Matrix4d) -> Frustum
+  - def __init__(self)
+  - def __init__(self, arg0: Frustum)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - [property] def nearFar(self) -> Range1d
+  - [nearFar.setter] def nearFar(self, arg1: Range1d)
+  - [property] def position(self) -> Vec3d
+  - [position.setter] def position(self, arg1: Vec3d)
+  - [property] def projectionType(self) -> typing.Any
+  - [projectionType.setter] def projectionType(*args, **kwargs)
+  - [property] def rotation(self) -> Rotation
+  - [rotation.setter] def rotation(self, arg1: Rotation)
+  - [property] def viewDistance(self) -> float
+  - [viewDistance.setter] def viewDistance(self, arg1: float)
+  - [property] def window(self) -> Range2d
+  - [window.setter] def window(self, arg1: Range2d)
+  - Orthographic: usdrt.Gf._Gf.Frustum.ProjectionType
+  - Perspective: usdrt.Gf._Gf.Frustum.ProjectionType
+
+- class Line
+  - def FindClosestPoint(self, point: Vec3d) -> tuple
+  - def GetDirection(self) -> Vec3d
+  - def GetPoint(self, t: float) -> Vec3d
+  - def Set(self, p0: Vec3d, dir: Vec3d) -> Line
+  - def __init__(self)
+  - def __init__(self, p0: Vec3d, dir: Vec3d)
+  - [property] def direction(self) -> Vec3d
+  - [direction.setter] def direction(self, arg1: Vec3d)
+
+- class LineSeg
+  - def FindClosestPoint(self, point: Vec3d) -> tuple
+  - def GetDirection(self) -> Vec3d
+  - def GetLength(self) -> float
+  - def GetPoint(self, t: float) -> Vec3d
+  - def __init__(self)
+  - def __init__(self, p0: Vec3d, p1: Vec3d)
+  - [property] def direction(self) -> Vec3d
+  - [property] def length(self) -> float
+
+- class Matrix2d
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec2d
+  - def GetDeterminant(self) -> float
+  - def GetInverse(self) -> Matrix2d
+  - def GetRow(self, arg0: int) -> Vec2d
+  - def GetTranspose(self) -> Matrix2d
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float) -> Matrix2d
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec2d)
+  - def SetDiagonal(self, arg0: float) -> Matrix2d
+  - def SetDiagonal(self, arg0: Vec2d) -> Matrix2d
+  - def SetIdentity(self) -> Matrix2d
+  - def SetRow(self, arg0: int, arg1: Vec2d)
+  - def SetZero(self) -> Matrix2d
+  - def __init__(self, arg0: Matrix2d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Matrix2f
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec2f
+  - def GetDeterminant(self) -> float
+  - def GetInverse(self) -> Matrix2f
+  - def GetRow(self, arg0: int) -> Vec2f
+  - def GetTranspose(self) -> Matrix2f
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float) -> Matrix2f
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec2f)
+  - def SetDiagonal(self, arg0: float) -> Matrix2f
+  - def SetDiagonal(self, arg0: Vec2f) -> Matrix2f
+  - def SetIdentity(self) -> Matrix2f
+  - def SetRow(self, arg0: int, arg1: Vec2f)
+  - def SetZero(self) -> Matrix2f
+  - def __init__(self, arg0: Matrix2d)
+  - def __init__(self, arg0: Matrix2f)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Matrix3d
+  - def DecomposeRotation(self, axis0: Vec3d, axis1: Vec3d, axis2: Vec3d) -> Vec3d
+  - static def ExtractRotation(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationQuaternion(*args, **kwargs) -> typing.Any
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec3d
+  - def GetDeterminant(self) -> float
+  - def GetHandedness(self) -> int
+  - def GetInverse(self) -> Matrix3d
+  - def GetOrthonormalized(self) -> Matrix3d
+  - def GetRow(self, arg0: int) -> Vec3d
+  - def GetTranspose(self) -> Matrix3d
+  - def IsLeftHanded(self) -> bool
+  - def IsRightHanded(self) -> bool
+  - def Orthonormalize(self) -> bool
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float) -> Matrix3d
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec3d)
+  - def SetDiagonal(self, arg0: float) -> Matrix3d
+  - def SetDiagonal(self, arg0: Vec3d) -> Matrix3d
+  - static def SetGfRotation(*args, **kwargs) -> typing.Any
+  - def SetIdentity(self) -> Matrix3d
+  - static def SetRotate(*args, **kwargs) -> typing.Any
+  - def SetRow(self, arg0: int, arg1: Vec3d)
+  - def SetScale(self, arg0: float) -> Matrix3d
+  - def SetScale(self, arg0: Vec3d) -> Matrix3d
+  - def SetZero(self) -> Matrix3d
+  - def __init__(self, arg0: Matrix3d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float)
+  - def __init__(self, arg0: Vec3d)
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Matrix3f
+  - def DecomposeRotation(self, axis0: Vec3f, axis1: Vec3f, axis2: Vec3f) -> Vec3f
+  - static def ExtractRotation(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationQuaternion(*args, **kwargs) -> typing.Any
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec3f
+  - def GetDeterminant(self) -> float
+  - def GetHandedness(self) -> int
+  - def GetInverse(self) -> Matrix3f
+  - def GetOrthonormalized(self) -> Matrix3f
+  - def GetRow(self, arg0: int) -> Vec3f
+  - def GetTranspose(self) -> Matrix3f
+  - def IsLeftHanded(self) -> bool
+  - def IsRightHanded(self) -> bool
+  - def Orthonormalize(self) -> bool
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float) -> Matrix3f
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec3f)
+  - def SetDiagonal(self, arg0: float) -> Matrix3f
+  - def SetDiagonal(self, arg0: Vec3f) -> Matrix3f
+  - static def SetGfRotation(*args, **kwargs) -> typing.Any
+  - def SetIdentity(self) -> Matrix3f
+  - static def SetRotate(*args, **kwargs) -> typing.Any
+  - def SetRow(self, arg0: int, arg1: Vec3f)
+  - def SetScale(self, arg0: float) -> Matrix3f
+  - def SetScale(self, arg0: Vec3f) -> Matrix3f
+  - def SetZero(self) -> Matrix3f
+  - def __init__(self, arg0: Matrix3d)
+  - def __init__(self, arg0: Matrix3f)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float)
+  - def __init__(self, arg0: Vec3f)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Matrix4d
+  - def DecomposeRotation(self, axis0: Vec3d, axis1: Vec3d, axis2: Vec3d) -> Vec3d
+  - static def ExtractRotation(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationMatrix(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationQuat(*args, **kwargs) -> typing.Any
+  - def ExtractTranslation(self) -> Vec3d
+  - def Factor(self) -> tuple
+  - def FactorWithEpsilon(self, arg0: float) -> tuple
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec4d
+  - def GetDeterminant(self) -> float
+  - def GetDeterminant3(self) -> float
+  - def GetHandedness(self) -> int
+  - def GetInverse(self) -> Matrix4d
+  - def GetOrthonormalized(self) -> Matrix4d
+  - def GetRow(self, arg0: int) -> Vec4d
+  - def GetRow3(self, arg0: int) -> Vec3d
+  - def GetTranspose(self) -> Matrix4d
+  - def IsLeftHanded(self) -> bool
+  - def IsRightHanded(self) -> bool
+  - def Orthonormalize(self) -> bool
+  - def RemoveScaleShear(self) -> Matrix4d
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float, arg12: float, arg13: float, arg14: float, arg15: float) -> Matrix4d
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec4d)
+  - def SetDiagonal(self, arg0: float) -> Matrix4d
+  - def SetDiagonal(self, arg0: Vec4d) -> Matrix4d
+  - def SetIdentity(self) -> Matrix4d
+  - def SetLookAt(self, arg0: Vec3d, arg1: Vec3d, arg2: Vec3d) -> Matrix4d
+  - static def SetLookAt(*args, **kwargs) -> typing.Any
+  - static def SetRotate(*args, **kwargs) -> typing.Any
+  - static def SetRotateOnly(*args, **kwargs) -> typing.Any
+  - def SetRow(self, arg0: int, arg1: Vec4d)
+  - def SetRow3(self, arg0: int, arg1: Vec3d)
+  - def SetScale(self, arg0: float) -> Matrix4d
+  - def SetScale(self, arg0: Vec3d) -> Matrix4d
+  - static def SetTransform(*args, **kwargs) -> typing.Any
+  - def SetTranslate(self, arg0: Vec3d) -> Matrix4d
+  - def SetTranslateOnly(self, arg0: Vec3d) -> Matrix4d
+  - def SetZero(self) -> Matrix4d
+  - def Transform(self, arg0: Vec3f) -> Vec3f
+  - def Transform(self, arg0: Vec3d) -> Vec3d
+  - def TransformAffine(self, arg0: Vec3f) -> Vec3f
+  - def TransformAffine(self, arg0: Vec3d) -> Vec3d
+  - def TransformDir(self, arg0: Vec3f) -> Vec3f
+  - def TransformDir(self, arg0: Vec3d) -> Vec3d
+  - def __init__(self, arg0: Matrix4d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float, arg12: float, arg13: float, arg14: float, arg15: float)
+  - def __init__(self, arg0: Vec4d)
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Matrix4f
+  - def DecomposeRotation(self, axis0: Vec3f, axis1: Vec3f, axis2: Vec3f) -> Vec3f
+  - static def ExtractRotation(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationMatrix(*args, **kwargs) -> typing.Any
+  - static def ExtractRotationQuat(*args, **kwargs) -> typing.Any
+  - def ExtractTranslation(self) -> Vec3f
+  - def Factor(self) -> tuple
+  - def FactorWithEpsilon(self, arg0: float) -> tuple
+  - def GetArrayItem(self, arg0: int) -> float
+  - def GetColumn(self, arg0: int) -> Vec4f
+  - def GetDeterminant(self) -> float
+  - def GetDeterminant3(self) -> float
+  - def GetHandedness(self) -> int
+  - def GetInverse(self) -> Matrix4f
+  - def GetOrthonormalized(self) -> Matrix4f
+  - def GetRow(self, arg0: int) -> Vec4f
+  - def GetRow3(self, arg0: int) -> Vec3f
+  - def GetTranspose(self) -> Matrix4f
+  - def IsLeftHanded(self) -> bool
+  - def IsRightHanded(self) -> bool
+  - def Orthonormalize(self) -> bool
+  - def RemoveScaleShear(self) -> Matrix4f
+  - def Set(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float, arg12: float, arg13: float, arg14: float, arg15: float) -> Matrix4f
+  - def SetArrayItem(self, arg0: int, arg1: float)
+  - def SetColumn(self, arg0: int, arg1: Vec4f)
+  - def SetDiagonal(self, arg0: float) -> Matrix4f
+  - def SetDiagonal(self, arg0: Vec4f) -> Matrix4f
+  - def SetIdentity(self) -> Matrix4f
+  - def SetLookAt(self, arg0: Vec3f, arg1: Vec3f, arg2: Vec3f) -> Matrix4f
+  - static def SetLookAt(*args, **kwargs) -> typing.Any
+  - static def SetRotate(*args, **kwargs) -> typing.Any
+  - static def SetRotateOnly(*args, **kwargs) -> typing.Any
+  - def SetRow(self, arg0: int, arg1: Vec4f)
+  - def SetRow3(self, arg0: int, arg1: Vec3f)
+  - def SetScale(self, arg0: float) -> Matrix4f
+  - def SetScale(self, arg0: Vec3f) -> Matrix4f
+  - static def SetTransform(*args, **kwargs) -> typing.Any
+  - def SetTranslate(self, arg0: Vec3f) -> Matrix4f
+  - def SetTranslateOnly(self, arg0: Vec3f) -> Matrix4f
+  - def SetZero(self) -> Matrix4f
+  - def Transform(self, arg0: Vec3f) -> Vec3f
+  - def Transform(self, arg0: Vec3d) -> Vec3d
+  - def TransformAffine(self, arg0: Vec3f) -> Vec3f
+  - def TransformAffine(self, arg0: Vec3d) -> Vec3d
+  - def TransformDir(self, arg0: Vec3f) -> Vec3f
+  - def TransformDir(self, arg0: Vec3d) -> Vec3d
+  - def __init__(self, arg0: Matrix4d)
+  - def __init__(self, arg0: Matrix4f)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float, arg6: float, arg7: float, arg8: float, arg9: float, arg10: float, arg11: float, arg12: float, arg13: float, arg14: float, arg15: float)
+  - def __init__(self, arg0: Vec4f)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: Tuple
+
+- class Plane
+  - def GetDistance(self, p: Vec3d) -> float
+  - def GetDistanceFromOrigin(self) -> float
+  - def GetEquation(self) -> Vec4d
+  - def GetNormal(self) -> Vec3d
+  - def IntersectsPositiveHalfSpace(self, box: Range3d) -> bool
+  - def IntersectsPositiveHalfSpace(self, pt: Vec3d) -> bool
+  - def Project(self, p: Vec3d) -> Vec3d
+  - def Reorient(self, p: Vec3d) -> Plane
+  - def Set(self, normal: Vec3d, distanceToOrigin: float) -> Plane
+  - def Set(self, normal: Vec3d, point: Vec3d) -> Plane
+  - def Set(self, p0: Vec3d, p1: Vec3d, p2: Vec3d) -> Plane
+  - def Set(self, eqn: Vec4d) -> Plane
+  - def Transform(self, matrix: Matrix4d) -> Plane
+  - def __init__(self)
+  - def __init__(self, normal: Vec3d, distanceToOrigin: float)
+  - def __init__(self, normal: Vec3d, distanceToOrigin: int)
+  - def __init__(self, normal: Vec3d, point: Vec3d)
+  - def __init__(self, p0: Vec3d, p1: Vec3d, p2: Vec3d)
+  - def __init__(self, eqn: Vec4d)
+  - [property] def distanceFromOrigin(self) -> float
+  - [property] def normal(self) -> Vec3d
+
+- class Quatd
+  - def Dot(self, arg0: Quatd) -> float
+  - def GetConjugate(self) -> Quatd
+  - static def GetIdentity() -> Quatd
+  - def GetImaginary(self) -> Vec3d
+  - def GetInverse(self) -> Quatd
+  - def GetLength(self) -> float
+  - def GetLengthSq(self) -> float
+  - def GetNormalized(self) -> Quatd
+  - def GetReal(self) -> float
+  - def Normalize(self) -> float
+  - def SetImaginary(self, imaginary: Vec3d)
+  - def SetImaginary(self, i: float, j: float, k: float)
+  - def SetReal(self, real: float)
+  - def Transform(self, point: Vec3d) -> Vec3d
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self, arg0: float, arg1: Vec3d)
+  - def __init__(self, arg0: float, arg1: typing.Tuple[float, float, float])
+  - def __init__(self, arg0: Quatd)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: buffer)
+  - [property] def imaginary(self) -> Vec3d
+  - [imaginary.setter] def imaginary(self, arg1: Vec3d)
+  - [property] def real(self) -> float
+  - [real.setter] def real(self, arg1: float)
+
+- class Quatf
+  - def Dot(self, arg0: Quatf) -> float
+  - def GetConjugate(self) -> Quatf
+  - static def GetIdentity() -> Quatf
+  - def GetImaginary(self) -> Vec3f
+  - def GetInverse(self) -> Quatf
+  - def GetLength(self) -> float
+  - def GetLengthSq(self) -> float
+  - def GetNormalized(self) -> Quatf
+  - def GetReal(self) -> float
+  - def Normalize(self) -> float
+  - def SetImaginary(self, imaginary: Vec3f)
+  - def SetImaginary(self, i: float, j: float, k: float)
+  - def SetReal(self, real: float)
+  - def Transform(self, point: Vec3f) -> Vec3f
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self, arg0: float, arg1: Vec3f)
+  - def __init__(self, arg0: float, arg1: typing.Tuple[float, float, float])
+  - def __init__(self, arg0: Quatd)
+  - def __init__(self, arg0: Quatf)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: buffer)
+  - [property] def imaginary(self) -> Vec3f
+  - [imaginary.setter] def imaginary(self, arg1: Vec3f)
+  - [property] def real(self) -> float
+  - [real.setter] def real(self, arg1: float)
+
+- class Quath
+  - def Dot(self, arg0: Quath) -> GfHalf
+  - def GetConjugate(self) -> Quath
+  - static def GetIdentity() -> Quath
+  - def GetImaginary(self) -> Vec3h
+  - def GetInverse(self) -> Quath
+  - def GetLength(self) -> float
+  - def GetLengthSq(self) -> GfHalf
+  - def GetNormalized(self) -> Quath
+  - def GetReal(self) -> GfHalf
+  - def Normalize(self) -> float
+  - def SetImaginary(self, imaginary: Vec3h)
+  - def SetImaginary(self, i: GfHalf, j: GfHalf, k: GfHalf)
+  - def SetReal(self, real: GfHalf)
+  - def Transform(self, point: Vec3h) -> Vec3h
+  - def __init__(self)
+  - def __init__(self, arg0: GfHalf)
+  - def __init__(self, arg0: GfHalf, arg1: GfHalf, arg2: GfHalf, arg3: GfHalf)
+  - def __init__(self, arg0: GfHalf, arg1: Vec3h)
+  - def __init__(self, arg0: GfHalf, arg1: typing.Tuple[GfHalf, GfHalf, GfHalf])
+  - def __init__(self, arg0: Quatd)
+  - def __init__(self, arg0: Quatf)
+  - def __init__(self, arg0: Quath)
+  - def __init__(self, arg0: buffer)
+  - [property] def imaginary(self) -> Vec3h
+  - [imaginary.setter] def imaginary(self, arg1: Vec3h)
+  - [property] def real(self) -> GfHalf
+  - [real.setter] def real(self, arg1: GfHalf)
+
+- class Range1d
+  - def Contains(self, arg0: float) -> bool
+  - def Contains(self, arg0: Range1d) -> bool
+  - def GetDistanceSquared(self, arg0: float) -> float
+  - static def GetIntersection(arg0: Range1d, arg1: Range1d) -> Range1d
+  - def GetMax(self) -> float
+  - def GetMidpoint(self) -> float
+  - def GetMin(self) -> float
+  - def GetSize(self) -> float
+  - static def GetUnion(arg0: Range1d, arg1: Range1d) -> Range1d
+  - def IntersectWith(self, arg0: Range1d) -> Range1d
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: float)
+  - def SetMin(self, arg0: float)
+  - def UnionWith(self, arg0: float) -> Range1d
+  - def UnionWith(self, arg0: Range1d) -> Range1d
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range1d)
+  - def __init__(self, arg0: float, arg1: float)
+  - [property] def max(self) -> float
+  - [max.setter] def max(self, arg1: float)
+  - [property] def min(self) -> float
+  - [min.setter] def min(self, arg1: float)
+
+- class Range1f
+  - def Contains(self, arg0: float) -> bool
+  - def Contains(self, arg0: Range1f) -> bool
+  - def GetDistanceSquared(self, arg0: float) -> float
+  - static def GetIntersection(arg0: Range1f, arg1: Range1f) -> Range1f
+  - def GetMax(self) -> float
+  - def GetMidpoint(self) -> float
+  - def GetMin(self) -> float
+  - def GetSize(self) -> float
+  - static def GetUnion(arg0: Range1f, arg1: Range1f) -> Range1f
+  - def IntersectWith(self, arg0: Range1f) -> Range1f
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: float)
+  - def SetMin(self, arg0: float)
+  - def UnionWith(self, arg0: float) -> Range1f
+  - def UnionWith(self, arg0: Range1f) -> Range1f
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range1f)
+  - def __init__(self, arg0: float, arg1: float)
+  - [property] def max(self) -> float
+  - [max.setter] def max(self, arg1: float)
+  - [property] def min(self) -> float
+  - [min.setter] def min(self, arg1: float)
+
+- class Range2d
+  - def Contains(self, arg0: Vec2d) -> bool
+  - def Contains(self, arg0: Range2d) -> bool
+  - def GetCorner(self, arg0: int) -> Vec2d
+  - def GetDistanceSquared(self, arg0: Vec2d) -> float
+  - static def GetIntersection(arg0: Range2d, arg1: Range2d) -> Range2d
+  - def GetMax(self) -> Vec2d
+  - def GetMidpoint(self) -> Vec2d
+  - def GetMin(self) -> Vec2d
+  - def GetQuadrant(self, arg0: int) -> Range2d
+  - def GetSize(self) -> Vec2d
+  - static def GetUnion(arg0: Range2d, arg1: Range2d) -> Range2d
+  - def IntersectWith(self, arg0: Range2d) -> Range2d
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: Vec2d)
+  - def SetMin(self, arg0: Vec2d)
+  - def UnionWith(self, arg0: Vec2d) -> Range2d
+  - def UnionWith(self, arg0: Range2d) -> Range2d
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range2d)
+  - def __init__(self, arg0: Vec2d, arg1: Vec2d)
+  - static def unitSquare() -> Range2d
+  - [property] def max(self) -> Vec2d
+  - [max.setter] def max(self, arg1: Vec2d)
+  - [property] def min(self) -> Vec2d
+  - [min.setter] def min(self, arg1: Vec2d)
+
+- class Range2f
+  - def Contains(self, arg0: Vec2f) -> bool
+  - def Contains(self, arg0: Range2f) -> bool
+  - def GetCorner(self, arg0: int) -> Vec2f
+  - def GetDistanceSquared(self, arg0: Vec2f) -> float
+  - static def GetIntersection(arg0: Range2f, arg1: Range2f) -> Range2f
+  - def GetMax(self) -> Vec2f
+  - def GetMidpoint(self) -> Vec2f
+  - def GetMin(self) -> Vec2f
+  - def GetQuadrant(self, arg0: int) -> Range2f
+  - def GetSize(self) -> Vec2f
+  - static def GetUnion(arg0: Range2f, arg1: Range2f) -> Range2f
+  - def IntersectWith(self, arg0: Range2f) -> Range2f
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: Vec2f)
+  - def SetMin(self, arg0: Vec2f)
+  - def UnionWith(self, arg0: Vec2f) -> Range2f
+  - def UnionWith(self, arg0: Range2f) -> Range2f
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range2f)
+  - def __init__(self, arg0: Vec2f, arg1: Vec2f)
+  - static def unitSquare() -> Range2f
+  - [property] def max(self) -> Vec2f
+  - [max.setter] def max(self, arg1: Vec2f)
+  - [property] def min(self) -> Vec2f
+  - [min.setter] def min(self, arg1: Vec2f)
+
+- class Range3d
+  - def Contains(self, arg0: Vec3d) -> bool
+  - def Contains(self, arg0: Range3d) -> bool
+  - def GetCorner(self, arg0: int) -> Vec3d
+  - def GetDistanceSquared(self, arg0: Vec3d) -> float
+  - static def GetIntersection(arg0: Range3d, arg1: Range3d) -> Range3d
+  - def GetMax(self) -> Vec3d
+  - def GetMidpoint(self) -> Vec3d
+  - def GetMin(self) -> Vec3d
+  - def GetOctant(self, arg0: int) -> Range3d
+  - def GetSize(self) -> Vec3d
+  - static def GetUnion(arg0: Range3d, arg1: Range3d) -> Range3d
+  - def IntersectWith(self, arg0: Range3d) -> Range3d
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: Vec3d)
+  - def SetMin(self, arg0: Vec3d)
+  - def UnionWith(self, arg0: Vec3d) -> Range3d
+  - def UnionWith(self, arg0: Range3d) -> Range3d
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range3d)
+  - def __init__(self, arg0: Vec3d, arg1: Vec3d)
+  - static def unitCube() -> Range3d
+  - [property] def max(self) -> Vec3d
+  - [max.setter] def max(self, arg1: Vec3d)
+  - [property] def min(self) -> Vec3d
+  - [min.setter] def min(self, arg1: Vec3d)
+
+- class Range3f
+  - def Contains(self, arg0: Vec3f) -> bool
+  - def Contains(self, arg0: Range3f) -> bool
+  - def GetCorner(self, arg0: int) -> Vec3f
+  - def GetDistanceSquared(self, arg0: Vec3f) -> float
+  - static def GetIntersection(arg0: Range3f, arg1: Range3f) -> Range3f
+  - def GetMax(self) -> Vec3f
+  - def GetMidpoint(self) -> Vec3f
+  - def GetMin(self) -> Vec3f
+  - def GetOctant(self, arg0: int) -> Range3f
+  - def GetSize(self) -> Vec3f
+  - static def GetUnion(arg0: Range3f, arg1: Range3f) -> Range3f
+  - def IntersectWith(self, arg0: Range3f) -> Range3f
+  - def IsEmpty(self) -> bool
+  - def SetEmpty(self)
+  - def SetMax(self, arg0: Vec3f)
+  - def SetMin(self, arg0: Vec3f)
+  - def UnionWith(self, arg0: Vec3f) -> Range3f
+  - def UnionWith(self, arg0: Range3f) -> Range3f
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: Range3f)
+  - def __init__(self, arg0: Vec3f, arg1: Vec3f)
+  - static def unitCube() -> Range3f
+  - [property] def max(self) -> Vec3f
+  - [max.setter] def max(self, arg1: Vec3f)
+  - [property] def min(self) -> Vec3f
+  - [min.setter] def min(self, arg1: Vec3f)
+
+- class Ray
+  - def FindClosestPoint(self, point: Vec3d) -> tuple
+  - def GetPoint(self, arg0: float) -> Vec3d
+  - def Intersect(self, p0: Vec3d, p1: Vec3d, p2: Vec3d) -> tuple
+  - static def Intersect(*args, **kwargs) -> typing.Any
+  - def Intersect(self, box: Range3d) -> tuple
+  - def Intersect(self, center: Vec3d, radius: float) -> tuple
+  - def Intersect(self, origin: Vec3d, axis: Vec3d, radius: float) -> tuple
+  - def Intersect(self, origin: Vec3d, axis: Vec3d, radius: float, height: float) -> tuple
+  - def SetEnds(self, startPoint: Vec3d, endPoint: Vec3d) -> Ray
+  - def SetPointAndDirection(self, startPoint: Vec3d, direction: Vec3d) -> Ray
+  - def Transform(self, matrix: Matrix4d) -> Ray
+  - def __init__(self)
+  - def __init__(self, startPoint: Vec3d, direction: Vec3d)
+  - [property] def direction(self) -> Vec3d
+  - [direction.setter] def direction(self, arg1: Vec3d)
+  - [property] def startPoint(self) -> Vec3d
+  - [startPoint.setter] def startPoint(self, arg1: Vec3d)
+
+- class Rect2i
+  - def Contains(self, arg0: Vec2i) -> bool
+  - def GetArea(self) -> int
+  - def GetCenter(self) -> Vec2i
+  - def GetHeight(self) -> int
+  - def GetIntersection(self, arg0: Rect2i) -> Rect2i
+  - def GetMax(self) -> Vec2i
+  - def GetMaxX(self) -> int
+  - def GetMaxY(self) -> int
+  - def GetMin(self) -> Vec2i
+  - def GetMinX(self) -> int
+  - def GetMinY(self) -> int
+  - def GetNormalized(self) -> Rect2i
+  - def GetSize(self) -> Vec2i
+  - def GetUnion(self, arg0: Rect2i) -> Rect2i
+  - def GetWidth(self) -> int
+  - def Intersect(self, arg0: Rect2i) -> Rect2i
+  - def IsEmpty(self) -> bool
+  - def IsNull(self) -> bool
+  - def IsValid(self) -> bool
+  - def SetMax(self, arg0: Vec2i)
+  - def SetMaxX(self, arg0: int)
+  - def SetMaxY(self, arg0: int)
+  - def SetMin(self, arg0: Vec2i)
+  - def SetMinX(self, arg0: int)
+  - def SetMinY(self, arg0: int)
+  - def Translate(self, arg0: Vec2i)
+  - def Union(self, arg0: Rect2i) -> Rect2i
+  - def __init__(self)
+  - def __init__(self, arg0: Rect2i)
+  - def __init__(self, arg0: Vec2i, arg1: Vec2i)
+  - def __init__(self, arg0: Vec2i, arg1: int, arg2: int)
+  - [property] def area(self) -> int
+  - [property] def center(self) -> Vec2i
+  - [property] def height(self) -> int
+  - [property] def max(self) -> Vec2i
+  - [max.setter] def max(self, arg1: Vec2i)
+  - [property] def maxX(self) -> int
+  - [maxX.setter] def maxX(self, arg1: int)
+  - [property] def maxY(self) -> int
+  - [maxY.setter] def maxY(self, arg1: int)
+  - [property] def min(self) -> Vec2i
+  - [min.setter] def min(self, arg1: Vec2i)
+  - [property] def minX(self) -> int
+  - [minX.setter] def minX(self, arg1: int)
+  - [property] def minY(self) -> int
+  - [minY.setter] def minY(self, arg1: int)
+  - [property] def size(self) -> Vec2i
+  - [property] def width(self) -> int
+
+- class Rotation
+  - def Decompose(self, arg0: Vec3d, arg1: Vec3d, arg2: Vec3d) -> Vec3d
+  - static def DecomposeRotation(rot: Matrix4d, twAxis: Vec3d, fbAxis: Vec3d, lrAxis: Vec3d, handedness: float, thetaTwHint: object = None, thetaFBHint: object = None, thetaLRHint: object = None, thetaSwHint: object = None, useHint: bool = False, swShift: object = None) -> typing.Tuple[float, float, float, float]
+  - static def DecomposeRotation3(rot: Matrix4d, twAxis: Vec3d, fbAxis: Vec3d, lrAxis: Vec3d, handedness: float, thetaTwHint: float = 0.0, thetaFBHint: float = 0.0, thetaLRHint: float = 0.0, useHint: bool = False) -> typing.Tuple[float, float, float]
+  - def GetAngle(self) -> float
+  - def GetAxis(self) -> Vec3d
+  - def GetInverse(self) -> Rotation
+  - def GetQuat(self) -> Quatd
+  - static def RotateOntoProjected(arg0: Vec3d, arg1: Vec3d, arg2: Vec3d) -> Rotation
+  - def SetAxisAngle(self, axis: Vec3d, angle: float) -> Rotation
+  - def SetIdentity(self) -> Rotation
+  - def SetQuat(self, quat: Quatd) -> Rotation
+  - def SetRotateInto(self, rotateFrom: Vec3d, rotateTo: Vec3d) -> Rotation
+  - def TransformDir(self, arg0: Vec3f) -> Vec3f
+  - def TransformDir(self, arg0: Vec3d) -> Vec3d
+  - def __init__(self)
+  - def __init__(self, arg0: Vec3d, arg1: float)
+  - def __init__(self, arg0: Quatd)
+  - def __init__(self, arg0: Vec3d, arg1: Vec3d)
+  - [property] def angle(self) -> float
+  - [angle.setter] def angle(self, arg1: float)
+  - [property] def axis(self) -> Vec3d
+  - [axis.setter] def axis(self, arg1: Vec3d)
+
+- class Transform
+  - def GetMatrix(self) -> Matrix4d
+  - def GetPivotOrientation(self) -> Rotation
+  - def GetPivotPosition(self) -> Vec3d
+  - def GetRotation(self) -> Rotation
+  - def GetScale(self) -> Vec3d
+  - def GetTranslation(self) -> Vec3d
+  - def Set(self, translation: Vec3d = Gf.Vec3d(0.0, 0.0, 0.0), rotation: Rotation = Gf.Rotation(Gf.Vec3d(1.0, 0.0, 0.0), 0.0), scale: Vec3d = Gf.Vec3d(1.0, 1.0, 1.0), pivotPosition: Vec3d = Gf.Vec3d(0.0, 0.0, 0.0), pivotOrientation: Rotation = Gf.Rotation(Gf.Vec3d(1.0, 0.0, 0.0), 0.0)) -> Transform
+  - def SetIdentity(self) -> Transform
+  - def SetMatrix(self, matrix: Matrix4d) -> Transform
+  - def SetPivotOrientation(self, pivotOrient: Rotation)
+  - def SetPivotPosition(self, pivotPosition: Vec3d)
+  - def SetRotation(self, rotation: Rotation)
+  - def SetScale(self, scale: Vec3d)
+  - def SetTranslation(self, translation: Vec3d)
+  - def __init__(self)
+  - def __init__(self, translation: Vec3d = Gf.Vec3d(0.0, 0.0, 0.0), rotation: Rotation = Gf.Rotation(Gf.Vec3d(1.0, 0.0, 0.0), 0.0), scale: Vec3d = Gf.Vec3d(1.0, 1.0, 1.0), pivotPosition: Vec3d = Gf.Vec3d(0.0, 0.0, 0.0), pivotOrientation: Rotation = Gf.Rotation(Gf.Vec3d(1.0, 0.0, 0.0), 0.0))
+  - def __init__(self, arg0: Matrix4d)
+  - [property] def pivotOrientation(self) -> Rotation
+  - [pivotOrientation.setter] def pivotOrientation(self, arg1: Rotation)
+  - [property] def pivotPosition(self) -> Vec3d
+  - [pivotPosition.setter] def pivotPosition(self, arg1: Vec3d)
+  - [property] def rotation(self) -> Rotation
+  - [rotation.setter] def rotation(self, arg1: Rotation)
+  - [property] def scale(self) -> Vec3d
+  - [scale.setter] def scale(self, arg1: Vec3d)
+  - [property] def translation(self) -> Vec3d
+  - [translation.setter] def translation(self, arg1: Vec3d)
+
+- class Vec2d
+  - static def Axis(arg0: int) -> Vec2d
+  - def GetComplement(self, arg0: Vec2d) -> Vec2d
+  - def GetDot(self, arg0: Vec2d) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec2d
+  - def GetProjection(self, arg0: Vec2d) -> Vec2d
+  - def Normalize(self) -> float
+  - static def XAxis() -> Vec2d
+  - static def YAxis() -> Vec2d
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec2f)
+  - def __init__(self, arg0: Vec2d)
+  - def __init__(self, arg0: float, arg1: float)
+  - def __init__(self, arg0: typing.Tuple[float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec2f
+  - static def Axis(arg0: int) -> Vec2f
+  - def GetComplement(self, arg0: Vec2f) -> Vec2f
+  - def GetDot(self, arg0: Vec2f) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec2f
+  - def GetProjection(self, arg0: Vec2f) -> Vec2f
+  - def Normalize(self) -> float
+  - static def XAxis() -> Vec2f
+  - static def YAxis() -> Vec2f
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec2f)
+  - def __init__(self, arg0: float, arg1: float)
+  - def __init__(self, arg0: typing.Tuple[float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec2h
+  - static def Axis(arg0: int) -> Vec2h
+  - def GetComplement(self, arg0: Vec2h) -> Vec2h
+  - def GetDot(self, arg0: Vec2h) -> GfHalf
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec2h
+  - def GetProjection(self, arg0: Vec2h) -> Vec2h
+  - def Normalize(self) -> float
+  - static def XAxis() -> Vec2h
+  - static def YAxis() -> Vec2h
+  - def __init__(self, arg0: Vec2i)
+  - def __init__(self, arg0: Vec2f)
+  - def __init__(self, arg0: Vec2d)
+  - def __init__(self, arg0: Vec2h)
+  - def __init__(self, arg0: GfHalf, arg1: GfHalf)
+  - def __init__(self, arg0: typing.Tuple[GfHalf, GfHalf])
+  - def __init__(self)
+  - def __init__(self, arg0: GfHalf)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec2i
+  - static def Axis(arg0: int) -> Vec2i
+  - def GetComplement(self, arg0: Vec2i) -> Vec2i
+  - def GetDot(self, arg0: Vec2i) -> int
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec2i
+  - def GetProjection(self, arg0: Vec2i) -> Vec2i
+  - def Normalize(self) -> float
+  - static def XAxis() -> Vec2i
+  - static def YAxis() -> Vec2i
+  - def __init__(self, arg0: Vec2i)
+  - def __init__(self, arg0: Vec2f)
+  - def __init__(self, arg0: Vec2d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: int, arg1: int)
+  - def __init__(self, arg0: typing.Tuple[int, int])
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec3d
+  - static def Axis(arg0: int) -> Vec3d
+  - def BuildOrthonormalFrame(self, eps: float = 1e-10) -> tuple
+  - def GetComplement(self, arg0: Vec3d) -> Vec3d
+  - def GetCross(self, arg0: Vec3d) -> Vec3d
+  - def GetDot(self, arg0: Vec3d) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec3d
+  - def GetProjection(self, arg0: Vec3d) -> Vec3d
+  - def Normalize(self) -> float
+  - static def OrthogonalizeBasis(v1: Vec3d, v2: Vec3d, v3: Vec3d, normalize: bool = True) -> bool
+  - static def XAxis() -> Vec3d
+  - static def YAxis() -> Vec3d
+  - static def ZAxis() -> Vec3d
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec3f)
+  - def __init__(self, arg0: Vec3d)
+  - def __init__(self, arg0: float, arg1: float, arg2: float)
+  - def __init__(self, arg0: typing.Tuple[float, float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec3f
+  - static def Axis(arg0: int) -> Vec3f
+  - def BuildOrthonormalFrame(self, eps: float = 1e-10) -> tuple
+  - def GetComplement(self, arg0: Vec3f) -> Vec3f
+  - def GetCross(self, arg0: Vec3f) -> Vec3f
+  - def GetDot(self, arg0: Vec3f) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec3f
+  - def GetProjection(self, arg0: Vec3f) -> Vec3f
+  - def Normalize(self) -> float
+  - static def OrthogonalizeBasis(v1: Vec3f, v2: Vec3f, v3: Vec3f, normalize: bool = True) -> bool
+  - static def XAxis() -> Vec3f
+  - static def YAxis() -> Vec3f
+  - static def ZAxis() -> Vec3f
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec3f)
+  - def __init__(self, arg0: float, arg1: float, arg2: float)
+  - def __init__(self, arg0: typing.Tuple[float, float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec3h
+  - static def Axis(arg0: int) -> Vec3h
+  - def BuildOrthonormalFrame(self, eps: float = 1e-10) -> tuple
+  - def GetComplement(self, arg0: Vec3h) -> Vec3h
+  - def GetCross(self, arg0: Vec3h) -> Vec3h
+  - def GetDot(self, arg0: Vec3h) -> GfHalf
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec3h
+  - def GetProjection(self, arg0: Vec3h) -> Vec3h
+  - def Normalize(self) -> float
+  - static def OrthogonalizeBasis(v1: Vec3h, v2: Vec3h, v3: Vec3h, normalize: bool = True) -> bool
+  - static def XAxis() -> Vec3h
+  - static def YAxis() -> Vec3h
+  - static def ZAxis() -> Vec3h
+  - def __init__(self, arg0: Vec3i)
+  - def __init__(self, arg0: Vec3f)
+  - def __init__(self, arg0: Vec3d)
+  - def __init__(self, arg0: Vec3h)
+  - def __init__(self, arg0: GfHalf, arg1: GfHalf, arg2: GfHalf)
+  - def __init__(self, arg0: typing.Tuple[GfHalf, GfHalf, GfHalf])
+  - def __init__(self)
+  - def __init__(self, arg0: GfHalf)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec3i
+  - static def Axis(arg0: int) -> Vec3i
+  - def BuildOrthonormalFrame(self, eps: float = 1e-10) -> tuple
+  - def GetComplement(self, arg0: Vec3i) -> Vec3i
+  - def GetCross(self, arg0: Vec3i) -> Vec3i
+  - def GetDot(self, arg0: Vec3i) -> int
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec3i
+  - def GetProjection(self, arg0: Vec3i) -> Vec3i
+  - def Normalize(self) -> float
+  - static def OrthogonalizeBasis(v1: Vec3i, v2: Vec3i, v3: Vec3i, normalize: bool = True) -> bool
+  - static def XAxis() -> Vec3i
+  - static def YAxis() -> Vec3i
+  - static def ZAxis() -> Vec3i
+  - def __init__(self, arg0: Vec3i)
+  - def __init__(self, arg0: Vec3f)
+  - def __init__(self, arg0: Vec3d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: int, arg1: int, arg2: int)
+  - def __init__(self, arg0: typing.Tuple[int, int, int])
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec4d
+  - static def Axis(arg0: int) -> Vec4d
+  - def GetComplement(self, arg0: Vec4d) -> Vec4d
+  - def GetDot(self, arg0: Vec4d) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec4d
+  - def GetProjection(self, arg0: Vec4d) -> Vec4d
+  - def Normalize(self) -> float
+  - static def WAxis() -> Vec4d
+  - static def XAxis() -> Vec4d
+  - static def YAxis() -> Vec4d
+  - static def ZAxis() -> Vec4d
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec4f)
+  - def __init__(self, arg0: Vec4d)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self, arg0: typing.Tuple[float, float, float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec4f
+  - static def Axis(arg0: int) -> Vec4f
+  - def GetComplement(self, arg0: Vec4f) -> Vec4f
+  - def GetDot(self, arg0: Vec4f) -> float
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec4f
+  - def GetProjection(self, arg0: Vec4f) -> Vec4f
+  - def Normalize(self) -> float
+  - static def WAxis() -> Vec4f
+  - static def XAxis() -> Vec4f
+  - static def YAxis() -> Vec4f
+  - static def ZAxis() -> Vec4f
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: Vec4f)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float)
+  - def __init__(self, arg0: typing.Tuple[float, float, float, float])
+  - def __init__(self)
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec4h
+  - static def Axis(arg0: int) -> Vec4h
+  - def GetComplement(self, arg0: Vec4h) -> Vec4h
+  - def GetDot(self, arg0: Vec4h) -> GfHalf
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec4h
+  - def GetProjection(self, arg0: Vec4h) -> Vec4h
+  - def Normalize(self) -> float
+  - static def WAxis() -> Vec4h
+  - static def XAxis() -> Vec4h
+  - static def YAxis() -> Vec4h
+  - static def ZAxis() -> Vec4h
+  - def __init__(self, arg0: Vec4i)
+  - def __init__(self, arg0: Vec4f)
+  - def __init__(self, arg0: Vec4d)
+  - def __init__(self, arg0: Vec4h)
+  - def __init__(self, arg0: GfHalf, arg1: GfHalf, arg2: GfHalf, arg3: GfHalf)
+  - def __init__(self, arg0: typing.Tuple[GfHalf, GfHalf, GfHalf, GfHalf])
+  - def __init__(self)
+  - def __init__(self, arg0: GfHalf)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+- class Vec4i
+  - static def Axis(arg0: int) -> Vec4i
+  - def GetComplement(self, arg0: Vec4i) -> Vec4i
+  - def GetDot(self, arg0: Vec4i) -> int
+  - def GetLength(self) -> float
+  - def GetNormalized(self) -> Vec4i
+  - def GetProjection(self, arg0: Vec4i) -> Vec4i
+  - def Normalize(self) -> float
+  - static def WAxis() -> Vec4i
+  - static def XAxis() -> Vec4i
+  - static def YAxis() -> Vec4i
+  - static def ZAxis() -> Vec4i
+  - def __init__(self, arg0: Vec4i)
+  - def __init__(self, arg0: Vec4f)
+  - def __init__(self, arg0: Vec4d)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: int, arg1: int, arg2: int, arg3: int)
+  - def __init__(self, arg0: typing.Tuple[int, int, int, int])
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: buffer)
+  - dimension: int
+
+## Functions
+
+- def Abs(arg0: float) -> float
+- def Absf(arg0: float) -> float
+- def Clamp(arg0: float, arg1: float, arg2: float) -> float
+- def Clampf(arg0: float, arg1: float, arg2: float) -> float
+- def CompDiv(arg0: Vec4h, arg1: Vec4h) -> Vec4h
+- def CompMult(arg0: Vec4h, arg1: Vec4h) -> Vec4h
+- def Cross(arg0: Vec3h, arg1: Vec3h) -> Vec3h
+- def DegreesToRadians(arg0: float) -> float
+- def Dot(arg0: Quath, arg1: Quath) -> GfHalf
+- def FindClosestPoints(*args, **kwargs) -> typing.Any
+- def FitPlaneToPoints(points: typing.List[Vec3d]) -> object
+- def GetComplement(arg0: Vec4h, arg1: Vec4h) -> Vec4h
+- def GetLength(arg0: Vec4h) -> float
+- def GetNormalized(arg0: Vec4h) -> Vec4h
+- def GetProjection(arg0: Vec4h, arg1: Vec4h) -> Vec4h
+- def IsClose(arg0: Quath, arg1: Quath, arg2: float) -> bool
+- def Lerp(alpha: float, a: Vec4h, b: Vec4h) -> Vec4h
+- def Lerpf(alpha: float, a: float, b: float) -> float
+- def Max(arg0: int, arg1: int, arg2: int, arg3: int, arg4: int) -> int
+- def Min(arg0: int, arg1: int, arg2: int, arg3: int, arg4: int) -> int
+- def Normalize(arg0: Vec4h) -> float
+- def RadiansToDegrees(arg0: float) -> float
+- def Slerp(arg0: float, arg1: Quath, arg2: Quath) -> Quath
+- def Sqr(arg0: float) -> float
+- def Sqrt(arg0: float) -> float
+- def convertToUsdrt(obj)
+- def convertToPxr(obj)
+
+## Other
+
+- pxr: unknown module
+
+# Public API for module usdrt.Vt:
+
+## Classes
+
+- class AssetArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint64])
+  - def __init__(self, arg0: typing.List[usdrt::SdfAssetPath])
+
+- class BoolArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[bool])
+  - def __init__(self, arg0: typing.List[bool])
+
+- class CharArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int8])
+  - def __init__(self, arg0: typing.List[str])
+
+- class DoubleArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[float])
+
+- class FloatArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[float])
+
+- class HalfArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float16])
+  - def __init__(self, arg0: typing.List[GfHalf])
+
+- class Int64Array
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int64])
+  - def __init__(self, arg0: typing.List[int])
+
+- class IntArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int32])
+  - def __init__(self, arg0: typing.List[int])
+
+- class Matrix2dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix2d])
+
+- class Matrix2fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix2f])
+
+- class Matrix3dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix3d])
+
+- class Matrix3fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix3f])
+
+- class Matrix4dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix4d])
+
+- class Matrix4fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Matrix4f])
+
+- class QuatdArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Quatd])
+
+- class QuatfArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Quatf])
+
+- class QuathArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float16])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Quath])
+
+- class ShortArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int16])
+  - def __init__(self, arg0: typing.List[int])
+
+- class StringArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int8])
+  - def __init__(self, arg0: typing.List[str])
+
+- class TimeCodeArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[usdrt::UsdTimeCode])
+  - def __init__(self, arg0: typing.List[usdrt::UsdTimeCode])
+
+- class TokenArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint64])
+  - def __init__(self, arg0: typing.List[TfToken])
+
+- class UCharArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint8])
+  - def __init__(self, arg0: typing.List[int])
+
+- class UInt64Array
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint64])
+  - def __init__(self, arg0: typing.List[int])
+
+- class UIntArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint32])
+  - def __init__(self, arg0: typing.List[int])
+
+- class UShortArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.uint16])
+  - def __init__(self, arg0: typing.List[int])
+
+- class Vec2dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec2d])
+
+- class Vec2fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec2f])
+
+- class Vec2hArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float16])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec2h])
+
+- class Vec2iArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec2i])
+
+- class Vec3dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec3d])
+
+- class Vec3fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec3f])
+
+- class Vec3hArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float16])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec3h])
+
+- class Vec3iArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec3i])
+
+- class Vec4dArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float64])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec4d])
+
+- class Vec4fArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec4f])
+
+- class Vec4hArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.float16])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec4h])
+
+- class Vec4iArray
+  - def DetachFromSource(self)
+  - def HasFabricGpuData(self) -> bool
+  - def IsFabricData(self) -> bool
+  - def IsOwnData(self) -> bool
+  - def IsPythonData(self) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: int)
+  - def __init__(self, arg0: object)
+  - def __init__(self, arg0: numpy.ndarray[numpy.int32])
+  - def __init__(self, arg0: typing.List[usdrt.Gf._Gf.Vec4i])
+
+## Other
+
+- omni.core: public module
+
+# Public API for module usdrt.Sdf:
+
+## Classes
+
+- class AncestorsRange
+  - def GetPath(self) -> Path
+  - def __init__(self, arg0: Path)
+
+- class AssetPath
+  - def __init__(self)
+  - def __init__(self, path: str)
+  - def __init__(self, path: str, resolvedPath: str)
+  - [property] def path(self) -> str
+  - [property] def resolvedPath(self) -> str
+
+- class Path
+  - def AppendChild(self, childName: TfToken) -> Path
+  - def AppendPath(self, newSuffix: Path) -> Path
+  - def AppendProperty(self, propName: TfToken) -> Path
+  - def ContainsPropertyElements(self) -> bool
+  - def GetAbsoluteRootOrPrimPath(self) -> Path
+  - static def GetAncestorsRange(*args, **kwargs) -> typing.Any
+  - def GetCommonPrefix(self, path: Path) -> Path
+  - def GetNameToken(self) -> TfToken
+  - def GetParentPath(self) -> Path
+  - def GetPrefixes(self) -> typing.List[Path]
+  - def GetPrimPath(self) -> Path
+  - def GetString(self) -> str
+  - def GetText(self) -> str
+  - def GetToken(self) -> TfToken
+  - def HasPrefix(self, prefix: Path) -> bool
+  - def IsAbsolutePath(self) -> bool
+  - def IsAbsoluteRootOrPrimPath(self) -> bool
+  - def IsAbsoluteRootPath(self) -> bool
+  - def IsEmpty(self) -> bool
+  - def IsNamespacedPropertyPath(self) -> bool
+  - def IsPrimPath(self) -> bool
+  - def IsPrimPropertyPath(self) -> bool
+  - def IsPropertyPath(self) -> bool
+  - def IsRootPrimPath(self) -> bool
+  - static def IsValidIdentifier(name: str) -> bool
+  - static def IsValidNamespacedIdentifier(name: str) -> bool
+  - static def IsValidPathString(pathString: str) -> bool
+  - static def JoinIdentifier(lhs: str, rhs: str) -> str
+  - static def JoinIdentifier(lhs: TfToken, rhs: TfToken) -> str
+  - static def JoinIdentifier(names: typing.List[TfToken]) -> str
+  - def RemoveCommonSuffix(self, otherPath: Path, stopAtRootPrim: bool = False) -> typing.Tuple[Path, Path]
+  - def ReplaceName(self, newName: TfToken) -> Path
+  - def ReplacePrefix(self, oldPrefix: Path, newPrefix: Path, fixTargetPaths: bool = True) -> Path
+  - static def StripPrefixNamespace(name: str, matchNamespace: str) -> tuple
+  - static def StripSuffixNamespace(name: str, matchNamespace: str) -> tuple
+  - static def TokenizeIdentifier(name: str) -> typing.List[str]
+  - def __init__(self, arg0: str)
+  - def __init__(self, arg0: Path)
+  - def __init__(self)
+  - [property] def isEmpty(self) -> bool
+  - [property] def name(self) -> str
+  - [property] def pathC(self) -> usdrt.helpers._helpers.PathC
+  - [property] def pathElementCount(self) -> int
+  - [property] def pathString(self) -> str
+  - absoluteRootPath: usdrt.Sdf._Sdf.Path
+  - emptyPath: usdrt.Sdf._Sdf.Path
+
+- class ValueTypeName
+  - def GetAsString(self) -> str
+  - def GetAsToken(self) -> TfToken
+  - static def GetAsTypeC(*args, **kwargs) -> typing.Any
+  - def __init__(self)
+  - [property] def arrayType(self) -> ValueTypeName
+  - [property] def isArray(self) -> bool
+  - [property] def isScalar(self) -> bool
+  - [property] def scalarType(self) -> ValueTypeName
+
+- class ValueTypeNames
+  - AncestorPrimTypeTag: usdrt.Sdf._Sdf.ValueTypeName
+  - AppliedSchemaTypeTag: usdrt.Sdf._Sdf.ValueTypeName
+  - Asset: usdrt.Sdf._Sdf.ValueTypeName
+  - AssetArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Bool: usdrt.Sdf._Sdf.ValueTypeName
+  - BoolArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3d: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3f: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3h: usdrt.Sdf._Sdf.ValueTypeName
+  - Color3hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4d: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4f: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4h: usdrt.Sdf._Sdf.ValueTypeName
+  - Color4hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Double: usdrt.Sdf._Sdf.ValueTypeName
+  - Double2: usdrt.Sdf._Sdf.ValueTypeName
+  - Double2Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Double3: usdrt.Sdf._Sdf.ValueTypeName
+  - Double3Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Double4: usdrt.Sdf._Sdf.ValueTypeName
+  - Double4Array: usdrt.Sdf._Sdf.ValueTypeName
+  - DoubleArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Float: usdrt.Sdf._Sdf.ValueTypeName
+  - Float2: usdrt.Sdf._Sdf.ValueTypeName
+  - Float2Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Float3: usdrt.Sdf._Sdf.ValueTypeName
+  - Float3Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Float4: usdrt.Sdf._Sdf.ValueTypeName
+  - Float4Array: usdrt.Sdf._Sdf.ValueTypeName
+  - FloatArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Frame4d: usdrt.Sdf._Sdf.ValueTypeName
+  - Frame4dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Half: usdrt.Sdf._Sdf.ValueTypeName
+  - Half2: usdrt.Sdf._Sdf.ValueTypeName
+  - Half2Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Half3: usdrt.Sdf._Sdf.ValueTypeName
+  - Half3Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Half4: usdrt.Sdf._Sdf.ValueTypeName
+  - Half4Array: usdrt.Sdf._Sdf.ValueTypeName
+  - HalfArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Int: usdrt.Sdf._Sdf.ValueTypeName
+  - Int2: usdrt.Sdf._Sdf.ValueTypeName
+  - Int2Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Int3: usdrt.Sdf._Sdf.ValueTypeName
+  - Int3Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Int4: usdrt.Sdf._Sdf.ValueTypeName
+  - Int4Array: usdrt.Sdf._Sdf.ValueTypeName
+  - Int64: usdrt.Sdf._Sdf.ValueTypeName
+  - Int64Array: usdrt.Sdf._Sdf.ValueTypeName
+  - IntArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix2d: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix2dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix3d: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix4d: usdrt.Sdf._Sdf.ValueTypeName
+  - Matrix4dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3d: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3f: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3h: usdrt.Sdf._Sdf.ValueTypeName
+  - Normal3hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3d: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3f: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3h: usdrt.Sdf._Sdf.ValueTypeName
+  - Point3hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - PrimTypeTag: usdrt.Sdf._Sdf.ValueTypeName
+  - Quatd: usdrt.Sdf._Sdf.ValueTypeName
+  - QuatdArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Quatf: usdrt.Sdf._Sdf.ValueTypeName
+  - QuatfArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Quath: usdrt.Sdf._Sdf.ValueTypeName
+  - QuathArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Range3d: usdrt.Sdf._Sdf.ValueTypeName
+  - String: usdrt.Sdf._Sdf.ValueTypeName
+  - StringArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Tag: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2d: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2f: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2h: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord2hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3d: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3f: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3h: usdrt.Sdf._Sdf.ValueTypeName
+  - TexCoord3hArray: usdrt.Sdf._Sdf.ValueTypeName
+  - TimeCode: usdrt.Sdf._Sdf.ValueTypeName
+  - TimeCodeArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Token: usdrt.Sdf._Sdf.ValueTypeName
+  - TokenArray: usdrt.Sdf._Sdf.ValueTypeName
+  - UChar: usdrt.Sdf._Sdf.ValueTypeName
+  - UCharArray: usdrt.Sdf._Sdf.ValueTypeName
+  - UInt: usdrt.Sdf._Sdf.ValueTypeName
+  - UInt64: usdrt.Sdf._Sdf.ValueTypeName
+  - UInt64Array: usdrt.Sdf._Sdf.ValueTypeName
+  - UIntArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3d: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3dArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3f: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3fArray: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3h: usdrt.Sdf._Sdf.ValueTypeName
+  - Vector3hArray: usdrt.Sdf._Sdf.ValueTypeName
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.Usd:
+
+## Classes
+
+- class APISchemaBase(SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+
+- class Access
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Overwrite: usdrt.Usd._Usd.Access
+  - Read: usdrt.Usd._Usd.Access
+  - ReadWrite: usdrt.Usd._Usd.Access
+
+- class AttrSpec
+  - def __init__(self, arg0: typing.Tuple[usdrt.Sdf._Sdf.ValueTypeName, TfToken, Access])
+
+- class Attribute
+  - def AddConnection(self, source: usdrt.Sdf._Sdf.Path, position: ListPosition = ListPosition.ListPositionBackOfPrependList) -> bool
+  - def ClearConnections(self) -> bool
+  - def Get(self, time: TimeCode = Usd.TimeCode.Default()) -> object
+  - def GetBaseName(self) -> TfToken
+  - def GetConnections(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetName(self) -> TfToken
+  - def GetNamespace(self) -> TfToken
+  - def GetPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetPrim(self) -> Prim
+  - def GetPrimPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetStage(self) -> Stage
+  - def GetTypeName(self) -> usdrt.Sdf._Sdf.ValueTypeName
+  - def HasAuthoredConnections(self) -> bool
+  - def HasAuthoredValue(self) -> bool
+  - def HasValue(self) -> bool
+  - def InvalidateCpuData(self) -> bool
+  - def InvalidateGpuData(self) -> bool
+  - def IsCpuDataValid(self) -> bool
+  - def IsGpuDataValid(self) -> bool
+  - def IsValid(self) -> bool
+  - def RemoveConnection(self, source: usdrt.Sdf._Sdf.Path) -> bool
+  - def Set(self, value: object, time: TimeCode = Usd.TimeCode.Default()) -> bool
+  - def SetConnections(self, sources: typing.List[usdrt.Sdf._Sdf.Path]) -> bool
+  - def SplitName(self) -> typing.List[str]
+  - def SyncDataToCpu(self) -> bool
+  - def SyncDataToGpu(self) -> bool
+
+- class ClipsAPI(APISchemaBase, SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: Prim)
+  - def __init__(self, arg0: SchemaBase)
+
+- class CollectionAPI(APISchemaBase, SchemaBase)
+  - static def Apply(prim: Prim, name: TfToken) -> CollectionAPI
+  - static def ComputeIncludedPaths(query: UsdCollectionMembershipQuery, stageId: usdrt.helpers._helpers.StageReaderWriterId) -> typing.Set[usdrt.Sdf._Sdf.Path]
+  - def ComputeMembershipQuery(self) -> UsdCollectionMembershipQuery
+  - def ComputeMembershipQuery(self, arg0: UsdCollectionMembershipQuery)
+  - def CreateExcludesRel(self) -> Relationship
+  - def CreateExpansionRuleAttr(self) -> Attribute
+  - def CreateIncludeRootAttr(self) -> Attribute
+  - def CreateIncludesRel(self) -> Relationship
+  - def ExcludePath(self, pathToExclude: usdrt.Sdf._Sdf.Path) -> bool
+  - def GetCollectionPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetExcludesRel(self) -> Relationship
+  - def GetExpansionRuleAttr(self) -> Attribute
+  - def GetIncludeRootAttr(self) -> Attribute
+  - def GetIncludesRel(self) -> Relationship
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def IncludePath(self, pathToInclude: usdrt.Sdf._Sdf.Path) -> bool
+  - static def IsCollectionAPIPath(path: usdrt.Sdf._Sdf.Path, name: TfToken) -> bool
+  - def __init__(self, arg0: Prim, arg1: TfToken)
+  - def __init__(self, arg0: SchemaBase, arg1: TfToken)
+  - static def sComputeMembershipQuery(stageId: usdrt.helpers._helpers.StageReaderWriterId, collectionPath: usdrt.Sdf._Sdf.Path) -> UsdCollectionMembershipQuery
+  - static def sComputeMembershipQuery(stageId: usdrt.helpers._helpers.StageReaderWriterId, collectionPath: usdrt.Sdf._Sdf.Path, query: UsdCollectionMembershipQuery)
+
+- class ListPosition
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ListPositionBackOfAppendList: usdrt.Usd._Usd.ListPosition
+  - ListPositionBackOfPrependList: usdrt.Usd._Usd.ListPosition
+  - ListPositionFrontOfAppendList: usdrt.Usd._Usd.ListPosition
+  - ListPositionFrontOfPrependList: usdrt.Usd._Usd.ListPosition
+
+- class ModelAPI(APISchemaBase, SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: Prim)
+  - def __init__(self, arg0: SchemaBase)
+
+- class Prim
+  - def AddAppliedSchema(self, appliedSchemaName: TfToken) -> bool
+  - def ApplyAPI(self, schemaIdentifier: TfToken, instanceName: TfToken = '') -> bool
+  - def ClearTypeName(self) -> bool
+  - static def CreateAttribute(*args, **kwargs) -> typing.Any
+  - static def CreateRelationship(*args, **kwargs) -> typing.Any
+  - def GetAllChildren(self, prefetchFromUsd: bool = True) -> typing.List[Prim]
+  - def GetAllChildrenNames(self, prefetchFromUsd: bool = True) -> typing.List[TfToken]
+  - def GetAppliedSchemas(self) -> typing.List[TfToken]
+  - static def GetAttribute(*args, **kwargs) -> typing.Any
+  - def GetAttributes(self) -> typing.List[usdrt::UsdAttribute]
+  - def GetAuthoredAttributes(self) -> typing.List[usdrt::UsdAttribute]
+  - def GetAuthoredPropertyNames(self) -> typing.List[TfToken]
+  - def GetAuthoredRelationships(self) -> typing.List[usdrt::UsdRelationship]
+  - def GetChild(self, name: TfToken, prefetchFromUsd: bool = True) -> Prim
+  - def GetChildren(self, prefetchFromUsd: bool = True) -> typing.List[Prim]
+  - def GetChildrenNames(self, prefetchFromUsd: bool = True) -> typing.List[TfToken]
+  - def GetName(self) -> TfToken
+  - def GetNextSibling(self, prefetchFromUsd: bool = True) -> Prim
+  - def GetParent(self, prefetchFromUsd: bool = True) -> Prim
+  - def GetPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetPrim(self) -> Prim
+  - def GetPrimPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetPropertyNames(self) -> typing.List[TfToken]
+  - static def GetRelationship(*args, **kwargs) -> typing.Any
+  - def GetRelationships(self) -> typing.List[usdrt::UsdRelationship]
+  - def GetStage(self) -> Stage
+  - def GetTypeName(self) -> TfToken
+  - def HasAPI(self, schemaIdentifier: TfToken, instanceName: TfToken = '') -> bool
+  - def HasAttribute(self, name: TfToken) -> bool
+  - def HasAuthoredTypeName(self) -> bool
+  - def HasProperty(self, propName: TfToken) -> bool
+  - def HasRelationship(self, relName: TfToken) -> bool
+  - def IsA(self, schemaType: object) -> bool
+  - def IsA(self, schemaTypeName: TfToken) -> bool
+  - def IsValid(self) -> bool
+  - def RemoveAPI(self, schemaIdentifier: TfToken, instanceName: TfToken = '') -> bool
+  - def RemoveAppliedSchema(self, appliedSchemaName: TfToken) -> bool
+  - def RemoveProperty(self, propName: TfToken) -> bool
+  - def SetTypeName(self, typeName: TfToken) -> bool
+
+- class PrimRange
+  - def IsValid(self) -> bool
+  - def __init__(self, arg0: Prim)
+  - def __init__(self, arg0: UsdPrimRange)
+
+- class Relationship
+  - def AddTarget(self, target: usdrt.Sdf._Sdf.Path, position: ListPosition = ListPosition.ListPositionBackOfPrependList) -> bool
+  - def ClearTargets(self, removeSpec: bool) -> bool
+  - def GetBaseName(self) -> TfToken
+  - def GetForwardedTargets(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetName(self) -> TfToken
+  - def GetNamespace(self) -> TfToken
+  - def GetPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetPrim(self) -> Prim
+  - def GetPrimPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetStage(self) -> Stage
+  - def GetTargets(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def HasAuthoredTargets(self) -> bool
+  - def IsValid(self) -> bool
+  - def RemoveTarget(self, target: usdrt.Sdf._Sdf.Path) -> bool
+  - def SetTargets(self, targets: typing.List[usdrt.Sdf._Sdf.Path]) -> bool
+  - def SplitName(self) -> typing.List[str]
+
+- class SchemaBase
+  - def GetPrim(self) -> Prim
+  - def GetPrimPath(self) -> usdrt.Sdf._Sdf.Path
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self)
+  - def __init__(self, arg0: Prim)
+  - def __init__(self, arg0: SchemaBase)
+
+- class SchemaRegistry
+  - def GetAliasFromName(self, name: TfToken) -> TfToken
+  - static def GetInstance() -> SchemaRegistry
+  - def GetSchemaTypeName(self, schemaType: object) -> TfToken
+  - def IsA(self, sourceType: object, queryType: object) -> bool
+  - def IsA(self, sourceTypeName: TfToken, queryType: object) -> bool
+  - def IsA(self, sourceType: object, queryTypeName: TfToken) -> bool
+  - def IsA(self, sourceTypeName: TfToken, queryTypeName: TfToken) -> bool
+  - def IsAppliedAPISchema(self, apiSchemaType: TfToken) -> bool
+  - def IsConcrete(self, primType: TfToken) -> bool
+  - def IsMultipleApplyAPISchema(self, apiSchemaType: TfToken) -> bool
+  - def IsTyped(self, primType: TfToken) -> bool
+  - def IsUnknown(self, apiSchemaType: TfToken) -> bool
+
+- class Stage
+  - class InitialLoadSet
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - LoadAll: usdrt.Usd._Usd.Stage.InitialLoadSet
+    - LoadNone: usdrt.Usd._Usd.Stage.InitialLoadSet
+  - class TimeChange
+    - def __init__(self, value: int)
+    - [property] def name(self) -> str
+    - [property] def value(self) -> int
+    - ForceUpdate: usdrt.Usd._Usd.Stage.TimeChange
+    - LazyUpdate: usdrt.Usd._Usd.Stage.TimeChange
+    - NoUpdate: usdrt.Usd._Usd.Stage.TimeChange
+  - static def Attach(stageId: int) -> Stage
+  - static def Attach(fabricId: usdrt.helpers._helpers.FabricId) -> Stage
+  - static def CreateInMemory(identifier: str, load: Stage.InitialLoadSet = InitialLoadSet.LoadAll) -> Stage
+  - static def CreateNew(identifier: str, load: Stage.InitialLoadSet = InitialLoadSet.LoadAll) -> Stage
+  - static def CreateOnlyInFabric() -> Stage
+  - static def DefinePrim(*args, **kwargs) -> typing.Any
+  - static def GetAttributeAtPath(*args, **kwargs) -> typing.Any
+  - static def GetDefaultPrim(*args, **kwargs) -> typing.Any
+  - def GetFabricId(self) -> usdrt.helpers._helpers.FabricId
+  - static def GetPrimAtPath(*args, **kwargs) -> typing.Any
+  - def GetPrimsWithAppliedAPIName(self, apiName: TfToken) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetPrimsWithTypeAndAppliedAPIName(self, typeName: TfToken, apiNames: typing.List[TfToken]) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetPrimsWithTypeName(self, typeName: TfToken) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - static def GetPseudoRoot(*args, **kwargs) -> typing.Any
+  - static def GetRelationshipAtPath(*args, **kwargs) -> typing.Any
+  - def GetStageExtent(self) -> usdrt.Gf._Gf.Range3d
+  - def GetStageId(self) -> int
+  - def GetStageIdAsStageId(self) -> usdrt.helpers._helpers.UsdStageId
+  - def GetStageIdAsUInt(self) -> int
+  - def GetStageInProgressId(self) -> usdrt.helpers._helpers.StageReaderWriterId
+  - def GetStageReaderWriterId(self) -> usdrt.helpers._helpers.StageReaderWriterId
+  - def HasPrimAtPath(self, path: usdrt.Sdf._Sdf.Path, excludeTags: bool = True) -> bool
+  - def IsFabricOnlyStage(self) -> bool
+  - static def Open(filePath: str, load: Stage.InitialLoadSet = InitialLoadSet.LoadAll) -> Stage
+  - def RemovePrim(self, path: usdrt.Sdf._Sdf.Path) -> bool
+  - static def SelectPrims(*args, **kwargs) -> typing.Any
+  - def SetAttributeValue(self, path: usdrt.Sdf._Sdf.Path, value: object, time: TimeCode = Usd.TimeCode.Default()) -> bool
+  - static def SimStageWithHistoryExists(stageId: int) -> bool
+  - static def StageWithHistoryExists(stageId: int) -> bool
+  - def SynchronizeToFabric(self, time_change: Stage.TimeChange = TimeChange.NoUpdate, time: TimeCode = Usd.TimeCode.Default())
+  - def Traverse(self) -> UsdPrimRange
+  - def WriteToLayer(self, filePath: str, includePrivateFabricProperties: bool = True, convertFabricXforms: bool = False)
+  - def WriteToStage(self, includePrivateFabricProperties: bool = True, convertFabricXforms: bool = False)
+
+- class TimeCode
+  - static def Default() -> TimeCode
+  - static def EarliestTime() -> TimeCode
+  - def GetValue(self) -> float
+  - def IsDefault(self) -> bool
+  - def IsEarliestTime(self) -> bool
+  - def IsNumeric(self) -> bool
+  - def __init__(self, t: float = 0.0)
+
+- class Tokens
+  - apiSchemas: str
+  - clipSets: str
+  - clips: str
+  - collection: str
+  - exclude: str
+  - excludes: str
+  - expandPrims: str
+  - expandPrimsAndProperties: str
+  - expansionRule: str
+  - explicitOnly: str
+  - fallbackPrimTypes: str
+  - includeRoot: str
+  - includes: str
+
+- class Typed(SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: Prim)
+  - def __init__(self, arg0: SchemaBase)
+
+- class UsdCollectionMembershipQuery
+  - def IsPathIncluded(self, path: usdrt.Sdf._Sdf.Path, expansionRule: TfToken = None) -> bool
+
+## Variables
+
+- Overwrite: usdrt.Usd._Usd.Access
+- Read: usdrt.Usd._Usd.Access
+- ReadWrite: usdrt.Usd._Usd.Access
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdGeom:
+
+## Classes
+
+- class BasisCurves(Curves, PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateBasisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWrapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> BasisCurves
+  - def GetBasisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWrapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Boundable(Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Camera(Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateClippingPlanesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateClippingRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExposureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFStopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFocalLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFocusDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHorizontalApertureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHorizontalApertureOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateProjectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShutterCloseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShutterOpenAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStereoRoleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVerticalApertureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVerticalApertureOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Camera
+  - def GetClippingPlanesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetClippingRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExposureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFStopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFocalLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFocusDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHorizontalApertureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHorizontalApertureOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProjectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShutterCloseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShutterOpenAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetStereoRoleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVerticalApertureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVerticalApertureOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Capsule(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Capsule
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Cone(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Cone
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Cube(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Cube
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Curves(PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateCurveVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWidthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCurveVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetWidthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Cylinder(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Cylinder
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Gprim(Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateDisplayColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisplayOpacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDoubleSidedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplayColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplayOpacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDoubleSidedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class HermiteCurves(Curves, PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateTangentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> HermiteCurves
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTangentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Imageable(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateProxyPrimRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreatePurposeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProxyPrimRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetPurposeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Mesh(PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateCornerIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCornerSharpnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCreaseIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCreaseLengthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCreaseSharpnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFaceVaryingLinearInterpolationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFaceVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFaceVertexIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHoleIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInterpolateBoundaryAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSubdivisionSchemeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTriangleSubdivisionRuleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Mesh
+  - def GetCornerIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCornerSharpnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCreaseIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCreaseLengthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCreaseSharpnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFaceVaryingLinearInterpolationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFaceVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFaceVertexIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHoleIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInterpolateBoundaryAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSubdivisionSchemeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTriangleSubdivisionRuleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class ModelAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> ModelAPI
+  - def CreateModelApplyDrawModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardGeometryAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureXNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureXPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureYNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureYPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureZNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelCardTextureZPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelDrawModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModelDrawModeColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelApplyDrawModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardGeometryAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureXNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureXPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureYNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureYPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureZNegAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelCardTextureZPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelDrawModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModelDrawModeColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class MotionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MotionAPI
+  - def CreateMotionBlurScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNonlinearSampleCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMotionBlurScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNonlinearSampleCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVelocityScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NurbsCurves(Curves, PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRangesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> NurbsCurves
+  - def GetFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRangesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NurbsPatch(PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreatePointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurveCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurveKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurveOrdersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurvePointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurveRangesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrimCurveVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateURangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUVertexCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVVertexCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> NurbsPatch
+  - def GetPointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTrimCurveCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrimCurveKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrimCurveOrdersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrimCurvePointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrimCurveRangesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrimCurveVertexCountsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetURangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUVertexCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVFormAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVKnotsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVVertexCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Plane(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDoubleSidedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Plane
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDoubleSidedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PointBased(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNormalsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNormalsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PointInstancer(Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateAngularVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInvisibleIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOrientationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePositionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateProtoIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePrototypesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateScalesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PointInstancer
+  - def GetAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAngularVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInvisibleIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOrientationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPositionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProtoIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPrototypesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetScalesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Points(PointBased, Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWidthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Points
+  - def GetIdsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetWidthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Primvar
+  - def Get(self, time: usdrt.Usd._Usd.TimeCode = Usd.TimeCode.Default()) -> object
+  - def GetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInterpolation(self) -> TfToken
+  - def GetName(self) -> TfToken
+  - def HasAuthoredInterpolation(self) -> bool
+  - def HasAuthoredValue(self) -> bool
+  - def HasValue(self) -> bool
+  - def IsDefined(self) -> bool
+  - static def IsPrimvar(attr: usdrt.Usd._Usd.Attribute) -> bool
+  - static def IsValidInterpolation(interpolation: TfToken) -> bool
+  - static def IsValidInterpolationName(name: TfToken) -> bool
+  - static def IsValidPrimvarName(name: TfToken) -> bool
+  - def Set(self, value: object, time: usdrt.Usd._Usd.TimeCode = Usd.TimeCode.Default()) -> bool
+  - def SetInterpolation(self, interpolation: TfToken) -> bool
+  - static def StripInterpolationName(name: TfToken) -> TfToken
+  - static def StripPrimvarsName(name: TfToken) -> TfToken
+  - def __init__(self)
+  - def __init__(self, arg0: usdrt.Usd._Usd.Attribute)
+
+- class PrimvarsAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def CanContainPropertyName(name: TfToken) -> bool
+  - def CreatePrimvar(self, name: TfToken, typeName: usdrt.Sdf._Sdf.ValueTypeName, interpolation: TfToken = '') -> Primvar
+  - def FindIncrementallyInheritablePrimvars(self, inheritedFromAncestors: typing.List[Primvar]) -> typing.List[Primvar]
+  - def FindInheritablePrimvars(self) -> typing.List[Primvar]
+  - def FindInheritedPrimvar(self, arg0: TfToken) -> Primvar
+  - def FindInheritedPrimvars(self) -> typing.List[Primvar]
+  - def FindPrimvarWithInheritance(self, arg0: TfToken) -> Primvar
+  - def FindPrimvarWithInheritance(self, arg0: TfToken, arg1: typing.List[Primvar]) -> Primvar
+  - def FindPrimvarsWithInheritance(self) -> typing.List[Primvar]
+  - def FindPrimvarsWithInheritance(self, arg0: typing.List[Primvar]) -> typing.List[Primvar]
+  - def GetAuthoredPrimvars(self) -> typing.List[Primvar]
+  - def GetPrimvar(self, arg0: TfToken) -> Primvar
+  - def GetPrimvars(self) -> typing.List[Primvar]
+  - def GetPrimvarsWithAuthoredValues(self) -> typing.List[Primvar]
+  - def GetPrimvarsWithValues(self) -> typing.List[Primvar]
+  - static def GetSchemaTypeName() -> TfToken
+  - def HasPossiblyInheritedPrimvar(self, name: TfToken) -> bool
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Scope(Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Scope
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Sphere(Gprim, Boundable, Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Sphere
+  - def GetExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Subset(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateElementTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFamilyNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Subset
+  - def GetElementTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFamilyNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - accelerations: str
+  - all: str
+  - angularVelocities: str
+  - axis: str
+  - basis: str
+  - bezier: str
+  - bilinear: str
+  - boundaries: str
+  - bounds: str
+  - box: str
+  - bspline: str
+  - cards: str
+  - catmullClark: str
+  - catmullRom: str
+  - clippingPlanes: str
+  - clippingRange: str
+  - closed: str
+  - constant: str
+  - cornerIndices: str
+  - cornerSharpnesses: str
+  - cornersOnly: str
+  - cornersPlus1: str
+  - cornersPlus2: str
+  - creaseIndices: str
+  - creaseLengths: str
+  - creaseSharpnesses: str
+  - cross: str
+  - cubic: str
+  - curveVertexCounts: str
+  - default_: str
+  - doubleSided: str
+  - edgeAndCorner: str
+  - edgeOnly: str
+  - elementSize: str
+  - elementType: str
+  - exposure: str
+  - extent: str
+  - extentsHint: str
+  - fStop: str
+  - face: str
+  - faceVarying: str
+  - faceVaryingLinearInterpolation: str
+  - faceVertexCounts: str
+  - faceVertexIndices: str
+  - familyName: str
+  - focalLength: str
+  - focusDistance: str
+  - form: str
+  - fromTexture: str
+  - guide: str
+  - guideVisibility: str
+  - height: str
+  - hermite: str
+  - holeIndices: str
+  - horizontalAperture: str
+  - horizontalApertureOffset: str
+  - ids: str
+  - inactiveIds: str
+  - indices: str
+  - inherited: str
+  - interpolateBoundary: str
+  - interpolation: str
+  - invisible: str
+  - invisibleIds: str
+  - knots: str
+  - left: str
+  - leftHanded: str
+  - length: str
+  - linear: str
+  - loop: str
+  - metersPerUnit: str
+  - modelApplyDrawMode: str
+  - modelCardGeometry: str
+  - modelCardTextureXNeg: str
+  - modelCardTextureXPos: str
+  - modelCardTextureYNeg: str
+  - modelCardTextureYPos: str
+  - modelCardTextureZNeg: str
+  - modelCardTextureZPos: str
+  - modelDrawMode: str
+  - modelDrawModeColor: str
+  - mono: str
+  - motionBlurScale: str
+  - motionNonlinearSampleCount: str
+  - motionVelocityScale: str
+  - nonOverlapping: str
+  - none: str
+  - nonperiodic: str
+  - normals: str
+  - open: str
+  - order: str
+  - orientation: str
+  - orientations: str
+  - origin: str
+  - orthographic: str
+  - partition: str
+  - periodic: str
+  - perspective: str
+  - pinned: str
+  - pivot: str
+  - pointWeights: str
+  - points: str
+  - positions: str
+  - power: str
+  - primvarsDisplayColor: str
+  - primvarsDisplayOpacity: str
+  - projection: str
+  - protoIndices: str
+  - prototypes: str
+  - proxy: str
+  - proxyPrim: str
+  - proxyVisibility: str
+  - purpose: str
+  - radius: str
+  - ranges: str
+  - render: str
+  - renderVisibility: str
+  - right: str
+  - rightHanded: str
+  - scales: str
+  - shutterClose: str
+  - shutterOpen: str
+  - size: str
+  - smooth: str
+  - stereoRole: str
+  - subdivisionScheme: str
+  - tangents: str
+  - triangleSubdivisionRule: str
+  - trimCurveCounts: str
+  - trimCurveKnots: str
+  - trimCurveOrders: str
+  - trimCurvePoints: str
+  - trimCurveRanges: str
+  - trimCurveVertexCounts: str
+  - type: str
+  - uForm: str
+  - uKnots: str
+  - uOrder: str
+  - uRange: str
+  - uVertexCount: str
+  - unauthoredValuesIndex: str
+  - uniform: str
+  - unrestricted: str
+  - upAxis: str
+  - vForm: str
+  - vKnots: str
+  - vOrder: str
+  - vRange: str
+  - vVertexCount: str
+  - varying: str
+  - velocities: str
+  - vertex: str
+  - verticalAperture: str
+  - verticalApertureOffset: str
+  - visibility: str
+  - visible: str
+  - width: str
+  - widths: str
+  - wrap: str
+  - x: str
+  - xformOpOrder: str
+  - y: str
+  - z: str
+
+- class VisibilityAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> VisibilityAPI
+  - def CreateGuideVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateProxyVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRenderVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGuideVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProxyVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRenderVisibilityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Xform(Xformable, Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Xform
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class XformCommonAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Xformable(Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateXformOpOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetXformOpOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.Rt:
+
+## Classes
+
+- class Boundable(Xformable)
+  - def ClearWorldExtent(self) -> bool
+  - def CreateWorldExtentAttr(self, defaultValue: usdrt.Gf._Gf.Range3d = Gf.Range3d(Gf.Vec3d(1.7976931348623157e+308, 1.7976931348623157e+308, 1.7976931348623157e+308), Gf.Vec3d(-1.7976931348623157e+308, -1.7976931348623157e+308, -1.7976931348623157e+308))) -> usdrt.Usd._Usd.Attribute
+  - def GetWorldExtentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def HasWorldExtent(self) -> bool
+  - def SetWorldExtentFromUsd(self) -> bool
+  - def __init__(self, prim: usdrt.Usd._Usd.Prim = Prim(invalid))
+
+- class ChangeTracker
+  - def AttributeChanged(self, attr: usdrt.Usd._Usd.Attribute) -> bool
+  - def AttributeChanged(self, attrPath: usdrt.Sdf._Sdf.Path) -> bool
+  - def ClearChanges(self)
+  - def EnablePrimCreateTracking(self)
+  - def GetAddedPrims(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetAllChangedAttributes(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetAllChangedPrims(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def GetChangedAttributes(self, prim: usdrt.Usd._Usd.Prim) -> typing.List[TfToken]
+  - def GetChangedAttributes(self, primPath: usdrt.Sdf._Sdf.Path) -> typing.List[TfToken]
+  - def GetTrackedAttributes(self) -> typing.List[TfToken]
+  - def HasChanges(self) -> bool
+  - def IsChangeTrackingPaused(self) -> bool
+  - def IsTrackingAttribute(self, attrName: TfToken) -> bool
+  - def PauseTracking(self)
+  - def PrimChanged(self, prim: usdrt.Usd._Usd.Prim) -> bool
+  - def PrimChanged(self, primPath: usdrt.Sdf._Sdf.Path) -> bool
+  - def ResumeTracking(self)
+  - def StopTrackingAttribute(self, attrName: TfToken)
+  - def TrackAttribute(self, attrName: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.Stage)
+
+- class RtPrimSelection
+  - def GetCount(self) -> int
+  - def GetPaths(self) -> typing.List[usdrt.Sdf._Sdf.Path]
+  - def PrepareForReuse(self) -> bool
+
+- class Tokens
+  - fabricHierarchyLocalMatrix: str
+  - fabricHierarchyWorldMatrix: str
+  - localMatrix: str
+  - worldExtent: str
+  - worldOrientation: str
+  - worldPosition: str
+  - worldScale: str
+
+- class Xformable
+  - def ClearLocalXform(self) -> bool
+  - def ClearWorldXform(self) -> bool
+  - def CreateFabricHierarchyLocalMatrixAttr(self, defaultValue: usdrt.Gf._Gf.Matrix4d = Gf.Matrix4d(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0)) -> usdrt.Usd._Usd.Attribute
+  - def CreateFabricHierarchyWorldMatrixAttr(self, defaultValue: usdrt.Gf._Gf.Matrix4d = Gf.Matrix4d(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0)) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalMatrixAttr(self, defaultValue: usdrt.Gf._Gf.Matrix4d = Gf.Matrix4d(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0)) -> usdrt.Usd._Usd.Attribute
+  - def CreateWorldOrientationAttr(self, defaultValue: usdrt.Gf._Gf.Quatf = Gf.Quatf(1.0, Gf.Vec3f(0.0, 0.0, 0.0))) -> usdrt.Usd._Usd.Attribute
+  - def CreateWorldPositionAttr(self, defaultValue: usdrt.Gf._Gf.Vec3d = Gf.Vec3d(0.0, 0.0, 0.0)) -> usdrt.Usd._Usd.Attribute
+  - def CreateWorldScaleAttr(self, defaultValue: usdrt.Gf._Gf.Vec3f = Gf.Vec3f(1.0, 1.0, 1.0)) -> usdrt.Usd._Usd.Attribute
+  - def GetFabricHierarchyLocalMatrixAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFabricHierarchyWorldMatrixAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalMatrixAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPath(self) -> usdrt.Sdf._Sdf.Path
+  - def GetPrim(self) -> usdrt.Usd._Usd.Prim
+  - def GetWorldOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWorldPositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWorldScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def HasLocalXform(self) -> bool
+  - def HasWorldXform(self) -> bool
+  - def SetLocalXformFromUsd(self) -> bool
+  - def SetWorldXformFromUsd(self) -> bool
+  - def __init__(self, prim: usdrt.Usd._Usd.Prim = Prim(invalid))
+
+## Other
+
+- omni.core: public module
+
+
+
+
+
+
+
+# Public API for module usdrt.UsdPhysics:
+
+## Classes
+
+- class ArticulationRootAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> ArticulationRootAPI
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class CollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> CollisionAPI
+  - def CreateCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class CollisionGroup(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateFilteredGroupsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateInvertFilteredGroupsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMergeGroupNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> CollisionGroup
+  - def GetFilteredGroupsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetInvertFilteredGroupsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMergeGroupNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class DistanceJoint(Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> DistanceJoint
+  - def GetMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class DriveAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> DriveAPI
+  - def CreateDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTargetPositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTargetVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTargetPositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTargetVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class FilteredPairsAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> FilteredPairsAPI
+  - def CreateFilteredPairsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetFilteredPairsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class FixedJoint(Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> FixedJoint
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Joint(usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateBody0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateBody1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateBreakForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBreakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExcludeFromArticulationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalPos0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalPos1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalRot0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalRot1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Joint
+  - def GetBody0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetBody1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetBreakForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBreakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExcludeFromArticulationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalPos0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalPos1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalRot0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalRot1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class LimitAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> LimitAPI
+  - def CreateHighAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLowAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHighAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class MassAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MassAPI
+  - def CreateCenterOfMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDiagonalInertiaAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePrincipalAxesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCenterOfMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDiagonalInertiaAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPrincipalAxesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class MaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MaterialAPI
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestitutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStaticFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestitutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStaticFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class MeshCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MeshCollisionAPI
+  - def CreateApproximationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetApproximationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PrismaticJoint(Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PrismaticJoint
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class RevoluteJoint(Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> RevoluteJoint
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class RigidBodyAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> RigidBodyAPI
+  - def CreateAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateKinematicEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRigidBodyEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateStartsAsleepAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetKinematicEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRigidBodyEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetStartsAsleepAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Scene(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateGravityDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGravityMagnitudeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Scene
+  - def GetGravityDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGravityMagnitudeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class SphericalJoint(Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateConeAngle0LimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateConeAngle1LimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> SphericalJoint
+  - def GetAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConeAngle0LimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConeAngle1LimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - acceleration: str
+  - angular: str
+  - boundingCube: str
+  - boundingSphere: str
+  - colliders: str
+  - convexDecomposition: str
+  - convexHull: str
+  - distance: str
+  - drive: str
+  - force: str
+  - kilogramsPerUnit: str
+  - limit: str
+  - linear: str
+  - meshSimplification: str
+  - none: str
+  - physicsAngularVelocity: str
+  - physicsApproximation: str
+  - physicsAxis: str
+  - physicsBody0: str
+  - physicsBody1: str
+  - physicsBreakForce: str
+  - physicsBreakTorque: str
+  - physicsCenterOfMass: str
+  - physicsCollisionEnabled: str
+  - physicsConeAngle0Limit: str
+  - physicsConeAngle1Limit: str
+  - physicsDamping: str
+  - physicsDensity: str
+  - physicsDiagonalInertia: str
+  - physicsDynamicFriction: str
+  - physicsExcludeFromArticulation: str
+  - physicsFilteredGroups: str
+  - physicsFilteredPairs: str
+  - physicsGravityDirection: str
+  - physicsGravityMagnitude: str
+  - physicsHigh: str
+  - physicsInvertFilteredGroups: str
+  - physicsJointEnabled: str
+  - physicsKinematicEnabled: str
+  - physicsLocalPos0: str
+  - physicsLocalPos1: str
+  - physicsLocalRot0: str
+  - physicsLocalRot1: str
+  - physicsLow: str
+  - physicsLowerLimit: str
+  - physicsMass: str
+  - physicsMaxDistance: str
+  - physicsMaxForce: str
+  - physicsMergeGroup: str
+  - physicsMinDistance: str
+  - physicsPrincipalAxes: str
+  - physicsRestitution: str
+  - physicsRigidBodyEnabled: str
+  - physicsSimulationOwner: str
+  - physicsStartsAsleep: str
+  - physicsStaticFriction: str
+  - physicsStiffness: str
+  - physicsTargetPosition: str
+  - physicsTargetVelocity: str
+  - physicsType: str
+  - physicsUpperLimit: str
+  - physicsVelocity: str
+  - rotX: str
+  - rotY: str
+  - rotZ: str
+  - transX: str
+  - transY: str
+  - transZ: str
+  - x: str
+  - y: str
+  - z: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.PhysxSchema:
+
+## Classes
+
+- class JointStateAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> JointStateAPI
+  - def CreatePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetPositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxArticulationAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxArticulationAPI
+  - def CreateArticulationEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnabledSelfCollisionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStabilizationThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetArticulationEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnabledSelfCollisionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetStabilizationThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxArticulationForceSensorAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxArticulationForceSensorAPI
+  - def CreateConstraintSolverForcesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateForwardDynamicsForcesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSensorEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWorldFrameEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstraintSolverForcesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForwardDynamicsForcesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSensorEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWorldFrameEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxAutoAttachmentAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxAutoAttachmentAPI
+  - def CreateCollisionFilteringOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDeformableVertexOverlapOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableCollisionFilteringAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableDeformableFilteringPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableDeformableVertexAttachmentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableRigidSurfaceAttachmentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRigidSurfaceSamplingDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionFilteringOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDeformableVertexOverlapOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableCollisionFilteringAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableDeformableFilteringPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableDeformableVertexAttachmentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableRigidSurfaceAttachmentsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRigidSurfaceSamplingDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxAutoParticleClothAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxAutoParticleClothAPI
+  - def CreateDisableMeshWeldingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringBendStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringShearStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringStretchStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisableMeshWeldingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpringBendStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringShearStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringStretchStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCameraAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCameraAPI
+  - def CreateAlwaysUpdateEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysxCameraSubjectRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetAlwaysUpdateEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysxCameraSubjectRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCameraDroneAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCameraDroneAPI
+  - def CreateFeedForwardVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHorizontalVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePositionOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRotationFilterTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityFilterTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVerticalVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFeedForwardVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHorizontalVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPositionOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRotationFilterTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVelocityFilterTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVerticalVelocityGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCameraFollowAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCameraFollowAPI
+  - def CreateCameraPositionTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowTurnRateGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookAheadMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookAheadMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookAheadMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookAheadMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookAheadTurnRateGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookPositionHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLookPositionTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePitchAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePitchAngleTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePositionOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSlowPitchAngleSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSlowSpeedPitchAngleScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityNormalMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateYawAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateYawRateTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCameraPositionTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowTurnRateGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookAheadMaxDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookAheadMaxSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookAheadMinDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookAheadMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookAheadTurnRateGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookPositionHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLookPositionTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPitchAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPitchAngleTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPositionOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSlowPitchAngleSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSlowSpeedPitchAngleScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVelocityNormalMinSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetYawAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetYawRateTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCameraFollowLookAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCameraFollowLookAPI
+  - def CreateDownHillGroundAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDownHillGroundPitchAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowReverseDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFollowReverseSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpHillGroundAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpHillGroundPitchAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelocityBlendTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDownHillGroundAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDownHillGroundPitchAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowReverseDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFollowReverseSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpHillGroundAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUpHillGroundPitchAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVelocityBlendTimeConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCameraFollowVelocityAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCameraFollowVelocityAPI
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCharacterControllerAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCharacterControllerAPI
+  - def CreateClimbingModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInvisibleWallHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxJumpHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMoveTargetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNonWalkableModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateScaleCoeffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSlopeLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStepOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVolumeGrowthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetClimbingModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInvisibleWallHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxJumpHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMoveTargetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNonWalkableModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetScaleCoeffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSlopeLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetStepOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUpAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVolumeGrowthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxCollisionAPI
+  - def CreateContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinTorsionalPatchRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorsionalPatchRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinTorsionalPatchRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTorsionalPatchRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxContactReportAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxContactReportAPI
+  - def CreateReportPairsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetReportPairsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxConvexDecompositionCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxConvexDecompositionCollisionAPI
+  - def CreateErrorPercentageAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHullVertexLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxConvexHullsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShrinkWrapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVoxelResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetErrorPercentageAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHullVertexLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxConvexHullsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShrinkWrapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVoxelResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxConvexHullCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxConvexHullCollisionAPI
+  - def CreateHullVertexLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHullVertexLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxCookedDataAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxCookedDataAPI
+  - def CreateBufferAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBufferAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxDeformableAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDeformableAPI
+  - def CreateDeformableEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSelfCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSelfCollisionFilterDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSettlingThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSimulationVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSleepDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVertexVelocityDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDeformableEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSelfCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSelfCollisionFilterDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSettlingThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSimulationIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSimulationVelocitiesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSleepDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVertexVelocityDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxDeformableBodyAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDeformableBodyAPI
+  - def CreateCollisionIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisableGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisableGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSimulationRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxDeformableBodyMaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDeformableBodyMaterialAPI
+  - def CreateDampingScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateElasticityDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePoissonsRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetElasticityDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPoissonsRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxDeformableSurfaceAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDeformableSurfaceAPI
+  - def CreateBendingStiffnessScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionIterationMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionPairUpdateFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFlatteningEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBendingStiffnessScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionIterationMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionPairUpdateFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFlatteningEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxDeformableSurfaceMaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDeformableSurfaceMaterialAPI
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePoissonsRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPoissonsRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxDiffuseParticlesAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxDiffuseParticlesAPI
+  - def CreateAirDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBubbleDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBuoyancyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionDecayAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDiffuseParticlesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDivergenceWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateKineticEnergyWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLifetimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDiffuseParticleMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePressureWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUseAccurateVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAirDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBubbleDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBuoyancyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionDecayAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDiffuseParticlesEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDivergenceWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetKineticEnergyWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLifetimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDiffuseParticleMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPressureWeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUseAccurateVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxForceAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxForceAPI
+  - def CreateForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateForceEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWorldFrameEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForceEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWorldFrameEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxHairAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxHairAPI
+  - def CreateExternalCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGlobalShapeComplianceAtRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGlobalShapeComplianceStrandAttenuationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInterHairRepulsionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalShapeMatchingComplianceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalShapeMatchingGroupOverlapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalShapeMatchingGroupSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalShapeMatchingLinearStretchingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSegmentLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTwosidedAttachmentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVelSmoothingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExternalCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGlobalShapeComplianceAtRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGlobalShapeComplianceStrandAttenuationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInterHairRepulsionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalShapeMatchingComplianceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalShapeMatchingGroupOverlapAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalShapeMatchingGroupSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalShapeMatchingLinearStretchingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSegmentLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTwosidedAttachmentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVelSmoothingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxHairMaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxHairMaterialAPI
+  - def CreateContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateContactOffsetMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCurveBendStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCurveThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactOffsetMultiplierAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCurveBendStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCurveThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDynamicFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetYoungsModulusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxJointAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxJointAPI
+  - def CreateArmatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableProjectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxJointVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetArmatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableProjectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxJointVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxLimitAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxLimitAPI
+  - def CreateBounceThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateContactDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestitutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBounceThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetRestitutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxMaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxMaterialAPI
+  - def CreateCompliantContactDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCompliantContactStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionCombineModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateImprovePatchFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestitutionCombineModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCompliantContactDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCompliantContactStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionCombineModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetImprovePatchFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestitutionCombineModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxMeshMergeCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxMeshMergeCollisionAPI
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPBDMaterialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxPBDMaterialAPI
+  - def CreateAdhesionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateAdhesionOffsetScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCflCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCohesionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGravityScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLiftAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleAdhesionScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleFrictionScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceTensionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateViscosityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVorticityConfinementAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAdhesionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAdhesionOffsetScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCflCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCohesionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGravityScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLiftAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleAdhesionScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleFrictionScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSurfaceTensionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetViscosityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVorticityConfinementAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleAPI
+  - def CreateParticleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleGroupAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleSystemRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSelfCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleGroupAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleSystemRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSelfCollisionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleAnisotropyAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleAnisotropyAPI
+  - def CreateMaxAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleAnisotropyEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleAnisotropyEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleClothAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleClothAPI
+  - def CreatePressureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSelfCollisionFilterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringDampingsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringRestLengthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringStiffnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPressureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSelfCollisionFilterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringDampingsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringRestLengthsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringStiffnessesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleIsosurfaceAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleIsosurfaceAPI
+  - def CreateGridFilteringPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGridSmoothingRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGridSpacingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIsosurfaceEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxSubgridsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxTrianglesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxVerticesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNumMeshNormalSmoothingPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNumMeshSmoothingPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGridFilteringPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGridSmoothingRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGridSpacingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIsosurfaceEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSubgridsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxTrianglesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxVerticesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNumMeshNormalSmoothingPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNumMeshSmoothingPassesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSurfaceDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleSamplingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleSamplingAPI
+  - def CreateMaxSamplesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticlesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSamplingDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVolumeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSamplesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticlesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSamplingDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVolumeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleSetAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleSetAPI
+  - def CreateFluidAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFluidAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationPointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleSmoothingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxParticleSmoothingAPI
+  - def CreateParticleSmoothingEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleSmoothingEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxParticleSystem(usdrt.UsdGeom._UsdGeom.Gprim, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFluidRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGlobalSelfCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxNeighborhoodAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNeighborhoodScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNonParticleCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParticleSystemEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSolidRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWindAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxParticleSystem
+  - def GetContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFluidRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGlobalSelfCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxNeighborhoodAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNeighborhoodScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNonParticleCollisionEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleContactOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParticleSystemEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimulationOwnerRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSolidRestOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWindAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsAttachment(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateActor0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateActor1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateAttachmentEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionFilterIndices0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionFilterIndices1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFilterType0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFilterType1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePoints0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePoints1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxPhysicsAttachment
+  - def GetActor0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetActor1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetAttachmentEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionFilterIndices0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionFilterIndices1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFilterType0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFilterType1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPoints0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPoints1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsDistanceJointAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxPhysicsDistanceJointAPI
+  - def CreateSpringDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpringDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsGearJoint(usdrt.UsdPhysics._UsdPhysics.Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateGearRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHinge0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateHinge1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxPhysicsGearJoint
+  - def GetGearRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHinge0Rel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetHinge1Rel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsInstancer(usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreatePhysicsProtoIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsPrototypesRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxPhysicsInstancer
+  - def GetPhysicsProtoIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsPrototypesRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsJointInstancer(PhysxPhysicsInstancer, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreatePhysicsBody0IndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsBody0sRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreatePhysicsBody1IndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsBody1sRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreatePhysicsLocalPos0sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsLocalPos1sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsLocalRot0sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePhysicsLocalRot1sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxPhysicsJointInstancer
+  - def GetPhysicsBody0IndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsBody0sRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetPhysicsBody1IndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsBody1sRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetPhysicsLocalPos0sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsLocalPos1sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsLocalRot0sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPhysicsLocalRot1sAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxPhysicsRackAndPinionJoint(usdrt.UsdPhysics._UsdPhysics.Joint, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateHingeRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreatePrismaticRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxPhysicsRackAndPinionJoint
+  - def GetHingeRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetPrismaticRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxRigidBodyAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxRigidBodyAPI
+  - def CreateAngularDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCfmScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateContactSlopCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisableGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableGyroscopicForcesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableSpeculativeCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLockedPosAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLockedRotAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxContactImpulseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxLinearVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRetainAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolveContactAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStabilizationThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAngularDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCfmScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetContactSlopCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisableGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableGyroscopicForcesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableSpeculativeCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLockedPosAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLockedRotAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxContactImpulseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDepenetrationVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxLinearVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRetainAccelerationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSleepThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolveContactAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSolverVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetStabilizationThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxSDFMeshCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxSDFMeshCollisionAPI
+  - def CreateSdfBitsPerSubgridPixelAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfEnableRemeshingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfMarginAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfNarrowBandThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfSubgridResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSdfTriangleCountReductionFactorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSdfBitsPerSubgridPixelAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfEnableRemeshingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfMarginAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfNarrowBandThicknessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfSubgridResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSdfTriangleCountReductionFactorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxSceneAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxSceneAPI
+  - def CreateBounceThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBroadphaseTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollisionSystemAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableEnhancedDeterminismAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableExternalForcesEveryIterationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableGPUDynamicsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableSceneQuerySupportAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableStabilizationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionCorrelationDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionOffsetThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuCollisionStackSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuFoundLostAggregatePairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuFoundLostPairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuHeapCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxDeformableSurfaceContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxHairContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxNumPartitionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxParticleContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxRigidContactCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxRigidPatchCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuMaxSoftBodyContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuTempBufferCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGpuTotalAggregatePairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInvertCollisionGroupFilterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxBiasCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateReportKinematicKinematicPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateReportKinematicStaticPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSolverTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTimeStepsPerSecondAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpdateTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBounceThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBroadphaseTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollisionSystemAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableCCDAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableEnhancedDeterminismAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableExternalForcesEveryIterationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableGPUDynamicsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableSceneQuerySupportAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableStabilizationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionCorrelationDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionOffsetThresholdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuCollisionStackSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuFoundLostAggregatePairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuFoundLostPairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuHeapCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxDeformableSurfaceContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxHairContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxNumPartitionsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxParticleContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxRigidContactCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxRigidPatchCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuMaxSoftBodyContactsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuTempBufferCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGpuTotalAggregatePairsCapacityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInvertCollisionGroupFilterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxBiasCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinPositionIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinVelocityIterationCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetReportKinematicKinematicPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetReportKinematicStaticPairsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSolverTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTimeStepsPerSecondAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUpdateTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxSceneQuasistaticAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxSceneQuasistaticAPI
+  - def CreateEnableQuasistaticAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableQuasistaticAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxSphereFillCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxSphereFillCollisionAPI
+  - def CreateFillModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxSpheresAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSeedCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVoxelResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFillModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSpheresAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSeedCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVoxelResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxSurfaceVelocityAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxSurfaceVelocityAPI
+  - def CreateSurfaceAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceVelocityEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceVelocityLocalSpaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSurfaceAngularVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSurfaceVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSurfaceVelocityEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSurfaceVelocityLocalSpaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxTendonAttachmentAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxTendonAttachmentAPI
+  - def CreateGearingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLocalPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParentAttachmentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateParentLinkRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetGearingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLocalPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetParentAttachmentAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetParentLinkRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxTendonAttachmentLeafAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxTendonAttachmentLeafAPI
+  - def CreateLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetRestLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxTendonAttachmentRootAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxTendonAttachmentRootAPI
+  - def CreateDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLimitStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTendonEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLimitStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTendonEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxTendonAxisAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxTendonAxisAPI
+  - def CreateForceCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGearingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForceCoefficientAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGearingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxTendonAxisRootAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxTendonAxisRootAPI
+  - def CreateDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLimitStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTendonEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLimitStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowerLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTendonEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUpperLimitAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxTriangleMeshCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxTriangleMeshCollisionAPI
+  - def CreateWeldToleranceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetWeldToleranceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxTriangleMeshSimplificationCollisionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxTriangleMeshSimplificationCollisionAPI
+  - def CreateSimplificationMetricAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWeldToleranceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSimplificationMetricAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWeldToleranceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxTriggerAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxTriggerAPI
+  - def CreateEnterScriptTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLeaveScriptTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOnEnterScriptAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOnLeaveScriptAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnterScriptTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLeaveScriptTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOnEnterScriptAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOnLeaveScriptAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxTriggerStateAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxTriggerStateAPI
+  - def CreateTriggeredCollisionsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTriggeredCollisionsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleAPI
+  - def CreateDriveRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateHighForwardSpeedSubStepCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLateralStickyTireDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLateralStickyTireThresholdSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLateralStickyTireThresholdTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLimitSuspensionExpansionVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalStickyTireDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalStickyTireThresholdSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalStickyTireThresholdTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLowForwardSpeedSubStepCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinActiveLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinLateralSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinPassiveLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSubStepThresholdLongitudinalSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSuspensionLineQueryTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVehicleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDriveRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetHighForwardSpeedSubStepCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLateralStickyTireDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLateralStickyTireThresholdSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLateralStickyTireThresholdTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLimitSuspensionExpansionVelocityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalStickyTireDampingAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalStickyTireThresholdSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalStickyTireThresholdTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLowForwardSpeedSubStepCountAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinActiveLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinLateralSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinPassiveLongitudinalSlipDenominatorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSubStepThresholdLongitudinalSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSuspensionLineQueryTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVehicleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleAckermannSteeringAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleAckermannSteeringAPI
+  - def CreateMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrackWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheel0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheel1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelBaseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrackWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheel0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheel1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelBaseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleAutoGearBoxAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleAutoGearBoxAPI
+  - def CreateDownRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLatencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDownRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLatencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleBrakesAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxVehicleBrakesAPI
+  - def CreateMaxBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorqueMultipliersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTorqueMultipliersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxVehicleClutchAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleClutchAPI
+  - def CreateStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleContextAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleContextAPI
+  - def CreateForwardAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateUpdateModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVerticalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetForwardAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetUpAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetUpdateModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVerticalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleControllerAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleControllerAPI
+  - def CreateAcceleratorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBrake0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBrake1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBrakeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateHandbrakeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSteerAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSteerLeftAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSteerRightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTargetGearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAcceleratorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBrake0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBrake1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBrakeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetHandbrakeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSteerAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSteerLeftAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSteerRightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTargetGearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleDriveBasicAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleDriveBasicAPI
+  - def CreatePeakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPeakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleDriveStandardAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleDriveStandardAPI
+  - def CreateAutoGearBoxRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateClutchRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateEngineRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateGearsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetAutoGearBoxRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetClutchRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetEngineRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetGearsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleEngineAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleEngineAPI
+  - def CreateDampingRateFullThrottleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDampingRateZeroThrottleClutchDisengagedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDampingRateZeroThrottleClutchEngagedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIdleRotationSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxRotationSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMoiAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePeakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorqueCurveAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingRateFullThrottleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingRateZeroThrottleClutchDisengagedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingRateZeroThrottleClutchEngagedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIdleRotationSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxRotationSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMoiAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPeakTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTorqueCurveAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleGearsAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleGearsAPI
+  - def CreateRatioScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSwitchTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRatioScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSwitchTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleMultiWheelDifferentialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleMultiWheelDifferentialAPI
+  - def CreateAverageWheelSpeedRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTorqueRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAverageWheelSpeedRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTorqueRatiosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleNonlinearCommandResponseAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxVehicleNonlinearCommandResponseAPI
+  - def CreateCommandValuesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpeedResponsesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpeedResponsesPerCommandValueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCommandValuesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpeedResponsesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpeedResponsesPerCommandValueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxVehicleSteeringAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleSteeringAPI
+  - def CreateAngleMultipliersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAngleMultipliersAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetWheelsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleSuspensionAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleSuspensionAPI
+  - def CreateCamberAtMaxCompressionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCamberAtMaxDroopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCamberAtRestAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxCompressionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxDroopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringDamperRateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpringStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSprungMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTravelDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCamberAtMaxCompressionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCamberAtMaxDroopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCamberAtRestAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxCompressionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxDroopAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpringDamperRateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpringStrengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSprungMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTravelDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleSuspensionComplianceAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleSuspensionComplianceAPI
+  - def CreateSuspensionForceAppPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTireForceAppPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelCamberAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelToeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSuspensionForceAppPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTireForceAppPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelCamberAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelToeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleTankControllerAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleTankControllerAPI
+  - def CreateThrust0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateThrust1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetThrust0Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetThrust1Attr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleTankDifferentialAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleTankDifferentialAPI
+  - def CreateNumberOfWheelsPerTrackAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateThrustIndexPerTrackAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTrackToWheelIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelIndicesInTrackOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNumberOfWheelsPerTrackAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetThrustIndexPerTrackAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTrackToWheelIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelIndicesInTrackOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleTireAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleTireAPI
+  - def CreateCamberStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCamberStiffnessPerUnitGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionTableRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateFrictionVsSlipGraphAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLatStiffXAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLatStiffYAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLateralStiffnessGraphAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLongitudinalStiffnessPerUnitGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestLoadAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCamberStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCamberStiffnessPerUnitGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionTableRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetFrictionVsSlipGraphAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLatStiffXAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLatStiffYAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLateralStiffnessGraphAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalStiffnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLongitudinalStiffnessPerUnitGravityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestLoadAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleTireFrictionTable(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateDefaultFrictionValueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrictionValuesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGroundMaterialsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PhysxVehicleTireFrictionTable
+  - def GetDefaultFrictionValueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrictionValuesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGroundMaterialsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleWheelAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleWheelAPI
+  - def CreateDampingRateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxHandBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMoiAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateToeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDampingRateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxHandBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaxSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMoiAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetToeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleWheelAttachmentAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleWheelAttachmentAPI
+  - def CreateCollisionGroupRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateDrivenAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIndexAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSuspensionForceAppPointOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSuspensionFrameOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSuspensionFramePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSuspensionRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSuspensionTravelDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTireForceAppPointOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTireRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateWheelCenterOfMassOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelFrameOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelFramePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWheelRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetCollisionGroupRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetDrivenAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIndexAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSuspensionForceAppPointOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSuspensionFrameOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSuspensionFramePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSuspensionRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSuspensionTravelDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTireForceAppPointOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTireRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetWheelCenterOfMassOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelFrameOrientationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelFramePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWheelRel(self) -> usdrt.Usd._Usd.Relationship
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PhysxVehicleWheelControllerAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> PhysxVehicleWheelControllerAPI
+  - def CreateBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDriveTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBrakeTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDriveTorqueAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSteerAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class TetrahedralMesh(usdrt.UsdGeom._UsdGeom.PointBased, usdrt.UsdGeom._UsdGeom.Gprim, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> TetrahedralMesh
+  - def GetIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - acceleration: str
+  - actor0: str
+  - actor1: str
+  - alwaysUpdateEnabled: str
+  - asynchronous: str
+  - attachmentEnabled: str
+  - average: str
+  - bitsPerPixel16: str
+  - bitsPerPixel32: str
+  - bitsPerPixel8: str
+  - bounceThreshold: str
+  - brakes0: str
+  - brakes1: str
+  - buffer: str
+  - clothConstaint: str
+  - collisionFilterIndices0: str
+  - collisionFilterIndices1: str
+  - collisionmeshes: str
+  - commandValues: str
+  - constrained: str
+  - contactDistance: str
+  - contactOffset: str
+  - convexDecomposition: str
+  - convexHull: str
+  - damping: str
+  - defaultFrictionValue: str
+  - disabled: str
+  - drive: str
+  - easy: str
+  - enableCCD: str
+  - filterType0: str
+  - filterType1: str
+  - flood: str
+  - fluidRestOffset: str
+  - force: str
+  - forceCoefficient: str
+  - frictionValues: str
+  - gPU: str
+  - gearing: str
+  - geometry: str
+  - globalSelfCollisionEnabled: str
+  - groundMaterials: str
+  - indices: str
+  - jointAxis: str
+  - limitStiffness: str
+  - localPos: str
+  - lowerLimit: str
+  - mBP: str
+  - max: str
+  - maxBrakeTorque: str
+  - maxDepenetrationVelocity: str
+  - maxNeighborhood: str
+  - maxVelocity: str
+  - min: str
+  - multiply: str
+  - negX: str
+  - negY: str
+  - negZ: str
+  - neighborhoodScale: str
+  - nonParticleCollisionEnabled: str
+  - offset: str
+  - oneDirectional: str
+  - pCM: str
+  - pGS: str
+  - parentAttachment: str
+  - parentLink: str
+  - particleContactOffset: str
+  - particleSystemEnabled: str
+  - patch: str
+  - physicsBody0Indices: str
+  - physicsBody0s: str
+  - physicsBody1Indices: str
+  - physicsBody1s: str
+  - physicsGearRatio: str
+  - physicsHinge: str
+  - physicsHinge0: str
+  - physicsHinge1: str
+  - physicsLocalPos0s: str
+  - physicsLocalPos1s: str
+  - physicsLocalRot0s: str
+  - physicsLocalRot1s: str
+  - physicsPosition: str
+  - physicsPrismatic: str
+  - physicsProtoIndices: str
+  - physicsPrototypes: str
+  - physicsRatio: str
+  - physicsVelocity: str
+  - physxArticulationArticulationEnabled: str
+  - physxArticulationEnabledSelfCollisions: str
+  - physxArticulationForceSensorConstraintSolverForcesEnabled: str
+  - physxArticulationForceSensorForce: str
+  - physxArticulationForceSensorForwardDynamicsForcesEnabled: str
+  - physxArticulationForceSensorSensorEnabled: str
+  - physxArticulationForceSensorTorque: str
+  - physxArticulationForceSensorWorldFrameEnabled: str
+  - physxArticulationSleepThreshold: str
+  - physxArticulationSolverPositionIterationCount: str
+  - physxArticulationSolverVelocityIterationCount: str
+  - physxArticulationStabilizationThreshold: str
+  - physxAutoAttachmentCollisionFilteringOffset: str
+  - physxAutoAttachmentDeformableVertexOverlapOffset: str
+  - physxAutoAttachmentEnableCollisionFiltering: str
+  - physxAutoAttachmentEnableDeformableFilteringPairs: str
+  - physxAutoAttachmentEnableDeformableVertexAttachments: str
+  - physxAutoAttachmentEnableRigidSurfaceAttachments: str
+  - physxAutoAttachmentRigidSurfaceSamplingDistance: str
+  - physxAutoParticleClothDisableMeshWelding: str
+  - physxAutoParticleClothSpringBendStiffness: str
+  - physxAutoParticleClothSpringDamping: str
+  - physxAutoParticleClothSpringShearStiffness: str
+  - physxAutoParticleClothSpringStretchStiffness: str
+  - physxCameraSubject: str
+  - physxCharacterControllerClimbingMode: str
+  - physxCharacterControllerContactOffset: str
+  - physxCharacterControllerInvisibleWallHeight: str
+  - physxCharacterControllerMaxJumpHeight: str
+  - physxCharacterControllerMoveTarget: str
+  - physxCharacterControllerNonWalkableMode: str
+  - physxCharacterControllerScaleCoeff: str
+  - physxCharacterControllerSimulationOwner: str
+  - physxCharacterControllerSlopeLimit: str
+  - physxCharacterControllerStepOffset: str
+  - physxCharacterControllerUpAxis: str
+  - physxCharacterControllerVolumeGrowth: str
+  - physxCollisionContactOffset: str
+  - physxCollisionCustomGeometry: str
+  - physxCollisionMinTorsionalPatchRadius: str
+  - physxCollisionRestOffset: str
+  - physxCollisionTorsionalPatchRadius: str
+  - physxContactReportReportPairs: str
+  - physxContactReportThreshold: str
+  - physxConvexDecompositionCollisionErrorPercentage: str
+  - physxConvexDecompositionCollisionHullVertexLimit: str
+  - physxConvexDecompositionCollisionMaxConvexHulls: str
+  - physxConvexDecompositionCollisionMinThickness: str
+  - physxConvexDecompositionCollisionShrinkWrap: str
+  - physxConvexDecompositionCollisionVoxelResolution: str
+  - physxConvexHullCollisionHullVertexLimit: str
+  - physxConvexHullCollisionMinThickness: str
+  - physxCookedData: str
+  - physxDeformableBodyMaterialDampingScale: str
+  - physxDeformableBodyMaterialDensity: str
+  - physxDeformableBodyMaterialDynamicFriction: str
+  - physxDeformableBodyMaterialElasticityDamping: str
+  - physxDeformableBodyMaterialPoissonsRatio: str
+  - physxDeformableBodyMaterialYoungsModulus: str
+  - physxDeformableCollisionIndices: str
+  - physxDeformableCollisionPoints: str
+  - physxDeformableCollisionRestPoints: str
+  - physxDeformableDeformableEnabled: str
+  - physxDeformableDisableGravity: str
+  - physxDeformableEnableCCD: str
+  - physxDeformableMaxDepenetrationVelocity: str
+  - physxDeformableRestPoints: str
+  - physxDeformableSelfCollision: str
+  - physxDeformableSelfCollisionFilterDistance: str
+  - physxDeformableSettlingThreshold: str
+  - physxDeformableSimulationIndices: str
+  - physxDeformableSimulationOwner: str
+  - physxDeformableSimulationPoints: str
+  - physxDeformableSimulationRestPoints: str
+  - physxDeformableSimulationVelocities: str
+  - physxDeformableSleepDamping: str
+  - physxDeformableSleepThreshold: str
+  - physxDeformableSolverPositionIterationCount: str
+  - physxDeformableSurfaceBendingStiffnessScale: str
+  - physxDeformableSurfaceCollisionIterationMultiplier: str
+  - physxDeformableSurfaceCollisionPairUpdateFrequency: str
+  - physxDeformableSurfaceFlatteningEnabled: str
+  - physxDeformableSurfaceMaterialDensity: str
+  - physxDeformableSurfaceMaterialDynamicFriction: str
+  - physxDeformableSurfaceMaterialPoissonsRatio: str
+  - physxDeformableSurfaceMaterialThickness: str
+  - physxDeformableSurfaceMaterialYoungsModulus: str
+  - physxDeformableSurfaceMaxVelocity: str
+  - physxDeformableVertexVelocityDamping: str
+  - physxDiffuseParticlesAirDrag: str
+  - physxDiffuseParticlesBubbleDrag: str
+  - physxDiffuseParticlesBuoyancy: str
+  - physxDiffuseParticlesCollisionDecay: str
+  - physxDiffuseParticlesDiffuseParticlesEnabled: str
+  - physxDiffuseParticlesDivergenceWeight: str
+  - physxDiffuseParticlesKineticEnergyWeight: str
+  - physxDiffuseParticlesLifetime: str
+  - physxDiffuseParticlesMaxDiffuseParticleMultiplier: str
+  - physxDiffuseParticlesPressureWeight: str
+  - physxDiffuseParticlesThreshold: str
+  - physxDiffuseParticlesUseAccurateVelocity: str
+  - physxDroneCameraFeedForwardVelocityGain: str
+  - physxDroneCameraFollowDistance: str
+  - physxDroneCameraFollowHeight: str
+  - physxDroneCameraHorizontalVelocityGain: str
+  - physxDroneCameraMaxDistance: str
+  - physxDroneCameraMaxSpeed: str
+  - physxDroneCameraPositionOffset: str
+  - physxDroneCameraRotationFilterTimeConstant: str
+  - physxDroneCameraVelocityFilterTimeConstant: str
+  - physxDroneCameraVerticalVelocityGain: str
+  - physxFollowCameraCameraPositionTimeConstant: str
+  - physxFollowCameraFollowMaxDistance: str
+  - physxFollowCameraFollowMaxSpeed: str
+  - physxFollowCameraFollowMinDistance: str
+  - physxFollowCameraFollowMinSpeed: str
+  - physxFollowCameraFollowTurnRateGain: str
+  - physxFollowCameraLookAheadMaxSpeed: str
+  - physxFollowCameraLookAheadMinDistance: str
+  - physxFollowCameraLookAheadMinSpeed: str
+  - physxFollowCameraLookAheadTurnRateGain: str
+  - physxFollowCameraLookPositionHeight: str
+  - physxFollowCameraLookPositionTimeConstant: str
+  - physxFollowCameraPitchAngle: str
+  - physxFollowCameraPitchAngleTimeConstant: str
+  - physxFollowCameraPositionOffset: str
+  - physxFollowCameraSlowPitchAngleSpeed: str
+  - physxFollowCameraSlowSpeedPitchAngleScale: str
+  - physxFollowCameraVelocityNormalMinSpeed: str
+  - physxFollowCameraYawAngle: str
+  - physxFollowCameraYawRateTimeConstant: str
+  - physxFollowFollowCameraLookAheadMaxDistance: str
+  - physxFollowLookCameraDownHillGroundAngle: str
+  - physxFollowLookCameraDownHillGroundPitch: str
+  - physxFollowLookCameraFollowReverseDistance: str
+  - physxFollowLookCameraFollowReverseSpeed: str
+  - physxFollowLookCameraUpHillGroundAngle: str
+  - physxFollowLookCameraUpHillGroundPitch: str
+  - physxFollowLookCameraVelocityBlendTimeConstant: str
+  - physxForceForce: str
+  - physxForceForceEnabled: str
+  - physxForceMode: str
+  - physxForceTorque: str
+  - physxForceWorldFrameEnabled: str
+  - physxHairExternalCollision: str
+  - physxHairGlobalShapeComplianceAtRoot: str
+  - physxHairGlobalShapeComplianceStrandAttenuation: str
+  - physxHairInterHairRepulsion: str
+  - physxHairLocalShapeMatchingCompliance: str
+  - physxHairLocalShapeMatchingGroupOverlap: str
+  - physxHairLocalShapeMatchingGroupSize: str
+  - physxHairLocalShapeMatchingLinearStretching: str
+  - physxHairMaterialContactOffset: str
+  - physxHairMaterialContactOffsetMultiplier: str
+  - physxHairMaterialCurveBendStiffness: str
+  - physxHairMaterialCurveThickness: str
+  - physxHairMaterialDensity: str
+  - physxHairMaterialDynamicFriction: str
+  - physxHairMaterialYoungsModulus: str
+  - physxHairSegmentLength: str
+  - physxHairTwosidedAttachment: str
+  - physxHairVelSmoothing: str
+  - physxJointArmature: str
+  - physxJointEnableProjection: str
+  - physxJointJointFriction: str
+  - physxJointMaxJointVelocity: str
+  - physxLimit: str
+  - physxMaterialCompliantContactDamping: str
+  - physxMaterialCompliantContactStiffness: str
+  - physxMaterialFrictionCombineMode: str
+  - physxMaterialImprovePatchFriction: str
+  - physxMaterialRestitutionCombineMode: str
+  - physxPBDMaterialAdhesion: str
+  - physxPBDMaterialAdhesionOffsetScale: str
+  - physxPBDMaterialCflCoefficient: str
+  - physxPBDMaterialCohesion: str
+  - physxPBDMaterialDamping: str
+  - physxPBDMaterialDensity: str
+  - physxPBDMaterialDrag: str
+  - physxPBDMaterialFriction: str
+  - physxPBDMaterialGravityScale: str
+  - physxPBDMaterialLift: str
+  - physxPBDMaterialParticleAdhesionScale: str
+  - physxPBDMaterialParticleFrictionScale: str
+  - physxPBDMaterialSurfaceTension: str
+  - physxPBDMaterialViscosity: str
+  - physxPBDMaterialVorticityConfinement: str
+  - physxParticleAnisotropyMax: str
+  - physxParticleAnisotropyMin: str
+  - physxParticleAnisotropyParticleAnisotropyEnabled: str
+  - physxParticleAnisotropyScale: str
+  - physxParticleFluid: str
+  - physxParticleIsosurfaceGridFilteringPasses: str
+  - physxParticleIsosurfaceGridSmoothingRadius: str
+  - physxParticleIsosurfaceGridSpacing: str
+  - physxParticleIsosurfaceIsosurfaceEnabled: str
+  - physxParticleIsosurfaceMaxSubgrids: str
+  - physxParticleIsosurfaceMaxTriangles: str
+  - physxParticleIsosurfaceMaxVertices: str
+  - physxParticleIsosurfaceNumMeshNormalSmoothingPasses: str
+  - physxParticleIsosurfaceNumMeshSmoothingPasses: str
+  - physxParticleIsosurfaceSurfaceDistance: str
+  - physxParticleParticleEnabled: str
+  - physxParticleParticleGroup: str
+  - physxParticleParticleSystem: str
+  - physxParticlePressure: str
+  - physxParticleRestPoints: str
+  - physxParticleSamplingMaxSamples: str
+  - physxParticleSamplingParticles: str
+  - physxParticleSamplingSamplingDistance: str
+  - physxParticleSamplingVolume: str
+  - physxParticleSelfCollision: str
+  - physxParticleSelfCollisionFilter: str
+  - physxParticleSimulationPoints: str
+  - physxParticleSmoothingParticleSmoothingEnabled: str
+  - physxParticleSmoothingStrength: str
+  - physxParticleSpringDampings: str
+  - physxParticleSpringIndices: str
+  - physxParticleSpringRestLengths: str
+  - physxParticleSpringStiffnesses: str
+  - physxPhysicsDistanceJointSpringDamping: str
+  - physxPhysicsDistanceJointSpringEnabled: str
+  - physxPhysicsDistanceJointSpringStiffness: str
+  - physxRigidBodyAngularDamping: str
+  - physxRigidBodyCfmScale: str
+  - physxRigidBodyContactSlopCoefficient: str
+  - physxRigidBodyDisableGravity: str
+  - physxRigidBodyEnableCCD: str
+  - physxRigidBodyEnableGyroscopicForces: str
+  - physxRigidBodyEnableSpeculativeCCD: str
+  - physxRigidBodyLinearDamping: str
+  - physxRigidBodyLockedPosAxis: str
+  - physxRigidBodyLockedRotAxis: str
+  - physxRigidBodyMaxAngularVelocity: str
+  - physxRigidBodyMaxContactImpulse: str
+  - physxRigidBodyMaxDepenetrationVelocity: str
+  - physxRigidBodyMaxLinearVelocity: str
+  - physxRigidBodyRetainAccelerations: str
+  - physxRigidBodySleepThreshold: str
+  - physxRigidBodySolveContact: str
+  - physxRigidBodySolverPositionIterationCount: str
+  - physxRigidBodySolverVelocityIterationCount: str
+  - physxRigidBodyStabilizationThreshold: str
+  - physxSDFMeshCollisionSdfBitsPerSubgridPixel: str
+  - physxSDFMeshCollisionSdfEnableRemeshing: str
+  - physxSDFMeshCollisionSdfMargin: str
+  - physxSDFMeshCollisionSdfNarrowBandThickness: str
+  - physxSDFMeshCollisionSdfResolution: str
+  - physxSDFMeshCollisionSdfSubgridResolution: str
+  - physxSDFMeshCollisionSdfTriangleCountReductionFactor: str
+  - physxSceneBounceThreshold: str
+  - physxSceneBroadphaseType: str
+  - physxSceneCollisionSystem: str
+  - physxSceneEnableCCD: str
+  - physxSceneEnableEnhancedDeterminism: str
+  - physxSceneEnableExternalForcesEveryIteration: str
+  - physxSceneEnableGPUDynamics: str
+  - physxSceneEnableSceneQuerySupport: str
+  - physxSceneEnableStabilization: str
+  - physxSceneFrictionCorrelationDistance: str
+  - physxSceneFrictionOffsetThreshold: str
+  - physxSceneFrictionType: str
+  - physxSceneGpuCollisionStackSize: str
+  - physxSceneGpuFoundLostAggregatePairsCapacity: str
+  - physxSceneGpuFoundLostPairsCapacity: str
+  - physxSceneGpuHeapCapacity: str
+  - physxSceneGpuMaxDeformableSurfaceContacts: str
+  - physxSceneGpuMaxHairContacts: str
+  - physxSceneGpuMaxNumPartitions: str
+  - physxSceneGpuMaxParticleContacts: str
+  - physxSceneGpuMaxRigidContactCount: str
+  - physxSceneGpuMaxRigidPatchCount: str
+  - physxSceneGpuMaxSoftBodyContacts: str
+  - physxSceneGpuTempBufferCapacity: str
+  - physxSceneGpuTotalAggregatePairsCapacity: str
+  - physxSceneInvertCollisionGroupFilter: str
+  - physxSceneMaxBiasCoefficient: str
+  - physxSceneMaxPositionIterationCount: str
+  - physxSceneMaxVelocityIterationCount: str
+  - physxSceneMinPositionIterationCount: str
+  - physxSceneMinVelocityIterationCount: str
+  - physxSceneQuasistaticEnableQuasistatic: str
+  - physxSceneReportKinematicKinematicPairs: str
+  - physxSceneReportKinematicStaticPairs: str
+  - physxSceneSolverType: str
+  - physxSceneTimeStepsPerSecond: str
+  - physxSceneUpdateType: str
+  - physxSphereFillCollisionFillMode: str
+  - physxSphereFillCollisionMaxSpheres: str
+  - physxSphereFillCollisionSeedCount: str
+  - physxSphereFillCollisionVoxelResolution: str
+  - physxSurfaceVelocitySurfaceAngularVelocity: str
+  - physxSurfaceVelocitySurfaceVelocity: str
+  - physxSurfaceVelocitySurfaceVelocityEnabled: str
+  - physxSurfaceVelocitySurfaceVelocityLocalSpace: str
+  - physxTendon: str
+  - physxTriangleMeshCollisionWeldTolerance: str
+  - physxTriangleMeshSimplificationCollisionMetric: str
+  - physxTriangleMeshSimplificationCollisionWeldTolerance: str
+  - physxTriggerEnterScriptType: str
+  - physxTriggerLeaveScriptType: str
+  - physxTriggerOnEnterScript: str
+  - physxTriggerOnLeaveScript: str
+  - physxTriggerTriggeredCollisions: str
+  - physxVehicleAckermannSteeringMaxSteerAngle: str
+  - physxVehicleAckermannSteeringStrength: str
+  - physxVehicleAckermannSteeringTrackWidth: str
+  - physxVehicleAckermannSteeringWheel0: str
+  - physxVehicleAckermannSteeringWheel1: str
+  - physxVehicleAckermannSteeringWheelBase: str
+  - physxVehicleAutoGearBoxDownRatios: str
+  - physxVehicleAutoGearBoxLatency: str
+  - physxVehicleAutoGearBoxUpRatios: str
+  - physxVehicleBrakes: str
+  - physxVehicleClutchStrength: str
+  - physxVehicleContextForwardAxis: str
+  - physxVehicleContextLongitudinalAxis: str
+  - physxVehicleContextUpAxis: str
+  - physxVehicleContextUpdateMode: str
+  - physxVehicleContextVerticalAxis: str
+  - physxVehicleControllerAccelerator: str
+  - physxVehicleControllerBrake: str
+  - physxVehicleControllerBrake0: str
+  - physxVehicleControllerBrake1: str
+  - physxVehicleControllerHandbrake: str
+  - physxVehicleControllerSteer: str
+  - physxVehicleControllerSteerLeft: str
+  - physxVehicleControllerSteerRight: str
+  - physxVehicleControllerTargetGear: str
+  - physxVehicleDrive: str
+  - physxVehicleDriveBasicPeakTorque: str
+  - physxVehicleDriveStandardAutoGearBox: str
+  - physxVehicleDriveStandardClutch: str
+  - physxVehicleDriveStandardEngine: str
+  - physxVehicleDriveStandardGears: str
+  - physxVehicleEngineDampingRateFullThrottle: str
+  - physxVehicleEngineDampingRateZeroThrottleClutchDisengaged: str
+  - physxVehicleEngineDampingRateZeroThrottleClutchEngaged: str
+  - physxVehicleEngineIdleRotationSpeed: str
+  - physxVehicleEngineMaxRotationSpeed: str
+  - physxVehicleEngineMoi: str
+  - physxVehicleEnginePeakTorque: str
+  - physxVehicleEngineTorqueCurve: str
+  - physxVehicleGearsRatioScale: str
+  - physxVehicleGearsRatios: str
+  - physxVehicleGearsSwitchTime: str
+  - physxVehicleHighForwardSpeedSubStepCount: str
+  - physxVehicleLateralStickyTireDamping: str
+  - physxVehicleLateralStickyTireThresholdSpeed: str
+  - physxVehicleLateralStickyTireThresholdTime: str
+  - physxVehicleLimitSuspensionExpansionVelocity: str
+  - physxVehicleLongitudinalStickyTireDamping: str
+  - physxVehicleLongitudinalStickyTireThresholdSpeed: str
+  - physxVehicleLongitudinalStickyTireThresholdTime: str
+  - physxVehicleLowForwardSpeedSubStepCount: str
+  - physxVehicleMinActiveLongitudinalSlipDenominator: str
+  - physxVehicleMinLateralSlipDenominator: str
+  - physxVehicleMinLongitudinalSlipDenominator: str
+  - physxVehicleMinPassiveLongitudinalSlipDenominator: str
+  - physxVehicleMultiWheelDifferentialAverageWheelSpeedRatios: str
+  - physxVehicleMultiWheelDifferentialTorqueRatios: str
+  - physxVehicleMultiWheelDifferentialWheels: str
+  - physxVehicleNCR: str
+  - physxVehicleSteeringAngleMultipliers: str
+  - physxVehicleSteeringMaxSteerAngle: str
+  - physxVehicleSteeringWheels: str
+  - physxVehicleSubStepThresholdLongitudinalSpeed: str
+  - physxVehicleSuspensionCamberAtMaxCompression: str
+  - physxVehicleSuspensionCamberAtMaxDroop: str
+  - physxVehicleSuspensionCamberAtRest: str
+  - physxVehicleSuspensionComplianceSuspensionForceAppPoint: str
+  - physxVehicleSuspensionComplianceTireForceAppPoint: str
+  - physxVehicleSuspensionComplianceWheelCamberAngle: str
+  - physxVehicleSuspensionComplianceWheelToeAngle: str
+  - physxVehicleSuspensionLineQueryType: str
+  - physxVehicleSuspensionMaxCompression: str
+  - physxVehicleSuspensionMaxDroop: str
+  - physxVehicleSuspensionSpringDamperRate: str
+  - physxVehicleSuspensionSpringStrength: str
+  - physxVehicleSuspensionSprungMass: str
+  - physxVehicleSuspensionTravelDistance: str
+  - physxVehicleTankControllerThrust0: str
+  - physxVehicleTankControllerThrust1: str
+  - physxVehicleTankDifferentialNumberOfWheelsPerTrack: str
+  - physxVehicleTankDifferentialThrustIndexPerTrack: str
+  - physxVehicleTankDifferentialTrackToWheelIndices: str
+  - physxVehicleTankDifferentialWheelIndicesInTrackOrder: str
+  - physxVehicleTireCamberStiffness: str
+  - physxVehicleTireCamberStiffnessPerUnitGravity: str
+  - physxVehicleTireFrictionTable: str
+  - physxVehicleTireFrictionVsSlipGraph: str
+  - physxVehicleTireLatStiffX: str
+  - physxVehicleTireLatStiffY: str
+  - physxVehicleTireLateralStiffnessGraph: str
+  - physxVehicleTireLongitudinalStiffness: str
+  - physxVehicleTireLongitudinalStiffnessPerUnitGravity: str
+  - physxVehicleTireRestLoad: str
+  - physxVehicleVehicleEnabled: str
+  - physxVehicleWheelAttachmentCollisionGroup: str
+  - physxVehicleWheelAttachmentDriven: str
+  - physxVehicleWheelAttachmentIndex: str
+  - physxVehicleWheelAttachmentSuspension: str
+  - physxVehicleWheelAttachmentSuspensionForceAppPointOffset: str
+  - physxVehicleWheelAttachmentSuspensionFrameOrientation: str
+  - physxVehicleWheelAttachmentSuspensionFramePosition: str
+  - physxVehicleWheelAttachmentSuspensionTravelDirection: str
+  - physxVehicleWheelAttachmentTire: str
+  - physxVehicleWheelAttachmentTireForceAppPointOffset: str
+  - physxVehicleWheelAttachmentWheel: str
+  - physxVehicleWheelAttachmentWheelCenterOfMassOffset: str
+  - physxVehicleWheelAttachmentWheelFrameOrientation: str
+  - physxVehicleWheelAttachmentWheelFramePosition: str
+  - physxVehicleWheelControllerBrakeTorque: str
+  - physxVehicleWheelControllerDriveTorque: str
+  - physxVehicleWheelControllerSteerAngle: str
+  - physxVehicleWheelDampingRate: str
+  - physxVehicleWheelMass: str
+  - physxVehicleWheelMaxBrakeTorque: str
+  - physxVehicleWheelMaxHandBrakeTorque: str
+  - physxVehicleWheelMaxSteerAngle: str
+  - physxVehicleWheelMoi: str
+  - physxVehicleWheelRadius: str
+  - physxVehicleWheelToeAngle: str
+  - physxVehicleWheelWidth: str
+  - points0: str
+  - points1: str
+  - posX: str
+  - posY: str
+  - posZ: str
+  - preventClimbing: str
+  - preventClimbingForceSliding: str
+  - quasistaticactors: str
+  - raycast: str
+  - referenceFrameIsCenterOfMass: str
+  - restLength: str
+  - restOffset: str
+  - restitution: str
+  - rotX: str
+  - rotY: str
+  - rotZ: str
+  - sAP: str
+  - sAT: str
+  - scriptBuffer: str
+  - scriptFile: str
+  - sdf: str
+  - simulationOwner: str
+  - solidRestOffset: str
+  - solverPositionIterationCount: str
+  - speedResponses: str
+  - speedResponsesPerCommandValue: str
+  - sphereFill: str
+  - state: str
+  - steer: str
+  - stiffness: str
+  - surface: str
+  - sweep: str
+  - synchronous: str
+  - tGS: str
+  - tendonEnabled: str
+  - torqueMultipliers: str
+  - transX: str
+  - transY: str
+  - transZ: str
+  - triangleMesh: str
+  - twoDirectional: str
+  - undefined: str
+  - upperLimit: str
+  - velocityChange: str
+  - vertices: str
+  - wheels: str
+  - wind: str
+  - x: str
+  - y: str
+  - z: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.ForceFieldSchema:
+
+## Classes
+
+- class PhysxForceFieldAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldAPI
+  - def CreateEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceAreaScaleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceSampleDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetPositionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRangeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSurfaceAreaScaleEnabledAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSurfaceSampleDensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldConicalAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldConicalAPI
+  - def CreateAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePowerFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetPowerFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldDragAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldDragAPI
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMinimumSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMinimumSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldLinearAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldLinearAPI
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldNoiseAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldNoiseAPI
+  - def CreateAmplitudeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAmplitudeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldPlanarAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldPlanarAPI
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNormalAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetNormalAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldRingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldRingAPI
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNormalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpinConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpinInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpinLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - def GetNormalAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpinConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpinInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpinLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldSphericalAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldSphericalAPI
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldSpinAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldSpinAPI
+  - def CreateConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpinAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetConstantAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInverseSquareAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLinearAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpinAxisAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class PhysxForceFieldWindAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim, name: TfToken) -> PhysxForceFieldWindAPI
+  - def CreateAverageDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateAverageSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDirectionVariationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDirectionVariationFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpeedVariationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpeedVariationFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAverageDirectionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAverageSpeedAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDirectionVariationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDirectionVariationFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDragAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetName(self) -> TfToken
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSpeedVariationAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpeedVariationFrequencyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim, arg1: TfToken)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase, arg1: TfToken)
+
+- class Tokens
+  - forceFieldBodies: str
+  - physxForceField: str
+  - physxForceFieldConicalAngle: str
+  - physxForceFieldConicalConstant: str
+  - physxForceFieldConicalInverseSquare: str
+  - physxForceFieldConicalLinear: str
+  - physxForceFieldConicalLinearFalloff: str
+  - physxForceFieldConicalPowerFalloff: str
+  - physxForceFieldDragLinear: str
+  - physxForceFieldDragMinimumSpeed: str
+  - physxForceFieldDragSquare: str
+  - physxForceFieldEnabled: str
+  - physxForceFieldLinearConstant: str
+  - physxForceFieldLinearDirection: str
+  - physxForceFieldLinearInverseSquare: str
+  - physxForceFieldLinearLinear: str
+  - physxForceFieldNoiseAmplitude: str
+  - physxForceFieldNoiseDrag: str
+  - physxForceFieldNoiseFrequency: str
+  - physxForceFieldPlanarConstant: str
+  - physxForceFieldPlanarInverseSquare: str
+  - physxForceFieldPlanarLinear: str
+  - physxForceFieldPlanarNormal: str
+  - physxForceFieldPosition: str
+  - physxForceFieldRange: str
+  - physxForceFieldRingConstant: str
+  - physxForceFieldRingInverseSquare: str
+  - physxForceFieldRingLinear: str
+  - physxForceFieldRingNormalAxis: str
+  - physxForceFieldRingRadius: str
+  - physxForceFieldRingSpinConstant: str
+  - physxForceFieldRingSpinInverseSquare: str
+  - physxForceFieldRingSpinLinear: str
+  - physxForceFieldSphericalConstant: str
+  - physxForceFieldSphericalInverseSquare: str
+  - physxForceFieldSphericalLinear: str
+  - physxForceFieldSpinConstant: str
+  - physxForceFieldSpinInverseSquare: str
+  - physxForceFieldSpinLinear: str
+  - physxForceFieldSpinSpinAxis: str
+  - physxForceFieldSurfaceAreaScaleEnabled: str
+  - physxForceFieldSurfaceSampleDensity: str
+  - physxForceFieldWindAverageDirection: str
+  - physxForceFieldWindAverageSpeed: str
+  - physxForceFieldWindDirectionVariation: str
+  - physxForceFieldWindDirectionVariationFrequency: str
+  - physxForceFieldWindDrag: str
+  - physxForceFieldWindSpeedVariation: str
+  - physxForceFieldWindSpeedVariationFrequency: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdLux:
+
+## Classes
+
+- class BoundableLightBase(usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class CylinderLight(BoundableLightBase, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTreatAsLineAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> CylinderLight
+  - def GetLengthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTreatAsLineAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class DiskLight(BoundableLightBase, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> DiskLight
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class DistantLight(NonboundableLightBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIntensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> DistantLight
+  - def GetAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIntensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class DomeLight(NonboundableLightBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateGuideRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePortalsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateTextureFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTextureFormatAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> DomeLight
+  - def GetGuideRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPortalsRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTextureFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetTextureFormatAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class GeometryLight(NonboundableLightBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateGeometryRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> GeometryLight
+  - def GetGeometryRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class LightAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> LightAPI
+  - def CreateCollectionLightLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCollectionShadowLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateColorTemperatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDiffuseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEnableColorTemperatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExposureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFiltersRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateIntensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateNormalizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSpecularAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollectionLightLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCollectionShadowLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetColorTemperatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDiffuseAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEnableColorTemperatureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExposureAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFiltersRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetIntensityAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetNormalizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSpecularAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class LightFilter(usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateCollectionFilterLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> LightFilter
+  - def GetCollectionFilterLinkIncludeRootAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class LightListAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> LightListAPI
+  - def CreateLightListCacheBehaviorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightListRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetLightListCacheBehaviorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightListRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class ListAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> ListAPI
+  - def CreateLightListCacheBehaviorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightListRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetLightListCacheBehaviorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightListRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class MeshLightAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MeshLightAPI
+  - def CreateLightMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NonboundableLightBase(usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PluginLight(usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PluginLight
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PluginLightFilter(LightFilter, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PluginLightFilter
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PortalLight(BoundableLightBase, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PortalLight
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class RectLight(BoundableLightBase, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTextureFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> RectLight
+  - def GetHeightAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTextureFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetWidthAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class ShadowAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> ShadowAPI
+  - def CreateShadowColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShadowDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShadowEnableAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShadowFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShadowFalloffGammaAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShadowColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShadowDistanceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShadowEnableAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShadowFalloffAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShadowFalloffGammaAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class ShapingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> ShapingAPI
+  - def CreateShapingConeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingConeSoftnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingFocusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingFocusTintAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingIesAngleScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingIesFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateShapingIesNormalizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShapingConeAngleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingConeSoftnessAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingFocusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingFocusTintAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingIesAngleScaleAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingIesFileAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetShapingIesNormalizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class SphereLight(BoundableLightBase, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTreatAsPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> SphereLight
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRadiusAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTreatAsPointAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - angular: str
+  - automatic: str
+  - collectionFilterLinkIncludeRoot: str
+  - collectionLightLinkIncludeRoot: str
+  - collectionShadowLinkIncludeRoot: str
+  - consumeAndContinue: str
+  - consumeAndHalt: str
+  - cubeMapVerticalCross: str
+  - cylinderLight: str
+  - diskLight: str
+  - distantLight: str
+  - domeLight: str
+  - extent: str
+  - filterLink: str
+  - geometry: str
+  - geometryLight: str
+  - guideRadius: str
+  - ignore: str
+  - independent: str
+  - inputsAngle: str
+  - inputsColor: str
+  - inputsColorTemperature: str
+  - inputsDiffuse: str
+  - inputsEnableColorTemperature: str
+  - inputsExposure: str
+  - inputsHeight: str
+  - inputsIntensity: str
+  - inputsLength: str
+  - inputsNormalize: str
+  - inputsRadius: str
+  - inputsShadowColor: str
+  - inputsShadowDistance: str
+  - inputsShadowEnable: str
+  - inputsShadowFalloff: str
+  - inputsShadowFalloffGamma: str
+  - inputsShapingConeAngle: str
+  - inputsShapingConeSoftness: str
+  - inputsShapingFocus: str
+  - inputsShapingFocusTint: str
+  - inputsShapingIesAngleScale: str
+  - inputsShapingIesFile: str
+  - inputsShapingIesNormalize: str
+  - inputsSpecular: str
+  - inputsTextureFile: str
+  - inputsTextureFormat: str
+  - inputsWidth: str
+  - latlong: str
+  - lightFilterShaderId: str
+  - lightFilters: str
+  - lightLink: str
+  - lightList: str
+  - lightListCacheBehavior: str
+  - lightMaterialSyncMode: str
+  - lightShaderId: str
+  - materialGlowTintsLight: str
+  - meshLight: str
+  - mirroredBall: str
+  - noMaterialResponse: str
+  - orientToStageUpAxis: str
+  - portalLight: str
+  - portals: str
+  - rectLight: str
+  - shadowLink: str
+  - sphereLight: str
+  - treatAsLine: str
+  - treatAsPoint: str
+  - volumeLight: str
+
+- class VolumeLightAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> VolumeLightAPI
+  - def CreateLightMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightMaterialSyncModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetLightShaderIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdMedia:
+
+## Classes
+
+- class SpatialAudio(usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAuralModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateEndTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFilePathAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMediaOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePlaybackModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStartTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> SpatialAudio
+  - def GetAuralModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetEndTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFilePathAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGainAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMediaOffsetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPlaybackModeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetStartTimeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - auralMode: str
+  - endTime: str
+  - filePath: str
+  - gain: str
+  - loopFromStage: str
+  - loopFromStart: str
+  - loopFromStartToEnd: str
+  - mediaOffset: str
+  - nonSpatial: str
+  - onceFromStart: str
+  - onceFromStartToEnd: str
+  - playbackMode: str
+  - spatial: str
+  - startTime: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdRender:
+
+## Classes
+
+- class DenoisePass(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> DenoisePass
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Pass(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateCommandAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDenoiseEnableAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDenoisePassRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateFileNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInputPassesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreatePassTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRenderSourceRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Pass
+  - def GetCommandAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDenoiseEnableAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDenoisePassRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetFileNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInputPassesRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetPassTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRenderSourceRel(self) -> usdrt.Usd._Usd.Relationship
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Product(SettingsBase, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateOrderedVarsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateProductNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateProductTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Product
+  - def GetOrderedVarsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetProductNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProductTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Settings(SettingsBase, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateIncludedPurposesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateMaterialBindingPurposesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateProductsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateRenderingColorSpaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Settings
+  - def GetIncludedPurposesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetMaterialBindingPurposesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetProductsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetRenderingColorSpaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class SettingsBase(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateAspectRatioConformPolicyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateCameraRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateDataWindowNDCAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisableMotionBlurAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInstantaneousShutterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePixelAspectRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAspectRatioConformPolicyAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetCameraRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetDataWindowNDCAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisableMotionBlurAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInstantaneousShutterAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPixelAspectRatioAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetResolutionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - adjustApertureHeight: str
+  - adjustApertureWidth: str
+  - adjustPixelAspectRatio: str
+  - aspectRatioConformPolicy: str
+  - camera: str
+  - color3f: str
+  - command: str
+  - cropAperture: str
+  - dataType: str
+  - dataWindowNDC: str
+  - denoiseEnable: str
+  - denoisePass: str
+  - disableMotionBlur: str
+  - expandAperture: str
+  - fileName: str
+  - full: str
+  - includedPurposes: str
+  - inputPasses: str
+  - instantaneousShutter: str
+  - intrinsic: str
+  - lpe: str
+  - materialBindingPurposes: str
+  - orderedVars: str
+  - passType: str
+  - pixelAspectRatio: str
+  - preview: str
+  - primvar: str
+  - productName: str
+  - productType: str
+  - products: str
+  - raster: str
+  - raw: str
+  - renderSettingsPrimPath: str
+  - renderSource: str
+  - renderingColorSpace: str
+  - resolution: str
+  - sourceName: str
+  - sourceType: str
+
+- class Var(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSourceNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSourceTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Var
+  - def GetDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSourceNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSourceTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdShade:
+
+## Classes
+
+- class AttributeType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Input: usdrt.UsdShade._UsdShade.AttributeType
+  - Invalid: usdrt.UsdShade._UsdShade.AttributeType
+  - Output: usdrt.UsdShade._UsdShade.AttributeType
+
+- class ConnectableAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def ConnectToSource(shadingAttr: usdrt.Usd._Usd.Attribute, source: ConnectionSourceInfo, mod: ConnectionModification = ConnectionModification.Replace) -> bool
+  - static def ConnectToSource(input: Input, source: ConnectionSourceInfo, mod: ConnectionModification = ConnectionModification.Replace) -> bool
+  - static def ConnectToSource(output: Output, source: ConnectionSourceInfo, mod: ConnectionModification = ConnectionModification.Replace) -> bool
+  - def CreateInput(self, name: TfToken, type: usdrt.Sdf._Sdf.ValueTypeName) -> Input
+  - def CreateOutput(self, name: TfToken, typeName: usdrt.Sdf._Sdf.ValueTypeName) -> Output
+  - def GetInput(self, name: TfToken) -> Input
+  - def GetInputs(self, onlyAuthored: bool = True) -> typing.List[Input]
+  - def GetOutput(self, name: TfToken) -> Output
+  - def GetOutputs(self, onlyAuthored: bool = True) -> typing.List[Output]
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class ConnectionModification
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - Append: usdrt.UsdShade._UsdShade.ConnectionModification
+  - Prepend: usdrt.UsdShade._UsdShade.ConnectionModification
+  - Replace: usdrt.UsdShade._UsdShade.ConnectionModification
+
+- class ConnectionSourceInfo
+  - def IsValid(self) -> bool
+  - def __init__(self)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: usdrt.Usd._Usd.Stage, arg1: usdrt.Sdf._Sdf.Path)
+  - [property] def source(self) -> typing.Any
+  - [source.setter] def source(*args, **kwargs)
+  - [property] def sourceName(self) -> str
+  - [sourceName.setter] def sourceName(self, arg1: str)
+  - [property] def sourceType(self) -> typing.Any
+  - [sourceType.setter] def sourceType(*args, **kwargs)
+  - [property] def typeName(self) -> usdrt.Sdf._Sdf.ValueTypeName
+  - [typeName.setter] def typeName(self, arg0: usdrt.Sdf._Sdf.ValueTypeName)
+
+- class CoordSysAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Input
+  - def ConnectToSource(self, sourceInput: Input) -> bool
+  - static def ConnectToSource(*args, **kwargs) -> typing.Any
+  - def Get(self, time: usdrt.Usd._Usd.TimeCode = Usd.TimeCode.Default()) -> object
+  - def GetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBaseName(self) -> TfToken
+  - def GetFullName(self) -> TfToken
+  - def GetPrim(self) -> usdrt.Usd._Usd.Prim
+  - def GetTypeName(self) -> usdrt.Sdf._Sdf.ValueTypeName
+  - def IsDefined(self) -> bool
+  - static def IsInput(attr: usdrt.Usd._Usd.Attribute) -> bool
+  - def Set(self, value: object, time: usdrt.Usd._Usd.TimeCode = Usd.TimeCode.Default()) -> bool
+  - def __init__(self)
+
+- class Material(NodeGraph, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateDisplacementAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisplacementOutput(self, renderContext: TfToken = '') -> Output
+  - def CreateSurfaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSurfaceOutput(self, renderContext: TfToken = '') -> Output
+  - def CreateVolumeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVolumeOutput(self, renderContext: TfToken = '') -> Output
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Material
+  - def GetDisplacementAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplacementOutput(self, renderContext: TfToken = '') -> Output
+  - def GetDisplacementOutputs(self) -> typing.List[Output]
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSurfaceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSurfaceOutput(self, renderContext: TfToken = '') -> Output
+  - def GetSurfaceOutputs(self) -> typing.List[Output]
+  - def GetVolumeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetVolumeOutput(self, renderContext: TfToken = '') -> Output
+  - def GetVolumeOutputs(self) -> typing.List[Output]
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class MaterialBindingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> MaterialBindingAPI
+  - def Bind(self, material: Material, bindingStrength: TfToken = 'fallbackStrength', materialPurpose: TfToken = '') -> bool
+  - def ComputeBoundMaterial(self, materialPurpose: TfToken = '') -> tuple
+  - static def GetSchemaTypeName() -> TfToken
+  - def UnbindAllBindings(self) -> bool
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NodeDefAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> NodeDefAPI
+  - def CreateIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateImplementationSourceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetImplementationSource(self) -> TfToken
+  - def GetImplementationSourceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShaderId(self) -> object
+  - def GetSourceAsset(self, sourceType: TfToken = '') -> object
+  - def GetSourceAssetSubIdentifier(self, sourceType: TfToken = '') -> object
+  - def GetSourceCode(self, sourceType: TfToken = '') -> object
+  - def SetShaderId(self, arg0: TfToken) -> bool
+  - def SetSourceAsset(self, sourceAsset: usdrt.Sdf._Sdf.AssetPath, sourceType: TfToken = '') -> bool
+  - def SetSourceAssetSubIdentifier(self, subIdentifier: TfToken, sourceType: TfToken = '') -> bool
+  - def SetSourceCode(self, sourceCode: str, sourceType: TfToken = '') -> bool
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NodeGraph(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def ComputeOutputSource(self, outputName: TfToken) -> tuple
+  - static def ConnectableAPI(*args, **kwargs) -> typing.Any
+  - def CreateInput(self, name: TfToken, type: usdrt.Sdf._Sdf.ValueTypeName) -> Input
+  - def CreateOutput(self, name: TfToken, typeName: usdrt.Sdf._Sdf.ValueTypeName) -> Output
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> NodeGraph
+  - def GetInput(self, name: TfToken) -> Input
+  - def GetInputs(self, onlyAuthored: bool = True) -> typing.List[Input]
+  - def GetOutput(self, name: TfToken) -> Output
+  - def GetOutputs(self, onlyAuthored: bool = True) -> typing.List[Output]
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+  - static def __init__(*args, **kwargs) -> typing.Any
+
+- class Output
+  - def ConnectToSource(self, sourceInput: Input) -> bool
+  - def ConnectToSource(self, sourceOutput: Output) -> bool
+  - def GetAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBaseName(self) -> TfToken
+  - def GetFullName(self) -> TfToken
+  - def GetPrim(self) -> usdrt.Usd._Usd.Prim
+  - def GetTypeName(self) -> usdrt.Sdf._Sdf.ValueTypeName
+  - def IsDefined(self) -> bool
+  - static def IsOutput(attr: usdrt.Usd._Usd.Attribute) -> bool
+  - def __init__(self)
+  - def __init__(self, arg0: usdrt.Usd._Usd.Attribute)
+
+- class Shader(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def ConnectableAPI(*args, **kwargs) -> typing.Any
+  - def CreateIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateImplementationSourceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateInput(self, name: TfToken, type: usdrt.Sdf._Sdf.ValueTypeName) -> Input
+  - def CreateOutput(self, name: TfToken, type: usdrt.Sdf._Sdf.ValueTypeName) -> Output
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Shader
+  - def GetIdAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetImplementationSource(self) -> TfToken
+  - def GetImplementationSourceAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetInput(self, name: TfToken) -> Input
+  - def GetInputs(self, onlyAuthored: bool = True) -> typing.List[Input]
+  - def GetOutput(self, name: TfToken) -> Output
+  - def GetOutputs(self, onlyAuthored: bool = True) -> typing.List[Output]
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetShaderId(self) -> object
+  - def GetSourceAsset(self, sourceType: TfToken = '') -> object
+  - def GetSourceAssetSubIdentifier(self, sourceType: TfToken = '') -> object
+  - def GetSourceCode(self, sourceType: TfToken = '') -> object
+  - def SetShaderId(self, arg0: TfToken) -> bool
+  - def SetSourceAsset(self, sourceAsset: usdrt.Sdf._Sdf.AssetPath, sourceType: TfToken = '') -> bool
+  - def SetSourceAssetSubIdentifier(self, subIdentifier: TfToken, sourceType: TfToken = '') -> bool
+  - def SetSourceCode(self, sourceCode: str, sourceType: TfToken = '') -> bool
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+  - static def __init__(*args, **kwargs) -> typing.Any
+
+- class Tokens
+  - allPurpose: str
+  - bindMaterialAs: str
+  - coordSys: str
+  - displacement: str
+  - fallbackStrength: str
+  - full: str
+  - id: str
+  - infoId: str
+  - infoImplementationSource: str
+  - inputs: str
+  - interfaceOnly: str
+  - materialBind: str
+  - materialBinding: str
+  - materialBindingCollection: str
+  - materialVariant: str
+  - outputs: str
+  - outputsDisplacement: str
+  - outputsSurface: str
+  - outputsVolume: str
+  - preview: str
+  - sdrMetadata: str
+  - sourceAsset: str
+  - sourceCode: str
+  - strongerThanDescendants: str
+  - subIdentifier: str
+  - surface: str
+  - universalRenderContext: str
+  - universalSourceType: str
+  - volume: str
+  - weakerThanDescendants: str
+
+- class Utils
+  - static def GetBaseNameAndType(fullName: TfToken) -> tuple
+  - static def GetPrefixForAttributeType(sourceType: AttributeType) -> str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdSkel:
+
+## Classes
+
+- class Animation(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateBlendShapeWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateBlendShapesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRotationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateScalesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateTranslationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Animation
+  - def GetBlendShapeWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetBlendShapesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRotationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetScalesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetTranslationsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class BindingAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> BindingAPI
+  - def CreateAnimationSourceRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateBlendShapeTargetsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateBlendShapesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateGeomBindTransformAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSkeletonRel(self) -> usdrt.Usd._Usd.Relationship
+  - def CreateSkinningBlendWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSkinningMethodAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetAnimationSourceRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetBlendShapeTargetsRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetBlendShapesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetGeomBindTransformAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSkeletonRel(self) -> usdrt.Usd._Usd.Relationship
+  - def GetSkinningBlendWeightsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetSkinningMethodAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class BlendShape(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateNormalOffsetsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateOffsetsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePointIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> BlendShape
+  - def GetNormalOffsetsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetOffsetsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPointIndicesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class PackedJointAnimation(Animation, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> PackedJointAnimation
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Root(usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Root
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Skeleton(usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateBindTransformsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointNamesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateRestTransformsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Skeleton
+  - def GetBindTransformsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointNamesAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetJointsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetRestTransformsAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - bindTransforms: str
+  - blendShapeWeights: str
+  - blendShapes: str
+  - classicLinear: str
+  - dualQuaternion: str
+  - jointNames: str
+  - joints: str
+  - normalOffsets: str
+  - offsets: str
+  - pointIndices: str
+  - primvarsSkelGeomBindTransform: str
+  - primvarsSkelJointIndices: str
+  - primvarsSkelJointWeights: str
+  - primvarsSkelSkinningBlendWeights: str
+  - restTransforms: str
+  - rotations: str
+  - scales: str
+  - skelAnimationSource: str
+  - skelBlendShapeTargets: str
+  - skelBlendShapes: str
+  - skelJoints: str
+  - skelSkeleton: str
+  - skelSkinningMethod: str
+  - translations: str
+  - weight: str
+  - weightedBlend: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdUI:
+
+## Classes
+
+- class Backdrop(usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateDescriptionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Backdrop
+  - def GetDescriptionAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class NodeGraphNodeAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> NodeGraphNodeAPI
+  - def CreateDisplayColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateExpansionStateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateIconAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreatePosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateStackingOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplayColorAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetExpansionStateAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetIconAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetPosAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetSizeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetStackingOrderAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class SceneGraphPrimAPI(usdrt.Usd._Usd.APISchemaBase, usdrt.Usd._Usd.SchemaBase)
+  - static def Apply(prim: usdrt.Usd._Usd.Prim) -> SceneGraphPrimAPI
+  - def CreateDisplayGroupAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateDisplayNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplayGroupAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetDisplayNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - closed: str
+  - minimized: str
+  - open: str
+  - uiDescription: str
+  - uiDisplayGroup: str
+  - uiDisplayName: str
+  - uiNodegraphNodeDisplayColor: str
+  - uiNodegraphNodeExpansionState: str
+  - uiNodegraphNodeIcon: str
+  - uiNodegraphNodePos: str
+  - uiNodegraphNodeSize: str
+  - uiNodegraphNodeStackingOrder: str
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.UsdVol:
+
+## Classes
+
+- class Field3DAsset(FieldAsset, FieldBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFieldPurposeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Field3DAsset
+  - def GetFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFieldPurposeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class FieldAsset(FieldBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFieldIndexAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFieldNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFilePathAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateVectorDataRoleHintAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFieldIndexAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFieldNameAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFilePathAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def GetVectorDataRoleHintAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class FieldBase(usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class OpenVDBAsset(FieldAsset, FieldBase, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - def CreateFieldClassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def CreateFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> OpenVDBAsset
+  - def GetFieldClassAttr(self) -> usdrt.Usd._Usd.Attribute
+  - def GetFieldDataTypeAttr(self) -> usdrt.Usd._Usd.Attribute
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+- class Tokens
+  - bool_: str
+  - color: str
+  - double2: str
+  - double3: str
+  - double_: str
+  - field: str
+  - fieldClass: str
+  - fieldDataType: str
+  - fieldIndex: str
+  - fieldName: str
+  - fieldPurpose: str
+  - filePath: str
+  - float2: str
+  - float3: str
+  - float_: str
+  - fogVolume: str
+  - half: str
+  - half2: str
+  - half3: str
+  - int2: str
+  - int3: str
+  - int64: str
+  - int_: str
+  - levelSet: str
+  - mask: str
+  - matrix3d: str
+  - matrix4d: str
+  - none: str
+  - normal: str
+  - point: str
+  - quatd: str
+  - staggered: str
+  - string: str
+  - uint: str
+  - unknown: str
+  - vector: str
+  - vectorDataRoleHint: str
+
+- class Volume(usdrt.UsdGeom._UsdGeom.Gprim, usdrt.UsdGeom._UsdGeom.Boundable, usdrt.UsdGeom._UsdGeom.Xformable, usdrt.UsdGeom._UsdGeom.Imageable, usdrt.Usd._Usd.Typed, usdrt.Usd._Usd.SchemaBase)
+  - static def Define(stage: usdrt.Usd._Usd.Stage, path: usdrt.Sdf._Sdf.Path) -> Volume
+  - static def GetSchemaTypeName() -> TfToken
+  - def __init__(self, arg0: usdrt.Usd._Usd.Prim)
+  - def __init__(self, arg0: usdrt.Usd._Usd.SchemaBase)
+
+## Other
+
+- omni.core: public module
+
+
+
+# Public API for module usdrt.xformcache:
+
+## Classes
+
+- class ISharedXformCache(_ISharedXformCache, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def clear(self) -> bool
+  - def get_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> IXformCache
+  - def get_or_create_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> IXformCache
+  - def has_cache(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> bool
+
+- class IXformCache(_IXformCache, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def attach_to_stage(self, stage_id: usdrt.helpers._helpers.UsdStageId) -> bool
+  - def compute_world_xform(self, path: usdrt.helpers._helpers.PathC) -> usdrt.Gf._Gf.Matrix4d
+  - def get_latest_world_xform(self, path: usdrt.helpers._helpers.PathC) -> usdrt.Gf._Gf.Matrix4d
+  - def sync_targeted_xforms(self, target_path: usdrt.helpers._helpers.PathC)
+  - def sync_xforms(self)
+  - [property] def stage_id(self) -> usdrt.helpers._helpers.UsdStageId
+
+## Other
+
+- omni.core: public module
+
+# Public API for module usdrt.internal:
+
+No public API

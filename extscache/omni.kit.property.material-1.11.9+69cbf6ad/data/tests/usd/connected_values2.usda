@@ -1,0 +1,167 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Scope "Looks"
+    {
+        def Material "Material" (
+            customData = {
+                dictionary ui = {
+                    dictionary nodegraph = {
+                        dictionary node = {
+                            dictionary pos = {
+                                double2 output = (-88.14559173583984, -20.072425842285156)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        {
+            token outputs:mdl:displacement
+            token outputs:mdl:surface.connect = </World/Looks/Material/scratched_metal_v2.outputs:out>
+            token outputs:mdl:volume
+            uniform token ui:nodegraph:node:expansionState = "open"
+
+            def Shader "scratched_metal_v2" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "scratched_metal_v2"
+                float inputs:anisotropy (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayName = "Anisotropy"
+                    doc = """Higher values will stretch the highlight
+
+"""
+                    hidden = false
+                )
+                float inputs:anisotropy_rotation (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayName = "Anisotropy rotation"
+                    doc = """Changes the orientation of the anisotropy. A value of 1 will rotate the orientation 360 degrees.
+
+"""
+                    hidden = false
+                )
+                color3f inputs:edge_color (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayName = "Edge color"
+                    doc = """The color of the metal towards the edge
+
+"""
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:glossy_weight (
+                    customData = {
+                        float default = 0.9
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayName = "Reflection weight"
+                    doc = """Intensity of highlights and glossy reflections and highlights
+
+"""
+                    hidden = false
+                )
+                color3f inputs:metal_color (
+                    customData = {
+                        float3 default = (0.9, 0.9, 0.9)
+                    }
+                    displayName = "Color"
+                    doc = """The color of the metal
+
+"""
+                    hidden = false
+                    renderType = "color"
+                )
+                color3f inputs:metal_color.connect = </World/Looks/Material/scratched_metal_v2.inputs:edge_color>
+                float3 inputs:normal (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    displayName = "Bumps"
+                    doc = """Attach bump or normal maps here
+
+"""
+                    hidden = true
+                )
+                float inputs:roughness (
+                    customData = {
+                        float default = 0.2
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayName = "Roughness"
+                    doc = """Higher roughness values lead to bigger highlights and blurry reflections
+
+"""
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-356.24954, -49.625233)
+            }
+
+            def Shader "add" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @nvidia/support_definitions.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "add(color,color)"
+                color3f inputs:a = (1.3199999, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                color3f inputs:b = (0, 1.51, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                color3f outputs:out (
+                    renderType = "color"
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-647.7364, -16.462097)
+            }
+        }
+    }
+}
+

@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnModulo.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Modulo" (
+        docs="""Computes the modulo of integer inputs ("A" % "B"), which is the remainder of "A" / "B". If "B" is zero, then the final result is zero. Note that truncated division is utilized to determine the remainder behind-the-hood, i.e. "Result" = "A" - "B" * trunc("A" / "B"), where the trunc operation simply says to round the resultant of "A" / "B" towards zero (i.e. down if positive, and up if negative). As a consequence of this, if "A" > 0 and "B" < 0, then "Result" > 0, but if "A" < 0 and "B" > 0, then "Result" < 0."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Modulo"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""The dividend of the ("A" % "B") operation, i.e. "A"."""
+        )
+        custom token inputs:b (
+            docs="""The divisor of the ("A" % "B") operation, i.e. "B". If "B" is zero, then the final result
+            will be zero."""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""Modulo ("A" % "B"), i.e. the remainder of the division operation "A" / "B"."""
+        )
+    }
+}

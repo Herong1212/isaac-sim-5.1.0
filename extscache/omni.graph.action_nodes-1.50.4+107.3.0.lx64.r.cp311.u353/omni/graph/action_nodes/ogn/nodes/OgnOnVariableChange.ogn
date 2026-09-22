@@ -1,0 +1,40 @@
+{
+    "omni.graph.action.OnVariableChange": {
+        "version": 2,
+        "description": [
+            "Activates execution of the downstream graph when a graph variable's value changes. The name of the",
+            "variable comes from the input 'Variable Name'. Only variables in the current graph are considered."
+        ],
+        "uiName": "On Variable Change",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "variableName": {
+                "type": "token",
+                "description": "The name of the graph variable to monitor for changes.",
+                "uiName": "Variable Name",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "changed": {
+                "type": "execution",
+                "description": "When the variable value changes, signal to the graph that execution can continue downstream.",
+                "uiName": "Changed"
+            }
+        },
+        "state": {
+        }
+    }
+}

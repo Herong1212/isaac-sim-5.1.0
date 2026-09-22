@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSamplePopulation.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSamplePopulation" (
+        docs="""This node generates a random sample of assets from a weighted list of assets."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSamplePopulation"
+        int node:typeVersion = 2
+
+        # 9 attributes
+        custom uint inputs:exec (
+            docs="""Execution in"""
+        )
+        custom token inputs:mode = "point_instance" (
+            docs="""Sampling mode"""
+        )
+        custom token[] inputs:paths = [] (
+            docs="""Paths from which to instantiate a population"""
+        )
+        custom string inputs:populationName = "" (
+            docs="""Name of population"""
+        )
+        custom rel inputs:populationPath (
+            docs="""Prim path to population prim"""
+        )
+        custom rel inputs:prims (
+            docs="""Paths to prims in the scene, but provided in the form of target"""
+        )
+        custom token[] inputs:semantics = [] (
+            docs="""Semantic key-value pairs separated by a colon (eg. class:car)"""
+        )
+        custom bool inputs:useCache = true (
+            docs="""Cache assets to speed up randomization"""
+        )
+        custom bool inputs:withReplacements = true (
+            docs="""Use replacements to avoid duplicates"""
+        )
+
+        # 2 attributes
+        custom uint outputs:exec (
+            docs="""Execution out"""
+        )
+        custom rel outputs:prims (
+            docs="""Sampled prims"""
+        )
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "GetMatrix4Quaternion": {
+        "version": 2,
+        "description": [
+            "Gets the rotation of the given matrix or rotation angles value which represents",
+            "a linear transformation. Returns the quaternion orientation component."
+        ],
+        "uiName": "Get Rotation Quaternion",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["vectord[3]", "vectord[3][]", "vectorf[3]", "vectorf[3][]", "vectorh[3]", "vectorh[3][]",
+                    "matrixd[3]", "matrixd[3][]", "matrixd[4]", "matrixd[4][]"],
+                "uiName": "Input",
+                "description": "The matrix or rotation angles to extract the quaternion from."
+            },
+            "rotationOrder" : {
+                "type": "token",
+                "uiName": "Rotation Order",
+                "description": "The order the rotation should be applied when using rotation angles.",
+                "default" : "XYZ",
+                "metadata": {
+                    "allowedTokens": ["XYZ", "XZY", "YXZ", "YZX", "ZXY", "ZYX"]
+                }
+            }
+        },
+        "outputs": {
+            "quaternion": {
+                "type": ["quatd[4]", "quatd[4][]", "quatf[4]", "quatf[4][]", "quath[4]", "quath[4][]"],
+                "uiName": "Orientation",
+                "description": "The quaternion representing the orientation of the transformation."
+             }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value":
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]},
+                "outputs:quaternion": {"type":"quatd[4]", "value": [0.38268481, 0, 0, 0.9238804]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]},
+                "outputs:quaternion": {"type":"quatd[4][]", "value": [
+                    [0.38268481, 0, 0, 0.9238804], [0.38268481, 0, 0, 0.9238804]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value":
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]},
+                "outputs:quaternion": {"type":"quatd[4]", "value": [0.38268481, 0, 0, 0.9238804]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711],
+                    [1,0,0, 0,0.70711,-0.70711, 0,0.70711,-0.70711]]},
+                "outputs:quaternion": {"type":"quatd[4][]", "value": [
+                    [0.38268343, 0, 0, 0.92387953], [0.70710678, 0, 0, -0.5]]}
+            },
+            {
+                "inputs:matrix": {"type":"vectord[3]", "value": [45, 45, 0]},
+                "outputs:quaternion": {"type":"quatd[4]", "value": [0.35355339,  0.35355339, -0.14644661,  0.85355339]}
+            },
+            {
+                "inputs:matrix": {"type":"vectord[3][]", "value": [[45, 45, 0], [0, 45, 45]]},
+                "outputs:quaternion": {"type":"quatd[4][]", "value": [
+                    [0.35355339,  0.35355339, -0.14644661,  0.85355339],
+                    [-0.14644661, 0.35355339,  0.35355339,  0.85355339]]}
+            },
+            {
+                "inputs:matrix": {"type":"vectorf[3]", "value": [45, 45, 0]},
+                "outputs:quaternion": {"type":"quatf[4]", "value": [0.35355339,  0.35355339, -0.14644661,  0.85355339]}
+            },
+            {
+                "inputs:matrix": {"type":"vectorf[3][]", "value": [[45, 45, 0], [0, 45, 45]]},
+                "outputs:quaternion": {"type":"quatf[4][]", "value": [
+                    [0.35355339,  0.35355339, -0.14644661,  0.85355339],
+                    [-0.14644661, 0.35355339,  0.35355339,  0.85355339]]}
+            },
+            {
+                "inputs:matrix": {"type":"vectorh[3]", "value": [45, 45, 0]},
+                "outputs:quaternion": {"type":"quath[4]", "value": [0.35375977,  0.35375977, -0.14648438,  0.8535156]}
+            },
+            {
+                "inputs:matrix": {"type":"vectorh[3][]", "value": [[45, 45, 0], [0, 45, 45]]},
+                "outputs:quaternion": {"type":"quath[4][]", "value": [
+                    [0.35375977,  0.35375977, -0.14648438,  0.8535156],
+                    [-0.14648438, 0.35375977,  0.35375977,  0.8535156]]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,131 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Continental ARS430",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+  "WaveLengthMm": 3.9,
+  "TraceTreeDepth": 4,
+  "FrameDurationNs": 40000000,
+  "InstanceTimeOffsetUsec": 5000,
+  "CfarMode": "2D",
+  "AntennaGainMode" : "COSINEFALLOFF",
+  "ConfigReloadIntervalFrames": 100,
+
+    "CfarVisParams": [
+      {
+        "offset": 1.0,
+        "scale": [1.0, 1.0, 100000000000000.0],
+        "P_user":[0.0, 0.0, 0.0],
+        "Q_user":[1.0, 0.0, 0.0, 0.0]
+      }
+    ],
+
+    "ScanCfgs": [
+      {
+        "RaysPerDeg": 10.0,
+        "TimeOffsetUsec": 0,
+        "PowerFactor": 1.0,
+        "BinsFromSpec": true,
+        "EnAngAliasing": true,
+        "DetValFromBinIdx": false,
+        "ElevMode": "NO_EL",
+
+      "MaxRangeM": 90,
+      "MaxAzAngDeg": 75,
+      "MaxElAngDeg": 10,
+
+      "RangeResM": 0.2,
+      "VelResMps": 0.1194,
+      "BoreAzResDeg": 3.2,
+      "BoreElResDeg": 10,
+
+      "RBins": 180,
+      "VBins": 90,
+      "AzBins": 35,
+      "ElBins": 3,
+
+      "CfarRnT": 6,
+      "CfarRnG": 0,
+      "CfarVnT": 1,
+      "CfarVnG": 0,
+      "CfarAznT": 3,
+      "CfarAznG": 1,
+      "CfarElnT": 3,
+      "CfarElnG": 1,
+      "CfarMinVal": 1e-14,
+      "CfarOffset": 1.0,
+      "CfarNoiseMean": 0,
+      "CfarNoiseSDev": 0,
+
+        "MaxVelMpsSequence":[16.33, 14.625, 15.26, 16.035, 14.515, 15.43, 16.115, 14.69, 15.5, 16.22, 14.555, 15.215, 16.115, 14.69, 15.355, 16.25, 14.755, 15.455],
+
+      "__comment": "0: detections with RCS in dBsm lower than this threshold will be removed; 1: multiplied with RCS before conversion to dBsm. Set to 1 if no change is needed; 2: standard deviation of rcs noise in dBsm. Set to 0 if no noise is needed.",
+      "RcsTuningCoefficients": [-10, 100.0, 0],
+
+        "AzimuthRadNoiseMean": 0.0,
+        "AzimuthRadNoiseSDev": 0.00523599,
+        "RangeNoiseMean": 0.0,
+        "RangeNoiseSDev": 0.009,
+        "VelocityNoiseMean": 0.0,
+        "VelocityNoiseSDev": 0.0,
+        "ElevationRadNoiseMean": 0.0,
+        "ElevationRadNoiseSDev": 0.0,
+        "exponentialDecayFactor": 1.0
+
+      },
+      {
+        "RaysPerDeg": 10.0,
+        "TimeOffsetUsec": 0,
+        "PowerFactor": 1.0,
+        "BinsFromSpec": true,
+        "EnAngAliasing": true,
+        "DetValFromBinIdx": false,
+        "ElevMode": "POS_EL",
+
+      "MaxRangeM": 300,
+      "MaxAzAngDeg": 9,
+      "MaxElAngDeg": 7,
+
+      "RangeResM": 1.79,
+      "VelResMps": 0.1028,
+      "BoreAzResDeg": 1.6,
+      "BoreElResDeg": 7,
+
+      "RBins": 112,
+      "VBins": 160,
+      "AzBins": 12,
+      "ElBins": 2,
+
+      "CfarRnT": 1,
+      "CfarRnG": 0,
+      "CfarVnT": 1,
+      "CfarVnG": 0,
+      "CfarAznT": 3,
+      "CfarAznG": 1,
+      "CfarElnT": 3,
+      "CfarElnG": 1,
+      "CfarMinVal": 1e-16,
+      "CfarOffset": 1.0,
+      "CfarNoiseMean": 0,
+      "CfarNoiseSDev": 0,
+
+        "MaxVelMpsSequence":[25.92, 28.545, 27.51, 26.335, 28.795, 27.13, 26.265, 28.465, 27.055, 26.125, 28.715, 27.585, 26.195, 28.38, 27.28, 25.985, 28.3, 27.13],
+
+      "__comment": "0: detections with RCS in dBsm lower than this threshold will be removed; 1: multiplied with RCS before conversion to dBsm. Set to 1 if no change is needed; 2: standard deviation of rcs noise in dBsm. Set to 0 if no noise is needed.",
+      "RcsTuningCoefficients": [-10, 100, 0],
+
+      "AzimuthRadNoiseMean": 0.0,
+      "AzimuthRadNoiseSDev": 0.00174533,
+      "RangeNoiseMean": 0.0,
+      "RangeNoiseSDev": 0.09,
+      "VelocityNoiseMean": 0.0,
+      "VelocityNoiseSDev": 0.0,
+      "ElevationRadNoiseMean": 0.0,
+      "ElevationRadNoiseSDev": 0.0,
+      "exponentialDecayFactor": 1.0
+    }
+  ]
+  }
+}

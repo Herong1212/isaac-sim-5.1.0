@@ -1,0 +1,39 @@
+[package]
+version = "0.1.9"
+title = "Status Bar"
+description = "Status Bar supports setting the progress and the message using the message bus."
+category = "UI"
+keywords = ["status", "window", "progress", "message"]
+support_level = "Core"
+feature = true
+readme = "docs/OVERVIEW.md"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.mainwindow" = { optional=true }
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# It only contains tests, but don't specify ".tests" part of the namespace to avoid importing it in non-test run.
+[[python.module]]
+name = "omni.kit.window.status_bar"
+
+[documentation]
+pages = [
+    "docs/OVERVIEW.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/SETTINGS.md",
+]
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+stdoutFailPatterns.exclude = [
+    "*[Error] [omni.ext-status_bar.plugin] StatusBar has no valid activity name*",
+    "*[Error] [omni.ext-status_bar.plugin] StatusBar has no valid progress value*",
+]

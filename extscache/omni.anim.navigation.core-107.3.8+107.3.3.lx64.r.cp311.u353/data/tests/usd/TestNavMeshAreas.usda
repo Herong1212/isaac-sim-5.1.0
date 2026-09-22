@@ -1,0 +1,258 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-247.5086946632336, 572.0508585585014, 566.3819733042685)
+                double3 target = (-32.54805892176651, 19.374314681740998, 93.13956931269428)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary navmeshSettings = {
+            double agentMaxFloorSlope = 45
+            double agentMaxRadius = 100
+            double agentMaxStepHeight = 40
+            double agentMinHeight = 100
+            double agentMinRadius = 10
+            dictionary areas = {
+                dictionary "0" = {
+                    string areaName = "Walkable"
+                    float3 color = (0.2, 0.8, 1)
+                    double defaultCost = 1
+                }
+                dictionary "1" = {
+                    string areaName = "NotWalkable"
+                    float3 color = (1, 0, 0)
+                    double defaultCost = -1
+                }
+                dictionary "2" = {
+                    string areaName = "Area51"
+                    float3 color = (0.5372549, 0.047058824, 0.69411767)
+                    double defaultCost = 1
+                }
+            }
+            bool excludeRigidBodies = 1
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./TestNavMeshAreas.usda"
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Y"
+)
+
+def Xform "World" (
+    delete apiSchemas = ["OmniScriptingAPI"]
+)
+{
+    def Mesh "Plane"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2, 2, 6)
+        double3 xformOp:translate = (-200, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Plane_01"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2, 2, 2)
+        double3 xformOp:translate = (3.8367886035865553, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (161.12682, 174.19331, 454.06702)
+        double3 xformOp:translate = (-195.28016404571605, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume_01" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        string nav:area = "Walkable"
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (142.95917, 155.19983, 433.8238)
+        double3 xformOp:translate = (224.83126350276035, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Plane_02"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2, 2, 6)
+        double3 xformOp:translate = (200, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume_02" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        string nav:area = "Area51"
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (165.4373, 174.19331, 351.53644)
+        double3 xformOp:translate = (-1.948947353872768, 0, -23.78557901397837)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Plane_03"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2, 2, 2)
+        double3 xformOp:translate = (0, 0, -200)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Mesh "Plane_04"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (2, 2, 2.0914718355393527)
+        double3 xformOp:translate = (0, 0, 200)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume_03" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        string nav:area = "Walkable"
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (246.07738, 155.19983, 149.22516)
+        double3 xformOp:translate = (1.0724554808550695, 0, -197.88189051478375)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume_04" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        string nav:area = "Walkable"
+        token nav:volume:type = "Include"
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (258.0891, 195.19197, 139.68904)
+        double3 xformOp:translate = (1.0724554808550701, 0, 165.28459588194843)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def NavMeshVolume "NavMeshVolume_05" (
+        prepend apiSchemas = ["NavMeshAreaAPI"]
+    )
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        token nav:volume:type = "Exclude"
+        float3 xformOp:rotateXYZ = (0, -0, 0)
+        float3 xformOp:scale = (1.5102835, 2.4526367, 1.2779541)
+        double3 xformOp:translate = (-200.41749818820094, 1.1368683772161603e-12, 216.8929443055966)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+
+def Xform "Environment"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

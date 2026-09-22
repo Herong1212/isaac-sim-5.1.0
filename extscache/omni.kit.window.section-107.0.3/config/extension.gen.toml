@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.window.section-107.0.3.zip"
+
+    [package.publish]
+        kitVersion = "107.0.3+mr36087.171495.aeeb3d54.gl"
+        date = 1741252234
+        buildNumber = "105.1+master.1641.222aedee.gl"
+        repoName = "kit-windows"
+        signed = 1

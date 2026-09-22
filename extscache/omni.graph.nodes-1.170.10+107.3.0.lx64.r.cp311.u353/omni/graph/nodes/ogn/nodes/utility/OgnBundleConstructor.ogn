@@ -1,0 +1,23 @@
+{
+    "BundleConstructor": {
+        "version": 1,
+        "description": [
+            "This node creates a bundle mirroring all of the dynamic input attributes that have been added to it.",
+            "If no dynamic attributes exist then the bundle will be empty. See the 'InsertAttribute' node for",
+            "something that can construct a bundle from existing connected attributes."
+        ],
+        "metadata": {
+            "uiName": "Bundle Constructor"
+        },
+        "categories": ["bundle"],
+        "outputs": {
+            "bundle": {
+                "type": "bundle",
+                "description": "The bundle consisting of copies of all of the dynamic input attributes.",
+                "metadata": {
+                    "uiName": "Constructed Bundle"
+                }
+            }
+        }
+    }
+}

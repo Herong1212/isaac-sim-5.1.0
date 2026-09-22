@@ -1,0 +1,502 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-312.1599229966105, 118.98449797264037, 568.2430684528571)
+                double3 target = (402.0461868021297, 92.96356304742687, -645.1161687146117)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        custom uniform float anim:graph:variable:BlendWeight
+        delete rel inputs:pose = [
+            </World/AnimationGraph/stand_walk_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_loop_skelanim>,
+            </World/AnimationGraph/stand_idle_wave_loop_skelanim>,
+            </World/AnimationGraph/Blend>,
+            </World/AnimationGraph/LookAtIK>,
+        ]
+        prepend rel inputs:pose = </World/AnimationGraph/Blend>
+        rel skel:skeleton = </World/Character/Root>
+
+        def AnimationClip "stand_idle_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_idle_loop_skelanim>
+            custom uniform float2 ui:position = (-602.552, 8.534868)
+        }
+
+        def ReadVariable "BlendWeight"
+        {
+            token inputs:variableName = "BlendWeight"
+            custom uniform float2 ui:position = (-576.7565, 214.75232)
+        }
+
+        def Blend "Blend"
+        {
+            prepend rel inputs:blendWeight = </World/AnimationGraph/BlendWeight>
+            prepend rel inputs:pose0 = </World/AnimationGraph/stand_idle_loop_skelanim>
+            prepend rel inputs:pose1 = </World/AnimationGraph/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-259.27295, 17.252579)
+        }
+
+        def AnimationClip "stand_walk_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-605.0105, 109.14826)
+        }
+    }
+
+    def ComputeGraph "ActionGraph"
+    {
+        custom float graph:variable:BlendWeight (
+            customData = {
+                token scope = "private"
+            }
+            displayName = "BlendWeight"
+        )
+        custom string graph:variable:MoveKey (
+            customData = {
+                token scope = "private"
+            }
+            displayName = "MoveKey"
+        )
+
+        def ComputeGraphSettings "computegraphSettings"
+        {
+            custom token evaluator:type = "execution"
+            custom int2 fileFormatVersion = (1, 3)
+            custom token flatCacheBacking = "Shared"
+            custom token pipelineStage = "pipelineStageOnDemand"
+        }
+
+        def ComputeNode "write_animation_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_tick.outputs:tick>
+            custom rel inputs:graph = </World/AnimationGraph>
+            custom token inputs:skelRootPath = ""
+            prepend token inputs:skelRootPath.connect = </World/ActionGraph/graph_target.outputs:primPath>
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/clamp.outputs:result>
+            custom token inputs:variableName = "BlendWeight"
+            custom token node:type = "omni.anim.graph.WriteAnimationGraphVariable"
+            custom int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (749, 110)
+        }
+
+        def ComputeNode "on_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:framePeriod = 0
+            custom bool inputs:onlyPlayback = 1
+            custom token node:type = "omni.graph.action.OnTick"
+            custom int node:typeVersion = 1
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom bool outputs:isPlaying
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            custom double outputs:timeSinceStart
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-765.421, 97.8051)
+        }
+
+        def ComputeNode "graph_target" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:targetPath
+            custom token node:type = "omni.graph.nodes.GraphTarget"
+            custom int node:typeVersion = 1
+            custom token outputs:primPath
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (440.10788, 197.89389)
+        }
+
+        def ComputeNode "write_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_stage_event.outputs:execOut>
+            custom rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character"
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/constant_float_01.inputs:value>
+            custom token inputs:variableName = "BlendWeight"
+            custom token node:type = "omni.graph.core.WriteGraphVariable"
+            custom int node:typeVersion = 1
+            custom uint outputs:execOut = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-421.60382, -274.08878)
+        }
+
+        def ComputeNode "on_stage_event" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:eventName (
+                allowedTokens = ["Assets Loaded", "Assets Load Aborted", "Closed", "Closing", "Gizmo Tracking Changed", "MDL Param Loaded", "Opened", "Open Failed", "Saved", "Save Failed", "Selection Changed", "Settings Saving", "OmniGraph Start Play", "OmniGraph Stop Play", "Simulation Start Play", "Simulation Stop Play", "Animation Start Play", "Animation Stop Play"]
+            )
+            custom bool inputs:onlyPlayback
+            custom token node:type = "omni.graph.action.OnStageEvent"
+            custom int node:typeVersion = 2
+            custom uint outputs:execOut = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-724.48956, -276.5918)
+        }
+
+        def ComputeNode "constant_float_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 0
+            custom token node:type = "omni.graph.nodes.ConstantFloat"
+            custom int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-730.75964, -111.08163)
+        }
+
+        def ComputeNode "read_graph_variable" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:graph
+            prepend rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character"
+            custom token inputs:variableName = "BlendWeight"
+            custom token node:type = "omni.graph.core.ReadGraphVariable"
+            custom int node:typeVersion = 1
+            custom token outputs:value
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-164.82594, 561.31757)
+        }
+
+        def ComputeNode "read_keyboard_state" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:key = "A" (
+                allowedTokens = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Apostrophe", "Backslash", "Backspace", "CapsLock", "Comma", "Del", "Down", "End", "Enter", "Equal", "Escape", "F1", "F10", "F11", "F12", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "GraveAccent", "Home", "Insert", "Key0", "Key1", "Key2", "Key3", "Key4", "Key5", "Key6", "Key7", "Key8", "Key9", "Left", "LeftAlt", "LeftBracket", "LeftControl", "LeftShift", "LeftSuper", "Menu", "Minus", "NumLock", "Numpad0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7", "Numpad8", "Numpad9", "NumpadAdd", "NumpadDel", "NumpadDivide", "NumpadEnter", "NumpadEqual", "NumpadMultiply", "NumpadSubtract", "PageDown", "PageUp", "Pause", "Period", "PrintScreen", "Right", "RightAlt", "RightBracket", "RightControl", "RightShift", "RightSuper", "ScrollLock", "Semicolon", "Slash", "Space", "Tab", "Up"]
+            )
+            custom token node:type = "omni.graph.nodes.ReadKeyboardState"
+            custom int node:typeVersion = 1
+            custom bool outputs:altOut
+            custom bool outputs:ctrlOut
+            custom bool outputs:isPressed
+            custom bool outputs:shiftOut
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-766.0713, 436.1328)
+        }
+
+        def ComputeNode "select_if" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:condition = ""
+            prepend token inputs:condition.connect = </World/ActionGraph/read_keyboard_state.outputs:isPressed>
+            custom token inputs:ifFalse = ""
+            prepend token inputs:ifFalse.connect = </World/ActionGraph/constant_float.inputs:value>
+            custom token inputs:ifTrue = ""
+            prepend token inputs:ifTrue.connect = </World/ActionGraph/constant_float_02.inputs:value>
+            custom token node:type = "omni.graph.nodes.SelectIf"
+            custom int node:typeVersion = 1
+            custom token outputs:result
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-486.86823, 451.46735)
+        }
+
+        def ComputeNode "constant_float" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = -1
+            custom token node:type = "omni.graph.nodes.ConstantFloat"
+            custom int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-773.75073, 616.8197)
+        }
+
+        def ComputeNode "constant_float_02" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 1
+            custom token node:type = "omni.graph.nodes.ConstantFloat"
+            custom int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-774.8529, 728.0783)
+        }
+
+        def ComputeNode "constant_float_03" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 0
+            custom token node:type = "omni.graph.nodes.ConstantFloat"
+            custom int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (187.24, 536.93634)
+        }
+
+        def ComputeNode "constant_float_04" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom float inputs:value = 1
+            custom token node:type = "omni.graph.nodes.ConstantFloat"
+            custom int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (182.14418, 634.9384)
+        }
+
+        def ComputeNode "to_float" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/on_tick.outputs:deltaSeconds>
+            custom token node:type = "omni.graph.nodes.ToFloat"
+            custom int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-489.76944, 276.06223)
+        }
+
+        def ComputeNode "multiply" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:a = ""
+            prepend token inputs:a.connect = </World/ActionGraph/to_float.outputs:converted>
+            custom token inputs:b = ""
+            prepend token inputs:b.connect = </World/ActionGraph/select_if.outputs:result>
+            custom token node:type = "omni.graph.nodes.Multiply"
+            custom int node:typeVersion = 1
+            custom token outputs:product
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-244.94902, 380.60797)
+        }
+
+        def ComputeNode "increment" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom double inputs:increment = 1
+            prepend double inputs:increment.connect = </World/ActionGraph/to_float_01.outputs:converted>
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/read_graph_variable.outputs:value>
+            custom token node:type = "omni.graph.nodes.Increment"
+            custom int node:typeVersion = 1
+            custom token outputs:result
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (189.76611, 396.72217)
+        }
+
+        def ComputeNode "clamp" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:input = ""
+            prepend token inputs:input.connect = </World/ActionGraph/increment.outputs:result>
+            custom token inputs:lower = ""
+            prepend token inputs:lower.connect = </World/ActionGraph/constant_float_03.inputs:value>
+            custom token inputs:upper = ""
+            prepend token inputs:upper.connect = </World/ActionGraph/constant_float_04.inputs:value>
+            custom token node:type = "omni.graph.nodes.Clamp"
+            custom int node:typeVersion = 1
+            custom token outputs:result
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (486.73166, 396.4461)
+        }
+
+        def ComputeNode "write_graph_variable_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/write_animation_graph_variable.outputs:execOut>
+            custom rel inputs:graph = </World/ActionGraph>
+            custom token inputs:targetPath = "/World/Character"
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/clamp.outputs:result>
+            custom token inputs:variableName = "BlendWeight"
+            custom token node:type = "omni.graph.core.WriteGraphVariable"
+            custom int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (1194.6726, 311.0804)
+        }
+
+        def ComputeNode "to_float_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom token inputs:value = ""
+            prepend token inputs:value.connect = </World/ActionGraph/multiply.outputs:product>
+            custom token node:type = "omni.graph.nodes.ToFloat"
+            custom int node:typeVersion = 1
+            custom token outputs:converted
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-27.502756, 382.29938)
+        }
+
+        def ComputeNode "on_tick_01" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:framePeriod = 0
+            custom bool inputs:onlyPlayback = 0
+            custom token node:type = "omni.graph.action.OnTick"
+            custom int node:typeVersion = 1
+            custom double outputs:deltaSeconds = 0.017673999071121216
+            custom double outputs:frame = 0
+            custom bool outputs:isPlaying = 0
+            custom uint outputs:tick = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time = 0
+            custom double outputs:timeSinceStart = 8902.947265625
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-745.7501, -593.02997)
+        }
+
+        def ComputeNode "draw_screen_space_text" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom color4f inputs:backgroundColor = (0.165, 0.157, 0.145, 0.8)
+            custom int inputs:boxWidth = 0
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_tick_01.outputs:tick>
+            custom double2 inputs:position = (12, 85)
+            custom float inputs:size = 24
+            custom string inputs:text = "Press Play (space) to start. Press and hold A to walk."
+            custom color4f inputs:textColor = (0.95, 0.95, 0.95, 1)
+            custom token node:type = "omni.graph.visualization.nodes.DrawScreenSpaceText"
+            custom int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-420.97202, -591.4688)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_idle_loop_skelanim" (
+            prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Animations/NVIDIA/biped_demo/stand_idle_loop.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_loop_skelanim" (
+            prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Animations/NVIDIA/biped_demo/stand_walk_loop.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def "Character" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Characters/NVIDIA/biped_demo.usd@
+    )
+    {
+        custom quatf _worldOrientation = (0.9999426, 0, -0.010720675, 0)
+        custom double3 _worldPosition = (-10.232438087463379, 0, 164.05133056640625)
+        custom vector3f _worldScale = (1, 1, 1)
+        rel animationGraph = </World/AnimationGraph>
+        custom float anim:graph:variable:BlendWeight
+        custom float graph:variable:BlendWeight
+        custom string graph:variable:MoveKey = "S"
+        rel omniGraphs = </World/ActionGraph>
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-181.109, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

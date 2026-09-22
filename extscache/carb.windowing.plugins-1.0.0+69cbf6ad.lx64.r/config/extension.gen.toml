@@ -1,0 +1,19 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/carb.windowing.plugins-65f196fe3765be80.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.195367.2c7fcd57.gl"
+        date = 1757755256
+        buildNumber = "107.3.0+1073.195367.2c7fcd57.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

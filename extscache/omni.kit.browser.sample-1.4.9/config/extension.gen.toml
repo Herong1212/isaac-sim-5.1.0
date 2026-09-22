@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.browser.sample-1.4.9.zip"
+
+    [package.publish]
+        kitVersion = "106.5.0+release.162521.d02c707b.gl"
+        date = 1739019694
+        buildNumber = "106.4+master.2135.634ab8c7.gl"
+        repoName = "kit-browsers"
+        signed = 1

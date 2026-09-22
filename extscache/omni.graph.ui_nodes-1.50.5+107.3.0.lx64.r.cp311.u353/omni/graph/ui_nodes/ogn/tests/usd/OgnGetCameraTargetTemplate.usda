@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetCameraTarget.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_GetCameraTarget" (
+        docs="""Gets a viewport camera's target point."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.GetCameraTarget"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom rel inputs:prim (
+            docs="""The camera prim, when 'usePath' is false"""
+        )
+        custom token inputs:primPath = "" (
+            docs="""Path of the camera, used when 'usePath' is true"""
+        )
+        custom bool inputs:usePath = true (
+            docs="""When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute"""
+        )
+
+        # 1 attribute
+        custom point3d outputs:target (
+            docs="""The target point"""
+        )
+    }
+}

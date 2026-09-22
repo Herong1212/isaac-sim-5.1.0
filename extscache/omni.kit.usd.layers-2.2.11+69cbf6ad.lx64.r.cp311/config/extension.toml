@@ -1,0 +1,58 @@
+[package]
+version = "2.2.11"
+title = "Layers Core"
+category = "Internal"
+description = "USD Layer-related utilities and workflows."
+authors = ["NVIDIA"]
+repository = ""
+readme  = "docs/README.md"
+keywords = ["core", "layers", "usd"]
+changelog = "docs/CHANGELOG.md"
+support_level = "Core"
+
+[[python.module]]
+name = "omni.kit.usd.layers"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[dependencies]
+"omni.usd" = {}
+"omni.usd.libs" = {}
+"omni.client" = {}
+"omni.kit.commands" = {}
+"omni.kit.collaboration.channel_manager" = { optional=true }
+
+[[test]]
+args = [
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/persistent/app/stage/dragDropImport='reference'",
+    "--/persistent/app/material/dragDropMaterialPath='absolute'",
+]
+
+dependencies = [
+    "omni.kit.collaboration.channel_manager"
+]
+
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = [
+    "*Cannot create session*",
+    "*Cannot join session*",
+    "*Failed to join channel*",
+    "*Merging Layers: Invalid layer*",
+    "*Unable to open asset 'omniverse://__faked_omniverse_server__/test/*'. Could not download local file*"
+]
+
+[settings]
+exts."omni.kit.usd.layers".enable_server_tests = false
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]

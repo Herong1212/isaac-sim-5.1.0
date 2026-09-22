@@ -1,0 +1,83 @@
+register_instantiate:
+  randomizer.register:
+    get_props:
+      instances:
+        randomizer.instantiate:
+          size: 50
+          paths:
+            utils.get_usd_files:
+              path: 'omniverse://localhost/NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/YCB/Axis_Aligned_Physics/'
+          mode: reference
+      with.instances:
+        modify.pose:
+          position:
+            distribution.uniform:
+              lower: [-50, 0, -50]
+              upper: [50, 20, 50]
+          rotation:
+            distribution.uniform:
+              lower: [0, -180, 0]
+              upper: [0, 180, 0]
+          scale: 100
+        physics.rigid_body:
+          velocity:
+            distribution.uniform:
+              lower: [-0, 0, -0]
+              upper: [0, 0, 0]
+          angular_velocity:
+            distribution.uniform:
+              lower: [-0, 0, -100]
+              upper: [0, 0, 0]
+
+env:
+  create.from_dir:
+    dir_path: 'omniverse://localhost/NVIDIA/Assets/Scenes/Templates/Interior/ZetCG_ExhibitionHall.usd'
+
+surface:
+  create.from_dir:
+    dir_path: 'omniverse://localhost/NVIDIA/Assets/Scenes/Templates/Basic/display_riser.usd'
+
+with.surface:
+  physics.collider: null
+
+camera:
+  create.camera: null
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+register_sphere_light:
+  randomizer.register:
+    sphere_lights:
+      sphere_light:
+        create.light:
+          light_type: "Sphere"
+          temperature:
+            distribution.normal:
+              mean: 6500
+              std: 500
+          intensity:
+            distribution.normal:
+              mean: 35000
+              std: 5000
+          position:
+            distribution.uniform:
+              lower: [-300, -300, -300]
+              upper: [300, 300, 300]
+          scale:
+            distribution.uniform:
+              lower: 50
+              upper: 100
+          count: 10
+
+trigger:
+  trigger.on_time:
+    interval: 2
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    randomizer.get_props: null
+    randomizer.sphere_lights: null

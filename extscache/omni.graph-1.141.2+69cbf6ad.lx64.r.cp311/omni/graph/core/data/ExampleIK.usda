@@ -1,0 +1,280 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (1000.0000000000002, -2.220446049250313e-13, 0)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Perspective = {
+                double3 position = (-2.616098181034925, 20.71866516641422, 9.543708888748546)
+                double radius = 22.350519885594053
+                double3 target = (-0.6915911212194166, 0.21808485420938695, 0.8507106375181337)
+            }
+            dictionary Right = {
+                double3 position = (0, -1000, -2.220446049250313e-13)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 1000)
+                double radius = 500
+                double3 target = (0, 0, 0)
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary renderSettings = {
+            bool "rtx:grid:enabled" = 1
+            token "rtx:grid:plane" = "XY"
+        }
+    }
+    defaultPrim = "Stage"
+    metersPerUnit = 0.009999999776482582
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def Xform "Stage"
+{
+    def Mesh "staticPlaneActor"
+    {
+        uniform bool doubleSided = 1
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)]
+        point3f[] points = [(-2500, -2500, 0), (2500, -2500, 0), (2500, 2500, 0), (-2500, 2500, 0)]
+        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Plane "collisionPlane" (
+            prepend apiSchemas = ["CollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            uniform token purpose = "guide"
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+        kind = "model"
+    )
+    {
+        float angle = 1
+        float intensity = 800
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        float3 xformOp:rotateZYX = (0, 45, 0)
+        float3 xformOp:scale = (1.0000004, 1, 1.0000004)
+        float3 xformOp:translate = (0, 0, -1.186192)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+    }
+}
+
+def Cube "Hip"
+{
+    color3f[] primvars:displayColor = [(1, 0, 0)]
+    double size = 1
+    float velocity = 0
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 6, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+
+def Cube "Knee"
+{
+    color3f[] primvars:displayColor = [(1, 1, 0)]
+    double size = 1
+    float velocity = 0
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 4, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+
+def Cube "Ankle"
+{
+    color3f[] primvars:displayColor = [(0, 1, 0)]
+    double size = 1
+    float velocity = 0
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 2, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+
+def Sphere "Goal"
+{
+    color3f[] primvars:displayColor = [(0, 0.5, 1)]
+    double radius = 0.5
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 2, 1) )
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+}
+
+def OmniGraph "IkGraph"
+{
+    def OmniGraphNode "read_goal_attribute"
+    {
+        custom bool inputs:forceUSDRead = 0
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Goal>
+        custom token inputs:primPath = ""
+        custom timecode inputs:usdTimecode = -1
+        custom bool inputs:usePath = 0
+        token node:type = "omni.graph.nodes.ReadPrimAttribute"
+        int node:typeVersion = 1
+        custom token outputs:value
+        custom uint64 state:target = 0
+        custom timecode state:usdTimecode = -1
+    }
+
+    def OmniGraphNode "read_knee_attribute"
+    {
+        custom bool inputs:forceUSDRead = 0
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Knee>
+        custom token inputs:primPath = ""
+        custom timecode inputs:usdTimecode = -1
+        custom bool inputs:usePath = 0
+        token node:type = "omni.graph.nodes.ReadPrimAttribute"
+        int node:typeVersion = 1
+        custom token outputs:value
+        custom uint64 state:target = 0
+        custom timecode state:usdTimecode = -1
+    }
+
+    def OmniGraphNode "read_ankle_attribute"
+    {
+        custom bool inputs:forceUSDRead = 0
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Ankle>
+        custom token inputs:primPath = ""
+        custom timecode inputs:usdTimecode = -1
+        custom bool inputs:usePath = 0
+        token node:type = "omni.graph.nodes.ReadPrimAttribute"
+        int node:typeVersion = 1
+        custom token outputs:value
+        custom uint64 state:target = 0
+        custom timecode state:usdTimecode = -1
+    }
+
+    def OmniGraphNode "read_hip_attribute"
+    {
+        custom bool inputs:forceUSDRead = 0
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Hip>
+        custom token inputs:primPath = ""
+        custom timecode inputs:usdTimecode = -1
+        custom bool inputs:usePath = 0
+        token node:type = "omni.graph.nodes.ReadPrimAttribute"
+        int node:typeVersion = 1
+        custom token outputs:value
+        custom uint64 state:target = 0
+        custom timecode state:usdTimecode = -1
+    }
+
+    def OmniGraphNode "write_knee_attribute" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        custom uint inputs:execIn
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Knee>
+        custom token inputs:primPath
+        custom bool inputs:usdWriteBack = 1
+        custom bool inputs:usePath = 0
+        custom token inputs:value
+        prepend token inputs:value.connect = </IkGraph/SimpleIK.state:knee>
+        token node:type = "omni.graph.nodes.WritePrimAttribute"
+        int node:typeVersion = 1
+        custom uint outputs:execOut (
+            customData = {
+                bool isExecution = 1
+            }
+        )
+    }
+
+    def OmniGraphNode "write_hip_attribute" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        custom uint inputs:execIn
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Hip>
+        custom token inputs:primPath
+        custom bool inputs:usdWriteBack = 1
+        custom bool inputs:usePath = 0
+        custom token inputs:value
+        prepend token inputs:value.connect = </IkGraph/SimpleIK.state:hip>
+        token node:type = "omni.graph.nodes.WritePrimAttribute"
+        int node:typeVersion = 1
+        custom uint outputs:execOut (
+            customData = {
+                bool isExecution = 1
+            }
+        )
+    }
+
+    def OmniGraphNode "write_ankle_attribute" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        custom uint inputs:execIn
+        custom token inputs:name = "xformOp:transform"
+        custom rel inputs:prim
+        prepend rel inputs:prim = </Ankle>
+        custom token inputs:primPath
+        custom bool inputs:usdWriteBack = 1
+        custom bool inputs:usePath = 0
+        custom token inputs:value
+        prepend token inputs:value.connect = </IkGraph/SimpleIK.state:ankle>
+        token node:type = "omni.graph.nodes.WritePrimAttribute"
+        int node:typeVersion = 1
+        custom uint outputs:execOut (
+            customData = {
+                bool isExecution = 1
+            }
+        )
+    }
+
+    def OmniGraphNode "SimpleIK"
+    {
+        custom matrix4d inputs:goal
+        matrix4d inputs:goal.connect = </IkGraph/read_goal_attribute.outputs:value>
+        custom matrix4d state:ankle = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 2, 1) )
+        custom matrix4d state:hip = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 6, 1) )
+        custom matrix4d state:knee = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 4, 1) )
+
+        custom token node:type = "omni.graph.examples.cpp.SimpleIk"
+        custom int node:typeVersion = 1
+    }
+}
+
+over "OmniverseKit_Persp"
+{
+    matrix4d xformOp:transform = ( (-0.9956225844512049, -0.09346480263036312, 2.978566414308606e-15, 0), (0.03635214616824583, -0.38723687099101006, 0.9212633321771123, 0), (-0.08610569551252109, 0.9172305797422827, 0.38893942045766294, 0), (-2.616098181034925, 20.718665166414226, 9.543708888748549, 1) )
+}
+
+over "OmniverseKit_Front"
+{
+    matrix4d xformOp:transform = ( (0, 1.0000000000000002, -2.220446049250313e-16, 0), (-2.220446049250313e-16, 0, 1.0000000000000002, 0), (1.0000000000000002, -2.220446049250313e-16, 0, 0), (1000.0000000000002, -2.220446049250313e-13, 0, 1) )
+}
+
+over "OmniverseKit_Top"
+{
+    matrix4d xformOp:transform = ( (-2.220446049250313e-16, -1, 0, 0), (1, -2.220446049250313e-16, 0, 0), (0, 0, 1, 0), (0, 0, 1000, 1) )
+}
+
+over "OmniverseKit_Right"
+{
+    matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, -2.220446049250313e-16, 1, 0), (0, -1, -2.220446049250313e-16, 0), (0, -1000, -2.220446049250313e-13, 1) )
+}
+

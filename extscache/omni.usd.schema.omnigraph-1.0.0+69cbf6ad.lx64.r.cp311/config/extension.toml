@@ -1,0 +1,40 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD OmniGraph Schema"
+description="USD Schemas defined for the objects in OmniGraph"
+version = "1.0.0"
+changelog="docs/CHANGELOG.md"
+keywords = ["usd", "schema", "graph"]
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+# thunk for old pxr.OmniScriptingSchema namespace
+[[python.module]]
+name = "pxr"
+
+[[python.module]]
+name = "OmniGraphSchema"
+
+[[python.module]]
+name = "OmniGraphSchemaTools"
+
+[[python.module]]
+name = "usd.schema.omnigraph"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniGraphSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniGraphSchema${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniGraphSchemaTools${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniGraphSchemaTools${lib_ext}"
+
+[[test]]
+waiver = "USD Schema, tested externally"

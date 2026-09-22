@@ -1,0 +1,99 @@
+[package]
+title = "JT Converter Core"
+version = "508.1.0"
+description = "JT Converter Extension JT Open Toolkit (JTTK) SDK."
+category = "Converter"
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/Overview.md"
+
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+authors = ["NVIDIA"]
+
+writeTarget.kit = true
+writeTarget.usd = true
+
+keywords = [
+    'CAD Converter',
+    'cad',
+    'JT'
+]
+
+[[python.module]]
+name = "omni.kit.converter.jt_core"
+
+[[python.module]]
+name = "omni.converter.jtk"
+
+[[python.module]]
+name = "omni.converter.jtk.tokens"
+
+[dependencies]
+"omni.kit.converter.common" = { version = "~507.1"}
+"omni.services.convert.cad" = { version = "~507.0", optional=true }
+
+[[native.library]]
+"filter:platform"."linux-x86_64"."path" = "jtk/${lib_prefix}LwSvm${lib_ext}"
+
+[[native.library]]
+"filter:platform"."linux-x86_64"."path" = "jtk/${lib_prefix}LwCommon${lib_ext}"
+
+[[native.library]]
+"filter:platform"."linux-x86_64"."path" = "jtk/${lib_prefix}eaiunicode${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}Jt-10.7.1${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}pskernel${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}psbodyshop${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}psxttoolkit${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}ParaSupt-10.7.1${lib_ext}"
+
+[[native.library]]
+path = "jtk/${lib_prefix}JtTk117${lib_ext}"
+
+[[native.library]]
+path = "bin/${lib_prefix}omni_converter_jtk${lib_ext}"
+
+# Extension test settings
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    "--/app/fastShutdown=true",
+]
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.services.convert.cad"
+]
+stdoutFailPatterns.include = []
+
+ # Ignore errors purposely triggered in test.
+stdoutFailPatterns.exclude = [
+    "*Input file does not exist*",
+    "*Exporter path not supported*",
+]
+
+pyCoverageThreshold = 80
+
+# only perform pyCoverage for jt_core
+pyCoverageFilter = ["omni.kit.converter.jt_core"]
+
+pyCoverageOmit = ["*/tests/*"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/Third_Party_Notices.md"
+]

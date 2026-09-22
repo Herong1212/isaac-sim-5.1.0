@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnIK.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_SimpleIk" (
+        docs="""Example node that employs a simple IK algorithm to match a three-joint limb to a goal"""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.SimpleIk"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom matrix4d inputs:goal = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Transform of the IK goal"""
+        )
+
+        # 3 attributes
+        custom matrix4d state:ankle (
+            docs="""Computed transform of the ankle joint"""
+        )
+        custom matrix4d state:hip (
+            docs="""Computed transform of the hip joint"""
+        )
+        custom matrix4d state:knee (
+            docs="""Computed transform of the knee joint"""
+        )
+    }
+}

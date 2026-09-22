@@ -1,0 +1,12 @@
+nucleus_server: "omniverse://localhost/"
+
+shape_assets:
+  property: nucleus_path
+  value:
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/cone.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/cube.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/cylinder.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/disk.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/plane.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/sphere.usd
+    - NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/torus.usd

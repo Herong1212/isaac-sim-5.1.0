@@ -1,0 +1,49 @@
+[package]
+title = "MDL Material Graph"
+description = "Omniverse Kit MDL UsdShade Graph"
+version = "1.9.1"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["graph", "shader", "editor", "material"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+readme = "docs/README.md"
+category = "Rendering"
+feature = true
+icon = "icons/icon.svg"
+
+[dependencies]
+"omni.mdl" = {}
+"omni.mdl.neuraylib" = {}
+"omni.client" = {}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.hotkeys.core" = { optional = true }
+"omni.kit.graph.delegate.default" = {}
+"omni.kit.graph.editor.core" = {}
+"omni.kit.graph.usd.commands" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.widget.graph" = {}
+"omni.kit.widget.material_preview" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.widget.filebrowser" = {}
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.material.library" = {}
+"omni.kit.window.preferences" = {}
+"omni.kit.usd.mdl" = { optional = true }
+"omni.kit.menu.utils" = {}
+
+[[python.module]]
+name = "omni.kit.window.material_graph"
+
+[[test]]
+dependencies = [
+    "omni.kit.mainwindow",
+    # "omni.kit.debug.vscode",  # do not commit with debug extensions enabled, it will break coverage tests
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window"
+]

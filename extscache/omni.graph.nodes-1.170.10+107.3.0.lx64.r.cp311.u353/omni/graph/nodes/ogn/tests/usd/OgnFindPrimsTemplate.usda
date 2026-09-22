@@ -1,0 +1,119 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnFindPrims.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_FindPrims" (
+        docs="""Finds Prims on the stage which match the given criteria"""
+    )
+    {
+        token node:type = "omni.graph.nodes.FindPrims"
+        int node:typeVersion = 2
+
+        # 11 attributes
+        custom bool inputs:ignoreSystemPrims = false (
+            docs="""Ignore system prims such as omni graph nodes that shouldn't be considered during the import."""
+        )
+        custom token inputs:namePrefix = "" (
+            docs="""Only prims with a name starting with the given prefix will be returned."""
+        )
+        custom token inputs:pathPattern = "" (
+            docs="""A list of wildcard patterns used to match the prim paths
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['/Cube0', '/Cube1', '/Box']
+                '*' - match any
+                '* ^/Box' - match any, but exclude '/Box'
+                '* ^/Cube*' - match any, but exclude '/Cube0' and '/Cube1'"""
+        )
+        custom bool inputs:recursive = false (
+            docs="""False means only consider children of the root prim, True means all prims in the hierarchy"""
+        )
+        custom string inputs:requiredAttributes = "" (
+            docs="""A space-separated list of attribute names that are required to be present on matched prims"""
+        )
+        custom token inputs:requiredRelationship = "" (
+            docs="""The name of a relationship which must have a target specified by requiredRelationshipTarget or requiredTarget"""
+        )
+        custom string inputs:requiredRelationshipTarget = "" (
+            docs="""The path that must be a target of the requiredRelationship"""
+        )
+        custom rel inputs:requiredTarget (
+            docs="""The target of the requiredRelationship"""
+        )
+        custom rel inputs:rootPrim (
+            docs="""Only children of the given prim will be considered. If rootPrim is specified, rootPrimPath will be ignored."""
+        )
+        custom token inputs:rootPrimPath = "" (
+            docs="""Only children of the given prim will be considered. Empty will search the whole stage."""
+        )
+        custom token inputs:type = "*" (
+            docs="""A list of wildcard patterns used to match the prim types that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['Mesh', 'Cone', 'Cube']
+                '*' - match any
+                '* ^Mesh' - match any, but exclude 'Mesh'
+                '* ^Cone ^Cube' - match any, but exclude 'Cone' and 'Cube'"""
+        )
+
+        # 2 attributes
+        custom token[] outputs:primPaths (
+            docs="""A list of Prim paths as tokens which match the given type"""
+        )
+        custom rel outputs:prims (
+            docs="""A list of Prim paths which match the given type"""
+        )
+
+        # 11 attributes
+        custom bool state:ignoreSystemPrims (
+            docs="""last corresponding input seen"""
+        )
+        custom token state:inputType (
+            docs="""last corresponding input seen"""
+        )
+        custom token state:namePrefix (
+            docs="""last corresponding input seen"""
+        )
+        custom token state:pathPattern (
+            docs="""last corresponding input seen"""
+        )
+        custom bool state:recursive (
+            docs="""last corresponding input seen"""
+        )
+        custom string state:requiredAttributes (
+            docs="""last corresponding input seen"""
+        )
+        custom token state:requiredRelationship (
+            docs="""last corresponding input seen"""
+        )
+        custom string state:requiredRelationshipTarget (
+            docs="""last corresponding input seen"""
+        )
+        custom rel state:requiredTarget (
+            docs="""last corresponding input seen"""
+        )
+        custom rel state:rootPrim (
+            docs="""last corresponding input seen"""
+        )
+        custom token state:rootPrimPath (
+            docs="""last corresponding input seen"""
+        )
+    }
+}

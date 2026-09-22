@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.scripting-107.3.2%2B107.3.2.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.2"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.211951.6f5607ae.gl"
+        date = 1752701460
+        buildNumber = "107.3.2+main.200.a38d3d4d.gl"
+        repoName = "kit-scripting"
+        signed = 1

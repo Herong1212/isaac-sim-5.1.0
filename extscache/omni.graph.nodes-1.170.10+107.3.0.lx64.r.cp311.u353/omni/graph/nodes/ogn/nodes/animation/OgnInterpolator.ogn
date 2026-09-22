@@ -1,0 +1,75 @@
+{
+    "Interpolator": {
+        "version": 1,
+        "description": "Time sample interpolator",
+        "metadata": {
+            "uiName": "Interpolator"
+        },
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "param": {
+                "type": "float",
+                "description": "Time sample interpolation point",
+                "metadata": {
+                    "uiName": "Interpolation Point"
+                }
+            },
+            "knots": {
+                "type": "float[]",
+                "description": "Array of knots on the time sample curve",
+                "metadata": {
+                    "uiName": "Knot Array"
+                }
+            },
+            "values": {
+                "type": "float[]",
+                "description": "Array of time sample values",
+                "metadata": {
+                    "uiName": "Value Array"
+                }
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "float",
+                "description": "Value in the time samples, interpolated at the given parameter location",
+                "metadata": {
+                    "uiName": "Interpolated Value"
+                }
+            }
+        },
+        "tests": [
+            {
+                "inputs:knots": [1.0, 2.0],
+                "inputs:values": [3.0, 4.0],
+                "inputs:param": 1.5,
+                "outputs:value": 3.5
+            },
+            {
+                "inputs:knots": [1.0, 2.0],
+                "inputs:values": [3.0, 4.0],
+                "inputs:param": 1.0,
+                "outputs:value": 3.0
+            },
+            {
+                "inputs:knots": [1.0, 2.0],
+                "inputs:values": [3.0, 4.0],
+                "inputs:param": 2.0,
+                "outputs:value": 4.0
+            },
+            {
+                "inputs:knots": [1.0, 2.0],
+                "inputs:values": [3.0, 4.0],
+                "inputs:param": 0.5,
+                "outputs:value": 3.0
+            },
+            {
+                "inputs:knots": [1.0, 2.0],
+                "inputs:values": [3.0, 4.0],
+                "inputs:param": 2.5,
+                "outputs:value": 4.0
+            }
+        ]
+    }
+}

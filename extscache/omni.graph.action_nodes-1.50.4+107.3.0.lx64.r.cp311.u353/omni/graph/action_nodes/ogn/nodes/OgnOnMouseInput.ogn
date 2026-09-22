@@ -1,0 +1,93 @@
+{
+    "omni.graph.action.OnMouseInput": {
+        "description": [
+            "Event node which fires when a mouse event occurs.\n",
+            "You can choose which 'Mouse Element' this node reacts to.",
+            "When 'Mouse Element' is chosen to be a button, the only meaningful outputs are: 'Pressed', 'Released' and 'Is Pressed'.",
+            "When scroll or move events are chosen, the only meaningful outputs are: 'Value Changed' and 'Value'.",
+            "You can choose to output normalized or pixel coordinates of the mouse.\n",
+            "Pixel coordinates are the absolute position of the mouse cursor in pixel units.",
+            "The original point is the upper left corner.",
+            "The minimum value is 0, and the maximum value depends on the size of the window.\n",
+            "Normalized coordinates are the relative position of the mouse cursor to the window.",
+            "The value is always between 0 and 1."
+        ],
+        "version": 2,
+        "uiName": "On Mouse Input",
+        "categories": ["graph:action", "input:mouse"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "inputs": {
+            "mouseElement": {
+                "type": "token",
+                "description": "The name of the mouse event that will trigger the downstream execution.",
+                "uiName": "Mouse Element",
+                "default": "Left Button",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "LeftButton": "Left Button",
+                        "MiddleButton": "Middle Button",
+                        "RightButton": "Right Button",
+                        "NormalizedMove": "Normalized Move",
+                        "PixelMove": "Pixel Move",
+                        "Scroll": "Scroll"
+                    }
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "pressed": {
+                "type": "execution",
+                "description": [
+                    "When any mouse button was pressed signal to the graph that the execution can continue downstream.",
+                    "Will not execute on move or scroll events."
+                ],
+                "uiName": "Pressed"
+            },
+            "released": {
+                "type": "execution",
+                "description": [
+                    "When any mouse button was released signal to the graph that the execution can continue downstream.",
+                    "Will not execute on move or scroll events."
+                ],
+                "uiName": "Released"
+            },
+            "valueChanged": {
+                "type": "execution",
+                "description": [
+                    "When the mouse was moved or scrolled signal to the graph that the execution can continue downstream.",
+                    "Will not execute on press or release events."
+                ],
+                "uiName": "Moved"
+            },
+            "isPressed": {
+                "type": "bool",
+                "description": [
+                    "True if the mouse button was pressed, False if it was released or 'Mouse Element' is not",
+                    "related to a button, as in a move or scroll."
+                ]
+            },
+            "value": {
+                "type": "float[2]",
+                "description": [
+                    "The meaning of this output depends on 'Mouse Element'.\n",
+                    "Normalized Move: will output the normalized coordinates of mouse, each element of the vector is in the range of [0, 1].\n",
+                    "Pixel Move: will output the absolute coordinates of mouse, each vector is in the range of [0, pixel width/height of the window].\n",
+                    "Scroll: will output the change of scroll value.\n",
+                    "Otherwise: will output [0,0]."
+                ],
+                "uiName": "Delta Value"
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+[package]
+# Semantic Versionning is used: https://semver.org/
+version = "1.5.14"
+
+# Make this a featured extension
+feature = true
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Pointclouds"
+description="Extension to support importing point clouds."
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "other"
+
+# Keywords for the extension
+keywords = ["point", "pointcloud", "pointclouds", "point clouds", "e57", "pts"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+writeTarget.python = true
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.pointclouds".
+[[python.module]]
+name = "omni.kit.pointclouds"
+
+[dependencies]
+"omni.client" = {}
+"omni.usd" = {}
+"omni.kit.tool.asset_importer" = {}
+"omni.usd.fileformat.e57" = { version="1.0" }
+"omni.usd.fileformat.pts" = { optional = true }
+"omni.flowusd" = { optional = true  }
+"omni.rtx.index_composite" = { optional = true }
+"omni.pointcloud.manager" = { version="1.2", optional = true }
+"omni.services.client" = { optional = true }
+"omni.services.transport.client.http_async" = { optional = true }
+
+# Watch files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.py"]
+
+[settings]
+exts."omni.kit.pointclouds".browser_sources = []
+exts."omni.kit.pointclouds".trigger_sources = ""
+# The importer UI can trigger local potree conversion
+exts."omni.kit.pointclouds".local_potree_conversion = false
+# The importer UI can trigger farm cache generation
+exts."omni.kit.pointclouds".local_cache_generation = false
+exts."omni.pointcloud.manager".service_farm_uri = ""
+
+[[test]]
+dependencies = [
+    # "omni.pointcloud.manager",
+    "omni.kit.stage_templates",
+    "omni.potree_converter",
+]
+stdoutFailPatterns.exclude = [
+    "*RTX renderer not active*",
+    "*Invalid hierarchy step size*",
+    "*Failed to create parent folder for*",
+    "*Failed to read data from*",
+    "*Invalid url*",
+    "*Task exception was never retrieved*"
+]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+]
+pythonTests.unreliable = [
+    "*test_*nucleus*",
+]

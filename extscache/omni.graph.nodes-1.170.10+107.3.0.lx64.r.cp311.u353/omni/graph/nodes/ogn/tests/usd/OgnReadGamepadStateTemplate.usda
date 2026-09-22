@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadGamepadState.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadGamepadState" (
+        docs="""Reads the current state of the ID-specified gamepad device (i.e. which buttons are being pressed, the orientation of the joystick(s), etc.)."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadGamepadState"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom float inputs:deadzone = 0.1 (
+            docs="""Threshold from [0, 1] that the value must pass for it to be registered as input."""
+        )
+        custom token inputs:gamepadElement = "Left Stick X Axis" (
+            docs="""The gamepad element whose state is to be checked."""
+        )
+        custom uint inputs:gamepadId = 0 (
+            docs="""Gamepad ID number starting from 0. Used to identify a given gamepad device."""
+        )
+
+        # 2 attributes
+        custom bool outputs:isPressed (
+            docs="""True if the gamepad element is currently pressed, false otherwise."""
+        )
+        custom float outputs:value (
+            docs="""Value denoting how "much" the gamepad element is being pressed. Valid ranges are
+            [0, 1] for buttons and [-1, 1] for stick and trigger."""
+        )
+    }
+}

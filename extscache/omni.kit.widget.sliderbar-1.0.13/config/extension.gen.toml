@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.widget.sliderbar-1.0.13.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.185040.fcf988ef.gl"
+        date = 1744843831
+        buildNumber = "106.0.1+master.755.dd27272c.gl"
+        repoName = "kit-widgets"
+        signed = 1

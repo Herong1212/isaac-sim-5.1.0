@@ -1,0 +1,71 @@
+[package]
+title = "Hoops Converter"
+version = "509.1.0"
+description = "CAD Converter Extension using Hoops Exchange SDK."
+category = "Converter"
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+authors = ["NVIDIA"]
+
+keywords = [
+    'CAD Converter',
+    'cad',
+    'CATIA',
+    'IFC',
+    'NX',
+    'Parasolid',
+    'Solidworks',
+    'Autodesk Inventor',
+    'CATIA',
+    'AutoCAD 3d',
+    'Creo',
+    'Revit',
+    'Solid Edge',
+    'STEP'
+]
+
+writeTarget.kit = true
+writeTarget.usd = true
+
+[dependencies]
+"omni.client" = {}
+"omni.kit.tool.asset_importer" = {}
+"omni.kit.converter.hoops_core" = { version = "~509.1"}
+"omni.kit.converter.common" = { version = "~507.1"}
+
+[[python.module]]
+name = "omni.kit.converter.hoops"
+
+# Extension test settings
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    "--/app/fastShutdown=true",
+]
+dependencies = []
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = [
+    "*is not writeable*",
+    "*`startup()` must succeed prior calling*",
+    "*All of the following settings must be specified*",
+]
+
+pyCoverageThreshold = 80
+pyCoverageFilter = ["omni.kit.converter.hoops"]
+pyCoverageOmit = ["*/tests/*"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/Usage.md",
+    "docs/Third_Party_Notices.md",
+    "docs/Known_Issues.md"
+]

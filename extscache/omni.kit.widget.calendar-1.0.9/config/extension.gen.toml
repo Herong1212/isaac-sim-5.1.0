@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.widget.calendar-1.0.9.zip"
+
+    [package.publish]
+        kitVersion = "107.0.3+master.163609.abadf5de.gl"
+        date = 1740992382
+        buildNumber = "106.0.1+master.655.8356bde7.gl"
+        repoName = "kit-widgets"
+        signed = 1

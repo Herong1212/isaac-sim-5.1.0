@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def "nova_carter_sensors_stripped" (
+        prepend references = @./payload.usda@
+    )
+    {
+        over "Nova_Carter_ROS"
+        {
+            over "dummy_link"
+            {
+            }
+
+            over "chassis_link"
+            {
+            }
+
+            over "dummy_link_2"
+            {
+            }
+        }
+    }
+}
+

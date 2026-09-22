@@ -1,0 +1,43 @@
+{
+    "omni.graph.action.SetPrimActive": {
+        "version": 2,
+        "description": [
+            "Set whether a prim on the Stage is active (selected) or not. Only one prim can be connected to",
+            "the 'Prim' input for execution. If multiple targets are present then a warning will be logged.",
+            "The 'Active' input value will be the prim's new active state. If the prim cannot be found then",
+            "an error will be logged. Avoiding use of the deprecated 'Prim Path' input will ensure that error",
+            "cannot be encountered."
+        ],
+        "uiName": "Set Prim Active",
+        "scheduling": [ "usd-write" ],
+        "categories": [ "graph:action", "sceneGraph" ],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "uiName": "Prim Path",
+                "type": "path",
+                "description": "The prim to be (de)activated",
+                "deprecated": "Use the primTarget input instead"
+            },
+            "primTarget": {
+                "uiName": "Prim",
+                "type": "target",
+                "description": "The prim to be (de)activated"
+            },
+            "active": {
+                "type": "bool",
+                "description": "Whether to set the prim active or not"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            }
+        }
+    }
+}

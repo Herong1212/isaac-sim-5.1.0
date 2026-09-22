@@ -1,0 +1,68 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSetViewportMode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_SetViewportMode" (
+        docs="""Sets the mode of a specified viewport window to 'Scripted' mode or 'Default' mode when executed.
+'Scripted' mode disables default viewport interaction and enables placing UI elements over the viewport. 'Default' mode is the default state of the viewport, and entering it will destroy any UI elements on the viewport.
+Executing with 'Enable Viewport Mouse Events' set to true in 'Scripted' mode is required to allow the specified viewport to be targeted by viewport mouse event nodes, including 'On Viewport Dragged' and 'Read Viewport Drag State'.
+Executing with 'Enable Picking' set to true in 'Scripted' mode is required to allow the specified viewport to be targeted by the 'On Picked' and 'Read Pick State' nodes."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.SetViewportMode"
+        int node:typeVersion = 1
+
+        # 6 attributes
+        custom bool inputs:enablePicking = false (
+            docs="""Enable/Disable picking prims in the specified viewport when in 'Scripted' mode"""
+        )
+        custom bool inputs:enableViewportMouseEvents = false (
+            docs="""Enable/Disable viewport mouse events on the specified viewport when in 'Scripted' mode"""
+        )
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom int inputs:mode = 0 (
+            docs="""The mode to set the specified viewport to when this node is executed (0: 'Default', 1: 'Scripted')"""
+        )
+        custom bool inputs:passClicksThru = false (
+            docs="""Allow mouse clicks to affect the viewport while in 'Scripted' mode.
+
+            In 'Scripted' mode mouse clicks are prevented from reaching the viewport to avoid accidentally
+            selecting prims or interacting with the viewport's own UI. Setting this attribute true will
+            allow clicks to reach the viewport. This is in addition to interacting with the widgets created
+            by UI nodes so if a button widget appears on top of some geometry in the viewport, clicking on
+            the button will not only trigger the button but could also select the geometry. To avoid this,
+            put the button inside a Stack widget and use a WriteWidgetProperty node to set the Stack's
+            'content_clipping' property to 1."""
+        )
+        custom token inputs:viewport = "Viewport" (
+            docs="""Name of the viewport window to set the mode of"""
+        )
+
+        # 3 attributes
+        custom uint outputs:defaultMode (
+            docs="""When this node is successfully executed with 'Mode' set to 'Default',
+            signal to the graph that execution can continue downstream on this path."""
+        )
+        custom uint outputs:scriptedMode (
+            docs="""When this node is successfully executed with 'Mode' set to 'Scripted',
+            signal to the graph that execution can continue downstream on this path."""
+        )
+        custom token outputs:widgetPath (
+            docs="""When the viewport enters 'Scripted' mode, a container widget is created under which other UI may be parented.
+            This attribute provides the absolute path to that widget, which can be used as the 'parentWidgetPath'
+            input to various UI nodes, such as Button. When the viewport exits 'Scripted' mode,
+            the container widget and all the UI within it will be destroyed."""
+        )
+    }
+}

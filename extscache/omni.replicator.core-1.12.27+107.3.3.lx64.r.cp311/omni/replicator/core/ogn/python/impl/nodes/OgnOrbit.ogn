@@ -1,0 +1,66 @@
+{
+    "OgnOrbit": {
+        "version": 1,
+        "language": "python",
+        "categories": {
+            "Replicator": "Orbit"
+        },
+        "description": "Compute prim position in the form of an orbit around a central point.",
+        "metadata":
+        {
+           "uiName": "Compute Orbit Position"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["The prims orbit position is to be computed"],
+                "type": "target"
+            },
+            "barycentrePrim": {
+                "description": ["The barycentre prim that the prims will orbit around"],
+                "type": "target"
+            },
+            "barycentreCoordinates": {
+                "description": ["The barycentre position expressed in (x, y, z) coordinates."],
+                "type": "float[3]"
+            },
+            "barycentreMode": {
+                "description": ["Determine whether to use barycentrePrim or barycentreCoordinates as the orbit barycentre."],
+                "type": "token",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": [
+                        "Prim",
+                        "Coordinates"
+                    ]
+               }
+            },
+            "distance": {
+                "description": ["Distance from barycentre."],
+                "type": "float[]"
+            },
+            "azimuth": {
+                "description": ["Horizontal angle in degrees."],
+                "type": "float[]"
+            },
+            "elevation": {
+                "description": ["Vertical angle in degrees."],
+                "type": "float[]"
+            },
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "values": {
+                "description": ["Position values of prims orbiting around a barycentre point."],
+                "type": "double[3][]"
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "MakeMatrix4": {
+        "version": 1,
+        "description": [
+            "Merge 4 row vectors into a matrix.",
+            "If the inputs are arrays, the output will be an array of matrices."
+        ],
+        "uiName": "Make Matrix4",
+        "categories": ["math:conversion"],
+        "tags": ["compose", "combine", "join"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "x": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "First Row",
+                "description": "The first row of the matrix"
+            },
+            "y": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "Second Row",
+                "description": "The second row of the matrix"
+            },
+            "z": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "Third Row",
+                "description": "The third row of the matrix"
+            },
+            "w": {
+                "type": ["double[3]", "double[3][]", "double[4]", "double[4][]"],
+                "uiName": "Fourth Row",
+                "description": "The fourth row of the matrix"
+            }
+        },
+        "outputs": {
+            "matrix": {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Matrix",
+                "description": "The matrix formed by the input row vectors"
+            }
+        },
+        "tests": [
+            {
+                "inputs:x": {"type": "double[3]", "value": [1, 2, 3] },
+                "inputs:y": {"type": "double[3]", "value": [4, 5, 6] },
+                "inputs:z": {"type": "double[3]", "value": [7, 8, 9] },
+                "inputs:w": {"type": "double[3]", "value": [10, 11, 12] },
+                "outputs:matrix": {"type": "matrixd[4]", "value":
+                    [1, 2, 3, 0, 4, 5, 6, 0, 7, 8, 9, 0, 10, 11, 12, 1] }
+            },
+            {
+                "inputs:x": {"type": "double[3][]", "value": [[1, 2, 3]] },
+                "inputs:y": {"type": "double[3][]", "value": [[4, 5, 6]] },
+                "inputs:z": {"type": "double[3][]", "value": [[7, 8, 9]] },
+                "inputs:w": {"type": "double[3][]", "value": [[10, 11, 12]] },
+                "outputs:matrix": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 0, 4, 5, 6, 0, 7, 8, 9, 0, 10, 11, 12, 1]] }
+            },
+            {
+                "inputs:x": {"type": "double[4]", "value": [1, 2, 3, 4] },
+                "inputs:y": {"type": "double[4]", "value": [5, 6, 7, 8] },
+                "inputs:z": {"type": "double[4]", "value": [9, 10, 11, 12] },
+                "inputs:w": {"type": "double[4]", "value": [13, 14, 15, 16] },
+                "outputs:matrix": {"type": "matrixd[4]", "value":
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
+            },
+            {
+                "inputs:x": {"type": "double[4][]", "value": [[1, 2, 3, 4]] },
+                "inputs:y": {"type": "double[4][]", "value": [[5, 6, 7, 8]] },
+                "inputs:z": {"type": "double[4][]", "value": [[9, 10, 11, 12]] },
+                "inputs:w": {"type": "double[4][]", "value": [[13, 14, 15, 16]] },
+                "outputs:matrix": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]] }
+            }
+        ]
+    }
+}

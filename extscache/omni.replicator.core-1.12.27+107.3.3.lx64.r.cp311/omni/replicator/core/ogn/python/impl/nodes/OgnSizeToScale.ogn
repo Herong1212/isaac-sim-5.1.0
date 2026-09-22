@@ -1,0 +1,50 @@
+{
+    "OgnSizeToScale": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Generate scales to make each prim fit a cube of specified size.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Size to Scale"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to convert the scale to."],
+                "type": "target"
+            },
+            "numSamples": {
+                "description": ["number of samples"],
+                "type": "int"
+            },
+            "size": {
+                "description": ["Desired size of the input prims."],
+                "type": "double[3][]"
+            },
+            "maintainAspectRatio": {
+                "description": ["Scale each axis by the same value to maintain aspect ratio"],
+                "type": "bool",
+                "default": true
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "samples": {
+                "description": ["scale values of each prim in the world space"],
+                "type": "double[3][]"
+            },
+            "numSamples": {
+                "description": ["number of samples"],
+                "type": "int"
+            }
+        }
+    }
+}

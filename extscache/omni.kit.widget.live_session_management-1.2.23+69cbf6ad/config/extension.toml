@@ -1,0 +1,59 @@
+[package]
+version = "1.2.23"
+title = "Live Session Management Widgets"
+category = "Internal"
+description = "This extension includes shared live session widgets used by other extentions to re-use widgets for session management."
+keywords = ["Live Session", "Layers", "Widget"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+authors = ["NVIDIA"]
+repository = ""
+support_level = "Sample"
+
+[dependencies]
+"omni.ui" = {}
+"omni.client" = {}
+"omni.kit.usd.layers" = {}
+"omni.kit.widget.prompt" = {}
+"omni.kit.widget.live_session_management.ui" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.window.preferences" = { optional=true }
+"omni.kit.collaboration.channel_manager" = { optional=true }
+"omni.kit.collaboration.presence_layer" = {}
+"omni.kit.clipboard" = {}
+
+[[python.module]]
+name = "omni.kit.widget.live_session_management"
+
+[[test]]
+waiver = "Tests covered in omni.kit.widget.layers"
+
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.ui_test",
+    "omni.kit.window.preferences",
+    "omni.kit.collaboration.channel_manager",
+    "omni.timeline.live_session"
+]
+
+args = [
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=true",
+]
+
+pyCoverageOmit = [
+    "omni/kit/widget/live_session_management/tests/mock_utils.py",
+    "omni/kit/widget/live_session_management/tests/test_live_session_management.py"
+]
+
+[settings]
+exts."omni.kit.widget.live_session_management".viewer_only_mode = false
+exts."omni.kit.widget.live_session_management".quick_join_enabled = true
+exts."omni.kit.widget.live_session_management".session_list_select = "LastSession"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/SETTINGS.md",
+    "docs/USAGE_PYTHON.md",
+]

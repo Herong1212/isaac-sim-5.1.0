@@ -1,0 +1,7 @@
+{
+    "version": 1,
+    "name": "magicleap_ml2_profile",
+    "requiredInteractionProfile": [
+        "/interaction_profiles/ml/ml2_controller"
+    ]
+}

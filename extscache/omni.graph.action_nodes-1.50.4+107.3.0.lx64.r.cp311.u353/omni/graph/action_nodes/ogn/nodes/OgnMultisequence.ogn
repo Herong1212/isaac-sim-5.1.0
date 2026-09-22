@@ -1,0 +1,27 @@
+{
+    "omni.graph.action.Multisequence": {
+        "version": 2,
+        "description": [
+            "Outputs an execution pulse along each of its N outputs in sequence.",
+            "For every single input execution pulse, each and every output will be exclusively enabled in order.",
+            "'Output 0' is provided by default. To add more to the sequence add new output attributes with",
+            "indexed unique names, such as 'outputs:output1', 'outputs:output2', etc."
+        ],
+        "uiName": "Sequence",
+        "categories": ["graph:action", "flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            }
+        },
+        "outputs": {
+            "output0": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

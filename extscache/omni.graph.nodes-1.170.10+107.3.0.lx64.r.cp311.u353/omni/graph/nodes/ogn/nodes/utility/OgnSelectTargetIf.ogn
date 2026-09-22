@@ -1,0 +1,75 @@
+{
+    "SelectTargetIf": {
+        "version": 1,
+        "description": [
+            "Selects a target from the given inputs based on a boolean condition.",
+            "If condition is a scalar, result will either be \"ifTrue\" or \"ifFalse\".",
+            "If it is an array, select between each input element-wise (if arrays are the same length)."
+        ],
+        "uiName": "Select Target If",
+        "categories": ["flowControl"],
+        "scheduling": ["threadsafe"],
+        "icon": {
+            "path": "OgnSelectIf.svg"
+        },
+        "inputs": {
+            "ifTrue": {
+                "type": "target",
+                "uiName": "If True",
+                "description": "The targets if condition is \"True\".",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "ifFalse": {
+                "type": "target",
+                "uiName": "If False",
+                "description": "The targets if condition is \"False\".",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "condition": {
+                "type": ["bool", "bool[]"],
+                "description": [
+                    "The boolean condition used to select between \"ifTrue\" and \"ifFalse\".",
+                    "If a scalar, result will either be \"ifTrue\" or \"ifFalse\".",
+                    "If an array, select between each input element-wise (if arrays are the same length)."
+                ]
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": "target",
+                "description": "The selected targets from ifTrue and ifFalse",
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:ifTrue": ["/A", "/B", "/C"],
+                "inputs:ifFalse": ["/D", "/E", "/F"],
+                "inputs:condition": {"type":"bool", "value": true},
+                "outputs:result": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:ifTrue": ["/A", "/B", "/C"],
+                "inputs:ifFalse": ["/D", "/E", "/F"],
+                "inputs:condition": {"type":"bool", "value": false},
+                "outputs:result": ["/D", "/E", "/F"]
+            },
+            {
+                "inputs:ifTrue": "/A",
+                "inputs:ifFalse": ["/D", "/E", "/F"],
+                "inputs:condition": {"type":"bool", "value": true},
+                "outputs:result": "/A"
+            },
+            {
+                "inputs:ifTrue": ["/A", "/B", "/C"],
+                "inputs:ifFalse": ["/D", "/E", "/F"],
+                "inputs:condition": {"type":"bool[]", "value": [true, false, true]},
+                "outputs:result": ["/A", "/E", "/C"]
+            }
+        ]
+    }
+}

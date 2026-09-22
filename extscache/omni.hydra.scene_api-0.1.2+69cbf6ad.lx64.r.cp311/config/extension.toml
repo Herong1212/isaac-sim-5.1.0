@@ -1,0 +1,51 @@
+[package]
+title = "Background Scene Delegates and Python API"
+category = "Internal"
+version = "0.1.2"
+readme  = "docs/README.md"
+description = "This extension provides a scene delegate that can load in the background, and also python api for adding and removing those scene delegates."
+keywords = ["Hydra", "api", "scene delegate", "python"]
+support_level = "Core"
+
+[dependencies]
+"omni.usd" = {}
+
+[[python.module]]
+name = "omni.hydra.scene_api"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+args = [
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/rtx-transient/post/aa/limitedOps=false",    # Allow running with AA=None, we don't need to test DLSS-RR for everything here.
+    "--/rtx-transient/directLighting/sampledLighting/enforced=false", # allow LTC lighting mode
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/hideUi=true",
+    "--/app/window/width=512",
+    "--/app/window/height=512",
+]
+dependencies = [
+    "omni.kit.renderer.core",
+    "omni.kit.test_helpers_gfx",
+    "omni.kit.renderer.capture",
+    "omni.kit.mainwindow",
+    "omni.kit.test",
+    "omni.rtx.tests",
+    "omni.hydra.rtx",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+]
+
+[documentation]
+#python_api_hidden = true
+cpp_api_hidden = true
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

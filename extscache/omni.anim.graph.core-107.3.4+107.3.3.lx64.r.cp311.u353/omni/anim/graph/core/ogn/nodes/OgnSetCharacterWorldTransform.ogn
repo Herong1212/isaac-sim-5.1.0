@@ -1,0 +1,34 @@
+{
+    "omni.anim.graph.SetCharacterWorldTransform": {
+        "version": 1,
+        "description": ["Set the specified character's animation graph world transform using translation and rotation from the provided transform."],
+        "uiName": "Set Animation Graph World Transform",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+           "execIn": {
+                "type": "execution",
+                "description": "Input execution state"
+            },
+            "skelRootPath": {
+                "uiName": "Skel Root Path",
+                "type": "token",
+                "optional": true,
+                "description": "The prim path of a UsdSkelRoot to which has the AnimationGraph applied and assigned to it. Default behavior: use the graph target."
+            },
+            "transform": {
+                "uiName": "Transform",
+                "description": [
+                "Desired world transform. Note: only rotation and translation will be extracted, scale is currently ignored."
+                ],
+                "type": "matrixd[4]",
+                "default": [[1.0,0.0,0.0,0.0], [0.0,1.0,0.0,0.0], [0.0,0.0,1.0,0.0], [0.0,0.0,0.0,1.0]]
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution"
+            }
+        }
+    }
+}

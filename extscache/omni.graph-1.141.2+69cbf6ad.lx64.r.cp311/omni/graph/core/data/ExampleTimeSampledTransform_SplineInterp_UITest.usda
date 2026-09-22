@@ -1,0 +1,59 @@
+#usda 1.0
+(
+    endTimeCode = 72
+    metersPerUnit = 0.009999999776482582
+)
+
+def Xform "defaultPrim"
+{
+    # Select prim "cube", Use Menu "Animation/Xform Interpolation“ to generate the interpolation pipeline
+    def Cube "cube"
+    {
+        double size = 0.5
+        float3 xformOp:translate = (0, 0, 3)(
+            customData = {
+                string interpolationType = "Bezier"
+            }
+        )
+        float3 xformOp:translate.timeSamples = {
+           0: (0, 0, 3),
+           48: (3, 0, 3),
+        }
+        float3 xformOp:rotateZYX = (0, 0, 0)(
+            customData = {
+                string interpolationType = "Bezier"
+            }
+        )
+        float3 xformOp:rotateZYX.timeSamples = {
+           0: (0, 0, 0),
+           48: (0, 90.0, 0),
+        }
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX"]   
+    }
+
+    # Select prim "cube1", Use Menu "Animation/Xform Interpolation" to generate the interpolation pipeline
+    def Cube "cube1"
+    {
+        double size = 0.5
+        float3 xformOp:translate = (0, 0, 0)(
+            customData = {
+                string interpolationType = "Linear"
+            }
+        )
+        float3 xformOp:translate.timeSamples = {
+           0: (0, 0, 0),
+           48: (3, 0, 0),
+        }
+        float3 xformOp:rotateZYX = (0, 0, 0)(
+            customData = {
+                string interpolationType = "Linear"
+            }
+        )
+        float3 xformOp:rotateZYX.timeSamples = {
+           0: (0, 0, 0),
+           48: (0, 90.0, 0),
+        }
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX"]  
+    }
+}
+

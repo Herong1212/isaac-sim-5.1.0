@@ -1,0 +1,88 @@
+{
+    "omni.anim.graph.UpdateCharacter": {
+        "version": 1,
+        "description": [ "Allow manual updating processing of an animation graph on a character." ],
+        "uiName": "Update Animation Graph",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Input execution state"
+            },
+            "skelRootPath": {
+                "uiName": "Skel Root Path",
+                "type": "token",
+                "optional": true,
+                "description": "The prim path of a UsdSkelRoot to which has a AnimationGraph applied and assigned to it."
+            },
+            "deltaTime": {
+                "uiName": "Delta Time",
+                "default": 0,
+                "type": "float",
+                "description": "The delta time for update."
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution"
+            },
+            "pose": {
+                "uiName": "Pose",
+                "type": "bundle",
+                "description": "The character ouput pose.",
+                "metadata": {
+                    "attrs": {
+                        "rootTranslation": {
+                            "uiName": "Root Translation (World Space)",
+                            "type": "float[3]",
+                            "description": "The character root translation in world space."
+                        },
+                        "rootRotation": {
+                            "uiName": "Root Rotation (World Space)",
+                            "type": "quatf[4]",
+                            "description": "The character root rotation (quaternion) in world space."
+                        },
+                        "skeletonDeltaTranslation": {
+                            "uiName": "Skeleton Delta Translation (Skeleton Space)",
+                            "type": "float[3]",
+                            "description": "The character skeleton displacement(delta) translation in skeleton space."
+                        },
+                        "skeletonDeltaRotation": {
+                            "uiName": "Skeleton Delta Rotation (Skeleton Space)",
+                            "type": "quatf[4]",
+                            "description": "The character skeleton displacement(delta) rotation(quaternion) in skeleton space."
+                        },
+                        "jointTranslations": {
+                            "uiName": "Joint Translations (Local Space)",
+                            "type": "float[3][]",
+                            "description": "The character joint positions in local space, based on the referenced skeleton."
+                        },
+                        "jointRotations": {
+                            "uiName": "Joint Rotations (Local Space)",
+                            "type": "quatf[4][]",
+                            "description": "The character joint rotations (quaternion) in local space, based on the referenced skeleton."
+                        }
+                    }
+                }
+            }
+        },
+        "state": {
+            "forceOutputToInherentSkelAnimation": {
+                "uiName": "Force Output To Inherent SkelAnimation",
+                "type": "bool",
+                "default": false,
+                "description": "if true, forces output to inherent SkelAnimation output."
+            }
+        },
+        "$comment": "This is a node to update character instance. If no output connection is connected, this node will output to its default outputs.",
+        "tokens": [
+            "rootTranslation",
+            "rootRotation",
+            "skeletonDeltaTranslation",
+            "skeletonDeltaRotation",
+            "jointTranslations",
+            "jointRotations"
+        ]
+    }
+}

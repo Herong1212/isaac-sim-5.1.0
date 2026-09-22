@@ -1,0 +1,75 @@
+{
+    "ReadViewportPressState": {
+        "version": 1,
+        "description": [
+            "Read the state of the last viewport press event from the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Viewport Press State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of 2D position outputs are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for press events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger viewport press events",
+                "uiName": "Gesture",
+                "default": "Left Mouse Press",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftMouseDrag": "Left Mouse Press",
+                        "RightMouseDrag": "Right Mouse Press",
+                        "MiddleMouseDrag": "Middle Mouse Press"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "pressPosition": {
+                "type": "double[2]",
+                "description": "The position at which the specified viewport was last pressed",
+                "uiName": "Press Position"
+            },
+            "releasePosition": {
+                "type": "double[2]",
+                "description": [
+                    "The position at which the last press on the specified viewport was released,",
+                    "or (0,0) if the press was released outside of the viewport or the viewport is currently pressed"
+                ],
+                "uiName": "Release Position"
+            },
+            "isReleasePositionValid": {
+                "type": "bool",
+                "description": "True if the press was released inside of the viewport, and false otherwise",
+                "uiName": "Is Release Position Valid"
+            },
+            "isPressed": {
+                "type": "bool",
+                "description": "True if the specified viewport is currently pressed",
+                "uiName": "Is Pressed"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

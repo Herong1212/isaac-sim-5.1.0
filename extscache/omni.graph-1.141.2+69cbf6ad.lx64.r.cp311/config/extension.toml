@@ -1,0 +1,71 @@
+[package]
+title = "OmniGraph Python"
+version = "1.141.2"
+category = "Graph"
+readme = "docs/README.md"
+description = "Contains the implementation of the OmniGraph core (Python Support)."
+preview_image = "data/preview.png"
+repository = ""
+support_level = "Core"
+keywords = ["kit", "omnigraph", "core"]
+
+# This extension contains AutoNode test definitions, which require this configuration section. However it is
+# disabled during normal operation so that the test nodes do not show up when using the extension normally.
+[omni.graph.autonode]
+developer_mode = true
+import_paths = ["tests/_autonode_definitions.py"]
+
+# Main Python module, available as "import omni.graph.core"
+[[python.module]]
+name = "omni.graph.core"
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+# Other extensions on which this one relies
+[dependencies]
+"omni.graph.core" = {}
+"omni.graph.tools" = {}
+"omni.kit.commands" = {}
+"omni.kit.usd_undo" = {}
+"omni.usd" = {}
+"omni.client" = {}
+"usdrt.scenegraph" = {}
+
+
+[[test]]
+stdoutFailPatterns.exclude = [
+    "*Ignore this error/warning*",
+    "*Cannot forward node type*__TEST__*",  # From test_node_type_forwarding.py
+]
+args = [
+    "--/omnigraph/autonode/enabled=True",  # All AutoNode tests require this setting to run
+    # "--/omnigraph/autonode/developer=True",  # AutoNode developer mode tests require this setting to run
+    "--/omnigraph/autonode/runtime_node_types=True",  # All runtime node type tests require this setting to run
+]
+# for tests that enable and disable extensions
+dependencies = [
+    "omni.inspect",
+]
+pyCoverageFilter = ["omni.graph"]  # Restrict coverage to omni.graph only
+pyCoverageOmit = [ "omni/graph/python/_impl/autonode_deprecated/*"] # exclude files from coverage
+
+pythonTests.unreliable = [
+    "*test_bindings*",  # OM-93247
+    "*test_extension_cached_imports_*",  # OM-65926 (12 separate tests)
+    "*test_cache_update*",  # OM-65926
+    "*test_hot_reload*",  # OM-65926
+    "*test_multiple_nodes*",  # OM-65926
+    "*test_extension_modules*",  # OM-65926
+    "*test_extension_imports*",  # OM-65926
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+terms = [
+    "docs/TERMS",
+    "../omni.graph.tools/docs/TERMS",
+]

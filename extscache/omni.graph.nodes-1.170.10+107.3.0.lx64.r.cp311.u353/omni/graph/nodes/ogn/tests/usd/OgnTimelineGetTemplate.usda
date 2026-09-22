@@ -1,0 +1,50 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnTimelineGet.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetTimeline" (
+        docs="""Get the main timeline properties"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetTimeline"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom double outputs:endFrame (
+            docs="""The end frame of the main timeline's play range."""
+        )
+        custom double outputs:endTime (
+            docs="""The end time (in seconds) of the main timeline's play range."""
+        )
+        custom double outputs:frame (
+            docs="""The current frame number of the main timeline's playhead."""
+        )
+        custom double outputs:framesPerSecond (
+            docs="""The number of frames per second of the main timeline."""
+        )
+        custom bool outputs:isLooping (
+            docs="""Is the main timeline currently looping?"""
+        )
+        custom bool outputs:isPlaying (
+            docs="""Is the main timeline currently playing?"""
+        )
+        custom double outputs:startFrame (
+            docs="""The start frame of the main timeline's play range."""
+        )
+        custom double outputs:startTime (
+            docs="""The start time (in seconds) of the main timeline's play range."""
+        )
+        custom double outputs:time (
+            docs="""The current time (in seconds) of the main timeline's playhead."""
+        )
+    }
+}

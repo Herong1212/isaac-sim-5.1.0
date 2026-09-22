@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="pivot_location" transform="translate(-11657 1071)">
+    <rect id="Rectangle_694" data-name="Rectangle 694" width="40" height="40" transform="translate(11657 -1071)" fill="none"/>
+    <path id="Path_2691" data-name="Path 2691" d="M4.339,2.053l.038.046.028.047.018.046v.113l-.018.046L4.377,2.4l-.038.046L4.3,2.484l-.046.028-.056.01-.047.01H.281l-.056-.01-.046-.01L.131,2.484.094,2.446.057,2.4.028,2.352.01,2.306,0,2.249l.01-.056.018-.046L.057,2.1l.037-.046L2.025.094,2.062.056,2.109.028,2.165.01,2.222,0l.046.01.056.018.047.028.038.038,1.93,1.959Z" transform="translate(11696.424 -1034.984) rotate(135)" fill="#c6c6c6" fill-rule="evenodd"/>
+    <g id="Prim" transform="translate(11674.57 -1066.782)">
+      <path id="Path_2202" data-name="Path 2202" d="M18.415.533,9.355-3.851.184.533V11.127l9.172,4.238,9.06-4.238Z" transform="translate(1.606 5.6)" fill="#324043"/>
+      <g id="Group_842" data-name="Group 842" transform="translate(1.644 1.569)">
+        <path id="Path_2199" data-name="Path 2199" d="M9.281,0,0,4.39V15.307l9.281-4.39Z" transform="translate(9.283 4.409)" fill="#687477"/>
+        <path id="Path_2200" data-name="Path 2200" d="M0,0,9.281,4.39V15.307L0,10.916Z" transform="translate(0.002 4.409)" fill="#84959a"/>
+        <path id="Path_2201" data-name="Path 2201" d="M-6.021,10.437,3.26,14.845l-9.281,4.391L-15.3,14.845Z" transform="translate(15.304 -10.437)" fill="#97acb1"/>
+      </g>
+      <rect id="Icon_Base" width="21.853" height="21.853" transform="translate(0 0)" fill="none"/>
+    </g>
+    <g id="xform_2" transform="translate(11657.574 -1061.927)">
+      <line id="Line_781" data-name="Line 781" x1="9.263" y1="4.632" transform="translate(12.583 15.67)" fill="none" stroke="#30a3be" stroke-linecap="round" stroke-width="2.5"/>
+      <line id="Line_1014" data-name="Line 1014" y1="4.632" x2="9.263" transform="translate(3.319 15.67)" fill="none" stroke="#aa6060" stroke-linecap="round" stroke-width="2.5"/>
+      <rect id="Icon_Base-2" data-name="Icon_Base" width="26.709" height="26.709" transform="translate(0 0)" fill="none"/>
+      <line id="Line_780" data-name="Line 780" x2="0.011" y2="11.393" transform="translate(12.809 4.634)" fill="none" stroke="#71a376" stroke-linecap="round" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>

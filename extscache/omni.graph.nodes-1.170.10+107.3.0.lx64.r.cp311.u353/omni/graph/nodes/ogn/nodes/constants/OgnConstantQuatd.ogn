@@ -1,0 +1,22 @@
+{
+    "ConstantQuatd": {
+        "description": [
+            "Container for a 4-component double-precision floating-point value with the 'quaternion' role,",
+            "mainly used to share a common value between several downstream nodes. The first component is the",
+            "real value, the remaining three are the imaginary values."
+        ],
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "version": 1,
+        "inputs": {
+            "value": {
+                "type": "quatd[4]",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,175 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.12.27"
+
+# Build separate extensions for Windows and Linux so appropriate libraries are bundled
+writeTarget.platform = true
+
+# Build separate extension for kit builds
+writeTarget.kit = true
+
+# Build separate extensions for debug and release builds
+writeTarget.config = true
+
+# AUTOREMOVE: BEGIN
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# URL of the extension source repository.
+repository = ""
+
+# omni-replicator-dev, omni-syntheticdata
+slackids=["@C03P8LGPNMV", "@CV3M6GX36"]
+# AUTOREMOVE: END
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Omni Replicator"
+description="Synthetic Data Generation Toolbox"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# One of categories for UI.
+category = "SyntheticData"
+
+# Keywords for the extension
+keywords = ["Synthetic", "Data", "Randomization", "Generator"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# If this is missing, tests will fail with missing pip libraries
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+[dependencies]
+"omni.hydra.rtx" = {}
+"omni.hydra.usdrt_delegate" = {}    # Required for USDRT to work correctly
+"omni.hydra.engine.stats" = {}
+"omni.graph" = {}
+"omni.graph.core" = {}
+"omni.syntheticdata" = {}
+"omni.graph.nodes" = {}
+"omni.graph.action" = {}
+"omni.inspect" = {}
+"omni.kit.primitive.mesh" = {}
+"omni.kit.material.library" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.window" = {}
+"omni.physx" = {}
+"omni.timeline" = {}
+"omni.warp" = {}
+"omni.graph.scriptnode" = {}    # required to support augmentation
+"omni.kit.pip_archive" = {} # import the base kit python archive
+"omni.kit.window.material_graph" = {}
+"omni.pip.compute" = {}
+"omni.pip.cloud" = {}
+"omni.physics.physx" = {}   # need this for kit 105.2+ (https://nvidia.slack.com/archives/CFUSTQ7L2/p1704298056949539?thread_ts=1704220157.777479&cid=CFUSTQ7L2)
+"omni.physics.stageupdate" = {} # need this for kit 105.2+ (https://nvidia.slack.com/archives/CFUSTQ7L2/p1704298056949539?thread_ts=1704220157.777479&cid=CFUSTQ7L2)
+"omni.kit.usd.mdl" = {} # Needed for material graph
+"omni.usd.schema.anim" = {} # Needed for skeleton annotation
+"omni.usd.schema.omni_sensors" = {} # Needed for radar and lidar creation
+# "omni.sensors.nv.lidar" = {} # Needed for lidar
+# "omni.sensors.nv.radar" = {} # Needed for radar
+"omni.videoencoding" = {}   # Needed for CosmosWriter
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.replicator.core"
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+
+stdoutFailPatterns.exclude = [
+    "*[omni.physx.cooking.plugin] resources.dataStoreConfigurator is false.*",    # Error seen in Kit 106.5
+    "*[omni.physx.cooking.plugin] Failed to create a valid UJITSO Cooking Compute Service*",    # Error seen in Kit 106.5
+]
+
+[[test]]
+dependencies = [
+    "omni.usd.schema.render_settings.rtx",
+]
+
+timeout = 3600
+args = [
+    # "omni.hydra.engine.stats",
+    # "--/app/file/ignoreUnsavedOnExit=1",
+    # "--/renderer/multiGpu/enabled=false",
+    # "--/persistent/omnigraph/allowGlobalImplicitGraph=false",
+    "--/app/viewport/createCameraModelRep=false",
+    "--/rtx/post/aa/op=0",  # Don't use DLSS
+    # "--/app/asyncRendering=false",
+    "--/app/settings/fabricStageFrameHistoryCount=3",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    # "--/rtx/sceneDb/maxInstances=1000000",
+    # "--/omni/kit/plugin/syncUsdLoads=true",
+    # "--/rtx/hydra/materialSyncLoads=true",
+    # "--/rtx/materialDb/syncLoads=true",
+    # "--/rtx-transient/resourcemanager/texturestreaming/async=false",
+    "--/omni/replicator/RTSubframes=1",   # Simplify testing but capturing at every frame
+    "--/rtx/descriptorSets=60000",
+    "--/rtx/reservedDescriptors=500000",
+    "--/app/omni.graph.scriptnode/opt_in=true",  # Enables script (augmentation) nodes without prompt
+    "--/rtx-transient/aov/enableRtxAovs",
+    "--/rtx-transient/aov/enableRtxAovsSecondary",
+    "--/app/content/emptyStageOnStart=true",
+    "--/omni/replicator/debug=true",
+    "--/rtx/sceneDb/ambientLightIntensity=1.0",
+    # Settings that decrease per-view RTX delegate VRAM consumption,
+    # and general stability improvements
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/structuredLog/enable=false",
+    "--/exts/omni.usd/locking/onClose=true",
+    # "--/rtx/newDenoiser/enabled=false", # New denoiser causes artifacts (OM-119068),
+    "--no-window",
+    "--/exts/omni.replicator.core/maxAssetLoadingTime=5",
+    "--/app/useFabricSceneDelegate=true",
+    "--/app/hydra/renderSettings/useUsdAttributes=false",   # Disable reading render settings from USD (enabling results in some tests crashing)
+    "--/app/hydra/renderSettings/useFabricAttributes=false", # Disable writing render settings to Fabric (enabling results in some tests crashing)
+]
+stdoutFailPatterns.exclude = [
+    #"*[Error] [omni.graph.core.plugin]*",  # Don't treat testing for error messages as failed tests
+    "*__resolved_inputs:values UsdRelationship not supported in GetPrimArrayAttr*",  # TODO Remove when flatcache supports relationships
+    "*/TestGraph/Template_omni_replicator_core_OgnCameraRelativePosition: OmniGraph Error: Camera prim path not found!*",  # Ignore generated test error
+    "*/TestGraph/Template_omni_replicator_core_OgnPointCloudGenerator: OmniGraph Error: Height or width cannot have a dimension of 0!*",  # Ignore generated test error
+    "*/TestGraph/Template_omni_replicator_core_OgnWriter: OmniGraph Error: Writer ID is empty!*",  # Ignore generated test error
+    "*/World/PushGraph/scatter: OmniGraph Error: Scatter3D Error: Expected prim at /invalid to be an Xformable prim but got type Scope*",
+    "*/World/PushGraph/scatter: OmniGraph Error: Scatter3D Error: Expected prim at /invalid to be of type UsdGeom.Mesh but got type Xform*",
+    "*S3Backend: No credenials file in ~/.aws or AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables!*", # Want this error to be printed
+    "*[omni.syntheticdata.plugin] OgnSdOnNewFrame : frames * discarded*",
+    "*Could not copy attribute to FC entry for*",
+    "*Data copy failed:*",
+    "*MirroredBall environment format not supported yet.*",
+    "*/TestGraph/Template_omni_replicator_core_OgnWritePhysics: OmniGraph Error: WritePhysics Error: Expected to get a physics attribute instead received*",
+    "*[omni.syntheticdata.plugin] OgnSdRenderProductCamera : cannot read data from Fabric.*", # fabric synchronization error: try to read from the post-render graph in the fabric before it has been written in the simulation graph
+    "*[omni.fabric.plugin] getNamesAndTypes, bucketId*", # Fabric error
+    "*Trying to modify the attributes of this annotator will cause unexpected behavior.*",
+    "*OgnGetSkeletonAttributes : no input renderproduct*",   # Expected error message when running extension test in OgnGetSkeletonAttributes node
+    "*Attaching a list of render products is currently not implemented*",    # Expected error message when testing invalid input
+    "*Usd file not found at omniverse://localhost/this_file/does_not_exist.usd*",
+    "*omniverse://localhost/not_a_usd_extension.obj does not end with .usd/.usda/.usdc/.usdz*",
+    "*[omni.physx.cooking.plugin] resources.dataStoreConfigurator is false.*",    # Error seen in Kit 106.5
+    "*[omni.physx.cooking.plugin] Failed to create a valid UJITSO Cooking Compute Service*",    # Error seen in Kit 106.5
+    "*[omni.physx.cooking.plugin] m_ujitsoFactory is false.*",  # Error seen in Kit 107.0.2
+    "*[Error] [omni.syntheticdata.plugin] OgnSdStageSemanticInstanceMapping missing instanceMapping data in the history.*",  # Observed in Kit 107.2
+    "*[omni.usd-abi.plugin] Value for '/rtx-defaults/raytracing/cached/enabled' did not match UsdSchema value 'omni:rtx:rt:cached:enabled' (0 vs. 1)*", # Result of enabling omni.usd.schema.render_settings.rtx
+    # TODO Make this more granular; limit to certain tests
+]

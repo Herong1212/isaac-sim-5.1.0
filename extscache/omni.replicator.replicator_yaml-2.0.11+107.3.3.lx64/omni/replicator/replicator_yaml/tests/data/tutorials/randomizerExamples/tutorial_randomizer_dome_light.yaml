@@ -1,0 +1,49 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+register_dome_light:
+  randomizer.register:
+    dome_lights:
+      dome_light:
+        create.light:
+          light_type: "Dome"
+          rotation: [0, 0, 90]
+          texture:
+            distribution.sequence:
+              items:
+                - "omniverse://localhost/NVIDIA/Assets/Skies/Cloudy/champagne_castle_1_4k.hdr"
+                - "omniverse://localhost/NVIDIA/Assets/Skies/Clear/evening_road_01_4k.hdr"
+                - "omniverse://localhost/NVIDIA/Assets/Skies/Clear/mealie_road_4k.hdr"
+                - "omniverse://localhost/NVIDIA/Assets/Skies/Clear/qwantani_4k.hdr"
+
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+    interval: 10
+
+with_trigger:
+  with.trigger:
+    randomizer.dome_lights: null
+
+camera:
+  create.camera:
+    position: [5, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+    render_products: render_product

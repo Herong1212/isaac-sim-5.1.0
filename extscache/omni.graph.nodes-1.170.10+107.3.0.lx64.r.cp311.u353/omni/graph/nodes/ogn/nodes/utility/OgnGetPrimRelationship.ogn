@@ -1,0 +1,44 @@
+{
+    "GetPrimRelationship": {
+        "version": 3,
+        "description": ["DEPRECATED - Use ReadPrimRelationship!"],
+        "uiName": "Get Prim Relationship",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-read", "threadsafe"],
+        "metadata": {
+            "hidden": "true"
+        },
+        "inputs": {
+            "prim": {
+                "type": "target",
+                "description": "The prim with the relationship",
+                "optional": true
+            },
+            "name": {
+                "type": "token",
+                "description": "Name of the relationship property",
+                "uiName": "Relationship Name"
+            },
+            "usePath": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'path' attribute is used, otherwise it will read the connection at the 'prim' attribute.",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "path": {
+                "type": "token",
+                "description": "Path of the prim with the relationship property",
+                "uiName": "Prim Path",
+                "optional": true,
+                "deprecated": "Use prim input with a ToTarget node instead"
+            }
+        },
+        "outputs": {
+            "paths": {
+                "type": "token[]",
+                "description": "The prim paths for the given relationship",
+                "uiName": "Paths"
+            }
+        }
+    }
+}

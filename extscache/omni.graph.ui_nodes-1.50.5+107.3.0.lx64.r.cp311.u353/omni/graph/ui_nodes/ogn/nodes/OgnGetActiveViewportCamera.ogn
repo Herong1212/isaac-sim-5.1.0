@@ -1,0 +1,32 @@
+{
+    "GetActiveViewportCamera": {
+        "version": 2,
+        "description": "Gets the path of the camera bound to a viewport",
+        "language": "Python",
+        "uiName": "Get Active Camera",
+        "exclude": ["tests"],
+        "categories": ["sceneGraph:camera"],
+        "inputs": {
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport"
+            }
+        },
+        "outputs": {
+            "camera": {
+                "type": "token",
+                "description": "Path of the active camera",
+                "uiName": "Camera"
+            },
+            "cameraPrim": {
+                "type": "target",
+                "description": "The prim of the active camera",
+                "uiName": "Camera Prim"
+            }
+        },
+        "tests": [
+            {"outputs:camera": "/OmniverseKit_Persp"}
+        ]
+    }
+}

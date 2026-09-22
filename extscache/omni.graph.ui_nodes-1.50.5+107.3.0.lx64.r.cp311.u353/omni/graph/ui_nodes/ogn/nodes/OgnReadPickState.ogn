@@ -1,0 +1,100 @@
+{
+    "ReadPickState": {
+        "version": 2,
+        "description": [
+            "Read the state of the last picking event from the specified viewport.",
+            "Note that picking events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Pick State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "trackedPrimPaths": {
+                "type": "token[]",
+                "description": [
+                    "Optionally specify a set of prims (by paths) to track whether or not they got picked",
+                    "(only affects the value of 'Is Tracked Prim Picked')"
+                ],
+                "uiName": "Tracked Prim Paths",
+                "optional": true,
+                "deprecated": "Use the trackedPrims input instead"
+            },
+            "usePaths": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, 'Tracked Prim Paths' is used, otherwise 'Tracked Prims' is used",
+                "uiName": "Use Paths"
+            },
+            "trackedPrims": {
+                "type": "target",
+                "description": [
+                    "Optionally specify a set of prims to track whether or not they got picked",
+                    "(only affects the value of 'Is Tracked Prim Picked')"
+                ],
+                "uiName": "Tracked Prims",
+                "optional": true,
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for picking events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger a picking event",
+                "uiName": "Gesture",
+                "default": "Left Mouse Click",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftMouseClick": "Left Mouse Click",
+                        "RightMouseClick": "Right Mouse Click",
+                        "MiddleMouseClick": "Middle Mouse Click",
+                        "LeftMousePress": "Left Mouse Press",
+                        "RightMousePress": "Right Mouse Press",
+                        "MiddleMousePress": "Middle Mouse Press"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "pickedPrimPath": {
+                "type": "token",
+                "description": "The path of the prim picked in the last picking event, or an empty string if nothing got picked",
+                "uiName": "Picked Prim Path",
+                "deprecated": "Use the pickedPrim output instead"
+            },
+            "pickedPrim": {
+                "type": "target",
+                "description": "The picked prim, or an empty target if nothing got picked",
+                "uiName": "Picked Prim"
+            },
+            "pickedWorldPos": {
+                "type": "pointd[3]",
+                "description": [
+                    "The XYZ-coordinates of the point in world space at which the prim got picked,",
+                    "or (0,0,0) if nothing got picked"
+                ],
+                "uiName": "Picked World Position"
+            },
+            "isTrackedPrimPicked": {
+                "type": "bool",
+                "description": [
+                    "True if a tracked prim got picked in the last picking event,",
+                    "or if any prim got picked if no tracked prims are specified"
+                ],
+                "uiName": "Is Tracked Prim Picked"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

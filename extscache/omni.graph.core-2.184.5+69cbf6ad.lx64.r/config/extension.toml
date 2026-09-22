@@ -1,0 +1,65 @@
+[package]
+title = "OmniGraph"
+version = "2.184.5"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains the implementation of the OmniGraph core."
+preview_image = "data/preview.png"
+repository = ""
+support_level = "Core"
+keywords = ["omnigraph", "core"]
+
+# Other extensions on which this one relies
+[dependencies]
+"omni.usd" = {}
+"omni.inspect" = {optional=true}
+"omni.gpucompute.plugins" = {}
+"omni.kit.exec.core" = {}
+"usdrt.scenegraph" = {}
+"omni.usd.schema.omnigraph" = {}
+"omni.kit.renderer.core" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.graph.core.tests${lib_ext}",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+]
+cpp_api = [
+    "../../../include/omni/graph/core/Handle.h",
+    "../../../include/omni/graph/core/iComputeGraph.h",
+    "../../../include/omni/graph/core/iAttributeData.h",
+    "../../../include/omni/graph/core/IAttributeType.h",
+    "../../../include/omni/graph/core/IDataModel.h",
+    "../../../include/omni/graph/core/IGraphRegistry.h",
+    "../../../include/omni/graph/core/IVariable.h",
+    "../../../include/omni/graph/core/IVariable2.h",
+    "../../../include/omni/graph/core/IVariable3.h",
+    "../../../include/omni/graph/core/INodeCategories.h",
+    "../../../include/omni/graph/core/ISchedulingHints.h",
+    "../../../include/omni/graph/core/ISchedulingHints2.h",
+    "../../../include/omni/graph/core/bundle/IBundleFactory1.h",
+    "../../../include/omni/graph/core/bundle/IBundleFactory2.h",
+    "../../../include/omni/graph/core/bundle/IBundle1.h",
+    "../../../include/omni/graph/core/bundle/IConstBundle2.h",
+    "../../../include/omni/graph/core/bundle/IBundle2.h",
+    "../../../include/omni/graph/core/ogn/Database.h",
+    "../../../include/omni/graph/core/ogn/OmniGraphNodeABI.h",
+    "../../../include/omni/graph/core/ogn/array.h",
+    "../../../include/omni/graph/core/ogn/string.h",
+    "../../../../rendering/include/omni/fabric/Type.h",
+]
+cpp_api_exclude_warnings = [
+    ".*warning:.* is not documented",
+    "warning: no matching file member found for",
+    "warning: the name .* supplied as the argument in the .* statement is not an input file",
+    ".*",
+]

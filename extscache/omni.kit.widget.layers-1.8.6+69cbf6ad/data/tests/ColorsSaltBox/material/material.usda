@@ -1,0 +1,29 @@
+#usda 1.0
+(
+    defaultPrim = "SaltBox"
+)
+
+def "SaltBox" (
+ 
+    variants = {
+        string materials = "renderHigh"
+    }
+    prepend variantSets = "materials"
+)
+{
+    variantSet "materials" = {
+    
+        "renderHigh" (
+            prepend payload = @./renderHigh/material_renderHigh.usda@
+        ) {
+
+        }        
+        "renderLow" (
+            prepend payload = @./renderLow/material_renderLow.usda@
+        ) {
+
+        }
+    
+    }
+}
+

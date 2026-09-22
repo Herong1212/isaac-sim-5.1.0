@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.window.usddebug-1.1.2.zip"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.180676.45352709.gl"
+        date = 1751875995
+        buildNumber = "107.0.2+master.1598.4e5867f3.gl"
+        repoName = "kit-usd"
+        signed = 1

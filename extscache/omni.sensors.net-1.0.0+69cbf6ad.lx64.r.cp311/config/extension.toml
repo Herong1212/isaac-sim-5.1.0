@@ -1,0 +1,23 @@
+[package]
+version = "1.0.0"
+authors = ["NVIDIA"]
+title = "Omniverse Net"
+description = "Channel-based TCP/IP, Realm Networking and Topics"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords = ["omniverse", "net", "sensors"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[python.module]]
+name = "omni.sensors.net"
+
+[[test]] # Until we fixed realm dependency
+name = "startup"
+enabled = false

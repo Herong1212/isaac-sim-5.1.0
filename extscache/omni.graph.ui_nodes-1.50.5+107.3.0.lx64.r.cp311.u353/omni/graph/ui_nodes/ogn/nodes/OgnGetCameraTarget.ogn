@@ -1,0 +1,36 @@
+{
+    "GetCameraTarget": {
+        "version": 2,
+        "description": "Gets a viewport camera's target point.",
+        "uiName": "Get Camera Target",
+        "exclude": ["tests"],
+        "categories": ["sceneGraph:camera"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "usePath": {
+                "type": "bool",
+                "default": true,
+                "description": "When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The camera prim, when 'usePath' is false",
+                "optional": true
+            },
+            "primPath": {
+                "type": "token",
+                "description": "Path of the camera, used when 'usePath' is true",
+                "uiName": "Camera Path",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            }
+        },
+        "outputs": {
+            "target": {
+                "type": "pointd[3]",
+                "description": "The target point",
+                "uiName": "Target"
+            }
+        }
+    }
+}

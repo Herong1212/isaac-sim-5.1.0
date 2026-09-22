@@ -1,0 +1,41 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 0
+    startTimeCode = -1
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def Xform "environments" (
+        variants = {
+            string environment = "edify"
+        }
+        prepend variantSets = "environment"
+    )
+    {
+        double3 xformOp:rotateXYZ
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        variantSet "environment" = {
+            "edify" (
+                delete payload = [
+                    @omniverse://fake-server/Assets/unreal.usd@,
+                    @omniverse://fake-server/Assets/env_main.usd@,
+                    @omniverse://fake-server/Assets/env_main.usd@</Environment>
+                ]
+                prepend payload = @omniverse://fake-server/Assets/edify.usd@
+            ) {
+
+            }
+        }
+    }
+}

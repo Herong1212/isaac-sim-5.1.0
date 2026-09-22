@@ -1,0 +1,101 @@
+{
+    "ReadPrimBundle": {
+        "version": 7,
+        "description": [
+            "DEPRECATED - use ReadPrims!"
+        ],
+        "uiName": "Read Prim into Bundle",
+        "metadata": {
+            "hidden": "true"
+        },
+        "scheduling": [ "usd-read" ],
+        "categories": [ "sceneGraph", "bundle" ],
+        "inputs": {
+            "prim": {
+                "type": "target",
+                "description": "The prims to be read from when 'usePath' is false",
+                "optional": true
+            },
+            "usePath": {
+                "uiName": "Use Path",
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "primPath": {
+                "uiName": "Prim Path",
+                "type": "token",
+                "description": "The paths of the prims to be read from when 'usePath' is true",
+                "optional": true,
+                "default": "",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "attrNamesToImport": {
+                "uiName": "Attributes To Import",
+                "type": "token",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match the attribute names that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']",
+                    "    '*' - match any",
+                    "    '* ^points' - match any, but exclude 'points'",
+                    "    '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"
+                ]
+            },
+            "usdTimecode": {
+                "uiName": "Time",
+                "type": "timecode",
+                "default": "NaN",
+                "description": [ "The time at which to evaluate the transform of the USD prim. A value of \"NaN\" indicates that the default USD time stamp should be used" ]
+            },
+            "computeBoundingBox": {
+                "uiName": "Compute Bounding Box",
+                "type": "bool",
+                "default": false,
+                "description": "For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."
+            }
+        },
+        "outputs": {
+            "primBundle": {
+                "type": "bundle",
+                "description": [
+                    "A bundle containing multiple prims as children.",
+                    "Each child contains data attributes and two additional token attributes named sourcePrimPath and sourcePrimType",
+                    "which contain the path and the type of the Prim being read"
+                ]
+            }
+        },
+        "state": {
+            "primPath": {
+                "type": "uint64",
+                "description": "State from previous execution"
+            },
+            "usePath": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            },
+            "attrNamesToImport": {
+                "type": "uint64",
+                "description": "State from previous execution"
+            },
+            "usdTimecode": {
+                "type": "timecode",
+                "default": "NaN",
+                "description": "State from previous execution"
+            },
+            "computeBoundingBox": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            }
+        }
+    }
+}

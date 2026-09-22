@@ -1,0 +1,988 @@
+{
+  "origin": "idl.ts",
+  "types": [
+    {
+      "name": "Capabilities",
+      "type": "struct",
+      "fields": [],
+      "extends": "",
+      "comment": "Specifies a common type for storing interface capabilities.",
+      "meta": {
+        "plugin": "capabilities"
+      },
+      "mapping": {
+        "index": "function_name",
+        "key": "string",
+        "value": {
+          "type": "uint64",
+          "is_array": false
+        }
+      }
+    },
+    {
+      "name": "CustomSchemaType",
+      "type": "const",
+      "value": "\"custom\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "Meta",
+      "type": "struct",
+      "extends": "",
+      "fields": [],
+      "mapping": {
+        "index": "key",
+        "key": "string",
+        "value": {
+          "type": "string",
+          "is_array": false
+        }
+      },
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "TypeName",
+      "type": "alias",
+      "value": "string",
+      "is_array": false,
+      "is_const": false,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "UnionSchemaType",
+      "type": "const",
+      "value": "\"union\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "AliasSchemaType",
+      "type": "const",
+      "value": "\"alias\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "EnumValue",
+      "type": "union",
+      "members": [
+        "string",
+        "number"
+      ],
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "EnumMemberSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "value",
+          "type": "EnumValue",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "EnumSchemaType",
+      "type": "const",
+      "value": "\"enum\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "ConstValue",
+      "type": "union",
+      "members": [
+        "string",
+        "number",
+        "boolean",
+        "object"
+      ],
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "ConstSchemaType",
+      "type": "const",
+      "value": "\"const\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "StructMappingSchemaValue",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "type",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_array",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "StructMappingSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "index",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "value",
+          "type": "StructMappingSchemaValue",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "PropertySchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "TypeName",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_array",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_const",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "optional",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "StructSchemaType",
+      "type": "const",
+      "value": "\"struct\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "MethodReturnSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "TypeName",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_many",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "MethodSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "returns",
+          "type": "MethodReturnSchema",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "params",
+          "type": "PropertySchema",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "version",
+          "type": "number",
+          "is_array": false,
+          "is_const": false,
+          "optional": true,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "deprecation",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": true,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "InterfaceSchemaType",
+      "type": "const",
+      "value": "\"interface\"",
+      "value_type": "string",
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "CustomSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": true,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "CustomSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "schema",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "ConstSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "ConstSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "value",
+          "type": "ConstValue",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "value_type",
+          "type": "TypeName",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "UnionSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "UnionSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "members",
+          "type": "TypeName",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "AliasSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "AliasSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_array",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "is_const",
+          "type": "boolean",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "EnumSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "EnumSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "members",
+          "type": "EnumMemberSchema",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "StructSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "StructSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "extends",
+          "type": "TypeName",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "fields",
+          "type": "PropertySchema",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "mapping",
+          "type": "StructMappingSchema",
+          "is_array": false,
+          "is_const": false,
+          "optional": true,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "InterfaceSchema",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "type",
+          "type": "InterfaceSchemaType",
+          "is_array": false,
+          "is_const": true,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "fields",
+          "type": "PropertySchema",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "functions",
+          "type": "MethodSchema",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "meta",
+          "type": "Meta",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "Definition",
+      "type": "union",
+      "members": [
+        "InterfaceSchema",
+        "StructSchema",
+        "EnumSchema",
+        "AliasSchema",
+        "UnionSchema",
+        "ConstSchema",
+        "CustomSchema"
+      ],
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "TranspilerResult",
+      "type": "struct",
+      "extends": "",
+      "fields": [
+        {
+          "name": "origin",
+          "type": "string",
+          "is_array": false,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "types",
+          "type": "Definition",
+          "is_array": true,
+          "is_const": false,
+          "optional": false,
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "mapping": null,
+      "meta": {},
+      "comment": ""
+    },
+    {
+      "name": "BuiltinType",
+      "type": "enum",
+      "members": [
+        {
+          "name": "boolean",
+          "value": "\"boolean\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "float",
+          "value": "\"float\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "double",
+          "value": "\"double\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "int8",
+          "value": "\"int8\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "uint8",
+          "value": "\"uint8\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "int16",
+          "value": "\"int16\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "uint16",
+          "value": "\"uint16\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "int32",
+          "value": "\"int32\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "number",
+          "value": "\"number\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "uint32",
+          "value": "\"uint32\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "int64",
+          "value": "\"int64\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "uint64",
+          "value": "\"uint64\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "string",
+          "value": "\"string\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "bytes",
+          "value": "\"bytes\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "blob",
+          "value": "\"Blob\"",
+          "meta": {},
+          "comment": ""
+        },
+        {
+          "name": "object",
+          "value": "\"object\"",
+          "meta": {},
+          "comment": ""
+        }
+      ],
+      "meta": {},
+      "comment": ""
+    }
+  ]
+}

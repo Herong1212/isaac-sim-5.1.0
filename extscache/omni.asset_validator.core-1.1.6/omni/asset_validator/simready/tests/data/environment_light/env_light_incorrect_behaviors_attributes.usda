@@ -1,0 +1,44 @@
+#usda 1.0
+(
+    """
+    SimReady Environment Light asset with incorrect 'omni:simready:behaviors' attributes
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    def Xform "behaviors_attr_not_array_type" (
+        """
+        Using a light object just to test another code path
+        """
+    )
+    {
+        def DiskLight "disk_light"
+        {
+            custom token omni:simready:behaviors = "TimeOfDay"
+        }
+    }
+
+    def Xform "behaviors_attr_time_varying"
+    {
+        def DiskLight "disk_light"
+        {
+            token[] omni:simready:behaviors.timeSamples = {101: ["TimeOfDay"], 102: ["TimeOfDay"]}
+        }
+    }
+    def Scope "behaviors_attr_on_scope"
+    {
+        custom token[] omni:simready:behaviors = ["TimeOfDay"]
+    }
+
+    def Xform "behaviors_attr_unexpected_value" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token[] omni:simready:behaviors = ["unexpected value"]
+        }
+    }
+}

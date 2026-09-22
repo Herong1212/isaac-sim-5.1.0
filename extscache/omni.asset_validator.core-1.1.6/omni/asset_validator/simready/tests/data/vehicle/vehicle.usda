@@ -1,0 +1,10 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    subLayers = [
+        @./vehicleBase.usda@,
+        @./vehicleCollectionReference.usda@,
+    ]
+    metersPerUnit = 1
+)

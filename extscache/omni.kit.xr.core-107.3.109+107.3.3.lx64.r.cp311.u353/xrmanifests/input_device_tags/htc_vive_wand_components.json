@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "htc_vive_wand_components",
+    "requiredInputs": [
+                "menu",
+                "trigger",
+                "trackpad",
+                "squeeze"
+    ]
+}

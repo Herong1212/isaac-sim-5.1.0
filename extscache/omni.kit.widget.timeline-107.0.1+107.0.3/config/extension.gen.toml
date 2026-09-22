@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.widget.timeline-107.0.1%2B107.0.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+master.163609.abadf5de.gl"
+        date = 1738920366
+        buildNumber = "104.0.3+master.15.3ffdd48f.gl"
+        repoName = "timeline"
+        signed = 1

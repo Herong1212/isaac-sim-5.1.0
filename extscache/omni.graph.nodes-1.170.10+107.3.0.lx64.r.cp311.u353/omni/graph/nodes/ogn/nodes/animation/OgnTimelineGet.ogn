@@ -1,0 +1,58 @@
+{
+    "GetTimeline": {
+        "version": 1,
+        "description": "Get the main timeline properties",
+        "metadata": {
+            "uiName": "Get main timeline"
+        },
+        "categories": [ "time" ],
+        "scheduling": "compute-on-request",
+        "outputs": {
+            "isPlaying": {
+                "type": "bool",
+                "uiName": "Is Playing",
+                "description": "Is the main timeline currently playing?"
+            },
+            "isLooping": {
+                "type": "bool",
+                "uiName": "Is Looping",
+                "description": "Is the main timeline currently looping?"
+            },
+            "time": {
+                "type": "double",
+                "uiName": "Current Time",
+                "description": "The current time (in seconds) of the main timeline's playhead."
+            },
+            "frame": {
+                "type": "double",
+                "uiName": "Current Frame",
+                "description": "The current frame number of the main timeline's playhead."
+            },
+            "framesPerSecond": {
+                "type": "double",
+                "uiName": "Frames Per Second",
+                "description": "The number of frames per second of the main timeline."
+            },
+            "startTime": {
+                "type": "double",
+                "uiName": "Start Time",
+                "description": "The start time (in seconds) of the main timeline's play range."
+            },
+            "startFrame": {
+                "type": "double",
+                "uiName": "Start Frame",
+                "description": "The start frame of the main timeline's play range."
+            },
+            "endTime": {
+                "type": "double",
+                "uiName": "End Time",
+                "description": "The end time (in seconds) of the main timeline's play range."
+            },
+            "endFrame": {
+                "type": "double",
+                "uiName": "End Frame",
+                "description": "The end frame of the main timeline's play range."
+            }
+        }
+    }
+}

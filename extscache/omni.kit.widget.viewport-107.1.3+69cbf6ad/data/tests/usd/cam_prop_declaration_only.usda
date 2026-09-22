@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-417, 100, -110)
+                double3 target = (-15, 72, 107)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            string boundCamera = "/World/Camera"
+        }
+    }
+    defaultPrim = "World"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+}
+
+over "OmniverseKit_Persp"
+{
+    ### This is the test, property declaration but not authored
+    float3 xformOp:rotateXYZ
+    double3 xformOp:translate
+}

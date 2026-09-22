@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetParentPrims.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetParentPrims" (
+        docs="""Generates parent paths from one or more targeted paths (ex. /World/Cube -> /World)"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetParentPrims"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom rel inputs:prims (
+            docs="""Input paths (ex. /World/Cube)"""
+        )
+
+        # 1 attribute
+        custom rel outputs:parentPrims (
+            docs="""Computed parent paths (ex. /World)"""
+        )
+    }
+}

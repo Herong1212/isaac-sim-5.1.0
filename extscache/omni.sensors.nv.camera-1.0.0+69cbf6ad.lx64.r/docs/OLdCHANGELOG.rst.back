@@ -1,0 +1,111 @@
+Changelog
+=========
+This document records all notable changes to ``omni.sensors.nv.camera``
+extension.
+
+[0.0.0] - 2020-10-17
+--------------------
+Initial
+^^^^^^^
+- Building a simple camera pipeline with Raw Data Reader and Color Correction Matrix
+- Record to file task
+
+
+[0.1.0] - 2020-12-11
+--------------------
+Features
+^^^^^^^^
+- adding SiL interface: SiL Task, RGB and YUV task 
+
+[0.2.0] - 2020-03-18
+--------------------
+Features
+^^^^^^^^
+- adding compressed video transmission to SiL
+- adding timecode in buffers (for compressed streams) and as node attributes (for native streams) 
+
+Improvements
+^^^^^^^^^^^^
+- GPU to host mem copy: replace the cuda synchronize by a callback (Performance Improvements)  
+
+[0.3.0] - 2021-08-18
+--------------------
+Features
+^^^^^^^^
+- adding CFA 2x2 encoder task
+- adding companding task
+- adding default embedded lines task
+- adding embedded lines slicer
+- adding dark noise task
+- adding HDR support for the post processing pipeline 
+
+Improvements
+^^^^^^^^^^^^
+- file reader supports now also float16, float32 and uint32
+
+[0.4.0] - 2021-09-18
+--------------------
+Features
+^^^^^^^^
+- adding MIPI transition task
+
+Improvements
+^^^^^^^^^^^^
+- The transmission of SiL frames is now dependent on scenario state
+- The pipeline gets reset when the scenario state is eStop  
+
+[0.5.0] - 2021-11-30
+--------------------
+Features
+^^^^^^^^
+- adding CameraComSinkTask, which transmits the camera signal to the ECU
+
+Improvements
+^^^^^^^^^^^^
+- timecode are now signed. A negative timecode indicates data which has been produced before scenario started and should not consumed by the receiving application
+
+
+[0.5.0] - 2021-11-30
+--------------------
+Features
+^^^^^^^^
+- adding CameraComSinkTask, which transmits the camera signal to the ECU
+
+Improvements
+^^^^^^^^^^^^
+- timecode are now signed. A negative timecode indicates data which has been produced before scenario started and should not consumed by the receiving application
+
+
+[0.6.0] - 2022-06-30
+--------------------
+Features
+^^^^^^^^
+- adding CameraComSinkTask, which transmits the camera signal to the ECU
+
+Improvements
+^^^^^^^^^^^^
+- timecode are now signed. A negative timecode indicates data which has been produced before scenario started and should not consumed by the receiving application
+
+[0.7.0] - 2023-06-30
+--------------------
+Features
+^^^^^^^^
+- supports multiple new AOVs like HDR Color, Depth maps and segmentation map
+- adding MJPEG as output
+
+Improvements
+^^^^^^^^^^^^
+- major refactoring, using GpuInteropRenderProductEntry as trigger
+
+[0.8.0] - 2023-09-15
+--------------------
+Features
+^^^^^^^^
+- adding Resize Task
+- adding ISP Decompanding 
+- adding ISP RGGB Demosaicing
+- adding RGBA Conversion  
+
+Improvements
+^^^^^^^^^^^^
+- N.A.

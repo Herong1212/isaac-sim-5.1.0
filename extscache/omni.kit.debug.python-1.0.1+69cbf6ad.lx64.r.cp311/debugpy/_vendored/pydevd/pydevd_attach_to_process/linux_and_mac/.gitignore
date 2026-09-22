@@ -1,0 +1,5 @@
+# Preserve file visibility; large-file exclusions are managed in the root .gitignore.
+# Disabled: /attach_x86.dylib
+# Disabled: /attach_x86_64.dylib
+# Disabled: /attach_linux_x86.o
+# Disabled: /attach_linux_x86_64.o

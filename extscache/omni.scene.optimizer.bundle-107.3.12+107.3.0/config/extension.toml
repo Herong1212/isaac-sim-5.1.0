@@ -1,0 +1,26 @@
+
+[package]
+title = "Scene Optimizer"
+category = "content"
+version = "107.3.12"
+readme = "docs/README.md"
+changelog ="docs/CHANGELOG.md"
+description = "Bundle of Commands and UI for scene optimization"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+authors = ["NVIDIA"]
+
+repository = ""
+
+[dependencies]
+"omni.scene.optimizer.core" = {version = "107.3.12", exact = true}
+"omni.scene.optimizer.ui" = {version = "107.3.12", exact = true}
+
+[[test]]
+waiver = "Bundle extension without any code"
+
+# Keywords for the extension
+keywords = ["scene.optimizer"]
+
+[package.writeTarget]
+kit = true

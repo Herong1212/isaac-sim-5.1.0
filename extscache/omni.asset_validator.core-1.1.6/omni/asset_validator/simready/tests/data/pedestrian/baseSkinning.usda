@@ -1,0 +1,183 @@
+#usda 1.0
+
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1.0
+    upAxis = "Z"
+)
+
+class "sources" {
+    def Mesh "torso" {
+        token scheme = "none"
+        token orientation = "rightHanded"
+        point3f[] points = [(-0.15, -0.05, 0.0), (-0.15, 0.05, 0.0), (0.15, 0.05, 0.0), (0.15, -0.05, 0.0),
+                            (-0.15, -0.05, 0.5), (-0.15, 0.05, 0.5), (0.15, 0.05, 0.5), (0.15, -0.05, 0.5)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2,
+                                   4, 5, 6, 7,
+                                   1, 2, 5, 6,
+                                   0, 4, 7, 3,
+                                   0, 1, 5, 4,
+                                   3, 7, 6, 2]
+    }
+
+    def Mesh "neck" {
+        token scheme = "none"
+        token orientation = "rightHanded"
+        point3f[] points = [(-0.03, -0.03, 0.0), (-0.03, 0.03, 0.0), (0.03, 0.03, 0.0), (0.03, -0.03, 0.0),
+                            (-0.03, -0.03, 0.03), (-0.03, 0.03, 0.03), (0.03, 0.03, 0.03), (0.03, -0.03, 0.03)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2,
+                                   4, 5, 6, 7,
+                                   1, 2, 5, 6,
+                                   0, 4, 7, 3,
+                                   0, 1, 5, 4,
+                                   3, 7, 6, 2]
+    }
+
+    def Mesh "head" {
+        token scheme = "none"
+        token orientation = "rightHanded"
+        point3f[] points = [(-0.06, -0.05, 0.0), (-0.06, 0.05, 0.0), (0.06, 0.05, 0.0), (0.06, -0.05, 0.0),
+                            (-0.06, -0.05, 0.14), (-0.06, 0.05, 0.14), (0.06, 0.05, 0.14), (0.06, -0.05, 0.14)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2,
+                                   4, 5, 6, 7,
+                                   1, 2, 5, 6,
+                                   0, 4, 7, 3,
+                                   0, 1, 5, 4,
+                                   3, 7, 6, 2]
+    }
+
+    def Mesh "limb" {
+        token scheme = "none"
+        token orientation = "rightHanded"
+        point3f[] points = [(-0.03, -0.05, 0.0), (-0.03, 0.05, 0.0), (0.03, 0.05, 0.0), (0.03, -0.05, 0.0),
+                            (-0.03, -0.05, 0.2), (-0.03, 0.05, 0.2), (0.03, 0.05, 0.2), (0.03, -0.05, 0.2)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2,
+                                   4, 5, 6, 7,
+                                   1, 2, 5, 6,
+                                   0, 4, 7, 3,
+                                   0, 1, 5, 4,
+                                   3, 7, 6, 2]
+    }
+
+    def Mesh "foot" {
+        token scheme = "none"
+        token orientation = "rightHanded"
+        point3f[] points = [(-0.03, -0.1, 0.0), (-0.03, 0.05, 0.0), (0.03, 0.05, 0.0), (0.03, -0.1, 0.0),
+                            (-0.03, -0.1, 0.03), (-0.03, 0.05, 0.03), (0.03, 0.05, 0.03), (0.03, -0.1, 0.03)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2,
+                                   4, 5, 6, 7,
+                                   1, 2, 5, 6,
+                                   0, 4, 7, 3,
+                                   0, 1, 5, 4,
+                                   3, 7, 6, 2]
+    }
+}
+
+def Scope "Root"
+{
+    def Scope "Geometry"
+    {
+        def "torso" (references = </sources/torso>)
+        {
+            token[] xformOpOrder = ["xformOp:translate"]
+            double3 xformOp:translate = (0, 0, 0.4)
+        }
+
+        def "neck" (references = </sources/neck>)
+        {
+            token[] xformOpOrder = ["xformOp:translate"]
+            double3 xformOp:translate = (0, 0, 0.9)
+        }
+
+        def "head" (references = </sources/head>)
+        {
+            token[] xformOpOrder = ["xformOp:translate"]
+            double3 xformOp:translate = (0, 0, 0.93)
+        }
+
+        def Xform "left_arm"
+        {
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            double3 xformOp:translate = (0.15, 0, 0.8)
+            double3 xformOp:rotateXYZ = (0, 90.0, 0)
+
+            def "upper_arm" (references = </sources/limb>)
+            {
+            }
+
+            def "lower_arm" (references = </sources/limb>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.2)
+            }
+        }
+
+        def Xform "right_arm"
+        {
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            double3 xformOp:translate = (-0.15, 0, 0.8)
+            double3 xformOp:rotateXYZ = (0, -90.0, 0)
+
+            def "upper_arm" (references = </sources/limb>)
+            {
+            }
+
+            def "lower_arm" (references = </sources/limb>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.2)
+            }
+        }
+
+        def Xform "left_leg"
+        {
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            double3 xformOp:translate = (0.10, 0, 0.4)
+            double3 xformOp:rotateXYZ = (0, 180.0, 0)
+
+            def "upper_leg" (references = </sources/limb>)
+            {
+            }
+
+            def "lower_leg" (references = </sources/limb>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.2)
+            }
+
+            def "foot" (references = </sources/foot>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.4)
+            }
+        }
+
+        def Xform "right_leg"
+        {
+            token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            double3 xformOp:translate = (-0.10, 0, 0.4)
+            double3 xformOp:rotateXYZ = (0, 180.0, 0)
+
+            def "upper_leg" (references = </sources/limb>)
+            {
+            }
+
+            def "lower_leg" (references = </sources/limb>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.2)
+            }
+
+            def "foot" (references = </sources/foot>)
+            {
+                token[] xformOpOrder = ["xformOp:translate"]
+                double3 xformOp:translate = (0.0, 0, 0.4)
+            }
+        }
+    }
+}

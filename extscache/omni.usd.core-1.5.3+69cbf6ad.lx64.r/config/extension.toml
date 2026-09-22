@@ -1,0 +1,28 @@
+[core]
+reloadable = false
+
+[package]
+title = "Omni USD Core"
+version = "1.5.3"
+category = "Internal"
+description = "The omni.usd.core extension loads and initializes USD and Hydra. It provides managed UsdContext for easy USD Stage access, and life-cycle management."
+keywords = ["usd", "core", "initialization", "hydra", "stage", "UsdContext"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.usd.libs" = {}
+"omni.usd.schema.audio" = {}
+"omni.client" = {}
+"omni.usd_resolver" = {}
+
+[[native.library]]
+path = "bin/${lib_prefix}omni.usd${lib_ext}"
+
+[[test]]
+waiver = "omni.usd library"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+]

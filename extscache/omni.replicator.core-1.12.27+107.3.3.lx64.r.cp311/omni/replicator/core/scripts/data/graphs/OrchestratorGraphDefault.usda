@@ -1,0 +1,557 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (500, 500, 500)
+                double3 target = (-0.0000039780385918675165, 0.00000795607684267452, -0.000003978038364493841)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./OrchestratorGraphDefault.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:index:regionOfInterestMax" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMin" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_position" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_reflectivity" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (3.4028235e38, 3.4028235e38, 3.4028235e38)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+        }
+    }
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def "Replicator"
+{
+    def OmniGraph "Orchestrator"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 7)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "OgnReadFabricTime"
+        {
+            token node:type = "omni.replicator.core.ReadFabricTime"
+            int node:typeVersion = 1
+            custom uint64 outputs:fabricFrameTimeDenominator
+            custom int64 outputs:fabricFrameTimeNumerator
+        }
+
+        def OmniGraphNode "OnTick"
+        {
+            custom uint inputs:framePeriod
+            custom bool inputs:onlyPlayback = 0
+            token node:type = "omni.graph.action.OnTick"
+            int node:typeVersion = 1
+            custom double outputs:absoluteSimTime
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom bool outputs:isPlaying
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            custom double outputs:timeSinceStart
+            custom double state:accumulatedSeconds
+            custom uint state:frameCount
+        }
+
+        def OmniGraphNode "IsSubframe"
+        {
+            custom bool inputs:activate
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = [
+                </Replicator/Orchestrator/ReplicatorStatus.outputs:isStarted>,
+                </Replicator/Orchestrator/ReplicatorStatus.outputs:isStepping>,
+            ]
+            custom uint inputs:reset
+            token node:type = "omni.replicator.core.OgnSubframeCounter"
+            int node:typeVersion = 1
+            custom uint outputs:isFirstSubframe (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isLastSubframe (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isSubframe (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom int state:curSubframe
+        }
+
+        def OmniGraphNode "CaptureFrameCounter" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn
+            prepend uint inputs:execIn.connect = </Replicator/Orchestrator/Capture.outputs:exec>
+            custom uint inputs:reset
+            prepend uint inputs:reset.connect = </Replicator/Orchestrator/ReplicatorStatus.outputs:isStopping>
+            token node:type = "omni.graph.action.Counter"
+            int node:typeVersion = 1
+            custom int outputs:count
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom int state:count
+            uniform float2 ui:nodegraph:node:pos = (-1238.8674, -160.49857)
+        }
+
+        def OmniGraphNode "ReplicatorStatus"
+        {
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/OnTick.outputs:tick>
+            token node:type = "omni.replicator.core.OgnReplicatorStatus"
+            int node:typeVersion = 1
+            custom uint outputs:isInitializing (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isLoading (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isPaused (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStarted (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStarting (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStepped (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStepping (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStopped (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:isStopping (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom token outputs:status (
+                allowedTokens = ["STOPPED", "STARTED", "STARTING", "LOADING", "STOPPING", "PAUSED", "INITIALIZING", "STEPPING", "STEPPED"]
+            )
+        }
+
+        def OmniGraphNode "Randomize"
+        {
+            custom bool inputs:activate
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/IsSubframe.outputs:isFirstSubframe>
+            custom uint64 inputs:rationalTimeOfSimDenominator
+            prepend uint64 inputs:rationalTimeOfSimDenominator.connect = </Replicator/Orchestrator/OgnReadFabricTime.outputs:fabricFrameTimeDenominator>
+            custom int64 inputs:rationalTimeOfSimNumerator
+            prepend int64 inputs:rationalTimeOfSimNumerator.connect = </Replicator/Orchestrator/OgnReadFabricTime.outputs:fabricFrameTimeNumerator>
+            token node:type = "omni.replicator.core.OgnRandomize"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "Capture" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom bool inputs:activate
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/IsSubframe.outputs:isLastSubframe>
+            custom uint64 inputs:rationalTimeOfSimDenominator
+            prepend uint64 inputs:rationalTimeOfSimDenominator.connect = </Replicator/Orchestrator/OgnReadFabricTime.outputs:fabricFrameTimeDenominator>
+            custom int64 inputs:rationalTimeOfSimNumerator
+            prepend int64 inputs:rationalTimeOfSimNumerator.connect = </Replicator/Orchestrator/OgnReadFabricTime.outputs:fabricFrameTimeNumerator>
+            token node:type = "omni.replicator.core.OgnCapture"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform float2 ui:nodegraph:node:pos = (-1694.9635, -443.46234)
+        }
+
+        def OmniGraphNode "SetAutoUpdates" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = [
+                </Replicator/Orchestrator/IsSubframe.outputs:isFirstSubframe>,
+                </Replicator/Orchestrator/IsSubframe.outputs:isLastSubframe>,
+            ]
+            custom bool inputs:value
+            token node:type = "omni.replicator.core.OgnSetAutoUpdates"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform float2 ui:nodegraph:node:pos = (-1679.2915, -212.59096)
+        }
+
+        def OmniGraphNode "And"
+        {
+            custom token inputs:a
+            prepend token inputs:a.connect = </Replicator/Orchestrator/GreaterThan.outputs:result>
+            custom token inputs:b
+            prepend token inputs:b.connect = </Replicator/Orchestrator/EqualTo.outputs:result>
+            token node:type = "omni.graph.nodes.BooleanAnd"
+            int node:typeVersion = 2
+            custom token outputs:result
+        }
+
+        def OmniGraphNode "EqualTo"
+        {
+            custom token inputs:a
+            prepend token inputs:a.connect = </Replicator/Orchestrator/CountTriggers.outputs:numTriggersActive>
+            custom token inputs:b (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            int attrValue = 0
+                            string resolvedType = "int"
+                        }
+                    }
+                }
+            )
+            custom token inputs:operation = "==" (
+                allowedTokens = [">", "<", ">=", "<=", "==", "!="]
+            )
+            token node:type = "omni.graph.nodes.Compare"
+            int node:typeVersion = 1
+            custom token outputs:result
+        }
+
+        def OmniGraphNode "GreaterThan"
+        {
+            custom token inputs:a
+            prepend token inputs:a.connect = </Replicator/Orchestrator/CountTriggers.outputs:numTriggers>
+            custom token inputs:b (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            int attrValue = 0
+                            string resolvedType = "int"
+                        }
+                    }
+                }
+            )
+            custom token inputs:operation = ">" (
+                allowedTokens = [">", "<", ">=", "<=", "==", "!="]
+            )
+            token node:type = "omni.graph.nodes.Compare"
+            int node:typeVersion = 1
+            custom token outputs:result
+        }
+
+        def OmniGraphNode "HasReachedNumFrames"
+        {
+            custom token inputs:a
+            prepend token inputs:a.connect = </Replicator/Orchestrator/CaptureFrameCounter.outputs:count>
+            custom token inputs:b
+            prepend token inputs:b.connect = </Replicator/Orchestrator/NumFrames.outputs:value>
+            custom token inputs:operation = ">=" (
+                allowedTokens = [">", "<", ">=", "<=", "==", "!="]
+            )
+            token node:type = "omni.graph.nodes.Compare"
+            int node:typeVersion = 1
+            custom token outputs:result
+        }
+
+        def OmniGraphNode "CountTriggers"
+        {
+            token node:type = "omni.replicator.core.OgnCountTriggers"
+            int node:typeVersion = 1
+            custom int outputs:numTriggers
+            custom int outputs:numTriggersActive
+        }
+
+        def OmniGraphNode "SetStarted"
+        {
+            custom bool inputs:activate
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/ReplicatorStatus.outputs:isStarting>
+            custom token inputs:status = "STARTED" (
+                allowedTokens = ["STOPPED", "STARTED", "STARTING", "LOADING", "STOPPING", "PAUSED", "INITIALIZING", "STEPPING", "STEPPED"]
+            )
+            token node:type = "omni.replicator.core.OgnSetReplicatorStatus"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "SetStepped"
+        {
+            custom bool inputs:activate
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/IsSubframe.outputs:isLastSubframe>
+            custom token inputs:status = "STEPPED" (
+                allowedTokens = ["STOPPED", "STARTED", "STARTING", "LOADING", "STOPPING", "PAUSED", "INITIALIZING", "STEPPING", "STEPPED"]
+            )
+            token node:type = "omni.replicator.core.OgnSetReplicatorStatus"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "SetStopping"
+        {
+            custom bool inputs:activate
+            prepend bool inputs:activate.connect = </Replicator/Orchestrator/And.outputs:result>
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/IsSubframe.outputs:isLastSubframe>
+            custom token inputs:status = "STOPPING" (
+                allowedTokens = ["STOPPED", "STARTED", "STARTING", "LOADING", "STOPPING", "PAUSED", "INITIALIZING", "STEPPING", "STEPPED"]
+            )
+            token node:type = "omni.replicator.core.OgnSetReplicatorStatus"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "SetStoppingOnNumFrames"
+        {
+            custom bool inputs:activate
+            prepend bool inputs:activate.connect = </Replicator/Orchestrator/HasReachedNumFrames.outputs:result>
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/CaptureFrameCounter.outputs:execOut>
+            custom token inputs:status = "STOPPING" (
+                allowedTokens = ["STOPPED", "STARTED", "STARTING", "LOADING", "STOPPING", "PAUSED", "INITIALIZING", "STEPPING", "STEPPED"]
+            )
+            token node:type = "omni.replicator.core.OgnSetReplicatorStatus"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "NumFrames"
+        {
+            custom string inputs:settingPath = "/exts/omni.replicator.core/numFrames"
+            token node:type = "omni.graph.nodes.ReadSetting"
+            int node:typeVersion = 1
+            custom token outputs:value
+        }
+
+        def OmniGraphNode "ResetNextRTSubframe"
+        {
+            custom uint inputs:execIn
+            prepend uint inputs:execIn.connect = </Replicator/Orchestrator/Capture.outputs:exec>
+            custom string inputs:settingPath = "/exts/omni.replicator.core/Orchestrator/nextRtSubframes"
+            custom token inputs:value (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            int attrValue = 1
+                            string resolvedType = "int"
+                        }
+                    }
+                }
+            )
+            token node:type = "omni.graph.nodes.WriteSetting"
+            int node:typeVersion = 1
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "DEBUG_Capture"
+        {
+            custom uint inputs:execIn
+            prepend uint inputs:execIn.connect = </Replicator/Orchestrator/Capture.outputs:exec>
+            custom token inputs:logLevel = "Error" (
+                allowedTokens = ["Info", "Warning", "Error"]
+            )
+            custom string inputs:text
+            prepend string inputs:text.connect = </Replicator/Orchestrator/DEBUG_CaptureString.outputs:value>
+            custom bool inputs:toScreen
+            custom token inputs:viewport
+            token node:type = "omni.graph.ui_nodes.PrintText"
+            int node:typeVersion = 1
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "DEBUG_CaptureComplete"
+        {
+            custom uint inputs:execIn
+            prepend uint inputs:execIn.connect = </Replicator/Orchestrator/SetStopping.outputs:exec>
+            custom token inputs:logLevel = "Error" (
+                allowedTokens = ["Info", "Warning", "Error"]
+            )
+            custom string inputs:text = "[Replicator] All Triggers reached max exec, stopping Replicator."
+            custom bool inputs:toScreen
+            custom token inputs:viewport
+            token node:type = "omni.graph.ui_nodes.PrintText"
+            int node:typeVersion = 1
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "DEBUG_SetStepped"
+        {
+            custom uint inputs:execIn
+            prepend uint inputs:execIn.connect = </Replicator/Orchestrator/SetStepped.outputs:exec>
+            custom token inputs:logLevel = "Error" (
+                allowedTokens = ["Info", "Warning", "Error"]
+            )
+            custom string inputs:text = "[Replicator] Stepped"
+            custom bool inputs:toScreen
+            custom token inputs:viewport
+            token node:type = "omni.graph.ui_nodes.PrintText"
+            int node:typeVersion = 1
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+        }
+
+        def OmniGraphNode "DEBUG_CountToString"
+        {
+            custom token inputs:value
+            prepend token inputs:value.connect = </Replicator/Orchestrator/CaptureFrameCounter.outputs:count>
+            token node:type = "omni.graph.nodes.ToString"
+            int node:typeVersion = 1
+            custom string outputs:converted
+        }
+
+        def OmniGraphNode "DEBUG_CaptureString"
+        {
+            custom token inputs:a (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            uchar[] attrValue = [91, 82, 101, 112, 108, 105, 99, 97, 116, 111, 114, 93, 32, 79, 114, 99, 104, 101, 115, 116, 114, 97, 116, 111, 114, 32, 83, 101, 110, 100, 32, 67, 97, 112, 116, 117, 114, 101, 58, 32]
+                            string resolvedType = "string"
+                        }
+                    }
+                }
+            )
+            custom token inputs:b
+            prepend token inputs:b.connect = </Replicator/Orchestrator/DEBUG_CountToString.outputs:converted>
+            token node:type = "omni.graph.nodes.BuildString"
+            int node:typeVersion = 2
+            custom token outputs:value
+        }
+
+        def OmniGraphNode "set_auto_updates" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:exec
+            prepend uint inputs:exec.connect = </Replicator/Orchestrator/IsSubframe.outputs:isSubframe>
+            custom bool inputs:value = 0
+            token node:type = "omni.replicator.core.OgnSetAutoUpdates"
+            int node:typeVersion = 1
+            custom uint outputs:exec (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-1682.8818, -80.96325)
+        }
+    }
+}

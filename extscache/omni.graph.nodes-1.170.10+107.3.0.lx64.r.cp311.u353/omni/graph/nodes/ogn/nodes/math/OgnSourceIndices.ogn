@@ -1,0 +1,37 @@
+{
+    "SourceIndices": {
+        "version": 1,
+        "description": ["Takes an input array of index values in 'sourceStartsInTarget' encoded as the list of",
+                        "index values at which the output array value will be incremented, starting at the second",
+                        "entry, and with the last entry into the array being the desired sized of the output array",
+                        "'sourceIndices'. For example the input [1,2,3,5,6,6] would generate an output array of",
+                        "size 5 (last index) consisting of the values [0,0,2,3,3,3]:\n",
+                        "    - the first two 0s to fill the output array up to index input[1]=2\n",
+                        "    - the first two 0s to fill the output array up to index input[1]=2\n",
+                        "    - the 2 to fill the output array up to index input[2]=3\n",
+                        "    - the three 3s to fill the output array up to index input[3]=6"
+        ],
+        "metadata" : {
+            "uiName": "Extract Source Index Array"
+        },
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "sourceStartsInTarget": {
+                "description": "List of index values encoding the increments for the output array values.",
+                "type": "int[]",
+                "default": []
+            }
+        },
+        "outputs": {
+            "sourceIndices": {
+                "description": "Decoded list of index values as described by the node algorithm.",
+                "type": "int[]",
+                "default": []
+            }
+        },
+        "tests": [
+            { "inputs:sourceStartsInTarget": [1, 2, 3, 5, 6, 6], "outputs:sourceIndices": [0, 0, 1, 2, 2, 3] }
+        ]
+    }
+}

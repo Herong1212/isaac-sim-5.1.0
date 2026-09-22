@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.096" height="26" viewBox="0 0 26.096 26">
+  <g id="focal_distance" data-name="focal distance" transform="translate(-386.704 -1034.107)">
+    <rect id="bgr" width="26" height="26" transform="translate(386.704 1034.107)" fill="none"/>
+    <g id="Group_3904" data-name="Group 3904" transform="translate(-220.65 1001.107)">
+      <path id="Path_5632" data-name="Path 5632" d="M31,.35,8.35,8,31,14.65" transform="translate(601.5 40.5)" fill="none" stroke="#00101f" stroke-linecap="round" stroke-width="1.5"/>
+      <g id="Ellipse_263" data-name="Ellipse 263" transform="translate(620 44.5)" fill="none" stroke="#00101f" stroke-width="1">
+        <ellipse cx="2" cy="3.5" rx="2" ry="3.5" stroke="none"/>
+        <ellipse cx="2" cy="3.5" rx="1.5" ry="3" fill="none"/>
+      </g>
+      <path id="Path_5633" data-name="Path 5633" d="M0,0A14.713,14.713,0,0,1,2.144,6.644,12.975,12.975,0,0,1,0,13" transform="translate(628.5 41.5)" fill="none" stroke="#00101f" stroke-width="1"/>
+    </g>
+    <g id="Group_3905" data-name="Group 3905" transform="translate(-220.65 999.107)">
+      <path id="Path_5632-2" data-name="Path 5632" d="M31,.35,8.35,8,31,14.65" transform="translate(601.5 40.5)" fill="none" stroke="#afafaf" stroke-linecap="round" stroke-width="1.5"/>
+      <g id="Ellipse_263-2" data-name="Ellipse 263" transform="translate(620 44.5)" fill="none" stroke="#afafaf" stroke-width="1">
+        <ellipse cx="2" cy="3.5" rx="2" ry="3.5" stroke="none"/>
+        <ellipse cx="2" cy="3.5" rx="1.5" ry="3" fill="none"/>
+      </g>
+      <path id="Path_5633-2" data-name="Path 5633" d="M0,0A14.713,14.713,0,0,1,2.144,6.644,12.975,12.975,0,0,1,0,13" transform="translate(628.5 41.5)" fill="none" stroke="#afafaf" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

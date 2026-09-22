@@ -1,0 +1,59 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadPickState.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_ReadPickState" (
+        docs="""Read the state of the last picking event from the specified viewport. Note that picking events must be enabled on the specified viewport using a SetViewportMode node."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.ReadPickState"
+        int node:typeVersion = 2
+
+        # 5 attributes
+        custom token inputs:gesture = "Left Mouse Click" (
+            docs="""The input gesture to trigger a picking event"""
+        )
+        custom token[] inputs:trackedPrimPaths (
+            docs="""Optionally specify a set of prims (by paths) to track whether or not they got picked
+            (only affects the value of 'Is Tracked Prim Picked')"""
+        )
+        custom rel inputs:trackedPrims (
+            docs="""Optionally specify a set of prims to track whether or not they got picked
+            (only affects the value of 'Is Tracked Prim Picked')"""
+        )
+        custom bool inputs:usePaths = false (
+            docs="""When true, 'Tracked Prim Paths' is used, otherwise 'Tracked Prims' is used"""
+        )
+        custom token inputs:viewport = "Viewport" (
+            docs="""Name of the viewport window to watch for picking events"""
+        )
+
+        # 5 attributes
+        custom bool outputs:isTrackedPrimPicked (
+            docs="""True if a tracked prim got picked in the last picking event,
+            or if any prim got picked if no tracked prims are specified"""
+        )
+        custom bool outputs:isValid (
+            docs="""True if a valid event state was detected and the outputs of this node are valid, and false otherwise"""
+        )
+        custom rel outputs:pickedPrim (
+            docs="""The picked prim, or an empty target if nothing got picked"""
+        )
+        custom token outputs:pickedPrimPath (
+            docs="""The path of the prim picked in the last picking event, or an empty string if nothing got picked"""
+        )
+        custom point3d outputs:pickedWorldPos (
+            docs="""The XYZ-coordinates of the point in world space at which the prim got picked,
+            or (0,0,0) if nothing got picked"""
+        )
+    }
+}

@@ -1,0 +1,29 @@
+#usda 1.0
+(
+    defaultPrim = "M20_bolt"
+
+)
+
+def Xform "M20_bolt" (
+    kind = "component"
+)
+{
+    def Mesh "M20_Bolt_Tight_new" (
+        instanceable = false
+    )
+    {
+    }
+
+    def Scope "Looks"
+    {
+        def Material "M20_Bolt"
+        {
+            def Shader "M20_Bolt" (
+                kind = "Material"
+            )
+            {
+            }
+        }
+    }
+}
+

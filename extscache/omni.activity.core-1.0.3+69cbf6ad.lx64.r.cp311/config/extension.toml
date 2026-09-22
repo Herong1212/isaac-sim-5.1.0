@@ -1,0 +1,31 @@
+[package]
+title = "Activity Core"
+category = "Telemetry"
+version = "1.0.3"
+description = "The activity and the progress processor"
+authors = ["NVIDIA"]
+keywords = ["activity"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[[python.module]]
+name = "omni.activity.core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+    "../../../../rendering/include/omni/activity/IActivity.h",
+    "../../../../rendering/include/omni/activity/INode.h",
+    "../../../../rendering/include/omni/activity/IEvent.h",
+    "../../../../rendering/include/omni/activity/IEventListener.h",
+]
+cpp_api_exclude_warnings = [
+    "warning: .* is not documented",
+]

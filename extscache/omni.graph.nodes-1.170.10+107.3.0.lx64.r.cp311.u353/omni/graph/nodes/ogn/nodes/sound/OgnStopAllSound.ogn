@@ -1,0 +1,23 @@
+{
+    "StopAllSound": {
+        "version": 1,
+        "description": "Stop playing all sounds",
+        "categories": [ "sound" ],
+        "uiName": "Stop All Sound",
+        "icon": {
+            "path": "StopSound.svg"
+        },
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

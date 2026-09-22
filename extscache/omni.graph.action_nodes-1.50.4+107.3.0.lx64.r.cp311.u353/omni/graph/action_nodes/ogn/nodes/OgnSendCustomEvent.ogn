@@ -1,0 +1,50 @@
+{
+    "omni.graph.action.SendCustomEvent": {
+        "description": [
+            "Sends a custom event, which will asynchronously trigger any 'On Custom Event' nodes which are listening",
+            "for the same 'Event Name'."
+        ],
+        "version": 2,
+        "categories": ["graph:action", "event"],
+        "uiName": "Send Custom Event",
+        "language": "Python",
+        "state": {
+        },
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "eventName": {
+                "type": "token",
+                "description": "The name of the custom event to be sent out.",
+                "uiName": "Event Name"
+            },
+            "path": {
+                "type": "token",
+                "description": [
+                    "The path associated with the event. If specified, the path is added to the payload for the event",
+                    "under the dictionary key '!path'."
+                ],
+                "uiName": "Path"
+            },
+            "bundle": {
+                "type": "bundle",
+                "description": [
+                    "Bundle of data with information that is to be sent with the event. The payload for the event",
+                    "consists of a dictionary whose keys are the names of the attributes in this bundle and whose",
+                    "values are the values of the named attribute in Python pickled format. Optionally the value",
+                    "of the 'Path' attribute is also added to the payload."
+                ],
+                "uiName": "Bundle",
+                "optional": "true"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

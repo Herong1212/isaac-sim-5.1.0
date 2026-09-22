@@ -1,0 +1,70 @@
+[package]
+version = "107.3.3"
+title = "Animation Retargeting UI (BETA)"
+authors = ["NVIDIA"]
+keywords = ["anim", "animation", "skeleton", "skeletal", "retarget"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "User interface for Animation Retargeting"
+category = "Animation"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.retarget.ui"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.kit.commands" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.usd_undo" = {}
+"omni.kit.widget.stage" = {}
+"omni.usd.schema.anim" = {}
+"omni.graph.tools" = {}
+"omni.kit.viewport.menubar.display" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.browser.folder.core" = {}
+"omni.kit.browser.core" = {}
+"omni.kit.browser.sample" = {}
+"usdrt.scenegraph" = {}
+"omni.kit.async_engine" = {}
+"omni.anim.retarget.core" = { version="~107.3" }
+"omni.anim.skelJoint" = { version="~107.3" }
+
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.mainwindow",
+    "omni.kit.quicklayout",
+    "omni.kit.window.stage",
+    "omni.kit.test_suite.helpers",
+]
+
+args = [
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport",
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/fastShutdown=1",
+    "--/app/window/width=1280",
+    "--/app/window/height=960",
+    "--/app/renderer/resolution/width=1280",
+    "--/app/renderer/resolution/height=960",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface*",
+    "*extension object is still alive, something holds a reference on it*",
+    "*Failed to resolve USD Asset Identifier*",
+    "*[omni.kit.browser.folder.core.models.folder_browser_data] Timeout 5.0 seconds when listing*",
+]
+
+[package.writeTarget]
+kit = true
+
+[settings]
+exts."omni.anim.retarget".sample_folder = "https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/106.2/Samples/Retargeting"
+persistent.exts."omni.anim.retarget.ui".displayRetargetAxes = true

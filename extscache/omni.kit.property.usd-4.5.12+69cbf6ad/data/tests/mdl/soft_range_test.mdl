@@ -1,0 +1,60 @@
+// Copyright (c) 2024, NVIDIA CORPORATION. All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto. Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+//
+mdl 1.8;
+
+import ::anno::*;
+
+export float float_range
+(
+    float param = float(0.5)
+    [[
+        anno::soft_range(0.0, 1.0),
+        anno::hard_range(0.0, 2.0)
+    ]]
+)
+{
+    return param;
+}
+
+
+export float2 float2_range
+(
+    float2 param = float2(0.5)
+    [[
+        anno::soft_range(float2(0.0), float2(1.0)),
+        anno::hard_range(float2(0.0), float2(2.0))
+    ]]
+)
+{
+    return param;
+}
+
+export float3 float3_range
+(
+    float3 param = float3(0.5)
+    [[
+        anno::soft_range(float3(0.0), float3(1.0)),
+        anno::hard_range(float3(0.0), float3(2.0))
+    ]]
+)
+{
+    return param;
+}
+
+export float4 float4_range
+(
+    float4 param = float4(0.5)
+    [[
+        anno::soft_range(float4(0.0), float4(1.0)),
+        anno::hard_range(float4(0.0), float4(2.0))
+    ]]
+)
+{
+    return param;
+}

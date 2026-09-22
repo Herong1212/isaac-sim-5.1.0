@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.016" height="17.544" viewBox="0 0 19.016 17.544">
+  <defs>
+    <filter id="Camera" x="0" y="0" width="19.016" height="17.544" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+      <feFlood flood-opacity="0.522"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Camera)">
+    <path id="Camera-2" data-name="Camera" d="M12.2,10.732V12.49a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V8.864a2,2,0,0,1,2-2h.67A2.669,2.669,0,1,1,5.339,4.195,2.669,2.669,0,0,1,2.669,6.863h6.1A3.432,3.432,0,1,1,12.2,3.432,3.432,3.432,0,0,1,8.77,6.863H10.2a2,2,0,0,1,2,2v1.524l3.813-3.813v7.97Z" transform="translate(1.5 0.5)" fill="#4a5558"/>
+  </g>
+</svg>

@@ -1,0 +1,68 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file TranscoderRadar.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_radar_TranscoderRadar" (
+        docs="""Transcodes RTSensor buffer data to sensor specific formats and dumps in file"""
+    )
+    {
+        token node:type = "omni.sensors.nv.radar.TranscoderRadar"
+        int node:typeVersion = 1
+
+        # 15 attributes
+        custom uint64 inputs:cudaStream = 0 (
+            docs="""Cuda Stream Input"""
+        )
+        custom string inputs:decoderPath = "/usr/local/driveworks/bin/libsample_radar_plugin_new.so" (
+            docs="""decoder path id"""
+        )
+        custom string inputs:device = "CONTINENTAL_ARS430" (
+            docs="""device id"""
+        )
+        custom bool inputs:dumpPackets = false (
+            docs="""Dump packets as dwBinFile"""
+        )
+        custom int[] inputs:eventIDs = [] (
+            docs="""Event IDs from SOME/IP Header 1. Only for NCD transcoders."""
+        )
+        custom int[] inputs:eventTypes = [] (
+            docs="""Event Types of their respective Event ID from SOME/IP Header 1. Only for NCD transcoders."""
+        )
+        custom string inputs:fileName = "" (
+            docs="""File name of the dwBinFile"""
+        )
+        custom string inputs:format = "RDI_1_0_8_V2" (
+            docs="""format used for sent data"""
+        )
+        custom string inputs:interfaceIP = "127.0.0.1" (
+            docs="""local interface to use"""
+        )
+        custom int[] inputs:messageTypes = [] (
+            docs="""message Types of their respective Event ID from SOME/IP Header 1. Only for NCD transcoders."""
+        )
+        custom uint64 inputs:meta = 0 (
+            docs="""Source Meta Data"""
+        )
+        custom string inputs:remoteIP = "239.0.0.1" (
+            docs="""Remote IP of UDP channel"""
+        )
+        custom int inputs:remotePort = 10001 (
+            docs="""Remote port of UDP channel"""
+        )
+        custom uint64 inputs:serviceID = 2726985729 (
+            docs="""Service ID and Method ID from SOME/IP Header 1. Only for NCD transcoders."""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+    }
+}

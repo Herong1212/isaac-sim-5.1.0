@@ -1,0 +1,57 @@
+{
+    "ReadViewportClickState": {
+        "version": 1,
+        "description": [
+            "Read the state of the last viewport click event from the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Viewport Click State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of the 2D position output are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for click events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger viewport click events",
+                "uiName": "Gesture",
+                "default": "Left Mouse Click",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftMouseClick": "Left Mouse Click",
+                        "RightMouseClick": "Right Mouse Click",
+                        "MiddleMouseClick": "Middle Mouse Click"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "position": {
+                "type": "double[2]",
+                "description": "The position at which the specified input gesture last triggered a viewport click event in the specified viewport",
+                "uiName": "Position"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

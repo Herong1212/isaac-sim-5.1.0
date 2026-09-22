@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnDecomposeMatrix.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_anim_DecomposeMatrix" (
+        docs="""xform matrix decomposition"""
+    )
+    {
+        token node:type = "omni.anim.DecomposeMatrix"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom matrix4d inputs:matrix = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Input matrix."""
+        )
+        custom int inputs:rotateOrder = 0 (
+            docs="""controls the order in which rx, ry, rz are applied in the transformation matrix."""
+        )
+
+        # 4 attributes
+        custom double4 outputs:quaternion = (0.0, 0.0, 0.0, 1.0) (
+            docs="""Rotation part of the matrix expressed as quaternion."""
+        )
+        custom double3 outputs:rotate = (0.0, 0.0, 0.0) (
+            docs="""Rotation part of the matrix expressed as euler angles."""
+        )
+        custom double3 outputs:scale = (1.0, 1.0, 1.0) (
+            docs="""Scale part of the matrix."""
+        )
+        custom double3 outputs:translate = (0.0, 0.0, 0.0) (
+            docs="""Translation part of the matrix."""
+        )
+    }
+}

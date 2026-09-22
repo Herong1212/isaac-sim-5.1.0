@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnRenderPreprocessEntry.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_RenderPreProcessEntry" (
+        docs="""Entry node for pre-processing hydra render results for a single view. All downstream nodes are scheduled as CUDA commands."""
+    )
+    {
+        token node:type = "omni.graph.nodes.RenderPreProcessEntry"
+        int node:typeVersion = 3
+
+        # 5 attributes
+        custom double outputs:hydraTime (
+            docs="""The time difference since the last rendered frame."""
+        )
+        custom uint64 outputs:rationalTimeOfSimDenominator (
+            docs="""The denominator of the simulation time expressed as rational time. 
+            It is always valid and may be used to fetch data from Fabric during the node compute."""
+        )
+        custom int64 outputs:rationalTimeOfSimNumerator (
+            docs="""The numerator of the simulation time expressed as rational time. 
+            It is always valid and may be used to fetch data from Fabric during the node compute."""
+        )
+        custom double outputs:simTime (
+            docs="""The time difference since the last simulation frame.
+            May suffer from loss of precision and cannot be used as a deterministic identifier, 
+            for example for fetching data from Fabric during the node compute - 
+            use the Rational Time instead in that case."""
+        )
+        custom uint64 outputs:stream (
+            docs="""The CUDA Stream used to order the CUDA commands scheduled by this graph execution."""
+        )
+    }
+}

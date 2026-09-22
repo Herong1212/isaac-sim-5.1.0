@@ -1,0 +1,197 @@
+{
+    "omni.graph.action.OnKeyboardInput": {
+        "description": [
+            "Event node which fires when a keyboard event occurs.",
+            "The event can be any of the keys accepted by 'Key In', plus any combination of modifiers as specified by",
+            "inputs 'Shift', 'Alt', and 'Ctrl'.\n",
+            "For key combinations, the press event requires all modifiers to be held, with the 'Key In' pressed last.",
+            "The release event is only triggered once when one of the chosen keys released after the pressed event happens.\n",
+            "For example: if the combination is Ctrl-Shift-D, the pressed event happens once right after D is pressed",
+            "while both Ctrl and Shift are held. The release event happens only once, when the user releases any one",
+            "of Ctrl, Shift and D while holding them."
+        ],
+        "version": 4,
+        "uiName": "On Keyboard Input",
+        "categories": ["graph:action", "input:keyboard"],
+        "scheduling": "compute-on-request",
+        "inputs": {
+            "keyIn": {
+                "type": "token",
+                "description": "The key that triggers the downstream execution, not including modifiers.",
+                "uiName": "Key In",
+                "default": "A",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": [
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F",
+                        "G",
+                        "H",
+                        "I",
+                        "J",
+                        "K",
+                        "L",
+                        "M",
+                        "N",
+                        "O",
+                        "P",
+                        "Q",
+                        "R",
+                        "S",
+                        "T",
+                        "U",
+                        "V",
+                        "W",
+                        "X",
+                        "Y",
+                        "Z",
+                        "Apostrophe",
+                        "Backslash",
+                        "Backspace",
+                        "CapsLock",
+                        "Comma",
+                        "Del",
+                        "Down",
+                        "End",
+                        "Enter",
+                        "Equal",
+                        "Escape",
+                        "F1",
+                        "F10",
+                        "F11",
+                        "F12",
+                        "F2",
+                        "F3",
+                        "F4",
+                        "F5",
+                        "F6",
+                        "F7",
+                        "F8",
+                        "F9",
+                        "GraveAccent",
+                        "Home",
+                        "Insert",
+                        "Key0",
+                        "Key1",
+                        "Key2",
+                        "Key3",
+                        "Key4",
+                        "Key5",
+                        "Key6",
+                        "Key7",
+                        "Key8",
+                        "Key9",
+                        "Left",
+                        "LeftAlt",
+                        "LeftBracket",
+                        "LeftControl",
+                        "LeftShift",
+                        "LeftSuper",
+                        "Menu",
+                        "Minus",
+                        "NumLock",
+                        "Numpad0",
+                        "Numpad1",
+                        "Numpad2",
+                        "Numpad3",
+                        "Numpad4",
+                        "Numpad5",
+                        "Numpad6",
+                        "Numpad7",
+                        "Numpad8",
+                        "Numpad9",
+                        "NumpadAdd",
+                        "NumpadDel",
+                        "NumpadDivide",
+                        "NumpadEnter",
+                        "NumpadEqual",
+                        "NumpadMultiply",
+                        "NumpadSubtract",
+                        "PageDown",
+                        "PageUp",
+                        "Pause",
+                        "Period",
+                        "PrintScreen",
+                        "Right",
+                        "RightAlt",
+                        "RightBracket",
+                        "RightControl",
+                        "RightShift",
+                        "RightSuper",
+                        "ScrollLock",
+                        "Semicolon",
+                        "Slash",
+                        "Space",
+                        "Tab",
+                        "Up"
+                    ]
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "shiftIn": {
+                "type": "bool",
+                "description": "When true, the Shift key modifier must be pressed along with the 'Key In' to activate the output.",
+                "uiName": "Shift",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "altIn": {
+                "type": "bool",
+                "description": "When true, the Alt key modifier must be pressed along with the 'Key In' to activate the output.",
+                "uiName": "Alt",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "ctrlIn": {
+                "type": "bool",
+                "description": "When true, the Ctrl key modifier must be pressed along with the 'Key In' to activate the output.",
+                "uiName": "Ctrl",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "keyOut": {
+                "type": "token",
+                "description": "The key that was pressed or released to trigger the execution of this node.",
+                "uiName": "Key Out"
+            },
+            "pressed": {
+                "type": "execution",
+                "description": [
+                    "After the key was pressed, along with any required modifiers,",
+                    "signal to the graph that the execution can continue downstream."
+                ],
+                "uiName": "Pressed"
+            },
+            "released": {
+                "type": "execution",
+                "description": [
+                    "After the key or any of the required modifiers were released,",
+                    "signal to the graph that the execution can continue downstream."
+                ],
+                "uiName": "Released"
+            },
+            "isPressed": {
+                "type": "bool",
+                "description": "True if the most recent activation was the key being pressed, False if it was released."
+            }
+        }
+    }
+}

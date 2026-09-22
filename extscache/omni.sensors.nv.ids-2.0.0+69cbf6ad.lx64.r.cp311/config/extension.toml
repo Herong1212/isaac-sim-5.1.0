@@ -1,0 +1,27 @@
+[package]
+title = "Idealized Depth Sensor Simulation"
+description = "Nvidia Idealized Depth Sensor Simulation."
+version = "2.0.0"
+authors = ["NVIDIA"]
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors","ids"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.sensors.nv.ids"
+
+[dependencies]
+"omni.graph.core" = {}
+"omni.sensors.nv.common" = {}
+"omni.sensors.nv.materials" = {}
+"omni.sensors.net" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false

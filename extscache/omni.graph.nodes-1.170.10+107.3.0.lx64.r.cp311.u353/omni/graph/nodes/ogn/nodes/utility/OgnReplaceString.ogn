@@ -1,0 +1,109 @@
+{
+    "ReplaceString": {
+        "version": 1,
+        "description": [
+            "Replaces the first occurrence of the given value from an array with a new value. ",
+            "If \"replaceAll\" is true, replace all occurrences."
+        ],
+        "uiName": "Replace String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The base string."
+            },
+            "replace": {
+                "type": ["string", "token"],
+                "description": "The string to replace within the base string."
+            },
+            "value": {
+                "type": ["string", "token"],
+                "description": "The sub string to set within the base string. Can be an empty string to remove."
+            },
+            "replaceAll": {
+                "type": "bool",
+                "description": "If true, replace all occurrences of the value.",
+                "default": false
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The output string."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:string": {"type": "string", "value": "This string has two strings"},
+                "inputs:replace": {"type": "string", "value": ""},
+                "inputs:value": {"type": "string", "value": ""},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "string", "value": "This string has two strings"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This string has two strings"},
+                "inputs:replace": {"type": "string", "value": " string"},
+                "inputs:value": {"type": "string", "value": ""},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "string", "value": "This has two strings"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This string has two strings"},
+                "inputs:replace": {"type": "string", "value": " string"},
+                "inputs:value": {"type": "string", "value": ""},
+                "inputs:replaceAll": true,
+                "outputs:string": {"type": "string", "value": "This has twos"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This string has two strings"},
+                "inputs:replace": {"type": "string", "value": "string"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "string", "value": "This test has two strings"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This string has two strings"},
+                "inputs:replace": {"type": "string", "value": "string"},
+                "inputs:value": {"type": "string", "value": "test"},
+                "inputs:replaceAll": true,
+                "outputs:string": {"type": "string", "value": "This test has two tests"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This token has two tokens"},
+                "inputs:replace": {"type": "token", "value": ""},
+                "inputs:value": {"type": "token", "value": ""},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "token", "value": "This token has two tokens"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This token has two tokens"},
+                "inputs:replace": {"type": "token", "value": " token"},
+                "inputs:value": {"type": "token", "value": ""},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "token", "value": "This has two tokens"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This token has two tokens"},
+                "inputs:replace": {"type": "token", "value": " token"},
+                "inputs:value": {"type": "token", "value": ""},
+                "inputs:replaceAll": true,
+                "outputs:string": {"type": "token", "value": "This has twos"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This token has two tokens"},
+                "inputs:replace": {"type": "token", "value": "token"},
+                "inputs:value": {"type": "token", "value": "test"},
+                "inputs:replaceAll": false,
+                "outputs:string": {"type": "token", "value": "This test has two tokens"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This token has two tokens"},
+                "inputs:replace": {"type": "token", "value": "token"},
+                "inputs:value": {"type": "token", "value": "test"},
+                "inputs:replaceAll": true,
+                "outputs:string": {"type": "token", "value": "This test has two tests"}
+            }
+        ]
+    }
+}

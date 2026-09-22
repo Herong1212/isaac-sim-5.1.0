@@ -1,0 +1,80 @@
+{
+    "GetString": {
+        "version": 1,
+        "description": [
+            "Return a string in a base string at index with count."
+        ],
+        "uiName": "Get String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The base string."
+            },
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index of the string in the range [-stringLength, stringLength). ",
+                    "Negative values index from the end of the string, and values out of range will result in an error."
+                ]
+            },
+            "count": {
+                "type": "int",
+                "description": [
+                    "The number of characters to return. ",
+                    "When set to -1, the length of \"string\" will be used."
+                ],
+                "default": -1
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The extracted string."
+            }
+        },
+        "tests": [
+            {
+                "inputs:string": {"type": "string", "value": ""},
+                "outputs:string": {"type": "string", "value": ""}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:index": 10,
+                "inputs:count": -1,
+                "outputs:string": {"type": "string", "value": "string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:index": 10,
+                "inputs:count": 6,
+                "outputs:string": {"type": "string", "value": "string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a string"},
+                "inputs:index": -6,
+                "inputs:count": 6,
+                "outputs:string": {"type": "string", "value": "string"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a string"},
+                "inputs:index": 10,
+                "inputs:count": -1,
+                "outputs:string": {"type": "token", "value": "string"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a string"},
+                "inputs:index": 10,
+                "inputs:count": 6,
+                "outputs:string": {"type": "token", "value": "string"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a string"},
+                "inputs:index": -6,
+                "inputs:count": 6,
+                "outputs:string": {"type": "token", "value": "string"}
+            }
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Scope "RenderTest"
+    {
+        def RenderVar "rendervar1"
+        {
+        }
+
+        def RenderProduct "renderproduct1"
+        {
+        }
+
+        def RenderSettings "rendersettings1"
+        {
+        }
+    }
+}

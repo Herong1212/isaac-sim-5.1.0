@@ -1,0 +1,109 @@
+isaacsim.replicator.object:
+  path_to_main_objects: PATH_TO_MAIN_OBJECTS
+  path_to_distractors: PATH_TO_DISTRACTORS
+  path_to_background_images: PATH_TO_BACKGROUND_IMAGES
+  friction: 0.3
+  inter_frame_time: 5
+  linear_damping: 4
+  default_camera:
+    camera_parameters: $[/camera_parameters]
+    type: camera
+    transform_operators:
+    - translate:
+      - 0
+      - 0
+      - -50
+  distractors:
+    count: 10
+    physics: rigidbody
+    subtype: mesh
+    transform_operators:
+    - translate:
+        camera_parameters: $[/camera_parameters]
+        distance_max: 1200
+        distance_min: 800
+        distribution_type: camera_frustum
+        screen_space_range: 0.8
+    - rotateX:
+        distribution_type: range
+        start: -180
+        end: 180
+    - rotateY:
+        distribution_type: range
+        start: -180
+        end: 180
+    type: geometry
+    usd_path:
+      distribution_type: folder
+      suffix: usd
+      value: $[/path_to_distractors]
+  dome_light:
+    color:
+      distribution_type: range
+      end:
+      - 1.2
+      - 1.2
+      - 1.2
+      start:
+      - 0.8
+      - 0.8
+      - 0.8
+    intensity:
+      distribution_type: range
+      end: 3000
+      start: 500
+    subtype: dome
+    type: light
+  gravity: 0
+  main_objects:
+    count: 20
+    physics: rigidbody
+    subtype: mesh
+    tracked: true
+    transform_operators:
+    - translate:
+        camera_parameters: $[/camera_parameters]
+        distance_max: 600
+        distance_min: 200
+        distribution_type: camera_frustum
+        screen_space_range: 0.8
+    - rotateX:
+        distribution_type: range
+        start: -180
+        end: 180
+    - rotateY:
+        distribution_type: range
+        start: -180
+        end: 180
+    - scale:
+      - 0.5
+      - 0.5
+      - 0.5
+    type: geometry
+    usd_path:
+      distribution_type: folder
+      suffix: usd
+      value: $[/path_to_main_objects]
+  parent_config: global
+  plane:
+    subtype: plane
+    texture_path:
+      distribution_type: folder
+      suffix: jpg # or png
+      value: $[/path_to_background_images]
+    transform_operators:
+    - translate:
+      - 0
+      - 0
+      - -5000
+    - rotateXYZ:
+      - -90
+      - 0
+      - 180
+    - scale:
+      - 5000 / 50 * $[/horizontal_aperture] / $[/focal_length] / 2
+      - 1
+      - 5000 / 50 * $[/horizontal_aperture] / $[/focal_length] / 2 * $[/screen_height]
+        / $[/screen_width]
+    type: geometry
+  version: 0.4.12

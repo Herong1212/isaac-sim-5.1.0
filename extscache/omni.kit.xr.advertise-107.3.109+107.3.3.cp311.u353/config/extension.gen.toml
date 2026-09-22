@@ -1,0 +1,21 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.xr.advertise-107.3.109%2B107.3.3.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.228331.05b9b9d8.gl"
+        date = 1757388806
+        buildNumber = "107.3.109+107-3-109.31958.fa0f3ce1.gl"
+        repoName = "kit-xr-sdk"
+        signed = 1

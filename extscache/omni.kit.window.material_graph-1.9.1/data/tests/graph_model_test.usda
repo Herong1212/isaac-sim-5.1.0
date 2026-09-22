@@ -1,0 +1,131 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (500.0000000000001, 500.0000000000001, 499.9999999999998)
+                double3 target = (0, 0, 0)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "PreviewSurfaceTexture" (
+            customData = {
+                dictionary ui = {
+                    dictionary nodegraph = {
+                        dictionary node = {
+                            dictionary pos = {
+                                double2 output = (-54.56572723388672, 18.941539764404297)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        {
+            token outputs:mdl:surface.connect = </World/Looks/PreviewSurfaceTexture/PreviewSurfaceTexture.outputs:surface>
+            token outputs:surface (
+                displayName = "surface"
+            )
+
+            def Shader "PreviewSurfaceTexture" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0
+                float inputs:clearcoatRoughness = 0
+                color3f inputs:diffuseColor.connect = </World/Looks/PreviewSurfaceTexture/diffuseColorTex.outputs:rgb>
+                float inputs:displacement = 0
+                color3f inputs:emissiveColor = (0, 0, 0)
+                float inputs:ior = 1.5
+                color3f inputs:metallic.connect = </World/Looks/PreviewSurfaceTexture/metallicTex.outputs:rgb>
+                normal3f inputs:normal = (0, 0, 1)
+                float inputs:occlusion = 1
+                float inputs:opacity = 1
+                float inputs:opacityThreshold = 0
+                color3f inputs:roughness.connect = </World/Looks/PreviewSurfaceTexture/roughnessTex.outputs:rgb>
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 0
+                token outputs:surface
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-392.11017, -102.99459)
+            }
+
+            def Shader "diffuseColorTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+                uniform token ui:nodegraph:node:expansionState = "open"
+            }
+
+            def Shader "metallicTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+                uniform token ui:nodegraph:node:expansionState = "open"
+            }
+
+            def Shader "roughnessTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+                uniform token ui:nodegraph:node:expansionState = "open"
+            }
+        }
+    }
+}
+

@@ -1,0 +1,72 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+    subLayers = [
+        @./vehicleBase.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle with invalid 2 wheels
+    """
+)
+
+over "vehicle"
+{
+    over "Geometry"
+    {
+        over "wheel"
+        {
+            over "wheel_fl" (
+                active = false
+            )
+            {
+            }
+
+            over "wheel_rr" (
+                active = false
+            )
+            {
+            }
+        }
+    }
+
+    def Scope "collections"
+    {
+        def Scope "vehicle" (
+            prepend apiSchemas = ["CollectionAPI:vehicle"]
+        )
+        {
+            uniform token collection:wheel:expansionRule = "expandPrims"
+            rel collection:vehicle:includes = </vehicle/Geometry/body>
+            token omni:simready:vehicle = "vehicle"
+        }
+
+        def Scope "wheel_fr" (
+            prepend apiSchemas = ["CollectionAPI:wheel", "SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+        )
+        {
+            string semantic:wikidata_qcode:params:semanticData = "Q446"
+            string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+            token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+            uniform token collection:wheel:expansionRule = "expandPrims"
+            rel collection:wheel:includes = </vehicle/Geometry/wheel/wheel_fr>
+            token omni:simready:vehicle = "wheel"
+        }
+
+        def Scope "wheel_rl" (
+            prepend apiSchemas = ["CollectionAPI:wheel", "SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+        )
+        {
+            string semantic:wikidata_qcode:params:semanticData = "Q446"
+            string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+            token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+            uniform token collection:wheel:expansionRule = "expandPrims"
+            rel collection:wheel:includes = </vehicle/Geometry/wheel/wheel_rl>
+            token omni:simready:vehicle = "wheel"
+        }
+    }
+}

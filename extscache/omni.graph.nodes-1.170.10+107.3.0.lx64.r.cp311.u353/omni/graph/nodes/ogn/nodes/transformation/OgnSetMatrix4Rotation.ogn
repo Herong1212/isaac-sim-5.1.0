@@ -1,0 +1,216 @@
+{
+    "SetMatrix4Rotation": {
+        "version": 2,
+        "description": [
+            "Sets the rotation of the given matrix4d value which represents a linear transformation.",
+            "Does not modify the translation (row 3) of the matrix.",
+            "Accepts an angle/axis combination, Euler angles, quaternions or rotation matrices"
+        ],
+        "uiName": "Set Rotation",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Matrix",
+                "description": "The matrix to be modified"
+            },
+             "fixedRotationAxis": {
+                "type": "token",
+                "description": ["The axis of the given rotation"],
+                "default": "Y",
+                "uiName": "Rotation Axis",
+                "metadata": {
+                    "allowedTokens": ["X", "Y", "Z", "Custom"]
+                }
+            },
+            "rotationOrder" : {
+                "type": "token",
+                "uiName": "Rotation Order",
+                "description": "The order the rotation should be applied when using euler angles.",
+                "default" : "XYZ",
+                "metadata": {
+                    "allowedTokens": ["XYZ", "XZY", "YXZ", "YZX", "ZXY", "ZYX"]
+                }
+            },
+            "rotationAxis": {
+                "type": "vectord[3]",
+                "uiName": "Custom Rotation Axis",
+                "default": [0, 1, 0],
+                "description": "The axis of rotation when fixedRotationAxis is set to Custom"
+            },
+            "rotationAngle": {
+                "type": ["double", "double[]", "vectord[3]", "vectord[3][]", "quatd[4]", "quatd[4][]",
+                         "matrixd[3]", "matrixd[3][]"],
+                "uiName": "Rotation",
+                "description": [
+                    "The rotation to be applied to the matrix.  This can be a angle about an axis, euler angles, ",
+                    "quaternion or a rotation matrix."
+                ]
+             }
+        },
+        "outputs": {
+            "matrix": {
+                "uiName": "Matrix",
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "description": "The updated matrix"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "fixedRotationAxis": "X",
+                "rotationAngle": {"type": "double", "value": 45},
+                "outputs:matrix": {"type":"matrixd[4]", "value":
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "fixedRotationAxis": "X",
+                "rotationAngle": {"type": "double[]", "value": [45, 45]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "fixedRotationAxis": "X",
+                "rotationAngle": {"type": "double", "value": 45},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]] },
+                "fixedRotationAxis": "X",
+                "rotationAngle": {"type": "double[]", "value": [45, 45]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationOrder": "XYZ",
+                "rotationAngle": {"type": "vectord[3]", "value": [45, 0, 0]},
+                "outputs:matrix": {"type":"matrixd[4]", "value":
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationOrder": "XYZ",
+                "rotationAngle": {"type": "vectord[3][]", "value": [[45, 0, 0], [45, 0, 0]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "rotationOrder": "YXZ",
+                "rotationAngle": {"type": "vectord[3]", "value": [45, 0, 0]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]] },
+                "rotationOrder": "YXZ",
+                "rotationAngle": {"type": "vectord[3][]", "value": [[45, 0, 0], [45, 0, 0]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationOrder": "XYZ",
+                "rotationAngle": {"type": "quatd[4]", "value": [0.3826834, 0, 0, 0.9238795]},
+                "outputs:matrix": {"type":"matrixd[4]", "value":
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationOrder": "XYZ",
+                "rotationAngle": {"type": "quatd[4][]", "value": [
+                    [0.3826834, 0, 0, 0.9238795], [0.3826834, 0, 0, 0.9238795]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "rotationOrder": "YXZ",
+                "rotationAngle": {"type": "quatd[4]", "value": [0.3826834, 0, 0, 0.9238795]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]] },
+                "rotationOrder": "YXZ",
+                "rotationAngle": {"type": "quatd[4][]", "value": [
+                    [0.3826834, 0, 0, 0.9238795], [0.3826834, 0, 0, 0.9238795]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationAngle": {"type": "matrixd[3]", "value": [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]},
+                "outputs:matrix": {"type":"matrixd[4]", "value":
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "rotationAngle": {"type": "matrixd[3][]", "value": [
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711],
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "rotationAngle": {"type": "matrixd[3]", "value": [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]] },
+                "rotationAngle": {"type": "matrixd[3][]", "value": [
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711],
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            },
+
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "rotationAngle": {"type": "matrixd[3][]", "value": [
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711],
+                    [1,0,0, 0,0.70711,0.70711, 0,-0.70711,0.70711]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]]}
+            }
+        ]
+    }
+}

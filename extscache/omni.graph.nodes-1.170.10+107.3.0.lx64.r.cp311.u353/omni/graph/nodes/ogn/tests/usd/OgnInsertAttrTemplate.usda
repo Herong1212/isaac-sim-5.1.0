@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnInsertAttr.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_InsertAttribute" (
+        docs="""Copies all attributes from an input bundle to the output bundle, as well as copying an additional 'attrToInsert' attribute from the node itself with a specified name."""
+    )
+    {
+        token node:type = "omni.graph.nodes.InsertAttribute"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom token inputs:attrToInsert = "any" (
+            docs="""The the attribute to be copied from the node to the output bundle"""
+        )
+        custom rel inputs:data (
+            docs="""Initial bundle of attributes"""
+        )
+        custom token inputs:outputAttrName = "attr0" (
+            docs="""The name of the new output attribute in the bundle"""
+        )
+
+        # 1 attribute
+        custom rel outputs_data (
+            docs="""Bundle of input attributes with the new one inserted with the specified name"""
+        )
+    }
+}

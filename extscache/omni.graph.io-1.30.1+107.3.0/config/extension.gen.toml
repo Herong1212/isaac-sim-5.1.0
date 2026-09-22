@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.graph.io-1.30.1%2B107.3.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.199521.41618880.gl"
+        date = 1750285311
+        buildNumber = "23-06+master.7765.ebde80cc.gl"
+        repoName = "kit-omnigraph"
+        signed = 1

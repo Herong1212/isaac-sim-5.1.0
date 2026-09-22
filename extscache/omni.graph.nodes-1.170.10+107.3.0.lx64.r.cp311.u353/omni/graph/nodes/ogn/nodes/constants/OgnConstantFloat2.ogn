@@ -1,0 +1,21 @@
+{
+    "ConstantFloat2": {
+        "description": [
+            "Container for a 2-component single-precision floating-point value,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "version": 1,
+        "inputs": {
+            "value": {
+                "type": "float[2]",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

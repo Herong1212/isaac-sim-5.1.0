@@ -1,0 +1,1868 @@
+#usda 1.0
+(
+    doc = """Generated from Composed Stage of root layer 
+"""
+)
+
+def NodeGraph "file_texture"
+{
+    reorder properties = ["inputs:texture", "inputs:mono_source", "inputs:brightness", "inputs:contrast", "inputs:invert", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "inputs:clip", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    float inputs:brightness (
+        customData = {
+            double default = 1
+            dictionary soft_range = {
+                double max = 1
+                double min = 0
+            }
+        }
+        displayGroup = "Bitmap parameters"
+        displayName = "Brightness"
+        renderType = "float"
+    )
+    bool inputs:clip (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Placement"
+        displayName = "Clip"
+        renderType = "bool"
+    )
+    float inputs:contrast (
+        customData = {
+            double default = 1
+            dictionary soft_range = {
+                double max = 1
+                double min = 0
+            }
+        }
+        displayGroup = "Bitmap parameters"
+        displayName = "Contrast"
+        renderType = "float"
+    )
+    bool inputs:invert (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Bitmap parameters"
+        displayName = "Invert image"
+        renderType = "bool"
+    )
+    int inputs:mono_source (
+        customData = {
+            int default = 1
+        }
+        displayGroup = "Bitmap parameters"
+        displayName = "Scalar mode"
+        renderType = "mono_mode"
+        sdrMetadata = {
+            string __SDR__enum_value = "mono_average"
+            string options = "mono_alpha:0|mono_average:1|mono_luminance:2|mono_maximum:3"
+        }
+    )
+    float inputs:rotation (
+        customData = {
+            double default = 0
+        }
+        displayGroup = "Placement"
+        displayName = "Rotation"
+        renderType = "float"
+    )
+    float2 inputs:scaling (
+        customData = {
+            double2 default = (1, 1)
+        }
+        displayGroup = "Placement"
+        displayName = "Tiling"
+        renderType = "float2"
+    )
+    asset inputs:texture (
+        displayGroup = "Bitmap parameters"
+        displayName = "Bitmap file"
+        renderType = "texture_2d"
+        colorSpace = "sRGB"
+        customData = {
+            asset default = @@
+        }
+    )
+    int inputs:texture_space (
+        customData = {
+            int default = 0
+            dictionary range = {
+                int max = 3
+                int min = 0
+            }
+        }
+        displayGroup = "Placement"
+        displayName = "UV space index"
+        renderType = "int"
+    )
+    float2 inputs:translation (
+        customData = {
+            double2 default = (0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Offset"
+        renderType = "float2"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </file_texture/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </file_texture/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </file_texture/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </file_texture/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </file_texture/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </file_texture/file_texture.outputs:out>
+    custom token ui:description = "Allows texturing using image files of various file formats"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "Bitmap texture"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.file_texture.png@
+    custom int ui:order = 30
+
+    def Shader "file_texture"
+    {
+        reorder properties = ["inputs:texture", "inputs:mono_source", "inputs:brightness", "inputs:contrast", "inputs:invert", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "inputs:clip"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "file_texture(texture_2d,::base::mono_mode,float,float,float2,float2,float,bool,int,bool)"
+        float inputs:brightness (
+            customData = {
+                double default = 1
+            }
+            displayGroup = "Bitmap parameters"
+            displayName = "Brightness"
+            renderType = "float"
+        )
+        float inputs:brightness.connect = </file_texture.inputs:brightness>
+        bool inputs:clip (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Placement"
+            displayName = "Clip"
+            doc = "If set to true, texture will not repeat. Outside of the texture, color will be black and the scalar value will be 0"
+            renderType = "bool"
+        )
+        bool inputs:clip.connect = </file_texture.inputs:clip>
+        float inputs:contrast (
+            customData = {
+                double default = 1
+            }
+            displayGroup = "Bitmap parameters"
+            displayName = "Contrast"
+            renderType = "float"
+        )
+        float inputs:contrast.connect = </file_texture.inputs:contrast>
+        bool inputs:invert (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Bitmap parameters"
+            displayName = "Invert image"
+            doc = "Invert image"
+            renderType = "bool"
+        )
+        bool inputs:invert.connect = </file_texture.inputs:invert>
+        int inputs:mono_source (
+            customData = {
+                int default = 1
+            }
+            displayGroup = "Bitmap parameters"
+            displayName = "Scalar mode"
+            doc = "Defines how the texture applies to scalar parameters"
+            renderType = "mono_mode"
+            sdrMetadata = {
+                string __SDR__enum_value = "mono_average"
+                string options = "mono_alpha:0|mono_average:1|mono_luminance:2|mono_maximum:3"
+            }
+        )
+        int inputs:mono_source.connect = </file_texture.inputs:mono_source>
+        float inputs:rotation (
+            customData = {
+                double default = 0
+            }
+            displayGroup = "Placement"
+            displayName = "Rotation"
+            doc = "Rotation angle of the texture in degrees"
+            renderType = "float"
+        )
+        float inputs:rotation.connect = </file_texture.inputs:rotation>
+        float2 inputs:scaling (
+            customData = {
+                double2 default = (1, 1)
+            }
+            displayGroup = "Placement"
+            displayName = "Tiling"
+            doc = "Controls the scale of the texture on the object"
+            renderType = "float2"
+        )
+        float2 inputs:scaling.connect = </file_texture.inputs:scaling>
+        asset inputs:texture (
+            displayGroup = "Bitmap parameters"
+            displayName = "Bitmap file"
+            renderType = "texture_2d"
+            colorSpace = "sRGB"
+            customData = {
+                asset default = @@
+            }
+        )
+        asset inputs:texture.connect = </file_texture.inputs:texture>
+        int inputs:texture_space (
+            customData = {
+                int default = 0
+                dictionary range = {
+                    int max = 3
+                    int min = 0
+                }
+            }
+            displayGroup = "Placement"
+            displayName = "UV space index"
+            doc = "Selects a specific UV space"
+            renderType = "int"
+        )
+        int inputs:texture_space.connect = </file_texture.inputs:texture_space>
+        float2 inputs:translation (
+            customData = {
+                double2 default = (0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Offset"
+            doc = "Controls position of the texture on the object"
+            renderType = "float2"
+        )
+        float2 inputs:translation.connect = </file_texture.inputs:translation>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </file_texture/file_texture.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </file_texture/file_texture.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </file_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </file_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </file_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+
+def NodeGraph "blend_colors"
+{
+    reorder properties = ["inputs:color_1", "inputs:color_2", "inputs:mode", "inputs:weight", "inputs:linear_blend", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    color3f inputs:color_1 (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayName = "Color 1"
+        renderType = "color"
+    )
+    color3f inputs:color_2 (
+        customData = {
+            double3 default = (1, 1, 1)
+        }
+        displayName = "Color 2"
+        renderType = "color"
+    )
+    bool inputs:linear_blend (
+        customData = {
+            bool default = 1
+        }
+        displayName = "Linear blend"
+        renderType = "bool"
+    )
+    int inputs:mode (
+        customData = {
+            int default = 0
+        }
+        displayName = "Blend mode"
+        renderType = "color_layer_mode"
+        sdrMetadata = {
+            string __SDR__enum_value = "color_layer_blend"
+            string options = "color_layer_blend:0|color_layer_add:1|color_layer_multiply:2|color_layer_screen:3|color_layer_overlay:4|color_layer_brightness:5|color_layer_color:6|color_layer_exclusion:7|color_layer_average:8|color_layer_lighten:9|color_layer_darken:10|color_layer_sub:11|color_layer_negation:12|color_layer_difference:13|color_layer_softlight:14|color_layer_colordodge:15|color_layer_reflect:16|color_layer_colorburn:17|color_layer_phoenix:18|color_layer_hardlight:19|color_layer_pinlight:20|color_layer_hardmix:21|color_layer_lineardodge:22|color_layer_linearburn:23|color_layer_spotlight:24|color_layer_spotlightblend:25|color_layer_hue:26|color_layer_saturation:27"
+        }
+    )
+    float inputs:weight (
+        customData = {
+            float default = 1
+            dictionary soft_range = {
+                float max = 1
+                float min = 0
+            }
+        }
+        displayName = "Blend weight"
+        renderType = "float"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </blend_colors/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </blend_colors/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </blend_colors/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </blend_colors/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </blend_colors/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </blend_colors/blend_colors.outputs:out>
+    custom token ui:description = "Allows combining textures and colors in varied ways"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "Blend colors"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.blend_colors.png@
+    custom int ui:order = 33
+
+    def Shader "blend_colors"
+    {
+        reorder properties = ["inputs:color_1", "inputs:color_2", "inputs:mode", "inputs:weight", "inputs:linear_blend"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "blend_colors(color,color,::base::color_layer_mode,float,bool)"
+        color3f inputs:color_1 (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayName = "Color 1"
+            renderType = "color"
+        )
+        color3f inputs:color_1.connect = </blend_colors.inputs:color_1>
+        color3f inputs:color_2 (
+            customData = {
+                double3 default = (1, 1, 1)
+            }
+            displayName = "Color 2"
+            renderType = "color"
+        )
+        color3f inputs:color_2.connect = </blend_colors.inputs:color_2>
+        bool inputs:linear_blend (
+            customData = {
+                bool default = 1
+            }
+            displayName = "Linear blend"
+            doc = "The blend opperation can either be applied in linear or gamma (2.2) color space"
+            renderType = "bool"
+        )
+        bool inputs:linear_blend.connect = </blend_colors.inputs:linear_blend>
+        int inputs:mode (
+            customData = {
+                int default = 0
+            }
+            displayName = "Blend mode"
+            doc = "Describes how Color 1 and Color 2 are combined"
+            renderType = "color_layer_mode"
+            sdrMetadata = {
+                string __SDR__enum_value = "color_layer_blend"
+                string options = "color_layer_blend:0|color_layer_add:1|color_layer_multiply:2|color_layer_screen:3|color_layer_overlay:4|color_layer_brightness:5|color_layer_color:6|color_layer_exclusion:7|color_layer_average:8|color_layer_lighten:9|color_layer_darken:10|color_layer_sub:11|color_layer_negation:12|color_layer_difference:13|color_layer_softlight:14|color_layer_colordodge:15|color_layer_reflect:16|color_layer_colorburn:17|color_layer_phoenix:18|color_layer_hardlight:19|color_layer_pinlight:20|color_layer_hardmix:21|color_layer_lineardodge:22|color_layer_linearburn:23|color_layer_spotlight:24|color_layer_spotlightblend:25|color_layer_hue:26|color_layer_saturation:27"
+            }
+        )
+        int inputs:mode.connect = </blend_colors.inputs:mode>
+        float inputs:weight (
+            customData = {
+                double default = 1
+            }
+            displayName = "Blend weight"
+            doc = "Defines strength of the effect. At weight of 0, only color 1 will be visible. At weight 1, the blend function will have full effect"
+            renderType = "float"
+        )
+        float inputs:weight.connect = </blend_colors.inputs:weight>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </blend_colors/blend_colors.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </blend_colors/blend_colors.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </blend_colors/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </blend_colors/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </blend_colors/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+
+def NodeGraph "perlin_noise_texture"
+{
+    reorder properties = ["inputs:color1", "inputs:color2", "inputs:noise_levels", "inputs:absolute_noise", "inputs:noise_threshold_low", "inputs:noise_threshold_high", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    bool inputs:absolute_noise (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Billowing appearance"
+        renderType = "bool"
+    )
+    color3f inputs:color1 (
+        customData = {
+            double3 default = (1, 1, 1)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 1"
+        renderType = "color"
+    )
+    color3f inputs:color2 (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 2"
+        renderType = "color"
+    )
+    int inputs:noise_levels (
+        customData = {
+            int default = 3
+            dictionary range = {
+                int max = 6
+                int min = 1
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Levels"
+        renderType = "int"
+    )
+    float inputs:noise_threshold_high (
+        customData = {
+            double default = 1
+            dictionary range = {
+                int max = 1
+                int min = 0
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Upper threshold"
+        renderType = "float"
+    )
+    float inputs:noise_threshold_low (
+        customData = {
+            double default = 0
+            dictionary range = {
+                int max = 1
+                int min = 0
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Lower threshold"
+        renderType = "float"
+    )
+    bool inputs:object_space (
+        customData = {
+            bool default = 1
+        }
+        displayGroup = "Placement"
+        displayName = "Use object space"
+        renderType = "bool"
+    )
+    float3 inputs:rotation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Rotation"
+        renderType = "float3"
+    )
+    float3 inputs:scaling (
+        customData = {
+            double3 default = (10, 10, 10)
+        }
+        displayGroup = "Placement"
+        displayName = "Tiling"
+        renderType = "float3"
+    )
+    int inputs:texture_space (
+        customData = {
+            int default = 0
+            dictionary range = {
+                int max = 3
+                int min = 0
+            }
+        }
+        displayGroup = "Placement"
+        displayName = "UV space index"
+        renderType = "int"
+    )
+    float3 inputs:translation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Offset"
+        renderType = "float3"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </perlin_noise_texture/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </perlin_noise_texture/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </perlin_noise_texture/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </perlin_noise_texture/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </perlin_noise_texture/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </perlin_noise_texture/perlin_noise_texture.outputs:out>
+    custom token ui:description = "Allow texturing with a random noise pattern"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "Perlin noise texture"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.perlin_noise_texture.png@
+    custom int ui:order = 34
+
+    def Shader "perlin_noise_texture"
+    {
+        reorder properties = ["inputs:color1", "inputs:color2", "inputs:noise_levels", "inputs:absolute_noise", "inputs:noise_threshold_low", "inputs:noise_threshold_high", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "perlin_noise_texture(color,color,bool,int,bool,float,float,float3,float3,float3,int)"
+        bool inputs:absolute_noise (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Billowing appearance"
+            renderType = "bool"
+        )
+        bool inputs:absolute_noise.connect = </perlin_noise_texture.inputs:absolute_noise>
+        color3f inputs:color1 (
+            customData = {
+                double3 default = (1, 1, 1)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 1"
+            renderType = "color"
+        )
+        color3f inputs:color1.connect = </perlin_noise_texture.inputs:color1>
+        color3f inputs:color2 (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 2"
+            renderType = "color"
+        )
+        color3f inputs:color2.connect = </perlin_noise_texture.inputs:color2>
+        int inputs:noise_levels (
+            customData = {
+                int default = 3
+                dictionary range = {
+                    int max = 6
+                    int min = 1
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Levels"
+            doc = "Higher amounts will add detail to the noise"
+            renderType = "int"
+        )
+        int inputs:noise_levels.connect = </perlin_noise_texture.inputs:noise_levels>
+        float inputs:noise_threshold_high (
+            customData = {
+                double default = 1
+                dictionary range = {
+                    int max = 1
+                    int min = 0
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Upper threshold"
+            doc = "Lowering this value will create bigger areas uniformly colored with Color 1"
+            renderType = "float"
+        )
+        float inputs:noise_threshold_high.connect = </perlin_noise_texture.inputs:noise_threshold_high>
+        float inputs:noise_threshold_low (
+            customData = {
+                double default = 0
+                dictionary range = {
+                    int max = 1
+                    int min = 0
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Lower threshold"
+            doc = "Increasing this value will create bigger areas uniformly colored with Color 2"
+            renderType = "float"
+        )
+        float inputs:noise_threshold_low.connect = </perlin_noise_texture.inputs:noise_threshold_low>
+        bool inputs:object_space (
+            customData = {
+                bool default = 1
+            }
+            displayGroup = "Placement"
+            displayName = "Use object space"
+            doc = "If off, UV space will be used. If on, 3d texturing in object space will apply. For applications that do not support object space, world space will be used"
+            renderType = "bool"
+        )
+        bool inputs:object_space.connect = </perlin_noise_texture.inputs:object_space>
+        float3 inputs:rotation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Rotation"
+            doc = "Rotation angle of the texture in degrees"
+            renderType = "float3"
+        )
+        float3 inputs:rotation.connect = </perlin_noise_texture.inputs:rotation>
+        float3 inputs:scaling (
+            customData = {
+                double3 default = (10, 10, 10)
+            }
+            displayGroup = "Placement"
+            displayName = "Tiling"
+            doc = "Controls the scale of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:scaling.connect = </perlin_noise_texture.inputs:scaling>
+        int inputs:texture_space (
+            customData = {
+                int default = 0
+                dictionary range = {
+                    int max = 3
+                    int min = 0
+                }
+            }
+            displayGroup = "Placement"
+            displayName = "UV space index"
+            doc = 'Only applies if "Use object space" is off. Selects a specific UV space'
+            renderType = "int"
+        )
+        int inputs:texture_space.connect = </perlin_noise_texture.inputs:texture_space>
+        float3 inputs:translation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Offset"
+            doc = "Controls position of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:translation.connect = </perlin_noise_texture.inputs:translation>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </perlin_noise_texture/perlin_noise_texture.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </perlin_noise_texture/perlin_noise_texture.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </perlin_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </perlin_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </perlin_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+
+def NodeGraph "worley_noise_texture"
+{
+    reorder properties = ["inputs:color1", "inputs:color2", "inputs:mode", "inputs:metric", "inputs:noise_threshold_low", "inputs:noise_threshold_high", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    color3f inputs:color1 (
+        customData = {
+            double3 default = (1, 1, 1)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 1"
+        renderType = "color"
+    )
+    color3f inputs:color2 (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 2"
+        renderType = "color"
+    )
+    int inputs:metric (
+        displayGroup = "Noise parameters"
+        displayName = "Cell shape"
+        renderType = "cell_base"
+        sdrMetadata = {
+            string __SDR__enum_value = "circular_cells"
+            string options = "simple_cells:0|crystal_cells:1|bordered_cells:2"
+        }
+    )
+    int inputs:mode (
+        customData = {
+            int default = 0
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Cell type"
+        renderType = "cell_type"
+        sdrMetadata = {
+            string __SDR__enum_value = "simple_cells"
+            string options = "simple_cells:0|crystal_cells:1|bordered_cells:2"
+        }
+    )
+    float inputs:noise_threshold_high (
+        customData = {
+            double default = 1
+            dictionary range = {
+                int max = 1
+                int min = 0
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Upper threshold"
+        renderType = "float"
+    )
+    float inputs:noise_threshold_low (
+        customData = {
+            double default = 0
+            dictionary range = {
+                int max = 1
+                int min = 0
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Lower threshold"
+        renderType = "float"
+    )
+    bool inputs:object_space (
+        customData = {
+            bool default = 1
+        }
+        displayGroup = "Placement"
+        displayName = "Use object space"
+        renderType = "bool"
+    )
+    float3 inputs:rotation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Rotation"
+        renderType = "float3"
+    )
+    float3 inputs:scaling (
+        customData = {
+            double3 default = (10, 10, 10)
+        }
+        displayGroup = "Placement"
+        displayName = "Tiling"
+        renderType = "float3"
+    )
+    int inputs:texture_space (
+        customData = {
+            int default = 0
+            dictionary range = {
+                int max = 3
+                int min = 0
+            }
+        }
+        displayGroup = "Placement"
+        displayName = "UV space index"
+        renderType = "int"
+    )
+    float3 inputs:translation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Offset"
+        renderType = "float3"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </worley_noise_texture/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </worley_noise_texture/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </worley_noise_texture/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </worley_noise_texture/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </worley_noise_texture/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </worley_noise_texture/worley_noise_texture.outputs:out>
+    custom token ui:description = "Allow texturing with a cell forming pattern"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "Cellular noise texture"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.worley_noise_texture.png@
+    custom int ui:order = 36
+
+    def Shader "worley_noise_texture"
+    {
+        reorder properties = ["inputs:color1", "inputs:color2", "inputs:mode", "inputs:metric", "inputs:noise_threshold_low", "inputs:noise_threshold_high", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "worley_noise_texture(color,color,bool,int,::core_definitions::cell_type,::core_definitions::cell_base,float,float,float3,float3,float3)"
+        color3f inputs:color1 (
+            customData = {
+                double3 default = (1, 1, 1)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 1"
+            renderType = "color"
+        )
+        color3f inputs:color1.connect = </worley_noise_texture.inputs:color1>
+        color3f inputs:color2 (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 2"
+            renderType = "color"
+        )
+        color3f inputs:color2.connect = </worley_noise_texture.inputs:color2>
+        int inputs:metric (
+            displayGroup = "Noise parameters"
+            displayName = "Cell shape"
+            doc = "The shape of the cell form"
+            renderType = "cell_base"
+            sdrMetadata = {
+                string __SDR__enum_value = "circular_cells"
+                string options = "simple_cells:0|crystal_cells:1|bordered_cells:2"
+            }
+        )
+        int inputs:metric.connect = </worley_noise_texture.inputs:metric>
+        int inputs:mode (
+            customData = {
+                int default = 0
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Cell type"
+            doc = "Cell pattern type"
+            renderType = "cell_type"
+            sdrMetadata = {
+                string __SDR__enum_value = "simple_cells"
+                string options = "simple_cells:0|crystal_cells:1|bordered_cells:2"
+            }
+        )
+        int inputs:mode.connect = </worley_noise_texture.inputs:mode>
+        float inputs:noise_threshold_high (
+            customData = {
+                double default = 1
+                dictionary range = {
+                    int max = 1
+                    int min = 0
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Upper threshold"
+            doc = "Lowering this value will create bigger areas uniformly colored with Color 1"
+            renderType = "float"
+        )
+        float inputs:noise_threshold_high.connect = </worley_noise_texture.inputs:noise_threshold_high>
+        float inputs:noise_threshold_low (
+            customData = {
+                double default = 0
+                dictionary range = {
+                    int max = 1
+                    int min = 0
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Lower threshold"
+            doc = "Increasing this value will create bigger areas uniformly colored with Color 2"
+            renderType = "float"
+        )
+        float inputs:noise_threshold_low.connect = </worley_noise_texture.inputs:noise_threshold_low>
+        bool inputs:object_space (
+            customData = {
+                bool default = 1
+            }
+            displayGroup = "Placement"
+            displayName = "Use object space"
+            doc = "If off, UV space will be used. If on, 3d texturing in object space will apply. For applications that do not support object space, world space will be used"
+            renderType = "bool"
+        )
+        bool inputs:object_space.connect = </worley_noise_texture.inputs:object_space>
+        float3 inputs:rotation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Rotation"
+            doc = "Rotation angle of the texture in degrees"
+            renderType = "float3"
+        )
+        float3 inputs:rotation.connect = </worley_noise_texture.inputs:rotation>
+        float3 inputs:scaling (
+            customData = {
+                double3 default = (10, 10, 10)
+            }
+            displayGroup = "Placement"
+            displayName = "Tiling"
+            doc = "Controls the scale of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:scaling.connect = </worley_noise_texture.inputs:scaling>
+        int inputs:texture_space (
+            customData = {
+                int default = 0
+                dictionary range = {
+                    int max = 3
+                    int min = 0
+                }
+            }
+            displayGroup = "Placement"
+            displayName = "UV space index"
+            doc = 'Only applies if "Use object space" is off. Selects a specific UV space'
+            renderType = "int"
+        )
+        int inputs:texture_space.connect = </worley_noise_texture.inputs:texture_space>
+        float3 inputs:translation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Offset"
+            doc = "Controls position of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:translation.connect = </worley_noise_texture.inputs:translation>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </worley_noise_texture/worley_noise_texture.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </worley_noise_texture/worley_noise_texture.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </worley_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </worley_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </worley_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+
+def NodeGraph "flow_noise_texture"
+{
+    reorder properties = ["inputs:color1", "inputs:color2", "inputs:noise_levels", "inputs:absolute_noise", "inputs:phase", "inputs:level_gain", "inputs:level_scale", "inputs:level_progressive_u_scale", "inputs:level_progressive_v_motion", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    bool inputs:absolute_noise (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Billowing appearance"
+        renderType = "bool"
+    )
+    color3f inputs:color1 (
+        customData = {
+            double3 default = (1, 1, 1)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 1"
+        renderType = "color"
+    )
+    color3f inputs:color2 (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Color 2"
+        renderType = "color"
+    )
+    float inputs:level_gain (
+        customData = {
+            double default = 0.5
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Level intensity gain"
+        renderType = "float"
+    )
+    float inputs:level_progressive_u_scale (
+        customData = {
+            double default = 1
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Progressive u scale"
+        renderType = "float"
+    )
+    float inputs:level_progressive_v_motion (
+        customData = {
+            double default = 0
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Progressive v offset"
+        renderType = "float"
+    )
+    float inputs:level_scale (
+        customData = {
+            double default = 2
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Level scaling"
+        renderType = "float"
+    )
+    int inputs:noise_levels (
+        customData = {
+            int default = 3
+            dictionary range = {
+                int max = 6
+                int min = 1
+            }
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Levels"
+        renderType = "int"
+    )
+    bool inputs:object_space (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Placement"
+        displayName = "Use object space"
+        renderType = "bool"
+    )
+    float inputs:phase (
+        customData = {
+            double default = 0
+        }
+        displayGroup = "Noise parameters"
+        displayName = "Phase offset"
+        renderType = "float"
+    )
+    float3 inputs:rotation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Rotation"
+        renderType = "float3"
+    )
+    float3 inputs:scaling (
+        customData = {
+            double3 default = (10, 10, 10)
+        }
+        displayGroup = "Placement"
+        displayName = "Tiling"
+        renderType = "float3"
+    )
+    int inputs:texture_space (
+        customData = {
+            int default = 0
+            dictionary range = {
+                int max = 3
+                int min = 0
+            }
+        }
+        displayGroup = "Placement"
+        displayName = "UV space index"
+        renderType = "int"
+    )
+    float3 inputs:translation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Offset"
+        renderType = "float3"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </flow_noise_texture/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </flow_noise_texture/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </flow_noise_texture/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </flow_noise_texture/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </flow_noise_texture/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </flow_noise_texture/flow_noise_texture.outputs:out>
+    custom token ui:description = "Allow texturing with a 2D noise pattern suitable for waves"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "Flow noise texture"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.flow_noise_texture.png@
+    custom int ui:order = 38
+
+    def Shader "flow_noise_texture"
+    {
+        reorder properties = ["inputs:color1", "inputs:color2", "inputs:noise_levels", "inputs:absolute_noise", "inputs:phase", "inputs:level_gain", "inputs:level_scale", "inputs:level_progressive_u_scale", "inputs:level_progressive_v_motion", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "flow_noise_texture(color,color,bool,int,int,bool,float,float,float,float,float,float3,float3,float3)"
+        bool inputs:absolute_noise (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Billowing appearance"
+            renderType = "bool"
+        )
+        bool inputs:absolute_noise.connect = </flow_noise_texture.inputs:absolute_noise>
+        color3f inputs:color1 (
+            customData = {
+                double3 default = (1, 1, 1)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 1"
+            renderType = "color"
+        )
+        color3f inputs:color1.connect = </flow_noise_texture.inputs:color1>
+        color3f inputs:color2 (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Color 2"
+            renderType = "color"
+        )
+        color3f inputs:color2.connect = </flow_noise_texture.inputs:color2>
+        float inputs:level_gain (
+            customData = {
+                double default = 0.5
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Level intensity gain"
+            doc = 'If multiple levels are used, "level_gain" specifies a weighting factor for subsequent levels'
+            renderType = "float"
+        )
+        float inputs:level_gain.connect = </flow_noise_texture.inputs:level_gain>
+        float inputs:level_progressive_u_scale (
+            customData = {
+                double default = 1
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Progressive u scale"
+            doc = 'If multiple levels are used, "level_progressive_u_scale" specifies an additional scaling factor in the "u" direction'
+            renderType = "float"
+        )
+        float inputs:level_progressive_u_scale.connect = </flow_noise_texture.inputs:level_progressive_u_scale>
+        float inputs:level_progressive_v_motion (
+            customData = {
+                double default = 0
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Progressive v offset"
+            doc = 'If multiple levels are used, "level_progressive_v_motion" specifies an offset for subsequent levels in the "v" direction'
+            renderType = "float"
+        )
+        float inputs:level_progressive_v_motion.connect = </flow_noise_texture.inputs:level_progressive_v_motion>
+        float inputs:level_scale (
+            customData = {
+                double default = 2
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Level scaling"
+            doc = 'If multiple levels are used, "level_scale" specifies a global scaling factor for subsequent levels'
+            renderType = "float"
+        )
+        float inputs:level_scale.connect = </flow_noise_texture.inputs:level_scale>
+        int inputs:noise_levels (
+            customData = {
+                int default = 3
+                dictionary range = {
+                    int max = 6
+                    int min = 1
+                }
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Levels"
+            doc = "Higher amounts will add detail to the noise"
+            renderType = "int"
+        )
+        int inputs:noise_levels.connect = </flow_noise_texture.inputs:noise_levels>
+        bool inputs:object_space (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Placement"
+            displayName = "Use object space"
+            doc = "If off, UV space will be used. If on, 3d texturing in object space will apply. For applications that do not support object space, world space will be used"
+            renderType = "bool"
+        )
+        bool inputs:object_space.connect = </flow_noise_texture.inputs:object_space>
+        float inputs:phase (
+            customData = {
+                double default = 0
+            }
+            displayGroup = "Noise parameters"
+            displayName = "Phase offset"
+            doc = "Controls the 3rd dimension of the function"
+            renderType = "float"
+        )
+        float inputs:phase.connect = </flow_noise_texture.inputs:phase>
+        float3 inputs:rotation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Rotation"
+            doc = "Rotation angle of the texture in degrees"
+            renderType = "float3"
+        )
+        float3 inputs:rotation.connect = </flow_noise_texture.inputs:rotation>
+        float3 inputs:scaling (
+            customData = {
+                double3 default = (10, 10, 10)
+            }
+            displayGroup = "Placement"
+            displayName = "Tiling"
+            doc = "Controls the scale of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:scaling.connect = </flow_noise_texture.inputs:scaling>
+        int inputs:texture_space (
+            customData = {
+                int default = 0
+                dictionary range = {
+                    int max = 3
+                    int min = 0
+                }
+            }
+            displayGroup = "Placement"
+            displayName = "UV space index"
+            doc = 'Only applies if "Use object space" is off. Selects a specific UV space'
+            renderType = "int"
+        )
+        int inputs:texture_space.connect = </flow_noise_texture.inputs:texture_space>
+        float3 inputs:translation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Offset"
+            doc = "Controls position of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:translation.connect = </flow_noise_texture.inputs:translation>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </flow_noise_texture/flow_noise_texture.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </flow_noise_texture/flow_noise_texture.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </flow_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </flow_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </flow_noise_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+
+def NodeGraph "checker_texture"
+{
+    reorder properties = ["inputs:color1", "inputs:color2", "inputs:blur", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling", "outputs:tex", "outputs:color", "outputs:mono", "outputs:r", "outputs:g", "outputs:b"]
+    float inputs:blur (
+        customData = {
+            double default = 0
+            dictionary range = {
+                int max = 1
+                int min = 0
+            }
+        }
+        displayGroup = "Checker parameters"
+        displayName = "Blur"
+        renderType = "float"
+    )
+    color3f inputs:color1 (
+        customData = {
+            double3 default = (1, 1, 1)
+        }
+        displayGroup = "Checker parameters"
+        displayName = "Color 1"
+        renderType = "color"
+    )
+    color3f inputs:color2 (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Checker parameters"
+        displayName = "Color 2"
+        renderType = "color"
+    )
+    bool inputs:object_space (
+        customData = {
+            bool default = 0
+        }
+        displayGroup = "Placement"
+        displayName = "Use object space"
+        renderType = "bool"
+    )
+    float3 inputs:rotation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Rotation"
+        renderType = "float3"
+    )
+    float3 inputs:scaling (
+        customData = {
+            double3 default = (10, 10, 10)
+        }
+        displayGroup = "Placement"
+        displayName = "Tiling"
+        renderType = "float3"
+    )
+    int inputs:texture_space (
+        customData = {
+            int default = 0
+            dictionary range = {
+                int max = 3
+                int min = 0
+            }
+        }
+        displayGroup = "Placement"
+        displayName = "UV space index"
+        renderType = "int"
+    )
+    float3 inputs:translation (
+        customData = {
+            double3 default = (0, 0, 0)
+        }
+        displayGroup = "Placement"
+        displayName = "Offset"
+        renderType = "float3"
+    )
+    float outputs:b (
+        renderType = "float"
+    )
+    float outputs:b.connect = </checker_texture/z.outputs:out>
+    color3f outputs:color (
+        renderType = "color"
+    )
+    color3f outputs:color.connect = </checker_texture/construct_color.outputs:out>
+    float outputs:g (
+        renderType = "float"
+    )
+    float outputs:g.connect = </checker_texture/y.outputs:out>
+    float outputs:mono (
+        renderType = "float"
+    )
+    float outputs:mono.connect = </checker_texture/construct_float.outputs:out>
+    float outputs:r (
+        renderType = "float"
+    )
+    float outputs:r.connect = </checker_texture/x.outputs:out>
+    token outputs:tex (
+        renderType = "texture_return"
+    )
+    token outputs:tex.connect = </checker_texture/checker_texture.outputs:out>
+    custom token ui:description = "Allows texturing a checkerboard pattern"
+    uniform token ui:displayGroup = "Texturing, high level"
+    uniform token ui:displayName = "3d checker texture"
+    uniform asset ui:nodegraph:node:icon = @core_definitions.checker_texture.png@
+    custom int ui:order = 40
+
+    def Shader "checker_texture"
+    {
+        reorder properties = ["inputs:color1", "inputs:color2", "inputs:blur", "inputs:object_space", "inputs:texture_space", "inputs:rotation", "inputs:translation", "inputs:scaling"]
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/core_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "checker_texture(color,color,float3,float3,bool,float,float3,int)"
+        float inputs:blur (
+            customData = {
+                double default = 0
+                dictionary range = {
+                    int max = 1
+                    int min = 0
+                }
+            }
+            displayGroup = "Checker parameters"
+            displayName = "Blur"
+            renderType = "float"
+        )
+        float inputs:blur.connect = </checker_texture.inputs:blur>
+        color3f inputs:color1 (
+            customData = {
+                double3 default = (1, 1, 1)
+            }
+            displayGroup = "Checker parameters"
+            displayName = "Color 1"
+            renderType = "color"
+        )
+        color3f inputs:color1.connect = </checker_texture.inputs:color1>
+        color3f inputs:color2 (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Checker parameters"
+            displayName = "Color 2"
+            renderType = "color"
+        )
+        color3f inputs:color2.connect = </checker_texture.inputs:color2>
+        bool inputs:object_space (
+            customData = {
+                bool default = 0
+            }
+            displayGroup = "Placement"
+            displayName = "Use object space"
+            doc = "If off, UV space will be used. If on, 3d texturing in object space will apply. For applications that do not support object space, world space will be used"
+            renderType = "bool"
+        )
+        bool inputs:object_space.connect = </checker_texture.inputs:object_space>
+        float3 inputs:rotation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Rotation"
+            doc = "Rotation angle of the texture in degrees"
+            renderType = "float3"
+        )
+        float3 inputs:rotation.connect = </checker_texture.inputs:rotation>
+        float3 inputs:scaling (
+            customData = {
+                double3 default = (10, 10, 10)
+            }
+            displayGroup = "Placement"
+            displayName = "Tiling"
+            doc = "Controls the scale of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:scaling.connect = </checker_texture.inputs:scaling>
+        int inputs:texture_space (
+            customData = {
+                int default = 0
+                dictionary range = {
+                    int max = 3
+                    int min = 0
+                }
+            }
+            displayGroup = "Placement"
+            displayName = "UV space index"
+            doc = 'Only applies if "Use object space" is off. Selects a specific UV space'
+            renderType = "int"
+        )
+        int inputs:texture_space.connect = </checker_texture.inputs:texture_space>
+        float3 inputs:translation (
+            customData = {
+                double3 default = (0, 0, 0)
+            }
+            displayGroup = "Placement"
+            displayName = "Offset"
+            doc = "Controls position of the texture on the object"
+            renderType = "float3"
+        )
+        float3 inputs:translation.connect = </checker_texture.inputs:translation>
+        token outputs:out (
+            renderType = "texture_return"
+        )
+    }
+
+    def Shader "construct_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_float(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </checker_texture/checker_texture.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "construct_color"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "construct_color(::base::texture_return)"
+        token inputs:a (
+            renderType = "texture_return"
+        )
+        token inputs:a.connect = </checker_texture/checker_texture.outputs:out>
+        color3f outputs:out (
+            renderType = "color"
+        )
+    }
+
+    def Shader "x"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "x(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </checker_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "y"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "y(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </checker_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+
+    def Shader "z"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = @nvidia/aux_definitions.mdl@
+        uniform token info:mdl:sourceAsset:subIdentifier = "z(color)"
+        color3f inputs:a (
+            renderType = "color"
+        )
+        color3f inputs:a.connect = </checker_texture/construct_color.outputs:out>
+        float outputs:out (
+            renderType = "float"
+        )
+    }
+}
+

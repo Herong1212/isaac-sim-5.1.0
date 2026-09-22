@@ -1,0 +1,123 @@
+{
+    "ToRad": {
+        "version": 1,
+        "description": [
+            "Convert degree input into radians"
+        ],
+        "uiName": "To Radians",
+        "categories": ["math:conversion"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "degrees": {
+                "type": ["decimals"],
+                "description": "Angle value in degrees to be converted",
+                "uiName": "Degrees"
+            }
+        },
+        "outputs": {
+            "radians": {
+                "type": ["decimals"],
+                "description": "Angle value in radians",
+                "uiName": "Radians"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:degrees": {"type": "double", "value": -57.2958},
+                "outputs:radians": {"type": "double", "value": -1.0}
+            },
+            {
+                "inputs:degrees": {"type": "float", "value": -57.2958},
+                "outputs:radians": {"type": "float", "value": -1.0}
+            },
+            {
+                "inputs:degrees": {"type": "half", "value": -57.3},
+                "outputs:radians": {"type": "half", "value": -1.0}
+            },
+            {
+                "inputs:degrees": {"type": "double[2]", "value": [-57.2958, -57.2958]},
+                "outputs:radians": {"type": "double[2]", "value": [-1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "double[3]", "value": [-57.2958, -57.2958, -57.2958]},
+                "outputs:radians": {"type": "double[3]", "value": [-1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "double[4]", "value": [-57.2958, -57.2958, -57.2958, -57.2958]},
+                "outputs:radians": {"type": "double[4]", "value": [-1.0, -1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "float[2]", "value": [-57.2958, -57.2958]},
+                "outputs:radians": {"type": "float[2]", "value": [-1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "float[3]", "value": [-57.2958, -57.2958, -57.2958]},
+                "outputs:radians": {"type": "float[3]", "value": [-1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "float[4]", "value": [-57.2958, -57.2958, -57.2958, -57.2958]},
+                "outputs:radians": {"type": "float[4]", "value": [-1.0, -1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "half[2]", "value": [-57.3, -57.3]},
+                "outputs:radians": {"type": "half[2]", "value": [-1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "half[3]", "value": [-57.3, -57.3, -57.3]},
+                "outputs:radians": {"type": "half[3]", "value": [-1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "half[4]", "value": [-57.3, -57.3, -57.3, -57.3]},
+                "outputs:radians": {"type": "half[4]", "value": [-1.0, -1.0, -1.0, -1.0]}
+            },
+            {
+                "inputs:degrees": {"type": "double[]", "value": [180.0, 360.0]},
+                "outputs:radians": {"type": "double[]", "value": [3.14159, 6.28319]}
+            },
+            {
+                "inputs:degrees": {"type": "float[]", "value": [180.0, 360.0]},
+                "outputs:radians": {"type": "float[]", "value": [3.14159, 6.28319]}
+            },
+            {
+                "inputs:degrees": {"type": "half[]", "value": [180.0, 360.0]},
+                "outputs:radians": {"type": "half[]", "value": [3.14062, 6.28125]}
+            },
+            {
+                "inputs:degrees": {"type": "double[2][]", "value": [[180.0, 360.0]]},
+                "outputs:radians": {"type": "double[2][]", "value": [[3.14159, 6.28319]]}
+            },
+            {
+                "inputs:degrees": {"type": "double[3][]", "value": [[180.0, 360.0, 180.0]]},
+                "outputs:radians": {"type": "double[3][]", "value": [[3.14159, 6.28319, 3.14159]]}
+            },
+            {
+                "inputs:degrees": {"type": "double[4][]", "value": [[180.0, 360.0, 180.0, 360.0]]},
+                "outputs:radians": {"type": "double[4][]", "value": [[3.14159, 6.28319, 3.14159, 6.28319]]}
+            },
+            {
+                "inputs:degrees": {"type": "float[2][]", "value": [[180.0, 360.0]]},
+                "outputs:radians": {"type": "float[2][]", "value": [[3.14159, 6.28319]]}
+            },
+            {
+                "inputs:degrees": {"type": "float[3][]", "value": [[180.0, 360.0, 180.0]]},
+                "outputs:radians": {"type": "float[3][]", "value": [[3.14159, 6.28319, 3.14159]]}
+            },
+            {
+                "inputs:degrees": {"type": "float[4][]", "value": [[180.0, 360.0, 180.0, 360.0]]},
+                "outputs:radians": {"type": "float[4][]", "value": [[3.14159, 6.28319, 3.14159, 6.28319]]}
+            },
+            {
+                "inputs:degrees": {"type": "half[2][]", "value": [[180.0, 360.0]]},
+                "outputs:radians": {"type": "half[2][]", "value": [[3.14062, 6.28125]]}
+            },
+            {
+                "inputs:degrees": {"type": "half[3][]", "value": [[180.0, 360.0, 180.0]]},
+                "outputs:radians": {"type": "half[3][]", "value": [[3.14062, 6.28125, 3.14062]]}
+            },
+            {
+                "inputs:degrees": {"type": "half[4][]", "value": [[180.0, 360.0, 180.0, 360.0]]},
+                "outputs:radians": {"type": "half[4][]", "value": [[3.14062, 6.28125, 3.14062, 6.28125]]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnTransformVector.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_TransformVector" (
+        docs="""Applies a transformation matrix to a row vector, returning the result. returns 'Vector' * 'Matrix'. If the vector is one dimension smaller than the matrix (eg a 4x4 matrix and a 3d vector),  the last component of the vector will be treated as a 1. The result is then projected back to a 3-vector.  Supports mixed array inputs, eg a single matrix and an array of vectors."""
+    )
+    {
+        token node:type = "omni.graph.nodes.TransformVector"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:matrix (
+            docs="""The transformation matrix to be applied"""
+        )
+        custom token inputs:vector (
+            docs="""The row vector(s) to be translated"""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""The transformed row vector(s)"""
+        )
+    }
+}

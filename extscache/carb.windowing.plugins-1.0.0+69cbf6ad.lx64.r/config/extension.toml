@@ -1,0 +1,14 @@
+[package]
+title = "Core Windowing"
+version = "1.0.0"
+category = "Windowing"
+description = "A low level windowing and input plugins for Omniverse applications"
+authors = ["NVIDIA"]
+keywords = ["core"]
+support_level = "Core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[test]]
+waiver = "Tested in Carbonite"

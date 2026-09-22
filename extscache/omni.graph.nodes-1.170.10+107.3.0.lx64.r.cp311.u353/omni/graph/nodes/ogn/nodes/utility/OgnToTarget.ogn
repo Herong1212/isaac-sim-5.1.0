@@ -1,0 +1,72 @@
+{
+    "ToTarget": {
+        "version": 1,
+        "description": [
+            "Creates a target object using the input value as references in the scenegraph.\n",
+            "Target objects in OmniGraph are represented by USD Relationships.",
+            "See https://openusd.org/release/glossary.html#usdglossary-relationship for more information."
+        ],
+        "uiName": "To Target",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["string", "path", "token", "token[]"],
+                "uiName": "Value",
+                "description": [
+                    "The value or values to add as scenegraph references in the output target object.",
+                    "If the input is an empty string, no references are added to the target object.",
+                    "If the input is not a valid scenegraph path, an empty path is added to the target object.",
+                    "If the input is a token[], each element is added to the target object as an scenegraph reference."
+                ]
+            }
+        },
+        "outputs": {
+            "converted": {
+                "type": "target",
+                "uiName": "Target",
+                "description": "A target output containing the input value as scenegraph references."
+            }
+        },
+        "state": {
+            "value": {
+                "type": ["string", "path", "token", "token[]"],
+                "description": "A cached value of the input used to determine if the output target needs to be updated."
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": {"type": "string", "value": ""},
+                "outputs:converted": []
+            },
+            {
+                "inputs:value": {"type": "string", "value": "/A"},
+                "outputs:converted": "/A"
+            },
+            {
+                "inputs:value": {"type": "path", "value": "/A"},
+                "outputs:converted": "/A"
+            },
+            {
+                "inputs:value": {"type": "token", "value": ""},
+                "outputs:converted": []
+            },
+            {
+                "inputs:value": {"type": "token", "value": "/A"},
+                "outputs:converted": "/A"
+            },
+            {
+                "inputs:value": {"type": "token[]", "value": []},
+                "outputs:converted": []
+            },
+            {
+                "inputs:value": {"type": "token[]", "value": ["/A", "", "/C"]},
+                "outputs:converted": ["/A", "/C"]
+            },
+            {
+                "inputs:value": {"type": "token[]", "value": ["/A", "/B", "/C"]},
+                "outputs:converted": ["/A", "/B", "/C"]
+            }
+        ]
+    }
+}

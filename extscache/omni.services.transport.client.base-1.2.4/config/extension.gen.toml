@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.transport.client.base-1.2.4.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.123029.47f9f660.tc"
+        date = 1693262904
+        buildNumber = "105.1.0+master.2256.61291832.gl"
+        repoName = "kit-services"
+        signed = 1

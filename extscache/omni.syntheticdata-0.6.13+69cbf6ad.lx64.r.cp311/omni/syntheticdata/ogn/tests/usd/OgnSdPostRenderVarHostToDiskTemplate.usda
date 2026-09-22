@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSdPostRenderVarHostToDisk.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_syntheticdata_SdPostRenderVarHostToDisk" (
+        docs="""Dispatch the writting of a host renderVar to disk."""
+    )
+    {
+        token node:type = "omni.syntheticdata.SdPostRenderVarHostToDisk"
+        int node:typeVersion = 1
+
+        # 9 attributes
+        custom bool inputs:detachResourceBeforeDispatch = false (
+            docs="""Duplicate the resource before dispatching the copy"""
+        )
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom string inputs:outputBasename = "" (
+            docs="""Basename to write renderVar file. (use {renderVar} if empty)"""
+        )
+        custom string inputs:outputFolder = "/tmp/ovSdOut" (
+            docs="""Folder to write renderVar file"""
+        )
+        custom bool inputs:outputRationalRenderTime = true (
+            docs="""Add rational render time to the basename"""
+        )
+        custom token inputs:renderProductPath = "" (
+            docs="""Path of the render product prim"""
+        )
+        custom token inputs:renderVar = "" (
+            docs="""Name of the renderVar to write to disk"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+
+        # 2 attributes
+        custom uint outputs:exec (
+            docs="""Trigger"""
+        )
+        custom string outputs:outputPath (
+            docs="""Output path to be written"""
+        )
+    }
+}

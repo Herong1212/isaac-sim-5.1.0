@@ -1,0 +1,93 @@
+[package]
+title = "Datastore caches"
+category = "Internal"
+description = "Derived data caches to store GPU-ready data for streaming by the RTX-Renderer and other systems"
+keywords = ["data", "cache", "streaming", "GPU"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.blobkey" = { }
+"omni.kit.trace" = { optional = true }
+"omni.metrics.core" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = true
+
+[settings]
+
+[[test]]
+name="readthrough"
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.datastore.tests${lib_ext}",
+]
+
+args = [
+	"--/GRPCDataStoreServer/ReadThroughDataStore/enabled=true",
+	"--/GRPCDataStoreServer/ReadThroughDataStore/ldsPath=\"__temppath__\"",
+	"--/GRPCDataStoreServer/ReadThroughDataStore/ldsSizeMB=1000",
+	"--/GRPCDataStoreServer/ReadThroughDataStore/ddcsDns=\"0.0.0.0:7890\"",
+	"--/GRPCDataStoreServer/ReadThroughDataStore/address=\"0.0.0.0:8000\"",
+    "--/GRPCDataStoreServer/ReadThroughDataStore/ddcsUseTLS=false",
+	"--/GRPCDataStoreTest/clientURL=\"0.0.0.0:8000\"",
+    "--/UJITSO/datastore/GRPCDataStore/useTLS=false",
+    "--/UJITSO/datastore/GRPCDataStore/tenantID='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedTenant='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/enabled=true",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/path=${omni.datastore}/data/tests/jwt/dummy",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedJWT='dummy_jtw_content'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/address=0.0.0.0:7890",
+	"--/UJITSO/datastore/GRPCDataStoreServer/cachePath='__temppath__'",
+    "--/no-window"
+	]
+
+dependencies = [
+    "omni.ujitso.default",
+	]
+
+[[test]]
+name="single_shard"
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.datastore.tests${lib_ext}",
+]
+
+args = [
+    "--/UJITSO/datastore/GRPCDataStore/useTLS=false",
+    "--/UJITSO/datastore/GRPCDataStore/tenantID='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedTenant='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/enabled=true",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/path=${omni.datastore}/data/tests/jwt/dummy",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedJWT='dummy_jtw_content'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/address=0.0.0.0:7890",
+	"--/UJITSO/datastore/GRPCDataStoreServer/cachePath=\"__temppath__\"",
+	]
+
+dependencies = [
+    "omni.ujitso.default",
+	]
+
+[[test]]
+name="multi_shard"
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.datastore.tests${lib_ext}",
+]
+
+args = [
+    "--/GRPCDataStoreTest/clientURL=localhost:7890;localhost:7891",
+    "--/UJITSO/datastore/GRPCDataStore/useTLS=false",
+    "--/UJITSO/datastore/GRPCDataStore/tenantID='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedTenant='abcdefg-hijklmnopqrstuvwxyzAB_CDEFGHIJKLMNO'",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/enabled=true",
+    "--/UJITSO/datastore/GRPCDataStore/selfFile/path=${omni.datastore}/data/tests/jwt/dummy",
+    "--/UJITSO/datastore/GRPCDataStoreServer/verifyExpectedJWT='dummy_jtw_content'",
+    "--/UJITSO/datastore/GRPCDataStoreServer/address=0.0.0.0:7890;0.0.0.0:7891",
+	"--/UJITSO/datastore/GRPCDataStoreServer/cachePath=\"__temppath__\"",
+	]
+
+dependencies = [
+    "omni.ujitso.default",
+	]
+
+[documentation]
+pages = ["docs/Overview.md"]

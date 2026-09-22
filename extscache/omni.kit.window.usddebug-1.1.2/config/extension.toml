@@ -1,0 +1,25 @@
+[package]
+title = "USD Debug Flags"
+description = "View and Toggle USD Debug Flags"
+version = "1.1.2"
+category = "Internal"
+authors = ["NVIDIA"]
+keywords = ["usd"]
+changelog = "docs/CHANGELOG.md"
+repository = ""
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+readme = "docs/README.md"
+
+[dependencies]
+"omni.usd" = {}
+"omni.kit.uiapp" = {}
+
+[[python.module]]
+name = "omni.kit.window.usddebug"
+
+[[test]]
+# Extra dependencies only to be used during test run
+dependencies = [
+    "omni.kit.ui_test" # UI testing extension
+]

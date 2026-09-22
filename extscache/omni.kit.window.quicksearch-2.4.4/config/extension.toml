@@ -1,0 +1,42 @@
+[package]
+version = "2.4.4"
+category = "Internal"
+feature = true
+title = "Quick Search"
+description = "Opens the window when the user presses Tab key."
+authors = ["NVIDIA"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+readme  = "docs/README.md"
+repository = ""
+
+[dependencies]
+"omni.client" = {}
+"omni.kit.widget.imageview" = {}
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.actions.core" = {optional=true}
+"omni.kit.hotkeys.core" = {optional=true}
+"omni.appwindow" = {}
+
+[[python.module]]
+name = "omni.kit.window.quicksearch"
+
+[[test]]
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.renderer.capture",
+    "omni.kit.renderer.core",
+    "omni.kit.ui_test",
+    "omni.kit.hotkeys.core"
+]
+
+args = [
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/cursorBlink=false",
+    "--no-window"
+]

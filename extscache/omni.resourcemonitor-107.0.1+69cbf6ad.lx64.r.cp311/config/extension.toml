@@ -1,0 +1,40 @@
+[package]
+support_level = "Core"
+title = "Resource Monitor"
+description = "Monitor utility for device and host memory"
+authors = ["NVIDIA"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+category = "Internal"
+keywords = ["resource", "monitor", "utility", "device", "memory"]
+preview_image = "data/preview.png"
+version = "107.0.1"
+
+[dependencies]
+"omni.gpu_foundation" = {}
+
+[[python.module]]
+name = "omni.resourcemonitor"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+# Additional python module with tests, to make them discoverable by test system
+[[python.module]]
+name = "omni.resourcemonitor.tests"
+
+[[test]]
+timeout = 300
+
+args = [
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.usd",
+    "omni.kit.ui_test",
+    "omni.kit.window.preferences",
+]
+
+stdoutFailPatterns.exclude = [
+]

@@ -1,0 +1,11 @@
+#usda 1.0
+
+over "World" (
+    references = [
+        @assets/Cube.usda@,
+        @assets/Sphere.usda@
+    ]
+)
+{
+}
+

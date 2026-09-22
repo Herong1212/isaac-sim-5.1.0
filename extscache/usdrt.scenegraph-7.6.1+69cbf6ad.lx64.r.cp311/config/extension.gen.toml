@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/usdrt.scenegraph-d07fb477fd5bec7c.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.226301.d992eb31.gl"
+        date = 1757755259
+        buildNumber = "107.3.3+1073.226301.d992eb31.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

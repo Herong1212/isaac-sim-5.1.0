@@ -1,0 +1,127 @@
+{
+    "Magnitude": {
+        "version": 1,
+        "description": [
+            "Compute the magnitude of a vector, array of vectors, or a scalar.",
+            "If a scalar is passed in, the absolute value will be returned.",
+            "If an array of vectors are passed in, the output will be an array of corresponding magnitudes."
+        ],
+        "uiName": "Magnitude",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "tags": ["absolute"],
+        "inputs": {
+            "input": {
+                "type": ["decimals", "integrals"],
+                "description": "The vector(s) or scalar(s) to take the magnitude of."
+            }
+        },
+        "outputs": {
+            "magnitude": {
+                "type": ["decimals", "integrals"],
+                "description": "The resulting magnitude(s) of the inputted vector(s) or scalar(s)."
+            }
+        },
+        "tests": [
+            {
+                "inputs:input": {"type": "double", "value": -10.0},
+                "outputs:magnitude": {"type": "double", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "float", "value": -10.0},
+                "outputs:magnitude": {"type": "float", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "half", "value": -10.0},
+                "outputs:magnitude": {"type": "half", "value": 10.0}
+            },
+            {
+                "inputs:input": {"type": "int", "value": -10},
+                "outputs:magnitude": {"type": "int", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "int64", "value": -10},
+                "outputs:magnitude": {"type": "int64", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uchar", "value": 10},
+                "outputs:magnitude": {"type": "uchar", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uint", "value": 10},
+                "outputs:magnitude": {"type": "uint", "value": 10}
+            },
+            {
+                "inputs:input": {"type": "uint64", "value": 10},
+                "outputs:magnitude": {"type": "uint64", "value": 10}
+            },
+
+            {
+                "inputs:input": {"type": "int[2]", "value": [3, -4]},
+                "outputs:magnitude": {"type": "double", "value": 5.0}
+            },
+            {
+                "inputs:input": {"type": "double[3]", "value": [1.0, 2.0, 2.0]},
+                "outputs:magnitude": {"type": "double", "value": 3.0}
+            },
+            {
+                "inputs:input": {"type": "float[4]", "value": [-2.0, 2.0, -2.0, 2.0]},
+                "outputs:magnitude": {"type": "float", "value": 4.0}
+            },
+            {
+                "inputs:input": {"type": "half[2]", "value": [3.0, -4.0]},
+                "outputs:magnitude": {"type": "half", "value": 5.0}
+            },
+
+            {
+                "inputs:input": {"type": "double[]", "value": [1.0, 2.0, 2.0]},
+                "outputs:magnitude": {"type": "double[]", "value": [1.0, 2.0, 2.0]}
+            },
+            {
+                "inputs:input": {"type": "float[]", "value": [-2.0, 2.0, -2.0, 2.0]},
+                "outputs:magnitude": {"type": "float[]", "value": [2.0, 2.0, 2.0, 2.0]}
+            },
+            {
+                "inputs:input": {"type": "half[]", "value": [3.0, -4.0]},
+                "outputs:magnitude": {"type": "half[]", "value": [3.0, 4.0]}
+            },
+            {
+                "inputs:input": {"type": "int[]", "value": [3, -4]},
+                "outputs:magnitude": {"type": "int[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "int64[]", "value": [3, -4]},
+                "outputs:magnitude": {"type": "int64[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uchar[]", "value": [3, 4]},
+                "outputs:magnitude": {"type": "uchar[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uint[]", "value": [3, 4]},
+                "outputs:magnitude": {"type": "uint[]", "value": [3, 4]}
+            },
+            {
+                "inputs:input": {"type": "uint64[]", "value": [3, 4]},
+                "outputs:magnitude": {"type": "uint64[]", "value": [3, 4]}
+            },
+
+            {
+                "inputs:input": {"type": "int[3][]", "value": [[1, 2, 2], [4, 2, 6], [3, 2, 4], [1, -4, 2]]},
+                "outputs:magnitude": {"type": "double[]", "value": [3.0, 7.483314773547883, 5.385164807134504, 4.58257569495584]}
+            },
+            {
+                "inputs:input": {"type": "double[3][]", "value": [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:magnitude": {"type": "double[]", "value": [3.0, 7.483314773547883, 5.385164807134504, 4.58257569495584]}
+            },
+            {
+                "inputs:input": {"type": "float[3][]", "value": [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:magnitude": {"type": "float[]", "value": [3.0, 7.483315, 5.3851647, 4.582576]}
+            },
+            {
+                "inputs:input": {"type": "half[3][]", "value": [[1.0, 2.0, 2.0], [4.0, 2.0, 6.0], [3.0, 2.0, 4.0], [1.0, -4.0, 2.0]]},
+                "outputs:magnitude": {"type": "half[]", "value": [3.0, 7.484375, 5.3867188, 4.5820312]}
+            }
+        ]
+    }
+}

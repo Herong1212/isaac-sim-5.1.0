@@ -1,0 +1,71 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+mats:
+  create.material_omnipbr:
+    diffuse:
+      distribution.uniform:
+          lower: [0, 0, 0]
+          upper: [1, 1, 1]
+    count: 100
+
+spheres:
+  create.sphere:
+    scale: 0.2
+    position:
+      distribution.uniform:
+        lower: [-1, -1, -1]
+        upper: [1, 1, 1]
+    count: 100
+
+# Unused - preserves material randomizer node ID after functional improvements.
+unused:
+  distribution.uniform:
+    lower: -1
+    upper: 1
+
+register_materials:
+  randomizer.register:
+    get_spheres:
+      inputs:
+        spheres: null
+        mats: null
+      with.spheres:
+        randomizer.materials:
+          materials: mats
+
+trigger:
+  trigger.on_frame:
+    max_execs: 100
+    rt_subframes: 3
+
+with_trigger:
+  with.trigger:
+    randomizer.get_spheres:
+      spheres: spheres
+      mats: mats
+
+camera:
+  create.camera:
+    position: [5, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

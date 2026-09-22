@@ -1,0 +1,23 @@
+[package]
+version = "1.0.8"
+authors = ["NVIDIA"]
+title = "Icons for Stage Widget"
+description = "Default Set of Icons for the Stage Window."
+readme = "docs/README.md"
+repository = ""
+category = "Stage"
+keywords = ["kit", "example"]
+changelog = "docs/CHANGELOG.md"
+icon = "data/icon.png"
+support_level = "Core"
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md",]
+
+[[python.module]]
+name = "omni.kit.widget.stage_icons"
+
+[[test]]
+dependencies = [
+    "omni.kit.widget.stage",
+]

@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.activity.usd_resolver-2f463b07179e6677.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.199250.566a1fcf.gl"
+        date = 1757755256
+        buildNumber = "107.3.0+1073.199250.566a1fcf.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

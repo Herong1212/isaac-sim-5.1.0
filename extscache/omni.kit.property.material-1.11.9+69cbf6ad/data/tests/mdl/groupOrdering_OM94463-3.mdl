@@ -1,0 +1,37 @@
+mdl 1.8;
+
+import ::anno::*;
+import ::df::diffuse_edf;
+import ::nvidia::core_definitions::diffuse;
+
+export material diffuse(
+	bool a_bool = true [[
+        anno::display_name("A bool"),
+        anno::ui_order(3),
+        anno::in_group("A group")
+    ]],
+    float a_float = 0.5f [[
+        anno::display_name("A float"),
+        anno::ui_order(0),
+        anno::in_group("A group")
+    ]],
+    float a_float_in_a_group1 = 0.5f [[
+        anno::display_name("A float in a group"),
+        anno::ui_order(1),
+        anno::in_group("A group", "A subgroup")
+    ]],
+    float a_float_in_a_group2 = 0.6f [[
+        anno::display_name("Another float in a group"),
+        anno::ui_order(2),
+        anno::in_group("A group", "A subgroup")
+    ]]
+) = let {
+	material_surface main(
+		bsdf(),
+		material_emission(::df::diffuse_edf(""),
+						  color(1.f),
+						  intensity_radiant_exitance));
+}
+ in material(
+	surface: main
+);

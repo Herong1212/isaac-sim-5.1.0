@@ -1,0 +1,146 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnImportUSDPrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ImportUSDPrim" (
+        docs="""Imports data from a USD prim into attributes in an output bundle This node is deprecated, Use ReadPrim nodes instead"""
+    )
+    {
+        token node:type = "omni.graph.ImportUSDPrim"
+        int node:typeVersion = 1
+
+        # 17 attributes
+        custom bool inputs:applySkelBinding = true (
+            docs="""If the input USD prim is a Mesh, and has SkelBindingAPI schema applied, compute skinned points and normals."""
+        )
+        custom bool inputs:applyTransform = false (
+            docs="""If importAttributes is true, apply the transform necessary to transform any transforming attributes into the space of this node."""
+        )
+        custom token inputs:attrNamesToImport = "" (
+            docs="""Comma or space separated text, listing the names of attributes in the input data to be imported 
+            or empty to import all attributes."""
+        )
+        custom bool inputs:computeBoundingBox = false (
+            docs="""Compute and store local bounding box of a prim and its children."""
+        )
+        custom bool inputs:importAttributes = true (
+            docs="""Import attribute data from the USD prim."""
+        )
+        custom bool inputs:importPath = true (
+            docs="""Record the input USD prim's path into the output bundle in an attribute named "primPath"."""
+        )
+        custom bool inputs:importPrimvarMetadata = true (
+            docs="""Import metadata like the interpolation type for primvars, and store it as attributes in the output bundle."""
+        )
+        custom bool inputs:importTime = true (
+            docs="""Record the usdTimecode above into the output bundle in an attribute named "primTime"."""
+        )
+        custom bool inputs:importTransform = true (
+            docs="""Record the transform required to take any attributes of the input USD prim 
+            into the space of this node, i.e. the world transform of the input prim times the 
+            inverse world transform of this node, into the output bundle in an attribute named "transform"."""
+        )
+        custom bool inputs:importType = true (
+            docs="""Deprecated, prim type is always imported"""
+        )
+        custom token inputs:inputAttrNames = "" (
+            docs="""Comma or space separated text, listing the names of attributes in the input data to be renamed"""
+        )
+        custom bool inputs:keepPrimsSeparate = true (
+            docs="""Prefix output attribute names with "prim" followed by a unique number and a colon, 
+            to keep the attributes for separate input prims separate.  The prim paths will 
+            be in the "primPaths" token array attribute."""
+        )
+        custom token inputs:outputAttrNames = "" (
+            docs="""Comma or space separated text, listing the new names for the attributes listed in inputAttrNames"""
+        )
+        custom rel inputs:prim (
+            docs="""The USD prim from which to import data."""
+        )
+        custom bool inputs:renameAttributes = false (
+            docs="""If true, attributes listed in "inputAttrNames" will be imported to attributes with the names specified in "outputAttrNames"."""
+        )
+        custom bool inputs:timeVaryingAttributes = true (
+            docs="""Check whether the USD attributes are time-varying and if so, import their data at the time "usdTimecode"."""
+        )
+        custom double inputs:usdTimecode = 0 (
+            docs="""The time at which to evaluate the transform of the USD prim."""
+        )
+
+        # 1 attribute
+        custom rel outputs_output (
+            docs="""Output bundle containing all of the imported data."""
+        )
+
+        # 20 attributes
+        custom bool state:prevApplySkelBinding (
+            docs="""Value of "applySkelBinding" input from previous run"""
+        )
+        custom bool state:prevApplyTransform (
+            docs="""Value of "applyTransform" input from previous run"""
+        )
+        custom token state:prevAttrNamesToImport (
+            docs="""Value of "attrNamesToImport" input from previous run"""
+        )
+        custom bool state:prevComputeBoundingBox (
+            docs="""Value of "computeBoundingBox" input from previous run"""
+        )
+        custom bool state:prevImportAttributes (
+            docs="""Value of "importAttributes" input from previous run"""
+        )
+        custom bool state:prevImportPath (
+            docs="""Value of "importPath" input from previous run"""
+        )
+        custom bool state:prevImportPrimvarMetadata (
+            docs="""Value of "importPrimvarMetadata" input from previous run"""
+        )
+        custom bool state:prevImportTime (
+            docs="""Value of "importTime" input from previous run"""
+        )
+        custom bool state:prevImportTransform (
+            docs="""Value of "importTransform" input from previous run"""
+        )
+        custom bool state:prevImportType (
+            docs="""Value of "importType" input from previous run"""
+        )
+        custom token state:prevInputAttrNames (
+            docs="""Value of "inputAttrNames" input from previous run"""
+        )
+        custom matrix4d state:prevInvNodeTransform (
+            docs="""Inverse transform of the node prim from the previous run."""
+        )
+        custom bool state:prevKeepPrimsSeparate (
+            docs="""Value of "keepPrimsSeparate" input from previous run"""
+        )
+        custom bool state:prevOnlyImportSpecified (
+            docs="""Value of "onlyImportSpecified" input from previous run"""
+        )
+        custom token state:prevOutputAttrNames (
+            docs="""Value of "outputAttrNames" input from previous run"""
+        )
+        custom token[] state:prevPaths (
+            docs="""Array of paths from the previous run."""
+        )
+        custom bool state:prevRenameAttributes (
+            docs="""Value of "renameAttributes" input from previous run"""
+        )
+        custom bool state:prevTimeVaryingAttributes (
+            docs="""Value of "timeVaryingAttributes" input from previous run"""
+        )
+        custom matrix4d[] state:prevTransforms (
+            docs="""Array of transforms from the previous run."""
+        )
+        custom double state:prevUsdTimecode (
+            docs="""Value of "usdTimecode" input from previous run"""
+        )
+    }
+}

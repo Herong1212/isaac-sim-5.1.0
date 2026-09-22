@@ -1,0 +1,4 @@
+# Preserve file visibility; large-file exclusions are managed in the root .gitignore.
+# Disabled: /pydevd_frame_evaluator.*.so
+# Disabled: /pydevd_frame_evaluator.*.pyd
+# Disabled: /pydevd_frame_evaluator.pyx

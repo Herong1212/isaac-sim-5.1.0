@@ -1,0 +1,73 @@
+[package]
+title = "Console Window"
+version = "1.1.4"
+category = "Utilities"
+description = "The activity and event log viewer and a simple command line tool"
+keywords = ["console", "window", "kit", "log", "command"]
+support_level = "Core"
+feature = true
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.filter" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.hotkeys.core" = { optional=true }
+"omni.kit.actions.core" = { optional=true }
+
+[[native.library]]
+path = "bin/${lib_prefix}omni.kit.window.console.plugin${lib_ext}"
+
+[settings.exts."omni.kit.window.console"]
+# Commands to execute on startup:
+startupCommands = []
+logFilter.verbose = false
+logFilter.info = false
+logFilter.warning = true
+logFilter.error = true
+logFilter.fatal = true
+showOpenLogButtons = true
+# Show input field to input commands
+enableInput = true
+# Show window at startup
+startup.show_window = true
+
+[[python.module]]
+name = "omni.kit.window.console"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/python/scriptFolders/0=${omni.kit.window.console}/data/tests",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.hotkeys.core",
+]
+
+[[test]]
+name = "no_open_log_buttons"
+pythonTests.include = [
+    "omni.kit.window.console.tests.*test_console",
+]
+args = [
+    "--/exts/omni.kit.window.console/showOpenLogButtons=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window"
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers"
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md"]

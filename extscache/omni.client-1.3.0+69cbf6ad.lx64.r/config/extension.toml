@@ -1,0 +1,26 @@
+[core]
+reloadable = false
+
+[package]
+title = "Omniverse Client Library Wrapper"
+version = "1.3.0"
+category = "Internal"
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+description = "Omniverse Client Library Kit Integration. Adds carb.datasource, carb.omniclient plugins. Starts liveProcess() calls."
+keywords = ["client", "nucleus", "filesystem", "http"]
+support_level = "Core"
+
+[dependencies]
+"omni.client.lib" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[native.plugin]]
+path = "bin/deps/*.plugin"
+recursive = false
+
+[[test]]
+waiver = "Tested in rendering repo"

@@ -1,0 +1,76 @@
+{
+    "version": 1,
+    "apiVersion": "1.0",
+    "name": "Oculus Go Controller",
+    "interactionProfile": "/interaction_profiles/oculus/go_controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceType": "controller"
+                },
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "system",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "back",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "trackpad",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "grip_surface",
+                    "apiVersion": "1.1"
+                }
+            ],
+            "outputs": [
+            ],
+            "defaultPose": "aim"
+        }
+    ]
+}

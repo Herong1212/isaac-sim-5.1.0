@@ -1,0 +1,97 @@
+{
+    "Slider": {
+        "version": 1,
+        "description": ["Create a slider widget on the Viewport"],
+        "uiName": "Slider (BETA)",
+        "language": "Python",
+        "categories": ["internal:test"],
+        "exclude": ["tests"],
+        "metadata": {
+            "hidden": true
+        },
+        "inputs": {
+            "create": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to create and show the widget.",
+                "uiName": "Create"
+            },
+            "tearDown": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to tear down the widget and all its child widgets.",
+                "uiName": "Tear Down"
+            },
+            "show": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to show the widget and all its child widgets after they become hidden.",
+                "uiName": "Show"
+            },
+            "hide": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to hide the widget and all its child widgets.",
+                "uiName": "Hide"
+            },
+            "enable": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready enable this button after it has been disabled.",
+                "uiName": "Enable"
+            },
+            "disable": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to disable this button so that it cannot be pressed.",
+                "uiName": "Disable"
+            },
+            "widgetIdentifier": {
+                "type": "token",
+                "description": [
+                    "An optional unique identifier for the widget.",
+                    "Can be used to refer to this widget in other places such as the OnWidgetClicked node."
+                ],
+                "uiName": "Widget Identifier",
+                "optional": true
+            },
+            "parentWidgetPath": {
+                "type": "token",
+                "description": [
+                    "The absolute path to the parent widget.",
+                    "If empty, this widget will be created as a direct child of Viewport."
+                ],
+                "uiName": "Parent Widget Path",
+                "optional": true
+            },
+            "width": {
+                "type": "double",
+                "description": "The width of the created slider",
+                "uiName": "Width",
+                "default": 100.0
+            },
+            "min": {
+                "type": "float",
+                "description": "The minimum value of the slider",
+                "uiName": "Min"
+            },
+            "max": {
+                "type": "float",
+                "description": "The maximum value of the slider",
+                "uiName": "Max"
+            },
+            "step": {
+                "type": "float",
+                "description": "The step size of the slider",
+                "uiName": "Step",
+                "default": 0.01
+            }
+        },
+        "outputs": {
+            "created": {
+                "type": "execution",
+                "description": "When the widget is created, signal to the graph that execution can continue downstream.",
+                "uiName": "Created"
+            },
+            "widgetPath": {
+                "type": "token",
+                "description": "The absolute path to the created widget",
+                "uiName": "Widget Path"
+            }
+        }
+    }
+}

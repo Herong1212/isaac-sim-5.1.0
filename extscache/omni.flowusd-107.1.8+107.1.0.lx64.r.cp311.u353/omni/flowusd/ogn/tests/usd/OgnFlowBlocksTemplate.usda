@@ -1,0 +1,32 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnFlowBlocks.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_flowusd_FlowBlocks" (
+        docs="""Count of currently used Flow resources"""
+    )
+    {
+        token node:type = "omni.flowusd.FlowBlocks"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint outputs:activeBlockCount = 0 (
+            docs="""Number of active Flow blocks"""
+        )
+        custom uint outputs:execOut (
+            docs="""Executes when values are updated"""
+        )
+        custom uint outputs:maxBlockCount = 0 (
+            docs="""Number of maximum confignured Flow blocks"""
+        )
+    }
+}

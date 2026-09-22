@@ -1,0 +1,40 @@
+[package]
+title = "FileBrowser Widget"
+version = "2.12.3"
+category = "Internal"
+description = "Filebrowser embeddable widget"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+readme  = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.client" = {}
+"omni.kit.helper.file_utils" = {}
+
+[[python.module]]
+name = "omni.kit.widget.filebrowser"
+
+[[python.scriptFolder]]
+path = "scripts"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

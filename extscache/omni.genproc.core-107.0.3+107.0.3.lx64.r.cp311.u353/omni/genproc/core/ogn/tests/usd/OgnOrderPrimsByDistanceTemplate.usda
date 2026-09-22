@@ -1,0 +1,45 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnOrderPrimsByDistance.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_OrderPrimsByDistance" (
+        docs="""Order mesh prims based on their distance to a reference point."""
+    )
+    {
+        token node:type = "omni.genproc.core.OrderPrimsByDistance"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom rel inputs:bundle (
+            docs="""Bundle Prims"""
+        )
+        custom float3 inputs:point = (0, 0, 0) (
+            docs="""Point from which to measure distances to prims"""
+        )
+        custom bool inputs:verbose = false (
+            docs="""Log verbose information"""
+        )
+
+        # 1 attribute
+        custom rel outputs_bundle (
+            docs="""Bundle Prims"""
+        )
+
+        # 2 attributes
+        custom float3 state:prevPoint (
+            docs="""Previous point value for recompute test"""
+        )
+        custom bool state:prevVerbose (
+            docs="""Previous verbose value for recompute test"""
+        )
+    }
+}

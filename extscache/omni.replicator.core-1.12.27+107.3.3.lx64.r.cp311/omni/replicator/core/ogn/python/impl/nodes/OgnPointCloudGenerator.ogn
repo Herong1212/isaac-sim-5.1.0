@@ -1,0 +1,240 @@
+{
+    "OgnPointCloudGenerator" : {
+        "version": 1,
+        "language": "python",
+        "cudaPointers": "cpu",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "description": [
+            "This node generates pointcloud from rgb, normals, distance_to_camera and semantic sgementations."
+        ],
+        "metadata": {
+           "uiName": "Get Pointcloud Python"
+        },
+        "inputs": {
+            "normalsPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw normals data (host pointer)",
+                "default": 0
+            },
+            "normalsStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for normals."
+            },
+            "normalsCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "rgbPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw rgb data (host pointer)",
+                "default": 0
+            },
+            "rgbStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for LdrColor."
+            },
+            "rgbCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "camera3dPositionsPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw camera 3d position data (host pointer)",
+                "default": 0
+            },
+            "camera3dPositionsStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for Camera3dPosition."
+            },
+            "camera3dPositionsCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "cameraViewTransform": {
+                "type": "matrixd[4]",
+                "description": "Camera view matrix"
+            },
+            "semanticSegmentationPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw semantic segmentation data (host pointer)",
+                "default": 0
+            },
+            "semanticSegmentationStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for semanticSegmentation."
+            },
+            "semanticSegmentationCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "instanceSegmentationPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw instance segmentation data (host pointer)",
+                "default": 0
+            },
+            "instanceSegmentationStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for instance segmentation."
+            },
+            "instanceSegmentationCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "includeUnlabelled": {
+                "type": "bool",
+                "description": "If set to true, prim with no semantics will also be in output",
+                "default": false
+            },
+            "width": {
+                "type": "uint",
+                "description": "Width"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Height"
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            }
+        },
+        "outputs": {
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "dataType": {
+                "type": "token",
+                "default": "float32",
+                "description": "Defines the data type"
+            },
+            "dataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "pointRgbPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "pointRgbBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "pointRgbDataType": {
+                "type": "token",
+                "default": "uint8",
+                "description": "Defines the data type"
+            },
+            "pointRgbDataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "pointRgbCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "pointNormalsPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "pointNormalsBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "pointNormalsDataType": {
+                "type": "token",
+                "default": "float32",
+                "description": "Defines the data type"
+            },
+            "pointNormalsDataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "pointNormalsCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "pointSemanticPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "pointSemanticBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "pointSemanticDataType": {
+                "type": "token",
+                "default": "uint32",
+                "description": "Defines the data type"
+            },
+            "pointSemanticDataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "pointSemanticCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "pointInstancePtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "pointInstanceBufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "pointInstanceDataType": {
+                "type": "token",
+                "default": "uint32",
+                "description": "Defines the data type"
+            },
+            "pointInstanceDataShape": {
+                "type": "int[]",
+                "description": "Desired dimensions of output array"
+            },
+            "pointInstanceCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            }
+        }
+    }
+}

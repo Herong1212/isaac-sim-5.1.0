@@ -1,0 +1,66 @@
+isaacsim.replicator.object:
+  occlusion_threshold: 0.01
+  basic_shape:
+    tracked: true
+    physics: rigidbody
+    color:
+    - 0.5 + 0.5 * math.cos(2 * math.pi * $[index] / $[count])
+    - 0.5 + 0.5 * math.cos(2 * math.pi * ($[index] / $[count] + 0.33))
+    - 0.5 + 0.5 * math.cos(2 * math.pi * ($[index] / $[count] + 0.67))
+    count: 10
+    subtype: torus
+    transform_operators:
+    - translate:
+      - 10
+      - math.sin($[../index] / 2 + 2 * $[seed]) * 60
+      - ($[../index] - ($[../count] - 1) / 2) * 50
+    - rotateX:
+        distribution_type: range
+        start: -180
+        end: 180
+    - rotateY:
+        distribution_type: range
+        start: -180
+        end: 180
+    - scale:
+      - $[/torus_size]
+      - $[/torus_size]
+      - $[/torus_size]
+    type: geometry
+  default_camera:
+    count: 2
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - rotateY: 90
+    - rotateX: -10
+    - translate:
+      - 0
+      - 0
+      - 600 + 100 * $[../index]
+    type: camera
+  gravity: 0
+  linear_damping: 10
+  angular_damping: 10
+  simulation_time: 5
+  num_frames: 5
+  parent_config: standard
+  torus_size: 0.5
+  version: 0.4.12
+  caption_configs:
+    save_full_scene_graph: true
+    save_pruned_scene_graph: true
+    attach_label_to_usd: false
+    use_ai_label: false
+    visualize_caption: true
+    max_object_capacity: 100
+    export_edges: true
+    caption_only: false
+    global_caption: true
+    qa_caption: true
+    brief_caption: true
+    pruning_ratio: 1.0
+    verbose: true
+    random_seed: 0
+    caption_writer: CombinedIROSceneGraphWriter
+  output_switches:
+    caption: True

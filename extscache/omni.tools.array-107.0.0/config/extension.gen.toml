@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.tools.array-107.0.0.zip"
+
+    [package.publish]
+        kitVersion = "107.0.3+107_abi1.171913.67e3d383.gl"
+        date = 1738981181
+        buildNumber = "107.0.0+abi_1.6855.17f91012.gl"
+        repoName = "particle-system"
+        signed = 1

@@ -1,0 +1,17 @@
+[package]
+title = "Blobkey Unified Key Generating/handling system"
+authors = ["NVIDIA"]
+category = "Internal"
+version = "1.1.2"
+description = "Provides an interface to the BlobKey key management system for various key-value stores in Omniverse."
+keywords = ["blobkey", "key"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+
+[[native.plugin]]
+path = "bin/deps/omni.blobkey.plugin"
+
+[[test]]
+waiver = "Tested in rendering repo"

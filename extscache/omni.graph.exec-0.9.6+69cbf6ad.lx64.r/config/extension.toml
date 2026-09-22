@@ -1,0 +1,23 @@
+[package]
+title = "OmniGraph Execution Framework Core"
+version = "0.9.6"
+category = "Graph"
+readme = "docs/Overview.rst"
+changelog = "docs/CHANGELOG.md"
+description = "Composable and extensible execution orchestration framework."
+repository = ""
+support_level = "Core"
+keywords = ["omnigraph", "exec", "execution", "framework", "orchestration"]
+
+[core]
+reloadable = false
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+dependencies = ["omni.usd.libs"] # unit tests use tbb
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.graph.exec.tests${lib_ext}",
+]

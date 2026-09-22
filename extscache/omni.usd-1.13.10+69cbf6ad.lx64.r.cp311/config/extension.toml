@@ -1,0 +1,167 @@
+[core]
+reloadable = false
+
+[package]
+title = "Omni USD"
+version = "1.13.10"
+category = "Internal"
+description = "The omni.usd extension is the python frontend of omni.usd.core extension. It provides both synchronous/asynchronous interfaces in C++ and Python to manage UsdContext, and do state query. It also provides common utitlies and undoable commands for wrapped USD operations. omni.usd is the foundation component for all other extentions that need to access USD."
+keywords = ["usd", "python", "core", "UsdContext"]
+support_level = "Core"
+readme = "docs/README.md"
+
+[dependencies]
+"omni.usd.core" = {}
+"omni.timeline" = {}
+"omni.assets.plugins" = {}
+"omni.kit.audiodeviceenum" = {}
+"omni.kit.commands" = {}
+"omni.hydra.scene_delegate" = { optional=true }
+"omni.hydra.usdrt_delegate" = { optional=true }
+"carb.audio" = {}
+"omni.kit.widget.nucleus_connector"= { optional=true }
+"omni.kit.exec.core" = {}  # for IExecutionContextFactory's implementation
+"omni.kit.usd_undo" = {}
+"omni.client" = {}
+"omni.kit.async_engine" = {}
+
+[[python.module]]
+name = "omni.usd"
+
+[[python.module]]
+name = "omni.usd.audio"
+
+[[python.module]]
+name = "omni.usd.commands"
+
+[[python.module]]
+name = "omni.usd.editor"
+
+[[python.module]]
+name = "omni.stageupdate"
+
+[[python.module]]
+name = "usd.schema.kit"
+
+[[python.scriptFolder]]
+path = "scripts"
+
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+exts."omni.usd".mdl.populateInputsOnLoaded = false
+exts."omni.usd".commands.rotateOnCreatingReference = true
+persistent.app.primCreation.DefaultRotationOrder = "XYZ"
+persistent.app.primCreation.DefaultCameraRotationOrder = "YXZ"
+persistent.app.stage.movePrimInPlace = 1
+persistent.app.stage.instanceableOnCreatingReference = false
+persistent.app.primCreation.DefaultXformOpType = "Scale, Rotate, Translate"
+persistent.app.transform.gizmoUseSRT = false
+persistent.app.camera.controllerUseSRT = false
+# Set the camera defaults
+persistent.app.primCreation.typedDefaults.camera.focalLength = 18.147562
+persistent.app.primCreation.typedDefaults.camera.clippingRange = [1.0, 10000000.0]
+persistent.app.primCreation.typedDefaults.camera.focusDistance = 400
+# Set orthographic camera defaults
+persistent.app.primCreation.typedDefaults.orthoCamera.clippingRange  = [20000.0, 10000000.0]
+# Set material white mode exception defaults
+persistent.app.rendering.whiteModeExceptions = "GizmoTex, Gizmo, OmniGlass, SunsetSkyMat"
+# Enable highQuality prims
+persistent.app.primCreation.highQuality = true
+
+### Settings for how picking works in the viewport
+# pickingMode is a string that filters viewport picking.  The filter is formatted as:
+#   <class>:<token>.<option>
+# where <class> is either type or kind.  type matches filter the prim selected, kind matches will search up the stage
+#               hierarchy for the first prim that matches the kind.
+#       <token> is a string that is used to compare to a prim's type or kind
+#       <option> is an optional argument to the filter, currently only ALL is supported
+# additionally, multiple filters can be listed in the string seperated by a ;
+#
+# Some examples of pickingMode strings and their effects:
+#   "type:Mesh.ALL" will select if the clicked on prim is a Mesh or inherits from the Mesh type
+#   "type:Camera" will select if the clicked on prim is a Camera but will not select any prim that inherits from the
+#               Camera type
+#   "kind:assembly" will start on the clicked on prim and will match if the prim's kind is an assembly and will traverse
+#               up the graph to every parent prim, searching for an assembly kind
+#   "kind:model.ALL;kind:custom" will start on the clicked on prim and will match if the prim's kind is a model or inherits
+#               from model, or if the prim's kind is custom and then will traverse up the graph to every parent prim,
+#               searching for a model kind (plus model child kinds) or custom kind
+persistent.app.viewport.pickingMode = "type:ALL"
+# pickingModeNoKinds is only valid when the pickingMode's class is kind.  If true, the prim that is clicked on becomes
+#   selected if and only if no matches were found after applying the pickingMode filter(s) and no prim was selected
+#   via pickingModeIncludeRef
+persistent.app.viewport.pickingModeNoKinds = true
+# pickingModeIncludeRef is only valid when the pickingMode's class is kind.  If true, the prim that has a reference to the
+#   clicked on prim becomes selected if and only if no matches were found after applying the pickingMode filter(s)
+persistent.app.viewport.pickingModeIncludeRef = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Events.md",
+    "docs/CHANGELOG.md",
+]
+
+cpp_api = [
+    "../../../include/omni/usd/UsdTypes.h",
+    "../../../include/omni/usd/Selection.h",
+    "../../../include/omni/usd/UsdContext.h"
+]
+
+cpp_api_exclude_warnings = [
+    ".*warning:.* is not documented",
+    "warning: argument .* of command .* is not found in the argument list of",
+    ".*: warning: The following parameters of .*",
+    "^  parameter '",
+]
+
+[[test]]
+pythonTests.exclude = [
+    "omni.usd.tests.test_no_gpu_startup.*"
+]
+
+args = [
+]
+
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.kit.usd.mdl",
+    "omni.hydra.scene_delegate"
+]
+stdoutFailPatterns.exclude = [
+    #OMPE-37291: Add exclusion for crate file version mismatch error so we don't fail on test with non-existent fake urls
+    "*Failed to open crate file*",
+    "*Error: Crate file*"
+]
+
+# Test with FSD
+[[test]]
+name = "fsd"
+pythonTests.include = [
+    "omni.stageupdate.tests.test_api.*"
+]
+
+args = [
+    "--/app/useFabricSceneDelegate=true"
+]
+
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.kit.usd.mdl",
+    "omni.hydra.usdrt_delegate"
+]
+
+# Test that omni.usd can start without a GPU
+[[test]]
+name = "no_gpu"
+pythonTests.include = [
+    "omni.usd.tests.test_no_gpu_startup.*",
+]
+stdoutFailPatterns.exclude = [
+    "*[carb.glinterop.plugin] GLInteropContext::init: carb::windowing is not available*",
+    "*[omni.hydra.pxr] Cannot use omni.hydra.pxr without OpenGL interop*",
+]
+dependencies = []

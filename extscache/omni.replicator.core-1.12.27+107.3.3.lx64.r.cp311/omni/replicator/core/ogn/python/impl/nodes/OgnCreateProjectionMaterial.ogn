@@ -1,0 +1,50 @@
+{
+    "OgnCreateProjectionMaterial": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node prepares and/or projects a material on specified prims.",
+        "metadata":
+        {
+           "uiName": "Create Projection Material"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim to project on to."],
+                "type": "target"
+            },
+            "proxyPrim": {
+                "description": ["Prim to project from."],
+                "type": "target"
+            },
+            "semantics": {
+                "description": ["Semantics to apply to each projection."],
+                "type": "token"
+            },
+            "materialPrim": {
+                "description": ["Material to apply to each offset mesh."],
+                "type": "target"
+            },
+            "offsetScale": {
+                "description": ["Scale factor when extruding target_prim points."],
+                "type": "float",
+                "default": 0.01
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "prims": {
+                "description": ["Prim path of the created projection."],
+                "type": "target"
+            },
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

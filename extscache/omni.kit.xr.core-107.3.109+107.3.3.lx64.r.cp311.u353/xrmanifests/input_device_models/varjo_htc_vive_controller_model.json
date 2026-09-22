@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 20,
+    "name": "Varjo Vive Controller Model",
+    "tags": [ "htc_vive_wand_profile", "varjo" ],
+    "inputDevices": [ "/user/hand/left", "/user/hand/right"],
+    "asset": "{vive.controllers}/vive_varjo/model.usd"
+}

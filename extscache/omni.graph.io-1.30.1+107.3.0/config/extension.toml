@@ -1,0 +1,61 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.30.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "OmniGraph IO"
+description="Input/output node types for OmniGraph. Deprecated, use omni.graph.nodes instead"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Graph"
+
+# Keywords for the extension
+keywords = ["graph, input, output, io"]
+
+# Location of change log file in target (final) folder of extension, relative to the root. Can also be just a content
+# of it instead of file path. More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# Always target the SDK version of Kit
+writeTarget.kit = true
+support_level = "Sample"
+
+# Extensions required to load before this one
+[dependencies]
+"omni.graph.nodes" = {}
+
+[[python.module]]
+name = "omni.graph.io"
+
+[[test]]
+pyCoverageEnabled = false
+
+# pythonTests.unreliable = [
+#     "*test_bundle_attributes_and_metadata",  # OM-50156
+#     "*test_bundle_dirty_id",  # OM-50156
+#     "*test_set_attributes",  # OM-50156
+# ]
+
+[documentation]
+pages = [
+    "docs/CHANGELOG.md",
+]
+
+[deprecation]
+warning = "Extension deprecated since Kit 106.0. Support will be removed from 108."

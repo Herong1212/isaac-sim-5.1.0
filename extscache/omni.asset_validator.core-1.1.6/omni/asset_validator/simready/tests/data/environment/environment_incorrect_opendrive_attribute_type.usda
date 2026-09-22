@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    """
+    Invalid environment: uses an incorrect type for the omni:simready:opendrive attribute (should be type asset).
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom uniform string omni:simready:openDrive = "./road.xodr"
+}

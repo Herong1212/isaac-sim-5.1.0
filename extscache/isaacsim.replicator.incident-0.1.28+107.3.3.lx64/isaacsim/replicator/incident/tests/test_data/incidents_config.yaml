@@ -1,0 +1,29 @@
+isaacsim.replicator.incident:
+  version: 0.1.0
+  event:
+    event_list:
+      - ToppleEvent:
+          name: my topple event
+          topple_item:
+            item: $random_loose_item$
+            topple_nearby_radius: 1.5
+          trigger:
+            type: time
+            time: 3
+      - SpillEvent:
+          name: my spill event
+          leakable_item:
+            item: $random_leakable_item$
+            target_size: 1.5
+            leak_duration: 5.0
+          trigger:
+            type: time
+            time: 9
+      - FireEvent:
+          name: my fire event
+          flammable_item:
+            item: $random_flammable_item$
+            topple_nearby_radius: 1.2
+          trigger:
+            type: time
+            time: 6

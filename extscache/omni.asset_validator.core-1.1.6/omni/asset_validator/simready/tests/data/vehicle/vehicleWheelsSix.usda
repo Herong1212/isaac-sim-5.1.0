@@ -1,0 +1,73 @@
+#usda 1.0
+(
+    defaultPrim = "vehicle"
+    upAxis = "Z"
+    metersPerUnit = 1
+    subLayers = [
+        @./vehicle.usda@
+    ]
+
+    """
+    This USD presents a simready vehicle with 6 wheels
+    """
+)
+
+over "vehicle"
+{
+    over "Geometry"
+    {
+        over "wheel"
+        {
+            def Xform "wheel_fifth" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                string semantic:wikidata_qcode:params:semanticData = "Q446"
+                string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+                token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+                def Cube "wheel_fifth"
+                {
+                    float3[] extent = [(0.48, 0.5, 0), (0.52, 0.7, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (-0.3, 0.3, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+            def Xform "wheel_sixth" (
+                prepend apiSchemas = ["SemanticsLabelsAPI:wikidata_qcode", "SemanticsAPI:wikidata_qcode"]
+            )
+            {
+                def Cube "wheel_sixth"
+                {
+                    float3[] extent = [(0.48, 0.5, 0), (0.52, 0.7, 0.2)]
+                    matrix4d xformOp:transform = ( (0.1, 0, 0, 0), (0, 0.1, 0, 0), (0, 0, 0.1, 0), (0.3, 0.3, 0.0, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+        }
+    }
+
+    over "collections"
+    {
+        def Scope "wheel_fifth" (
+            prepend apiSchemas = ["CollectionAPI:wheel"]
+        )
+        {
+            uniform token collection:wheel:expansionRule = "expandPrims"
+            rel collection:wheel:includes = </vehicle/Geometry/wheel/wheel_fifth>
+            token omni:simready:vehicle = "wheel"
+        }
+        def Scope "wheel_sixth" (
+            prepend apiSchemas = ["CollectionAPI:wheel"]
+        )
+        {
+            string semantic:wikidata_qcode:params:semanticData = "Q446"
+            string semantic:wikidata_qcode:params:semanticType = "wikidata_qcode"
+            token[] semantics:labels:wikidata_qcode = ["Q446"]
+
+            uniform token collection:wheel:expansionRule = "expandPrims"
+            rel collection:wheel:includes = </vehicle/Geometry/wheel/wheel_sixth>
+            token omni:simready:vehicle = "wheel"
+        }
+    }
+}

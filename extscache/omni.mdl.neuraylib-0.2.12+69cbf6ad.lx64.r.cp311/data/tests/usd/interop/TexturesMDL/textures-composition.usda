@@ -1,0 +1,667 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (14.48922895347184, 1497.2997785378295, 136.56804563845645)
+                double3 target = (14.21711913476881, 154.4783616802929, 29.811894898289495)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./textures-composition.usda"
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            string "rtx:rendermode" = "PathTracing"
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 30
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Mesh "Plane"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 2, 3, 1]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, 0, -50), (50, 0, -50), (-50, 0, 50), (50, 0, 50)]
+        texCoord2f[] primvars:st = [(0, 1), (0, 0), (1, 0), (1, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (25, 1, 15)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def "textures_Mdl_1_6_BodyAbsoluteExisting" (
+        prepend payload = @./textures-Mdl-1-6-BodyAbsoluteExisting.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-679.2129518831084, -0.000033177870591316605, -327.8655809920466)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.4415534651124, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_BodyAbsoluteMissing" (
+        prepend payload = @./textures-Mdl-1-6-BodyAbsoluteMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-486.50439475420217, -0.000155248175815359, -329.28019280845285)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511249, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_BodyRelativeExisting" (
+        prepend payload = @./textures-Mdl-1-6-BodyRelativeExisting.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-680.9711916292022, 0.000027857285658683395, -129.2832407515681)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.4415534651124, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_BodyRelativeMissing" (
+        prepend payload = @./textures-Mdl-1-6-BodyRelativeMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-478.31149314287404, 0.0000888924419086834, -127.64334817344309)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_ParamAbsoluteExisting" (
+        prepend payload = @./textures-Mdl-1-6-ParamAbsoluteExisting.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-277.9231722200225, -0.000155248175815359, -328.69694085532785)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_ParamAbsoluteMissing" (
+        prepend payload = @./textures-Mdl-1-6-ParamAbsoluteMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-277.71979545000295, 0.000271997917934641, -127.55765481406809)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_ParamRelativeExisting" (
+        prepend payload = @./textures-Mdl-1-6-ParamRelativeExisting.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-73.23504660967092, 0.000027857285658683395, -325.9896044295466)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_ParamRelativeMissing" (
+        prepend payload = @./textures-Mdl-1-6-ParamRelativeMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-76.85942862871389, 0.000149927605434641, -125.92874852681518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_BothExisting" (
+        prepend payload = @./textures-Mdl-1-6-BothExisting.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (126.52148415204783, 0.0000888924419086834, -325.36014886314035)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_BothMissing" (
+        prepend payload = @./textures-Mdl-1-6-BothMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (124.24655129071971, -0.000216283332065359, -125.85941258931518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_BodyWeakExistingAbsolute" (
+        prepend payload = @./textures-Mdl-1-5-BodyWeakExistingAbsolute.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-676.9718630159209, 0.00002383549099249649, 174.84332708900808)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.4415534651124, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_BodyWeakExistingRelative" (
+        prepend payload = @./textures-Mdl-1-5-BodyWeakExistingRelative.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-480.59143088701467, -0.00005131003717906424, 171.83520941322683)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_BodyWeakMissing" (
+        prepend payload = @./textures-Mdl-1-5-BodyWeakMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-277.9832537019561, -0.00005131003717906424, 171.87732367103933)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_ParamWeakExistingAbsolute" (
+        prepend payload = @./textures-Mdl-1-5-ParamWeakExistingAbsolute.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-677.8461305940459, -0.00005131003717906424, 371.6458173233831)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.4415534651124, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_ParamWeakExistingRelative" (
+        prepend payload = @./textures-Mdl-1-5-ParamWeakExistingRelative.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-480.5237428987334, -0.00017338035695502185, 371.45435003822683)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_5_ParamWeakMissing" (
+        prepend payload = @./textures-Mdl-1-5-ParamWeakMissing.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-279.93881247881154, -0.00005131003717906424, 373.74243597572683)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Mdl_1_6_ParamEmpty" (
+        prepend payload = @./textures-Mdl-1-6-ParamEmpty.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-78.8403169954131, -0.00005131003717906424, 372.26660589760183)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Usd_Valid" (
+        prepend payload = @./textures-Usd-Valid.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (124.90750099775096, -0.00005131003717906424, 173.49451117103933)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def "textures_Usd_Failed" (
+        prepend payload = @./textures-Usd-Failed.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (124.12341286298533, -0.00005131003717906424, 373.2757001358831)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        over "defaultLight"
+        {
+            float intensity = 0
+            float3 xformOp:rotateZYX = (-45, 0, 0)
+            float3 xformOp:scale = (1, 1.0000004, 1.0000004)
+            float3 xformOp:translate = (99.44154, 339.50308, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        }
+
+        over "Cube"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (99.44155346511246, 50, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def DomeLight "DomeLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:intensity = 1000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        token inputs:texture:format = "latlong"
+        double3 xformOp:rotateXYZ = (270, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-78.1627558398709, 8.640199666842818e-12, -125.96392388755442)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def "Udim_body" (
+        prepend payload = @./Udim/Udim_body.usda@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (551.9108396324136, -0.000013485599311024998, -223.39360323041376)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "ROOT"
+        {
+            over "Camera"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Mesh"
+            {
+                quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+                float3 xformOp:scale = (300, 300, 300)
+                double3 xformOp:translate = (0, 25, 0)
+
+                over "meshes_0_"
+                {
+                    float3 xformOp:rotateXYZ = (0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+            }
+        }
+
+        over "DomeLight"
+        {
+            token visibility = "invisible"
+        }
+    }
+
+    def "Udim_param" (
+        prepend payload = @./Udim/Udim_param.usda@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (550.4976867315563, -0.00002273033919664158, 277.2438370164221)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "DomeLight"
+        {
+            token visibility = "invisible"
+        }
+
+        over "ROOT"
+        {
+            over "Camera"
+            {
+                token visibility = "invisible"
+            }
+
+            over "Mesh"
+            {
+                quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+                float3 xformOp:scale = (300, 300, 300)
+                double3 xformOp:translate = (0, 25, 0)
+            }
+        }
+    }
+}
+
+def Xform "Environment"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+

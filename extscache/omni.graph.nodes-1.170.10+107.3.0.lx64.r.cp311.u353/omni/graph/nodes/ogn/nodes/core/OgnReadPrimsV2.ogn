@@ -1,0 +1,189 @@
+{
+    "ReadPrimsV2": {
+        "version": 1,
+        "description": [
+            "Reads primitives and outputs multiple primitive in a bundle."
+        ],
+        "uiName": "Read Prims",
+        "scheduling": [ "usd-read" ],
+        "categories": [ "sceneGraph", "bundle" ],
+        "inputs": {
+            "prims": {
+                "uiName": "Prims",
+                "type": "target",
+                "description": [
+                    "The root prim(s) that pattern matching uses to search from.",
+                    "If 'pathPattern' input is empty, the directly connected prims will be read.",
+                    "Otherwise, all the subtree (including root) will be tested against pattern matcher inputs,",
+                    "and the matched prims will be read into the output bundle.",
+                    "If no prims are connected, and 'pathPattern' is none empty, absolute root \"/\" will be searched as root prim."
+                ],
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "pathPattern": {
+                "uiName": "Prim Path Pattern",
+                "type": "string",
+                "default": "",
+                "description": [
+                    "A list of wildcard patterns used to match the prim paths that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['/Cube0', '/Cube1', '/Box']",
+                    "    '*' - match any",
+                    "    '* ^/Box' - match any, but exclude '/Box'",
+                    "    '* ^/Cube*' - match any, but exclude '/Cube0' and '/Cube1'"
+                ]
+            },
+            "typePattern": {
+                "uiName": "Prim Type Pattern",
+                "type": "string",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match the prim types that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['Mesh', 'Cone', 'Cube']",
+                    "    '*' - match any",
+                    "    '* ^Mesh' - match any, but exclude 'Mesh'",
+                    "    '* ^Cone ^Cube' - match any, but exclude 'Cone' and 'Cube'"
+                ]
+            },
+            "attrNamesToImport": {
+                "uiName": "Attribute Name Pattern",
+                "type": "string",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match the attribute names that are to be imported",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    '*' - match an arbitrary number of any characters",
+                    "    '?' - match any single character",
+                    "    '^' - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']",
+                    "    '*' - match any",
+                    "    '* ^points' - match any, but exclude 'points'",
+                    "    '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"
+                ]
+            },
+            "usdTimecode": {
+                "uiName": "Time",
+                "type": "timecode",
+                "default": "NaN",
+                "description": "The time at which to evaluate the transform of the USD prim. A value of \"NaN\" indicates that the default USD time stamp should be used"
+            },
+            "computeBoundingBox": {
+                "uiName": "Compute Bounding Box",
+                "type": "bool",
+                "default": false,
+                "description": "For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."
+            },
+            "applySkelBinding": {
+                "uiName": "Apply Skel Binding",
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "If an input USD prim is skinnable and has the SkelBindingAPI schema applied, read skeletal data and apply SkelBinding to deform the prim.",
+                    "The output bundle will have additional child bundles created to hold data for the skeleton and skel animation prims if present. After",
+                    "execution, deformed points and normals will be written to the `points` and `normals` attributes, while non-deformed points and normals",
+                    "will be copied to the `points:default` and `normals:default` attributes."
+                ]
+            },
+            "enableChangeTracking": {
+                "uiName": "USD change tracking",
+                "type": "bool",
+                "default": true,
+                "description": [
+                    "Should the output bundles only be updated when the associated USD prims change?",
+                    "This uses a USD notice handler, and has a small overhead,",
+                    "so if you know that the imported USD prims will change frequently,",
+                    "you might want to disable this."
+                ]
+            },
+            "enableBundleChangeTracking": {
+                "uiName": "Bundle change tracking",
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "Enable change tracking for output bundle, its children and attributes.",
+                    "The change tracking system for bundles has some overhead, but enables",
+                    "users to inspect the changes that occurred in a bundle.",
+                    "Through inspecting the type of changes user can mitigate excessive computations."
+                ]
+            },
+            "_debugStamp": {
+                "metadata": {
+                    "literalOnly": "1",
+                    "hidden": "true"
+                },
+                "type": "int",
+                "default": 0,
+                "description": [
+                    "For internal testing only, and subject to change. Please do not depend on this attribute!",
+                    "When not zero, this _debugStamp attribute will be copied to root and child bundles that change",
+                    "When a full update is performed, the negative _debugStamp is written.",
+                    "When only derived attributes (like bounding boxes and world matrices) are updated, _debugStamp + 1000000 is written"
+                ]
+            }
+        },
+        "outputs": {
+            "primsBundle": {
+                "type": "bundle",
+                "description": [
+                    "An output bundle containing multiple prims as children.",
+                    "Each child contains data attributes and two additional token attributes named sourcePrimPath and sourcePrimType",
+                    "which contains the path of the Prim being read"
+                ]
+            }
+        },
+        "state": {
+            "pathPattern": {
+                "type": "string",
+                "description": "State from previous execution"
+            },
+            "typePattern": {
+                "type": "string",
+                "description": "State from previous execution"
+            },
+            "attrNamesToImport": {
+                "type": "string",
+                "description": "State from previous execution"
+            },
+            "usdTimecode": {
+                "type": "timecode",
+                "default": -1,
+                "description": "State from previous execution"
+            },
+            "computeBoundingBox": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            },
+            "applySkelBinding": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            },
+            "enableChangeTracking": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            },
+            "enableBundleChangeTracking": {
+                "type": "bool",
+                "default": false,
+                "description": "State from previous execution"
+            }
+        }
+    }
+}

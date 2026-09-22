@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="variant_action_graph_icon" transform="translate(-112 -17)">
+    <rect id="Rectangle_2365" data-name="Rectangle 2365" width="40" height="40" rx="4" transform="translate(112 17)" fill="#363636"/>
+    <g id="Group_4174" data-name="Group 4174" transform="translate(115.079 20.08)">
+      <g id="Subtraction_86" data-name="Subtraction 86" transform="translate(7.351 7.352)" fill="#fff">
+        <path d="M8.989,18.873H0V9.886H1.8v7.19H8.989v1.8Zm9.886-9.885h-1.8V1.8H9.888V0h8.987V8.987Z" stroke="none"/>
+        <path d="M 8.989087104797363 18.87291526794434 L 0.0003969488607253879 18.87291526794434 L -3.05114735965617e-06 9.886235237121582 L 1.797496914863586 9.886235237121582 L 1.797496914863586 17.07581520080566 L 8.989087104797363 17.07581520080566 L 8.989087104797363 18.87291526794434 Z M 18.87471771240234 8.988285064697266 L 17.07761764526367 8.987484931945801 L 17.07761764526367 1.797894716262817 L 9.887637138366699 1.797894716262817 L 9.887637138366699 0.0008047729497775435 L 18.87471771240234 4.772949068865273e-06 L 18.87471771240234 8.988285064697266 Z" stroke="none" fill="#707070"/>
+      </g>
+      <circle id="Ellipse_430" data-name="Ellipse 430" cx="7.5" cy="7.5" r="7.5" transform="translate(-0.079 -0.08)" fill="#fff"/>
+      <path id="Path_5949" data-name="Path 5949" d="M-2012.107-6670.106H-2028V-6686h15.893v15.894Z" transform="translate(2045.782 6703.782)" fill="#6991d5"/>
+    </g>
+  </g>
+</svg>

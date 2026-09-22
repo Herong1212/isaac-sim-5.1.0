@@ -1,0 +1,47 @@
+[package]
+title = "CAD Converter"
+version = "205.0.0"
+description = "CAD Converter Extension which depends on the Hoops, DGN, and JT extensions"
+category = "Converter"
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+writeTarget.kit = true
+writeTarget.usd = true
+
+authors = ["NVIDIA"]
+
+keywords = [
+    'CAD Converter',
+    'cad'
+]
+
+[dependencies]
+# Exact version dependencies are specified so that we can be sure of the extensions versions used when a specific
+# version of this bundle extension is present. The individual extensions must still declare their dependencies, but
+# can use version ranges to avoind the need to bump all versions for a leaf level change.
+
+"omni.kit.converter.common" = { version = "507.1.2", exact = true }
+
+"omni.kit.converter.hoops" = { version = "509.1.0", exact = true }
+"omni.kit.converter.hoops_core" = { version = "509.1.0", exact = true }
+
+"omni.kit.converter.dgn" = { version = "509.1.0", exact = true }
+"omni.kit.converter.dgn_core" = { version = "510.1.0", exact = true }
+
+"omni.kit.converter.jt" = { version = "508.1.0", exact = true }
+"omni.kit.converter.jt_core" = { version = "508.1.0", exact = true }
+
+"omni.services.convert.asset" = { version = "508.0.2", exact = true }
+"omni.services.convert.cad" = { version = "507.0.2", exact = true }
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md"]
+
+[[test]]
+waiver = "Bundle extension without any code"

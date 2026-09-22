@@ -1,0 +1,66 @@
+{
+    "Clamp": {
+        "version": 1,
+        "description": [
+            "Clamp a number or array of numbers to a specified range.",
+            "If an array of numbers is provided as the input and lower/upper are scalars",
+            "then each input numeric will be clamped to the range [lower, upper].",
+            "If all inputs are arrays, clamping will be done element-wise, where \"Lower\" and \"Upper\" are applied",
+            "individually to each element in \"Input\". An error will be reported if \"Lower\" > \"Upper\"."
+        ],
+        "uiName": "Clamp",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "input": {
+                "type": ["numerics"],
+                "description": [
+                    "The input values to clamp. These can be scalar values, tuple values, matrix values, or arrays",
+                    "of any of them."
+                ],
+                "uiName": "Input"
+            },
+            "lower": {
+                "type": ["numerics"],
+                "description": [
+                    "The lower bound of the clamp, which must be of the same base type as \"Input\" and <= \"Upper\"."
+                ],
+                "uiName": "Lower"
+            },
+            "upper": {
+                "type": ["numerics"],
+                "description": [
+                    "The upper bound of the clamp, which must be of the same base type as \"Input\" and >= \"Lower\"."
+                ],
+                "uiName": "Upper"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "A copy of the \"numerics\" after the clamping operation has been applied to it.",
+                "uiName": "Output"
+            }
+        },
+        "tests": [
+            {
+                "inputs:input": {"type": "int", "value": 51038},
+                "inputs:lower": {"type": "int", "value": -20},
+                "inputs:upper": {"type": "int", "value": 5},
+                "outputs:result": {"type": "int", "value": 5}
+            },
+            {
+                "inputs:input": {"type": "float[]", "value": [3.1415, -20.432, 50.762, -80.9, 5, 124]},
+                "inputs:lower": {"type": "float", "value": -20},
+                "inputs:upper": {"type": "float", "value": 50.4},
+                "outputs:result": {"type": "float[]", "value": [3.1415, -20, 50.4, -20, 5, 50.4]}
+            },
+            {
+                "inputs:input": {"type": "double[]", "value": [1, 5, -2.5, 62]},
+                "inputs:lower": {"type": "double[]", "value": [3, -10, -5, -10]},
+                "inputs:upper": {"type": "double[]", "value": [5, 3.5, -5, 2]},
+                "outputs:result": {"type": "double[]", "value": [3, 3.5, -5, 2]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "RpResourceExampleAllocator": {
+        "version": 1,
+        "description": [
+            "Example node showing how to allocate a CUDA-interoperable RpResource in a pre-render graph. ",
+            "The node allocates two new RpResources for the supplied prim which match the size of the array of points of the prim. ",
+            "One RpResource can be used to deform and render the prim, without actually mutating the input prim, ",
+            "while the other holds the original point values."
+         ],
+        "categories": [ "examples", "graph:preRender" ],
+        "uiName": "GPU Interop Example: RpResource Allocator",
+        "inputs": {
+            "stream": {
+                "type": "uint64",
+                "description": "The CUDA Stream used to order the CUDA commands scheduled by this graph execution.",
+                "uiName": "Stream"
+            },
+            "primPath": {
+                "type": "token",
+                "description": "The path of the prim for which we allocate a new RpResources.",
+                "uiName": "Prim Path"
+            },
+            "points": {
+                "type": "float[3][]",
+                "description": [
+                    "The array of points of the input prim meshes."
+                ],
+                "uiName": "Prim Points"
+            },
+            "verbose": {
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "If true, the node will log detailed messages during the execution. ",
+                    "Can negatively impact performance."
+                ],
+                "uiName":  "Verbose"
+            },
+            "reload": {
+                "type": "bool",
+                "description": [
+                    "Setting this to true will force the reallocation of the RpResource. ",
+                    "This should be used when changing the input prims."
+                ],
+                "default": false,
+                "uiName": "Reload"
+            }
+        },
+        "outputs":
+        {
+            "resourcePointerCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Pointers to the allocated RpResources.",
+                    "Two resources are allocated per prim: one for the rest positions and one for deformed positions."
+                ],
+                "uiName": "Resource Pointer Collection"
+            },
+            "pointCountCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Point count for each prim being deformed.",
+                    "The size of the array is equal to the number of allocator nodes of this type found in the graph."
+                ],
+                "uiName": "Point Counts"
+            },
+            "primPathCollection": {
+                "type": "token[]",
+                "description": [
+                    "Path for each prim for which a new RpResource was allocated. ",
+                    "The size of the array is equal to the number of allocator nodes of this type found in the graph."
+                ],
+                "uiName": "Prim Paths"
+            },
+            "reload": {
+                "type": "bool",
+                "description": "If true, the RpResources will be reallocated during the node compute.",
+                "default": false,
+                "uiName": "Reload"
+            },
+            "stream": {
+                "type": "uint64",
+                "description": "The CUDA Stream used to order the CUDA commands scheduled by this graph execution.",
+                "uiName": "Stream"
+            }
+        }
+    }
+}

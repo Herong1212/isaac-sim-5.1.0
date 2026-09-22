@@ -1,0 +1,76 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnPushoutCurvePoints.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_PushoutCurvePoints" (
+        docs="""Sample points along curves in the input curvesBundle. When a range of these points falls within the  bounding sphere / box of the prims within the collisionBundle, this node attempts to push those subsections  of points outside the bounding volume in some reasonable way.  This node outputs two bundles: a pointsBundle that contains one prim per polyline containing the  displaced points of that polyline, and a curvesBundle that contains curve prims fit to those  displaced points."""
+    )
+    {
+        token node:type = "omni.genproc.core.PushoutCurvePoints"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom rel inputs:collisionBundle (
+            docs="""Input meshes. The bounding spheres / boxes of each of these meshes will be used as the pushout volumes."""
+        )
+        custom int inputs:collisionProxy = 0 (
+            docs="""0 = Sphere, 1 = Axis-Oriented Box"""
+        )
+        custom rel inputs:curvesBundle (
+            docs="""Bundle containing curves data"""
+        )
+        custom int inputs:numberOfSegments = 0 (
+            docs="""Number of segments per curve for each output curve. If this value is not positive, 
+            the number of segments in the corresponding input curve will be used."""
+        )
+        custom bool inputs:pushoutHorizontally = false (
+            docs="""If true, pushout will not modify any particle's vertical position (as defined by the specified up vector)"""
+        )
+        custom int inputs:samplesPerSegment = 20 (
+            docs="""Number of points in each curve segment's tessellation"""
+        )
+        custom float3 inputs:upAxis = (0, 1, 0) (
+            docs="""Up axis to be used when 'Node UpAxis' is specified as the up axis source."""
+        )
+        custom int inputs:upAxisSource = 0 (
+            docs="""0 = Use Scene Up, 1 = Use Node UpAxis"""
+        )
+
+        # 2 attributes
+        custom rel outputs_curvesBundle (
+            docs="""Bundle containing curves fit to displaced points"""
+        )
+        custom rel outputs_pointsBundle (
+            docs="""Bundle containing displaced points data sampled from curves"""
+        )
+
+        # 6 attributes
+        custom int state:prevCollisionProxy (
+            docs="""Previous collisionProxy value for recompute test"""
+        )
+        custom int state:prevNumberOfSegments (
+            docs="""Previous numberOfSegments value for recompute test"""
+        )
+        custom bool state:prevPushoutHorizontally (
+            docs="""Previous pushoutHorizontally value for recompute test"""
+        )
+        custom int state:prevSamplesPerSegment (
+            docs="""Previous samplesPerSegment value for recompute test"""
+        )
+        custom float3 state:prevUpAxis (
+            docs="""Previous upAxis value for recompute test"""
+        )
+        custom int state:prevUpAxisSource (
+            docs="""Previous upAxisSource value for recompute test"""
+        )
+    }
+}

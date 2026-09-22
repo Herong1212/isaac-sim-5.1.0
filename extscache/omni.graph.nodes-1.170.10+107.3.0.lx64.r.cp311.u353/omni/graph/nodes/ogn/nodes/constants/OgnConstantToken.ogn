@@ -1,0 +1,21 @@
+{
+    "ConstantToken": {
+        "description": [
+            "Container for a token value, which is a 64-bit constant representing a shared string,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "inputs": {
+            "value": {
+                "type": "token",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

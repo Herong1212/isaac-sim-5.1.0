@@ -1,0 +1,16 @@
+#usda 1.0
+(
+    """
+    SimReady Environment Light asset: no prims with 'omni:simready:behaviors' attribute
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    def Xform "env_lights" (
+        references = @./mesh_light.usda@
+    )
+    {
+    }
+}

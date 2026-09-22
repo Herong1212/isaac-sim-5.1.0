@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.widget.zoombar-1.0.6.zip"
+
+    [package.publish]
+        kitVersion = "106.5.0+release.162521.d02c707b.gl"
+        date = 1739019758
+        buildNumber = "106.4+master.2135.634ab8c7.gl"
+        repoName = "kit-browsers"
+        signed = 1

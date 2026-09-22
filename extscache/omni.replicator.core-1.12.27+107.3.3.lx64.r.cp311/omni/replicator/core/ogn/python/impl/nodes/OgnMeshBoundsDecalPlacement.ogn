@@ -1,0 +1,54 @@
+{
+    "OgnMeshBoundsDecalPlacement": {
+        "version": 1,
+        "description": "The position and rotation of a mesh for decal placement from mesh bounds.",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "language": "Python",
+        "cudaPointers": "cpu",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Input execution."
+            },
+            "prims": {
+                "description": ["Input prims to calculate bounds from."],
+                "type": "target"
+            },
+            "boundsVector": {
+                "description": ["Normalized vector to determine translation and rotation in bounds."],
+                "type": "float[3]"
+            },
+            "offset": {
+                "description": ["How much to offset the final translation away from the bounds."],
+                "type": "float"
+            },
+            "rotation": {
+                "description": ["Additional rotation."],
+                "type": "float[3]"
+            },
+            "scale": {
+                "description": ["Scale to match bounds."],
+                "type": "float[3]"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution."
+            },
+            "translate": {
+                "type": "float[3]",
+                "description": "The resulting world translation."
+            },
+            "rotation": {
+                "type": "float[3]",
+                "description": "The resulting local rotation (XYZ)."
+            },
+            "scale": {
+                "type": "float[3]",
+                "description": "The resulting local scale."
+            }
+        }
+    }
+}

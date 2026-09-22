@@ -1,0 +1,5 @@
+cffi-1.15.1
+cryptography-41.0.3
+pycparser-2.21
+PyJWT-2.8.0
+PyYAML-6.0.1

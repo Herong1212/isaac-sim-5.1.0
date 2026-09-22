@@ -1,0 +1,27 @@
+{
+    "OgnPhysicsReset": {
+        "description": [
+            "Reset physics"
+        ],
+        "version": 1,
+        "uiName": "Reset Physics",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+
+        "inputs": {
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

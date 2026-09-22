@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSampleSequencePrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSampleSequencePrim" (
+        docs="""This node generates samples by returning items from a sample set of prims sequentially."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSampleSequencePrim"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom rel inputs:items (
+            docs="""The ordered items to be sampled"""
+        )
+        custom bool inputs:ordered = true (
+            docs="""Whether to return the item in ordered"""
+        )
+        custom int inputs:seed = -1 (
+            docs="""Random Number Generator seed. A value of less than 0 will indicate using the global seed."""
+        )
+
+        # 1 attribute
+        custom rel outputs:samples (
+            docs="""Sampled results"""
+        )
+    }
+}

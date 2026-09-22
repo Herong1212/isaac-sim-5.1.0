@@ -1,0 +1,7 @@
+{
+    "version": 1,
+    "name": "htc_vive_focus3_device_name",
+    "requiredDeviceNameFragments": [
+        "vive", "focus"
+    ]
+}

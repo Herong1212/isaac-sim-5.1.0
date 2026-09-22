@@ -1,0 +1,192 @@
+{
+    "Divide": {
+        "version": 1,
+        "description": [
+            "Computes the result of dividing \"A\" by \"B\". The result is the same type as the numerator if the",
+            "numerator is a decimal type. Otherwise the result is a double. Vectors and matrices can only be divided by",
+            "a scalar. Note that there are combinations of inputs that can result in a loss of precision due to",
+            "different value ranges. Division by zero is an error."
+        ],
+        "uiName": "Divide",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["numerics"],
+                "description": "The dividend, or numerator, to use for the division.",
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["numerics"],
+                "description": [
+                    "The divisor, or denominator, to use for the division. \"B\"'s base type must match",
+                    "or be convertible to \"A\"'s base type. \"B\" can only be an array if \"A\" is an array. \"B\"",
+                    "can only consist of scalars or an array of scalars (i.e. no vectors or matrices). Setting \"B\"",
+                    "to zero (or having it contain a zero element) will return an error during computation."
+                ],
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "Result of the division between the numerator \"A\" and denominator \"B\".",
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "double", "value": 42.0}, "inputs:b": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 42.0}, "inputs:b": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 42.0}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0}, "inputs:b": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "float", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0}, "inputs:b": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "float", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "float", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 42.0}, "inputs:b": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "half", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 42.0}, "inputs:b": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "half", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 42.0}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "half", "value": 21.0}
+            },
+
+            {
+                "inputs:a": {"type": "double", "value": 42.0}, "inputs:b": {"type": "int", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0}, "inputs:b": {"type": "int64", "value": 2},
+                "outputs:result": {"type": "float", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 42.0}, "inputs:b": {"type": "uchar", "value": 2},
+                "outputs:result": {"type": "half", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 42.0}, "inputs:b": {"type": "uint", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0}, "inputs:b": {"type": "uint64", "value": 2},
+                "outputs:result": {"type": "float", "value": 21.0}
+            },
+
+            {
+                "inputs:a": {"type": "int", "value": 42}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "int64", "value": 42}, "inputs:b": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 42}, "inputs:b": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uint", "value": 42}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uint64", "value": 42}, "inputs:b": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+
+            {
+                "inputs:a": {"type": "int", "value": 42}, "inputs:b": {"type": "int", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "int", "value": 42}, "inputs:b": {"type": "uchar", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "int64", "value": 42}, "inputs:b": {"type": "uint", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 42}, "inputs:b": {"type": "uint64", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uint", "value": 42}, "inputs:b": {"type": "int", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+            {
+                "inputs:a": {"type": "uint64", "value": 42}, "inputs:b": {"type": "int64", "value": 2},
+                "outputs:result": {"type": "double", "value": 21.0}
+            },
+
+            {
+                "inputs:a": {"type": "float[2]", "value": [1.0, 2.0]}, "inputs:b": {"type": "int", "value": 2},
+                "outputs:result": {"type": "float[2]", "value": [0.5, 1.0]}
+            },
+            {
+                "inputs:a": {"type": "int[3]", "value": [1, 2, 3]}, "inputs:b": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "double[3]", "value": [0.5, 1.0, 1.5]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1.0, 2.0, 3.0, 4.0]}, "inputs:b": {"type": "uchar", "value": 2},
+                "outputs:result": {"type": "double[4]", "value": [0.5, 1.0, 1.5, 2.0]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [1.0, 2.0]}, "inputs:b": {"type": "uint", "value": 2},
+                "outputs:result": {"type": "float[]", "value": [0.5, 1.0]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [1.0, 2.0, 3.0]}, "inputs:b": {"type": "uint64[]", "value": [2, 4, 6]},
+                "outputs:result": {"type": "half[]", "value": [0.5, 0.5, 0.5]}
+            },
+            {
+                "inputs:a": {"type": "int[]", "value": [1, 2, 3, 4]}, "inputs:b": {"type": "int[]", "value": [2, 4, 6, 8]},
+                "outputs:result": {"type": "double[]", "value": [0.5, 0.5, 0.5, 0.5]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]}, "inputs:b": {"type": "int[]", "value": [1, 2]},
+                "outputs:result": {"type": "float[2][]", "value": [[1.0, 2.0], [1.5, 2.0]]}
+            },
+            {
+                "inputs:a": {"type": "int64", "value": 9223372036854775807}, "inputs:b": {"type": "int", "value": 1},
+                "outputs:result": {"type": "double", "value": 9223372036854775807.0}
+            },
+            {
+                "inputs:a": {"type": "int", "value": 3}, "inputs:b": {"type": "uint", "value": 2},
+                "outputs:result": {"type": "double", "value": 1.5}
+            },
+            {
+                "inputs:a": {"type": "uint64", "value": 3}, "inputs:b": {"type": "half", "value": 2},
+                "outputs:result": {"type": "double", "value": 1.5}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [1.0, 2.0]}, "inputs:b": {"type": "int", "value": 2},
+                "outputs:result": {"type": "half[2]", "value": [0.5, 1.0]}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 10}, "inputs:b": {"type": "uchar", "value": 2},
+                "outputs:result": {"type": "double", "value": 5.0}
+            }
+        ]
+    }
+}

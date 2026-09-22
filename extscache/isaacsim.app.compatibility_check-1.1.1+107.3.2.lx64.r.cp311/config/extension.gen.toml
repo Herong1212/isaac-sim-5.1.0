@@ -1,0 +1,24 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/isaacsim.app.compatibility_check-1.1.1%2B107.3.2.lx64.r.cp311.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.2"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.221624.95ab655d.gl"
+        date = 1760137141
+        buildNumber = "5.0.0-alpha.54+develop.160.4a437435.gl"
+        repoName = "omni-isaac-sim-internal"
+        signed = 1

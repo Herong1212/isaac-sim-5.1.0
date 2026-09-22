@@ -1,0 +1,640 @@
+{
+    "ATan2": {
+        "version": 2,
+        "description": [
+            "Computes the angle in degrees between the positive x-axis and the vector from the origin to the input",
+            "point (\"X Axis\", \"Y Axis\") in the range [-180, 180], also known as the 2-argument arctangent.",
+            "The inputs can take the form of simple values, tuples, arrays, and arrays of tuples.",
+            "If one input has a higher dimension than the other, then the input with lower dimension will be repeated",
+            "to match the dimension of the other input (broadcasting), and the output will have the same shape and",
+            "size as the higher-dimensioned input."
+        ],
+        "categories": ["math:operator"],
+        "uiName": "Arctangent2",
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["decimals"],
+                "description": "The y-component of the vector whose angle to the positive x-axis needs to be determined.",
+                "uiName": "Y Axis"
+            },
+            "b": {
+                "type": ["decimals"],
+                "description": "The x-component of the vector whose angle to the positive x-axis needs to be determined.",
+                "uiName": "X Axis"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["decimals"],
+                "description": [
+                    "The angle in degrees in the range [-180, 180] between the positive x-axis and the vector,",
+                    "also known as the 2-argument arctangent."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "double", "value": 70.0},
+                "inputs:b": {"type": "double", "value": 10.0},
+                "outputs:result": {"type": "double", "value": 81.8698976458}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 5.0},
+                "inputs:b": {"type": "float", "value": 3.0},
+                "outputs:result": {"type": "float", "value": 59.0362434679}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half", "value": 135.0}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half[]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[2]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[2]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[2]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "double[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "double[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "double[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[3]", "value": [135.0, -135.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "double[3]", "value": [45.0, 135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "double[3]", "value": [45.0, -135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "double[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[4]", "value": [135.0, -135.0, 135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "double[4]", "value": [45.0, 135.0, 45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "double[4]", "value": [45.0, -135.0, 45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "double", "value": -10.0},
+                "outputs:result": {"type": "double[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 10.0},
+                "inputs:b": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "double[]", "value": [-10.0]},
+                "outputs:result": {"type": "double[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [10.0]},
+                "inputs:b": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "double[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "double[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[2]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[2]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[2]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "float[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "float[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "float[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[3]", "value": [135.0, -135.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "float[3]", "value": [45.0, 135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "float[3]", "value": [45.0, -135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "float[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[4]", "value": [135.0, -135.0, 135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "float[4]", "value": [45.0, 135.0, 45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "float[4]", "value": [45.0, -135.0, 45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "float", "value": -10.0},
+                "outputs:result": {"type": "float[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 10.0},
+                "inputs:b": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "float[]", "value": [-10.0]},
+                "outputs:result": {"type": "float[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [10.0]},
+                "inputs:b": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "float[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "float[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[2]", "value": [135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[2]", "value": [45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[2]", "value": [45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[2][]", "value": [[135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "half[2]", "value": [10.0, -10]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [10.0, -10]},
+                "inputs:b": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "inputs:b": {"type": "half[2][]", "value": [[10.0, -10]]},
+                "outputs:result": {"type": "half[2][]", "value": [[45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[3]", "value": [135.0, -135.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "half[3]", "value": [45.0, 135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "half[3]", "value": [45.0, -135.0, 45.0]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[3][]", "value": [[135.0, -135.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, 135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [10.0, -10, 10.0]},
+                "inputs:b": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "inputs:b": {"type": "half[3][]", "value": [[10.0, -10, 10.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[45.0, -135.0, 45.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[4]", "value": [135.0, -135.0, 135.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "half[4]", "value": [45.0, 135.0, 45.0, 135.0]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "half[4]", "value": [45.0, -135.0, 45.0, -135.0]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "half", "value": -10.0},
+                "outputs:result": {"type": "half[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 10.0},
+                "inputs:b": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "half[]", "value": [-10.0]},
+                "outputs:result": {"type": "half[4][]", "value": [[135.0, -135.0, 135.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [10.0]},
+                "inputs:b": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, 135.0, 45.0, 135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [10.0, -10, 10.0, -10]},
+                "inputs:b": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "inputs:b": {"type": "half[4][]", "value": [[10.0, -10, 10.0, -10]]},
+                "outputs:result": {"type": "half[4][]", "value": [[45.0, -135.0, 45.0, -135.0]]}
+            }
+        ]
+    }
+}

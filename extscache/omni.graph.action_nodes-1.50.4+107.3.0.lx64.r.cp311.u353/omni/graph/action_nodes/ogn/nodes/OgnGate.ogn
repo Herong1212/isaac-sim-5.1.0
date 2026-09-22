@@ -1,0 +1,52 @@
+{
+    "omni.graph.action.Gate": {
+        "version": 2,
+        "description": [
+            "This node controls a flow of execution based on the state of its gate.",
+            "The gate can be opened or closed by activation of the 'Toggle' gate controls.",
+            "Each time 'Enter' is activated, the node will activate the 'Exit' signal if the gate is open,",
+            "and silently succeed if the gate is closed. The current state of the gate is not directly accessible."
+        ],
+        "uiName": "Gate",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "enter": {
+                "type": "execution",
+                "description": [
+                    "Signal to the graph that this node is ready to be executed.",
+                    "Before this signal is activated the gate will be in the state specified by the",
+                    "'Start Closed' value."
+                ],
+                "uiName": "Enter"
+            },
+            "toggle": {
+                "type": "execution",
+                "description": [
+                    "Signal to the node that the state of the gate should switch from open to closed,",
+                    "or vice versa. This signal will not activate the 'Exit', it will only determine whether",
+                    "or not the next 'Enter' will activate it."
+                ],
+                "uiName": "Toggle"
+            },
+            "startClosed": {
+                "type": "bool",
+                "description": "If true the gate will start in a closed state.",
+                "uiName": "Start Closed"
+            }
+        },
+        "outputs": {
+            "exit": {
+                "type": "execution",
+                "description": [
+                    "When 'Enter' is activated and the gate is open signal to the graph that execution",
+                    "should continue downstream."
+                ],
+                "uiName": "Exit"
+            }
+        },
+        "tests" : [
+            { "inputs:enter": 1, "outputs:exit": 1}
+        ]
+    }
+}

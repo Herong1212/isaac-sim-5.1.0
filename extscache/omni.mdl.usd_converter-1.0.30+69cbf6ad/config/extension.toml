@@ -1,0 +1,124 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.0.30"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "MDL to USD converter"
+description="MDL to USD converter extension."
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Services"
+support_level = "Sample"
+
+# Keywords for the extension
+keywords = ["kit", "mdl", "Python bindings"]
+
+# Location of change log file in target (final) folder of extension, relative to the root. Can also be just a content
+# of it instead of file path. More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+# preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+# icon = "data/icon.png"
+
+# Dependencies for this extension:
+[dependencies]
+"omni.usd" = {}
+"omni.mdl.neuraylib" = {}
+"omni.mdl" = {}
+"omni.kit.test" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.mdl.usd_converter".
+[[python.module]]
+name = "omni.mdl.usd_converter"
+
+
+# Settings. They are applied on the root of global settings. In case of conflict original settings are kept.
+[settings]
+
+
+# MDL modules that are local to the stage are referenced relative in the exported module if possible
+# If the export directory is on a different drive or server, the imports will use absolute paths
+exts."omni.mdl.usd_converter".allowRelativeExports = true
+
+# Number of folders to go up in order to reach the references import using a relative path.
+# `-1` (default) adds no limits
+# `0` would allow only relative imports in the stage folder or its subfolders.
+# only available when 'allowRelativeExports' is enabled
+exts."omni.mdl.usd_converter".allowRelativeExportUpwardLevels = -1
+
+# Extension test settings
+###############################################################################
+
+[[test]]
+name = "rtx"
+timeout = 1000 # because rtx is doing warmup for about 800 seconds some times
+args = [
+    "--/exts/omni.mdl.usd_converter/tests/debugdumps=true",
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx-transient/resourcemanager/texturestreaming/async=false",
+]
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx",
+    "omni.rtx.tests",
+    # "omni.usd.fileformat.sbsar",  # no downstream dependencies allowed on gitlab. only for local testing
+    # "omni.kit.debug.vscode",  # do not enable this when committing. CI will fail to compute test
+]
+stdoutFailPatterns.exclude = [
+    # expected errors
+]
+
+###############################################################################
+
+[[test]]
+name = "iray"
+args = [
+    "--/exts/omni.mdl.usd_converter/tests/debugdumps=true",
+    "--/app/asyncRendering=false",
+    "--/renderer/enabled=iray",
+    "--/renderer/active=iray",
+    "--/exts/omni/mdl/neuraylib/tests/renderer=iray",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/plugins/neuraylib/log_level=info",
+    "--/rtx/iray/guided_sampling=false", # TODO: remove as soon as it is fixed in iray (OM-93683)
+    "--/iray/device/enableCPU=true", # avoid driver version tests because it's not important here TODO: check why ForceCPU does not stop
+    "--/iray/render_synchronous=true",
+    "--/iray/verifyDriverVersion/enabled=false",
+]
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.iray",
+    "omni.rtx.tests",
+    # "omni.usd.fileformat.sbsar",  # no downstream dependencies allowed on gitlab. only for local testing
+    # "omni.kit.debug.vscode",
+]
+stdoutFailPatterns.exclude = [
+    # old driver
+    "*[Error] [rtx.neuraylib.plugin] [IRAY:RENDER]   1.0   IRAY   rend error: Cannot render: found no usable devices. Please update your NVIDIA driver (www.nvidia.com) to at least *, or enable CPU rendering.*",
+
+]

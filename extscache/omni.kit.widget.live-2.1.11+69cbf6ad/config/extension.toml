@@ -1,0 +1,49 @@
+[package]
+version = "2.1.11"
+title = "Live Mode Control Widget"
+category = "Internal"
+changelog = "docs/CHANGELOG.md"
+keywords = ["live", "session"]
+authors = ["NVIDIA"]
+repository = ""
+support_level = "Sample"
+
+[dependencies]
+"omni.usd" = {}
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.usd.layers" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.live_session_management" = {}
+
+[[python.module]]
+name = "omni.kit.widget.live"
+
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+    "--/app/window/width=512",
+    "--/app/window/height=512",
+    "--/app/renderer/resolution/width=512",
+    "--/app/renderer/resolution/height=512",
+    "--/exts/omni.kit.notification_manager/disable_notifications=true",
+]
+
+dependencies = [
+    "omni.kit.selection",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.collaboration.channel_manager"
+]
+
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = [
+    "*Unable to open asset 'omniverse://__faked_omniverse_server__/test/*'. Could not download local file*"
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md"]

@@ -1,0 +1,200 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-282.2961488597572, 145.284336679939, 412.97431649526493)
+                double3 target = (49.70302674292238, 103.37067135485182, -30.832204356153298)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def AnimationGraph "AnimationGraph"
+    {
+        custom uniform float anim:graph:variable:BlendWeight
+        prepend rel inputs:pose = </World/AnimationGraph/Blend>
+        rel skel:skeleton = </World/Character/Root>
+
+        def AnimationClip "stand_idle_wave_loop_mirror_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_idle_wave_loop_mirror_skelanim>
+            custom uniform float2 ui:position = (-1005.0043, -10.577606)
+        }
+
+        def AnimationClip "stand_walk_loop_in_place_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_in_place_skelanim>
+            custom uniform float2 ui:position = (-734.44055, 199.17096)
+        }
+
+        def Filter "Filter"
+        {
+            token[] inputs:joints = ["Chest"]
+            prepend rel inputs:pose = </World/AnimationGraph/stand_idle_wave_loop_mirror_skelanim>
+            custom uniform float2 ui:position = (-635.1425, -35.948135)
+        }
+
+        def Blend "Blend"
+        {
+            prepend rel inputs:blendWeight = </World/AnimationGraph/BlendWeight>
+            prepend rel inputs:pose0 = </World/AnimationGraph/Filter>
+            prepend rel inputs:pose1 = </World/AnimationGraph/stand_walk_loop_in_place_skelanim>
+            custom uniform float2 ui:position = (-246.41753, 21.188768)
+        }
+
+        def ReadVariable "BlendWeight"
+        {
+            token inputs:variableName = "BlendWeight"
+            custom uniform float2 ui:position = (-637.6462, 306.19293)
+        }
+
+        def AnimationClip "stand_walk_loop_skelanim"
+        {
+            rel inputs:animationSource = </World/Animations/stand_walk_loop_skelanim>
+            custom uniform float2 ui:position = (-668.2841, 93.26326)
+        }
+    }
+
+    def ComputeGraph "ActionGraph"
+    {
+        def ComputeGraphSettings "computegraphSettings"
+        {
+            custom token evaluator:type = "execution"
+            custom int2 fileFormatVersion = (1, 3)
+            custom token flatCacheBacking = "Shared"
+            custom token pipelineStage = "pipelineStageOnDemand"
+        }
+
+        def ComputeNode "draw_screen_space_text" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom color4f inputs:backgroundColor = (0.165, 0.157, 0.145, 0.8)
+            custom int inputs:boxWidth = 0
+            custom uint inputs:execIn = 0
+            prepend uint inputs:execIn.connect = </World/ActionGraph/on_tick.outputs:tick>
+            custom double2 inputs:position = (12, 85)
+            custom float inputs:size = 24
+            custom string inputs:text = "Press Play (space) to start."
+            custom color4f inputs:textColor = (0.95, 0.95, 0.95, 1)
+            custom token node:type = "omni.graph.visualization.nodes.DrawScreenSpaceText"
+            custom int node:typeVersion = 1
+            custom uint outputs:execOut = 1 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-283.85928, -251.47504)
+        }
+
+        def ComputeNode "on_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:framePeriod = 0
+            custom bool inputs:onlyPlayback = 0
+            custom token node:type = "omni.graph.action.OnTick"
+            custom int node:typeVersion = 1
+            custom double outputs:absoluteSimTime
+            custom double outputs:deltaSeconds = 0.016245000064373016
+            custom double outputs:frame = 75.29173278808594
+            custom bool outputs:isPlaying = 1
+            custom uint outputs:tick = 0 (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time = 3.137155532836914
+            custom double outputs:timeSinceStart = 9393.9267578125
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-611.4663, -249.51439)
+        }
+    }
+
+    def Scope "Animations"
+    {
+        def "stand_walk_loop_skelanim" (
+            prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Animations/NVIDIA/biped_demo/stand_walk_loop.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_idle_wave_loop_mirror_skelanim" (
+            prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Animations/NVIDIA/biped_demo/stand_idle_wave_loop_mirror.skelanim.usd@
+        )
+        {
+        }
+
+        def "stand_walk_loop_in_place_skelanim" (
+            prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Animations/NVIDIA/biped_demo/stand_walk_loop_in_place.skelanim.usd@
+        )
+        {
+        }
+    }
+
+    def "Character" (
+        prepend apiSchemas = ["AnimationGraphAPI", "OmniGraphAPI"]
+        prepend references = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/AnimGraph/Characters/NVIDIA/biped_demo.usd@
+    )
+    {
+        rel animationGraph = </World/AnimationGraph>
+        custom float anim:graph:variable:BlendWeight
+        rel omniGraphs = </World/ActionGraph>
+
+        over "Body_Mesh"
+        {
+            rel material:binding = None
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

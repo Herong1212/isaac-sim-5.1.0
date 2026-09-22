@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.profiler.tracy-1.2.0%2Blx64.zip"
+
+    [package.target]
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+    [package.publish]
+        kitVersion = "106.4.0+master.149313.164b6eef.gl"
+        date = 1730505742
+        buildNumber = "103.0.0+master.377.86abecd4.gl"
+        repoName = "kit-devtools"
+        signed = 1

@@ -1,0 +1,765 @@
+{
+    "Compare": {
+        "version": 1,
+        "description": [
+            "Outputs the truth value of a comparison operation. Tuples are compared in lexicographic order.",
+            "If one input is an array and the other is a scalar, the scalar will be broadcast to the size of",
+            "the array."
+        ],
+        "uiName": "Compare",
+        "categories": ["math:condition"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["numerics", "string_types", "bool", "bool[]"],
+                "description": "The first of the two inputs for which comparison will be invoked."
+            },
+            "b": {
+                "type": ["numerics", "string_types", "bool", "bool[]"],
+                "description": "The second of the two inputs for which comparison will be invoked."
+            },
+            "operation": {
+                "type": "token",
+                "description": "The comparison operation to perform (>,<,>=,<=,==,!=)",
+                "uiName": "Operation",
+                "default": ">",
+                "metadata": {
+                    "allowedTokens": {
+                        "gt": ">",
+                        "lt": "<",
+                        "ge": ">=",
+                        "le": "<=",
+                        "eq": "==",
+                        "ne": "!="
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["bool", "bool[]"],
+                "description": "The truth-value result of the comparison operation between inputs \"A\" and \"B\".",
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "bool", "value": true},
+                "inputs:b": {"type": "bool", "value": false},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "bool", "value": true},
+                "inputs:b": {"type": "bool[]", "value": [true, false]},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "bool[]", "value": [true, false]},
+                "inputs:b": {"type": "bool", "value": true},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "bool[]", "value": [true, false]},
+                "inputs:b": {"type": "bool[]", "value": [true, false]},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [true, true]}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 1},
+                "inputs:b": {"type": "double", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "double", "value": 1},
+                "inputs:b": {"type": "double[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [1, 2]},
+                "inputs:b": {"type": "double", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "double[]", "value": [2.0, 3.0]},
+                "inputs:b": {"type": "double[]", "value": [2.0, 3.1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, true]}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0},
+                "inputs:b": {"type": "float", "value": 1.0},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 42.0},
+                "inputs:b": {"type": "float", "value": 1.0},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+
+            {
+                "inputs:a": {"type": "float", "value": 1},
+                "inputs:b": {"type": "float[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [1, 2]},
+                "inputs:b": {"type": "float", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [1.0, 2.0]},
+                "inputs:b": {"type": "float[]", "value": [1.0, 2.01]},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 1},
+                "inputs:b": {"type": "half", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "half", "value": 1},
+                "inputs:b": {"type": "half[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [1, 2]},
+                "inputs:b": {"type": "half", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "half[]", "value": [1, 2]},
+                "inputs:b": {"type": "half[]", "value": [3, 0]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int", "value": 1},
+                "inputs:b": {"type": "int", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "int", "value": 1},
+                "inputs:b": {"type": "int[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[]", "value": [1, 2]},
+                "inputs:b": {"type": "int", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+
+            {
+                "inputs:a": {"type": "int[]", "value": [1, 2]},
+                "inputs:b": {"type": "int[]", "value": [3, 0]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int64", "value": 9223372036854775807},
+                "inputs:b": {"type": "int64", "value": 9223372036854775807},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "int64", "value": 1},
+                "inputs:b": {"type": "int64[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int64[]", "value": [1, 2]},
+                "inputs:b": {"type": "int64", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "int64[]", "value": [1, 2]},
+                "inputs:b": {"type": "int64[]", "value": [3, 0]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "token", "value": ""},
+                "inputs:b": {"type": "token", "value": ""},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "token", "value": "abc"},
+                "inputs:b": {"type": "token", "value": "abc"},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "token", "value": "abc"},
+                "inputs:b": {"type": "token", "value": "d"},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "token", "value": "abc"},
+                "inputs:b": {"type": "token", "value": ""},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "token", "value": ""},
+                "inputs:b": {"type": "token[]", "value": ["abc", "a", ""]},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [false, false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "token[]", "value": ["abc", "a", ""]},
+                "inputs:b": {"type": "token", "value": "a"},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [false, true, false]}
+            },
+            {
+                "inputs:a": {"type": "token[]", "value": ["abcd", "a", "foo"]},
+                "inputs:b": {"type": "token[]", "value": ["abc", "a", "food"]},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool[]", "value": [true, false, true]}
+            },
+            {
+                "inputs:a": {"type": "string", "value": ""},
+                "inputs:b": {"type": "string", "value": ""},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": "abc"},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": "d"},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": ""},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "string", "value": ""},
+                "inputs:b": {"type": "string", "value": ""},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": "ad"},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": ""},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "string", "value": "abc"},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "uchar[]", "value": [97, 98, 99]},
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool[]", "value": [false, false, false]}
+            },
+            {
+                "inputs:a": {"type": "uchar[]", "value": [97, 98, 99]},
+                "inputs:b": {"type": "string", "value": "abc"},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [true, true, true]}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 98},
+                "inputs:b": {"type": "string", "value": "abc"},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [false, true, true]}
+            },
+            {
+                "inputs:a": {"type": "string", "value": "abc"},
+                "inputs:b": {"type": "uchar", "value": 98},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true, true]}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 1},
+                "inputs:b": {"type": "uchar", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "uchar", "value": 1},
+                "inputs:b": {"type": "uchar[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "uchar[]", "value": [97, 98, 99]},
+                "inputs:b": {"type": "uchar", "value": 98},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool[]", "value": [false, false, true]}
+            },
+            {
+                "inputs:a": {"type": "uchar[]", "value": []},
+                "inputs:b": {"type": "uchar[]", "value": []},
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": []}
+            },
+            {
+                "inputs:a": {"type": "uint", "value": 1},
+                "inputs:b": {"type": "uint", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "uint", "value": 1},
+                "inputs:b": {"type": "uint[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "uint[]", "value": [1, 2]},
+                "inputs:b": {"type": "uint", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "uint[]", "value": [1, 2]},
+                "inputs:b": {"type": "uint[]", "value": [3, 0]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "uint64", "value": 1},
+                "inputs:b": {"type": "uint64", "value": 2},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "uint64", "value": 1},
+                "inputs:b": {"type": "uint64[]", "value": [1, 2]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "uint64[]", "value": [1, 2]},
+                "inputs:b": {"type": "uint64", "value": 1},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "uint64[]", "value": [1, 2]},
+                "inputs:b": {"type": "uint64[]", "value": [3, 0]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [1, 1]},
+                "inputs:b": {"type": "double[2]", "value": [2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [1, 1]},
+                "inputs:b": {"type": "double[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "double[2]", "value": [1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "double[2][]", "value": [[3, 3], [0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "double[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "double[3]", "value": [2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "double[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "double[3]", "value": [1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[2.0, 3.0, 1.0], [1.0, 2.0, 5.0]]},
+                "inputs:b": {"type": "double[3][]", "value": [[2.0, 1.0, 4.0], [2.0, 2.0, 2.0]]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "double[4]", "value": [2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "double[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "double[4]", "value": [1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "double[4][]", "value": [[3, 3, 3, 3], [0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[2]", "value": [2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[2]", "value": [1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[2][]", "value": [[3, 3, 3, 3], [0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[3]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[3][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1], [2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[3][]", "value": [
+                    [3, 3, 3, 3, 3, 3, 3, 3, 3], [0, 0, 0, 0, 0, 0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[4]", "value": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "matrixd[4][]", "value": [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]]},
+                "inputs:b": {"type": "matrixd[4][]", "value": [
+                    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "float[2]", "value": [1, 1]},
+                "inputs:b": {"type": "float[2]", "value": [2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [1, 1]},
+                "inputs:b": {"type": "float[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "float[2]", "value": [1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "float[2][]", "value": [[3, 3], [0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "float[3]", "value": [2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "float[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "float[3]", "value": [1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "float[3][]", "value": [[3, 3, 3], [0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "float[4]", "value": [2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "float[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "float[4]", "value": [1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "float[4][]", "value": [[3, 3, 3, 3], [0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [1, 1]},
+                "inputs:b": {"type": "half[2]", "value": [2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [1, 1]},
+                "inputs:b": {"type": "half[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "half[2]", "value": [1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "half[2][]", "value": [[3, 3], [0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "half[3]", "value": [2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "half[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "half[3]", "value": [1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "half[3][]", "value": [[3, 3, 3], [0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "half[4]", "value": [2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "half[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "half[4]", "value": [1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "half[4][]", "value": [[3, 3, 3, 3], [0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[2]", "value": [1, 1]},
+                "inputs:b": {"type": "int[2]", "value": [2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "int[2]", "value": [1, 1]},
+                "inputs:b": {"type": "int[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "int[2]", "value": [1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "int[2][]", "value": [[1, 1], [2, 2]]},
+                "inputs:b": {"type": "int[2][]", "value": [[3, 3], [0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "int[3]", "value": [2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "int[3]", "value": [1, 1, 1]},
+                "inputs:b": {"type": "int[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "int[3]", "value": [1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "int[3][]", "value": [[1, 1, 1], [2, 2, 2]]},
+                "inputs:b": {"type": "int[3][]", "value": [[3, 3, 3], [0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "int[4]", "value": [2, 2, 2, 2]},
+                "inputs:operation": ">",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": {"type": "int[4]", "value": [1, 1, 1, 1]},
+                "inputs:b": {"type": "int[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:operation": "<",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            },
+            {
+                "inputs:a": {"type": "int[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "int[4]", "value": [1, 1, 1, 1]},
+                "inputs:operation": "<=",
+                "outputs:result": {"type": "bool[]", "value": [true, false]}
+            },
+            {
+                "inputs:a": {"type": "int[4][]", "value": [[1, 1, 1, 1], [2, 2, 2, 2]]},
+                "inputs:b": {"type": "int[4][]", "value": [[3, 3, 3, 3], [0, 0, 0, 0]]},
+                "inputs:operation": ">=",
+                "outputs:result": {"type": "bool[]", "value": [false, true]}
+            }
+        ]
+    }
+}

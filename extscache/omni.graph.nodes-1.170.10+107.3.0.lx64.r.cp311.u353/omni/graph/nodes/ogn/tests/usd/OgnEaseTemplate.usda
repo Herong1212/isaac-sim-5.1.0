@@ -1,0 +1,45 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnEase.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Ease" (
+        docs="""Easing function which interpolates between a start and end value. Vectors are eased component-wise. The easing functions can be applied to decimal types. Linear: Interpolates between start and finish at a fixed rate. EaseIn: Starts slowly and ends fast according to an exponential, the slope is determined by the "Blend Exponent" input. EaseOut: Same as EaseIn, but starts fast and ends slow EaseInOut: Combines EaseIn and EaseOut SinIn: Starts slowly and ends fast according to a sinusoidal curve SinOut: Same as SinIn, but starts fast and ends slow SinInOut: Combines SinIn and SinOut"""
+    )
+    {
+        token node:type = "omni.graph.nodes.Ease"
+        int node:typeVersion = 2
+
+        # 5 attributes
+        custom token inputs:alpha (
+            docs="""The normalized time [0 - 1.0] (inclusive). Values outside this range will be clamped."""
+        )
+        custom int inputs:blendExponent = 2 (
+            docs="""The blend exponent, which is the degree of the ease curve
+             (1 = linear, 2 = quadratic, 3 = cubic, etc). 
+            This only applies to the Ease* functions."""
+        )
+        custom token inputs:easeFunc = "EaseInOut" (
+            docs="""The easing function to apply (EaseIn, EaseOut, EaseInOut, Linear, SinIn, SinOut, SinInOut)."""
+        )
+        custom token inputs:end (
+            docs="""The end value at which the interpolation will end."""
+        )
+        custom token inputs:start (
+            docs="""The start value from which the interpolation will begin."""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""The result of computing the configured easing function at the given normalized time value."""
+        )
+    }
+}

@@ -1,0 +1,61 @@
+[package]
+version = "1.0.19"
+title = "Legacy Viewport Gizmo drawing"
+description = "Deprecated API to draw gizmos in the viewport."
+authors = ["NVIDIA"]
+category = "Viewport"
+repository = ""
+readme  = "docs/Overview.md"
+keywords = ["kit", "viewport", "gizmo"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Core"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[dependencies]
+"omni.usd" = {}
+"carb.windowing.plugins" = {}
+
+[[python.module]]
+name = "omni.kit.viewport.legacy_gizmos"
+
+[settings]
+# Whether the Viewprt grid is enabled/visible or not
+app.viewport.grid.enabled = true
+# Whether to automatically update the grid-plane based on UsdContext and active camera
+app.viewport.grid.trackCamera = false
+
+[[test]]
+# RTX may need to build the shader-cache, so give it some time
+timeout = 900
+dependencies = [
+    # FIXME: omni.ui provides carb.Format conversions required
+    "omni.ui",
+    "omni.hydra.rtx",
+    "omni.kit.hydra_texture",
+    "omni.kit.renderer.capture",
+    "omni.kit.test_helpers_gfx"
+]
+args = [
+    "--/renderer/enabled=rtx",
+    "--/app/asyncRendering=false",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx/post/aa/op=0",
+    "--/rtx/reflections/enabled=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx-defaults/reflections/enabled=0",
+]
+
+unreliable = true # OM-49114
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

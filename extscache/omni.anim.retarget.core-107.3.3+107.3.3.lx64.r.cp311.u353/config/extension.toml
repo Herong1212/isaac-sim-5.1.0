@@ -1,0 +1,69 @@
+[package]
+version = "107.3.3"
+title = "Animation Retargeting Core (BETA)"
+authors = ["NVIDIA"]
+keywords = ["anim", "animation", "skeleton", "skeletal", "retarget"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Core functionality for Animation Retargeting"
+category = "Animation"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.retarget.core"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.kit.usd_undo" = {}
+"omni.usd" = {}
+"omni.usd.schema.anim" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.renderer.core",
+    "omni.kit.renderer.capture",
+    "omni.kit.property.usd",
+    "omni.anim.graph.core",
+    "omni.kit.viewport.window",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx",
+    "omni.kit.viewport.utility",
+    "omni.anim.skelJoint"
+]
+args = [
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/app/asyncRendering=false",
+    "--/app/docks/disabled=true",
+    "--/app/viewport/forceHideFps=true",
+    "--/app/window/hideUi=true",
+    "--/app/window/width=800",
+    "--/app/window/height=600",
+    "--/app/renderer/resolution/width=800",
+    "--/app/renderer/resolution/height=600",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window"
+]
+stdoutFailPatterns.exclude = [
+    "*Failed to resolve USD Asset Identifier*",
+]
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[settings]
+persistent.exts."omni.anim.retarget.core".enableFeetIK = false
+persistent.exts."omni.anim.retarget.core".feetIKActivation = 0.2
+persistent.exts."omni.anim.retarget.core".feetIKTags = ["LeftLeg", "LeftFoot", "RightLeg", "RightFoot"]
+persistent.exts."omni.anim.retarget.core".disableTwist = false
+persistent.exts."omni.anim.retarget.core".disableTwistTags = ["LeftHandThumb", "LeftHandIndex", "LeftHandMiddle", "LeftHandRing", "LeftHandPinky", "RightHandThumb", "RightHandIndex", "RightHandMiddle", "RightHandRing", "RightHandPinky"]

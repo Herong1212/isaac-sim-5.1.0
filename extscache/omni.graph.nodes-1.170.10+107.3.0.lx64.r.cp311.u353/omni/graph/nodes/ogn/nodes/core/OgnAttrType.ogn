@@ -1,0 +1,72 @@
+{
+    "AttributeType": {
+        "version": 1,
+        "description": ["Queries information about the type of a specified attribute in an input bundle"],
+        "metadata": {
+            "uiName": "Extract Attribute Type Information"
+        },
+        "categories": ["bundle"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "attrName": {
+                "type": "token",
+                "description": "The name of the attribute to be queried",
+                "default": "input",
+                "metadata": {
+                    "uiName": "Attribute To Query"
+                }
+            },
+            "data": {
+                "type": "bundle",
+                "description": "Bundle of attributes to examine",
+                "metadata": {
+                    "uiName": "Bundle To Examine"
+                }
+            }
+        },
+        "outputs": {
+            "baseType": {
+                "type": "int",
+                "description": ["An integer representing the type of the individual components.",
+                                "Set to -1 if the named attribute was not in the bundle."],
+                "metadata": {
+                    "uiName": "Attribute Base Type"
+                }
+            },
+            "componentCount": {
+                "type": "int",
+                "description": ["Number of components in each tuple, e.g. one for float, three for point3f, 16 for",
+                                "matrix4d. Set to -1 if the named attribute was not in the bundle."],
+                "metadata": {
+                    "uiName": "Attribute Component Count"
+                }
+            },
+            "arrayDepth": {
+                "type": "int",
+                "minimum": 0,
+                "maximum": 2,
+                "description": ["Zero for a single value, one for an array, two for an array of arrays.",
+                                 "Set to -1 if the named attribute was not in the bundle."],
+                "metadata": {
+                    "uiName": "Attribute Array Depth"
+                }
+            },
+            "role": {
+                "type": "int",
+                "description": ["An integer representing semantic meaning of the type, e.g. point3f vs. normal3f vs. vector3f vs. float3.",
+                                "Set to -1 if the named attribute was not in the bundle."],
+                "metadata": {
+                    "uiName": "Attribute Role"
+                }
+            },
+            "fullType": {
+                "type": "int",
+                "description": ["A single int representing the full type information.",
+                                "Set to -1 if the named attribute was not in the bundle."],
+                "metadata": {
+                    "uiName": "Full Attribute Type"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.variant.presenter-107.0.0.zip"
+
+    [package.publish]
+        kitVersion = "107.0.2+mr34593.158995.4d178b2a.gl"
+        date = 1732622069
+        buildNumber = "107.0.2+master.1450.23bb14ac.gl"
+        repoName = "kit-usd"
+        signed = 1

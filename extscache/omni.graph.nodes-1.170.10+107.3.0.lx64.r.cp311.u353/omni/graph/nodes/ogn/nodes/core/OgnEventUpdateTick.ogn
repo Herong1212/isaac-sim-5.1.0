@@ -1,0 +1,19 @@
+{
+    "UpdateTickEvent": {
+        "version": 1,
+        "description": ["Triggers on update ticks."],
+        "metadata": {
+            "uiName": "Update Tick Event"
+        },
+        "scheduling": ["threadsafe"],
+        "outputs": {
+            "event": {
+                "type": "uint64",
+                "description": "Currently incomplete - always 0.  Eventually should use a bundle for this.",
+                "metadata": {
+                    "uiName": "event"
+                }
+            }
+        }
+    }
+}

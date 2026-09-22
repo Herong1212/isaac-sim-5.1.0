@@ -1,0 +1,9 @@
+{
+    "Noop": {
+        "description": "Empty node, used only as a placeholder in the graph. It has no inputs or outputs.",
+        "version": 1,
+        "uiName": "No-Op",
+        "categories": ["debug"],
+        "scheduling": ["threadsafe"]
+    }
+}

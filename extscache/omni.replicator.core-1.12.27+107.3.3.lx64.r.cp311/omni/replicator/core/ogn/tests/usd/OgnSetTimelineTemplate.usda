@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSetTimeline.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSetTimeline" (
+        docs="""Set visibility on prims"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSetTimeline"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom token inputs:modifyType = "" (
+            docs="""The method to modify the timeline."""
+        )
+        custom float inputs:value = 0.0 (
+            docs="""Value used to modify the timeline."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

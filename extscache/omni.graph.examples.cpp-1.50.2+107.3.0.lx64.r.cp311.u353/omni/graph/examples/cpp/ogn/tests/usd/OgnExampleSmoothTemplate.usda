@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExampleSmooth.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_Smooth" (
+        docs="""Smooths data in a very simple way by averaging values with neighbors."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.Smooth"
+        int node:typeVersion = 1
+
+        # 6 attributes
+        custom int inputs:iterations = 5 (
+            docs="""Number of times to average neighboring values"""
+        )
+        custom rel inputs:mesh (
+            docs="""Bundle containing data to be smoothed and neighbor arrays."""
+        )
+        custom token inputs:nameOfAttributeToSmooth = "points" (
+            docs="""Name of the attribute in 'mesh' containing the data to be smoothed"""
+        )
+        custom token inputs:nameOfNeighborStartsInputAttribute = "neighborStarts" (
+            docs="""Name of the 'int[]' attribute in 'mesh' containing the beginning index of neighbors of each point in the array attribute specified by 'nameOfNeighborsInputAttribute'"""
+        )
+        custom token inputs:nameOfNeighborsInputAttribute = "neighbors" (
+            docs="""Name of the 'int[]' attribute in 'mesh' containing the neighbors of all points.  The beginnings of each point's neighbors within this array are provided in the attribute specified by 'nameOfNeighborStartsInputAttribute'."""
+        )
+        custom bool inputs:useGPU = true (
+            docs="""When this option is on, the node will use the GPU to perform the smoothing computation."""
+        )
+
+        # 1 attribute
+        custom rel outputs_mesh (
+            docs="""A copy of 'mesh' with the specified attribute smoothed."""
+        )
+    }
+}

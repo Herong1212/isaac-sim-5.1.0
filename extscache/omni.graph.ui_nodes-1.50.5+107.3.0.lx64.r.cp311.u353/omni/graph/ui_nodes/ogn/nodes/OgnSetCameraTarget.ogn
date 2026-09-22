@@ -1,0 +1,55 @@
+{
+    "SetCameraTarget": {
+        "version": 2,
+        "description": "Sets the camera's target",
+        "uiName": "Set Camera Target",
+        "exclude": ["tests"],
+        "categories": ["sceneGraph:camera"],
+        "scheduling": ["usd-write"],
+        "inputs": {
+            "usePath": {
+                "type": "bool",
+                "default": true,
+                "description": "When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The camera prim, when 'usePath' is false",
+                "optional": true
+            },
+            "primPath": {
+                "type": "token",
+                "description": "Path of the camera, used when 'usePath' is true",
+                "uiName": "Camera Path",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "target": {
+                "type": "pointd[3]",
+                "description": "The target point",
+                "uiName": "Target"
+            },
+            "rotate": {
+                "type": "bool",
+                "description": [
+                    "True to keep position but change orientation and radius (camera rotates to look at new target).",
+                    "False to keep orientation and radius but change position (camera moves to look at new target)."
+                ],
+                "uiName": "Rotate",
+                "default": true
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "In"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Out"
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "FMod": {
+        "version": 1,
+        "description": [
+           "Computes the floating point remainder of \"A\" / \"B\".",
+           "If \"B\" is zero, then the result is zero. The returned value has the same sign and shape as \"A\"."
+        ],
+        "uiName": "Float Remainder",
+        "categories": ["math:operator"],
+        "inputs": {
+            "a": {
+                "type": ["decimals"],
+                "description": "The numerator \"A\" from which the floating point remainder will be computed.",
+                "uiName": "A"
+            },
+            "b": {
+                "type":["decimals"],
+                "description": "The numerator \"B\" from which the floating point remainder will be computed.",
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["decimals"],
+                "description": [
+                    "The floating point remainder of \"A\" / \"B\", which should have the same sign and shape as",
+                    "\"A\"."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:a": {"type": "float", "value": 4.0}, "inputs:b": {"type": "float", "value": 3.625},
+                "outputs:result": {"type": "float", "value": 0.375}
+            },
+            {
+                "inputs:a": {"type": "float", "value": 4.0}, "inputs:b": {"type": "float", "value": 0.0},
+                "outputs:result": {"type": "float", "value": 0.0}
+            },
+            {
+                "inputs:a": {"type": "float[]", "value": [4.0, 7.625]}, "inputs:b": {"type": "float", "value": 3.625},
+                "outputs:result": {"type": "float[]", "value": [0.375, 0.375]}
+            },
+            {
+                "inputs:a": {"type": "half", "value": -4.0}, "inputs:b": {"type": "half", "value": 3.625},
+                "outputs:result": {"type": "half", "value": -0.375}
+            }
+        ]
+    }
+}

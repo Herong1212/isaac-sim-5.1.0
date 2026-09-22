@@ -1,0 +1,88 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.8.6"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Context Menu Libraries"
+description="Context menu libraries. For creation of context sensitive menu without using UI and helper functions to manage prims."
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "menu"]
+support_level = "Core"
+category = "Internal"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+[dependencies]
+"omni.usd" = {}
+"omni.kit.widget.context_menu" = {}
+"omni.kit.usd.layers" = {}
+"omni.usd.schema.audio" = {optional=true}
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Settings.md",
+    "docs/CHANGELOG.md",
+]
+
+[settings]
+exts."omni.kit.context_menu".show_assign_material = true
+exts."omni.kit.context_menu".icon_size = 14
+exts."omni.kit.context_menu".text_size = 23
+exts."omni.kit.context_menu".margin_size = [4, 4]
+exts."omni.kit.context_menu".icon_spacing = [7, 7]
+exts."omni.kit.context_menu".submenu_spacing = 4
+exts."omni.kit.context_menu".submenu_icon_size = 11.7
+exts."omni.kit.context_menu".color_label_enabled = 0xFFCCCCCC
+exts."omni.kit.context_menu".color_label_disabled = 0xFF6F6F6F
+exts."omni.kit.context_menu".color_separator = 0xFF6F6F6F
+exts."omni.kit.context_menu".hideCreateMenu = false
+
+[[python.module]]
+name = "omni.kit.context_menu"
+
+[[test]]
+args = [
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+]
+
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.mainwindow",
+    "omni.kit.window.content_browser",
+    "omni.kit.window.stage",
+    "omni.kit.property.material",
+    "omni.kit.primitive.mesh",
+    "omni.kit.viewport.window",
+    "omni.kit.window.file_importer",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+]
+
+pythonTests.unreliable = [
+]

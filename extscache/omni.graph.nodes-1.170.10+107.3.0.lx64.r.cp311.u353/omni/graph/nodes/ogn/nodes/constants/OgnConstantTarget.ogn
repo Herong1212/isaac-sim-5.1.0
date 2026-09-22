@@ -1,0 +1,22 @@
+{
+    "ConstantTarget": {
+        "description": [
+            "Container for a target value with paths to one or more Prims,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "inputs": {
+            "value": {
+                "type": "target",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1",
+                    "allowMultiInputs": "1"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,321 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (166.9411894978486, 81.3967553907709, 188.20437538396735)
+                double3 target = (-416.4866256629377, -87.18001211601624, -429.20461220341326)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            bool "rtx:flow:enabled" = 1
+            bool "rtx:flow:pathTracingEnabled" = 1
+            bool "rtx:flow:rayTracedReflectionsEnabled" = 1
+            bool "rtx:flow:rayTracedTranslucencyEnabled" = 1
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Xform "Fire"
+    {
+        def FlowEmitterSphere "flowEmitterSphere"
+        {
+            custom float allocationScale = 1
+            custom bool applyPostPressure = 0
+            custom float burn = 0
+            custom float coupleRateBurn = 0
+            custom float coupleRateDivergence = 0
+            custom float coupleRateFuel = 2
+            custom float coupleRateSmoke = 0
+            float coupleRateTemperature = 10
+            custom float coupleRateVelocity = 2
+            custom float divergence = 0
+            custom bool enabled = 1
+            custom float fuel = 0.8
+            int layer = 1
+            custom bool multisample = 0
+            custom uint numSubSteps = 1
+            custom float physicsVelocityScale = 0
+            custom float3 position = (0, 0, 0)
+            custom float radius = 10
+            custom bool radiusIsWorldSpace = 1
+            custom float smoke = 0
+            float temperature = 2
+            float3 velocity = (0, 0, 0)
+            custom bool velocityIsWorldSpace = 0
+        }
+
+        def FlowSimulate "flowSimulate"
+        {
+            custom uint blockMinLifetime = 4
+            custom float densityCellSize = 0.5
+            custom bool enableHighPrecisionDensity = 0
+            custom bool enableHighPrecisionVelocity = 0
+            custom bool enableLowPrecisionDensity = 0
+            custom bool enableLowPrecisionVelocity = 0
+            custom bool enableSmallBlocks = 0
+            custom bool enableVariableTimeStep = 0
+            custom bool forceClear = 0
+            custom bool forceDisableCoreSimulation = 0
+            custom bool forceDisableEmitters = 0
+            custom bool forceSimulate = 0
+            custom bool interpolateTimeSteps = 0
+            int layer = 1
+            custom uint maxStepsPerSimulate = 1
+            custom bool physicsCollisionEnabled = 0
+            custom bool physicsConvexCollision = 1
+            custom bool simulateWhenPaused = 0
+            custom float stepsPerSecond = 60
+            custom float timeScale = 1
+            custom uint velocitySubSteps = 1
+
+            def FlowAdvectionCombustionParams "advection"
+            {
+                custom float buoyancyMaxSmoke = 1
+                custom float buoyancyPerSmoke = 0
+                float buoyancyPerTemp = 6
+                custom float burnPerTemp = 4
+                custom bool combustionEnabled = 1
+                custom float coolingRate = 1.5
+                custom float divergencePerBurn = 0
+                custom bool downsampleEnabled = 1
+                custom bool enabled = 1
+                custom bool forceFadeEnabled = 0
+                custom float fuelPerBurn = 0.25
+                custom bool globalFetch = 0
+                float3 gravity = (0, -100, 0)
+                custom float ignitionTemp = 0.05
+                custom float smokePerBurn = 3
+                custom float tempPerBurn = 5
+
+                def FlowAdvectionChannelParams "smoke"
+                {
+                    custom float damping = 0.3
+                    float fade = 2
+                    custom float secondOrderBlendFactor = 0.9
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+
+                def FlowAdvectionChannelParams "velocity"
+                {
+                    custom float damping = 0.01
+                    custom float fade = 1
+                    custom float secondOrderBlendFactor = 0.5
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+
+                def FlowAdvectionChannelParams "divergence"
+                {
+                    custom float damping = 0.01
+                    custom float fade = 1
+                    custom float secondOrderBlendFactor = 0.5
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+
+                def FlowAdvectionChannelParams "temperature"
+                {
+                    custom float damping = 0
+                    custom float fade = 0
+                    custom float secondOrderBlendFactor = 0.9
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+
+                def FlowAdvectionChannelParams "fuel"
+                {
+                    custom float damping = 0
+                    custom float fade = 0
+                    custom float secondOrderBlendFactor = 0.9
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+
+                def FlowAdvectionChannelParams "burn"
+                {
+                    custom float damping = 0
+                    custom float fade = 0
+                    custom float secondOrderBlendFactor = 0.9
+                    custom float secondOrderBlendThreshold = 0.001
+                }
+            }
+
+            def FlowVorticityParams "vorticity"
+            {
+                custom float burnMask = 0
+                custom float constantMask = 0
+                custom float densityMask = 0
+                custom bool enabled = 1
+                float forceScale = 3
+                custom float fuelMask = 0
+                custom float smokeMask = 0
+                custom float temperatureMask = 0
+                custom float velocityLinearMask = 0
+                custom float velocityLogScale = 1
+                custom float velocityMask = 1
+            }
+
+            def FlowPressureParams "pressure"
+            {
+                custom bool enabled = 1
+            }
+
+            def FlowSummaryAllocateParams "summaryAllocate"
+            {
+                custom bool enableNeighborAllocation = 1
+                custom float smokeThreshold = 0.02
+                custom float speedThreshold = 1
+                custom float speedThresholdMinSmoke = 0
+            }
+
+            def FlowSparseNanoVdbExportParams "nanoVdbExport"
+            {
+                custom bool burnEnabled = 0
+                custom bool divergenceEnabled = 0
+                custom bool enabled = 0
+                custom bool fuelEnabled = 0
+                custom bool interopEnabled = 0
+                custom bool readbackClearOnStart = 1
+                custom bool readbackClearOnStop = 1
+                custom asset readbackDirectory = @@
+                custom bool readbackEnabled = 0
+                custom rel readbackMaterial
+                custom bool readbackOpenVDB = 1
+                custom bool smokeEnabled = 1
+                custom bool statisticsEnabled = 1
+                custom bool temperatureEnabled = 0
+                custom bool velocityEnabled = 0
+            }
+        }
+
+        def FlowOffscreen "flowOffscreen"
+        {
+            int layer = 1
+
+            def FlowRayMarchColormapParams "colormap"
+            {
+                custom float colorScale = 2.5
+                custom float[] colorScalePoints = [1, 1, 1, 1, 1, 1]
+                custom uint resolution = 32
+                float4[] rgbaPoints = [(0.0154, 0.0177, 0.0154, 0.004902), (0.03575, 0.03575, 0.03575, 0.504902), (0.03575, 0.03575, 0.03575, 0.504902), (1, 0.1594, 0.0134, 0.8), (13.53, 2.99, 0.12599, 0.8), (78, 39, 6.1, 0.7)]
+                custom float[] xPoints = [0, 0.05, 0.15, 0.6, 0.85, 1]
+            }
+
+            def FlowShadowParams "shadow"
+            {
+                custom float attenuation = 0.045
+                custom bool coarsePropagate = 1
+                custom bool enabled = 1
+                custom bool isPointLight = 0
+                custom float3 lightDirection = (1, 1, 1)
+                custom float3 lightPosition = (0, 0, 0)
+                custom float minIntensity = 0.125
+                custom uint numSteps = 16
+                custom float stepOffsetScale = 1
+                custom float stepSizeScale = 0.75
+            }
+
+            def FlowDebugVolumeParams "debugVolume"
+            {
+                custom bool applyPreShadow = 0
+                custom bool enableSpeedAsTemperature = 0
+                custom bool enableVelocityAsDensity = 0
+                custom float3 velocityScale = (0.01, 0.01, 0.01)
+            }
+        }
+
+        def FlowRender "flowRender"
+        {
+            int layer = 1
+
+            def FlowRayMarchParams "rayMarch"
+            {
+                custom float attenuation = 0.05
+                custom float colorScale = 1
+                custom bool enableBlockWireframe = 0
+                custom bool enableRawMode = 0
+                custom float shadowFactor = 1
+                custom float stepSizeScale = 0.75
+
+                def FlowRayMarchCloudParams "cloud"
+                {
+                    custom float3 ambientColor = (0.4, 0.55, 0.9)
+                    custom float ambientMultiplier = 1
+                    custom float3 attenuationMultiplier = (1, 1, 1)
+                    custom float densityMultiplier = 0.5
+                    custom bool enableCloudMode = 0
+                    custom int numShadowSteps = 10
+                    custom float shadowStepMultiplier = 1
+                    custom float3 sunDirection = (1, 1, 1)
+                    custom float3 volumeBaseColor = (1.1, 1, 0.95)
+                    custom float volumeColorMultiplier = 1
+                }
+            }
+
+            def FlowRenderSettingsParams "renderSettings"
+            {
+            }
+        }
+    }
+
+    def Mesh "Disk"
+    {
+        float3[] extent = [(-50, 0, -50), (50, 0, 50)]
+        int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+        int[] faceVertexIndices = [0, 32, 1, 1, 32, 2, 2, 32, 3, 3, 32, 4, 4, 32, 5, 5, 32, 6, 6, 32, 7, 7, 32, 8, 8, 32, 9, 9, 32, 10, 10, 32, 11, 11, 32, 12, 12, 32, 13, 13, 32, 14, 14, 32, 15, 15, 32, 16, 16, 32, 17, 17, 32, 18, 18, 32, 19, 19, 32, 20, 20, 32, 21, 21, 32, 22, 22, 32, 23, 23, 32, 24, 24, 32, 25, 25, 32, 26, 26, 32, 27, 27, 32, 28, 28, 32, 29, 29, 32, 30, 30, 32, 31, 31, 32, 0]
+        normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(50, 0, 0), (49.03926, 0, 9.754517), (46.193974, 0, 19.13417), (41.57348, 0, 27.778513), (35.35534, 0, 35.35534), (27.778513, 0, 41.57348), (19.13417, 0, 46.193974), (9.754517, 0, 49.03926), (3.061617e-15, 0, 50), (-9.754517, 0, 49.03926), (-19.13417, 0, 46.193974), (-27.778513, 0, 41.57348), (-35.35534, 0, 35.35534), (-41.57348, 0, 27.778513), (-46.193974, 0, 19.13417), (-49.03926, 0, 9.754517), (-50, 0, 6.123234e-15), (-49.03926, 0, -9.754517), (-46.193974, 0, -19.13417), (-41.57348, 0, -27.778513), (-35.35534, 0, -35.35534), (-27.778513, 0, -41.57348), (-19.13417, 0, -46.193974), (-9.754517, 0, -49.03926), (-9.184851e-15, 0, -50), (9.754517, 0, -49.03926), (19.13417, 0, -46.193974), (27.778513, 0, -41.57348), (35.35534, 0, -35.35534), (41.57348, 0, -27.778513), (46.193974, 0, -19.13417), (49.03926, 0, -9.754517), (0, 0, 0)]
+        texCoord2f[] primvars:st = [(1, 0.5), (0.5, 0.5), (0.99039257, 0.40245482), (0.99039257, 0.40245482), (0.5, 0.5), (0.9619397, 0.3086583), (0.9619397, 0.3086583), (0.5, 0.5), (0.91573477, 0.22221488), (0.91573477, 0.22221488), (0.5, 0.5), (0.8535534, 0.14644662), (0.8535534, 0.14644662), (0.5, 0.5), (0.7777851, 0.0842652), (0.7777851, 0.0842652), (0.5, 0.5), (0.6913417, 0.038060278), (0.6913417, 0.038060278), (0.5, 0.5), (0.59754515, 0.0096074045), (0.59754515, 0.0096074045), (0.5, 0.5), (0.5, 0), (0.5, 0), (0.5, 0.5), (0.40245485, 0.0096074045), (0.40245485, 0.0096074045), (0.5, 0.5), (0.3086583, 0.038060278), (0.3086583, 0.038060278), (0.5, 0.5), (0.22221488, 0.0842652), (0.22221488, 0.0842652), (0.5, 0.5), (0.14644659, 0.14644662), (0.14644659, 0.14644662), (0.5, 0.5), (0.08426523, 0.22221488), (0.08426523, 0.22221488), (0.5, 0.5), (0.038060308, 0.3086583), (0.038060308, 0.3086583), (0.5, 0.5), (0.009607434, 0.40245482), (0.009607434, 0.40245482), (0.5, 0.5), (0, 0.5), (0, 0.5), (0.5, 0.5), (0.009607434, 0.59754515), (0.009607434, 0.59754515), (0.5, 0.5), (0.038060308, 0.6913417), (0.038060308, 0.6913417), (0.5, 0.5), (0.08426523, 0.7777851), (0.08426523, 0.7777851), (0.5, 0.5), (0.14644659, 0.8535534), (0.14644659, 0.8535534), (0.5, 0.5), (0.22221488, 0.91573477), (0.22221488, 0.91573477), (0.5, 0.5), (0.3086583, 0.9619397), (0.3086583, 0.9619397), (0.5, 0.5), (0.40245485, 0.99039257), (0.40245485, 0.99039257), (0.5, 0.5), (0.5, 1), (0.5, 1), (0.5, 0.5), (0.59754515, 0.99039257), (0.59754515, 0.99039257), (0.5, 0.5), (0.6913417, 0.9619397), (0.6913417, 0.9619397), (0.5, 0.5), (0.7777851, 0.91573477), (0.7777851, 0.91573477), (0.5, 0.5), (0.8535534, 0.8535534), (0.8535534, 0.8535534), (0.5, 0.5), (0.91573477, 0.7777851), (0.91573477, 0.7777851), (0.5, 0.5), (0.9619397, 0.6913417), (0.9619397, 0.6913417), (0.5, 0.5), (0.99039257, 0.59754515), (0.99039257, 0.59754515), (0.5, 0.5), (1, 0.5)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (8, 8, 8)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DomeLight "DomeLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:intensity = 50
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        token inputs:texture:format = "latlong"
+        double3 xformOp:rotateXYZ = (270, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

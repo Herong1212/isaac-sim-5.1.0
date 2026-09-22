@@ -1,0 +1,33 @@
+#usda 1.0
+
+def Material "mtl_soft_hard_range"
+{
+    def Shader "shader_float"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/soft_range_test.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "float_range"
+    }
+
+    def Shader "shader_float2"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/soft_range_test.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "float2_range"
+    }
+
+    def Shader "shader_float3"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/soft_range_test.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "float3_range"
+    }
+
+    def Shader "shader_float4"
+    {
+        uniform token info:implementationSource = "sourceAsset"
+        uniform asset info:mdl:sourceAsset = "../mdl/soft_range_test.mdl"
+        uniform token info:mdl:sourceAsset:subIdentifier = "float4_range"
+    }
+}
+

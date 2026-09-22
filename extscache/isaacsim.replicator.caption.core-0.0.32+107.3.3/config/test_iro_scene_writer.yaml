@@ -1,0 +1,213 @@
+isaacsim.replicator.object:
+  version: 0.3.18
+  screen_width: 600
+  screen_height: 800
+  num_frames: 1
+  output_path: YOUR_OUTPUT_PATH
+  seed: 1
+  inter_frame_time: 1
+  gravity: 10000
+  scene_graph:
+    objects_with_captions_only: true
+  # path_tracing: True
+  images_root: USD_PATH
+  warehouse_folder: omniverse://isaac-dev.ov.nvidia.com/Isaac/Environments/Simple_Warehouse/
+  camera_parameters:
+    screen_width: $[/screen_width]
+    screen_height: $[/screen_height]
+    focal_length: 44.228393962367306
+    horizontal_aperture: 20.955
+    near_clip: 0.1
+    far_clip: 100000
+  output_switches:
+    images: True
+    labels: True
+    descriptions: True
+    3d_labels: False
+    segmentation: True
+    depth: False
+  position_H:
+    distribution_type: range
+    start:
+      - -609.2968814878212
+      - 0
+      - 433.26105596879364
+    end:
+      - 481.2355279661266
+      - 0
+      - 433.26105596879364
+  default_camera:
+    count: 1
+    camera_parameters: $[/camera_parameters]
+    transform_operators:
+    - translate:
+      - 633
+      - 407
+      - 903
+    - rotateXYZ:
+      - -14
+      - 43
+      - 9
+    type: camera
+  distant_light:
+    color:
+      distribution_type: range
+      end:
+      - 1.3
+      - 1.3
+      - 1.3
+      start:
+      - 0.7
+      - 0.7
+      - 0.7
+    count: 5
+    intensity:
+      distribution_type: range
+      end: 600
+      start: 300
+    subtype: distant
+    transform_operators:
+    - rotateY:
+        distribution_type: range
+        end: 180
+        start: -180
+    - rotateX:
+        distribution_type: range
+        end: -10
+        start: -35
+    type: light
+  dome_light:
+    type: light
+    subtype: dome
+    color:
+      distribution_type: range
+      start:
+      - 0.7
+      - 0.7
+      - 0.7
+      end:
+      - 1.3
+      - 1.3
+      - 1.3
+    intensity:
+      distribution_type: range
+      start: 1000
+      end: 3000
+    transform_operators:
+    - rotateX: 270
+  plane:
+    physics: collision
+    type: geometry
+    subtype: plane
+    tracked: false
+    transform_operators:
+    - scale:
+      - 5
+      - 5
+      - 5
+  mesh:
+    count: 1
+    type: geometry
+    subtype: mesh
+    tracked: True
+    physics: rigidbody
+    usd_path:
+      distribution_type: folder
+      value: YOUR_TOY_ASSETS
+      suffix: usd
+    transform_operators:
+    - translate_global: $[/position_H]
+    - translate:
+        distribution_type: range
+        start:
+        - -20 
+        - 150
+        - -20 
+        end:
+        - 20 
+        - 200
+        - 20
+    - rotateY:
+        distribution_type: range
+        start: -180
+        end: 180
+    - scale:
+      - 0.5
+      - 0.5
+      - 0.5
+  table:
+    count: 1
+    # tracked: True
+    attach_label: true
+    physics: rigidbody
+    type: geometry
+    subtype: mesh
+    transform_operators:
+    - translate_global: $[/position_H]
+    - translate:
+      - 0
+      - 0
+      - 0
+    - rotateXYZ:
+      - -90
+      - 0
+      - 0
+    - scale:
+      - 2
+      - 2
+      - 2
+    usd_path:
+      distribution_type: set
+      values: 
+      - $[/images_root]/EastRural/EastRural_Table.usd
+      - $[/images_root]/Jennings/Jennings_Table.usd
+      - $[/images_root]/Roxana/Roxana_RoundCoffeeTable.usd
+      - $[/images_root]/Appleseed/Appleseed_CoffeeTable.usd
+      - $[/images_root]/DesPeres/DesPeres_Table.usd
+      - $[/images_root]/DellWood/Dellwood_RoundDiningTable.usd 
+  warehouse:
+    type: geometry
+    subtype: mesh
+    # tracked: true
+    usd_path: 
+      distribution_type: set
+      values: 
+        # - $[/warehouse_folder]/full_warehouse.usd
+        # - $[/warehouse_folder]/warehouse_multiple_shelves.usd
+        # - $[/warehouse_folder]/warehouse.usd
+        - $[/warehouse_folder]/warehouse_with_forklifts.usd
+    transform_operators:
+    - translate:
+      - -200
+      - 0.1
+      - 0
+    - rotateXYZ:
+      - 0
+      - -90
+      - -90
+    - scale:
+      - 100
+      - 100
+      - 100
+  skip_frames_with_no_visible_tracked_mutables: False
+  caption_configs:
+    save_full_scene_graph: true
+    save_pruned_scene_graph: true
+    export_world: true
+    attach_label_to_usd: false
+    use_ai_label: false
+    visualize_caption: true
+    max_object_capacity: 100
+    export_edges: true
+    global_caption: false
+    qa_caption: false
+    brief_caption: false
+    pruning_ratio: 1.0
+    caption_writer: IROSceneGraphWriter
+    verbose: false
+    export_depth: true
+    export_point_cloud: true
+    random_seed: 0
+    
+  output_switches:
+    caption: true

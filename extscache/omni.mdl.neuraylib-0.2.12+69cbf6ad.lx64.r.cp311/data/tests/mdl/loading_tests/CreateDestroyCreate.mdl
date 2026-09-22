@@ -1,0 +1,10 @@
+mdl 1.6;
+
+import ::df::*;
+
+export material CreateDestroyCreate (
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: color(0.0, 1.0, 0.0))
+    )
+);

@@ -1,0 +1,37 @@
+{
+    "OgnSampleSequencePrim": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates samples by returning items from a sample set of prims sequentially.",
+        "metadata":
+        {
+           "uiName": "Sequence Sampling - Prim"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "items": {
+                "description": ["The ordered items to be sampled"],
+                "type": "target"
+            },
+            "ordered": {
+                "description": ["Whether to return the item in ordered"],
+                "type": "bool",
+                "default": true
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["Sampled results"],
+                "type": "target"
+            }
+        }
+    }
+}

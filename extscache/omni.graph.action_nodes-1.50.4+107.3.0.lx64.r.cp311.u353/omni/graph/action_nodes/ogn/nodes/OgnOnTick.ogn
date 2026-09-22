@@ -1,0 +1,97 @@
+{
+    "omni.graph.action.OnTick": {
+        "version": 2,
+        "description": [
+            "Activates execution of the downstream graph at a regular multiple of the application's refresh rate.",
+            "As the application runs the this node will skip every 'Update Period' executions. Typically you",
+            "might set this to a larger value if the downstream graph is doing something you do not want to happen",
+            "too frequently, such as printing out debugging messages or polling some input that does not get",
+            "triggered very often. The actual refresh rate timing will depend on external factors such as rendering",
+            "time and scene complexity. In addition to the activation signal, the outputs also contain global",
+            "time information for convenience."
+        ],
+        "uiName": "On Tick",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "framePeriod": {
+                "type": "uint",
+                "description": [
+                    "The number of application refreshes to skip between executions of this node.",
+                    "For example, the default 0 means no skipping so this node executes on every application update,",
+                    "1 means every other update. This can be used to rate-limit updates."
+                ],
+                "default": 0,
+                "uiName": "Update Period (Ticks)",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "tick": {
+                "type": "execution",
+                "description": "At each specified update tick, signal to the graph that execution can continue downstream.",
+                "uiName": "Tick"
+            },
+            "isPlaying": {
+                "type": "bool",
+                "description": "True during global animation timeline playback.",
+                "uiName": "Is Playing"
+            },
+            "deltaSeconds": {
+                "type": "double",
+                "description": [
+                    "The accumulated graph evaluation time since the last time the graph downstream of 'Tick' was activated."
+                ],
+                "uiName": "Delta (Seconds)"
+            },
+            "timeSinceStart": {
+                "type": "double",
+                "description": "Elapsed time since the application started.",
+                "uiName": "Time Since Start (Seconds)"
+            },
+            "time": {
+                "type": "double",
+                "description": "The global animation time in seconds during playback.",
+                "uiName": "Animation Time (Seconds)"
+            },
+            "frame": {
+                "type": "double",
+                "description": [
+                    "The global animation time in frames, equivalent to (Animation Time * FramesPerSecond), during playback."
+                ],
+                "uiName": "Animation Time (Frames)"
+            },
+            "absoluteSimTime": {
+                "type": "double",
+                "description": [
+                    "The accumulated total of elapsed times between rendered frames. This is independent of any",
+                    "executions skipped as a result of a non-zero 'Update Period'."
+                ],
+                "uiName": "Absolute Simulation Time (Seconds)"
+            }
+        },
+        "state": {
+            "frameCount": {
+                "type": "uint",
+                "description": "Accumulated frames since the last activation of the downstream graph.",
+                "default": 0
+            },
+            "accumulatedSeconds": {
+                "type": "double",
+                "description": "Accumulated time since the last activation of the downstream graph.",
+                "default": 0
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "SetViewportRenderer": {
+        "version": 1,
+        "description": "Sets renderer for the target viewport.",
+        "language": "Python",
+        "uiName": "Set Viewport Renderer",
+        "categories": [ "graph:action", "viewport" ],
+        "exclude": ["tests"],
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "renderer": {
+                "type": "token",
+                "uiName": "Renderer",
+                "description": "Renderer to be assigned to the target viewport"
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        }
+    }
+}

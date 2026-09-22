@@ -1,0 +1,35 @@
+{
+    "BooleanNot": {
+        "description": "Inverts a bool or bool array",
+        "version": 1,
+        "categories": ["math:condition"],
+        "scheduling": ["threadsafe"],
+        "uiName": "Boolean Not",
+        "inputs": {
+            "valueIn": {
+                "type": ["bool", "bool[]"],
+                "description": "bool or bool array to invert"
+            }
+        },
+        "outputs": {
+            "valueOut": {
+                "type": ["bool", "bool[]"],
+                "description": "inverted bool or bool array"
+            }
+        },
+        "tests": [
+            {
+                "inputs:valueIn": {"type": "bool", "value": true},
+                "outputs:valueOut": false
+            },
+            {
+                "inputs:valueIn": {"type": "bool", "value": false},
+                "outputs:valueOut": true
+            },
+            {
+                "inputs:valueIn": {"type": "bool[]", "value": [true, false, true, false]},
+                "outputs:valueOut": [false, true, false, true]
+            }
+        ]
+    }
+}

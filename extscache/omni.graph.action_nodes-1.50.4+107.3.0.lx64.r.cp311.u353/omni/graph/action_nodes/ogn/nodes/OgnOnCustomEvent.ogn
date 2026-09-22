@@ -1,0 +1,56 @@
+{
+    "omni.graph.action.OnCustomEvent": {
+        "description": [
+            "Event node which fires when the specified custom event is sent.",
+            "This node is used in combination with 'omni.graph.action.SendCustomEvent'."
+        ],
+        "version": 3,
+        "uiName": "On Custom Event",
+        "categories": ["graph:action", "event"],
+        "scheduling": "compute-on-request",
+        "language": "Python",
+        "state": {
+        },
+        "inputs": {
+            "eventName": {
+                "type": "token",
+                "description": "The name of the custom event.",
+                "uiName": "Event Name",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "path": {
+                "type": "token",
+                "description": "The path associated with the received custom event",
+                "uiName": "Path"
+            },
+            "bundle": {
+                "type": "bundle",
+                "description": [
+                    "Bundle received with the event. The contents of the bundle are determined by the input bundle",
+                    "given to the corresponding 'SendCustomEvent' node."
+                ],
+                "uiName": "Bundle"
+            },
+            "execOut": {
+                "type": "execution",
+                "description": [
+                    "When the custom event was received signal to the graph that execution can continue downstream."
+                ],
+                "uiName": "Received"
+            }
+        }
+    }
+}

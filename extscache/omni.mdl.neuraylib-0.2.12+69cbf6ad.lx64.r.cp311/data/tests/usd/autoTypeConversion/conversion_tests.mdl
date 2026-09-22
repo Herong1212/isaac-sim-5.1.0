@@ -1,0 +1,138 @@
+mdl 1.7;
+
+import ::anno::*;
+import ::base::*;
+import ::df::*;
+import ::math::*;
+import ::state::*;
+import ::tex::*;
+import ::scene::*;
+import ::limits::*;
+
+export enum color_mode {
+    red,
+    green,
+    blue
+};
+
+// note casting two enums with the same code set would be valid here even if names change
+export enum color_mode_different {
+    pink,
+    cyan,
+    yellow = 5 // make one code different to make the enums incompatible
+};
+
+export struct lookup_value
+{
+    bool valid = true;
+    color value = color(0.25, 0.5, 0.75);
+};
+
+export color get_color_cyan()
+{
+    return color(0.0, 1.0, 1.0);
+}
+
+export color_mode_different get_color_mode_different_yellow()
+{
+    return yellow;
+}
+
+export material main_color_mode(
+    color_mode mode = red
+)
+= let {
+    color tint = mode == red ? color(1.0, 0.0, 0.0) : (mode == green ? color(0.0, 1.0, 0.0) : color(0.0, 0.0, 1.0));
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: tint)
+    )
+);
+
+export material main_lookup_value(
+    lookup_value lookup = lookup_value(valid: false, value: color(0.0, 0.0, 0.0))
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: lookup.value)
+    )
+);
+
+export material main_color(
+    color tint = color(0.0, 0.0, 0.0)
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: tint)
+    )
+);
+
+// tex::wrap_mode is not a builtin as it's defined in tex but worth testing anyhow
+export tex::wrap_mode get_wrap_clip()
+{
+    return tex::wrap_clip;
+}
+
+export intensity_mode get_intensity_power()
+{
+    return intensity_power;
+}
+
+export material main_builtin_enums(
+    tex::wrap_mode wrap_test = tex::wrap_repeat,
+    intensity_mode intensity_test = intensity_radiant_exitance
+) =
+let {
+    color wrap_correct = wrap_test == tex::wrap_clip ? color(0, 1, 0) : color(1, 0, 0);
+    color intensity_mode_correct = intensity_test == intensity_power ? color(0, 0, 1) : color(1, 0, 0);
+
+} in material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: ::math::saturate(wrap_correct + intensity_mode_correct))
+    )
+);
+
+export lookup_value[3] get_lookup_value_array()
+{
+    return lookup_value[](
+        lookup_value(valid: true, value: color(0.0, 0.25, 0.0)),
+        lookup_value(valid: true, value: color(0.0, 0.5, 0.0)),
+        lookup_value(valid: true, value: color(0.0, 0.75, 0.0))
+    );
+}
+
+export lookup_value[2] get_lookup_value_array_2_elements()
+{
+    return lookup_value[](
+        lookup_value(valid: true, value: color(0.0, 0.5, 0.0)),
+        lookup_value(valid: true, value: color(0.0, 1.0, 0.0))
+    );
+}
+
+export color accessValueArray(lookup_value[<N>] data, int index)
+{
+    int i = math::max(0, math::min(N-1, index));
+    return (N > 0) ? data[i].value : color(1.0, 0.0, 0.0);
+}
+
+export material main_lookup_value_dynamic_array(
+    lookup_value[<M>] data = lookup_value[](
+        lookup_value(valid: true, value: color(0.0, 0.0, 0.5)),
+        lookup_value(valid: true, value: color(0.0, 0.0, 1.0))
+    ),
+    int index = 0
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: accessValueArray(data, index))
+    )
+);
+
+export material main_lookup_value_array(
+    lookup_value[2] data = lookup_value[](
+        lookup_value(valid: true, value: color(0.0, 0.0, 0.5)),
+        lookup_value(valid: true, value: color(0.0, 0.0, 1.0))
+    ),
+    int index = 0
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: accessValueArray(data, index))
+    )
+);

@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.replicator.replicator_yaml-2.0.11%2B107.3.3.lx64.zip"
+
+    [package.target]
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229240.bae68d79.gl"
+        date = 1758097544
+        buildNumber = "1.12.24+develop.9665.80ae6bf8.gl"
+        repoName = "omni_replicator"
+        signed = 1

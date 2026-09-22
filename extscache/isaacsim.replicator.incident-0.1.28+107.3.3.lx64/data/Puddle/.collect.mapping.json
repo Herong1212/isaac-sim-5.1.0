@@ -1,0 +1,17 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "/home/rdenomme/Documents/IsaacSimSandbox/SpillDemon/SpillSim/albedo.png",
+            "source_hash": "885c68348f0b418b0e275857eec29547f73a7a23",
+            "target_url": "./albedo.png",
+            "target_hash": "6fe351fed89c6949b7fcc81be8c48b4203ad50c4"
+        },
+        {
+            "source_url": "/home/rdenomme/Documents/IsaacSimSandbox/SpillDemon/SpillSim/normal.png",
+            "source_hash": "fb6982943ef320714b6287bd1f26e2f40d43fbb3",
+            "target_url": "./normal.png",
+            "target_hash": "77daab3661d6ae375aad2694a7345b3ce050e8e0"
+        }
+    ]
+}

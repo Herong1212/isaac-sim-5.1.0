@@ -1,0 +1,280 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "2.0.5"
+category = "Internal"
+support_level = "Core"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Menu Utils"
+description = "Menu utilities to add, remove and update menus for the top bar of the window."
+readme = "docs/Overview.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "menu", "utils"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.menu.core" = {}
+"omni.kit.actions.core" = {}
+
+[[python.module]]
+name = "omni.kit.menu.utils"
+
+[settings.exts."omni.kit.menu.utils"]
+background_color = 0xFF3D3B38
+background_selected_color = 0xFF333333
+menu_title_color = 0xFF2A2825
+menu_title_line_color = 0xFF373635
+icon_size = 14
+text_size = 14
+tick_size = 10
+separator_size = [0, 6]
+tick_spacing = [3, 6]
+margin_size = [3, 3]
+margin_size_posttick = [3, 3]
+post_label_spaces = 2
+root_spacing = 1
+submenu_pre_spacing = 5
+submenu_spacing = 4
+submenu_icon_size = 10
+item_spacing = 4
+icon_spacing = [4, 4]
+hotkey_spacing = [8, 108]
+color_label_enabled = 0xFFCCCCCC
+color_label_disabled = 0xFF6F6F6F
+color_tick_enabled = 0xFFCCCCCC
+color_tick_disabled = 0xFF4F4F4F
+color_separator = 0xFF6F6F6F
+show_menu_titles = false
+menu_title_background_color = 0xFF25282A
+menu_title_text_color = 0xFFA1A1A1
+menu_title_text_height = 32
+menu_title_text_spacer = [8, 2]
+menu_title_close_icon_size = 18
+menu_title_close_color = 0xFFEAEAEA
+menu_headfoot_spacing = [0, 0]
+indent_all_ticks = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Update.md",
+    "docs/Layout.md",
+    "docs/Helpers.md",
+    "docs/Example.md",
+    "docs/CHANGELOG.md",
+]
+
+[[test]]
+name="all"
+pythonTests.exclude = [
+    "omni.kit.menu.utils.tests.test_custom_style*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=2",
+    # "--/exts/omni.kit.test/runTestsFromFile='exttest_omni_kit_menu_utils_playlist_1.log'",
+    # OM-87744: Switch the event loop on Windows to avoid the _overlapped.Overlapped error. This error may have started
+    # showing up with the 3.7 -> 3.10 Python upgrade because with 3.8 the default event loop policy changed on Windows
+    # from WindowsSelectorEventLoopPolicy to WindowsProactorEventLoopPolicy.
+    # May be related to https://github.com/python/cpython/issues/82979
+    "--/exts/omni.kit.async_engine/event_loop_windows=SelectorEventLoop",
+    "--/app/window/width=640",
+    "--/app/window/height=720",
+    "--/exts/omni.kit.menu.utils/logDeprecated=true",
+]
+
+dependencies = [
+    "omni.kit.hotkeys.core",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file_exporter",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+    "*AttributeError: 'NoneType' object has no attribute 'add_model_as_subtree'*",
+    "*unsubscribeToActionEvents*",
+    "*[MenuHelperWindow] menu_startup already called*",
+    "*menu_startup: window * already registered*",
+]
+
+[[test]]
+name="custom_style_1"
+pythonTests.include = [
+    "omni.kit.menu.utils.tests.test_custom_style*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=2",
+    # "--/exts/omni.kit.test/runTestsFromFile='exttest_omni_kit_menu_utils_playlist_1.log'",
+    # OM-87744: Switch the event loop on Windows to avoid the _overlapped.Overlapped error. This error may have started
+    # showing up with the 3.7 -> 3.10 Python upgrade because with 3.8 the default event loop policy changed on Windows
+    # from WindowsSelectorEventLoopPolicy to WindowsProactorEventLoopPolicy.
+    # May be related to https://github.com/python/cpython/issues/82979
+    "--/exts/omni.kit.async_engine/event_loop_windows=SelectorEventLoop",
+    "--/app/window/width=540",
+    "--/app/window/height=600",
+    "--/exts/omni.kit.menu.utils/logDeprecated=true",
+    "--/exts/omni.kit.menu.utils/background_color=0xFF3D3B38",
+    "--/exts/omni.kit.menu.utils/background_selected_color=0xFF333333",
+    "--/exts/omni.kit.menu.utils/color_tick_enabled=0xFFFAC434",
+    "--/exts/omni.kit.menu.utils/color_tick_disabled=0xFF3F3F3F",
+    "--/exts/omni.kit.menu.utils/color_separator=0xFF7E7E7E",
+    "--/exts/omni.kit.menu.utils/color_label_enabled=0xFFEEEEEE",
+    "--/exts/omni.kit.menu.utils/color_label_disabled=0xFF6F6F6F",
+    "--/exts/omni.kit.menu.utils/margin_size=[10, 3]",
+    "--/exts/omni.kit.menu.utils/tick_spacing=[10, 6]",
+    "--/exts/omni.kit.menu.utils/margin_size_posttick=[0,3]",
+    "--/exts/omni.kit.menu.utils/separator_size=[14, 2]",
+    "--/exts/omni.kit.menu.utils/post_label_spaces=6",
+    "--/exts/omni.kit.menu.utils/indent_all_ticks=false",
+    "--/exts/omni.kit.menu.utils/show_menu_titles=true",
+    "--/exts/omni.kit.menu.utils/menu_title_color=0xFF25282A",
+    "--/exts/omni.kit.menu.utils/menu_title_text_color=0xFFD1D1D1",
+    "--/exts/omni.kit.menu.utils/menu_title_text_height=24",
+    "--/exts/omni.kit.menu.utils/menu_title_close_color=0XFFFEFEFE",
+    "--/exts/omni.kit.menu.utils/screenshot_offset=0",
+]
+
+dependencies = [
+    "omni.kit.hotkeys.core",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file_exporter",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+    "*AttributeError: 'NoneType' object has no attribute 'add_model_as_subtree'*",
+    "*unsubscribeToActionEvents*",
+    "*[MenuHelperWindow] menu_startup already called*",
+]
+
+[[test]]
+name="custom_style_2"
+pythonTests.include = [
+    "omni.kit.menu.utils.tests.test_custom_style*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=2",
+    # "--/exts/omni.kit.test/runTestsFromFile='exttest_omni_kit_menu_utils_playlist_1.log'",
+    # OM-87744: Switch the event loop on Windows to avoid the _overlapped.Overlapped error. This error may have started
+    # showing up with the 3.7 -> 3.10 Python upgrade because with 3.8 the default event loop policy changed on Windows
+    # from WindowsSelectorEventLoopPolicy to WindowsProactorEventLoopPolicy.
+    # May be related to https://github.com/python/cpython/issues/82979
+    "--/exts/omni.kit.async_engine/event_loop_windows=SelectorEventLoop",
+    "--/app/window/width=540",
+    "--/app/window/height=600",
+    "--/exts/omni.kit.menu.utils/logDeprecated=true",
+    "--/exts/omni.kit.menu.utils/background_color=0xFF3D3B38",
+    "--/exts/omni.kit.menu.utils/background_selected_color=0xFF333333",
+    "--/exts/omni.kit.menu.utils/color_tick_enabled=0xFFFAC434",
+    "--/exts/omni.kit.menu.utils/color_tick_disabled=0xFF3F3F3F",
+    "--/exts/omni.kit.menu.utils/color_separator=0xFF7E7E7E",
+    "--/exts/omni.kit.menu.utils/color_label_enabled=0xFFEEEEEE",
+    "--/exts/omni.kit.menu.utils/color_label_disabled=0xFF6F6F6F",
+    "--/exts/omni.kit.menu.utils/margin_size=[10, 3]",
+    "--/exts/omni.kit.menu.utils/tick_spacing=[7, 3]",
+    "--/exts/omni.kit.menu.utils/margin_size_posttick=[3, 3]",
+    "--/exts/omni.kit.menu.utils/separator_size=[14, 8, 2]",
+    "--/exts/omni.kit.menu.utils/post_label_spaces=6",
+    "--/exts/omni.kit.menu.utils/indent_all_ticks=true",
+    "--/exts/omni.kit.menu.utils/show_menu_titles=true",
+    "--/exts/omni.kit.menu.utils/menu_title_color=0xFF292929",
+    "--/exts/omni.kit.menu.utils/menu_title_background_color=0xFF292929",
+    "--/exts/omni.kit.menu.utils/menu_title_text_color=0xFFD1D1D1",
+    "--/exts/omni.kit.menu.utils/screenshot_offset=3",
+    "--/exts/omni.kit.menu.utils/menu_headfoot_spacing=[10, 5]",
+]
+
+dependencies = [
+    "omni.kit.hotkeys.core",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file_exporter",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+    "*AttributeError: 'NoneType' object has no attribute 'add_model_as_subtree'*",
+    "*unsubscribeToActionEvents*",
+    "*[MenuHelperWindow] menu_startup already called*",
+]
+
+[[test]]
+name="kit_style_1"
+pythonTests.include = [
+    "omni.kit.menu.utils.tests.test_custom_style*",
+]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.kit.test/testExtRandomOrder=true",
+    "--/exts/omni.kit.test/testExtRetryStrategy='iterations'",
+    "--/exts/omni.kit.test/testExtMaxTestRunCount=2",
+    # "--/exts/omni.kit.test/runTestsFromFile='exttest_omni_kit_menu_utils_playlist_1.log'",
+    # OM-87744: Switch the event loop on Windows to avoid the _overlapped.Overlapped error. This error may have started
+    # showing up with the 3.7 -> 3.10 Python upgrade because with 3.8 the default event loop policy changed on Windows
+    # from WindowsSelectorEventLoopPolicy to WindowsProactorEventLoopPolicy.
+    # May be related to https://github.com/python/cpython/issues/82979
+    "--/exts/omni.kit.async_engine/event_loop_windows=SelectorEventLoop",
+    "--/app/window/width=540",
+    "--/app/window/height=580",
+    "--/exts/omni.kit.menu.utils/logDeprecated=true",
+    "--/exts/omni.kit.menu.utils/screenshot_offset=6",
+]
+
+dependencies = [
+    "omni.kit.hotkeys.core",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.window.file_exporter",
+    "omni.usd",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+    "*AttributeError: 'NoneType' object has no attribute 'add_model_as_subtree'*",
+    "*unsubscribeToActionEvents*",
+    "*[MenuHelperWindow] menu_startup already called*",
+    # ignore random omni.kit.window.filepicker exception on exit
+    "*[omni.kit.app._impl] [py stderr]*",
+]

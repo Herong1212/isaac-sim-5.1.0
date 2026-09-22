@@ -1,0 +1,7 @@
+{
+    "version": 1,
+    "name": "valve_index_profile",
+    "requiredInteractionProfile": [
+        "/interaction_profiles/valve/index_controller"
+    ]
+}

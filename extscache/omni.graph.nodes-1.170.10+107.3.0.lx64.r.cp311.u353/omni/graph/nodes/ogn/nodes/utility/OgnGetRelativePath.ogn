@@ -1,0 +1,72 @@
+{
+    "GetRelativePath": {
+        "version": 1,
+        "description": ["Generates a path token relative to anchor from path.(ex. (/World, /World/Cube) -> /Cube)"],
+        "uiName": "Get Relative Path",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "anchor": {
+                "type": "token",
+                "description": "Path token to compute relative to (ex. /World)"
+            },
+            "path": {
+                "type": ["token", "token[]"],
+                "description": "Path token to convert to a relative path (ex. /World/Cube)"
+            }
+        },
+        "outputs": {
+            "relativePath": {
+                "type": ["token", "token[]"],
+                "description": "Relative path token (ex. /Cube)"
+            }
+        },
+        "state": {
+            "anchor": {
+                "type": "token",
+                "description": "Snapshot of previously seen rootPath"
+            },
+            "path": {
+                "type": "token",
+                "description": "Snapshot of previously seen path"
+            }
+        },
+        "tests": [
+            {
+                "inputs:anchor": "",
+                "inputs:path": {"type": "token","value": "/World"},
+                "outputs:relativePath": {"type": "token","value": "/World"}
+            },
+            {
+                "inputs:anchor": "/World",
+                "inputs:path": {"type": "token","value": "/World"},
+                "outputs:relativePath": {"type": "token","value": "."}
+            },
+            {
+                "inputs:anchor": "/World",
+                "inputs:path": {"type": "token","value": "/World/foo"},
+                "outputs:relativePath": {"type": "token","value": "foo"}
+            },
+            {
+                "inputs:anchor": "/World",
+                "inputs:path": {"type": "token","value": "/World/foo/bar"},
+                "outputs:relativePath": {"type": "token","value": "foo/bar"}
+            },
+            {
+                "inputs:anchor": "/World",
+                "inputs:path": {"type": "token","value": "/World/foo/bar.attrib"},
+                "outputs:relativePath": {"type": "token","value": "foo/bar.attrib"}
+            },
+            {
+                "inputs:anchor": "",
+                "inputs:path": {"type": "token[]","value": [ "/World/foo", "", "/World/bar" ]},
+                "outputs:relativePath": {"type": "token[]","value": [ "/World/foo", "", "/World/bar" ]}
+            },
+            {
+                "inputs:anchor": "/World",
+                "inputs:path": {"type": "token[]","value": [ "/World/foo", "", "/World/bar" ]},
+                "outputs:relativePath": {"type": "token[]","value": [  "foo", "", "bar"  ]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,98 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary renderSettings = {
+            bool "rtx:ambientOcclusion:enabled" = 1
+            token "rtx:debugView" = ""
+            bool "rtx:directLighting:enabled" = 1
+            bool "rtx:lightsUseUe4Convention" = 0
+            bool "rtx:materialDb:forceClassCompilation" = 0
+            bool "rtx:materialDb:generateMipMaps" = 1
+            bool "rtx:materialDb:syncLoads" = 0
+            bool "rtx:mdl:useTopAsTextureYorigin" = 0
+            bool "rtx:nvrtd:shaderReload" = 0
+            bool "rtx:pathtracing:fireflyFilter:enabled" = 0
+            float "rtx:pathtracing:fireflyFilter:maxIntensityPerSample" = 50
+            int "rtx:pathtracing:maxBounces" = 4
+            int "rtx:pathtracing:maxVolumeBounces" = 4
+            bool "rtx:pathtracing:optixDenoiser:enabled" = 1
+            int "rtx:pathtracing:rrDepth" = 4
+            bool "rtx:post:chromaticAberration:enabled" = 0
+            float "rtx:post:chromaticAberration:strength" = 0.015
+            bool "rtx:post:dof:enabled" = 0
+            float "rtx:post:dof:extentInFocus" = 2.5
+            float "rtx:post:dof:fNumber" = 1
+            float "rtx:post:dof:focalLength" = 100
+            int "rtx:post:dof:settingsType" = 0
+            float "rtx:post:dof:subjectDistance" = 400
+            float "rtx:post:filmgrain:coloramount" = 0.6
+            bool "rtx:post:filmgrain:enabled" = 0
+            float "rtx:post:filmgrain:grainamount" = 0.05
+            float "rtx:post:filmgrain:grainsize" = 1.6
+            float "rtx:post:filmgrain:lumamount" = 1
+            float "rtx:post:lensFlares:anisoFlareWeight" = 0.6
+            float "rtx:post:lensFlares:apertureRotation" = 5
+            int "rtx:post:lensFlares:blades" = 5
+            bool "rtx:post:lensFlares:enabled" = 0
+            bool "rtx:post:lensFlares:energyConstrainingBlend" = 0
+            float "rtx:post:lensFlares:fNumber" = 5
+            float "rtx:post:lensFlares:flareScale" = 1
+            float "rtx:post:lensFlares:focalLength" = 35
+            float "rtx:post:lensFlares:haloFlareWeight" = 0.01
+            float "rtx:post:lensFlares:isotropicFlareWeight" = 0.4
+            bool "rtx:post:lensFlares:physicalSettings" = 1
+            float "rtx:post:lensFlares:sensorAspectRatio" = 1.5
+            float "rtx:post:lensFlares:sensorDiagonal" = 60
+            float3 "rtx:post:outline:color" = (1, 0.6, 0)
+            int "rtx:post:outline:width" = 2
+            float "rtx:post:taa:alpha" = 0.07216878
+            float "rtx:post:taa:colorBoxSigma" = 2
+            bool "rtx:post:taa:enabled" = 1
+            int "rtx:post:taa:samples" = 8
+            float "rtx:post:tonemap:cameraShutter" = 50
+            float "rtx:post:tonemap:cm2Factor" = 1
+            float "rtx:post:tonemap:exposureKey" = 0.25
+            float "rtx:post:tonemap:fNumber" = 5
+            float "rtx:post:tonemap:filmIso" = 100
+            float "rtx:post:tonemap:gamma" = 2.2
+            float "rtx:post:tonemap:irayReinhard:burnHighlights" = 0.7
+            bool "rtx:post:tonemap:irayReinhard:burnHighlightsMaxComponent" = 0
+            bool "rtx:post:tonemap:irayReinhard:burnHighlightsPerComponent" = 1
+            float "rtx:post:tonemap:irayReinhard:crushBlacks" = 0.5
+            float "rtx:post:tonemap:irayReinhard:saturation" = 1
+            float "rtx:post:tonemap:luminanceLod" = 0
+            float "rtx:post:tonemap:maxWhiteLuminance" = 10
+            int "rtx:post:tonemap:op" = 6
+            float "rtx:post:tonemap:whiteScale" = 40.2
+            bool "rtx:reflections:enabled" = 1
+            int "rtx:reflections:maxReflectionBounces" = 1
+            int "rtx:reflections:maxRefractionBounces" = 10
+            float "rtx:reflections:maxRoughness" = 0.3
+            token "rtx:rendermode" = "RaytracedLighting"
+            int "rtx:rt:ao:maxSamples" = 9
+            int "rtx:rt:ao:minSamples" = 1
+            float "rtx:rt:ao:rayLength" = 250
+            int "rtx:rt:ao:temporalSqrtLength" = 3
+            float3 "rtx:sceneDb:ambientLightIntensity" = (0.1, 0.1, 0.1)
+            token "rtx:shaderDb:basepath" = "/../../../shaders/"
+            bool "rtx:shaderDb:flushCache" = 0
+            token "rtx:shaderDb:shaderCachePath" = "./shadercache"
+            bool "rtx:shadows:enabled" = 1
+            bool "rtx:translucency:enabled" = 1
+        }
+    }
+    defaultPrim = "Stage"
+    upAxis = "Y"
+)
+
+def Xform "Stage"
+{
+    def Cube "Cube"
+    {
+        quatd xformOp:orient = (0.9291852430612315, -0.005373277377595464, -0.2565586070361253, -0.2660142724049723)
+        double3 xformOp:scale = (0.9999999547743416, 0.9999996652350918, 1.000000505519382)
+        double3 xformOp:translate = (0.04527, -0, -0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

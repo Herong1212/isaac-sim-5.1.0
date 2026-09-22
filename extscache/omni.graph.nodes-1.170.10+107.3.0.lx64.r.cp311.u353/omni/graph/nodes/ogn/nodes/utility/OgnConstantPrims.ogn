@@ -1,0 +1,22 @@
+{
+    "ConstantPrims": {
+        "version": 2,
+        "description": ["DEPRECATED - use ConstantTarget"],
+        "uiName": "Constant Prims (Legacy)",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "metadata": {
+            "hidden": "true"
+        },
+        "inputs": {
+            "value": {
+                "type": "target",
+                "description": "The input prim paths",
+                "metadata": {
+                    "outputOnly": "1",
+                    "allowMultiInputs": "1"
+                }
+            }
+        }
+    }
+}

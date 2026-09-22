@@ -1,0 +1,67 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnScatter3D.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnScatter3D" (
+        docs="""This node generates random points within any 3D mesh."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnScatter3D"
+        int node:typeVersion = 1
+
+        # 13 attributes
+        custom bool inputs:checkForCollisions = false (
+            docs="""whether sampling procedure should ensure that no sampled prims overlap"""
+        )
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom float3 inputs:maxSamp = (3.4028235e+38, 3.4028235e+38, 3.4028235e+38) (
+            docs="""maximum position in global space to sample from"""
+        )
+        custom float3 inputs:minSamp = (-3.4028235e+38, -3.4028235e+38, -3.4028235e+38) (
+            docs="""minimum position in global space to sample from"""
+        )
+        custom rel inputs:noCollPrims (
+            docs="""existing prim(s) to prevent collisions with - if any prims are passed they will be checked for collisions which may slow down compute, regardless if checkForCollisions is True/False"""
+        )
+        custom bool inputs:preventVolOverlap = true (
+            docs="""If true, prevent double sampling even when multiple enclosing volumes overlap, so that the entire enclosed volume is sampled uniformly. If false, it allows overlapped sampling with higher density in overlapping areas."""
+        )
+        custom rel inputs:prims (
+            docs="""prim(s) to set location"""
+        )
+        custom float inputs:resolutionScaling = 1.0 (
+            docs="""Amount the default voxel resolution used in sampling should be scaled. More complex meshes may require higher resolution. Default voxel resolution is 30 for the longest side of the mean sized volumePrim mesh provided."""
+        )
+        custom int inputs:seed = -1 (
+            docs="""Random Number Generator seed. A value of less than 0 will indicate using the global seed."""
+        )
+        custom bool inputs:vizSampledVoxels = false (
+            docs="""Visualize the voxel space that input prim positions are sampled from"""
+        )
+        custom rel inputs:volumeExclPrims (
+            docs="""prim(s) from which to exclude from sampling. similar effect to noCollPrims, but more efficient and less accurate"""
+        )
+        custom rel inputs:volumePrims (
+            docs="""prim(s) from which to sample"""
+        )
+        custom float inputs:voxelSize = 0.0 (
+            docs="""Voxel size used to compute the resolution. If this is provided, then resolutionScaling is ignored, otherwise (if it is zero by default) resolutionScaling is used."""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+    }
+}

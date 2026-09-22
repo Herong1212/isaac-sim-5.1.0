@@ -1,0 +1,359 @@
+{
+    "ConstructArray": {
+        "version": 1,
+        "description": [
+            "Makes an output array attribute from input values, in the order of the inputs.",
+            "If 'Array Size' is less than the number of input elements, the first 'Array Size' elements will be used.",
+            "If 'Array Size' is greater than the number of input elements, the last input element will be repeated",
+            "to fill the remaining space."
+        ],
+        "categories": ["math:array"],
+        "uiName": "Make Array",
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "input0": {
+                "type": ["array_elements", "bool"],
+                "description": "Input array element"
+            },
+            "arraySize": {
+                "type": "int",
+                "description": "The size of the array to construct.",
+                "default": 1,
+                "minimum": 0,
+                "metadata": { "literalOnly": "1" }
+            },
+            "arrayType": {
+                "type": "token",
+                "description": [
+                    "The type of the array to construct. A value of 'auto' infers the type from the",
+                    "first connected and resolved input."
+                ],
+                "uiName": "Array Type",
+                "default": "auto",
+                "metadata": {
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "Auto": "auto",
+                        "Bool": "bool[]",
+                        "Double": "double[]",
+                        "Float": "float[]",
+                        "Half": "half[]",
+                        "Int": "int[]",
+                        "Int64": "int64[]",
+                        "Token": "token[]",
+                        "UChar": "uchar[]",
+                        "UInt": "uint[]",
+                        "UInt64": "uint64[]",
+                        "Double_2": "double[2][]",
+                        "Double_3": "double[3][]",
+                        "Double_4": "double[4][]",
+                        "Matrix_2": "matrixd[2][]",
+                        "Double_9": "matrixd[3][]",
+                        "Double_16": "matrixd[4][]",
+                        "Float_2": "float[2][]",
+                        "Float_3": "float[3][]",
+                        "Float_4": "float[4][]",
+                        "Half_2": "half[2][]",
+                        "Half_3": "half[3][]",
+                        "Half_4": "half[4][]",
+                        "Int_2": "int[2][]",
+                        "Int_3": "int[3][]",
+                        "Int_4": "int[4][]",
+                        "Timecode": "timecode[]",
+                        "Frame": "frame[4][]",
+                        "Colord_3": "colord[3][]",
+                        "Colorf_3": "colorf[3][]",
+                        "Colorh_3": "colorh[3][]",
+                        "Colord_4": "colord[4][]",
+                        "Colorf_4": "colorf[4][]",
+                        "Colorh_4": "colorh[4][]",
+                        "Normald": "normald[3][]",
+                        "Normalf": "normalf[3][]",
+                        "Normalh": "normalh[3][]",
+                        "Pointd": "pointd[3][]",
+                        "Pointf": "pointf[3][]",
+                        "Pointh": "pointh[3][]",
+                        "Quatd": "quatd[4][]",
+                        "Quatf": "quatf[4][]",
+                        "Quath": "quath[4][]",
+                        "TexCoordd_2": "texcoordd[2][]",
+                        "TexCoordf_2": "texcoordf[2][]",
+                        "TexCoordh_2": "texcoordh[2][]",
+                        "TexCoordd_3": "texcoordd[3][]",
+                        "TexCoordf_3": "texcoordf[3][]",
+                        "TexCoordh_3": "texcoordh[3][]",
+                        "Vectord": "vectord[3][]",
+                        "Vectorf": "vectorf[3][]",
+                        "Vectorh": "vectorh[3][]"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "array": {
+                "type": ["arrays", "bool[]"],
+                "description": [
+                    "The constructed array of size 'Array Size' with the data type specified in 'Array Type' and",
+                    "values populated from the input array."
+                ]
+            }
+        },
+        "tests": [
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "bool[]",
+                "inputs:input0": {"type": "bool", "value": true},
+                "outputs:array": {"type": "bool[]", "value": [true]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "double[]",
+                "inputs:input0": {"type": "double", "value": 2.35423},
+                "outputs:array": {"type": "double[]", "value": [2.35423]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "float[]",
+                "inputs:input0": {"type": "float", "value": 5.22},
+                "outputs:array": {"type": "float[]", "value": [5.22]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "half[]",
+                "inputs:input0": {"type": "half", "value": 0.5},
+                "outputs:array": {"type": "half[]", "value": [0.5]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "int[]",
+                "inputs:input0": {"type": "int", "value": -78},
+                "outputs:array": {"type": "int[]", "value": [-78]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "int64[]",
+                "inputs:input0": {"type": "int64", "value": -8294},
+                "outputs:array": {"type": "int64[]", "value": [-8294]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "token[]",
+                "inputs:input0": {"type": "token", "value": "TEST"},
+                "outputs:array": {"type": "token[]", "value": ["TEST"]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "uchar[]",
+                "inputs:input0": {"type": "uchar", "value": 2},
+                "outputs:array": {"type": "uchar[]", "value": [2]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "uint[]",
+                "inputs:input0": {"type": "uint", "value": 123},
+                "outputs:array": {"type": "uint[]", "value": [123]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "uint64[]",
+                "inputs:input0": {"type": "uint64", "value": 345},
+                "outputs:array": {"type": "uint64[]", "value": [345]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "double[2][]",
+                "inputs:input0": {"type": "double[2]", "value": [1.23, 3.45]},
+                "outputs:array": {"type": "double[2][]", "value": [[1.23, 3.45]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "double[3][]",
+                "inputs:input0": {"type": "double[3]", "value": [1.23, 3.45, 6.78]},
+                "outputs:array": {"type": "double[3][]", "value": [[1.23, 3.45, 6.78]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "double[4][]",
+                "inputs:input0": {"type": "double[4]", "value": [1.23, 3.45, 6.78, 9.01]},
+                "outputs:array": {"type": "double[4][]", "value": [[1.23, 3.45, 6.78, 9.01]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "matrixd[2][]",
+                "inputs:input0": {"type": "matrixd[2]", "value": [1,0, 0,1]},
+                "outputs:array": {"type": "matrixd[2][]", "value": [[1,0, 0,1]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "matrixd[3][]",
+                "inputs:input0": {"type": "matrixd[3]", "value": [1,0,0, 0,1,0, 0,0,1]},
+                "outputs:array": {"type": "matrixd[3][]", "value": [[1,0,0, 0,1,0, 0,0,1]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "matrixd[4][]",
+                "inputs:input0": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0]},
+                "outputs:array": {"type": "matrixd[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "float[2][]",
+                "inputs:input0": {"type": "float[2]", "value": [1.23, 3.45]},
+                "outputs:array": {"type": "float[2][]", "value": [[1.23, 3.45]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "float[3][]",
+                "inputs:input0": {"type": "float[3]", "value": [1.23, 3.45, 6.78]},
+                "outputs:array": {"type": "float[3][]", "value": [[1.23, 3.45, 6.78]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "float[4][]",
+                "inputs:input0": {"type": "float[4]", "value": [1.23, 3.45, 6.78, 9.01]},
+                "outputs:array": {"type": "float[4][]", "value": [[1.23, 3.45, 6.78, 9.01]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "half[2][]",
+                "inputs:input0": {"type": "half[2]", "value": [0.25, 0.5]},
+                "outputs:array": {"type": "half[2][]", "value": [[0.25, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "half[3][]",
+                "inputs:input0": {"type": "half[3]", "value": [0.25, 0.5, 0.75]},
+                "outputs:array": {"type": "half[3][]", "value": [[0.25, 0.5, 0.75]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "half[4][]",
+                "inputs:input0": {"type": "half[4]", "value": [0.25, 0.5, 0.75, 1.0]},
+                "outputs:array": {"type": "half[4][]", "value": [[0.25, 0.5, 0.75, 1.0]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "int[2][]",
+                "inputs:input0": {"type": "int[2]", "value": [1, 2]},
+                "outputs:array": {"type": "int[2][]", "value": [[1, 2]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "int[3][]",
+                "inputs:input0": {"type": "int[3]", "value": [1, 2, 3]},
+                "outputs:array": {"type": "int[3][]", "value": [[1, 2, 3]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "int[4][]",
+                "inputs:input0": {"type": "int[4]", "value": [1, 2, 3, 4]},
+                "outputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "timecode[]",
+                "inputs:input0": {"type": "timecode", "value": 2.35423},
+                "outputs:array": {"type": "timecode[]", "value": [2.35423]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "frame[4][]",
+                "inputs:input0": {"type": "frame[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0]},
+                "outputs:array": {"type": "frame[4][]", "value": [[1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colord[3][]",
+                "inputs:input0": {"type": "colord[3]", "value": [0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "colord[3][]", "value": [[0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colorf[3][]",
+                "inputs:input0": {"type": "colorf[3]", "value": [0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "colorf[3][]", "value": [[0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colorh[3][]",
+                "inputs:input0": {"type": "colorh[3]", "value": [0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "colorh[3][]", "value": [[0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colord[4][]",
+                "inputs:input0": {"type": "colord[4]", "value": [0.567, 0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "colord[4][]", "value": [[0.567, 0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colorf[4][]",
+                "inputs:input0": {"type": "colorf[4]", "value": [0.56, 0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "colorf[4][]", "value": [[0.56, 0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "colorh[4][]",
+                "inputs:input0": {"type": "colorh[4]", "value": [0.5, 0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "colorh[4][]", "value": [[0.5, 0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "normald[3][]",
+                "inputs:input0": {"type": "normald[3]", "value": [0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "normald[3][]", "value": [[0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "normalf[3][]",
+                "inputs:input0": {"type": "normalf[3]", "value": [0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "normalf[3][]", "value": [[0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "normalh[3][]",
+                "inputs:input0": {"type": "normalh[3]", "value": [0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "normalh[3][]", "value": [[0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "pointd[3][]",
+                "inputs:input0": {"type": "pointd[3]", "value": [0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "pointd[3][]", "value": [[0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "pointf[3][]",
+                "inputs:input0": {"type": "pointf[3]", "value": [0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "pointf[3][]", "value": [[0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "pointh[3][]",
+                "inputs:input0": {"type": "pointh[3]", "value": [0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "pointh[3][]", "value": [[0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "quatd[4][]",
+                "inputs:input0": {"type": "quatd[4]", "value": [0.567, 0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "quatd[4][]", "value": [[0.567, 0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "quatf[4][]",
+                "inputs:input0": {"type": "quatf[4]", "value": [0.56, 0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "quatf[4][]", "value": [[0.56, 0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "quath[4][]",
+                "inputs:input0": {"type": "quath[4]", "value": [0.5, 0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "quath[4][]", "value": [[0.5, 0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordd[2][]",
+                "inputs:input0": {"type": "texcoordd[2]", "value": [0.567, 0.567]},
+                "outputs:array": {"type": "texcoordd[2][]", "value": [[0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordf[2][]",
+                "inputs:input0": {"type": "texcoordf[2]", "value": [0.56, 0.56]},
+                "outputs:array": {"type": "texcoordf[2][]", "value": [[0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordh[2][]",
+                "inputs:input0": {"type": "texcoordh[2]", "value": [0.5, 0.5]},
+                "outputs:array": {"type": "texcoordh[2][]", "value": [[0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordd[3][]",
+                "inputs:input0": {"type": "texcoordd[3]", "value": [0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "texcoordd[3][]", "value": [[0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordf[3][]",
+                "inputs:input0": {"type": "texcoordf[3]", "value": [0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "texcoordf[3][]", "value": [[0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "texcoordh[3][]",
+                "inputs:input0": {"type": "texcoordh[3]", "value": [0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "texcoordh[3][]", "value": [[0.5, 0.5, 0.5]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "vectord[3][]",
+                "inputs:input0": {"type": "vectord[3]", "value": [0.567, 0.567, 0.567]},
+                "outputs:array": {"type": "vectord[3][]", "value": [[0.567, 0.567, 0.567]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "vectorf[3][]",
+                "inputs:input0": {"type": "vectorf[3]", "value": [0.56, 0.56, 0.56]},
+                "outputs:array": {"type": "vectorf[3][]", "value": [[0.56, 0.56, 0.56]]}
+            },
+            {
+                "inputs:arraySize": 1, "inputs:arrayType": "vectorh[3][]",
+                "inputs:input0": {"type": "vectorh[3]", "value": [0.5, 0.5, 0.5]},
+                "outputs:array": {"type": "vectorh[3][]", "value": [[0.5, 0.5, 0.5]]}
+            }
+        ]
+    }
+}

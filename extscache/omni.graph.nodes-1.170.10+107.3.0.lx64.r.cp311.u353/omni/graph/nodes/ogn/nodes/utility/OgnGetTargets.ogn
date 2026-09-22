@@ -1,0 +1,85 @@
+{
+    "GetTargets": {
+        "version": 1,
+        "description": [
+            "Returns targets from an array at an index in range [-arrayLength, arrayLength).",
+            "If the given index is negative it will be an offset from the end of the array."
+        ],
+        "uiName": "Get Targets",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index into the array in range [-arrayLength, arrayLength).",
+                    "A negative value indexes from the end of the array."
+                ]
+            },
+            "count": {
+                "type": "int",
+                "description": [
+                    "The number of paths to return. ",
+                    "Only returns as many paths as possible until the end of the array. ",
+                    "A value of -1 will return values until the end of the array"
+                ],
+                "default": 1
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The targets found starting at the given index."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": 1,
+                "inputs:count": 0,
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": 1,
+                "inputs:count": 1,
+                "outputs:targets": ["/B"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": -1,
+                "inputs:count": 1,
+                "outputs:targets": ["/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": 1,
+                "inputs:count": 2,
+                "outputs:targets": ["/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": 1,
+                "inputs:count": 3,
+                "outputs:targets": ["/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:index": 1,
+                "inputs:count": -1,
+                "outputs:targets": ["/B", "/C"]
+            }
+        ]
+    }
+}

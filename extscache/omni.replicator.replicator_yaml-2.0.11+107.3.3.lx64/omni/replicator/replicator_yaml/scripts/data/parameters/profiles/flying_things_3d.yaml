@@ -1,0 +1,301 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+nucleus_server: "omniverse://localhost/"
+
+camera:
+  create.stereo_camera:
+    focal_length: 40
+    stereo_baseline: 0.2
+    position:
+      distribution.uniform:
+        lower: [-2, -2, 1]
+        upper: [2, 2, 4]
+    rotation:
+      distribution.normal:
+        mean: [0, 0, 0]
+        std: [3, 3, 20]
+
+render_products:
+  create.render_product:
+    camera: camera
+    resolution: [1920, 1080]
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    objs:
+      inherit: flying_objs
+      randomizer.instantiate:
+        size:
+          distribution.uniform:
+            lower: 5
+            upper: 15
+
+    modify_objs:
+      with.objs:
+        modify.pose:
+          rotation:
+            distribution.uniform:
+              lower: [0, 0, 0]
+              upper: [360, 360, 360]
+        modify.pose_camera_relative:
+          distance:
+            distribution.uniform:
+              lower: 4
+              upper: 20
+          camera: camera
+          render_product: render_products
+          horizontal_location:
+            distribution.uniform:
+              lower: -1
+              upper: 1
+          vertical_location:
+            distribution.uniform:
+              lower: -0.7
+              upper: 1
+
+    # flying objects (color randomized)
+    objs_color_dr:
+      inherit: flying_objs
+      randomizer.instantiate:
+        size:
+          distribution.uniform:
+            lower: 0
+            upper: 10
+
+    with.objs_color_dr:
+      randomizer.color:
+        colors:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [1, 1, 1]
+      modify.pose:
+        rotation:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [360, 360, 360]
+      modify.pose_camera_relative:
+        distance:
+            distribution.uniform:
+              lower: 4
+              upper: 20
+        camera: camera
+        render_product: render_products
+        horizontal_location:
+          distribution.uniform:
+            lower: -1
+            upper: 1
+        vertical_location:
+          distribution.uniform:
+            lower: -0.7
+            upper: 1
+
+    objs_material_dr:
+      inherit: flying_objs
+      randomizer.instantiate:
+        size:
+          distribution.uniform:
+            lower: 1
+            upper: 10
+
+    with.objs_material_dr:
+      randomizer.materials:
+        materials:
+          distribution.choice:
+            choices: material_assets
+      modify.pose:
+        rotation:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [360, 360, 360]
+      modify.pose_camera_relative:
+        distance:
+            distribution.uniform:
+              lower: 4
+              upper: 20
+        camera: camera
+        render_product: render_products
+        horizontal_location:
+          distribution.uniform:
+            lower: -1
+            upper: 1
+        vertical_location:
+          distribution.uniform:
+            lower: -0.7
+            upper: 1
+
+    midground_shapes_material_dr:
+      inherit: flying_shapes
+      randomizer.instantiate:
+        size:
+          distribution.uniform:
+            lower: 1
+            upper: 5
+
+    with.midground_shapes_material_dr:
+      randomizer.materials:
+        materials:
+          distribution.choice:
+            choices: material_assets
+      modify.pose:
+        rotation:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [360, 360, 360]
+        size:
+          distribution.uniform:
+            lower: 1
+            upper: 2
+      modify.pose_camera_relative:
+        distance:
+            distribution.uniform:
+              lower: 15
+              upper: 25
+        camera: camera
+        render_product: render_products
+        horizontal_location:
+          distribution.uniform:
+            lower: -1
+            upper: 1
+        vertical_location:
+          distribution.uniform:
+            lower: -0.7
+            upper: 1
+
+    background_shapes:
+      inherit: flying_shapes
+      randomizer.instantiate:
+        size:
+          distribution.uniform:
+            lower: 1
+            upper: 10
+
+    with.background_shapes:
+      randomizer.materials:
+        materials:
+          distribution.choice:
+            choices: material_assets
+      modify.pose:
+        rotation:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [360, 360, 360]
+        size:
+          distribution.uniform:
+            lower: 3
+            upper: 5
+      modify.pose_camera_relative:
+        distance:
+            distribution.uniform:
+              lower: 20
+              upper: 30
+        camera: camera
+        render_product: render_products
+        horizontal_location:
+          distribution.uniform:
+            lower: -0.7
+            upper: 0.7
+        vertical_location:
+          distribution.uniform:
+            lower: -0.3
+            upper: 0.7
+
+    background_plane:
+      randomizer.instantiate:
+        paths:
+          property: nucleus_path
+          value: NVIDIA/Assets/Isaac/2023.1.0/Isaac/Props/Shapes/plane.usd
+        size: 1
+
+    with.background_plane:
+      randomizer.materials:
+        materials:
+          distribution.choice:
+            choices: material_assets  # Make materials to directly take in .mdl file
+      modify.pose:
+        size: 50
+        rotation:
+          distribution.normal:
+            mean: [0, 90, 0]
+            std: [10, 10, 10]
+      modify.semantics:
+        semantics: [["class", "background_plane"]]
+      modify.pose_camera_relative:
+        distance:
+          distribution.uniform:
+            lower: 30
+            upper: 40
+        camera: camera
+        render_product: render_products
+
+    lights:
+      inherit: flying_lights
+      create.light:
+        count: 2  # ReplicatorItem for create not support yet
+        color: [0.784, 0.784, 0.784]
+
+    distant_light:
+      create.light:
+        light_type: distant
+        count: 1
+        color:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [1, 1, 1]
+        intensity:
+          distribution.uniform:
+            lower: 2000
+            upper: 10000
+
+    with.distant_light:
+      modify.pose:
+        rotation:
+          distribution.normal:
+            mean: [0, 0, 0]
+            std: [20, 20, 20]
+
+    camera_light:
+      create.light:
+        count: 1
+        light_type: sphere
+        color:
+          distribution.uniform:
+            lower: [0, 0, 0]
+            upper: [1, 1, 1]
+        intensity:
+          distribution.uniform:
+            lower: 0
+            upper: 10000
+        # radius: 0.5  # radius is not supported for now
+
+    with.camera_light:
+      modify.pose_camera_relative:
+        distance: 0
+        camera: camera
+        render_product: render_products
+
+writer:
+  writers.get:
+    name: "ReplicatorYAMLWriter"
+    init_params:
+      output_dir: "_flying_things_3d"
+      rgb: True
+      instance_segmentation: True
+      semantic_segmentation: True
+      bounding_box_2d_tight: True
+    render_products: render_products
+
+profiles:
+  property: file_path
+  value:
+    - data/parameters/profiles/base_groups.yaml
+    - data/parameters/profiles/material_assets.yaml

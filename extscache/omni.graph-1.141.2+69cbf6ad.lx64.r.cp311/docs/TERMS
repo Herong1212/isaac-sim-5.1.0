@@ -1,0 +1,4 @@
+.. |autonode| replace:: :ref:`AutoNode<omnigraph_autonode_runtime>`
+.. |controller| replace:: :py:class:`Controller<omni.graph.core.Controller>`
+.. |dynamicattribute| replace:: :py:meth:`Dynamic Attribute<omni.graph.core.NodeController.create_attribute>`
+.. |dynamicattributes| replace:: :py:meth:`Dynamic Attributes<omni.graph.core.NodeController.create_attribute>`

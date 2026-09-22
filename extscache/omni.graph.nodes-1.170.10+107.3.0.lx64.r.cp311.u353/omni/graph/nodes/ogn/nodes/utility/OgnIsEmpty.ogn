@@ -1,0 +1,105 @@
+{
+    "IsEmpty": {
+        "version": 1,
+        "description": [
+            "Checks if the given input is empty.",
+            "An input is considered empty if there is no data.",
+            "A string or array of size 0 is considered empty whereas a blank string ' ' is not empty.",
+            "A float with value 0.0 and int[2] with value [0, 0] are not empty."
+        ],
+        "uiName": "Is Empty",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "input": {
+                "type": ["numerics", "string_types", "bool", "bool[]"],
+                "uiName": "Input",
+                "description": "The input to check if empty"
+            }
+        },
+        "outputs": {
+            "isEmpty": {
+                "type": "bool",
+                "uiName": "Is Empty",
+                "description": "True if the input is empty, false otherwise"
+            }
+        },
+        "tests": [
+            { "inputs:input": { "type": "bool", "value": false }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double", "value": 0.0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float", "value": 0.0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half", "value": 0.0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int", "value": 0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int64", "value": 0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "token", "value": "hello" }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "token", "value": " " }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "token", "value": "" }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "uchar", "value": 0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "uint", "value": 0 }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "uint64", "value": 0 }, "outputs:isEmpty": false },
+
+            { "inputs:input": { "type": "bool[]", "value": [false] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "bool[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "double[]", "value": [0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "float[]", "value": [0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "half[]", "value": [0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "int[]", "value": [0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "int64[]", "value": [0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int64[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "token[]", "value": [""] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "token[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "uchar[]", "value": [0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "uchar[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "uint[]", "value": [0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "uint[]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "uint64[]", "value": [0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "uint64[]", "value": [] }, "outputs:isEmpty": true },
+
+            { "inputs:input": { "type": "string", "value": "hello" }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "string", "value": " " }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "string", "value": "" }, "outputs:isEmpty": true },
+
+            { "inputs:input": { "type": "double[2]", "value": [0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[3]", "value": [0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[4]", "value": [0.0, 0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[2]", "value": [0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[3]", "value": [0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[4]", "value": [0.0, 0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[2]", "value": [0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[3]", "value": [0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[4]", "value": [0.0, 0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[2]", "value": [0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[3]", "value": [0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[4]", "value": [0.0, 0.0, 0.0, 0.0] }, "outputs:isEmpty": false },
+
+            { "inputs:input": { "type": "double[2][]", "value": [[0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[2][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "double[3][]", "value": [[0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[3][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "double[4][]", "value": [[0.0, 0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "double[4][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "float[2][]", "value": [[0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[2][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "float[3][]", "value": [[0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[3][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "float[4][]", "value": [[0.0, 0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "float[4][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "half[2][]", "value": [[0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[2][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "half[3][]", "value": [[0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[3][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "half[4][]", "value": [[0.0, 0.0, 0.0, 0.0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "half[4][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "int[2][]", "value": [[0, 0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[2][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "int[3][]", "value": [[0, 0, 0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[3][]", "value": [] }, "outputs:isEmpty": true },
+            { "inputs:input": { "type": "int[4][]", "value": [[0, 0, 0, 0]] }, "outputs:isEmpty": false },
+            { "inputs:input": { "type": "int[4][]", "value": [] }, "outputs:isEmpty": true }
+        ]
+    }
+}

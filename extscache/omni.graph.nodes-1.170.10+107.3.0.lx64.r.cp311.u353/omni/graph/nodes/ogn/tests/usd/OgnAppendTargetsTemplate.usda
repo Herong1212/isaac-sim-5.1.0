@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnAppendTargets.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_AppendTargets" (
+        docs="""Combines the input target arrays into a single array. Duplicates are skipped unless "allowDuplicates" is true."""
+    )
+    {
+        token node:type = "omni.graph.nodes.AppendTargets"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom bool inputs:allowDuplicates = false (
+            docs="""If false, the path will only be added the first time it is encountered.
+            If true, all paths will be added in order."""
+        )
+        custom rel inputs:input0 (
+            docs="""Input target array."""
+        )
+        custom rel inputs:input1 (
+            docs="""Input target array."""
+        )
+
+        # 1 attribute
+        custom rel outputs:targets (
+            docs="""The output target array."""
+        )
+    }
+}

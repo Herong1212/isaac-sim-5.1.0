@@ -1,0 +1,59 @@
+[package]
+title = "OmniGraph Nodes"
+version = "1.170.10"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains a library of OmniGraph nodes"
+repository = ""
+keywords = ["omnigraph", "nodes"]
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+python.import_mode = "ParallelThread"
+writeTarget.kit = true
+writeTarget.usd = true
+support_level = "Core"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.nodes"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load before this one
+[dependencies]
+"carb.audio" = {}
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph" = { version = "1.139.0", optional=true }
+"omni.graph.tools" = { version = "1.77.0", optional=true }
+"omni.usd" = {}
+"omni.kit.commands" = {}
+"omni.graph.ui" = {optional=true}
+"omni.hydra.scene_delegate" = {}
+"usdrt.scenegraph" = {}
+"omni.graph.image.nodes" = {}  # For backwards compatibility to pick up nodes that have moved
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+timeout = 7200
+samplingFactor = 0.34  # run 34% of tests, after ~3 runs (1/0.34) all tests will have completed
+stdoutFailPatterns.exclude = [
+    "*Ignore this error/warning*",
+    "*Types: unknown and rel*"  # OM-86183
+]
+dependencies = [
+    "omni.kit.stage_template.core",
+    "omni.graph",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

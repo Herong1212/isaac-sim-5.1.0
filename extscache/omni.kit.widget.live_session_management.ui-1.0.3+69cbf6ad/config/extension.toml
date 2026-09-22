@@ -1,0 +1,27 @@
+[package]
+version = "1.0.3"
+title = "Live Session Management Widgets UI"
+category = "Internal"
+description = "This extension includes shared live session widgets used by other extentions to re-use widgets for session management."
+keywords = ["Live Session", "Layers", "Widget"]
+changelog = "docs/CHANGELOG.md"
+authors = ["NVIDIA"]
+repository = ""
+support_level = "Sample"
+
+
+[dependencies]
+"omni.ui" = {}
+"omni.client" = {}
+"omni.kit.widget.prompt" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.collaboration.channel_manager" = {optional=true}
+"omni.kit.clipboard" = {}
+"omni.usd.libs" = {optional=true} # Optional to allow connectors to bring in their own usd libs
+
+[[python.module]]
+name = "omni.kit.widget.live_session_management_ui"
+
+[[test]]
+waiver = "Tests covered in omni.kit.widget.live_session_management"

@@ -1,0 +1,52 @@
+{
+    "omni.graph.examples.cpp.GpuInteropGpuToCpuCopy": {
+        "version": 2,
+        "categories": ["graph:postRender", "rendering"],
+        "description": [ "Generates a new AOV representing a CPU copy of a GPU buffer" ],
+        "metadata": {
+            "uiName": "GPU Interop: Gpu To Cpu Copy"
+        },
+        "inputs": {
+            "gpu": {
+                "type": "uint64",
+                "description": "The shared context containing GPU foundation interfaces.",
+                "uiName": "GPU Foundations"
+            },
+            "rp": {
+                "type": "uint64",
+                "description": "The render product for this view.",
+                "uiName": "Render Product"
+            },
+            "aovGpu": {
+                "type": "string",
+                "description": [
+                    "Name of the RenderVar to copy from GPU to CPU. ",
+                    "The RenderVar must be a valid texture on the RenderProduct, otherwise this node will not do anything."
+                ],
+                "uiName": "AOV GPU",
+                "default": ""
+            }
+        },
+        "outputs": {
+            "gpu": {
+                "type": "uint64",
+                "description": "The shared context containing GPU foundation interfaces.",
+                "uiName": "GPU Foundations"
+            },
+            "rp": {
+                "type": "uint64",
+                "description": "The render product for this view.",
+                "uiName": "Render Product"
+            },
+            "aovCpu": {
+                "type": "string",
+                "description": [
+                    "The name of the RenderVar representing the CPU buffer of the GPU resource. ",
+                    "It is composed from the AOV GPU name with \"_host\" appended at the end."
+                ],
+                "uiName": "AOV CPU",
+                "default": ""
+            }
+        }
+    }
+}

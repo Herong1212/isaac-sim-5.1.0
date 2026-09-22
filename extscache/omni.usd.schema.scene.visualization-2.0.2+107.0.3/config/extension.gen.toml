@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.usd.schema.scene.visualization-2.0.2%2B107.0.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+107_abi1.171913.67e3d383.gl"
+        date = 1738955156
+        buildNumber = "107.0.0+abi_1.6855.17f91012.gl"
+        repoName = "particle-system"
+        signed = 1

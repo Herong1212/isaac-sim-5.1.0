@@ -1,0 +1,27 @@
+[package]
+title = "USD Prim Selection"
+version = "0.1.6"
+category = "Internal"
+description = "USD prim selection commands with undo/redo support"
+keywords = ["selection", "commands", "usd"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.usd" = {}
+
+[[python.module]]
+name = "omni.kit.selection"
+
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedStage=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+]

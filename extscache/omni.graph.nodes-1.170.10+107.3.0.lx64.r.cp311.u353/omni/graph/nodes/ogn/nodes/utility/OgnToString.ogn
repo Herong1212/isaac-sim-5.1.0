@@ -1,0 +1,235 @@
+{
+    "ToString": {
+        "version": 1,
+        "description": [
+            "Converts the input to a string representation.",
+            "Array inputs are converted to a single output string."
+        ],
+        "uiName": "To String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["numerics", "string_types", "bool", "bool[]"],
+                "uiName": "Value",
+                "description": [
+                    "The value to be converted to a string.\n",
+                    "Very large or very small numeric values may be converted to use an exponential",
+                    "representation of the value (e.g. 1.234e+06).",
+                    "Arrays of numeric values are converted using a list syntax (e.g. \"[1.5, -0.03]\").",
+                    "A uchar value converts to a string of a single unquoted character.",
+                    "An array of uchar values converts to an unquoted string. Zero values (i.e. null",
+                    "characters) in the array may result in undefined behavior and should be avoided.",
+                    "A token is converted to its unquoted string representation.",
+                    "An array of tokens are converted to Python list syntax with each token enclosed",
+                    "in double quotes (e.g. [\"first\", \"second\"])."
+                ]
+             }
+        },
+        "outputs": {
+            "converted": {
+                "type": "string",
+                "uiName": "String",
+                "description": "The input value represented as a string."
+             }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "bool", "value": true}, "outputs:converted": "True"
+            },
+            {
+                "inputs:value": {"type": "double", "value": 2.1}, "outputs:converted": "2.1"
+            },
+            {
+                "inputs:value": {"type": "float", "value": 2.1}, "outputs:converted": "2.1"
+            },
+            {
+                "inputs:value": {"type": "half", "value": 2.5}, "outputs:converted": "2.5"
+            },
+            {
+                "inputs:value": {"type": "int", "value": 42}, "outputs:converted": "42"
+            },
+            {
+                "inputs:value": {"type": "int64", "value": -42}, "outputs:converted": "-42"
+            },
+            {
+                "inputs:value": {"type": "string", "value": "ABC" }, "outputs:converted": "ABC"
+            },
+            {
+                "inputs:value": {"type": "token", "value": "Foo" }, "outputs:converted": "Foo"
+            },
+            {
+                "inputs:value": {"type": "token", "value": "" }, "outputs:converted": ""
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 65 }, "outputs:converted": "A"
+            },
+            {
+                "inputs:value": {"type": "uint", "value": 42}, "outputs:converted": "42"
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 42}, "outputs:converted": "42"
+            },
+            {
+                "inputs:value": {"type": "bool[]", "value": [true, false]},
+                "outputs:converted": "[\"True\", \"False\"]"
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": []},
+                "outputs:converted": "[]"
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [2.1, 4.3]},
+                "outputs:converted": "[2.1, 4.3]"
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [2.5, 3]},
+                "outputs:converted": "[2.5, 3]"
+            },
+            {
+                "inputs:value": {"type": "int[]", "value": [42, 64]},
+                "outputs:converted": "[42, 64]"
+            },
+            {
+                "inputs:value": {"type": "int64[]", "value": [-42]},
+                "outputs:converted": "[-42]"
+            },
+            {
+                "inputs:value": {"type": "token[]", "value": ["Foo","Bar"]},
+                "outputs:converted": "[\"Foo\", \"Bar\"]"
+            },
+            {
+                "inputs:value": {"type": "uchar[]", "value": [65, 66, 67] },
+                "outputs:converted": "[A, B, C]"
+            },
+            {
+                "inputs:value": {"type": "uint[]", "value": [-4, 4]},
+                "outputs:converted": "[4294967292, 4]"
+            },
+            {
+                "inputs:value": {"type": "uint64[]", "value": [42, -42]},
+                "outputs:converted": "[42, 18446744073709551574]"
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [1, 2] },
+                "outputs:converted": "[1, 2]"
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [1.5, 2, 3] },
+                "outputs:converted": "[1.5, 2, 3]"
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [1, 2, 3, -4] },
+                "outputs:converted": "[1, 2, 3, -4]"
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [1, 2] },
+                "outputs:converted": "[1, 2]"
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [1.5, 2, 3] },
+                "outputs:converted": "[1.5, 2, 3]"
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [1, 2, 3, -4] },
+                "outputs:converted": "[1, 2, 3, -4]"
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [1, 2] },
+                "outputs:converted": "[1, 2]"
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [2, 3.5, 4] },
+                "outputs:converted": "[2, 3.5, 4]"
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [1, 2, 3, -4] },
+                "outputs:converted": "[1, 2, 3, -4]"
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [1, 2] },
+                "outputs:converted": "[1, 2]"
+            },
+            {
+                "inputs:value": {"type": "int[3]", "value": [1, 2, 3] },
+                "outputs:converted": "[1, 2, 3]"
+            },
+            {
+                "inputs:value": {"type": "int[4]", "value": [1, 2, 3, -4] },
+                "outputs:converted": "[1, 2, 3, -4]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[2]", "value": [1, 0, 0, 1] },
+                "outputs:converted": "[1, 0, 0, 1]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[3]", "value": [1, 0, 0, 0, 1, 0, 0, 0, 1] },
+                "outputs:converted": "[1, 0, 0, 0, 1, 0, 0, 0, 1]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[4]", "value": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1] },
+                "outputs:converted": "[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]"
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[1, 2], [3, 4]] },
+                "outputs:converted": "[[1, 2], [3, 4]]"
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[1, 2, 3], [4, 5, 6]] },
+                "outputs:converted": "[[1, 2, 3], [4, 5, 6]]"
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]] },
+                "outputs:converted": "[[1, 2, 3, 4], [5, 6, 7, 8]]"
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[1, 2], [3, 4]] },
+                "outputs:converted": "[[1, 2], [3, 4]]"
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[1, 2, 3], [4, 5, 6]] },
+                "outputs:converted": "[[1, 2, 3], [4, 5, 6]]"
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]] },
+                "outputs:converted": "[[1, 2, 3, 4], [5, 6, 7, 8]]"
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value": [[1, 2], [3, 4]] },
+                "outputs:converted": "[[1, 2], [3, 4]]"
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[1, 2, 3], [4, 5, 6]] },
+                "outputs:converted": "[[1, 2, 3], [4, 5, 6]]"
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]] },
+                "outputs:converted": "[[1, 2, 3, 4], [5, 6, 7, 8]]"
+            },
+            {
+                "inputs:value": {"type": "int[2][]", "value": [[1, 2], [3, 4]] },
+                "outputs:converted": "[[1, 2], [3, 4]]"
+            },
+            {
+                "inputs:value": {"type": "int[3][]", "value": [[1, 2, 3], [4, 5, 6]] },
+                "outputs:converted": "[[1, 2, 3], [4, 5, 6]]"
+            },
+            {
+                "inputs:value": {"type": "int[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]] },
+                "outputs:converted": "[[1, 2, 3, 4], [5, 6, 7, 8]]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[2][]", "value": [[1, 0, 0, 1]] },
+                "outputs:converted": "[[1, 0, 0, 1]]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[3][]", "value": [[1, 0, 0, 0, 1, 0, 0, 0, 1]] },
+                "outputs:converted": "[[1, 0, 0, 0, 1, 0, 0, 0, 1]]"
+            },
+            {
+                "inputs:value": {"type": "matrixd[4][]", "value": [[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]] },
+                "outputs:converted": "[[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]]"
+            }
+        ]
+    }
+}

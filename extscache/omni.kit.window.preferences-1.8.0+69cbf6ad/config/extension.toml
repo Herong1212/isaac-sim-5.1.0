@@ -1,0 +1,86 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.8.0"
+category = "Utilities"
+feature = true
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Preferences Window"
+description = "A window which allows users to change preference settings"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "preferences"]
+support_level = "Core"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+[ui]
+name = "Python preferences Window"
+
+[dependencies]
+"omni.usd" = { optional=true }
+"omni.ui" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.settings" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.window.popup_dialog" = {}
+
+[settings]
+exts."omni.kit.window.preferences".show_globals = true
+exts."omni.kit.window.preferences".show_audio = true
+exts."omni.kit.window.preferences".show_rendering = true
+exts."omni.kit.window.preferences".show_resource_monitor = true
+exts."omni.kit.window.preferences".show_tagging = true
+exts."omni.kit.window.preferences".show_thumbnail_generation_mdl = true
+exts."omni.kit.window.preferences".show_occluded_objects = true
+exts."omni.kit.window.preferences".linux_terminal = [["x-terminal-emulator", "-e"], ["gnome-terminal", "--"]]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Settings.md",
+    "docs/CHANGELOG.md",
+]
+
+[[python.module]]
+name = "omni.kit.window.preferences"
+
+[[test]]
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+    "--/persistent/app/stage/dragDropImport='reference'",
+    "--/persistent/app/material/dragDropMaterialPath='Absolute'",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.mainwindow",
+    "omni.usd",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+]

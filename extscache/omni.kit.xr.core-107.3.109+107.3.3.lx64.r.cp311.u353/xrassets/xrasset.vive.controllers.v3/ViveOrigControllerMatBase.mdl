@@ -1,0 +1,33 @@
+mdl 1.6;
+
+import ::state::*;
+import ::tex::*;
+import ::OmniPBR::*;
+
+
+export material ViveOrigControllerMatBase(
+    uniform texture_2d base_color_tex = texture_2d(),
+    float specular = 0.5,
+    float r_multiplier = 1.0,
+    float g_multiplier = 1.0,
+    float b_multiplier = 1.0
+)
+ =
+	let {
+	float2 uv = float2(state::texture_coordinate(0).x,state::texture_coordinate(0).y);
+
+	float4 base_color_raw = tex::lookup_float4(base_color_tex, uv, tex::wrap_repeat,tex::wrap_repeat);
+    color base_color = color(base_color_raw.x * r_multiplier, base_color_raw.y * g_multiplier, base_color_raw.z * b_multiplier);
+
+	float opacity = 1.0;
+    float metallic = 0.0;
+	float roughness = 0.8;
+
+	} in
+		OmniPBR::OmniPBR(
+			diffuse_color_constant: base_color,
+			metallic_constant: metallic,
+			reflection_roughness_constant: roughness,
+			specular_level: specular,
+			opacity_constant: opacity
+		);

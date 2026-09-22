@@ -1,0 +1,45 @@
+{
+    "OgnWritePhysics": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node writes to a specified physics attribute on specified prims.",
+        "metadata":
+        {
+           "uiName": "Write Physics Attribute"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to set attribute"],
+                "type": "target"
+            },
+            "attribute": {
+                "description": ["Name of attribute that is to be written"],
+                "type": "string"
+            },
+            "values": {
+                "description": ["Values to be assigned to the physics attribute"],
+                "type": "any"
+            },
+            "overwriteRigidBody": {
+                "description": "Whether to write children prim's rigid body api or not.",
+                "type": "bool"
+            },
+            "physicsScene": {
+                "description": "Path to PhysicsScene prim.",
+                "type": "target"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

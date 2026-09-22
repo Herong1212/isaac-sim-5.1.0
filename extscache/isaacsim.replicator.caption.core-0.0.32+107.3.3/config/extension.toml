@@ -1,0 +1,78 @@
+
+[package]
+version = "0.0.32"
+authors = ["NVIDIA"]
+title = "VLM Scene Caption"
+description = "VLM Scene Caption"
+readme = "docs/README.md"
+repository = ""
+category = "Tools"
+keywords = ["Kit", "LLM", "Caption", "Scene Caption", "VLM"] # key word that could be used to search this extension
+changelog = "docs/CHANGELOG.md" # where you can update the update log of each version
+preview_image = "data/preview.png" # preview image path that would be shown on the extension panel
+icon = "data/icon.png"
+writeTarget.kit = true
+
+[dependencies]
+# define all dependencies of this extension
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.services.pip_archive" = {}
+"omni.replicator.core" = {}
+"omni.kit.pipapi" = {}
+"omni.metropolis.utils" = { version = "^0.1.4"}
+"isaacsim.replicator.object" = { version = "^0.4.6" }
+
+[[python.module]]
+name = "isaacsim.replicator.caption.core"
+
+[[python.module]]
+name = "pymongo"
+path = "pip_prebundle"
+
+[[python.module]]
+path = "pip_prebundle"
+
+
+[settings]
+persistent.exts."isaacsim.replicator.caption.core".props_folder_path = ""
+persistent.exts."isaacsim.replicator.caption.core".target_camera_prim_path = ""
+persistent.exts."isaacsim.replicator.caption.core".object_number_threshold = 25
+persistent.exts."isaacsim.replicator.caption.core".cache_data_folder = ""
+persistent.exts."isaacsim.replicator.caption.core".cache_config_file_path = ""
+persistent.exts."isaacsim.replicator.caption.core".characters_parent_prim_path = "/World/Characters"
+persistent.exts."isaacsim.replicator.caption.core".model_url = "https://integrate.api.nvidia.com/v1"
+persistent.exts."isaacsim.replicator.caption.core".model_name = "meta/llama3-8b-instruct"
+persistent.exts."isaacsim.replicator.caption.core".api_key = "placeholder"
+persistent.exts."isaacsim.replicator.caption.core".db_host = "sc-swgpu-mongo-dsbench-dev-rw.nvidia.com"
+persistent.exts."isaacsim.replicator.caption.core".db_username = "dev_dsbench_usr"
+persistent.exts."isaacsim.replicator.caption.core".db_password = "placeholder"
+persistent.exts."isaacsim.replicator.caption.core".db_database = "dsbench"
+persistent.exts."isaacsim.replicator.caption.core".db_collection = "usd_caption"
+persistent.exts."isaacsim.replicator.caption.core".stage_path = ""
+
+[documentation]
+pages = [
+    "docs/README.md",
+]
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

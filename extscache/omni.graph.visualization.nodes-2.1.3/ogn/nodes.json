@@ -1,0 +1,29 @@
+{
+  "extension": "omni.graph.visualization.nodes",
+  "nodes": {
+    "DrawLabel": {
+      "description": [
+        "Draw text at a prescribed position in the viewport"
+      ],
+      "version": 1,
+      "uiName": "Draw Label",
+      "language": "Python"
+    },
+    "DrawLine": {
+      "description": [
+        "Draw a line between two points"
+      ],
+      "version": 1,
+      "uiName": "Draw Line",
+      "language": "Python"
+    },
+    "DrawScreenSpaceText": {
+      "description": [
+        "Draw text at a prescribed position in the viewport"
+      ],
+      "version": 1,
+      "uiName": "Draw Screen Space Text (Beta)",
+      "language": "Python"
+    }
+  }
+}

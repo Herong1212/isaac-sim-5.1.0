@@ -1,0 +1,175 @@
+{
+    "ArrayFindValue": {
+        "version": 1,
+        "description": [
+            "Searches for a value in an array, returning either the index of the first occurrence of the value or -1",
+            "if the value is not found."
+        ],
+        "uiName": "Find Array Value",
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "The array in which \"Value\" is to be searched for.",
+                "uiName": "Array"
+            },
+            "value": {
+                "type": ["array_elements", "bool"],
+                "description": "The value to be found in \"Array\".",
+                "uiName": "Value"
+            }
+        },
+        "outputs": {
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index of the first occurrence of \"Value\" in \"Array\", or -1 if no instances of",
+                    "\"Value\" are found in \"Array\"."
+                ],
+                "uiName": "Index"
+            }
+        },
+        "tests": [
+            {
+                "inputs:array": {"type": "bool[]", "value": [false, true]},
+                "inputs:value": {"type": "bool", "value": false},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "double[]", "value": [1.0, 2.0]},
+                "inputs:value": {"type": "double", "value": 1.0},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "float[]", "value": [1.0, 2.0]},
+                "inputs:value": {"type": "float", "value": 1.0},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "half[]", "value": [1.0, 2.0]},
+                "inputs:value": {"type": "half", "value": 2.0},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "int[]", "value": [41, 42]},
+                "inputs:value": {"type": "int", "value": 42},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "string", "value": "TestString"},
+                "inputs:value": {"type": "uchar", "value": 101},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["FOOD", "BARFOOD", "BAZ"]},
+                "inputs:value": {"type": "token", "value":"FOO"},
+                "outputs:index": -1
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["FOOD", "BARFOOD", "BAZ"]},
+                "inputs:value": {"type": "token", "value":"FOOD"},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "int64[]", "value": [41, 42]},
+                "inputs:value": {"type": "int64", "value": 41},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "uchar[]", "value": [41, 42]},
+                "inputs:value": {"type": "uchar", "value": 41},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "uint[]", "value": [41, 42]},
+                "inputs:value": {"type": "uint", "value": 42},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "uint64[]", "value": [41, 42]},
+                "inputs:value": {"type": "uint64", "value": 42},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "double[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:value": {"type": "double[2]", "value": [1.0, 2.0]},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "double[3][]", "value": [[1.1, 2.1, 1.0], [3.0, 4.0, 5.0]]},
+                "inputs:value": {"type": "double[3]", "value": [3.0, 4.0, 5.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "double[4][]", "value": [[1.1, 2.1, 1.0, 3.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:value": {"type": "double[4]", "value": [3.0, 4.0, 5.0, 6.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "matrixd[2][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:value": {"type": "matrixd[2]", "value": [3, 4, 5, 6]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "matrixd[3][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9], [3, 4, 5, 6, 7, 8, 9, 10, 11]]},
+                "inputs:value": {"type": "matrixd[3]", "value": [3, 4, 5, 6, 7, 8, 9, 10, 11]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]]},
+                "inputs:value": {"type": "matrixd[4]", "value":
+                    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "float[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:value": {"type": "float[2]", "value": [1.0, 2.0]},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "float[3][]", "value": [[1.1, 2.1, 1.0], [3.0, 4.0, 5.0]]},
+                "inputs:value": {"type": "float[3]", "value": [3.0, 4.0, 5.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "float[4][]", "value": [[1.1, 2.1, 1.0, 3.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:value": {"type": "float[4]", "value": [3.0, 4.0, 5.0, 6.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "half[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:value": {"type": "half[2]", "value": [1.0, 2.0]},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "half[3][]", "value": [[1.1, 2.1, 1.0], [3.0, 4.0, 5.0]]},
+                "inputs:value": {"type": "half[3]", "value": [3.0, 4.0, 5.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "half[4][]", "value": [[1.1, 2.1, 1.0, 3.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:value": {"type": "half[4]", "value": [3.0, 4.0, 5.0, 6.0]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "int[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:value": {"type": "int[2]", "value": [1, 2]},
+                "outputs:index": 0
+            },
+            {
+                "inputs:array": {"type": "int[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:value": {"type": "int[3]", "value": [3, 4, 5]},
+                "outputs:index": 1
+            },
+            {
+                "inputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:value": {"type": "int[4]", "value": [1, 2, 3, 4]},
+                "outputs:index": 0
+            }
+        ]
+    }
+}

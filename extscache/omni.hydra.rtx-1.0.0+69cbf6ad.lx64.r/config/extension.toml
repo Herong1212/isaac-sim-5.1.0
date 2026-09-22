@@ -1,0 +1,114 @@
+[package]
+title = "RTX Hydra Engine"
+category = "Rendering"
+description = "Extension that exposes a SceneRenderer plugin as a Usd/Hydra RenderDelegate"
+version = "1.0.0"
+authors = ["NVIDIA"]
+keywords = ["RTX", "Hydra", "render delegate", "scene renderer"]
+support_level = "Core"
+
+[core]
+# we do not support disabling this extension once loaded
+reloadable = false
+
+[dependencies]
+"omni.client" = {}
+"omni.gpu_foundation" = {}
+"omni.usd.core" = {}
+"omni.mdl.neuraylib" = {}
+"omni.volume" = {}
+"omni.index" = {}
+"omni.ujitso.client" = {}
+"omni.population" = { optional=true }
+"omni.hydra.scene_delegate" = {} # Is this necessary, or can it be moved to omni.rtx.tests ?
+"omni.kit.usd.mdl" = {}
+
+[dependencies."filter:os".windows]
+"filter:setting".app.vulkan."value:true"."omni.hydra.rtx.shadercache.vulkan" = {}
+"filter:setting".app.vulkan."value:false"."omni.hydra.rtx.shadercache.d3d12" = {}
+
+[dependencies."filter:os".linux]
+"omni.hydra.rtx.shadercache.vulkan" = {}
+
+[settings]
+# Enable interior selection hilighting by default
+persistent.app.viewport.outline.mode = 1
+
+[[native.library]]
+"filter:os".linux.path = "bin/deps/librtx.hydra${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "bin/deps/liblegacy.hydra${lib_ext}"
+
+[[native.library]]
+"filter:os".windows.path = "bin/deps/nvrtc-builtins64_118.dll"
+"filter:os".linux.path = "bin/deps/libnvrtc-builtins.so"
+
+[[native.plugin]]
+path = "bin/deps/carb.scenerenderer-rtx.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.reshade.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.rtxsensor.memutil.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.rtxsensor.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.rtxsensormodel_20.example.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.rtxsensormodel.example.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.rtxsensormodel.example_legacy.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.cameraisp.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.multigpumanager.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.scenedb.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.mdltranslator.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.materialdb.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.raytracing.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.denoising.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.optixdenoising.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.optixdenoising73.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.postprocessing.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.syntheticdata.plugin"
+[[native.plugin]]
+path = "bin/deps/rtx.rasterizing.plugin"
+[[native.plugin]]
+path = "bin/deps/carb.ocio.plugin"
+
+[[native.plugin]]
+path = "bin/deps/rtx.flow.plugin"
+
+[[native.library]]
+path = "bin/deps/${lib_prefix}nvflow_rtx${lib_ext}"
+
+[[native.library]]
+path = "bin/deps/${lib_prefix}nvflowext_rtx${lib_ext}"
+
+[[native.plugin]]
+path = "bin/omni.hydra.rtx.plugin"
+
+# these plugins are necessary to provide what "omni.ujitso.processor.geometry" would do.
+# we need to splt this extension to enable depending on only a subset of the functionality needed
+# for these plugins, then move these back to "omni.ujitso.processor.geometry"
+[[native.plugin]]
+path = "bin/carb.omnimesh/carb.omnimesh.plugin"
+[[native.plugin]]
+path = "bin/carb.ujitso.processors.geometry/carb.ujitso.processor.geometry.plugin"
+
+[[test]]
+waiver = "Tested in rendering repo"

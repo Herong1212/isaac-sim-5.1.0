@@ -1,0 +1,19 @@
+{
+    "_": "Please visit https://docs.omniverse.nvidia.com/kit/docs/omni.kit.converter.hoops_core/latest/Overview.html for more details regarding the configuration options",
+    "bInstancing" : true,
+    "bGlobalXforms" : false,
+    "bConvertHidden" : true,
+    "bOptimize" : true,
+    "bDedup" : true,
+    "iTessLOD" : 2,
+    "bAccurateSurfaceCurvatures" : true,
+    "bUseNormals" : true,
+    "bUseMaterials" : true,
+    "materialType" : 1,
+    "bReportProgress" : true,
+    "bConvertCurves" : false,
+    "bConvertMetadata" : false,
+    "iUpAxis": 0,
+    "dMetersPerUnit": 1.0,
+    "sOptimizeConfig": "optimize_sample_config.json"
+  }

@@ -1,0 +1,5 @@
+watchdog-0.10.4
+---------------
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message><RequestId>PMBP1Y14F0T2XM4X</RequestId><HostId>BBnTpaqd3L96LB1EPO4AftfA4H8W9hjLhQ4nz3o2uztoWfGdWLhRaLzT7ORF5/vcIFjzPfKP3RCMh2cwllzQ5w==</HostId></Error>
+

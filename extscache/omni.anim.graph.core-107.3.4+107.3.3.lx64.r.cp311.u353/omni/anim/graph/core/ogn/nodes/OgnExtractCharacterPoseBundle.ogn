@@ -1,0 +1,90 @@
+{
+    "omni.anim.graph.ExtractCharacterPoseBundle": {
+        "version": 1,
+        "description": [ "Extracts the pose as a bundle after the animation graph has executed." ],
+        "uiName": "Extract Animation Graph Pose Bundle",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+            "pose": {
+                "uiName": "Pose",
+                "type": "bundle",
+                "description": "The character input pose.",
+                "metadata": {
+                    "attrs": {
+                        "rootTranslation": {
+                            "uiName": "Root Translation (World Space)",
+                            "type": "float[3]",
+                            "description": "The character root translation in world space."
+                        },
+                        "rootRotation": {
+                            "uiName": "Root Rotation (World Space)",
+                            "type": "quatf[4]",
+                            "description": "The character root rotation (quaternion) in world space."
+                        },
+                        "skeletonDeltaTranslation": {
+                            "uiName": "Skeleton Delta Translation (Skeleton Space)",
+                            "type": "float[3]",
+                            "description": "The character skeleton displacement(delta) translation in skeleton space."
+                        },
+                        "skeletonDeltaRotation": {
+                            "uiName": "Skeleton Rotation Displacement (Skeleton Space)",
+                            "type": "quatf[4]",
+                            "description": "The character skeleton displacement(delta) rotation(quaternion) in skeleton space."
+                        },
+                        "jointTranslations": {
+                            "uiName": "Joint Translations (Local Space)",
+                            "type": "float[3][]",
+                            "description": "The character joint positions in local space, based on the referenced skeleton."
+                        },
+                        "jointRotations": {
+                            "uiName": "Joint Rotations (Local Space)",
+                            "type": "quatf[4][]",
+                            "description": "The character joint rotations (quaternion) in local space, based on the referenced skeleton."
+                        }
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "rootTranslation": {
+               "uiName": "Root Translation (World Space)",
+                "type": "float[3]",
+                "description": "The character root translation in world space."
+            },
+            "rootRotation": {
+               "uiName": "Root Rotation (World Space)",
+                "type": "quatf[4]",
+                "description": "The character root rotation (quaternion) in world space."
+            },
+           "skeletonDeltaTranslation": {
+                "uiName": "Skeleton Delta Translation (Skeleton Space)",
+                "type": "float[3]",
+                "description": "The character skeleton displacement(delta) translation in skeleton space."
+            },
+            "skeletonDeltaRotation": {
+               "uiName": "Skeleton Delta Rotation (Skeleton Space)",
+                "type": "quatf[4]",
+                "description": "The character skeleton displacement(delta) rotation(quaternion) in skeleton space."
+            },
+            "jointTranslations": {
+                "uiName": "Joint Translations (Local Space)",
+                "type": "float[3][]",
+                "description": "The character joint positions in local space, based on the referenced skeleton."
+            },
+            "jointRotations": {
+               "uiName": "Joint Rotations (Local Space)",
+                "type": "quatf[4][]",
+                "description": "The character joint rotations (quaternion) in local space, based on the referenced skeleton."
+            }
+        },
+        "$comment": "This is a node to unpack the character pose bundle to separate attributes.",
+        "tokens": [
+            "rootTranslation",
+            "rootRotation",
+            "skeletonDeltaTranslation",
+            "skeletonDeltaRotation",
+            "jointTranslations",
+            "jointRotations"
+        ]
+    }
+}

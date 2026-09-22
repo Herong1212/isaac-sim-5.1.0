@@ -1,0 +1,39 @@
+[package]
+version = "0.2.0"
+title = "VDB Time Sample Editor"
+description = "The editor for generating and editing 'timeSamples' metadata of VDB assets"
+authors = ["NVIDIA"]
+category = "simulation"
+repository = ""
+readme  = "docs/README.md"
+keywords = ["vdb", "timesample"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+menu = "Help/API/omni.kit.documentation.builder"
+title = "Omni Time Sample Editor Documentation"
+
+[[python.module]]
+name = "omni.vdb_timesample_editor"
+
+# Watch files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.py"]
+
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.widget.text_editor" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.window.property" = { optional=true }
+
+[[test]]
+dependencies = [
+]

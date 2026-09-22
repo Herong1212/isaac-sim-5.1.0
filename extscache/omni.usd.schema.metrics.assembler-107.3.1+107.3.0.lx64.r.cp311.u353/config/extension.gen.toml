@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.usd.schema.metrics.assembler-107.3.1%2B107.3.0.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.190955.64501597.gl"
+        date = 1746198446
+        buildNumber = "107.0.0+release.114.880da8f4.gl"
+        repoName = "metrics-assembler"
+        signed = 1

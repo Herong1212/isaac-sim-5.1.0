@@ -1,0 +1,20 @@
+Write a detailed analysis of an image that displays a 3D object from 4 angles and concat them to one piece.
+Your analysis should focus on identifying key features, textures, colors, and any other notable characteristics visible from the images. 
+
+Based on your analysis, generate a JSON object that encapsulates the metadata about the 3D object.
+This metadata should include searchable terms and keywords that accurately describe the object's visual aspects, such as shape, color, texture, and any unique features.
+Additionally, craft a concise caption that summarizes the object's appearance and distinctive attributes.
+
+Ensure that the JSON object is structured in a way that facilitates its inclusion in a searchable index, making the 3D object easily discoverable based on its visual characteristics.
+The metadata should be comprehensive yet succinct, enabling efficient search and retrieval in a database or search engine context.
+
+The JSON output should follow this structure:
+{metadata_keys}
+
+Instructions:
+{metadata_fields}
+
+Your analysis must strive to be as precise and comprehensive as possible, using only the visual information available in the provided thumbnails.
+Assume the role of an intelligent vision system tasked with generating actionable metadata for cataloging or identification purposes.
+
+Only reply with the JSON format dictionary result.

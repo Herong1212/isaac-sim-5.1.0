@@ -1,0 +1,106 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD RTX Renderer Applied API Schemas"
+description="USD Applied API Schemas for RTX renderer"
+keywords = ["usd", "schema", "render", "settings", "rtx"]
+
+[dependencies]
+"omni.usd.libs" = {}
+# Required for proper startup during test-suite run, so make it optional.
+"omni.usd.core" = { optional = true }
+
+[[python.module]]
+name = "omni.usd.schema.render_settings.rtx"
+
+[settings.exts."omni.usd.schema.render_settings.rtx"]
+# Setting to auto apply a Usd API schema on a UsdRender.Settings
+renderSettings.apiSchemas.autoApply = [
+    "OmniRtxSettingsGlobalRtAdvancedAPI_1",
+    "OmniRtxSettingsGlobalPtAdvancedAPI_1",
+]
+
+# Setting to auto apply a Usd API schema on a UsdGeom.Camera
+# Currently disabled due to issues with FabricRenderView and applied schemas
+camera.apiSchemas.autoApply = [
+    # "OmniRtxCameraAutoExposureAPI_1",
+    # "OmniRtxCameraExposureAPI_1",
+]
+# Setting to auto apply a Usd API schema on a UsdRender.Product
+renderProduct.apiSchemas.autoApply = [
+    "OmniRtxSettingsCommonAdvancedAPI_1",
+    "OmniRtxSettingsRtAdvancedAPI_1",
+    "OmniRtxSettingsPtAdvancedAPI_1",
+    "OmniRtxPostColorGradingAPI_1",
+    "OmniRtxPostChromaticAberrationAPI_1",
+    "OmniRtxPostBloomPhysicalAPI_1",
+    "OmniRtxPostMatteObjectAPI_1",
+    "OmniRtxPostCompositingAPI_1",
+    "OmniRtxPostDofAPI_1",
+    "OmniRtxPostMotionBlurAPI_1",
+    "OmniRtxPostTvNoiseAPI_1",
+    "OmniRtxPostTonemapIrayReinhardAPI_1",
+    "OmniRtxPostDebugSettingsAPI_1",
+    "OmniRtxDebugSettingsAPI_1",
+]
+
+[settings.exts."omni.usd.schema.render_settings.rtx".carbSettings]
+# Whether to ignore any changes to any deprecated carb-global setting
+ignoreSync = false
+# Whether all time-sampled data when syncing to the deprecated carb-global setting
+clearSamples = true
+# Whether to skip application of global carb-settings on open for UsdPrim attributes that are authored.
+# When on any serialized UsdPrim attributes with the the global-carb-settings will be overriden, forcing
+# maximum compatibility with previous (106 and below) versions.
+restoreFromMetadata = false
+
+[settings.app.hydra.renderSettings]
+# Whether to read render-settings from Usd
+useUsdAttributes = true
+# Whether to author render-settings to Usd (for serialization and reload purposes)
+saveUsdAttributes = true
+# Whether to read render-settings from Fabric (when fabric is enbled)
+useFabricAttributes = true
+
+[[test]]
+args = [
+    "--/renderer/active=rtx",
+    "--/renderer/enabled=rtx",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.usd",
+    "omni.hydra.rtx",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+]
+
+
+[[test]]
+name = "fabric"
+args = [
+    "--/renderer/active=rtx",
+    "--/renderer/enabled=rtx",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    # Enable Fabric and UsdRt
+    "--/app/useFabricSceneDelegate=true",
+    # Disable any reads from Usd directly (as this tests reads from UsdRt/Fabric)
+    "--/app/hydra/renderSettings/useUsdAttributes=false",
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.usd",
+    "omni.hydra.rtx",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.hydra.usdrt_delegate",
+]

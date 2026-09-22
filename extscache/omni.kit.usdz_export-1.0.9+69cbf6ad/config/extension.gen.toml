@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.usdz_export-1df936fb984953ff.zip"
+
+    [package.publish]
+        kitVersion = "107.3.1+production.202204.a70d3558.gl"
+        date = 1757755122
+        buildNumber = "107.3.1+1073.202204.a70d3558.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

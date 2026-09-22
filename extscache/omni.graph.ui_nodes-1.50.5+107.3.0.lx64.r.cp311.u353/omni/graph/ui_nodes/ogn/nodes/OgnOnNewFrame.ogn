@@ -1,0 +1,35 @@
+{
+    "OnNewFrame": {
+        "description": [
+            "Triggers when there is a new frame available for the given viewport. Note that the graph will",
+            "run asynchronously to the new frame event"
+        ],
+        "version": 1,
+        "uiName": "On New Frame",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": ["graph:action", "event"],
+        "exclude": ["tests"],
+        "state": {
+        },
+        "inputs": {
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            },
+            "frameNumber": {
+                "type": "int",
+                "description": "The number of the frame which is available"
+            }
+        }
+    }
+}

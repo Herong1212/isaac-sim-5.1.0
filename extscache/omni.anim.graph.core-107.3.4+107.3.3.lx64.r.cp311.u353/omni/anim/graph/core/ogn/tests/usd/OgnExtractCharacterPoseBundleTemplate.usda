@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnExtractCharacterPoseBundle.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_anim_graph_ExtractCharacterPoseBundle" (
+        docs="""Extracts the pose as a bundle after the animation graph has executed."""
+    )
+    {
+        token node:type = "omni.anim.graph.ExtractCharacterPoseBundle"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom rel inputs:pose (
+            docs="""The character input pose."""
+        )
+
+        # 6 attributes
+        custom quatf[] outputs:jointRotations (
+            docs="""The character joint rotations (quaternion) in local space, based on the referenced skeleton."""
+        )
+        custom float3[] outputs:jointTranslations (
+            docs="""The character joint positions in local space, based on the referenced skeleton."""
+        )
+        custom quatf outputs:rootRotation (
+            docs="""The character root rotation (quaternion) in world space."""
+        )
+        custom float3 outputs:rootTranslation (
+            docs="""The character root translation in world space."""
+        )
+        custom quatf outputs:skeletonDeltaRotation (
+            docs="""The character skeleton displacement(delta) rotation(quaternion) in skeleton space."""
+        )
+        custom float3 outputs:skeletonDeltaTranslation (
+            docs="""The character skeleton displacement(delta) translation in skeleton space."""
+        )
+    }
+}

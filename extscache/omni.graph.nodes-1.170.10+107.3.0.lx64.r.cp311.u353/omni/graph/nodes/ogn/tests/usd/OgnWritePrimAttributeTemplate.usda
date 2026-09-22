@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnWritePrimAttribute.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_WritePrimAttribute" (
+        docs="""Given a path to a prim on the current USD stage and the name of an attribute on  that prim, sets the value of that attribute.  Does nothing if the given Prim or attribute can not be found.  If the attribute is found but it is not a compatible type, an error will be issued."""
+    )
+    {
+        token node:type = "omni.graph.nodes.WritePrimAttribute"
+        int node:typeVersion = 3
+
+        # 8 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:layerIdentifier = "" (
+            docs="""Identifier of the USD layer to export data to.
+            Identifier can be empty, "<Session Layer>", "<Root Layer>" or the identifier of a sublayer.
+            If empty or invalid, data will be exported to the current layer.
+            This is only used when "Persist To USD" is enabled."""
+        )
+        custom token inputs:name = "" (
+            docs="""The name of the attribute to set on the specified prim"""
+        )
+        custom rel inputs:prim (
+            docs="""The prim to be modified when 'usePath' is false"""
+        )
+        custom token inputs:primPath = "" (
+            docs="""The path of the prim to be modified when 'usePath' is true"""
+        )
+        custom bool inputs:usdWriteBack = true (
+            docs="""Whether or not the value should be written back to USD, or kept a Fabric only value"""
+        )
+        custom bool inputs:usePath = false (
+            docs="""When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute"""
+        )
+        custom token inputs:value = "any" (
+            docs="""The new value to be written"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+
+        # 6 attributes
+        custom bool state:correctlySetup = false (
+            docs="""Whether or not the instance is properly setup"""
+        )
+        custom uint64 state:destAttrib (
+            docs="""A TokenC to the destination attrib"""
+        )
+        custom uint64 state:destPath (
+            docs="""A PathC to the destination prim"""
+        )
+        custom uint64 state:destPathToken (
+            docs="""The TokenC version of destPath'"""
+        )
+        custom token state:layerIdentifier (
+            docs="""The prefetched layer identifier."""
+        )
+        custom token state:resolvedLayerIdentifier (
+            docs="""The prefetched full layer path."""
+        )
+    }
+}

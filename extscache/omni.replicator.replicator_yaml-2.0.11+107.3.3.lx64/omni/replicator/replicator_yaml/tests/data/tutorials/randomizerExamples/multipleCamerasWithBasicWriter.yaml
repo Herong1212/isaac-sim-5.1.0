@@ -1,0 +1,80 @@
+# Create two cameras
+camera1_pos:  [[0, 100, 500], [500, 100, 500], [-500, 100, 500]]
+camera2_pos:  [[0, 500, 0], [500, 500, 0], [-500, 500, 0]]
+
+sphere:
+  create.sphere:
+    semantics: [["class", "sphere"]]
+    position: [0, 0, 0]
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [200, 0, 0]
+cone:
+  create.cone:
+    semantics: [["class", "cone"]]
+    position: [-200, 0, 0]
+
+# Put create camera and attach render product to other base yaml.
+camera:
+  create.camera:
+    look_at: [0, 0, 0]
+    position: [0, 100, 500]
+
+camera2:
+  create.camera:
+    look_at: [0, 0, 0]
+    position: [0, 500, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [512, 512]
+
+render_product2:
+  create.render_product:
+    camera: camera2
+    resolution: [320, 240]
+
+
+# Put create writer and initialize to other base yaml.
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output_yaml"
+      rgb: True
+      bounding_box_2d_loose: True
+      bounding_box_2d_tight: True
+      bounding_box_3d: True
+      distance_to_camera: True
+      distance_to_image_plane: True
+      instance_segmentation: True
+      normals: True
+      semantic_segmentation: True
+
+writer_attach:
+  writer.attach:
+    render_products: [render_product, render_product2]
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    with.camera:
+      modify.pose:
+        position:
+          distribution.uniform:
+            lower: [-500, 200, 100]
+            upper: [500, 500, 500]
+          look_at: [0,0,0]
+
+    with.camera2:
+      modify.pose:
+        position:
+          distribution.uniform:
+            lower: [-500, 200, 100]
+            upper: [500, 500, 500]
+          look_at: [0,0,0]

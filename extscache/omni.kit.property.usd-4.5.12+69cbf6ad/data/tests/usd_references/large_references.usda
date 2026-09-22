@@ -1,0 +1,77 @@
+#usda 1.0
+(
+    defaultPrim = "MY24_CAR"
+    endTimeCode = 240
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 240
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def "MY24_CAR" (
+    prepend references = [
+        @./sphere1.usda@,
+        @./sphere2.usda@,
+        @./sphere3.usda@</MY24_CAR>,
+        @./sphere4.usda@</MY24_CAR>,
+        @./sphere5.usda@</MY24_CAR>,
+        @./sphere6.usda@</MY24_CAR>,
+        @./sphere7.usda@</MY24_CAR>,
+        @./sphere8.usda@</MY24_CAR>,
+        @./sphere9.usda@</MY24_CAR>,
+        @./sphere10.usda@</MY24_CAR>,
+        @./sphere11.usda@</MY24_CAR>,
+        @./sphere12.usda@</MY24_CAR>,
+        @./sphere13.usda@</MY24_CAR>,
+        @./sphere14.usda@</MY24_CAR>,
+        @./sphere15.usda@</MY24_CAR>,
+        @./sphere16.usda@</MY24_CAR>,
+        @./sphere17.usda@</MY24_CAR>,
+        @./sphere18.usda@</MY24_CAR>,
+        @./sphere19.usda@</MY24_CAR>,
+        @./sphere20.usda@</MY24_CAR>,
+        @./sphere21.usda@</MY24_CAR>,
+        @./sphere22.usda@</MY24_CAR>,
+        @./sphere23.usda@</MY24_CAR>,
+        @./sphere24.usda@</MY24_CAR>,
+        @./sphere25.usda@</MY24_CAR>,
+        @./sphere26.usda@</MY24_CAR>,
+        @./sphere27.usda@</MY24_CAR>,
+        @./sphere28.usda@</MY24_CAR>,
+        @./sphere29.usda@</MY24_CAR>,
+        @./sphere30.usda@</MY24_CAR>,
+        @./sphere31.usda@</MY24_CAR>,
+        @./sphere32.usda@</MY24_CAR>,
+        @./sphere33.usda@</MY24_CAR>,
+        @./sphere34.usda@</MY24_CAR>,
+        @./sphere35.usda@</MY24_CAR>,
+        @./sphere36.usda@</MY24_CAR>,
+        @./sphere37.usda@</MY24_CAR>,
+        @./sphere38.usda@</MY24_CAR>,
+        @./sphere39.usda@</MY24_CAR>,
+        @./sphere40.usda@</MY24_CAR>,
+        @./sphere41.usda@</MY24_CAR>,
+        @./sphere42.usda@</MY24_CAR>,
+        @./sphere43.usda@</MY24_CAR>,
+        @./sphere44.usda@</MY24_CAR>,
+        @./sphere45.usda@</MY24_CAR>,
+        @./sphere46.usda@</MY24_CAR>,
+        @./sphere47.usda@</MY24_CAR>,
+        @./sphere48.usda@</MY24_CAR>,
+        @./sphere49.usda@</MY24_CAR>,
+        @./sphere50.usda@</MY24_CAR>,
+        @./sphere51.usda@</MY24_CAR>,
+        @./sphere52.usda@</MY24_CAR>,
+        @./sphere53.usda@</MY24_CAR>,
+        @./sphere54.usda@</MY24_CAR>,
+        @./sphere55.usda@</MY24_CAR>,
+        @./missing.usda@</cheese>
+    ]
+)
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}

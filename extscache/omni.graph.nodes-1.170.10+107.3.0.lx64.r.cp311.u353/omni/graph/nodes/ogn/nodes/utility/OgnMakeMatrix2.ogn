@@ -1,0 +1,44 @@
+{
+    "MakeMatrix2": {
+        "version": 1,
+        "description": [
+            "Merge 2 row vectors into a matrix.",
+            "If the inputs are arrays, the output will be an array of matrices."
+        ],
+        "uiName": "Make Matrix2",
+        "categories": ["math:conversion"],
+        "tags": ["compose", "combine", "join"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "x": {
+                "type": ["double[2]", "double[2][]"],
+                "uiName": "First Row",
+                "description": "The first row of the matrix"
+            },
+            "y": {
+                "type": ["double[2]", "double[2][]"],
+                "uiName": "Second Row",
+                "description": "The second row of the matrix"
+            }
+        },
+        "outputs": {
+            "matrix": {
+                "type": ["matrixd[2]", "matrixd[2][]"],
+                "uiName": "Matrix",
+                "description": "Matrix formed by 'First Row' and 'Second Row'"
+            }
+        },
+        "tests": [
+            {
+                "inputs:x": {"type": "double[2]", "value": [1, 2]},
+                "inputs:y": {"type": "double[2]", "value": [3, 4]},
+                "outputs:matrix": {"type": "matrixd[2]", "value": [1, 2, 3, 4]}
+            },
+            {
+                "inputs:x": {"type": "double[2][]", "value": [[1, 2]]},
+                "inputs:y": {"type": "double[2][]", "value": [[3, 4]]},
+                "outputs:matrix": {"type": "matrixd[2][]", "value": [[1, 2, 3, 4]]}
+            }
+        ]
+    }
+}

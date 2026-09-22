@@ -1,0 +1,36 @@
+[core]
+
+[package]
+title = "Omniverse UJITSO default instances"
+category = "Internal"
+description = "Default UJITSO build system instance that ties together the build system and necessary processors."
+version = "1.0.0"
+keywords = ["UJITSO", "build", "instance", "processor"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.stats" = {}
+"omni.taskagent" = { optional = true }
+"omni.datastore" = {}
+"omni.blobkey" = {}
+"omni.client" = {} # needed for carb.datasource-omniclient.plugin
+"omni.kit.trace" = { optional = true }
+
+[[native.plugin]]
+path = "bin/carb.ujitsoagent/carb.ujitsoagent.plugin"
+[[native.plugin]]
+path = "bin/carb.ujitso.default/carb.ujitso.default.plugin"
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[python.module]]
+name = "omni.ujitso.default"
+
+[settings]
+
+[[test]]
+waiver = "Tested in rendering repo"
+
+[documentation]
+pages = ["docs/Overview.md"]

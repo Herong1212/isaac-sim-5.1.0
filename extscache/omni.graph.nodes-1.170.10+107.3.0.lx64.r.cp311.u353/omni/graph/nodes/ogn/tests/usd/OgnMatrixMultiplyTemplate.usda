@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMatrixMultiply.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_MatrixMultiply" (
+        docs="""Computes the matrix product of the inputs. Inputs must be compatible.  Also accepts tuples (treated as vectors) as inputs. Tuples in input 'A' will be treated as row vectors.  Tuples in input 'B' will be treated as column vectors.  Arrays of inputs will be computed element-wise with broadcasting if necessary. """
+    )
+    {
+        token node:type = "omni.graph.nodes.MatrixMultiply"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""First matrix or row vector to multiply as A*B"""
+        )
+        custom token inputs:b (
+            docs="""Second matrix or column vector to multiply as A*B"""
+        )
+
+        # 1 attribute
+        custom token outputs:output (
+            docs="""Product of the two matrices/vectors A*B"""
+        )
+    }
+}

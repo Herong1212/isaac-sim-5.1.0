@@ -1,0 +1,52 @@
+[package]
+version = "0.0.15"
+authors = ["NVIDIA"]
+title = "Animated Robot Controller"
+description="Animated Robot Controller"
+readme  = "docs/README.md"
+category = "animation"
+repository = ""
+keywords = ["metropolis","simulation", "synthetic data", "robot", "animation", "anim"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+writeTarget.kit = true
+
+[dependencies]
+"omni.usd" = {}
+"omni.kit.scripting" = {}
+"omni.anim.navigation.core" = { version = "~107.3.0" }
+"omni.metropolis.utils" = { version = "^0.1.19"}
+"omni.anim.people" = { version = "^0.7.8"}
+
+[[python.module]]
+name = "isaacsim.anim.robot"
+
+[python.pipapi]
+use_online_index=true
+requirements = ["shapely"]
+
+[settings]
+exts."isaacsim.anim.robot".command_settings.command_file_path = ""
+exts."isaacsim.anim.robot".simulation_settings.dynamic_avoidance = true
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

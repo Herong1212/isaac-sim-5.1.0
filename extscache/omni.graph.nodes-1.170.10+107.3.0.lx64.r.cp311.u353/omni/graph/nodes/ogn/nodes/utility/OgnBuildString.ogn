@@ -1,0 +1,96 @@
+{
+    "BuildString": {
+        "$comment": "Replaces the v1 AppendString node as it renames the input attributes",
+        "version": 2,
+        "description": [
+            "Creates a new token or string by concatenating the inputs.",
+            "token[] inputs will be appended element-wise."
+        ],
+        "uiName": "Append String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["token", "token[]", "string"],
+                "description": "The string(s) to be appended to.  This input determines the output type."
+            },
+            "b": {
+                "type": ["token", "token[]", "string"],
+                "description": "The string to be appended."
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["token","token[]", "string"],
+                "description": "The new string(s)."
+            }
+        },
+        "tests": [
+            {
+                "inputs:a": {"type":"token", "value": ""},
+                "inputs:b": {"type":"token", "value": "foo"},
+                "outputs:value": {"type":"token", "value": "foo"}
+            },
+            {
+                "inputs:a": {"type":"token", "value": "foo"},
+                "inputs:b": {"type":"token", "value": ""},
+                "outputs:value": {"type":"token", "value": "foo"}
+            },
+            {
+                "inputs:a": {"type":"token", "value": "/"},
+                "inputs:b": {"type":"token", "value": "foo"},
+                "outputs:value": {"type":"token", "value": "/foo"}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": []},
+                "inputs:b": {"type":"token", "value": "/foo"},
+                "outputs:value": {"type":"token[]", "value": []}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": ["", "/World", "/World2"]},
+                "inputs:b": {"type":"token", "value": ""},
+                "outputs:value": {"type":"token[]", "value": ["", "/World", "/World2"]}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": ["", "/World", "/World2"]},
+                "inputs:b": {"type":"token", "value": "/foo"},
+                "outputs:value": {"type":"token[]", "value": ["/foo", "/World/foo", "/World2/foo"]}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": []},
+                "inputs:b": {"type":"token[]", "value": ["/foo"]},
+                "outputs:value": {"type":"token[]", "value": []}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": ["", "/World", "/World2"]},
+                "inputs:b": {"type":"token[]", "value": []},
+                "outputs:value": {"type":"token[]", "value": ["", "/World", "/World2"]}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": ["", "/World", "/World2"]},
+                "inputs:b": {"type":"token[]", "value": ["/foo"]},
+                "outputs:value": {"type":"token[]", "value": ["/foo", "/World/foo", "/World2/foo"]}
+            },
+            {
+                "inputs:a": {"type":"token[]", "value": ["", "/World", "/World2"]},
+                "inputs:b": {"type":"token[]", "value": ["", "/foo", "/bar"]},
+                "outputs:value": {"type":"token[]", "value": ["", "/World/foo", "/World2/bar"]}
+            },
+            {
+                "inputs:a": {"type":"string", "value": ""},
+                "inputs:b": {"type":"string", "value": "foo"},
+                "outputs:value": {"type":"string", "value": "foo"}
+            },
+            {
+                "inputs:a": {"type":"string", "value": "foo"},
+                "inputs:b": {"type":"string", "value": ""},
+                "outputs:value": {"type":"string", "value": "foo"}
+            },
+            {
+                "inputs:a": {"type":"string", "value": "/"},
+                "inputs:b": {"type":"string", "value": "foo"},
+                "outputs:value": {"type":"string", "value": "/foo"}
+            }
+        ]
+    }
+}

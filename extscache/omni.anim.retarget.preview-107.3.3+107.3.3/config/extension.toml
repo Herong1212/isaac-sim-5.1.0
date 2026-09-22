@@ -1,0 +1,67 @@
+[package]
+version = "107.3.3"
+title = "Animation Preview (BETA)"
+description="Tools for previewing and retargeting animation assets."
+authors = ["NVIDIA"]
+category = "Animation"
+readme  = "docs/README.md"
+keywords = ["animation", "preview", "character", "behavior", "human", "people"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.preferences.animation" = {}
+"omni.kit.window.preferences" = {}
+"omni.kit.widget.viewport" = {}
+"omni.kit.manipulator.camera" = {}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.helper.file_utils" = {}
+"omni.anim.widget.timeline" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.widget.layers" = {}
+"omni.kit.window.drop_support" = {}
+"omni.anim.retarget.core" = { version="~107.3" }
+"omni.anim.skelJoint" = { version="~107.3" }
+
+[[python.module]]
+name = "omni.anim.retarget.preview"
+
+[settings]
+persistent.exts."omni.anim.retarget.preview".preview_stage = "${omni.anim.retarget.preview}/data/preview_stage.usda"
+
+[package.writeTarget]
+kit = true
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.mainwindow",
+    "omni.kit.quicklayout",
+    "omni.kit.window.stage",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.viewport.window",
+]
+
+args = [
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport",
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/fastShutdown=1"
+]
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface*",
+    "*extension object is still alive, something holds a reference on it*",
+    "*Failed to resolve USD Asset Identifier*",
+    "*[omni.kit.browser.folder.core.models.folder_browser_data] Timeout 5.0 seconds when listing*",
+    "*AnimationPreview*Command*prim at*",
+    "*AnimationPreview*Command*does not exist*",
+    "*AnimationPreview*Command*TypeError*",
+    "*Prim * is invalid*",
+    "*Prim * is not a skeleton animation*",
+    "*Prim * is not a Skeleton or SkelRoot*",
+]

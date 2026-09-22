@@ -1,0 +1,50 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.1.22"
+category = "Internal"
+keywords = ["stage", "template", "core"]
+support_level = "Core"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Stage Template Core"
+description="Allows custom stage templates to be loaded on omni.usd.get_context().new_stage_async()"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.usd" = {}
+
+[settings]
+
+[[python.module]]
+name = "omni.kit.stage_template.core"
+
+[[test]]
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedStage=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.renderer.capture",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]

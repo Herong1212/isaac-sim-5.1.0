@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMultiply.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Multiply" (
+        docs="""Computes the element-wise product of two or more inputs (multiplication). This includes simple values, tuples, arrays, and arrays of tuples. If one input has a higher dimension than the other, then the input with lower dimension will be added to each element of the higher-dimension input.
+Examples:
+- scalar * tuple = resultTuple (where resultTuple is formed by multiplying scalar to each element in tuple).
+- tuple * arrayOfTuples = resultArrayOfTuples (where resultArrayOfTuples is formed by multiplying each   element in tuple with each corresponding element of each tuple in arrayOfTuples).
+- scalar * arrayOfTuples = resultArrayOfTuples (where resultArrayOfTuples is formed by multiplying   scalar to each element of every tuple in arrayOfTuples).
+To add/remove factors on this node, select the node and press the small "+"/"-" buttons in the bottom-right corner of the "Inputs" widget in the "Property" window."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Multiply"
+        int node:typeVersion = 2
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""First value to multiply."""
+        )
+        custom token inputs:b (
+            docs="""Second value to multiply."""
+        )
+
+        # 1 attribute
+        custom token outputs:product (
+            docs="""The element-wise product of the input numerical values (with preserved typing)."""
+        )
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "OgnSampleChoice": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates samples from a list of strings/tokens.",
+        "metadata":
+        {
+           "uiName": "Multinomial Distribution"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "choices": {
+                "description": ["The choices to be sampled"],
+                "type": "any"
+            },
+            "weights": {
+                "description": ["The weights with which to sample"],
+                "type": "float[]"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "numSamples": {
+                "description": ["Number of samples to generate"],
+                "type": "int",
+                "default": 1
+            },
+            "withReplacements": {
+                "description": ["Whether to avoid duplicates in sampling."],
+                "type": "bool",
+                "default": true
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["Sampled results"],
+                "type": "any"
+            },
+            "numSamples": {
+                "description": ["Number of samples to generate"],
+                "type": "int",
+                "default": 1
+            }
+        }
+    }
+}

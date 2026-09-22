@@ -1,0 +1,43 @@
+{
+    "GetPrimLocalToWorldTransform": {
+        "version": 2,
+        "description": [
+            "Given a path to a prim on the current USD stage, returns the transformation matrix.",
+            "that transforms a vector from the local frame to the global frame "
+        ],
+        "uiName": "Get Prim Local to World Transform",
+        "scheduling": ["usd-read", "threadsafe"],
+        "categories": ["sceneGraph"],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "uiName": "Prim Path",
+                "description": "The path of the prim used as the local coordinate system when 'Use Path' is true"
+            },
+            "usePath": {
+                "type": "bool",
+                "default": true,
+                "uiName": "Use Path",
+                "description": [
+                    "When true, the 'Prim Path' attribute is used as the path to the prim being read",
+                    "otherwise it will read the connection at the 'Prim' attribute"
+                ],
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "prim": {
+                "type": "target",
+                "uiName": "Prim",
+                "description": "The prim used as the local coordinate system when 'Use Path' is false",
+                "optional": true,
+                "deprecated": "Use prim input with a ToTarget node instead"
+            }
+        },
+        "outputs": {
+            "localToWorldTransform": {
+                "type": "matrixd[4]",
+                "uiName": "Local Transform",
+                "description": "The local to world transformation matrix for 'Prim'"
+            }
+        }
+    }
+}

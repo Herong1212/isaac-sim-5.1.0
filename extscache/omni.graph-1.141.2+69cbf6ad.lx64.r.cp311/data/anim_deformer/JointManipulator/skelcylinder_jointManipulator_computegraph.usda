@@ -1,0 +1,89 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    endTimeCode = 120
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def "Root" (
+    references = @./skelcylinder.usda@</Root>
+)
+{
+    over "group1"
+    {
+        over "pCylinder1"
+        {
+            token visibility = "invisible"
+            uniform token skel:skinningMethod = "DualQuaternion"
+            rel deformedPrim = </Root/group1/pCylinder1>
+        }
+        def Mesh "pCylinder1_deformed" (
+            references = </Root/group1/pCylinder1>
+        )
+        {
+            point3f[] points.connect = </Root/group1/Skinning.output:points>
+            token visibility = "inherited"
+        }
+        def ComputeNode "SkeletonTransforms"
+        {
+            rel input:skeleton = </Root/group1/joint1>
+            rel input:skelAnim = </Root/group1/joint1/Animation>
+            int[] output:jointParentIndices
+            matrix4d[] output:jointLocalBindTransforms
+            matrix4d[] output:jointLocalTransforms
+            matrix4d[] output:jointSkelBindTransforms
+            matrix4d[] output:jointSkelTransforms
+            matrix4d output:skelLocalToWorld
+            custom token node:type = "SkeletonTransforms"
+        }
+
+        def ComputeNode "Skinning"
+        {
+            rel input:mesh = </Root/group1/pCylinder1>
+            point3f[] input:restPoints.connect = </Root/group1/pCylinder1.points>
+            token[] input:skinningJoints.connect = </Root/group1/pCylinder1.skel:joints>
+            int[] input:jointIndices.connect = </Root/group1/pCylinder1.primvars:skel:jointIndices>
+            float[] input:jointWeights.connect = </Root/group1/pCylinder1.primvars:skel:jointWeights>
+            float[] input:blendWeights
+            token input:skinningMethod.connect = </Root/group1/pCylinder1.skel:skinningMethod>
+            matrix4d input:geomBindTransform.connect = </Root/group1/pCylinder1.primvars:skel:geomBindTransform>
+            matrix4d input:meshWorldToLocal
+            token[] input:skelFullJoints.connect = </Root/group1/joint1.joints>
+            matrix4d[] input:skelTransforms.connect = </Root/group1/JointsManipulator.output:jointSkelTransforms>
+            matrix4d[] input:skelBindTransforms.connect = </Root/group1/joint1.bindTransforms>
+            matrix4d input:skelLocalToWorld.connect = </Root/group1/SkeletonTransforms.output:skelLocalToWorld>
+            int[] output:skinningJointsMap
+            int output:skinningMethod
+            matrix4d[] output:skinningTransforms
+            float[] output:skinningDualQuats
+            point3f[] output:points
+            custom token node:type = "Skinning"
+        }
+        def ComputeNode "JointsManipulator"
+        {
+            uniform bool active = 0
+            rel input:skeleton = </Root/group1/joint1>
+            rel input:mesh = <Root/group1/base>
+            token[] input:joints.connect = </Root/group1/joint1.joints>
+            int[] input:jointParentIndices.connect = </Root/group1/SkeletonTransforms.output:jointParentIndices>
+            matrix4d[] input:jointLocalTransforms
+            matrix4d[] input:jointSkelTransforms.connect = </Root/group1/SkeletonTransforms.output:jointSkelTransforms>
+            matrix4d input:skelLocalToWorld.connect = </Root/group1/SkeletonTransforms.output:skelLocalToWorld>
+            matrix4d[] output:jointSkelTransforms
+            matrix4d[] output:jointLocalTransforms
+            custom token node:type = "JointsManipulator"
+        }
+        def ComputeNode "JointsVisualizer"
+        {
+            uniform bool active = 0
+            token[] input:joints.connect = </Root/group1/joint1.joints>
+            int[] input:jointParentIndices.connect = </Root/group1/SkeletonTransforms.output:jointParentIndices>
+            matrix4d[] input:jointSkelTransforms.connect = </Root/group1/JointsManipulator.output:jointSkelTransforms>
+            matrix4d input:skelLocalToWorld.connect = </Root/group1/SkeletonTransforms.output:skelLocalToWorld>
+            custom token node:type = "JointsVisualizer"
+        }
+    }
+}
+

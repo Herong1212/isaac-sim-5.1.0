@@ -1,0 +1,39 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset with incorrect signal attributes
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom token omni:simready:signalType = "trafficLight"
+
+    def DiskLight "signal_attr_string"
+    {
+        custom string omni:simready:signal = "red"
+    }
+
+    def DiskLight "signal_attr_time_varying"
+    {
+        token omni:simready:signal.timeSamples = {101: "red", 102: "green"}
+    }
+    def Xform "signal_attr_on_scope"
+    {
+        custom token omni:simready:signal = "red"
+    }
+
+    def Xform "signal_attr_unsupported_value" (
+        """
+        Using a mesh light just to test some other code paths
+        """
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token omni:simready:signal = "unsupported color"
+        }
+    }
+}

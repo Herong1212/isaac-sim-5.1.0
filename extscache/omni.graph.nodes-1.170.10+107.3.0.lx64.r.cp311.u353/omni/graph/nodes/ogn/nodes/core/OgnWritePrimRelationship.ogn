@@ -1,0 +1,81 @@
+{
+    "WritePrimRelationship": {
+        "version": 2,
+        "description": "Writes the target(s) to a relationship on a given prim",
+        "uiName": "Write Prim Relationship",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write"],
+        "exclude": ["usd"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim to write the relationship to"
+            },
+            "name": {
+                "type": "token",
+                "uiName": "Relationship Name",
+                "description": "The name of the relationship to write"
+            },
+            "value": {
+                "type": "target",
+                "description": "The target(s) to write to the relationship",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "usdWriteBack": {
+                "uiName": "Persist To USD",
+                "type": "bool",
+                "default": true,
+                "description": "Whether or not the value should be written back to USD, or kept a Fabric only value"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": [
+                    "Identifier of the USD layer to export data to.",
+                    "Identifier can be empty, \"<Session Layer>\", \"<Root Layer>\" or the identifier of a sublayer.",
+                    "If empty or invalid, data will be exported to the current layer.",
+                    "This is only used when \"Persist To USD\" is enabled."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Identifier"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+
+        },
+       "state": {
+            "correctlySetup": {
+                "type": "bool",
+                "description": "Whether or not the instance is properly setup",
+                "default": false
+            },
+            "prim": {
+                "type": "target",
+                "description": "The currently prefetched prim"
+            },
+            "name": {
+                "type": "token",
+                "description": "The prefetched relationship name"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": "The prefetched layer identifier."
+            },
+            "resolvedLayerIdentifier": {
+                "type": "token",
+                "description": "The prefetched full layer path."
+            }
+        }
+    }
+}

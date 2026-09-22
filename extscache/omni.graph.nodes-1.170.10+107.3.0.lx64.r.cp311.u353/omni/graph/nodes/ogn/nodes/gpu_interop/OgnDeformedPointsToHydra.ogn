@@ -1,0 +1,51 @@
+{
+    "DeformedPointsToHydra": {
+        "version": 1,
+        "description": [ "Deprecated: please refer to the example node RpResourceExampleHydra instead" ],
+        "categories": [ "examples", "graph:preRender", "internal" ],
+        "uiName": "Deformed Points to Hydra",
+        "metadata": {
+            "hidden": "true"
+        },
+        "cudaPointers": "cpu",
+        "inputs": {
+            "stream": {
+                "type": "uint64",
+                "description": "Pointer to the CUDA Stream",
+                "uiName": "stream"
+            },
+            "primPath": {
+                "type": "token",
+                "description": "Prim path input. Points and a prim path may be supplied directly as an alternative to a bundle input.",
+                "uiName": "Prim path input"
+            },
+            "points": {
+                "type": "float[3][]",
+                "memoryType": "cuda",
+                "description": "Points attribute input. Points and a prim path may be supplied directly as an alternative to a bundle input.",
+                "uiName": "Prim Points"
+            },
+            "verbose": {
+                "type": "bool",
+                "default": false,
+                "description": "verbose printing",
+                "uiName":  "Verbose"
+            },
+            "sendToHydra": {
+                "type": "bool",
+                "default": false,
+                "description": "send to hydra",
+                "uiName":  "Send to hydra"
+            }
+        },
+        "outputs":
+        {
+            "reload": {
+                "type": "bool",
+                "description": "Force RpResource reload",
+                "default": false,
+                "uiName": "Reload"
+            }
+        }
+    }
+}

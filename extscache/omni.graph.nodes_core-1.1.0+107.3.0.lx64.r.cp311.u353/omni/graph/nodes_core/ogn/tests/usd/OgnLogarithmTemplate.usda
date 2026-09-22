@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnLogarithm.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Logarithm" (
+        docs="""Computes the base-"Base" logarithm of the input "Value". The result is the same type as the input "Value" if it is a decimal type, otherwise the result is a double. If the input is an array, vector, or matrix, then the node will calculate the logarithm of each element and output an array, vector, or matrix of the same size. The logarithm's "Base" must be greater than zero and not equal to one while "Value" must be greater than zero, otherwise the compute will fail."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Logarithm"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom double inputs:base = 10 (
+            docs="""The logarithm base. Must be greater than zero and not equal to one or the compute will fail."""
+        )
+        custom token inputs:value (
+            docs="""The input value. Must be greater than zero or the compute will fail."""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""The logarithm value. The shape and type of this output should match "Value"'s unless the input
+            "Value" is not a decimal type, in which case the result should be of type double."""
+        )
+    }
+}

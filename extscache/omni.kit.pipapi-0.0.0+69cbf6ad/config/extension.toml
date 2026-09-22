@@ -1,0 +1,44 @@
+[package]
+title = "API to install pip modules"
+category = "Internal"
+description = "Module to enable usage of ``pip install`` in Omniverse Kit environment"
+keywords = ["kit", "pip", "install"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[core]
+# Load as early as possible
+order = -1000
+reloadable = false
+
+[dependencies]
+
+[[python.module]]
+name = "omni.kit.pipapi"
+
+
+[settings]
+
+# pip local archive directories (refer to pip install --find-links)
+exts."omni.kit.pipapi".archiveDirs = []
+
+# Path to pip install into and store all the data
+exts."omni.kit.pipapi".envPath = "${data}/pip3-envs/default"
+
+# OM-34146: Temp hack to make it possible to disable that change that makes RTX tests run slower
+exts."omni.kit.pipapi".installCheckIgnoreVersion = false
+
+# Fall back to online index installation when there is no local version. If disabled error will be produced instead.
+exts."omni.kit.pipapi".allowOnlineIndex = true
+
+# On first pip install call try to upgrade pip itself first
+exts."omni.kit.pipapi".tryUpgradePipOnFirstUse = false
+
+[[test]]
+# It starts before omni.kit.test coverage, module level code treated as uncovered (imports, global var)
+pyCoverageThreshold = 45
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+]

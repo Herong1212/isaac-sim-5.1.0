@@ -1,0 +1,18 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.anim.curve.bundle-1.2.3%2B107.3.2.u353.zip"
+
+    [package.target]
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.kit]
+            0 = "107.3.2"
+
+    [package.publish]
+        kitVersion = "107.3.2+production.214668.960036eb.gl"
+        date = 1753695955
+        buildNumber = "107.3.1+release.4004.250618f3.gl"
+        repoName = "animation-authoring"
+        signed = 1

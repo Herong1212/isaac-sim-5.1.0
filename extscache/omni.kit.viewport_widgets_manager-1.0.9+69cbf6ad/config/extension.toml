@@ -1,0 +1,61 @@
+[package]
+title = "Viewport Widgets Manager"
+description = "The viewport widgets manager provides simple API to manage viewport widgets."
+
+version = "1.0.9"
+
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+category = "Collaboration"
+support_level = "Sample"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.viewport.utility" = {}
+"omni.timeline" = {}
+"omni.kit.viewport.window" = {}
+
+[[python.module]]
+name = "omni.kit.viewport_widgets_manager"
+
+[deprecation]
+warning = "Extension deprecated, use omni.scene instead"
+
+[[test]]
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/persistent/app/viewport/displayOptions=0",
+    "--/app/viewport/showSettingMenu=false",
+    "--/app/viewport/showCameraMenu=false",
+    "--/app/viewport/showRendererMenu=false",
+    "--/app/viewport/showHideMenu=false",
+    "--/app/viewport/showLayerMenu=false",
+    "--/app/viewport/hideBuiltinTimeline=true",
+    "--/app/docks/disabled=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/width=320",
+    "--/app/window/height=240",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.test_helpers_gfx",
+    "omni.hydra.pxr",
+]

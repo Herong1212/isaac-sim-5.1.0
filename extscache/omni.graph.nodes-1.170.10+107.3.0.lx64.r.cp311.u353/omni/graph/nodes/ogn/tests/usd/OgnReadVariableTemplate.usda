@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadVariable.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_core_ReadVariable" (
+        docs="""Node that reads a value from a variable"""
+    )
+    {
+        token node:type = "omni.graph.core.ReadVariable"
+        int node:typeVersion = 2
+
+        # 3 attributes
+        custom rel inputs:graph (
+            docs="""Ignored. Do not use"""
+        )
+        custom token inputs:targetPath (
+            docs="""Ignored. Do not use."""
+        )
+        custom token inputs:variableName = "" (
+            docs="""The name of the graph variable to use."""
+        )
+
+        # 1 attribute
+        custom token outputs:value = "any" (
+            docs="""The variable value that we returned."""
+        )
+    }
+}

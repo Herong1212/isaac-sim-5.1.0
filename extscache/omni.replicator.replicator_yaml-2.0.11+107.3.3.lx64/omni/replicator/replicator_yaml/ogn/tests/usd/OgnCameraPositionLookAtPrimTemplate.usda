@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCameraPositionLookAtPrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_replicator_yaml_OgnCameraPositionLookAtPrim" (
+        docs="""Compute proper camera positions when it looks at a prim."""
+    )
+    {
+        token node:type = "omni.replicator.replicator_yaml.OgnCameraPositionLookAtPrim"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom float3[] inputs:axes = [] (
+            docs="""Axes that the camera is aligned to."""
+        )
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom float inputs:scale = 0.0 (
+            docs="""Scale determines how far away the camera is from the target prim."""
+        )
+        custom rel inputs:targetPrim (
+            docs="""prim to be looked at"""
+        )
+
+        # 2 attributes
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+        custom float3[] outputs:samples (
+            docs="""New positions of each prim in the world space"""
+        )
+    }
+}

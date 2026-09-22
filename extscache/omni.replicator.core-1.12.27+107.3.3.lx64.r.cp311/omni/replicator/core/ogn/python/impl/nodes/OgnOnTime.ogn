@@ -1,0 +1,69 @@
+{
+    "OgnOnTime": {
+        "description": [
+            "Triggers at the specified time interval. Note that the graph will",
+            "run asynchronously to the new frame event"
+        ],
+        "version": 3,
+        "uiName": "On Time",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "interval": {
+                "type": "float",
+                "description": "Trigger interval, in seconds.",
+                "default": 1
+            },
+            "maxExecs": {
+                "type": "uint",
+                "description": "Number of sequences triggered before stopping. If 0, continue indefinitely.",
+                "default": 0
+            },
+            "run": {
+                "type": "bool",
+                "description": "Run"
+            },
+            "rtSubframes": {
+                "type": "uint64",
+                "description": ["Determines how many subframes to render in RealTime render mode on each trigger",
+                                "to reduce artifacts caused by sudden scene changes."],
+                "default": 16
+            },
+            "resetPhysics": {
+                "type": "bool",
+                "description": ["If True, reset physics simulation on trigger."],
+                "default": true
+            },
+            "triggerOnLastFrame": {
+                "type": "bool",
+                "description": ["If True, trigger on the frame before the interval time is reached."],
+                "default": false
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output Execution"
+            },
+            "time": {
+                "type": "int",
+                "description": "The current physx simulation time."
+            },
+            "execCounts": {
+                "type": "int",
+                "description": "The number of times the trigger has executed."
+            },
+            "referenceTimeNumerator": {
+                "type": "int64",
+                "description": "Reference time represented as a rational number : numerator"
+            },
+            "referenceTimeDenominator": {
+                "type": "uint64",
+                "description": "Reference time represented as a rational number : denominator"
+            }
+        }
+    }
+}

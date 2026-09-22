@@ -1,0 +1,1 @@
+    async def {{ function.name|underscore }}(self, {{ function.params|py.arguments(interface=interface) }}) -> {% if function.returns.is_many %}AsyncIterator[{{ function.returns.type|py.type_name }}]{% else %}{{ function.returns.type|py.type_name }}{% endif %}:

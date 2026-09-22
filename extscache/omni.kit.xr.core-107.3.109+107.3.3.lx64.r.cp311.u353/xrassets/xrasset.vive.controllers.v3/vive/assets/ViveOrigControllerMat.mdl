@@ -1,0 +1,21 @@
+
+mdl 1.6;
+
+import ::state::*;
+import ::tex::*;
+using ..::..::ViveOrigControllerMatBase import *;
+
+export material ViveOrigControllerMat(
+	uniform texture_2d Color = texture_2d("./ViveOrigControllerMat_BaseColor.png",::tex::gamma_srgb),
+	uniform texture_2d Specular = texture_2d("./ViveOrigControllerMat_Specular.png",::tex::gamma_srgb))
+ =
+	let {
+	float2 uv = float2(state::texture_coordinate(0).x,state::texture_coordinate(0).y);
+	float4 specular_color_raw = tex::lookup_float4(Specular,float2(uv.x,uv.y),tex::wrap_repeat,tex::wrap_repeat);
+	float specular_const = specular_color_raw.x;
+
+	} in
+		ViveOrigControllerMatBase (
+			base_color_tex: Color,
+			specular: specular_const
+		);

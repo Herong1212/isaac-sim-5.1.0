@@ -1,0 +1,51 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnWritePrim.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_WritePrim" (
+        docs="""Exposes attributes for a single Prim on the USD stage as inputs to this node. When this node computes it writes any of these connected inputs to the target Prim. Any inputs which are not connected will not be written."""
+    )
+    {
+        token node:type = "omni.graph.nodes.WritePrim"
+        int node:typeVersion = 4
+
+        # 4 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:layerIdentifier = "" (
+            docs="""Identifier of the USD layer to export data to.
+            Identifier can be empty, "<Session Layer>", "<Root Layer>" or the identifier of a sublayer.
+            If empty or invalid, data will be exported to the current layer.
+            This is only used when "Persist To USD" is enabled."""
+        )
+        custom rel inputs:prim (
+            docs="""The prim to be written to"""
+        )
+        custom bool inputs:usdWriteBack = true (
+            docs="""Whether or not the value should be written back to USD, or kept a Fabric only value"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+
+        # 2 attributes
+        custom token state:layerIdentifier (
+            docs="""The prefetched layer Identifier."""
+        )
+        custom token state:resolvedLayerIdentifier (
+            docs="""The prefetched resolved layer Identifier."""
+        )
+    }
+}

@@ -1,0 +1,38 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnClamp.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Clamp" (
+        docs="""Clamp a number or array of numbers to a specified range. If an array of numbers is provided as the input and lower/upper are scalars then each input numeric will be clamped to the range [lower, upper]. If all inputs are arrays, clamping will be done element-wise, where "Lower" and "Upper" are applied individually to each element in "Input". An error will be reported if "Lower" > "Upper"."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Clamp"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom token inputs:input (
+            docs="""The input values to clamp. These can be scalar values, tuple values, matrix values, or arrays
+            of any of them."""
+        )
+        custom token inputs:lower (
+            docs="""The lower bound of the clamp, which must be of the same base type as "Input" and <= "Upper"."""
+        )
+        custom token inputs:upper (
+            docs="""The upper bound of the clamp, which must be of the same base type as "Input" and >= "Lower"."""
+        )
+
+        # 1 attribute
+        custom token outputs:result (
+            docs="""A copy of the "numerics" after the clamping operation has been applied to it."""
+        )
+    }
+}

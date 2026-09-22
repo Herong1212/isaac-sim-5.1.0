@@ -1,0 +1,36 @@
+{
+    "GetParentPrims": {
+        "version": 1,
+        "description": ["Generates parent paths from one or more targeted paths (ex. /World/Cube -> /World)"],
+        "uiName": "Get Target Parents",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "prims": {
+                "type": "target",
+                "description": "Input paths (ex. /World/Cube)",
+                "uiName": "Targets",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            }
+        },
+        "outputs": {
+            "parentPrims": {
+                "type": "target",
+                "uiName": "Target Parents",
+                "description": "Computed parent paths (ex. /World)"
+            }
+        },
+        "tests": [
+            {
+                "inputs:prims": "/A",
+                "outputs:parentPrims": "/"
+            },
+            {
+                "inputs:prims": ["/A", "/A/B", "/A/B/C"],
+                "outputs:parentPrims": ["/", "/A", "/A/B"]
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+#usda 1.0
+(
+    startTimeCode = 120
+    endTimeCode = 240
+    timeCodesPerSecond = 24
+)
+
+def Cube "AnimatedCube"
+{
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    double3 xformOp:translate.timeSamples = {
+        0: (0, 0, 0),
+        120: (100, 0, 0),
+        240: (200, 0, 0)
+    }
+}

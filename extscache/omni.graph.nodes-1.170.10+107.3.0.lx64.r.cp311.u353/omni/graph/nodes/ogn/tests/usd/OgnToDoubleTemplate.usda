@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnToDouble.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ToDouble" (
+        docs="""Convert the given input to 64-bit floating-point. Array and tuple inputs are converted element-wise to arrays and tuples of the same shape."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ToDouble"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:role = "None" (
+            docs="""The attribute role to apply to the output type. If the role is
+            not supported by the output shape, a role of None is used."""
+        )
+        custom token inputs:value (
+            docs="""The numeric or boolean value to convert."""
+        )
+
+        # 1 attribute
+        custom token outputs:converted (
+            docs="""The value converted to double form with the role applied."""
+        )
+    }
+}

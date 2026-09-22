@@ -1,0 +1,2 @@
+# put recording files into lfs
+playback_recording/** filter=lfs diff=lfs merge=lfs -text

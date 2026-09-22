@@ -1,0 +1,32 @@
+{
+    "OgnSetPivot": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node sets pivot to prims.",
+        "metadata":
+        {
+           "uiName": "Set Pivot"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to set pivot"],
+                "type": "target"
+            },
+            "pivot": {
+                "description": ["Relative pivot position of the prim."],
+                "type": "float[]"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

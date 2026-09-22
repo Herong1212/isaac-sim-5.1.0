@@ -1,0 +1,68 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+light:
+  create.light:
+    light_type: "distant"
+
+camera:
+  create.camera:
+    position: [10, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+torus:
+  create.torus:
+    semantics: [["class", "torus"]]
+    position: [1, 0, -2]
+
+sphere:
+  create.sphere:
+    semantics: [["class", "sphere"]]
+    position: [1, 0, 1]
+
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [1, 1, -2]
+
+group:
+  create.group:
+    items: [torus, sphere, cube]
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    with.group:
+      modify.pose:
+        position:
+          distribution.uniform:
+            lower: [-1, -1, -1]
+            upper: [2, 2, 2]
+        scale:
+          distribution.uniform:
+            lower: 0.1
+            upper: 2
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+      bounding_box_2d_tight: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

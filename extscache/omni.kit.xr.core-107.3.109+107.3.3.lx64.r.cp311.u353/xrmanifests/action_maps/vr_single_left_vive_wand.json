@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "priority": 5,
+    "name": "VR HTC VIVE (Single Left)",
+    "toolsLayout": "vr",
+    "tags": [
+        {
+            "inputDevice": "/user/hand/left",
+            "tag": "htc_vive_wand_components"
+        }
+    ],
+    "tools": [
+        "teleport",
+        "grab",
+        "move",
+        "select",
+        "navigation",
+        "menu"
+    ],
+    "actions": {
+        "xr_left_teleport_forward": "/user/hand/left/dpad_down",
+        "xr_navigation_rotate_left": "/user/hand/left/dpad_left",
+        "xr_navigation_rotate_right": "/user/hand/left/dpad_right",
+        "xr_menu": "/user/hand/left/dpad_up",
+
+        "xr_left_toggle_beam": "/user/hand/left/menu",
+        "xr_left_grab": "/user/hand/left/squeeze",
+        "xr_left_grab_manipulate": "/user/hand/left/trackpad",
+
+        "xr_left_select_beam": "/user/hand/left/trigger",
+        "xr_left_grab_select_beam": "/user/hand/left/squeeze",
+        "xr_left_select_move": "/user/hand/left/trackpad"
+    }
+}

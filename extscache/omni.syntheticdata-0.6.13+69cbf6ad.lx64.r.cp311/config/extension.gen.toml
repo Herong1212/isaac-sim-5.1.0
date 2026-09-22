@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.syntheticdata-8da4796ae9f429fe.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229240.bae68d79.gl"
+        date = 1757755259
+        buildNumber = "107.3.3+1073.229240.bae68d79.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

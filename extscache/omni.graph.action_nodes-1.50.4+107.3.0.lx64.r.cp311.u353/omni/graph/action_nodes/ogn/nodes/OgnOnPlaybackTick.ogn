@@ -1,0 +1,37 @@
+{
+    "omni.graph.action.OnPlaybackTick": {
+        "version": 2,
+        "description": [
+            "For each frame tick during playback, activate the downstream graph execution. In addition to the",
+            "activation signal, the outputs also contain the playback time values, taken directly from the",
+            "execution context."
+        ],
+        "uiName": "On Playback Tick",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+        },
+        "outputs": {
+            "tick": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Tick"
+            },
+            "deltaSeconds": {
+                "type": "double",
+                "description": "The number of seconds that have elapsed since the last update.",
+                "uiName": "Delta Seconds"
+            },
+            "time": {
+                "type": "double",
+                "description": "The global playback time in seconds.",
+                "uiName": "Time"
+            },
+            "frame": {
+                "type": "double",
+                "description": "The global playback time in frames, equivalent to (Time * PlaybackFramesPerSecond).",
+                "uiName": "Frame"
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (50750.000000000015, -1.1268763699945339e-11, 0)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (2384.258905981623, 2384.2589059816237, 2424.2589059816237)
+                double3 target = (-0.00001896934963951935, -0.000018969347365782596, 40.00003793869382)
+            }
+            dictionary Right = {
+                double3 position = (0, -51000, -1.1324274851176597e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 50105)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:raytracing:indexdirect:svoBrickSize" = (32, 32, 32)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 200
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def SphereLight "SphereLight"
+    {
+        float intensity = 30000
+        float radius = 150
+        double3 xformOp:translate = (650, 0, 1150)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def PhysicsScene "physicsScene"
+    {
+    }
+
+    def Cube "kinematicActor" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsRigidBodyAPI"]
+    )
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        bool physics:kinematicEnabled = 1
+        vector3f physics:velocity.timeSamples = {
+            0: (0, 80, 0),
+            100: (0, 80, 0),
+            101: (-0, -80, -0),
+            200: (-0, -80, -0),
+        }
+        color3f[] primvars:displayColor = [(1, 0.4117647, 0.27882352)]
+        double size = 100
+        float3 xformOp:scale = (1, 20, 0.5)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "boxActor" (
+        prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsRigidBodyAPI"]
+    )
+    {
+        float3[] extent = [(-25, -25, -25), (25, 25, 25)]
+        color3f[] primvars:displayColor = [(0.2784314, 0.4117647, 1)]
+        double size = 50
+        double3 xformOp:translate = (0, 0, 80)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+
+    def Mesh "groundPlane" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        uniform bool doubleSided = 0
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)]
+        point3f[] points = [(-750, -750, 0), (750, -750, 0), (750, 750, 0), (-750, 750, 0)]
+        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "varying"
+        )
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

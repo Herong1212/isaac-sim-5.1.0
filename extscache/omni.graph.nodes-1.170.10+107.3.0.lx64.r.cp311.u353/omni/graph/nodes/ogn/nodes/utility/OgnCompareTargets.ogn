@@ -1,0 +1,125 @@
+{
+    "CompareTargets": {
+        "version": 1,
+        "description": [
+            "Outputs the value of a comparison operation on target arrays."
+        ],
+        "uiName": "Compare Targets",
+        "categories": ["math:condition"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": "target",
+                "description": "Input A",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "b": {
+                "type": "target",
+                "description": "Input B",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "compareEach": {
+                "type": "bool",
+                "description": [
+                    "If true, compare each array per-element.",
+                    "If false, compare the entire array and output a single value."
+                ]
+            },
+            "operation": {
+                "type": "token",
+                "description": "The comparison operation to perform (==,!=))",
+                "uiName": "Operation",
+                "default": "==",
+                "metadata": {
+                    "allowedTokens": {
+                        "eq": "==",
+                        "ne": "!="
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["bool", "bool[]"],
+                "description": "The result of the comparison operation",
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:a": [],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": false,
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": false,
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/C", "/D"],
+                "inputs:compareEach": false,
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": [],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": false,
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": false,
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/C", "/D"],
+                "inputs:compareEach": false,
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool", "value": true}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": true,
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [true, true]}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/C", "/D"],
+                "inputs:compareEach": true,
+                "inputs:operation": "==",
+                "outputs:result": {"type": "bool[]", "value": [false, false]}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/A", "/B"],
+                "inputs:compareEach": true,
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool[]", "value": [false, false]}
+            },
+            {
+                "inputs:a": ["/A", "/B"],
+                "inputs:b": ["/C", "/D"],
+                "inputs:compareEach": true,
+                "inputs:operation": "!=",
+                "outputs:result": {"type": "bool[]", "value": [true, true]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.mdl-b7c799d9b016a301.zip"
+
+    [package.publish]
+        kitVersion = "107.3.1+production.202204.a70d3558.gl"
+        date = 1757755258
+        buildNumber = "107.3.1+1073.202204.a70d3558.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

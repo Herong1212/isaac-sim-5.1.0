@@ -1,0 +1,233 @@
+{
+    "Logarithm": {
+        "version": 1,
+        "description": [
+            "Computes the base-\"Base\" logarithm of the input \"Value\". The result is the same type as the input",
+            "\"Value\" if it is a decimal type, otherwise the result is a double.",
+            "If the input is an array, vector, or matrix, then the node will calculate the logarithm of each element",
+            "and output an array, vector, or matrix of the same size.",
+            "The logarithm's \"Base\" must be greater than zero and not equal to one while \"Value\" must be greater",
+            "than zero, otherwise the compute will fail."
+        ],
+        "uiName": "Logarithm",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "base": {
+                "type": "double",
+                "description": [
+                    "The logarithm base. Must be greater than zero and not equal to one or the compute will fail."
+                ],
+                "uiName": "Base",
+                "default": 10
+            },
+            "value": {
+                "type": ["numerics"],
+                "description": "The input value. Must be greater than zero or the compute will fail.",
+                "uiName": "Value"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": [
+                    "The logarithm value. The shape and type of this output should match \"Value\"'s unless the input",
+                    "\"Value\" is not a decimal type, in which case the result should be of type double."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": {"type": "double", "value": 9.0}, "inputs:base": 3,
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 100.0},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 100.0},
+                "outputs:result": {"type": "float", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 100.0},
+                "outputs:result": {"type": "half", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "int", "value": 100},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 100},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 100},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "uint", "value": 100},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 100},
+                "outputs:result": {"type": "double", "value": 2.0}
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [10.0, 100.0]},
+                "outputs:result": {"type": "double[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [10.0, 100.0, 1000.0]},
+                "outputs:result": {"type": "double[3]", "value": [1.0, 2.0, 3.0]}
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [10.0, 100.0, 1000.0, 10000.0]},
+                "outputs:result": {"type": "double[4]", "value": [1.0, 2.0, 3.0, 4.0]}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [10.0, 100.0]},
+                "outputs:result": {"type": "float[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [10.0, 100.0, 1000.0]},
+                "outputs:result": {"type": "float[3]", "value": [1.0, 2.0, 3.0]}
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [10.0, 100.0, 1000.0, 10000.0]},
+                "outputs:result": {"type": "float[4]", "value": [1.0, 2.0, 3.0, 4.0]}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [10.0, 100.0]},
+                "outputs:result": {"type": "half[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [10.0, 100.0, 1000.0]},
+                "outputs:result": {"type": "half[3]", "value": [1.0, 2.0, 3.0]}
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [10.0, 100.0, 1000.0, 10000.0]},
+                "outputs:result": {"type": "half[4]", "value": [1.0, 2.0, 3.0, 4.0]}
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [10, 100]},
+                "outputs:result": {"type": "double[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:value": {"type": "int[3]", "value": [10, 100, 1000]},
+                "outputs:result": {"type": "double[3]", "value": [1.0, 2.0, 3.0]}
+            },
+            {
+                "inputs:value": {"type": "int[4]", "value": [10, 100, 1000, 10000]},
+                "outputs:result": {"type": "double[4]", "value": [1.0, 2.0, 3.0, 4.0]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[2]", "value": [10, 10, 10, 10]},
+                "outputs:result": {"type": "matrixd[2]", "value": [1, 1, 1, 1]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[3]", "value": [10, 10, 10, 10, 10, 10, 10, 10, 10]},
+                "outputs:result": {"type": "matrixd[3]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[4]", "value":
+                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]},
+                "outputs:result": {"type": "matrixd[4]", "value": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": [100.0]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [100.0]},
+                "outputs:result": {"type": "float[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [100.0]},
+                "outputs:result": {"type": "half[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "int[]", "value": [100]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "int64[]", "value": [100]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "uchar[]", "value": [100]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "uint[]", "value": [100]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "uint64[]", "value": [100]},
+                "outputs:result": {"type": "double[]", "value": [2.0]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[10.0, 100.0]]},
+                "outputs:result": {"type": "double[2][]", "value": [[1.0, 2.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[10.0, 100.0, 1000.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[1.0, 2.0, 3.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[10.0, 100.0, 1000.0, 10000.0]]},
+                "outputs:result": {"type": "double[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[10.0, 100.0]]},
+                "outputs:result": {"type": "float[2][]", "value": [[1.0, 2.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[10.0, 100.0, 1000.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[1.0, 2.0, 3.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[10.0, 100.0, 1000.0, 10000.0]]},
+                "outputs:result": {"type": "float[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value": [[10.0, 100.0]]},
+                "outputs:result": {"type": "half[2][]", "value": [[1.0, 2.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[10.0, 100.0, 1000.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[1.0, 2.0, 3.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[10.0, 100.0, 1000.0, 10000.0]]},
+                "outputs:result": {"type": "half[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]}
+            },
+            {
+                "inputs:value": {"type": "int[2][]", "value": [[10, 100]]},
+                "outputs:result": {"type": "double[2][]", "value": [[1.0, 2.0]]}
+            },
+            {
+                "inputs:value": {"type": "int[3][]", "value": [[10, 100, 1000]]},
+                "outputs:result": {"type": "double[3][]", "value": [[1.0, 2.0, 3.0]]}
+            },
+            {
+                "inputs:value": {"type": "int[4][]", "value": [[10, 100, 1000, 10000]]},
+                "outputs:result": {"type": "double[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[2][]", "value": [[10, 10, 10, 10]]},
+                "outputs:result": {"type": "matrixd[2][]", "value": [[1, 1, 1, 1]]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[3][]", "value": [[10, 10, 10, 10, 10, 10, 10, 10, 10]]},
+                "outputs:result": {"type": "matrixd[3][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+            },
+            {
+                "inputs:value": {"type": "matrixd[4][]", "value": [
+                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]]},
+                "outputs:result": {"type": "matrixd[4][]", "value": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]}
+            }
+        ]
+    }
+}

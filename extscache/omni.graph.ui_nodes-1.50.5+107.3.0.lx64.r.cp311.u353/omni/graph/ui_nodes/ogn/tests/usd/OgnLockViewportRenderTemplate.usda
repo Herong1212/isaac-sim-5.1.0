@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnLockViewportRender.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_LockViewportRender" (
+        docs="""Locks and unlocks viewport render. Viewport render is frozen at the frame when it is locked, while computation and UI update are still executed as normal. It fades out back to the current frame when it is unlocked, two output execution attributes - fadeStarted and fadeComplete - will be triggered separately during the fading progress. The node manages the lock state for its target viewport and takes action according to the lock state when an input execution attribute is triggered. A node is able to unlock the target viewort only if it has locked the target viewport."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.LockViewportRender"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom double inputs:fadeTime = 1.0 (
+            docs="""The duration of fading in time (seconds) when being unlocked"""
+        )
+        custom uint inputs:lock (
+            docs="""Signal to the graph that this node is ready to be executed for locking the viewport render."""
+        )
+        custom uint inputs:unlock (
+            docs="""Signal to the graph that this node is ready to be executed for unlocking the viewport render."""
+        )
+        custom token inputs:viewport = "" (
+            docs="""Name of the viewport, or empty for the default viewport"""
+        )
+
+        # 3 attributes
+        custom uint outputs:fadeComplete (
+            docs="""When fading is complete, signal to the graph that execution can continue downstream on this path."""
+        )
+        custom uint outputs:fadeStarted (
+            docs="""When fading is started, signal to the graph that execution can continue downstream on this path."""
+        )
+        custom uint outputs:locked (
+            docs="""When viewport render is locked, signal to the graph that execution can continue downstream on this path."""
+        )
+    }
+}

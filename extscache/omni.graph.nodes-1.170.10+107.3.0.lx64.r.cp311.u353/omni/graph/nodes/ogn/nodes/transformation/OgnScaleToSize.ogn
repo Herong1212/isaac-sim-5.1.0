@@ -1,0 +1,71 @@
+{
+    "ScaleToSize": {
+        "version": 2,
+        "description": [
+            "Perform a smooth scaling maneuver, scaling a prim to a desired size tuple given a speed and easing factor"
+        ],
+        "uiName": "Scale To Size",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write", "threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "stop": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to stop the maneuver.",
+                "uiName": "Stop"
+            },
+            "prim": {
+                "type": "target",
+                "uiName": "Prim",
+                "description": "The prim to be scaled",
+                "optional": true
+            },
+            "usePath": {
+                "type": "bool",
+                "uiName": "Use Path",
+                "default": false,
+                "description": "When true, the 'Prim Path' attribute is used, otherwise it will read the connection at the 'Prim' attribute",
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "primPath": {
+                "type": "path",
+                "uiName": "Prim Path",
+                "description": "The source prim to be transformed, used when 'Use Path' is true",
+                "optional": true,
+                "deprecated": "Use prim input with a ToTarget node instead"
+            },
+            "target": {
+                "type": "vectord[3]",
+                "uiName": "Target Scale",
+                "description": "The desired local scale"
+            },
+            "speed": {
+                "type": "double",
+                "uiName": "Speed",
+                "description": "The peak speed of approach (Units / Second)",
+                "minimum": 0.0,
+                "default": 1.0
+            },
+            "exponent": {
+                "type": "float",
+                "uiName": "Ease Exponent",
+                "description": ["The blend exponent, which is the degree of the ease curve",
+                               " (1 = linear, 2 = quadratic, 3 = cubic, etc). "],
+                "minimum": 1.0,
+                "maximum": 10.0,
+                "default": 2.0
+            }
+        },
+        "outputs": {
+            "finished": {
+                "type": "execution",
+                "description": "When the maneuver is completed, signal to the graph that execution can continue downstream.",
+                "uiName": "Finished"
+            }
+        }
+    }
+}

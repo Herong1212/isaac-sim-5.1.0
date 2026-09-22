@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.facilities.base-1.0.4.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.128657.45d1c599.tc"
+        date = 1696545439
+        buildNumber = "105.1.0+master.2431.20a48dee.gl"
+        repoName = "kit-services"
+        signed = 1

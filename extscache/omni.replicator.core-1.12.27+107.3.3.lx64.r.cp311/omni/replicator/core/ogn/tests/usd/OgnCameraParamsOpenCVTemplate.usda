@@ -1,0 +1,49 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCameraParamsOpenCV.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_CameraParamsOpenCV" (
+        docs="""Temporary node to read OpenCVFx and OpenCVFy from fabric while kit has not been updated."""
+    )
+    {
+        token node:type = "omni.replicator.core.CameraParamsOpenCV"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations."""
+        )
+        custom token inputs:renderProductPath = "" (
+            docs="""RenderProduct prim path"""
+        )
+        custom uint64 inputs:renderResults = 0 (
+            docs="""Render results"""
+        )
+
+        # 4 attributes
+        custom float outputs:cameraOpenCVFx (
+            docs="""Camera OpenCV fx"""
+        )
+        custom float outputs:cameraOpenCVFy (
+            docs="""Camera OpenCV fy"""
+        )
+        custom uint outputs:exec (
+            docs="""Executes for each newFrame event received"""
+        )
+        custom bool outputs:isPinholeOpenCV (
+            docs="""Is pinhole openCV camera"""
+        )
+    }
+}

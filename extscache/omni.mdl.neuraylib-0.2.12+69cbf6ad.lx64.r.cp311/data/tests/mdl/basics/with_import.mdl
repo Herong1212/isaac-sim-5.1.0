@@ -1,0 +1,31 @@
+/******************************************************************************
+ * Copyright 2024 NVIDIA Corporation. All rights reserved.
+ ******************************************************************************/
+
+mdl 1.6;
+
+import ::df::*;
+import ::tex::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+import .::only_imported::get_cornflower_blue;
+import .::only_imported::get_cornflower_blue_param;
+
+// just a material to use for geometry without test cases
+export material cornflower_blue()
+= material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: only_imported::get_cornflower_blue(),
+            roughness: 0.0)));
+
+export material cornflower_blue_param(
+    color tint = only_imported::get_cornflower_blue_param(c: color(0.25, 0.5, 0.75)),
+    float roughness = 0.0
+)
+= material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(
+            tint: tint,
+            roughness: roughness)));

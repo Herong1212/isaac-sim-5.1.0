@@ -1,0 +1,40 @@
+{
+    "OgnTriggerGate": {
+        "description": [
+            "Gate that passes execution only once per sync value and only when both exec and triggerExec signals are received."
+        ],
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "uiName": "Trigger Gate",
+        "language": "Python",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "state": {
+        },
+        "inputs": {
+            "triggerExec": {
+                "type": "execution",
+                "description": "Trigger Execution inputs"
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Execution in"
+            },
+            "syncValue": {
+                "type": "uint64",
+                "description": "Value of the synchronization reference.",
+                "uiName": "Sync"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Execution out"
+            },
+            "syncValue": {
+                "type": "uint64",
+                "description": "Value of the synchronization reference.",
+                "uiName": "Sync"
+            }
+        }
+    }
+}

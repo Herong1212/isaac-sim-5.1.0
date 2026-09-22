@@ -1,0 +1,21 @@
+#usda 1.0
+(
+
+)
+
+def ComputeGraph "pushGraph"
+{
+    def ComputeGraphSettings "computegraphSettings"
+    {
+        custom token evaluator:type = "push"
+        custom int2 fileFormatVersion = (1, 1)
+        custom token flatCacheBacking = "StagedWithHistory"
+        custom token pipelineStage = "pipelineStagePreRender"
+    }
+
+    def ComputeNode "NoOp"
+    {
+        custom token node:type = "omni.graph.nodes.Noop"
+        custom int node:typeVersion = 1
+    }
+}

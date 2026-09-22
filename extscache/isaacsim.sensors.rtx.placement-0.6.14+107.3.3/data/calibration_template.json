@@ -1,0 +1,86 @@
+{
+    "version": "1.0",
+    "osmURL": "",
+    "calibrationType": "cartesian",
+    "sensors": [
+        {
+            "type": "camera",
+            "id": "",
+            "origin": {
+                "lng": 0,
+                "lat": 0
+            },
+            "geoLocation": {
+                "lng": 0,
+                "lat": 0
+            },
+            "coordinates": {
+                "x": 0,
+                "y": 0
+            },
+            "scaleFactor": 1,
+
+            "translationToGlobalCoordinates":{
+                "x" : 0,
+                "y" : 0
+            },
+            "attributes": [
+                {
+                    "name": "fps",
+                    "value": ""
+                },
+                {
+                    "name": "depth",
+                    "value": ""
+                },
+                {
+                    "name": "fieldOfView",
+                    "value": ""
+                },
+                {
+                    "name": "direction",
+                    "value": ""
+                },
+                {
+                    "name": "direction3d",
+                    "value": ""
+                },
+                {
+                    "name": "source",
+                    "value": "vst"
+                },
+                {
+                    "name": "frameWidth",
+                    "value": "1920"
+                },
+                {
+                    "name": "frameHeight",
+                    "value": "1080"
+                },
+                {
+                    "name": "fieldOfViewPolygon",
+                    "value": ""
+                }
+            ],
+            "place": [],
+            "imageCoordinates": [
+                {
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            "globalCoordinates": [
+                {
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            "intrinsicMatrix":[],
+            "extrinsicMatrix":[],
+            "cameraMatrix":[],
+            "homography":[],
+            "tripwires": [],
+            "rois": []
+        }
+    ]
+}

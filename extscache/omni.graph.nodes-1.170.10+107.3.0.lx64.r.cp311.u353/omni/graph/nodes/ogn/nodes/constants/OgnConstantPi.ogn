@@ -1,0 +1,26 @@
+{
+    "ConstantPi": {
+        "description": [
+            "Computes a double precision floating point constant value that is",
+            "a multiple of the mathematical constant 'pi'."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "factor": {
+                "type": "double",
+                "description": "Multiply this by the mathematical constant 'pi' to compute the output.",
+                "uiName": "Factor",
+                "default": 1
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "double",
+                "description": "The mathematical constant 'pi' multiplied by 'Factor'.",
+                "uiName": "Value"
+            }
+        }
+    }
+}

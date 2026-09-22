@@ -1,0 +1,97 @@
+{
+    "BreakVector4": {
+        "version": 1,
+        "description": ["Split vector into 4 component values."],
+        "uiName": "Break 4-Vector",
+        "categories": ["math:conversion"],
+        "tags": ["decompose", "separate", "isolate"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "tuple": {
+                "type": ["double[4]", "double[4][]", "float[4]", "float[4][]", "half[4]", "half[4][]", "int[4]", "int[4][]"],
+                "uiName": "Vector",
+                "description": "4-vector to be broken"
+             }
+        },
+        "outputs": {
+            "x": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "X",
+                "description": "The first component of the vector"
+             },
+             "y": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Y",
+                "description": "The second component of the vector"
+             },
+             "z": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Z",
+                "description": "The third component of the vector"
+             },
+             "w": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "W",
+                "description": "The fourth component of the vector"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:tuple": {"type": "double[4]", "value": [42.0, 1.0, 2.0, 3.0]},
+                "outputs:x": {"type": "double", "value": 42.0},
+                "outputs:y": {"type": "double", "value": 1.0},
+                "outputs:z": {"type": "double", "value": 2.0},
+                "outputs:w": {"type": "double", "value": 3.0}
+            },
+            {
+                "inputs:tuple": {"type": "float[4]", "value": [42.0, 1.0, 2.0, 3.0]},
+                "outputs:x": {"type": "float", "value": 42.0},
+                "outputs:y": {"type": "float", "value": 1.0},
+                "outputs:z": {"type": "float", "value": 2.0},
+                "outputs:w": {"type": "float", "value": 3.0}
+            },
+            {
+                "inputs:tuple": {"type": "half[4]", "value": [42.0, 1.0, 2.0, 3.0]},
+                "outputs:x": {"type": "half", "value": 42.0},
+                "outputs:y": {"type": "half", "value": 1.0},
+                "outputs:z": {"type": "half", "value": 2.0},
+                "outputs:w": {"type": "half", "value": 3.0}
+            },
+            {
+                "inputs:tuple": {"type": "int[4]", "value": [42, -42, 5, -5]},
+                "outputs:x": {"type": "int", "value": 42},
+                "outputs:y": {"type": "int", "value": -42},
+                "outputs:z": {"type": "int", "value": 5},
+                "outputs:w": {"type": "int", "value": -5}
+            },
+            {
+                "inputs:tuple": {"type": "double[4][]", "value": [[42.0, 1.0, 2.0, 3.0]]},
+                "outputs:x": {"type": "double[]", "value": [42.0]},
+                "outputs:y": {"type": "double[]", "value": [1.0]},
+                "outputs:z": {"type": "double[]", "value": [2.0]},
+                "outputs:w": {"type": "double[]", "value": [3.0]}
+            },
+            {
+                "inputs:tuple": {"type": "float[4][]", "value": [[42.0, 1.0, 2.0, 3.0]]},
+                "outputs:x": {"type": "float[]", "value": [42.0]},
+                "outputs:y": {"type": "float[]", "value": [1.0]},
+                "outputs:z": {"type": "float[]", "value": [2.0]},
+                "outputs:w": {"type": "float[]", "value": [3.0]}
+            },
+            {
+                "inputs:tuple": {"type": "half[4][]", "value": [[42.0, 1.0, 2.0, 3.0]]},
+                "outputs:x": {"type": "half[]", "value": [42.0]},
+                "outputs:y": {"type": "half[]", "value": [1.0]},
+                "outputs:z": {"type": "half[]", "value": [2.0]},
+                "outputs:w": {"type": "half[]", "value": [3.0]}
+            },
+            {
+                "inputs:tuple": {"type": "int[4][]", "value": [[42, -42, 5, -5]]},
+                "outputs:x": {"type": "int[]", "value": [42]},
+                "outputs:y": {"type": "int[]", "value": [-42]},
+                "outputs:z": {"type": "int[]", "value": [5]},
+                "outputs:w": {"type": "int[]", "value": [-5]}
+            }
+        ]
+    }
+}

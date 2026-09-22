@@ -1,0 +1,38 @@
+{
+    "GetMatrix4Translation": {
+        "version": 1,
+        "description": [
+            "Gets the translation of the given matrix4d value which represents a linear transformation.",
+            "Returns the vector3 translation component"
+        ],
+        "uiName": "Get Translation",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Transform",
+                "description": "The matrix to extract the translate from."
+            }
+        },
+        "outputs": {
+            "translation": {
+                "type": ["vectord[3]", "vectord[3][]"],
+                "uiName": "Translation",
+                "description": "The vector that represents the translation of the transformation."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                "outputs:translation": {"type": "vectord[3]", "value":[50, 0, 0]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,3,0, 0,1,0,1, 0,0,1,0, 50,0,0,1],
+                    [1,0,0,3, 0,1,0,1, 0,0,1,0, 1,100,4,1]] },
+                "outputs:translation": {"type":"vectord[3][]", "value": [[50, 0, 0], [1, 100, 4]] }
+            }
+        ]
+    }
+}

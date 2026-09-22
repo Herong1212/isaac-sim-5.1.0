@@ -1,0 +1,8 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.services.usd-1.1.0.zip"
+
+    [package.publish]
+        date = 1665847439
+        kitVersion = "104.0+release.93713.bb931566.tc"
+        buildNumber = "104.0.0+master.2076.fec9e764.tc"

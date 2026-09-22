@@ -1,0 +1,219 @@
+{
+    "DotProduct": {
+        "version": 1,
+        "description": [
+            "Compute the dot product of two vectors, or two arrays of vectors.",
+            "If arrays of vectors are provided, then the dot product will be taken on an element-by-element basis",
+            "between the two arrays (e.g. if two arrays with three vectors each are provided, the result will be",
+            "another array containing three scalars where the first output scalar is the result of taking the",
+            "dot product between the first vectors in each input array, the second output vector is the result of",
+            "taking the  dotproduct between the second vectors in each input array, etc.). The inputs \"A\" and \"B\"",
+            "must either both be vectors, or both be arrays of vectors with the same number of elements."
+        ],
+        "uiName": "Dot Product",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["decimal_tuples", "decimal_arrays"],
+                "description": "The first vector (or array of vectors) for which the dot product is to be computed.",
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["decimal_tuples", "decimal_arrays"],
+                "description": "The second vector (or array of vectors) for which the dot product is to be computed.",
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "product": {
+                "type": ["decimal_scalers", "double[]", "float[]", "half[]"],
+                "description": "The resulting dot product between vector(s) \"A\" and vector(s) \"B\".",
+                "uiName": "Product"
+            }
+        },
+        "tests": [
+            {
+                "inputs:a": {"type": "double[2]", "value": [1, 2]},
+                "inputs:b": {"type": "double[2]", "value": [3, 4]},
+                "outputs:product": {"type": "double", "value": 11}
+            },
+            {
+                "inputs:a": {"type": "double[2]", "value": [1, 2]},
+                "inputs:b": {"type": "double[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "double[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[3, 4], [5, 6]]},
+                "inputs:b": {"type": "double[2]", "value": [1, 2]},
+                "outputs:product": {"type": "double[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "double[2][]", "value": [[1, 2], [1, 2]]},
+                "inputs:b": {"type": "double[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "double[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "double[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "double", "value": 38}
+            },
+            {
+                "inputs:a": {"type": "double[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "double[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "double[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "inputs:b": {"type": "double[3]", "value": [1, 2, 3]},
+                "outputs:product": {"type": "double[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "double[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "inputs:b": {"type": "double[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "double[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [10.2, 3.5, 7, 0]},
+                "inputs:b": {"type": "double[4]", "value": [5, 6.1, 4.2, 5]},
+                "outputs:product": {"type": "double", "value": 101.75}
+            },
+            {
+                "inputs:a": {"type": "double[4]", "value": [1, 2, 3, 4]},
+                "inputs:b": {"type": "double[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "outputs:product": {"type": "double[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "inputs:b": {"type": "double[4]", "value": [1, 2, 3, 4]},
+                "outputs:product": {"type": "double[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "double[4][]", "value": [[3, 6.5, 2, 0], [4, 3.6, 2, 0]]},
+                "inputs:b": {"type": "double[4][]", "value": [[5, 6.1, -2.1, 5], [3, 5, -2, 7]]},
+                "outputs:product": {"type": "double[]", "value": [50.449999999999996, 26.0]}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [1, 2]},
+                "inputs:b": {"type": "float[2]", "value": [3, 4]},
+                "outputs:product": {"type": "float", "value": 11}
+            },
+            {
+                "inputs:a": {"type": "float[2]", "value": [1, 2]},
+                "inputs:b": {"type": "float[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "float[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[3, 4], [5, 6]]},
+                "inputs:b": {"type": "float[2]", "value": [1, 2]},
+                "outputs:product": {"type": "float[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "float[2][]", "value": [[1, 2], [1, 2]]},
+                "inputs:b": {"type": "float[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "float[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "float[3]", "value": [4, 5, 6]},
+                "outputs:product": {"type": "float", "value": 32}
+            },
+            {
+                "inputs:a": {"type": "float[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "float[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "float[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "inputs:b": {"type": "float[3]", "value": [1, 2, 3]},
+                "outputs:product": {"type": "float[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "float[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "inputs:b": {"type": "float[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "float[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [1, 2, 3, 4]},
+                "inputs:b": {"type": "float[4]", "value": [5, 6, 7, 8]},
+                "outputs:product": {"type": "float", "value": 70}
+            },
+            {
+                "inputs:a": {"type": "float[4]", "value": [1, 2, 3, 4]},
+                "inputs:b": {"type": "float[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "outputs:product": {"type": "float[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "inputs:b": {"type": "float[4]", "value": [1, 2, 3, 4]},
+                "outputs:product": {"type": "float[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "float[4][]", "value": [[1, 2, 3, 4], [1, 2, 3, 4]]},
+                "inputs:b": {"type": "float[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "outputs:product": {"type": "float[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [1, 2]},
+                "inputs:b": {"type": "half[2]", "value": [3, 4]},
+                "outputs:product": {"type": "half", "value": 11}
+            },
+            {
+                "inputs:a": {"type": "half[2]", "value": [1, 2]},
+                "inputs:b": {"type": "half[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "half[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[3, 4], [5, 6]]},
+                "inputs:b": {"type": "half[2]", "value": [1, 2]},
+                "outputs:product": {"type": "half[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "half[2][]", "value": [[1, 2], [1, 2]]},
+                "inputs:b": {"type": "half[2][]", "value": [[3, 4], [5, 6]]},
+                "outputs:product": {"type": "half[]", "value": [11, 17]}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "half[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "half", "value": 38}
+            },
+            {
+                "inputs:a": {"type": "half[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "half[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "half[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "inputs:b": {"type": "half[3]", "value": [1, 2, 3]},
+                "outputs:product": {"type": "half[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "half[3][]", "value": [[1, 2, 3], [1, 2, 3]]},
+                "inputs:b": {"type": "half[3][]", "value": [[1, 2, 3], [4, 5, 6]]},
+                "outputs:product": {"type": "half[]", "value": [14, 32]}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [1, 2, 3, 4]},
+                "inputs:b": {"type": "half[4]", "value": [5, 6, 7, 8]},
+                "outputs:product": {"type": "half", "value": 70}
+            },
+            {
+                "inputs:a": {"type": "half[4]", "value": [1, 2, 3, 4]},
+                "inputs:b": {"type": "half[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "outputs:product": {"type": "half[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "inputs:b": {"type": "half[4]", "value": [1, 2, 3, 4]},
+                "outputs:product": {"type": "half[]", "value": [30, 70]}
+            },
+            {
+                "inputs:a": {"type": "half[4][]", "value": [[1, 2, 3, 4], [1, 2, 3, 4]]},
+                "inputs:b": {"type": "half[4][]", "value": [[1, 2, 3, 4], [5, 6, 7, 8]]},
+                "outputs:product": {"type": "half[]", "value": [30, 70]}
+            }
+
+        ]
+    }
+}

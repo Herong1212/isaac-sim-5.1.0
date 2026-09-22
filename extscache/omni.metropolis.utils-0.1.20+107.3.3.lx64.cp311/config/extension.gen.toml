@@ -1,0 +1,20 @@
+
+[package]
+    archivePath = "./archives/omni.metropolis.utils/omni.metropolis.utils-0.1.20+107.3.3.lx64.cp311.zip"
+
+    [package.target]
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.3"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.228793.a5338acf.gl"
+        date = 1758754178
+        buildNumber = "0.1.3+510.12491.9094d139.gl"
+        repoName = "isaacsim.action_and_event_data_generation"

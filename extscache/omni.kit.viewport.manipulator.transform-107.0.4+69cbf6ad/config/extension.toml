@@ -1,0 +1,65 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "107.0.4"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+description = "Viewport Transform Manipulator Extension"
+title = "Viewport Transform Manipulator"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Scene"
+support_level = "Core"
+
+# Keywords for the extension
+keywords = ["kit", "manipulator", "viewport"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+[dependencies]
+"omni.kit.pip_archive" = {}
+"omni.kit.window.preferences" = {optional = true}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"usdrt.scenegraph" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.manipulator.selector" = {}
+"omni.kit.manipulator.tool.snap" = {}
+"omni.kit.manipulator.transform" = {}
+"omni.kit.viewport.registry" = {}
+"omni.kit.widget.toolbar" = {optional = true}
+"omni.timeline" = {}
+
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.kit.viewport.manipulator.transform"
+
+[[test]]
+waiver = "Covered by omni.kit.manipulator.prim"
+
+[settings]
+persistent.exts."omni.kit.viewport.manipulator.transform".manipulator.freeRotationType = "Clamped"
+persistent.exts."omni.kit.viewport.manipulator.transform".manipulator.freeRotationEnabled = true
+persistent.exts."omni.kit.viewport.manipulator.transform".manipulator.scaleMultiplier = 1.4
+persistent.exts."omni.kit.viewport.manipulator.transform".manipulator.intersectionThickness = 10
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md", "docs/SETTINGS.md"]

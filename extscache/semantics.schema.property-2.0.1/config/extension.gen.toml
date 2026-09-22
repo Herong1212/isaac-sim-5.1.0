@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/semantics.schema.property-2.0.1.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.186802.ff68c0b8.gl"
+        date = 1747858458
+        buildNumber = "2.0.1+master.332.a903e74f.gl"
+        repoName = "semantics_schema_tools"
+        signed = 1

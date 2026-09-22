@@ -1,0 +1,67 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSdSemanticLabelsMap.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_syntheticdata_SdSemanticLabelsMap" (
+        docs="""Synthetic Data node to expose the semantic labels map of a given semantic filter"""
+    )
+    {
+        token node:type = "omni.syntheticdata.SdSemanticLabelsMap"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations."""
+        )
+        custom token inputs:renderProductPath = "" (
+            docs="""RenderProduct prim path"""
+        )
+        custom uint64 inputs:renderResults = 0 (
+            docs="""Render results"""
+        )
+        custom token inputs:semanticFilterName = "" (
+            docs="""Name of the semantic filter to apply to the semanticLabelToken"""
+        )
+
+        # 9 attributes
+        custom int outputs:cudaDeviceIndex = -1 (
+            docs="""Cuda index of the device the cuda buffer is residing in"""
+        )
+        custom uint outputs:exec (
+            docs="""Executes for each newFrame event received"""
+        )
+        custom uint64 outputs:lastUpdateTimeDenominator (
+            docs="""Time denominator of the last time the data has changed"""
+        )
+        custom int64 outputs:lastUpdateTimeNumerator (
+            docs="""Time numerator of the last time the data has changed"""
+        )
+        custom uint outputs:minSemanticIndex (
+            docs="""Lower semantic id. Semantics ids are in [minSemanticIndex, minSemanticIndex+numSemantic-1]"""
+        )
+        custom uint outputs:numSemantics (
+            docs="""Number of semantics in the scene"""
+        )
+        custom token outputs:semanticFilterName (
+            docs="""Name of the semantic filter to apply to the semanticLabelToken"""
+        )
+        custom uint64 outputs:semanticLabelTokenSDCudaPtr (
+            docs="""uint64_t cuda buffer pointer of size numSemantics containing the semantic label token"""
+        )
+        custom uint64 outputs:semanticLabelTokenSDHostPtr (
+            docs="""uint64_t host buffer pointer of size numSemantics containing the semantic label token"""
+        )
+    }
+}

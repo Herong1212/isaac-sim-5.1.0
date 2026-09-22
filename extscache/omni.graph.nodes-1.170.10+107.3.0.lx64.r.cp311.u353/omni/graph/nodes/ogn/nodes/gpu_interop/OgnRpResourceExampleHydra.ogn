@@ -1,0 +1,67 @@
+{
+    "RpResourceExampleHydra": {
+        "version": 1,
+        "description": [
+            "Example Node: Send RpResource to Hydra for rendering. ",
+            "The node is meant to be used together with OgnRpResourceAllocator and OgnRpResourceDeformer. ",
+            "For each deformed prim, it is assumed that we have two sets of points to send to hydra for rendering: ",
+            "one set contains the original positions points of the deformed prims, the second contains the points after the ",
+            "deformation operation is applied."
+        ],
+        "categories": [ "examples", "graph:preRender" ],
+        "uiName": "GPU Interop Example: RpResource to Hydra",
+        "inputs": {
+            "verbose": {
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "If true, the node will log detailed information about the data sent to hydra during the execution. ",
+                    "Can negatively impact performance."
+                ],
+                "uiName":  "Verbose"
+            },
+            "sendToHydra": {
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "Send the RpResource to hydra using the specified prim path. If set to false, ",
+                    "the node can be used simply as a debug node for the RpResource, if verbose is set to true."
+                ],
+                "uiName": "Send to Hydra"
+            },
+            "resourcePointerCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Pointers to RpResources ",
+                    "(two resources per prim are assumed -- one for rest positions and one for deformed positions)"
+                ],
+                "uiName": "Resource Pointer Collection"
+            },
+            "pointCountCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Point count for each prim being deformed. ",
+                    "Should match the size of the arrays in the 'Resource Pointer Collection'."
+                ],
+                "uiName": "Point Counts"
+            },
+            "primPathCollection": {
+                "type": "token[]",
+                "description": [
+                    "Path for each prim being deformed. Used for input validation during the node computation."
+                ],
+                "uiName": "Prim Paths"
+            }
+        },
+        "outputs":
+        {
+        },
+        "tokens": {
+            "points": "points",
+            "transform": "transform",
+            "rpResource": "rpResource",
+            "pointCount": "pointCount",
+            "uintData": "uintData"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+mdl 1.6;
+
+import ::df::*;
+import ::math::*;
+import ::tex::*;
+import ::state::*;
+
+export color get_corn_flower_blue(float scale = 1.0f)
+{
+    return scale * color(0.25f, 0.5f, 0.75f);
+}

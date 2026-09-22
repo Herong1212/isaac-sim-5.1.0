@@ -1,0 +1,86 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGpuInteropCpuToDisk.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_GpuInteropCpuToDisk" (
+        docs="""Saves the specified CPU buffer to disk.  The node assumes that the RenderVar (AOV) has already been copied to the host (CPU) memory."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.GpuInteropCpuToDisk"
+        int node:typeVersion = 2
+
+        # 15 attributes
+        custom bool inputs:active = false (
+            docs="""If true, the node computes once, then resets to false. 
+            It is useful to use in runtime scripts or tests, where a single frame should be captured at a time."""
+        )
+        custom string inputs:aovCpu = "" (
+            docs="""Name of AOV representing the CPU buffer of GPU resource. 
+            It is assumed that the CPU RenderVar is a copy of the GPU data.
+            If the CPU AOV is invalid, the node does not output anything."""
+        )
+        custom string inputs:aovGpu = "" (
+            docs="""Name of AOV representing the GPU resource, used for querying format and properties."""
+        )
+        custom int inputs:autoFileNumber = -1 (
+            docs="""If non zero, this number will be the starting number for export. Each invocation of this node increases the number by 1."""
+        )
+        custom string inputs:fileName = "" (
+            docs="""Optional, name given to the output file. If specified the output filename will be 'File Name_{aovGpu}.{fileType}'."""
+        )
+        custom int inputs:fileNumber = -1 (
+            docs="""Number that will be appended to the exported filename. If -1 then the render product's frame number will be used."""
+        )
+        custom string inputs:fileType = "png" (
+            docs="""The file type of the saved images. The valid types are bmp, png and exr."""
+        )
+        custom int64 inputs:frameCount = -1 (
+            docs="""Number of frames to capture. If set to -1, the node execution never stops."""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""The shared context containing GPU foundation interfaces."""
+        )
+        custom int inputs:maxInflightWrites = 2 (
+            docs="""Specifies the maximum allowed concurrent asynchronous file write operations dispatched by the node, 
+            preventing potential blocking on file I/O for the Render thread. 
+            This attribute controls the number of writes before waiting to dispatch a new I/O command.
+            If the number of concurrent writes is reached, the Render Thread waits for the existing write commands to complete 
+            before dispatching new commands."""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""The render product for this view."""
+        )
+        custom uint64 inputs:saveFlags = 0 (
+            docs="""Flags that will be passed to carb::imaging::IImaging for file saving."""
+        )
+        custom string inputs:saveLocation = "" (
+            docs="""The path to save AOVs as AOV_FrameNumber.{exr,png}"""
+        )
+        custom bool inputs:skipInactive = false (
+            docs="""If true, the node will early out if 'isactive' is false. 
+            If false, the node will be triggered even if 'active' is False but only 
+            if the frame number of the render product is smaller than 'startFrame', 
+            and if the 'frameCount' is larger or equal to the internal capture count."""
+        )
+        custom uint64 inputs:startFrame = 0 (
+            docs="""Frame number to begin saving to disk."""
+        )
+
+        # 2 attributes
+        custom uint64 outputs:gpu (
+            docs="""The shared context containing GPU foundation interfaces."""
+        )
+        custom uint64 outputs:rp (
+            docs="""The render product for this view."""
+        )
+    }
+}

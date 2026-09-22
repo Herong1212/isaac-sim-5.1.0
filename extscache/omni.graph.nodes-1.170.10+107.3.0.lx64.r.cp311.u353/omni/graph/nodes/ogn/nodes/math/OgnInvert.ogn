@@ -1,0 +1,187 @@
+{
+    "Invert": {
+        "version": 1,
+        "description": [
+            "Inverts the given value (1/value). If the input is zero, the result is zero. ",
+            "The result is the same type as the input value if it is a decimal type, otherwise the result is a double. ",
+            "If the input is a vector, then result will be calculated per element and output a vector of the same size."
+        ],
+        "uiName": "Invert",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["decimals", "integrals"],
+                "description": "The input value."
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["decimals", "integrals"],
+                "description": "The resulting inverted value."
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": {"type": "double", "value": 2.0},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 2.0},
+                "outputs:result": {"type": "float", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 2.0},
+                "outputs:result": {"type": "half", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "int", "value": 2},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 2},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 2},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "uint", "value": 2},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 2},
+                "outputs:result": {"type": "double", "value": 0.5}
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [2.0, 4.0]},
+                "outputs:result": {"type": "double[2]", "value": [0.5, 0.25]}
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [2.0, 4.0, 8.0]},
+                "outputs:result": {"type": "double[3]", "value": [0.5, 0.25, 0.125]}
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [2.0, 4.0, 8.0, 16.0]},
+                "outputs:result": {"type": "double[4]", "value": [0.5, 0.25, 0.125, 0.0625]}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [2.0, 4.0]},
+                "outputs:result": {"type": "float[2]", "value": [0.5, 0.25]}
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [2.0, 4.0, 8.0]},
+                "outputs:result": {"type": "float[3]", "value": [0.5, 0.25, 0.125]}
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [2.0, 4.0, 8.0, 16.0]},
+                "outputs:result": {"type": "float[4]", "value": [0.5, 0.25, 0.125, 0.0625]}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [2.0, 4.0]},
+                "outputs:result": {"type": "half[2]", "value": [0.5, 0.25]}
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [2.0, 4.0, 8.0]},
+                "outputs:result": {"type": "half[3]", "value": [0.5, 0.25, 0.125]}
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [2.0, 4.0, 8.0, 16.0]},
+                "outputs:result": {"type": "half[4]", "value": [0.5, 0.25, 0.125, 0.0625]}
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [2, 4]},
+                "outputs:result": {"type": "double[2]", "value": [0.5, 0.25]}
+            },
+            {
+                "inputs:value": {"type": "int[3]", "value": [2, 4, 8]},
+                "outputs:result": {"type": "double[3]", "value": [0.5, 0.25, 0.125]}
+            },
+            {
+                "inputs:value": {"type": "int[4]", "value": [2, 4, 8, 16]},
+                "outputs:result": {"type": "double[4]", "value": [0.5, 0.25, 0.125, 0.0625]}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": [2.0]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [2.0]},
+                "outputs:result": {"type": "float[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [2.0]},
+                "outputs:result": {"type": "half[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "int[]", "value": [2]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "int64[]", "value": [2]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "uchar[]", "value": [2]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "uint[]", "value": [2]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "uint64[]", "value": [2]},
+                "outputs:result": {"type": "double[]", "value": [0.5]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[2.0, 4.0]]},
+                "outputs:result": {"type": "double[2][]", "value": [[0.5, 0.25]]}
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[2.0, 4.0, 8.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[0.5, 0.25, 0.125]]}
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[2.0, 4.0, 8.0, 16.0]]},
+                "outputs:result": {"type": "double[4][]", "value": [[0.5, 0.25, 0.125, 0.0625]]}
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[2.0, 4.0]]},
+                "outputs:result": {"type": "float[2][]", "value": [[0.5, 0.25]]}
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[2.0, 4.0, 8.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [[0.5, 0.25, 0.125]]}
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[2.0, 4.0, 8.0, 16.0]]},
+                "outputs:result": {"type": "float[4][]", "value": [[0.5, 0.25, 0.125, 0.0625]]}
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value": [[2.0, 4.0]]},
+                "outputs:result": {"type": "half[2][]", "value": [[0.5, 0.25]]}
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[2.0, 4.0, 8.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [[0.5, 0.25, 0.125]]}
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[2.0, 4.0, 8.0, 16.0]]},
+                "outputs:result": {"type": "half[4][]", "value": [[0.5, 0.25, 0.125, 0.0625]]}
+            },
+            {
+                "inputs:value": {"type": "int[2][]", "value": [[2, 4]]},
+                "outputs:result": {"type": "double[2][]", "value": [[0.5, 0.25]]}
+            },
+            {
+                "inputs:value": {"type": "int[3][]", "value": [[2, 4, 8]]},
+                "outputs:result": {"type": "double[3][]", "value": [[0.5, 0.25, 0.125]]}
+            },
+            {
+                "inputs:value": {"type": "int[4][]", "value": [[2, 4, 8, 16]]},
+                "outputs:result": {"type": "double[4][]", "value": [[0.5, 0.25, 0.125, 0.0625]]}
+            }
+        ]
+    }
+}

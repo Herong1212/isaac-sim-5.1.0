@@ -1,0 +1,51 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnTagPointsFromPrims.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_genproc_core_TagPointsFromPrims" (
+        docs="""Given input points and tagged mesh prims, create a tag for each point based on what prim contains that point.  If a point is not contained within any tagged mesh prim, it is given the defaultTag.  If a point is contained within multiple tagged mesh prims, the tag from the first encountered prim is used."""
+    )
+    {
+        token node:type = "omni.genproc.core.TagPointsFromPrims"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom rel inputs:bundle (
+            docs="""Bundle containing tagged prims"""
+        )
+        custom token inputs:defaultTag = "" (
+            docs="""Default value assigned to any point not inside a tagged prim"""
+        )
+        custom float3[] inputs:points = [] (
+            docs="""Vertices to be tagged"""
+        )
+        custom token inputs:tagName = "tag" (
+            docs="""Tag attribute to look for in prims"""
+        )
+
+        # 1 attribute
+        custom token[] outputs:tags (
+            docs="""Per-point tags"""
+        )
+
+        # 3 attributes
+        custom token state:prevDefaultTag (
+            docs="""Previous defaultTag value for recompute test"""
+        )
+        custom float3[] state:prevPoints (
+            docs="""Previous points value for recompute test"""
+        )
+        custom token state:prevTagName (
+            docs="""Previous tagName value for recompute test"""
+        )
+    }
+}

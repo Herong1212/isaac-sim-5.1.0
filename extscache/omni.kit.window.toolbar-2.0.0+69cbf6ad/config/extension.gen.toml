@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.window.toolbar-c7bf3637fe9090a5.zip"
+
+    [package.publish]
+        kitVersion = "108.0.0+mr39234.217814.ef835796.gl"
+        date = 1757755128
+        buildNumber = "108.0.0+mr39234.217814.ef835796.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

@@ -1,0 +1,91 @@
+{
+    "MakeVector3": {
+        "version": 1,
+        "description": [
+            "Merge 3 input values into a single output vector.",
+            "If the inputs are arrays, the output will be an array of vectors."
+        ],
+        "uiName": "Make 3-Vector",
+        "categories": ["math:conversion"],
+        "tags": ["compose", "combine", "join"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "x": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "X",
+                "description": "The first component of the vector"
+             },
+             "y": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Y",
+                "description": "The second component of the vector"
+             },
+             "z": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Z",
+                "description": "The third component of the vector"
+             }
+        },
+        "outputs": {
+            "tuple": {
+                "type": ["double[3]", "float[3]", "half[3]", "int[3]", "double[3][]", "float[3][]", "half[3][]", "int[3][]"],
+                "uiName": "Vector",
+                "description": "Output 3-vector(s)"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:x": {"type": "double", "value": 42.0},
+                "inputs:y": {"type": "double", "value": 1.0},
+                "inputs:z": {"type": "double", "value": 0.0},
+                "outputs:tuple": {"type": "double[3]", "value": [42.0, 1.0, 0.0]}
+            },
+            {
+                "inputs:x": {"type": "float", "value": 42.0},
+                "inputs:y": {"type": "float", "value": 1.0},
+                "inputs:z": {"type": "float", "value": 0.0},
+                "outputs:tuple": {"type": "float[3]", "value": [42.0, 1.0, 0.0]}
+            },
+            {
+                "inputs:x": {"type": "float", "value": 42.0},
+                "outputs:tuple": {"type": "float[3]", "value": [42.0, 0.0, 0.0]}
+            },
+            {
+                "inputs:x": {"type": "half", "value": 42.0},
+                "inputs:y": {"type": "half", "value": 1.0},
+                "inputs:z": {"type": "half", "value": 0.0},
+                "outputs:tuple": {"type": "half[3]", "value": [42.0, 1.0, 0.0]}
+            },
+            {
+                "inputs:x": {"type": "int", "value": 42},
+                "inputs:y": {"type": "int", "value": -42},
+                "inputs:z": {"type": "int", "value": 5},
+                "outputs:tuple": {"type": "int[3]", "value": [42, -42, 5]}
+            },
+            {
+                "inputs:x": {"type": "double[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "double[]", "value": [0, 1, 2]},
+                "inputs:z": {"type": "double[]", "value": [0, 2, 4]},
+                "outputs:tuple": {"type": "double[3][]", "value": [[42, 0, 0], [1, 1, 2], [0, 2, 4]]}
+            },
+            {
+                "inputs:x": {"type": "float[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "float[]", "value": [0, 1, 2]},
+                "inputs:z": {"type": "float[]", "value": [0, 2, 4]},
+                "outputs:tuple": {"type": "float[3][]", "value": [[42, 0, 0], [1, 1, 2], [0, 2, 4]]}
+            },
+            {
+                "inputs:x": {"type": "half[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "half[]", "value": [0, 1, 2]},
+                "inputs:z": {"type": "half[]", "value": [0, 2, 4]},
+                "outputs:tuple": {"type": "half[3][]", "value": [[42, 0, 0], [1, 1, 2], [0, 2, 4]]}
+            },
+            {
+                "inputs:x": {"type": "int[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "int[]", "value": [0, 1, 2]},
+                "inputs:z": {"type": "int[]", "value": [0, 2, 4]},
+                "outputs:tuple": {"type": "int[3][]", "value": [[42, 0, 0], [1, 1, 2], [0, 2, 4]]}
+            }
+        ]
+    }
+}

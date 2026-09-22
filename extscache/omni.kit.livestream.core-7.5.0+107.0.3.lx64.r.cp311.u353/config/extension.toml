@@ -1,0 +1,36 @@
+[package]
+version = "7.5.0"
+title = "Livestream"
+category = "Rendering"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+repository = ""
+description = "Server-side streaming core feature, allowing Users to interact with Omniverse applications over the network or the Internet."
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+
+# Only available to the Kit version it was built with (and higher)
+[package.writeTarget]
+kit = true
+usd = true
+
+[dependencies]
+"omni.usd" = {}
+"omni.hydra.scene_api" = {}
+"omni.kit.renderer.core" = {}
+
+[[python.module]]
+name = "omni.kit.livestream.bind"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+app.livestream.enabled = true
+app.livestream.allowResize = true
+app.livestream.port = 48010
+app.livestream.logLevel = "silence"
+app.renderer.sleepMsOutOfFocus = 0
+
+[[test]]
+waiver = "Tested via WebRTC streaming"

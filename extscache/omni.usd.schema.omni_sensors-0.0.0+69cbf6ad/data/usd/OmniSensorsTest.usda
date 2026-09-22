@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+
+def Xform "World"
+{
+    def OmniLidar "DasLidar" (
+        prepend apiSchemas = ["OmniSensorGenericLidarCoreAPI"]
+        doc = "Defines an instance of a lidar that uses generic lidar model Core"
+    )
+    {
+        # Prim should inherit default value (curently 10)
+        # float omni:sensor:tickRate = 10
+    }
+
+    def OmniRadar "ElRadar" (
+        prepend apiSchemas = ["OmniSensorGenericRadarWpmDmatAPI"]
+        doc = "Defines an instance of a radar that uses generic radar model Core"
+    )
+    {
+        float omni:sensor:tickRate = 2
+    }
+}
+
+def Scope "Render"
+{
+    def Scope "Vars"
+    {
+        def RenderVar "rtxsensorGpu"
+        {
+            uniform string sourceName = "RtxSensorGpu"
+        }
+    }
+    def RenderProduct "OmniSensorsLidar"
+    {
+        rel camera = </World/DasLidar>
+        rel orderedVars = </Render/Vars/rtxsensorGpu>
+    }
+
+    def RenderProduct "OmniSensorsRadar"
+    {
+        rel camera = </World/ElRadar>
+        rel orderedVars = </Render/Vars/rtxsensorGpu>
+    }
+}

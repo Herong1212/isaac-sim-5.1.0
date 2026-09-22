@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnDistance3D.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Distance3D" (
+        docs="""Computes the distance between two 3D points A and B, which is the length of the vector with start and end points A and B. If one input is an array and the other is a single point, the scalar will be broadcast to the size of the array (i.e. the output will be an array of the distances between each point in the input array and the second singular point)."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Distance3D"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:a (
+            docs="""The first 3D vector (or array of 3D vectors) specifying the point position(s) with which the
+            distance computation will be performed."""
+        )
+        custom token inputs:b (
+            docs="""The second 3D vector (or array of 3D vectors) specifying the point position(s) with which the
+            distance computation will be performed."""
+        )
+
+        # 1 attribute
+        custom token outputs:distance (
+            docs="""The distance between the points specified by vector(s) "A" and vector(s) "B"."""
+        )
+    }
+}

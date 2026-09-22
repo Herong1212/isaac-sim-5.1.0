@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <g id="cache_dark" transform="translate(-7.491 -4.971)">
+    <path id="Path_2202" data-name="Path 2202" d="M.184-.24,7.646-3.851,15.2-.24V8.486L7.646,11.977.184,8.486Z" transform="translate(8.816 9.851)" fill="#324043"/>
+    <g id="Group_842" data-name="Group 842" transform="translate(8.846 5.852)">
+      <path id="Path_2199" data-name="Path 2199" d="M0,0,7.645,3.616v8.992L0,8.992Z" transform="translate(0 3.631)" fill="#474747"/>
+      <path id="Path_2200" data-name="Path 2200" d="M7.645,0,0,3.616v8.992L7.645,8.992Z" transform="translate(7.646 3.624)" fill="#727272"/>
+      <path id="Path_2201" data-name="Path 2201" d="M-7.659,10.437-15.3,14.068l7.645,3.617,7.646-3.617Z" transform="translate(15.304 -10.437)" fill="#7d7d7d"/>
+      <circle id="Ellipse_279" data-name="Ellipse 279" cx="1" cy="1" r="1" transform="translate(6.646 6.12)" fill="#40e1ff"/>
+      <circle id="Ellipse_285" data-name="Ellipse 285" cx="1" cy="1" r="1" transform="translate(6.646 -0.88)" fill="#40e1ff"/>
+      <circle id="Ellipse_280" data-name="Ellipse 280" cx="1" cy="1" r="1" transform="translate(6.646 15.12)" fill="#40e1ff"/>
+      <circle id="Ellipse_281" data-name="Ellipse 281" cx="1" cy="1" r="1" transform="translate(-0.854 11.62)" fill="#40e1ff"/>
+      <circle id="Ellipse_284" data-name="Ellipse 284" cx="1" cy="1" r="1" transform="translate(-0.854 2.62)" fill="#40e1ff"/>
+      <circle id="Ellipse_282" data-name="Ellipse 282" cx="1" cy="1" r="1" transform="translate(14.291 11.62)" fill="#40e1ff"/>
+      <circle id="Ellipse_283" data-name="Ellipse 283" cx="1" cy="1" r="1" transform="translate(14.291 2.62)" fill="#40e1ff"/>
+    </g>
+    <rect id="Icon_Base" width="18" height="18" transform="translate(7.491 4.971)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+[package]
+title = "NVIDIA IndeX Libraries"
+description = "Contains the libraries used by other NVIDIA IndeX extensions."
+version = "380600.8087"
+authors = ["NVIDIA"]
+support_level = "Core"
+readme = "docs/README.md"
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[dependencies]
+
+[[test]]
+waiver = "Bundle extension that pulls all NVIDIA IndeX libs"

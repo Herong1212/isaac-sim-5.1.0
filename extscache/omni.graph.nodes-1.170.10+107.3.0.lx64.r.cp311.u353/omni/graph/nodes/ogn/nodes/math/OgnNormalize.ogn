@@ -1,0 +1,133 @@
+{
+    "Normalize": {
+        "version": 1,
+        "description": [
+            "Normalize the input vector (or array of input vectors).",
+            "If the input vector has a magnitude of zero, the null vector is returned.",
+            "The inputs will be copied into the output attribute before the normalization is performed on said output",
+            "(i.e. the input vector(s) are not mutated in-place)."
+        ],
+        "uiName": "Normalize",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "vector": {
+                "type": [
+                    "double[2]", "float[2]", "half[2]",
+                    "double[3]", "float[3]", "half[3]",
+                    "double[4]", "float[4]", "half[4]",
+                    "double[2][]", "float[2][]", "half[2][]",
+                    "double[3][]", "float[3][]", "half[3][]",
+                    "double[4][]", "float[4][]", "half[4][]"
+                ],
+                "description": "Input vector (or an array of input vectors) to normalize.",
+                "uiName": "Vector"
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": [
+                    "double[2]", "float[2]", "half[2]",
+                    "double[3]", "float[3]", "half[3]",
+                    "double[4]", "float[4]", "half[4]",
+                    "double[2][]", "float[2][]", "half[2][]",
+                    "double[3][]", "float[3][]", "half[3][]",
+                    "double[4][]", "float[4][]", "half[4][]"
+                ],
+                "description": [
+                    "Copy of the input vector (or array of vectors) after applying the corresponding normalization",
+                    "operations."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests": [
+            {
+                "inputs:vector": {"type": "double[2]", "value": [1.0, 1.0]},
+                "outputs:result": {"type": "double[2]", "value": [0.70710677, 0.70710677]}
+            },
+            {
+                "inputs:vector": {"type": "double[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:result": {"type": "double[3]", "value": [0.57735027, 0.57735027, 0.57735027]}
+            },
+            {
+                "inputs:vector": {"type": "double[4]", "value": [1.0, 2.0, 3.0, 4.0]},
+                "outputs:result": {"type": "double[4]", "value": [0.18257418, 0.36514837, 0.5477226, 0.73029673]}
+            },
+            {
+                "inputs:vector": {"type": "float[2]", "value": [1.0, 1.0]},
+                "outputs:result": {"type": "float[2]", "value": [0.70710677, 0.70710677]}
+            },
+            {
+                "inputs:vector": {"type": "float[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:result": {"type": "float[3]", "value": [0.57735027, 0.57735027, 0.57735027]}
+            },
+            {
+                "inputs:vector": {"type": "float[3]", "value": [1.0, 0.0, 0.0]},
+                "outputs:result": {"type": "float[3]", "value": [1.0, 0.0, 0.0]}
+            },
+            {
+                "inputs:vector": {"type": "float[3]", "value": [5.0, 0.0, 0.0]},
+                "outputs:result": {"type": "float[3]", "value": [1.0, 0.0, 0.0]}
+            },
+            {
+                "inputs:vector": {"type": "float[3]", "value": [-1.0, 2.0, -3.0]},
+                "outputs:result": {"type": "float[3]", "value": [-0.26726124,  0.53452248, -0.80178373]}
+            },
+            {
+                "inputs:vector": {"type": "float[4]", "value": [1.0, 2.0, 3.0, 4.0]},
+                "outputs:result": {"type": "float[4]", "value": [0.18257418, 0.36514837, 0.5477226, 0.73029673]}
+            },
+            {
+                "inputs:vector": {"type": "half[2]", "value": [1.0, 1.0]},
+                "outputs:result": {"type": "half[2]", "value": [0.70703125, 0.70703125]}
+            },
+            {
+                "inputs:vector": {"type": "half[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:result": {"type": "half[3]", "value": [0.57714844, 0.57714844, 0.57714844]}
+            },
+            {
+                "inputs:vector": {"type": "half[4]", "value": [1.0, 2.0, 3.0, 4.0]},
+                "outputs:result": {"type": "half[4]", "value": [0.18261719, 0.36523438, 0.54785156, 0.73046875]}
+            },
+            {
+                "inputs:vector": {"type": "double[2][]", "value": [[1.0, 1.0]]},
+                "outputs:result": {"type": "double[2][]", "value": [[0.70710677, 0.70710677]]}
+            },
+            {
+                "inputs:vector": {"type": "double[3][]", "value": [[1.0, 1.0, 1.0]]},
+                "outputs:result": {"type": "double[3][]", "value": [[0.57735027, 0.57735027, 0.57735027]]}
+            },
+            {
+                "inputs:vector": {"type": "double[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]},
+                "outputs:result": {"type": "double[4][]", "value": [[0.18257418, 0.36514837, 0.5477226, 0.73029673]]}
+            },
+            {
+                "inputs:vector": {"type": "float[2][]", "value": [[1.0, 1.0]]},
+                "outputs:result": {"type": "float[2][]", "value": [[0.70710677, 0.70710677]]}
+            },
+            {
+                "inputs:vector": {"type": "float[3][]", "value": [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]},
+                "outputs:result": {"type": "float[3][]", "value": [
+                    [0.26726124, 0.5345225, 0.8017837], [0.45584232, 0.5698029, 0.6837635]]}
+            },
+            {
+                "inputs:vector": {"type": "float[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]},
+                "outputs:result": {"type": "float[4][]", "value": [[0.18257418, 0.36514837, 0.5477226, 0.73029673]]}
+            },
+            {
+                "inputs:vector": {"type": "half[2][]", "value": [[1.0, 1.0]]},
+                "outputs:result": {"type": "half[2][]", "value": [[0.70703125, 0.70703125]]}
+            },
+            {
+                "inputs:vector": {"type": "half[3][]", "value": [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]},
+                "outputs:result": {"type": "half[3][]", "value": [
+                    [0.26733398, 0.53466797, 0.8017578], [0.45581055, 0.5698242, 0.68408203]]}
+            },
+            {
+                "inputs:vector": {"type": "half[4][]", "value": [[1.0, 2.0, 3.0, 4.0]]},
+                "outputs:result": {"type": "half[4][]", "value": [[0.18261719, 0.36523438, 0.54785156, 0.73046875]]}
+            }
+        ]
+    }
+}

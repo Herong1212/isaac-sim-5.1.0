@@ -1,0 +1,101 @@
+[core]
+reloadable = false
+order = -1000
+
+[package]
+authors = ["NVIDIA"]
+category = "Internal"
+changelog = "docs/CHANGELOG.md"
+description = "USD Discovery and parser plugins for MDL"
+readme  = "docs/README.md"
+title = "USD MDL plugins"
+toggleable = false
+version = "1.1.5"
+support_level = "Core"
+
+[dependencies]
+"omni.mdl.neuraylib" = {}
+"omni.usd.libs" = {}
+
+[documentation]
+pages = [
+    "docs/CHANGELOG.md",
+]
+
+[[native.plugin]]
+path = "bin/rtx.usdmdl.plugin"
+
+[[python.module]]
+name = "omni.UsdMdl"
+
+[[python.module]]
+name = "omni.kit.usd.mdl"
+
+[[python.module]]
+path = "python"
+
+###############################################################################
+# Tests
+###############################################################################
+
+[[test]]
+
+dependencies = [
+    "omni.usd"
+]
+
+args = [
+    "--/app/fastShutdown=false",  # make sure we check the cleanup
+    "--/usd/enableOmniUsdMdlDiscoverOnStartup=false",
+    "--/usd/enableOmniUsdMdlLoadPreviewSurfaceModules=false"
+]
+
+pythonTests.exclude = [
+    "omni.kit.usd.mdl.tests.discovery_tests.*",
+    "omni.kit.usd.mdl.tests.discovery_preview_surface_tests.*"
+]
+
+###############################################################################
+
+[[test]]
+name = "mdlDiscovery"
+
+dependencies = [
+    "omni.usd"
+]
+
+pythonTests.include = [
+    "omni.kit.usd.mdl.tests.discovery_tests.*"
+]
+
+args = [
+    "--/app/fastShutdown=false",  # make sure we check the cleanup
+    "--/app/mdl/additionalSystemPaths=",
+    "--/app/mdl/additionalUserPaths=",
+    "--/renderer/mdl/searchPaths/templates=",
+    "--/renderer/mdl/searchPaths/custom=",
+    "--/renderer/mdl/searchPaths/required=${omni.kit.usd.mdl}/data/mdl",
+    "--/usd/enableOmniUsdMdlDiscoverOnStartup=true",
+    "--/usd/enableOmniUsdMdlLoadPreviewSurfaceModules=false",
+]
+
+[[test]]
+name = "mdlDiscoveryPreviewSurface"
+
+dependencies = [
+    "omni.usd"
+]
+
+pythonTests.include = [
+    "omni.kit.usd.mdl.tests.discovery_preview_surface_tests.*"
+]
+
+args = [
+    "--/app/fastShutdown=false",  # make sure we check the cleanup
+    "--/app/mdl/additionalSystemPaths=",
+    "--/app/mdl/additionalUserPaths=",
+    "--/renderer/mdl/searchPaths/templates=",
+    "--/renderer/mdl/searchPaths/custom=",
+    "--/usd/enableOmniUsdMdlDiscoverOnStartup=false",
+    "--/usd/enableOmniUsdMdlLoadPreviewSurfaceModules=true",
+]

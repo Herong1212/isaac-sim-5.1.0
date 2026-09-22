@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="923.21942mm"
+   height="501.64999mm"
+   viewBox="0 0 923.21942 501.64999"
+   version="1.1"
+   id="svg378"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="ef-execution-path-point-k.svg">
+  <defs
+     id="defs372" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="1189.8871"
+     inkscape:cy="1311.0398"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1529"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata375">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(675.54423,-59.871431)">
+    <path
+       d="m 15.459222,88.402335 c 0,-15.270162 12.438063,-27.648958 27.78125,-27.648958 15.343187,0 27.78125,12.378796 27.78125,27.648958 0,15.270165 -12.438063,27.648955 -27.78125,27.648955 -15.343187,0 -27.78125,-12.37879 -27.78125,-27.648955 z"
+       stroke="#005594"
+       stroke-width="0.705556"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path30" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text32"
+       x="30.299725"
+       y="85.49192"
+       style="stroke-width:0.264583">Node</text>
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text34"
+       x="34.509224"
+       y="97.66275"
+       style="stroke-width:0.264583">Def</text>
+    <path
+       d="m 85.838388,69.969873 c 0,-5.090054 4.1275,-9.216496 9.215438,-9.216496 h 54.329544 c 5.08793,0 9.21543,4.126442 9.21543,9.216496 V 106.8348 c 0,5.09005 -4.1275,9.21649 -9.21543,9.21649 H 95.053826 c -5.087938,0 -9.215438,-4.12644 -9.215438,-9.21649 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path36" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text38"
+       x="93.974327"
+       y="85.49192"
+       style="stroke-width:0.264583">NodeGraph</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text40"
+       x="113.4212"
+       y="97.66275"
+       style="stroke-width:0.264583">Def</text>
+    <path
+       d="m -54.65536,88.402335 c 0,-15.270162 12.438062,-27.648958 27.78125,-27.648958 15.343187,0 27.78124923,12.378796 27.78124923,27.648958 0,15.270165 -12.43806223,27.648955 -27.78124923,27.648955 -15.343188,0 -27.78125,-12.37879 -27.78125,-27.648955 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path42" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text44"
+       x="-38.380836"
+       y="91.841919"
+       style="stroke-width:0.264583">Root</text>
+    <rect
+       x="173.41547"
+       y="60.753376"
+       width="72.760414"
+       height="55.297916"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       id="rect46" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="11.3771px"
+       id="text48"
+       x="194.46043"
+       y="91.841919"
+       style="stroke-width:0.264583">Graph</text>
+    <path
+       d="m -648.90952,184.44211 c 0,-10.73811 8.70479,-19.4429 19.44291,-19.4429 h 830.2691 c 10.73944,0 19.44423,8.70479 19.44423,19.4429 v 338.93787 c 0,10.73943 -8.70479,19.44422 -19.44423,19.44422 h -830.2691 c -10.73812,0 -19.44291,-8.70479 -19.44291,-19.44422 z"
+       stroke="#005594"
+       stroke-width="2.46944"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path50" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text52"
+       x="-640.85425"
+       y="183.91692"
+       style="stroke-width:0.264583">NodeGraphDef</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text54"
+       x="-544.94281"
+       y="183.91692"
+       style="stroke-width:0.264583">has associated</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text56"
+       x="-449.60419"
+       y="183.91692"
+       style="stroke-width:0.264583">executor type</text>
+    <path
+       d="m -621.92202,204.55442 c 0,-5.47979 4.38309,-9.92188 9.78958,-9.92188 5.40676,0 9.78959,4.44209 9.78959,9.92188 0,5.47978 -4.38283,9.92187 -9.78959,9.92187 -5.40649,0 -9.78958,-4.44209 -9.78958,-9.92187 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path58" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text60"
+       x="-615.94141"
+       y="208.78775"
+       style="stroke-width:0.264583">a</text>
+    <path
+       d="m -144.34911,416.44068 c 0,-11.00666 8.9244,-19.93106 19.93106,-19.93106 H 56.382326 c 11.006667,0 19.931062,8.9244 19.931062,19.93106 v 79.72955 c 0,11.00666 -8.924395,19.93106 -19.931062,19.93106 H -124.41805 c -11.00666,0 -19.93106,-8.9244 -19.93106,-19.93106 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path62" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text64"
+       x="-136.11525"
+       y="415.42734"
+       style="stroke-width:0.264583">NodeGraphDef</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text66"
+       x="-40.203789"
+       y="415.42734"
+       style="stroke-width:0.264583">X</text>
+    <path
+       d="m -133.50119,433.81587 c 0,-5.40544 4.44235,-9.78958 9.92187,-9.78958 5.47952,0 9.92188,4.38414 9.92188,9.78958 0,5.40544 -4.44236,9.78959 -9.92188,9.78959 -5.47952,0 -9.92187,-4.38415 -9.92187,-9.78959 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path68" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text70"
+       x="-127.6354"
+       y="437.9169"
+       style="stroke-width:0.264583">h</text>
+    <path
+       d="m -92.226193,459.87733 c 0,-8.69421 6.990292,-15.74271 15.610417,-15.74271 8.620124,0 15.610416,7.0485 15.610416,15.74271 0,8.69421 -6.990292,15.74271 -15.610416,15.74271 -8.620125,0 -15.610417,-7.0485 -15.610417,-15.74271 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path72" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text74"
+       x="-78.811829"
+       y="464.11066"
+       style="stroke-width:0.264583">i</text>
+    <path
+       d="m 6.9925558,435.66796 c 0,-8.62013 6.9902912,-15.61042 15.6104162,-15.61042 8.620125,0 15.610417,6.99029 15.610417,15.61042 0,8.62012 -6.990292,15.61041 -15.610417,15.61041 -8.620125,0 -15.6104162,-6.99029 -15.6104162,-15.61041 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path76" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text78"
+       x="19.975677"
+       y="439.76898"
+       style="stroke-width:0.264583">j</text>
+    <path
+       d="m 6.9925558,481.44087 c 0,-8.62012 6.9902912,-15.61041 15.6104162,-15.61041 8.620125,0 15.610417,6.99029 15.610417,15.61041 0,8.62013 -6.990292,15.61042 -15.610417,15.61042 -8.620125,0 -15.6104162,-6.99029 -15.6104162,-15.61042 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path80" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text82"
+       x="19.004614"
+       y="485.5419"
+       style="stroke-width:0.264583">k</text>
+    <path
+       d="m -116.02282,440.00183 20.865044,16.40417 -1.090084,1.38641 -20.86504,-16.40416 z m 21.261919,14.47271 2.524125,5.34987 -5.794375,-1.19062 z"
+       fill="#005594"
+       id="path84"
+       style="stroke-width:0.264583" />
+    <path
+       d="M -65.345267,449.76215 2.95131,437.32594 2.635133,435.59059 -65.661286,448.0268 Z M 2.3996538,439.2193 7.1317266,435.66827 1.4516517,434.01322 Z"
+       fill="#005594"
+       id="path86"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -65.378922,469.98441 68.2704362,9.80282 -0.2513542,1.74625 -68.267791,-9.80282 z m 67.6486654,7.92957 4.8630416,3.37343 -5.6144583,1.86532 z"
+       fill="#005594"
+       id="path88"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -604.63838,210.93352 140.14265,136.24719 -1.22952,1.2647 -140.14291,-136.24718 z m 140.73928,134.36865 1.94972,5.58535 -5.63854,-1.79123 z"
+       fill="#005594"
+       id="path90"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -466.34702,361.9815 c 0,-8.69421 6.98897,-15.74271 15.61041,-15.74271 8.62013,0 15.61042,7.0485 15.61042,15.74271 0,8.69421 -6.99029,15.74271 -15.61042,15.74271 -8.62144,0 -15.61041,-7.0485 -15.61041,-15.74271 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path92" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text94"
+       x="-454.49634"
+       y="366.21484"
+       style="stroke-width:0.264583">c</text>
+    <path
+       d="m -602.02959,203.86227 131.70403,50.03032 -0.62653,1.64915 -131.70403,-50.03059 z m 131.50612,48.06844 4.00712,4.35239 -5.88619,0.59426 z"
+       fill="#005594"
+       id="path96"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -466.34702,491.75962 c 0,-8.62012 6.98897,-15.61041 15.61041,-15.61041 8.62013,0 15.61042,6.99029 15.61042,15.61041 0,8.62013 -6.99029,15.61042 -15.61042,15.61042 -8.62144,0 -15.61041,-6.99029 -15.61041,-15.61042 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path98" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text100"
+       x="-454.80591"
+       y="495.86066"
+       style="stroke-width:0.264583">d</text>
+    <path
+       d="m -611.36435,214.0429 148.11745,262.41058 -1.53617,0.86783 -148.11745,-262.41137 z m 149.21971,260.77545 0.29686,5.91079 -4.90511,-3.30993 z"
+       fill="#005594"
+       id="path102"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -466.34702,256.28046 c 0,-8.62145 6.98897,-15.61042 15.61041,-15.61042 8.62013,0 15.61042,6.98897 15.61042,15.61042 0,8.62145 -6.99029,15.61041 -15.61042,15.61041 -8.62144,0 -15.61041,-6.98896 -15.61041,-15.61041 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path104" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text106"
+       x="-454.80591"
+       y="260.3815"
+       style="stroke-width:0.264583">b</text>
+    <path
+       d="m -221.60744,216.41701 c 0,-11.00825 8.92439,-19.93238 19.93106,-19.93238 h 180.800374 c 11.0066662,0 19.93106192,8.92413 19.93106192,19.93238 v 79.72822 c 0,11.00666 -8.92439572,19.93106 -19.93106192,19.93106 H -201.67638 c -11.00667,0 -19.93106,-8.9244 -19.93106,-19.93106 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path108" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text110"
+       x="-213.38947"
+       y="215.40233"
+       style="stroke-width:0.264583">NodeGraphDef</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text112"
+       x="-117.47801"
+       y="215.40233"
+       style="stroke-width:0.264583">X</text>
+    <path
+       d="m -210.75952,233.79087 c 0,-5.40649 4.44235,-9.78958 9.92187,-9.78958 5.47952,0 9.92187,4.38309 9.92187,9.78958 0,5.40677 -4.44235,9.78959 -9.92187,9.78959 -5.47952,0 -9.92187,-4.38282 -9.92187,-9.78959 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path114" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text116"
+       x="-204.90959"
+       y="237.89192"
+       style="stroke-width:0.264583">h</text>
+    <path
+       d="m -169.48453,259.98462 c 0,-8.62144 6.9903,-15.61041 15.61042,-15.61041 8.62013,0 15.61042,6.98897 15.61042,15.61041 0,8.62145 -6.99029,15.61042 -15.61042,15.61042 -8.62012,0 -15.61042,-6.98897 -15.61042,-15.61042 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path118" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text120"
+       x="-156.0887"
+       y="264.08566"
+       style="stroke-width:0.264583">i</text>
+    <path
+       d="m -70.265777,235.64296 c 0,-8.62145 6.990292,-15.61042 15.610417,-15.61042 8.620125,0 15.610416,6.98897 15.610416,15.61042 0,8.62145 -6.990291,15.61041 -15.610416,15.61041 -8.620125,0 -15.610417,-6.98896 -15.610417,-15.61041 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path122" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text124"
+       x="-57.298546"
+       y="239.744"
+       style="stroke-width:0.264583">j</text>
+    <path
+       d="m -70.265777,281.41587 c 0,-8.62144 6.990292,-15.61041 15.610417,-15.61041 8.620125,0 15.610416,6.98897 15.610416,15.61041 0,8.62145 -6.990291,15.61042 -15.610416,15.61042 -8.620125,0 -15.610417,-6.98897 -15.610417,-15.61042 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path126" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text128"
+       x="-58.269547"
+       y="285.51691"
+       style="stroke-width:0.264583">k</text>
+    <path
+       d="m -193.28115,240.24142 20.86504,16.40469 -1.09008,1.38668 -20.86504,-16.40496 z m 21.26192,14.47297 2.52412,5.35067 -5.79437,-1.19063 z"
+       fill="#005594"
+       id="path130"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -142.6036,249.73689 68.296578,-12.43621 -0.316177,-1.73535 -68.296421,12.43621 z m 67.744921,-10.54285 4.732073,-3.55103 -5.680075,-1.65505 z"
+       fill="#005594"
+       id="path132"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -142.63725,270.22426 68.270432,9.80176 -0.251354,1.74598 -68.267788,-9.80175 z m 67.648661,7.93036 4.863042,3.37106 -5.614459,1.8669 z"
+       fill="#005594"
+       id="path134"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -435.12619,255.3986 209.05258,0.0437 -0.003,1.76397 -209.04994,-0.0439 z m 208.16887,-1.72032 5.29167,2.64689 -5.29167,2.64478 z"
+       fill="#005594"
+       id="path136"
+       style="stroke-width:0.264583" />
+    <path
+       d="m 160.45089,329.83462 c 0,-8.62012 6.99029,-15.61041 15.61041,-15.61041 8.62013,0 15.61042,6.99029 15.61042,15.61041 0,8.62013 -6.99029,15.61042 -15.61042,15.61042 -8.62012,0 -15.61041,-6.99029 -15.61041,-15.61042 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path138" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text140"
+       x="172.38892"
+       y="333.93567"
+       style="stroke-width:0.264583">g</text>
+    <path
+       d="M -0.63273576,255.45522 161.09382,316.3885 160.47205,318.0395 -1.2571524,257.10569 Z M 160.8901,314.42794 l 4.01902,4.33916 -5.88434,0.61119 z"
+       fill="#005594"
+       id="path142"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -334.58452,366.3921 c 0,-17.9996 14.58912,-32.58873 32.58873,-32.58873 H 70.712159 c 17.996958,0 32.588731,14.58913 32.588731,32.58873 v 130.34963 c 0,17.9996 -14.591773,32.58872 -32.588731,32.58872 H -301.99579 c -17.99961,0 -32.58873,-14.58912 -32.58873,-32.58872 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path144" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text146"
+       x="-322.66238"
+       y="356.42526"
+       style="stroke-width:0.264583">NodeGraphDef</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text148"
+       x="-226.75093"
+       y="356.42526"
+       style="stroke-width:0.264583">Y</text>
+    <path
+       d="m -434.62348,361.38883 96.84808,66.98985 -1.00277,1.44992 -96.85073,-66.98985 z m 97.12589,65.03723 2.84692,5.18583 -5.85523,-0.83343 z"
+       fill="#005594"
+       id="path150"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -434.67222,492.51313 96.696,-58.053 -0.90778,-1.51236 -96.69616,58.05308 z m 96.84761,-56.08661 3.175,-4.99216 -5.89862,0.45535 z"
+       fill="#005594"
+       id="path152"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -252.29911,456.30546 c 0,-8.62013 6.99029,-15.61042 15.61042,-15.61042 8.62012,0 15.61042,6.99029 15.61042,15.61042 0,8.62012 -6.9903,15.61041 -15.61042,15.61041 -8.62013,0 -15.61042,-6.99029 -15.61042,-15.61041 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="#005594"
+       fill-rule="evenodd"
+       fill-opacity="0.8"
+       id="path154" />
+    <text
+       fill="#ffffff"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text156"
+       x="-240.71829"
+       y="460.40649"
+       style="stroke-width:0.264583">n</text>
+    <path
+       d="m -321.09077,379.57629 c 0,-5.40544 4.44235,-9.78958 9.92187,-9.78958 5.47952,0 9.92188,4.38414 9.92188,9.78958 0,5.40544 -4.44236,9.78958 -9.92188,9.78958 -5.47952,0 -9.92187,-4.38414 -9.92187,-9.78958 z"
+       stroke="#005594"
+       stroke-width="1.76389"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       fill-rule="evenodd"
+       id="path158" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text160"
+       x="-317.11407"
+       y="383.67734"
+       style="stroke-width:0.264583">m</text>
+    <path
+       d="m -303.52244,385.84427 53.28444,55.44344 -1.27265,1.22237 -53.28179,-55.44344 z m 53.94325,53.58341 1.75948,5.64886 -5.57477,-1.98173 z"
+       fill="#005594"
+       id="path162"
+       style="stroke-width:0.264583" />
+    <path
+       d="m -221.07775,457.23237 72.30348,-0.0429 v -1.7639 l -72.30348,0.0429 z m 71.42269,1.72154 5.29008,-2.64898 -5.29326,-2.64269 z"
+       fill="#005594"
+       id="path164"
+       style="stroke-width:0.264583" />
+    <path
+       d="m 104.02947,432.04536 59.31358,-86.95857 -1.45733,-0.99377 -59.31342,86.95841 z m 60.27375,-85.23613 0.79613,-5.86237 -5.16758,2.88052 z"
+       fill="#005594"
+       id="path166"
+       style="stroke-width:0.264583" />
+    <rect
+       x="-674.30951"
+       y="130.60338"
+       width="920.75"
+       height="429.68332"
+       stroke="#005594"
+       stroke-width="2.46944"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       fill="none"
+       id="rect168" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="14.0229px"
+       id="text170"
+       x="-671.94916"
+       y="143.70026"
+       style="stroke-width:0.264583">Execution Graph</text>
+    <path
+       d="M -82.481589,351.66275 H 36.75818 v 25.57727 c 0,2.8231 -2.291291,5.11439 -5.114395,5.11439 h -119.23977 v -25.57727 c 0,-2.8231 2.291292,-5.11439 5.114396,-5.11439 z"
+       stroke="#005594"
+       stroke-width="1.05833"
+       stroke-linejoin="round"
+       stroke-miterlimit="10"
+       stroke-dasharray="8.46667, 3.175"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       id="path172" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="9.78958px"
+       id="text174"
+       x="-72.424751"
+       y="364.89191"
+       style="stroke-width:0.264583">Same node definition</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="9.78958px"
+       id="text176"
+       x="-43.915901"
+       y="375.47525"
+       style="stroke-width:0.264583">instance</text>
+    <path
+       d="m 55.226097,412.7815 -0.03704,-1.61925 -0.198437,-4.32065 -0.301625,-4.21216 -0.105834,-1.06098 1.404938,-0.14023 0.108479,1.10066 0.304271,4.24657 0.198437,4.35239 0.03704,1.6219 z m -1.090083,-15.40404 -0.370417,-2.89719 -0.627063,-3.95023 -0.769937,-3.85763 -0.08467,-0.34925 1.373188,-0.32543 0.09525,0.39952 0.780521,3.91319 0.632354,3.99256 0.370416,2.89719 z m -2.852209,-15.13682 -0.873125,-3.08239 -1.2065,-3.66184 -1.370541,-3.5851 -0.119063,-0.27252 1.296458,-0.55827 0.14023,0.32808 1.391708,3.64596 1.225021,3.72004 0.873125,3.0824 z m -5.259916,-14.44889 -1.434042,-2.94481 -1.886479,-3.47134 -2.084917,-3.40519 1.203854,-0.73818 2.119313,3.47133 1.918229,3.5269 1.434042,2.94481 z m -7.731125,-13.29531 -2.4765,-3.43694 -2.685521,-3.59304 -1.561042,-2.00554 1.113896,-0.86784 1.576917,2.02936 2.701396,3.61156 2.473854,3.43694 z m -9.358313,-12.32165 -1.709208,-2.0611 -3.212042,-3.69888 -2.492375,-2.70139 1.037167,-0.95515 2.518833,2.7305 3.235855,3.72533 1.709208,2.06111 z m -10.339916,-11.48556 -1.489604,-1.50548 -3.696229,-3.44488 -3.077105,-2.64848 0.918105,-1.06891 3.122083,2.68287 3.738562,3.48721 1.489604,1.50548 z m -11.5464167,-10.21292 -1.5107708,-1.1721 -4.1407291,-2.89454 -3.6195,-2.2225 0.7381875,-1.20121 3.6909375,2.26748 4.1989374,2.93687 1.508125,1.17211 z m -12.9539998,-8.27881 -1.4181667,-0.74348 -4.5614168,-2.0029 -4.344458,-1.50548 0.460375,-1.3335 4.452937,1.54782 4.6487295,2.04523 1.4181666,0.74348 z m 61.8384155,100.56812 2.082271,-1.4605 -2.018771,4.28096 -2.211916,-4.18306 z m -73.022353,-105.79629 1.865313,4.11692 -5.966354,-5.16202 7.707312,-1.67481 z"
+       fill="#005594"
+       id="path178"
+       style="stroke-width:0.264583" />
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text182"
+       x="-224.09189"
+       y="190.26692"
+       style="stroke-width:0.264583">Node e</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text184"
+       x="-336.11383"
+       y="327.58566"
+       style="stroke-width:0.264583">Node f</text>
+    <text
+       fill="#005594"
+       font-family="'Trebuchet MS', 'Trebuchet MS_MSFontService', sans-serif"
+       font-weight="700"
+       font-size="14.0229px"
+       id="text186"
+       x="-146.86"
+       y="391.87943"
+       style="stroke-width:0.264583">Node p</text>
+    <path
+       d="m 75.265638,518.50106 -21.769916,-10.77383 -3.820583,7.72318 -7.802563,-23.08754 23.087542,-7.79992 -3.820584,7.72055 21.769917,10.77383 z"
+       stroke="#ffff00"
+       stroke-width="0.705556"
+       stroke-miterlimit="8"
+       fill="#e1e100"
+       fill-rule="evenodd"
+       id="path188" />
+  </g>
+</svg>

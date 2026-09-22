@@ -1,0 +1,14 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.importer.onshape-1.0.1%2B107.3.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.199947.b0a86421.gl"
+        date = 1756322882
+        buildNumber = "107.3+main.205.5c18af04.gl"
+        repoName = "Onshape_importer"

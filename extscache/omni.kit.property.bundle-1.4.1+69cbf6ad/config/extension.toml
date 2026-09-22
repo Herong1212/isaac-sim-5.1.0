@@ -1,0 +1,65 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.4.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Property Widgets Bundle"
+description="Load all property widgets"
+
+category = "UI"
+support_level = "Core"
+
+feature = true
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "usd", "property"]
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.window.property" = {}
+"omni.kit.property.camera" = {}
+"omni.kit.property.light" = {}
+"omni.kit.property.material" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.property.geometry" = {}
+"omni.kit.property.audio" = {}
+"omni.kit.property.transform" = {}
+"omni.kit.property.render" = {}
+
+
+[[python.module]]
+name = "omni.kit.property.bundle"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/properties/material/displayBaseShader=true",
+]
+
+dependencies = [
+    "omni.kit.primitive.mesh",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers"
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md"]

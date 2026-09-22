@@ -1,0 +1,138 @@
+{
+    "CurveToFrame": {
+        "version": 1,
+        "description": [
+            "Create a frame object based on a curve description. The frame object is a combination of",
+            "normal, up, and tangent vector. A frame object is generated for every subset of 'Curve Points' whose",
+            "vertex ranges are based on the 'Curve Vertex Starts' and 'Curve Vertex Counts'."
+        ],
+        "metadata": {
+            "uiName": "Create Curve From Frame"
+        },
+        "categories": ["examples", "geometry:generator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "curveVertexStarts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex index starting points for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Counts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Starts"
+                }
+            },
+            "curveVertexCounts": {
+                "type": "int[]",
+                "description": [
+                    "Vertex counts for each curve frame.",
+                    "Must have the same number of elements as 'Curve Vertex Starts'."
+                ],
+                "metadata": {
+                    "uiName": "Curve Vertex Counts"
+                }
+            },
+            "curvePoints": {
+                "type": "float[3][]",
+                "description": "Points on the curve to be framed.",
+                "metadata": {
+                    "uiName": "Curve Points"
+                }
+            }
+        },
+        "outputs": {
+            "tangent": {
+                "type": "float[3][]",
+                "description": "Tangents on the curve frame.",
+                "metadata": {
+                    "uiName": "Tangents"
+                }
+            },
+            "up": {
+                "type": "float[3][]",
+                "description": "Up vectors on the curve frame.",
+                "metadata": {
+                    "uiName": "Up Vectors"
+                }
+            },
+            "out": {
+                "type": "float[3][]",
+                "description": "Out vector directions on the curve frame.",
+                "metadata": {
+                    "uiName": "Out Vectors"
+                }
+            }
+        },
+        "tests": [
+            {
+               "$description": "Empty data in produces empty data out",
+               "inputs:curveVertexStarts": [],
+               "inputs:curveVertexCounts": [],
+               "inputs:curvePoints" : [],
+               "outputs:tangent": [],
+               "outputs:up": [],
+               "outputs:out": []
+            },
+            {
+               "$description": "Single vertex point",
+               "inputs:curveVertexStarts": [0],
+               "inputs:curveVertexCounts": [1],
+               "inputs:curvePoints" : [[0,1,0]],
+               "outputs:tangent": [[0,0,1]],
+               "outputs:up": [[0,1,0]],
+               "outputs:out": [[1,0,0]]
+            },
+            {
+               "$description": "More starts than counts",
+               "inputs:curveVertexStarts": [0, 1, 2, 3],
+               "inputs:curveVertexCounts": [1],
+               "inputs:curvePoints" : [[0,1,0]],
+               "outputs:tangent": [[0,0,1]],
+               "outputs:up": [[0,1,0]],
+               "outputs:out": [[1,0,0]]
+            },
+            {
+               "$description": "Multiple vertex points",
+               "inputs:curveVertexStarts": [0],
+               "inputs:curveVertexCounts": [3],
+               "inputs:curvePoints" : [[-1, 1, 0], [0, 1, 0], [1, 1, 0]],
+               "outputs:tangent": [[1, 0, 0], [1, 0, 0], [1, 0, 0]],
+               "outputs:up": [[0, 0, 1], [0, 0, 1], [0, 0, 1]],
+               "outputs:out": [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
+            },
+            {
+               "$description": "Multiple curves",
+               "inputs:curveVertexStarts": [0, 3],
+               "inputs:curveVertexCounts": [3, 3],
+               "inputs:curvePoints" : [
+                    [-1, 1, 0], [0, 2, 0], [1, 1, 0],
+                    [0, -1, 0], [1, 0, 0], [0, 1, 0]
+                ],
+               "outputs:tangent": [
+                    [ 0.70710677, 0.70710677, 0],
+                    [ 0.99999994, 0, 0],
+                    [ 0.70710677, -0.70710677, 0],
+                    [ 0.70710677, 0.70710677, 0],
+                    [ 0, 0.99999994, 0],
+                    [-0.70710677, 0.70710677, 0]
+               ],
+               "outputs:up": [
+                    [ 0,  0,  1],
+                    [ 0,  0,  1],
+                    [ 0,  0,  1],
+                    [ 0,  0,  1],
+                    [ 0,  0,  1],
+                    [ 0,  0,  1]
+               ],
+               "outputs:out":  [
+                    [-0.70710677, 0.70710677, 0],
+                    [ 0.00000006, 1, 0],
+                    [ 0.70710683, 0.70710671, 0],
+                    [-0.70710677, 0.70710677, 0],
+                    [-1, -0.00000006,  0],
+                    [-0.70710671, -0.70710683,  0]
+                ]
+            }
+        ]
+    }
+}

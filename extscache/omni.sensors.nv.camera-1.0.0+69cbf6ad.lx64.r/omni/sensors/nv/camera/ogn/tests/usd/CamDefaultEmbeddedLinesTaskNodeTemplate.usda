@@ -1,0 +1,91 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamDefaultEmbeddedLinesTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamDefaultEmbeddedLinesTask" (
+        docs="""Loads a preset of embedded line registers"""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamDefaultEmbeddedLinesTask"
+        int node:typeVersion = 1
+
+        # 16 attributes
+        custom token inputs:EmbeddedLineEncoder = "NONE" (
+            docs="""Encoder for the embedded Lines : Values: NONE, IMX390_DEFAULT, IMX728_DEFAULT, IMX623_DEFAULT, AR820_DEFAULT, defaults to NONE"""
+        )
+        custom bool inputs:embedFrameID = false (
+            docs="""boolean, whether frame ID shall be embedded into the embedded lines (overwrites camera type default)"""
+        )
+        custom int64 inputs:embedFrameIDOffset = 0 (
+            docs="""offset of the frame ID"""
+        )
+        custom bool inputs:embedTimecode = false (
+            docs="""boolean, whether timecode shall be embedded into the embedded lines  (overwrites camera type default)"""
+        )
+        custom int inputs:embeddedBottomLines = 0 (
+            docs="""number of embedded bottom lines"""
+        )
+        custom token inputs:embeddedDataFilepath = "/tmp/AR0231_daylight.raw" (
+            docs="""File path to the embedded line data file"""
+        )
+        custom int64 inputs:embeddedTimecodeOffset = 0 (
+            docs="""offset of the timecode in [us]"""
+        )
+        custom int inputs:embeddedTopLines = 0 (
+            docs="""number of embedded top lines"""
+        )
+        custom int64 inputs:externalTimeOfSimFrameIn = 0 (
+            docs="""externalTimeOfSimFrameIn input"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom token inputs:rawEncoding = "RAW12" (
+            docs="""Raw Encoding of the embedded registers RAW12, RAW16, RAW20, RAW24"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom int64 inputs:timecodeIn = 0 (
+            docs="""timecode/timestamp input"""
+        )
+
+        # 6 attributes
+        custom uint64 outputs:dest (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:embeddedDest = 0 (
+            docs="""Embedded Data Lines Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

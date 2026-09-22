@@ -1,0 +1,2560 @@
+#usda 1.0
+(
+	subLayers = [
+	@usdGeom/schema.usda@
+	]
+)
+
+over "GLOBAL" (
+	customData = {
+	string libraryName = "flowSchema"
+	string libraryPath = "flowSchema"
+	bool skipCodeGeneration = true
+	}
+)
+{
+
+}
+
+class FlowBase "FlowBase"
+(
+	inherits = </Typed>
+)
+{
+	int layer = 0 (
+	displayName = "Layer"
+	displayGroup = "Common"
+	doc = """Layer ID selects what emitters interact with what simulation"""
+)
+int level = 0 (
+	displayName = "Level"
+	displayGroup = "Common"
+	doc = """Base Flow Level"""
+)
+}
+
+class FlowEmitterSphere "FlowEmitterSphere"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = true (
+	displayName = "Enabled"
+	displayGroup = "Sphere Emitter"
+	doc = """Boolean to enable/disable emitter"""
+)
+
+float3 position = (0.000000, 0.000000, 0.000000) (
+	displayName = "Position"
+	displayGroup = "Sphere Emitter"
+	doc = """Local space position of sphere center."""
+)
+float allocationScale = 1.000000 (
+	displayName = "Allocation Scale"
+	displayGroup = "Sphere Emitter"
+	doc = """1.0 allocates blocks needed to contain box. 0.0 disables allocation. Values higher than 1.0 can be used to add additional padding."""
+)
+bool applyPostPressure = false (
+	displayName = "Apply Post Pressure"
+	displayGroup = "Sphere Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+bool multisample = false (
+	displayName = "Multisample"
+	displayGroup = "Sphere Emitter"
+	doc = """Test sphere overlap at 8 locations instead of 1"""
+)
+uint numSubSteps = 1 (
+	displayName = "Num Sub Steps"
+	displayGroup = "Sphere Emitter"
+	doc = """Substeps per simulation update. More steps produce a smoother result with moving emitters."""
+)
+float physicsVelocityScale = 0.000000 (
+	displayName = "Physics Velocity Scale"
+	displayGroup = "Sphere Emitter"
+	doc = """If set to 1.0, the body velocity will be added to the target velocity. This is useful for collision effects, where the body velocity and grid cell velocity should align."""
+)
+float radius = 10.0 (
+	displayName = "Radius"
+	displayGroup = "Sphere Emitter"
+	doc = """radius of sphere"""
+)
+bool radiusIsWorldSpace = 1 (
+	displayName = "Radius Is World Space"
+	displayGroup = "Sphere Emitter"
+	doc = """If true, do not apply xform scale to radius"""
+)
+# Temperature
+float temperature = 0.500000 (
+	displayName = "Temperature"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target temperature value."""
+)
+float coupleRateTemperature = 2.000000 (
+	displayName = "Couple Rate Temperature"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for the temperature channel."""
+)
+# Fuel
+float fuel = 0.800000 (
+	displayName = "Fuel"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target fuel value."""
+)
+float coupleRateFuel = 2.000000 (
+	displayName = "Couple Rate Fuel"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for the fuel channel."""
+)
+# Burn
+float burn = 0.000000 (
+	displayName = "Burn"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target burn value."""
+)
+float coupleRateBurn = 0.000000 (
+	displayName = "Couple Rate Burn"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for burn channel."""
+)
+# Smoke
+float smoke = 0.000000 (
+	displayName = "Smoke"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target smoke value."""
+)
+float coupleRateSmoke = 0.000000 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for the smoke channel."""
+)
+# Velocity
+float3 velocity = (0.000000, 0.000000, 400.000000) (
+	displayName = "Velocity"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target velocity value."""
+)
+float coupleRateVelocity = 2.000000 (
+	displayName = "Couple Rate Velocity"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for the velocity channel."""
+)
+bool velocityIsWorldSpace = false (
+	displayName = "Velocity Is World Space"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """If true, do not rotate velocity by xform"""
+)
+# Divergence
+float divergence = 0.000000 (
+	displayName = "Divergence"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Target divergence value."""
+)
+float coupleRateDivergence = 0.000000 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "Sphere Emitter Channels"
+	doc = """Couple rate for divergence channel."""
+)
+}
+
+class FlowEmitterBox "FlowEmitterBox"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = true (
+	displayName = "Enabled"
+	displayGroup = "Box Emitter"
+	doc = """Boolean to enable/disable emitter"""
+)
+float3 position = (0.000000, 0.000000, 0.000000) (
+	displayName = "Position"
+	displayGroup = "Box Emitter"
+	doc = """Local space position of box center."""
+)
+float3 halfSize = (10.000000, 10.000000, 10.000000) (
+	displayName = "Half Size"
+	displayGroup = "Box Emitter"
+	doc = """Half of box width/height/depth in local units"""
+)
+float allocationScale = 1.000000 (
+	displayName = "Allocation Scale"
+	displayGroup = "Box Emitter"
+	doc = """1.0 allocates blocks needed to contain box. 0.0 disables allocation. Values higher than 1.0 can be used to add additional padding."""
+)
+bool applyPostPressure = false (
+	displayName = "Apply Post Pressure"
+	displayGroup = "Box Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+bool multisample = false (
+	displayName = "Multisample"
+	displayGroup = "Box Emitter"
+	doc = """Test sphere overlap at 8 locations instead of 1"""
+)
+rel physicsCollisionPrim (
+	displayName = "Physics Collision Prim"
+	displayGroup = "Box Emitter"
+	doc = """Rel to prim including physics collision convex hulls."""
+)
+bool isPhysicsCollision = 0 (
+	displayName = "Is Physics Collision"
+	displayGroup = "Box Emitter"
+	doc = """If true, broadcast to all Flow layers with physics collision enabled."""
+)
+bool allLayers = 0 (
+	displayName = "All Layers"
+	displayGroup = "Box Emitter"
+	doc = """If true, broadcast to all active Flow layers."""
+)
+float physicsVelocityScale = 0.000000 (
+	displayName = "Physics Velocity Scale"
+	displayGroup = "Box Emitter"
+	doc = """If set to 1.0, the body velocity will be added to the target velocity. This is useful for collision effects, where the body velocity and grid cell velocity should align."""
+)
+float4[] clippingPlanes = [] (
+	displayName = "Clipping Planes"
+	displayGroup = "Box Emitter"
+	doc = """List of clipping planes in local space."""
+)
+uint[] clippingPlaneCounts = [] (
+	displayName = "Clipping Plane Counts"
+	displayGroup = "Box Emitter"
+	doc = """Count of clipping planes for each convex hull in clippingPlanes."""
+)
+# Temperature
+float temperature = 0.500000 (
+	displayName = "Temperature"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target temperature value."""
+)
+float coupleRateTemperature = 2.000000 (
+	displayName = "Couple Rate Temperature"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for the temperature channel."""
+)
+# Fuel
+float fuel = 0.800000 (
+	displayName = "Fuel"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target fuel value."""
+)
+float coupleRateFuel = 2.000000 (
+	displayName = "Couple Rate Fuel"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for the fuel channel."""
+)
+# Burn
+float burn = 0.000000 (
+	displayName = "Burn"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target burn value."""
+)
+float coupleRateBurn = 0.000000 (
+	displayName = "Couple Rate Burn"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for burn channel."""
+)
+# Smoke
+float smoke = 0.000000 (
+	displayName = "Smoke"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target smoke value."""
+)
+float coupleRateSmoke = 0.000000 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for the smoke channel."""
+)
+# Velocity
+float3 velocity = (0.000000, 0.000000, 400.000000) (
+	displayName = "Velocity"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target velocity value."""
+)
+bool velocityIsWorldSpace = false (
+	displayName = "Velocity Is World Space"
+	displayGroup = "Box Emitter Channels"
+	doc = """If true, do not rotate velocity by xform"""
+)
+float coupleRateVelocity = 2.000000 (
+	displayName = "Couple Rate Velocity"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for the velocity channel."""
+)
+# Divergence
+float divergence = 0.000000 (
+	displayName = "Divergence"
+	displayGroup = "Box Emitter Channels"
+	doc = """Target divergence value."""
+)
+float coupleRateDivergence = 0.000000 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "Box Emitter Channels"
+	doc = """Couple rate for divergence channel."""
+)
+}
+
+class FlowEmitterPoint "FlowEmitterPoint"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Point Emitter"
+	doc = """Boolean to enable/disable emitter"""
+)
+int levelCount = 1 (
+	displayName = "Level Count"
+	displayGroup = "Point Emitter"
+	doc = """If greater than 1, point emitter will attempt to select Flow level with closest cell size alignment to point width."""
+)
+bool followVisibility = 0 (
+	displayName = "Follow Visibility"
+	displayGroup = "Point Emitter"
+	doc = """If true, if USD visibility is invisible, emitter will be disabled"""
+)
+bool allocateMask = 1 (
+	displayName = "Allocate Mask"
+	displayGroup = "Point Emitter"
+	doc = """Default allocation behavior. If true and allocateMasks is empty, all points will trigger allocation."""
+)
+uint[] pointAllocateMasks = [] (
+	displayName = "Point Allocate Masks"
+	displayGroup = "Point Emitter"
+	doc = """Optional array of allocate settings per point."""
+)
+bool applyPostPressure = 0 (
+	displayName = "Apply Post Pressure"
+	displayGroup = "Point Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+uint numSubSteps = 1 (
+	displayName = "Num Sub Steps"
+	displayGroup = "Point Emitter"
+	doc = """If numSubSteps > 1, Interpolates point position using velocity"""
+)
+bool updateCoarseDensity = 0 (
+	displayName = "Update Coarse Density"
+	displayGroup = "Point Emitter"
+	doc = """If true, update coarse density for the block covered by this emitter"""
+)
+float3[] pointPositions = [] (
+	displayName = "Point Positions"
+	displayGroup = "Point Emitter"
+	doc = """Array of local space positions. Determines total point count."""
+)
+float[] pointWidths = [] (
+	displayName = "Point Widths"
+	displayGroup = "Point Emitter"
+	doc = """Array of local space widths. Used with autoLayerCount only for now."""
+)
+float widthScale = 1 (
+	displayName = "Width Scale"
+	displayGroup = "Point Emitter"
+	doc = """Scale value to apply to pointWidths before use. Works with levelCount to select level."""
+)
+rel pointsPrim (
+	displayName = "Points Prim"
+	displayGroup = "Point Emitter"
+	doc = """Optional relationship to UsdGeomPoint, to source arrays"""
+)
+float3[] pointColors = [] (
+	displayName = "Point Colors"
+	displayGroup = "Point Emitter"
+	doc = """Array of temperature, fuel, burn values, used for color with ray march in raw mode."""
+)
+bool colorIsSrgb = 0 (
+	displayName = "Color Is Srgb"
+	displayGroup = "Point Emitter"
+	doc = """If true, perform color correction on temperature, fuel, burn channels"""
+)
+# streaming
+bool enableStreaming = 0 (
+	displayName = "Enable"
+	displayGroup = "Point Emitter Streaming"
+	doc = """If true, only apply streamingBatchSize per frame"""
+)
+bool streamClearAtStart = 0 (
+	displayName = "Stream Clear At Start"
+	displayGroup = "Point Emitter Streaming"
+	doc = """If true, clears entire layer when streaming start"""
+)
+uint streamingBatchSize = 1048576 (
+	displayName = "Streaming Batch Size"
+	displayGroup = "Point Emitter Streaming"
+	doc = """If streaming is enabled, point count emitted per simulate step"""
+)
+bool streamOnce = 0 (
+	displayName = "Stream Once"
+	displayGroup = "Point Emitter Streaming"
+	doc = """If true, apply each point to the grid only once"""
+)
+
+# Temperature
+float temperatureScale = 1 (
+	displayName = "Temperature Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for temperature and pointTemperatures"""
+)
+float temperature = 2 (
+	displayName = "Temperature"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target temperature value."""
+)
+float coupleRateTemperature = 200 (
+	displayName = "Couple Rate Temperature"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for temperature channel."""
+)
+float[] pointTemperatures = [] (
+	displayName = "Point Temperatures"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target temperature values for each position."""
+)
+float[] pointCoupleRateTemperatures = [] (
+	displayName = "Point Couple Rate Temperatures"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of temperature couple rates for each position."""
+)
+# Fuel
+float fuelScale = 1 (
+	displayName = "Fuel Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for fuel and pointFuels"""
+)
+float fuel = 2 (
+	displayName = "Fuel"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target fuel value."""
+)
+float coupleRateFuel = 200 (
+	displayName = "Couple Rate Fuel"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for fuel channel."""
+)
+
+float[] pointFuels = [] (
+	displayName = "Point Fuels"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target fuel values for each position."""
+)
+float[] pointCoupleRateFuels = [] (
+	displayName = "Point Couple Rate Fuels"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of fuel couple rate for each position."""
+)
+# Burn
+float burnScale = 1 (
+	displayName = "Burn Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for burn and pointBurns."""
+)
+float burn = 0 (
+	displayName = "Burn"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target burn value."""
+)
+float coupleRateBurn = 0 (
+	displayName = "Couple Rate Burn"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for burn channel"""
+)
+float[] pointBurns = [] (
+	displayName = "Point Burns"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target burn values for each position."""
+)
+float[] pointCoupleRateBurns = [] (
+	displayName = "Point Couple Rate Burns"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of burn couple rates for each position."""
+)
+# Smoke
+float smokeScale = 1 (
+	displayName = "Smoke Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for smoke and pointSmokes"""
+)
+float smoke = 2 (
+	displayName = "Smoke"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target smoke value."""
+)
+float coupleRateSmoke = 200 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for smoke channel."""
+)
+float[] pointSmokes = [] (
+	displayName = "Point Smokes"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target smoke values for each position"""
+)
+float[] pointCoupleRateSmokes = [] (
+	displayName = "Point Couple Rate Smokes"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of smoke couple rates for each position."""
+)
+# Velocity
+float velocityScale = 1 (
+	displayName = "Velocity Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for velocity and pointVelocities"""
+)
+bool velocityIsWorldSpace = 0 (
+	displayName = "Velocity Is World Space"
+	displayGroup = "Point Emitter Channels"
+	doc = """If true, do not rotate velocity by xform"""
+)
+float3 velocity = (0, 0, 100) (
+	displayName = "Velocity"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target velocity value."""
+)
+float coupleRateVelocity = 200 (
+	displayName = "Couple Rate Velocity"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for velocity channel."""
+)
+float3[] pointVelocities = [] (
+	displayName = "Point Velocities"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target velocity values for each position."""
+)
+float[] pointCoupleRateVelocities = [] (
+	displayName = "Point Couple Rate Velocities"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of velocity couple rates for each position."""
+)
+# Divergence
+float divergenceScale = 1 (
+	displayName = "Divergence Scale"
+	displayGroup = "Point Emitter Channels"
+	doc = """Multiplier for divergence and pointDivergences."""
+)
+float divergence = 0 (
+	displayName = "Divergence"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default target divergence value."""
+)
+float coupleRateDivergence = 0 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "Point Emitter Channels"
+	doc = """Default couple rate for divergence channel."""
+)
+float[] pointDivergences = [] (
+	displayName = "Point Divergences"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of target divergence values for each position."""
+)
+float[] pointCoupleRateDivergences = [] (
+	displayName = "Point Couple Rate Divergences"
+	displayGroup = "Point Emitter Channels"
+	doc = """Array of divergence couple rates for each position."""
+)
+}
+
+class FlowEmitterMesh "FlowEmitterMesh"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Mesh Emitter"
+	doc = """Boolean to enable/disable emitter"""
+)
+bool allocateMask = 1 (
+	displayName = "Allocate Mask"
+	displayGroup = "Mesh Emitter"
+	doc = """Default allocation behavior. If true and allocateMasks is empty, all points will trigger allocation."""
+)
+bool applyPostPressure = 0 (
+	displayName = "Apply Post Pressure"
+	displayGroup = "Mesh Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+float minDistance = -0.8 (
+	displayName = "Min Distance"
+	displayGroup = "Mesh Emitter"
+	doc = """Min distance from surface to emit."""
+)
+float maxDistance = 0.3 (
+	displayName = "Max Distance"
+	doc = """Max distance from surface to emit."""
+)
+uint numSubSteps = 1 (
+	displayName = "Num Sub Steps"
+	displayGroup = "Mesh Emitter"
+	doc = """If numSubSteps > 1, Interpolates point position using velocity"""
+)
+bool orientationLeftHanded = 0 (
+	displayName = "Orientation Left Handed"
+	displayGroup = "Mesh Emitter"
+	doc = """If true, assume left winding direction of face polygons."""
+)
+float physicsVelocityScale = 0 (
+	displayName = "Physics Velocity Scale"
+	displayGroup = "Mesh Emitter"
+	doc = """If set to 1.0, the body velocity will be added to the target velocity."""
+)
+float3[] meshPositions = [] (
+	displayName = "Mesh Positions"
+	displayGroup = "Mesh Emitter"
+	doc = """Array of local space positions. Determines total point count."""
+)
+int[] meshFaceVertexIndices = [] (
+	displayName = "Mesh Face Vertex Indices"
+	displayGroup = "Mesh Emitter"
+	doc = """Array of indices for each face pointing to position indices."""
+)
+int[] meshFaceVertexCounts = [] (
+	displayName = "Mesh Face Vertex Counts"
+	displayGroup = "Mesh Emitter"
+	doc = """Array of vertex counts for each polygon face"""
+)
+uint[] meshSubsetEnableds = [] (
+	displayName = "Mesh Subset Enableds"
+	displayGroup = "Mesh Emitter"
+	doc = """Reserved for future use."""
+)
+int[] meshSubsetFaceCounts = [] (
+	displayName = "Mesh Subset Face Counts"
+	displayGroup = "Mesh Emitter"
+	doc = """Reserved for future use."""
+)
+int[] meshSubsetLayers = [] (
+	displayName = "Mesh Subset Layers"
+	displayGroup = "Mesh Emitter"
+	doc = """Reserved for future use."""
+)
+rel meshPrim (
+	displayName = "Mesh Prim"
+	displayGroup = "Mesh Emitter"
+	doc = """Optional relationship to UsdGeomMesh, to source arrays"""
+)
+bool isPhysicsCollision = 0 (
+	displayName = "Is Physics Collision"
+	displayGroup = "Mesh Emitter"
+	doc = """If true, broadcast to all Flow layers with physics collision enabled."""
+)
+float3[] meshColors = [] (
+	displayName = "Mesh Colors"
+	displayGroup = "Mesh Emitter"
+	doc = """Array of temperature, fuel, burn values, used for color with ray march in raw mode."""
+)
+bool colorIsSrgb = 0 (
+	displayName = "Color Is Srgb"
+	displayGroup = "Mesh Emitter"
+	doc = """If true, perform color correction on temperature, fuel, burn channels"""
+)
+# Temperature
+float temperatureScale = 1 (
+	displayName = "Temperature Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for temperature and pointTemperatures"""
+)
+float temperature = 2 (
+	displayName = "Temperature"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target temperature value."""
+)
+float coupleRateTemperature = 10 (
+	displayName = "Couple Rate Temperature"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for temperature channel."""
+)
+float[] meshTemperatures = [] (
+	displayName = "Mesh Temperatures"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target temperature values for each position."""
+)
+float[] meshCoupleRateTemperatures = [] (
+	displayName = "Mesh Couple Rate Temperatures"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of temperature couple rates for each face index."""
+)
+# Fuel
+float fuelScale = 1 (
+	displayName = "Fuel Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for fuel and pointFuels"""
+)
+float fuel = 0.8 (
+	displayName = "Fuel"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target fuel value."""
+)
+float coupleRateFuel = 2 (
+	displayName = "Couple Rate Fuel"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for fuel channel."""
+)
+float[] meshFuels = [] (
+	displayName = "Mesh Fuels"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target fuel values for each position"""
+)
+float[] meshCoupleRateFuels = [] (
+	displayName = "Mesh Couple Rate Fuels"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of fuel couple rate for each face index."""
+)
+# Burn
+float burnScale = 1 (
+	displayName = "Burn Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for burn and pointBurns."""
+)
+float burn = 0 (
+	displayName = "Burn"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target burn value."""
+)
+float coupleRateBurn = 0 (
+	displayName = "Couple Rate Burn"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for burn channel."""
+)
+float[] meshBurns = [] (
+	displayName = "Mesh Burns"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target burn values for each face index."""
+)
+float[] meshCoupleRateBurns = [] (
+	displayName = "Mesh Couple Rate Burns"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of burn couple rates for each face index."""
+)
+# Smoke
+float smokeScale = 1 (
+	displayName = "Smoke Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for smoke and pointSmokes"""
+)
+float smoke = 2 (
+	displayName = "Smoke"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target smoke value."""
+)
+float[] meshSmokes = [] (
+	displayName = "Mesh Smokes"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target smoke values for each position"""
+)
+float coupleRateSmoke = 2 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for smoke channel."""
+)
+float[] meshCoupleRateSmokes = [] (
+	displayName = "Mesh Couple Rate Smokes"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of smoke couple rates for each face index."""
+)
+# Velocity
+float velocityScale = 1 (
+	displayName = "Velocity Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for velocity and pointVelocities"""
+)
+bool velocityIsWorldSpace = 0 (
+	displayName = "Velocity Is World Space"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """If true, do not rotate velocity by xform"""
+)
+float3 velocity = (0, 0, 100) (
+	displayName = "Velocity"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target velocity value."""
+)
+float coupleRateVelocity = 2 (
+	displayName = "Couple Rate Velocity"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for velocity channel."""
+)
+float3[] meshVelocities = [] (
+	displayName = "Mesh Velocities"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target velocity values for each position."""
+)
+float[] meshCoupleRateVelocities = [] (
+	displayName = "Mesh Couple Rate Velocities"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of velocity couple rates for each position."""
+)
+# Divergence
+float divergenceScale = 1 (
+	displayName = "Divergence Scale"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Multiplier for divergence and pointDivergences."""
+)
+float divergence = 0 (
+	displayName = "Divergence"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default target divergence value."""
+)
+float coupleRateDivergence = 0 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Default couple rate for divergence channel."""
+)
+float[] meshDivergences = [] (
+	displayName = "Mesh Divergences"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of target divergence values for each face index."""
+)
+float[] meshCoupleRateDivergences = [] (
+	displayName = "Mesh Couple Rate Divergences"
+	displayGroup = "Mesh Emitter Channels"
+	doc = """Array of divergence couple rates for each face index."""
+)
+}
+
+class FlowEmitterTexture "FlowEmitterTexture"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Texture Emitter"
+	doc = """Boolean to enable/disable emitter."""
+)
+float3 position = (0, 0, 0) (
+	displayName = "Position"
+	displayGroup = "Texture Emitter"
+	doc = """Local space position."""
+)
+float3 halfSize = (10, 10, 10) (
+	displayName = "Half Size"
+	displayGroup = "Texture Emitter"
+	doc = """Half of box width/height/depth in world units."""
+)
+uint textureWidth = 0 (
+	displayName = "Texture Width"
+	displayGroup = "Texture Emitter"
+	doc = """Width in texels of texture data."""
+)
+uint textureHeight = 0 (
+	displayName = "Texture Height"
+	displayGroup = "Texture Emitter"
+	doc = """Height in texels of texture data."""
+)
+uint textureDepth = 0 (
+	displayName = "Texture Depth"
+	displayGroup = "Texture Emitter"
+	doc = """Depth in texels of texture data."""
+)
+uint textureFirstElement = 0 (
+	displayName = "Texture First Element"
+	displayGroup = "Texture Emitter"
+	doc = """Array index offset applied for all arrays. Useful for animation."""
+)
+float allocationScale = 1 (
+	displayName = "Allocation Scale"
+	displayGroup = "Texture Emitter"
+	doc = """1.0 allocates blocks needed to contain box defined by halfSize/position. 0.0 disables allocation. Values higher than 1.0 can be used to add additional padding."""
+)
+bool applyPostPressure = 0 (
+	displayName = "Apply Post Pressure"
+	displayGroup = "Texture Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+bool colorIsSrgb = 0 (
+	displayName = "Color Is Srgb"
+	displayGroup = "Texture Emitter"
+	doc = """If true, perform color correction on temperature, fuel, burn channels"""
+)
+# Temperature
+float temperatureScale = 1 (
+	displayName = "Temperature Scale"
+	displayGroup = "Texture Temperature"
+	doc = """Multiplier for temperature and temperatureScale"""
+)
+float temperature = 0.5 (
+	displayName = "Temperature"
+	displayGroup = "Texture Temperature"
+	doc = """Default target temperature value."""
+)
+float coupleRateTemperature = 2 (
+	displayName = "Couple Rate"
+	displayGroup = "Texture Temperature"
+	doc = """Default couple rate for temperature channel."""
+)
+float[] textureTemperatures = [] (
+	displayName = "Temperatures"
+	displayGroup = "Texture Temperature"
+	doc = """Array of target temperature values for each texel."""
+)
+float[] textureCoupleRateTemperatures = [] (
+	displayName = "Couple Rate Temperatures"
+	displayGroup = "Texture Temperature"
+	doc = """Array of temperature couple rates for each texel."""
+)
+asset textureTemperatures:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Temperature"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateTemperatures:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Temperature"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureTemperatures:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Temperature"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateTemperatures:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Temperature"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+# Fuel
+float fuelScale = 1 (
+	displayName = "Fuel Scale"
+	displayGroup = "Texture Fuel"
+	doc = """Multiplier for fuel and textureFuels"""
+)
+float fuel = 0.8 (
+	displayName = "Fuel"
+	displayGroup = "Texture Fuel"
+	doc = """Default target fuel value."""
+)
+float coupleRateFuel = 2 (
+	displayName = "Couple Rate"
+	displayGroup = "Texture Fuel"
+	doc = """Default couple rate for fuel channel."""
+)
+float[] textureFuels = [] (
+	displayName = "Fuels"
+	displayGroup = "Texture Fuel"
+	doc = """Array of target fuel values for each texel."""
+)
+float[] textureCoupleRateFuels = [] (
+	displayName = "Couple Rate Fuels"
+	displayGroup = "Texture Fuel"
+	doc = """Array of fuel couple rate for each texel."""
+)
+asset textureFuels:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Fuel"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateFuels:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Fuel"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureFuels:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Fuel"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateFuels:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Fuel"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+# Burn
+float burnScale = 1 (
+	displayName = "Burn Scale"
+	displayGroup = "Texture Burn"
+	doc = """Multiplier for burn and textureBurns"""
+)
+float burn = 0 (
+	displayName = "Burn"
+	displayGroup = "Texture Burn"
+	doc = """Default target burn value."""
+)
+float coupleRateBurn = 0 (
+	displayName = "Couple Rate"
+	displayGroup = "Texture Burn"
+	doc = """Default couple rate for burn channel."""
+)
+float[] textureBurns = [] (
+	displayName = "Burns"
+	displayGroup = "Texture Burn"
+	doc = """Array of target burn values for each texel."""
+)
+float[] textureCoupleRateBurns = [] (
+	displayName = "Couple Rate Burns"
+	displayGroup = "Texture Burn"
+	doc = """Array of burn couple rates for each texel."""
+)
+asset textureBurns:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Burn"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateBurns:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Burn"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureBurns:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Burn"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateBurns:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Burn"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+
+# Smoke
+float smokeScale = 1 (
+	displayName = "Smoke Scale"
+	displayGroup = "Texture Smoke"
+	doc = """Multiplier for smoke and textureSmokes"""
+)
+float smoke = 0 (
+	displayName = "Smoke"
+	displayGroup = "Texture Smoke"
+	doc = """Default target smoke value."""
+)
+float coupleRateSmoke = 0 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "Texture Smoke"
+	doc = """Default couple rate for smoke channel."""
+)
+float[] textureSmokes = [] (
+	displayName = "Smokes"
+	displayGroup = "Texture Smoke"
+	doc = """Array of target smoke values for each texel."""
+)
+float[] textureCoupleRateSmokes = [] (
+	displayName = "Couple Rate Smokes"
+	displayGroup = "Texture Smoke"
+	doc = """Array of smoke couple rates for each texel."""
+)
+asset textureSmokes:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Smoke"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateSmokes:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Smoke"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureSmokes:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Smoke"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateSmokes:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Smoke"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+# Velocity
+float velocityScale = 1 (
+	displayName = "Velocity Scale"
+	displayGroup = "Texture Velocity"
+	doc = """Multiplier for velocity and textureVelocities"""
+)
+bool velocityIsWorldSpace = 0 (
+	displayName = "Velocity Is World Space"
+	displayGroup = "Texture Velocity"
+	doc = """If true, do not rotate velocity by xform"""
+)
+float3 velocity = (0, 0, 400) (
+	displayName = "Velocity"
+	displayGroup = "Texture Velocity"
+	doc = """Default target velocity value."""
+)
+float coupleRateVelocity = 2 (
+	displayName = "Couple Rate"
+	displayGroup = "Texture Velocity"
+	doc = """Default couple rate for velocity channel."""
+)
+float3[] textureVelocities = [] (
+	displayName = "Velocities"
+	displayGroup = "Texture Velocity"
+	doc = """Array of target velocity values for each texel."""
+)
+float[] textureCoupleRateVelocities = [] (
+	displayName = "Couple Rate Velocities"
+	displayGroup = "Texture Velocity"
+	doc = """Array of velocity couple rates for each texel."""
+)
+asset textureVelocities:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Velocity"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateVelocities:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Velocity"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureVelocities:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Velocity"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateVelocities:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Velocity"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+# Divergence
+float divergenceScale = 1 (
+	displayName = "Divergence Scale"
+	displayGroup = "Texture Divergence"
+	doc = """Multiplier for divergence and textureDivergences"""
+)
+float divergence = 0 (
+	displayName = "Divergence"
+	displayGroup = "Texture Divergence"
+	doc = """Default target divergence value."""
+)
+float coupleRateDivergence = 0 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "Texture Divergence"
+	doc = """Default couple rate for divergence channel."""
+)
+float[] textureDivergences = [] (
+	displayName = "Divergences"
+	displayGroup = "Texture Divergence"
+	doc = """Array of target divergence values for each texel."""
+)
+float[] textureCoupleRateDivergences = [] (
+	displayName = "Couple Rate Divergences"
+	displayGroup = "Texture Divergence"
+	doc = """Array of divergence couple rates for each texel."""
+)
+asset textureDivergences:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "Texture Divergence"
+	doc = """Path to image asset to use for texel array."""
+)
+asset textureCoupleRateDivergences:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "Texture Divergence"
+	doc = """Path to image asset to use for texel array."""
+)
+token textureDivergences:channel = "" (
+	displayName = "Channel"
+	displayGroup = "Texture Divergence"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+token textureCoupleRateDivergences:channel = "" (
+	displayName = "Couple Rate Channel"
+	displayGroup = "Texture Divergence"
+	doc = """Channel values supported are red, green, blue, alpha, redSrgb, greenSrgb, blueSrgb, alphaSrgb, redSnorm, greenSnorm, blueSnorm, alphaSnorm"""
+)
+}
+
+class FlowEmitterNanoVdb "FlowEmitterNanoVdb"
+(
+	inherits = </FlowBase>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "NanoVDB Emitter"
+	doc = """Boolean to enable/disable emitter"""
+)
+int levelCount = 1 (
+	displayName = "Level Count"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If greater than 1, NanoVDB emitter will attempt to select Flow level with closest cell size alignment to voxel size."""
+)
+bool followVisibility = 0 (
+	displayName = "Follow Visibility"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, if USD visibility is invisible, emitter will be disabled"""
+)
+rel volumePrim (
+	displayName = "Volume Prim"
+	displayGroup = "NanoVDB Emitter"
+	doc = """Optional relationship to one or more UsdVol, to source arrays"""
+)
+float allocationScale = 1 (
+	displayName = "Allocation Scale"
+	displayGroup = "NanoVDB Emitter"
+	doc = """1.0 allocates blocks needed to contain NanoVDB. 0.0 disables allocation. Values higher than 1.0 can be used to add additional padding."""
+)
+bool allocateActiveLeaves = 1 (
+	displayName = "Allocate Active Leaves"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, finer allocation granularity is used. (Adds some CPU overhead.)"""
+)
+bool applyPostPressure = 0 (
+	displayName = "Apply Post Pressure"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, apply velocity after pressure solve. This is useful for collision, as it allows hard enforcement of velocity inside moving bodies."""
+)
+bool updateCoarseDensity = 0 (
+	displayName = "Update Coarse Density"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, update coarse density for the block covered by this emitter"""
+)
+bool colorIsSrgb = 0 (
+	displayName = "Color Is Srgb"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, perform color correction on temperature, fuel, burn channels"""
+)
+bool swapChannels = 0 (
+	displayName = "Swap Channels"
+	displayGroup = "NanoVDB Emitter"
+	doc = """If true, apply NanoVDB (temperature, fuel, burn, smoke) to Flow (velocity, divergence) and vice versa"""
+)
+# NanoVDB Temperature Channel
+float temperatureScale = 1 (
+	displayName = "Temperature Scale"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Multiplier for temperature and nanoVdbTemperatures"""
+)
+float temperature = 2 (
+	displayName = "Temperature"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Default target temperature value."""
+)
+float coupleRateTemperature = 2 (
+	displayName = "Couple Rate Temperature"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Default couple rate for temperature channel."""
+)
+uint[] nanoVdbTemperatures = [] (
+	displayName = "NanoVDB Temperatures"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateTemperatures = [] (
+	displayName = "Couple Rate Temperatures"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """ Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbTemperatureFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Word offset applied when reading nanoVdbTemperatures array."""
+)
+uint64 nanoVdbCoupleRateTemperatureFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateTemperatures array."""
+)
+asset nanoVdbTemperatures:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbTemperatures."""
+)
+asset nanoVdbCoupleRateTemperatures:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """ Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateTemperatures."""
+)
+token nanoVdbTemperatures:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateTemperatures:gridName = "" (
+	displayName = "Couple Rate Grid Name"
+	displayGroup = "NanoVDB Temperature Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanovDB Fuel Channel
+float fuelScale = 1 (
+	displayName = "Fuel Scale"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Multiplier for fuel and nanoVdbFuels"""
+)
+float fuel = 0 (
+	displayName = "Fuel"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Default target fuel value."""
+)
+float coupleRateFuel = 0 (
+	displayName = "Couple Rate Fuel"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Default couple rate for fuel channel."""
+)
+uint[] nanoVdbFuels = [] (
+	displayName = "Fuels"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateFuels = [] (
+	displayName = "Couple Rate Fuels"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbFuelFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Word offset applied when reading nanoVdbFuels array."""
+)
+uint64 nanoVdbCoupleRateFuelFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateFuels array."""
+)
+asset nanoVdbFuels:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbFuels."""
+)
+asset nanoVdbCoupleRateFuels:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateFuels."""
+)
+token nanoVdbFuels:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateFuels:gridName = "" (
+	displayName = "Coupe Rate Grid Name"
+	displayGroup = "NanoVDB Fuel Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Burn Channel
+float burnScale = 1 (
+	displayName = "Burn Scale"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Multiplier for burn and nanoVdbBurns."""
+)
+float burn = 0 (
+	displayName = "Burn"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Default target burn value."""
+)
+float coupleRateBurn = 0 (
+	displayName = "Couple Rate Burn"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Default couple rate for burn channel."""
+)
+uint[] nanoVdbBurns = [] (
+	displayName = "Burns"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateBurns = [] (
+	displayName = "Couple Rate Burns"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbBurnFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Word offset applied when reading nanoVdbBurns array."""
+)
+uint64 nanoVdbCoupleRateBurnFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateBurns array."""
+)
+asset nanoVdbBurns:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbBurns."""
+)
+asset nanoVdbCoupleRateBurns:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateBurns."""
+)
+token nanoVdbBurns:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """ Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateBurns:gridName = "" (
+	displayName = "Couple Rate Grid Name"
+	displayGroup = "NanoVDB Burn Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Smoke Channel
+float minSmoke = -inf (
+	displayName = "Min Smoke"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Minimum smoke for emitter active region. Used with nanoVdbSmokes."""
+)
+float maxSmoke = inf (
+	displayName = "Max Smoke"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Maximum smoke for emitter active region. Used with nanoVdbSmokes."""
+)
+float smokeScale = 1 (
+	displayName = "Smoke Scale"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Multiplier for smoke and nanoVdbSmokes"""
+)
+float smoke = 10 (
+	displayName = "Smoke"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Default target smoke value."""
+)
+float coupleRateSmoke = 2 (
+	displayName = "Couple Rate Smoke"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Default couple rate for smoke channel."""
+)
+uint[] nanoVdbSmokes = [] (
+	displayName = "Smokes"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateSmokes = [] (
+	displayName = "Couple Rate Smokes"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """ Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbSmokeFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Word offset applied when reading nanoVdbSmokes array."""
+)
+uint64 nanoVdbCoupleRateSmokeFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateSmokes array."""
+)
+asset nanoVdbSmokes:assetPath = @@ (
+	displayName = "Asset Path "
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbSmokes."""
+)
+asset nanoVdbCoupleRateSmokes:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateSmokes."""
+)
+token nanoVdbSmokes:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateSmokes:gridName = "" (
+	displayName = "Couple Rate Grid Name"
+	displayGroup = "NanoVDB Smoke Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Temperature, Fuel, Burn, Smoke 8-bit Channels
+uint[] nanoVdbRgba8s = [] (
+	displayName = "RGBA8s"
+	displayGroup = "NanoVDB 8-bit Channels"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbRgba8FirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB 8-bit Channels"
+	doc = """Word offset applied when reading nanoVdbRgba8s array."""
+)
+asset nanoVdbRgba8s:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB 8-bit Channels"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbSmokes."""
+)
+token nanoVdbRgba8s:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB 8-bit Channels"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Velocity Channel
+float velocityScale = 1 (
+	displayName = "Velocity Scale"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Multiplier for velocity and nanoVdbVelocities"""
+)
+bool velocityIsWorldSpace = 0 (
+	displayName = "Velocity Is World Space"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """If true, do not rotate velocity by xform"""
+)
+float3 velocity = (0, 0, 0) (
+	displayName = "Velocity"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Default target velocity value."""
+)
+float coupleRateVelocity = 2 (
+	displayName = "Velocity"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Default couple rate for velocity channel."""
+)
+uint[] nanoVdbVelocities = [] (
+	displayName = "Velocities"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateVelocities = [] (
+	displayName = "Couple Rate Velocities"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbVelocityFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """ Word offset applied when reading nanoVdbVelocities array."""
+)
+uint64 nanoVdbCoupleRateVelocityFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateVelocities array."""
+)
+asset nanoVdbVelocities:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbVelocities."""
+)
+asset nanoVdbCoupleRateVelocities:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateVelocities."""
+)
+token nanoVdbVelocities:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateVelocities:gridName = "" (
+	displayName = "Couple Rate Grid Name"
+	displayGroup = "NanoVDB Velocity Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Divergence Channel
+float divergenceScale = 1 (
+	displayName = "Divergence Scale"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Multiplier for divergence and nanoVdbDivergences"""
+)
+float divergence = 0 (
+	displayName = "Divergence"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Default target divergence value."""
+)
+float coupleRateDivergence = 0 (
+	displayName = "Couple Rate Divergence"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Default couple rate for divergence channel."""
+)
+uint[] nanoVdbDivergences = [] (
+	displayName = "Divergences"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint[] nanoVdbCoupleRateDivergences = [] (
+	displayName = "Couple Rate Divergences"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbDivergenceFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Word offset applied when reading nanoVdbDivergences array."""
+)
+uint64 nanoVdbCoupleRateDivergenceFirstElement = 0 (
+	displayName = "Couple Rate First Element"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Word offset applied when reading nanoVdbCoupleRateDivergences array."""
+)
+asset nanoVdbDivergences:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """ Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbDivergences."""
+)
+asset nanoVdbCoupleRateDivergences:assetPath = @@ (
+	displayName = "Couple Rate Asset Path"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbCoupleRateDivergences."""
+)
+token nanoVdbDivergences:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+token nanoVdbCoupleRateDivergences:gridName = "" (
+	displayName = "Couple Rate Grid Name"
+	displayGroup = "NanoVDB Divergence Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# NanoVDB Distance Channel
+float minDistance = -0.25 (
+	displayName = "Min Distance"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Minimum distance for emitter active region. Used with nanoVdbDistances."""
+)
+float maxDistance = 0.25 (
+	displayName = "Max Distance"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Maximum distance for emitter active region. Used with nanoVdbDistances."""
+)
+uint[] nanoVdbDistances = [] (
+	displayName = "Distances"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Word array containing NanoVDB data structure"""
+)
+uint64 nanoVdbDistanceFirstElement = 0 (
+	displayName = "First Element"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Word offset applied when reading nanoVdbDistances array."""
+)
+asset nanoVdbDistances:assetPath = @@ (
+	displayName = "Asset Path"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Optional path to OpenVDB/NanoVDB asset to use. Overrides nanoVdbDistances."""
+)
+token nanoVdbDistances:gridName = "" (
+	displayName = "Grid Name"
+	displayGroup = "NanoVDB Distance Channel"
+	doc = """Grid name to search for in NanoVDB data structure."""
+)
+# streaming
+bool enableStreaming = 0 (
+	displayName = "Enable"
+	displayGroup = "NanoVDB Emitter Streaming"
+	doc = """If true, only apply streamingBatchSize per frame"""
+)
+bool streamClearAtStart = 0 (
+	displayName = "Stream Clear At Start"
+	displayGroup = "NanoVDB Emitter Streaming"
+	doc = """If true, clears entire layer when streaming start"""
+)
+uint streamingBatchSize = 1048576 (
+	displayName = "Streaming Batch Size"
+	displayGroup = "NanoVDB Emitter Streaming"
+	doc = """If streaming is enabled, point count emitted per simulate step"""
+)
+bool streamOnce = 0 (
+	displayName = "Stream Once"
+	displayGroup = "NanoVDB Emitter Streaming"
+	doc = """If true, apply each point to the grid only once"""
+)
+}
+
+class FlowSimulate "FlowSimulate"
+(
+	inherits = </FlowBase>
+)
+{
+bool forceSimulate = 0 (
+	displayName = "Force Simulate"
+	displayGroup = "Simulate"
+	doc = """Force simulate, even if timeline is paused."""
+)
+bool simulateWhenPaused = 0 (
+	displayName = "Simulate When Paused"
+	displayGroup = "Simulate"
+	doc = """Run simulation even if deltaTime is 0.0."""
+)
+uint blockMinLifetime = 4 (
+	displayName = "Block Min Lifetime"
+	displayGroup = "Simulate"
+	doc = """Minimum lifetime of any allocate block. Avoids premature deactivation caused by GPU readback delay."""
+)
+float densityCellSize = 0.5 (
+	displayName = "Density Cell Size"
+	displayGroup = "Simulate"
+	doc = """Size of density cells in world units. By default velocity cell size is twice density cell size."""
+)
+int levelCount = 1 (
+	displayName = "Level Count"
+	displayGroup = "Simulate"
+	doc = """When Level Count > 1, additional levels are created at different resolutions."""
+)
+float levelCellSizeMultiplier = 0.5 (
+	displayName = "Level Cell Size Multiplier"
+	displayGroup = "Simulate"
+	doc = """When Level Count > 0, controls how cell size increases/decreases with each level."""
+)
+bool autoCellSize = 0 (
+	displayName = "Auto Cell Size"
+	displayGroup = "Simulate"
+	doc = """If true, Flow will increase cell size as needed to avoid running out of blocks."""
+)
+bool enableLowPrecisionDensity = 0 (
+	displayName = "Enable Low Precision Density"
+	displayGroup = "Simulate"
+	doc = """Use 8-bit channels for temperature, fuel, burn, smoke"""
+)
+bool enableLowPrecisionVelocity = 0 (
+	displayName = "Enable Low Precision Velocity"
+	displayGroup = "Simulate"
+	doc = """Use 8-bit channels for velocity, divergence"""
+)
+bool enableLowPrecisionRescale = 0 (
+	displayName = "Enable Low Precision Rescale"
+	displayGroup = "Simulate"
+	doc = """Rescale at reduced quality to reduce VRAM usage."""
+)
+bool enableSmallBlocks = 0 (
+	displayName = "Enable Small Blocks"
+	displayGroup = "Simulate"
+	doc = """Use 16x8x8 density cell blocks instead of the default 32x16x16"""
+)
+bool enableVariableTimeStep = 0 (
+	displayName = "Enable Variable Time Step"
+	displayGroup = "Simulate"
+	doc = """Take step every frame. Can cause inconsistent simulation behavior for highly variable time step values, but useful when frame time is fixed already."""
+)
+bool forceClear = 0 (
+	displayName = "Force Clear"
+	displayGroup = "Simulate"
+	doc = """Kills all active block allocations in this layer"""
+)
+bool forceDisableCoreSimulation = 0 (
+	displayName = "Force Disable Core Simulation"
+	displayGroup = "Simulate"
+	doc = """Disable most simulation components. Emitters still function."""
+)
+bool forceDisableEmitters = 0 (
+	displayName = "Force Disable Emitters"
+	displayGroup = "Simulate"
+	doc = """Disable all emitters in this layer"""
+)
+bool clearOnRescale = 0 (
+	displayName = "Clear On Rescale"
+	displayGroup = "Simulate"
+	doc = """If cell size is changed, clear instead of migrating."""
+)
+bool interpolateTimeSteps = 0 (
+	displayName = "Interpolate Time Steps"
+	displayGroup = "Simulate"
+	doc = """Useful for motion blur in movie capture. Produces sub-frames between full simulation steps."""
+)
+uint maxStepsPerSimulate = 1 (
+	displayName = "Max Steps Per Simulate"
+	displayGroup = "Simulate"
+	doc = """Limit on steps per frame to avoid excessive steps when application is running slow."""
+)
+bool physicsCollisionEnabled = 0 (
+	displayName = "Physics Collision Enabled"
+	displayGroup = "Simulate"
+	doc = """If true, enable collision for prims using the USD physics collision applied schema."""
+)
+bool physicsConvexCollision = 1 (
+	displayName = "Physics Convex Collision"
+	displayGroup = "Simulate"
+	doc = """If true, use the PhysX convex collision hulls for Flow collision. Requires PhysX to be actively simulating."""
+)
+float stepsPerSecond = 60 (
+	displayName = "Steps Per Second"
+	displayGroup = "Simulate"
+	doc = """Simulation update rate"""
+)
+float timeScale = 1 (
+	displayName = "Time Scale"
+	displayGroup = "Simulate"
+	doc = """Scales input time. Useful for slomo."""
+)
+uint velocitySubSteps = 1 (
+	displayName = "Velocity Sub Steps"
+	displayGroup = "Simulate"
+	doc = """Higher values improve behavior with high speed effects, at the cost of performance."""
+)
+}
+
+class FlowAdvectionCombustionParams "FlowAdvectionCombustionParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Advection Combustion Params"
+	doc = """Boolean to enable/disable advection."""
+)
+bool combustionEnabled = 1 (
+	displayName = "Combustion Enabled"
+	displayGroup = "Advection Combustion Params"
+	doc = """If false, only buoyancyMaxSmoke and buoyancyPerSmoke are active"""
+)
+bool downsampleEnabled = 1 (
+	displayName = "Downsample Enabled"
+	displayGroup = "Advection Combustion Params"
+	doc = """Boolean to enable/disable downsample. Downsample needed for SummaryAllocate"""
+)
+bool forceFadeEnabled = 0 (
+	displayName = "Force Fade Enabled"
+	displayGroup = "Advection Combustion Params"
+	doc = """If true, fade will be applied even if advection is disabled"""
+)
+bool globalFetch = 0 (
+	displayName = "Global Fetch"
+	displayGroup = "Advection Combustion Params"
+	doc = """Improves advection quality for high velocities, with some increase in runtime cost. (Can remove some banding artifacts)"""
+)
+float3 gravity = (0, 0, -100) (
+	displayName = "Gravity"
+	displayGroup = "Advection Combustion Params"
+	doc = """Used to determine the up direction for buoyancy."""
+)
+float coolingRate = 1.5 (
+	displayName = "Cooling Rate"
+	displayGroup = "Advection Combustion Params"
+	doc = """Temperature fade, applied on a per cell level. (Not conduction/convection.)"""
+)
+float ignitionTemp = 0.05 (
+	displayName = "Ignition Temp"
+	displayGroup = "Advection Combustion Params"
+	doc = """Minimum temperature for combustion."""
+)
+float tempPerBurn = 5 (
+	displayName = "Temp Per Burn"
+	displayGroup = "Advection Combustion Params"
+	doc = """Temperature increase relative to burn amount."""
+)
+float fuelPerBurn = 0.25 (
+	displayName = "Fuel Per Burn"
+	displayGroup = "Advection Combustion Params"
+	doc = """Fuel consumed relative to burn amount. Lower values will make a given amount of fuel last longer."""
+)
+float burnPerTemp = 4 (
+	displayName = "Burn Per Temp"
+	displayGroup = "Advection Combustion Params"
+	doc = """Rate of burn relative to temperature. Higher burn values affect fuel consumption and divergence (expansion) terms."""
+)
+float smokePerBurn = 3 (
+	displayName = "Smoke Per Burn"
+	displayGroup = "Advection Combustion Params"
+	doc = """Smoke increase relative to burn amount."""
+)
+float divergencePerBurn = 0 (
+	displayName = "Divergence Per Burn"
+	displayGroup = "Advection Combustion Params"
+	doc = """Expansion relative to burn amount. Units comparable to velocity in terms of scale. Higher values produce visible expansion, but can remove detail."""
+)
+float buoyancyPerTemp = 2 (
+	displayName = "Buoyancy Per Temp"
+	displayGroup = "Advection Combustion Params"
+	doc = """Upward force relative to temperature. Higher values help produce mushroom effects."""
+)
+float buoyancyPerSmoke = 0 (
+	displayName = "Buoyancy Per Smoke"
+	displayGroup = "Advection Combustion Params"
+	doc = """Buoyant force per unit smoke, default 0.0"""
+)
+float buoyancyMaxSmoke = 1 (
+	displayName = "Buoyancy Max Smoke"
+	displayGroup = "Advection Combustion Params"
+	doc = """Smoke clamp value applied before computing smoke buoyancy, default 1.0"""
+)
+}
+
+class FlowAdvectionChannelParams "FlowAdvectionChannelParams"
+(
+	inherits = </Typed>
+)
+{
+float damping = 0 (
+	displayName = "Damping"
+	displayGroup = "Advection Channel Params"
+	doc = """Reduce channel proportional to current value. Valid range is 0 to 1, where 1 takes the value to 0 immediately."""
+)
+float fade = 0 (
+	displayName = "Fade"
+	displayGroup = "Advection Channel Params"
+	doc = """Reduce channel at a constant rate per second. Valid range is 0 to infinity effectively."""
+)
+float secondOrderBlendFactor = 0.9 (
+	displayName = "Second Order Blend Factor"
+	displayGroup = "Advection Channel Params"
+	doc = """Second order correction factor. Value range is 0.0 to 1.0. 0.5 is generally a safe default. Higher values increase the sharpness, but comes with potentially banding artifacts. Use extra caution with velocity, where effects are even more pronounced."""
+)
+float secondOrderBlendThreshold = 0.001 (
+	displayName = "Second Order Blend Threshold"
+	displayGroup = "Advection Channel Params"
+	doc = """Minimum value to apply second order correction. Reduces simulation cost for cells near zero, with minimal/zero visual artifacts."""
+)
+}
+
+class FlowVorticityParams "FlowVorticityParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Vorticity Params"
+	doc = """Boolean to enable/disable vorticity confinement."""
+)
+float forceScale = 0.6 (
+	displayName = "Force Scale"
+	displayGroup = "Vorticity Params"
+	doc = """Control intensity of effect"""
+)
+float temperatureMask = 0 (
+	displayName = "Temperature Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied relative to temperature value in grid."""
+)
+float fuelMask = 0 (
+	displayName = "Fuel Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied relative to fuel value in grid."""
+)
+float burnMask = 0 (
+	displayName = "Burn Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied relative to burn value in grid."""
+)
+float smokeMask = 0 (
+	displayName = "Smoke Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied relative to smoke value in grid."""
+)
+float velocityMask = 1 (
+	displayName = "Velocity Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Velocity log mask, works together with velocityLogScale. Makes local linear velocity a requirement for forces to be applied. The log part makes the force applied with respect to velocity a diminishing return to avoid instability."""
+)
+float velocityLinearMask = 0 (
+	displayName = "Velocity Linear Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Makes force directly proportional to local velocity. Math: velocityLinearMask * speed"""
+)
+float velocityLogScale = 1 (
+	displayName = "Velocity Log Scale"
+	displayGroup = "Vorticity Params"
+	doc = """This primarily exists to allow rescaling of Flow effects to different coordinate systems."""
+)
+float constantMask = 0 (
+	displayName = "Constant Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied without respect to local velocity."""
+)
+float densityMask = 0 (
+	displayName = "Density Mask"
+	displayGroup = "Vorticity Params"
+	doc = """Allows force to be applied relative to divergence (Parameter name should be fixed.)"""
+)
+}
+
+class FlowPressureParams "FlowPressureParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Pressure Params"
+	doc = """Boolean to enable/disable the pressure solver."""
+)
+}
+
+class FlowSummaryAllocateParams "FlowSummaryAllocateParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Summary Allocate Params"
+	doc = """If false, SummaryAllocate allocates no blocks."""
+)
+bool enableNeighborAllocation = 1 (
+	displayName = "Enable Neighbor Allocation"
+	displayGroup = "Summary Allocate Params"
+	doc = """If false, SummaryAllocate preserves active blocks, but does not attempt allocation of new blocks."""
+)
+float smokeThreshold = 0.02 (
+	displayName = "Smoke Threshold"
+	displayGroup = "Summary Allocate Params"
+	doc = """Minimum smoke to keep a block active."""
+)
+float speedThreshold = 1 (
+	displayName = "Speed Threshold"
+	displayGroup = "Summary Allocate Params"
+	doc = """Minimum speed to keep a block active, given speedThresholdMinSmoke is satisfied."""
+)
+float speedThresholdMinSmoke = 0 (
+	displayName = "Speed Threshold Min Smoke"
+	displayGroup = "Summary Allocate Params"
+	doc = """Minimum smoke value for speedThreshold to apply."""
+)
+}
+
+class FlowSparseNanoVdbExportParams "FlowSparseNanoVdbExportParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 0 (
+	displayName = "Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables NanoVDB export. If false, zero NanoVDB export will occur."""
+)
+bool statisticsEnabled = 1 (
+	displayName = "Statistics Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, compute min/max/ave values on exported VDBs."""
+)
+bool temperatureEnabled = 0 (
+	displayName = "Temperature Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of temperature channel to NanoVDB."""
+)
+bool fuelEnabled = 0 (
+	displayName = "Fuel Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of fuel channel to NanoVDB."""
+)
+bool burnEnabled = 0 (
+	displayName = "Burn Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of burn channel to NanoVDB."""
+)
+bool smokeEnabled = 1 (
+	displayName = "Smoke Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of smoke channel to NanoVDB."""
+)
+bool rgbaEnabled = 0 (
+	displayName = "RGBA Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of temperature, fuel, burn, and smoke channels as vec4f NanoVDB."""
+)
+bool rgbEnabled = 0 (
+	displayName = "RGB Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of temperature, fuel, burn channels as vec3f NanoVDB."""
+)
+bool velocityEnabled = 0 (
+	displayName = "Velocity Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of velocity channel to NanoVDB."""
+)
+bool divergenceEnabled = 0 (
+	displayName = "Divergence Enabled"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true, enables export of divergence channel to NanoVDB."""
+)
+bool enableLowPrecisionRgba = 0 (
+	displayName = "Enable Low Precision RGBA"
+	displayGroup = "NanoVDB Export Settings"
+	doc = """If true and rgbaEnabled is true, then will export temperature, fuel, burn, and smoke channels as RGBA8 NanoVDB."""
+)
+bool readbackEnabled = 0 (
+	displayName = "Enabled"
+	displayGroup = "Readback"
+	doc = """If true, copy VDBs back to CPU. If false, VDBs will be GPU access only."""
+)
+bool readbackClearOnStart = 1 (
+	displayName = "Clear On Start"
+	displayGroup = "Readback"
+	doc = """If true, readbackDirectory will be cleared of Flow VDB files at start of simulation."""
+)
+bool readbackClearOnStop = 1 (
+	displayName = "Clear On Stop"
+	displayGroup = "Readback"
+	doc = """If true, readbackDirectory will be cleared of Flow VDB files at stop of simulation."""
+)
+asset readbackDirectory = @@ (
+	displayName = "Directory"
+	displayGroup = "Readback"
+	doc = """Target directory for VDB files."""
+)
+bool readbackOpenVDB = 1 (
+	displayName = "OpenVDB"
+	displayGroup = "Readback"
+	doc = """If true, convert NanoVDB to OpenVDB format for storage on disk."""
+)
+rel readbackMaterial (
+	displayName = "Material"
+	displayGroup = "Readback"
+	doc = """Optional path to an OmniVolumeDensity material. Will automatically configure USD timeSamples necessary to play cache."""
+)
+}
+
+class FlowOffscreen "FlowOffscreen"
+(
+	inherits = </FlowBase>
+)
+{
+}
+
+class FlowShadowParams "FlowShadowParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Shadow Params"
+	doc = """Boolean to enable/disable self shadowing."""
+)
+
+float attenuation = 0.045 (
+	displayName = "Attenuation"
+	displayGroup = "Shadow Params"
+	doc = """Rate of light blockage. Higher values increase self shadow effect."""
+)
+bool coarsePropagate = 1 (
+	displayName = "Coarse Propagate"
+	displayGroup = "Shadow Params"
+	doc = """Compute shadows at 2x2x2 coarser grid. Provides good quality at a much lower runtime cost."""
+)
+bool isPointLight = 0 (
+	displayName = "Is Point Light"
+	displayGroup = "Shadow Params"
+	doc = """If true, point light, else directional light."""
+)
+float3 lightDirection = (1, 1, 1) (
+	displayName = "Light Direction"
+	displayGroup = "Shadow Params"
+	doc = """Direction to light."""
+)
+float3 lightPosition = (0, 0, 0) (
+	displayName = "Light Position"
+	displayGroup = "Shadow Params"
+	doc = """Point light position."""
+)
+float minIntensity = 0.125 (
+	displayName = "Min Intensity"
+	displayGroup = "Shadow Params"
+	doc = """Provide ambient level"""
+)
+uint numSteps = 16 (
+	displayName = "Num Steps"
+	displayGroup = "Shadow Params"
+	doc = """Number of steps per self shadow ray, divide by 2 when coarsePropagate is enabled."""
+)
+float stepOffsetScale = 1 (
+	displayName = "Step Offset Scale"
+	displayGroup = "Shadow Params"
+	doc = """Ray march offset to avoid a cell shadowing itself."""
+)
+float stepSizeScale = 0.75 (
+	displayName = "Step Size Scale"
+	displayGroup = "Shadow Params"
+	doc = """Ray march step size relative to cell size. Higher values increase quality and performance cost."""
+)
+bool enableRawMode = 0 (
+	displayName = "Enable Raw Mode"
+	displayGroup = "Shadow Params"
+	doc = """If true, do not apply colormap, pass raw density xyzw as color"""
+)
+bool rawModeIsosurface = 1 (
+	displayName = "Raw Mode Isosurface"
+	displayGroup = "Shadow Params"
+	doc = """If true, smoke channel is used as threshold for a surface, with smoke > 0.5 being inside the surface."""
+)
+bool rawModeNormalize = 1 (
+	displayName = "Raw Mode Normalize"
+	displayGroup = "Shadow Params"
+	doc = """If true, temperature/fuel/burn (RGB) channels are normalized by smoke channel. Used with point clouds."""
+)
+float colormapXMin = 0.0 (
+	displayName = "Colormap X Min"
+	displayGroup = "Shadow Params"
+	doc = """Minimum X value for colormap, where X is normally temperature."""
+)
+float colormapXMax = 1.0 (
+	displayName = "Colormap X Max"
+	displayGroup = "Shadow Params"
+	doc = """Maximum X value for colormap, where X is normally temperature."""
+)
+}
+
+class FlowRayMarchColormapParams "FlowRayMarchColormapParams"
+(
+	inherits = </Typed>
+)
+{
+float colorScale = 2.5 (
+	displayName = "Color Scale"
+	displayGroup = "Colormap Params"
+	doc = """Multiplier applied to RGB components."""
+)
+float[] colorScalePoints = [1, 1, 1, 1, 1, 1] (
+	displayName = "Color Scale Points"
+	displayGroup = "Colormap Params"
+	doc = """Multipliers of control points applied to RGB component in control point."""
+)
+uint resolution = 32 (
+	displayName = "Resolution"
+	displayGroup = "Colormap Params"
+	doc = """Number of texels in colormap."""
+)
+float4[] rgbaPoints = [(0.9, 0.9, 0.9, 0.004902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.04902), (0.9, 0.9, 0.9, 0.904902)] (
+	displayName = "RGBA Points"
+	displayGroup = "Colormap Params"
+	doc = """RGBA values of control points, RGB can be over 1.0 for HDR effects."""
+)
+float[] xPoints = [0, 0.05, 0.15, 0.6, 0.85, 1] (
+	displayName = "X Points"
+	displayGroup = "Colormap Params"
+	doc = """X coordinates of control points, maps to temperature. Valid over 0 to 1."""
+)
+}
+
+
+class FlowDebugVolumeParams "FlowDebugVolumeParams"
+(
+	inherits = </Typed>
+)
+{
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Debug Volume Params"
+	doc = """If true, debug volume operations are applied. Will increase VRAM use."""
+)
+bool enableSpeedAsTemperature = 0 (
+	displayName = "Enable Speed As Temperature"
+	displayGroup = "Debug Volume Params"
+	doc = """Write speed value to temperature channel, to visualize in ray march."""
+)
+bool enableVelocityAsDensity = 0 (
+	displayName = "Enable Velocity As Density"
+	displayGroup = "Debug Volume Params"
+	doc = """Write abs() of velocity channels to density xyz to visualize in ray march."""
+)
+bool enableDivergenceAsSmoke = 0 (
+	displayName = "Enable Divergence As Smoke"
+	displayGroup = "Debug Volume Params"
+	doc = """Write divergence channel to smoke to visualize in ray march."""
+)
+bool outputScaleBySmoke = 0 (
+	displayName = "Output Scale by Smoke"
+	displayGroup = "Debug Volume Params"
+	doc = """If true, output temperature, fuel, burn are multiplied by smoke. Useful with rayMarch raw mode."""
+)
+float3 velocityScale = (0.01, 0.01, 0.01) (
+	displayName = "Velocity Scale"
+	displayGroup = "Debug Volume Params"
+	doc = """Scale applied to velocity to control brightness for ray march result."""
+)
+float outputTemperatureScale = 1.0 (
+	displayName = "Output Temperature Scale"
+	displayGroup = "Debug Volume Params"
+	doc = """Scale applied to temperature output value."""
+)
+float outputFuelScale = 1.0 (
+	displayName = "Output Fuel Scale"
+	displayGroup = "Debug Volume Params"
+	doc = """Scale applied to fuel output value."""
+)
+float outputBurnScale = 1.0 (
+	displayName = "Output Burn Scale"
+	displayGroup = "Debug Volume Params"
+	doc = """Scale applied to burn output value."""
+)
+float outputSmokeScale = 1.0 (
+	displayName = "Output Smoke Scale"
+	displayGroup = "Debug Volume Params"
+	doc = """Scale applied to smoke output value."""
+)
+float outputTemperatureOffset = 0.0 (
+	displayName = "Output Temperature Offset"
+	displayGroup = "Debug Volume Params"
+	doc = """Offset applied to temperature output value."""
+)
+float outputFuelOffset = 0.0 (
+	displayName = "Output Fuel Offset"
+	displayGroup = "Debug Volume Params"
+	doc = """Offset applied to fuel output value."""
+)
+float outputBurnOffset = 0.0 (
+	displayName = "Output Burn Offset"
+	displayGroup = "Debug Volume Params"
+	doc = """Offset applied to burn output value."""
+)
+float outputSmokeOffset = 0.0 (
+	displayName = "Output Smoke Offset"
+	displayGroup = "Debug Volume Params"
+	doc = """Offset applied to smoke output value."""
+)
+float4 slicePlane = (1.0, 0.0, 0.0, 0.0) (
+	displayName = "Slice Plane"
+	displayGroup = "Debug Volume Params"
+	doc = """If slicePlaneThickness is nonzero, plane used to control visible cross section."""
+)
+float slicePlaneThickness = 0.0 (
+	displayName = "Slice Plane Thickness"
+	displayGroup = "Debug Volume Params"
+	doc = """If greater than zero, thickness of visible cross section. If less than zero, thickness of removed cross section."""
+)
+}
+
+
+class FlowRender "FlowRender"
+(
+	inherits = </FlowBase>
+)
+{
+}
+
+
+class FlowRayMarchParams "FlowRayMarchParams"
+(
+	inherits = </Typed>
+)
+{
+bool enableBlockWireframe = 0 (
+	displayName = "Enable Block Wireframe"
+	displayGroup = "Ray March Params"
+	doc = """Visualizes active blocks for debug purposes"""
+)
+bool enableRawMode = 0 (
+	displayName = "Enable Raw Mode"
+	displayGroup = "Ray March Params"
+	doc = """If true, do not apply colormap, pass raw density xyzw as color"""
+)
+bool rawModeIsosurface = 1 (
+	displayName = "Raw Mode Isosurface"
+	displayGroup = "Ray March Params"
+	doc = """If true, smoke channel is used as threshold for a surface, with smoke > 0.5 being inside the surface."""
+)
+bool rawModeNormalize = 1 (
+	displayName = "Raw Mode Normalize"
+	displayGroup = "Ray March Params"
+	doc = """If true, temperature/fuel/burn (RGB) channels are normalized by smoke channel. Used with point clouds."""
+)
+float attenuation = 0.05 (
+	displayName = "Attenuation"
+	displayGroup = "Ray March Params"
+	doc = """Rate of light blockage. Higher values make the volume look more opaque"""
+)
+float shadowFactor = 1 (
+	displayName = "Shadow Factor"
+	displayGroup = "Ray March Params"
+	doc = """The degree to which the z shadow channel scales the RGB channels from the colormap. 1.0 is default. 0.0 disables self shadowing effectively."""
+)
+float colorScale = 1 (
+	displayName = "Color Scale"
+	displayGroup = "Ray March Params"
+	doc = """Multiplier applied to RGB values during ray march"""
+)
+float stepSizeScale = 0.75 (
+	displayName = "Step Size Scale"
+	displayGroup = "Ray March Params"
+	doc = """Ray march step size relative to cell size. Higher values increase quality and performance cost."""
+)
+float colormapXMin = 0.0 (
+	displayName = "Colormap X Min"
+	displayGroup = "Ray March Params"
+	doc = """Minimum X value for colormap, where X is normally temperature."""
+)
+float colormapXMax = 1.0 (
+	displayName = "Colormap X Max"
+	displayGroup = "Ray March Params"
+	doc = """Maximum X value for colormap, where X is normally temperature."""
+)
+}
+
+class FlowRayMarchCloudParams "FlowRayMarchCloudParams"
+(
+	inherits = </Typed>
+)
+{
+bool enableCloudMode = 0 (
+	displayName = "Enable Cloud Mode"
+	displayGroup = "Ray March Cloud Params"
+	doc = """If true, default ray march is disabled, these settings are used instead."""
+)
+float3 ambientColor = (0.4, 0.55, 0.9) (
+	displayName = "Ambient Color"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Color in shadowed regions."""
+)
+float ambientMultiplier = 1 (
+	displayName = "Ambient Multiplier"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Scale to adjust brightness of ambient color."""
+)
+float3 attenuationMultiplier = (1, 1, 1) (
+	displayName = "Attenuation Multiplier"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Controls how fast cloud shadows go dark."""
+)
+float densityMultiplier = 0.5 (
+	displayName = "Density Multiplier"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Scales input density."""
+)
+int numShadowSteps = 10 (
+	displayName = "Num Shadow Steps"
+	displayGroup = "Ray March Cloud Params"
+	doc = """More steps can improve quality, but add performance cost."""
+)
+float shadowStepMultiplier = 1 (
+	displayName = "Shadow Step Multiplier"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Larger steps cover more of world space, at risk of artifacts."""
+)
+float3 sunDirection = (1, 1, 1) (
+	displayName = "Sun Direction"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Direction to sun."""
+)
+float3 volumeBaseColor = (1.1, 1, 0.95) (
+	displayName = "Volume Base Color"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Base color for scattering."""
+)
+float volumeColorMultiplier = 1 (
+	displayName = "Volume Color Multiplier"
+	displayGroup = "Ray March Cloud Params"
+	doc = """Scale to adjust brightness of volume base color."""
+)
+}
+
+class FlowRenderSettingsParams "FlowRenderSettingsParams"
+(
+	inherits = </Typed>
+)
+{
+bool enableAutoApply = 1 (
+	displayName = "Enable Auto Apply"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, global settings will be automatically applied based this prim and others with enableAutoApply=true"""
+)
+bool flowEnabled = 1 (
+	displayName = "Flow Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should be enabled in the renderer"""
+)
+int maxBlocks = 0 (
+	displayName = "Max Blocks"
+	displayGroup = "Render Setting Votes"
+	doc = """Recommended minimum global maxBlocks setting"""
+)
+bool rayTracedShadowsEnabled = 0 (
+	displayName = "Ray Traced Shadows Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should contribute to ray traced shadows"""
+)
+bool rayTracedReflectionsEnabled = 1 (
+	displayName = "Ray Traced Reflections Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should contribute to ray traced reflections"""
+)
+bool rayTracedTranslucencyEnabled = 1 (
+	displayName = "Ray Traced Translucency Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should render in translucency pass rather than composite"""
+)
+bool pathTracingEnabled = 1 (
+	displayName = "Path Tracing Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes Flow should render in path tracing pass rather than composite"""
+)
+bool pathTracingShadowsEnabled = 0 (
+	displayName = "Path Tracing Shadows Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should contribute to path traced shadows"""
+)
+bool compositeEnabled = 1 (
+	displayName = "Composite Enabled"
+	displayGroup = "Render Setting Votes"
+	doc = """If true, votes that Flow should composite onto scene if not rendered some other way"""
+)
+}
+
+class FlowPointCloud "FlowPointCloud"
+(
+	inherits = </Typed>
+)
+{
+bool attributeCopyEnabled = 1 (
+	displayName = "Enable Attribute Copy"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, FlowPointCloud attributes will override child Flow prim attributes."""
+)
+bool enabled = 1 (
+	displayName = "Enabled"
+	displayGroup = "Flow Point Cloud"
+	doc = """If false, voxels will be cleared."""
+)
+bool autoCellSize = 1 (
+	displayName = "Auto Cell Size"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, cellSize will increase as needed to stay within Flow max blocks."""
+)
+int levelCount = 1 (
+	displayName = "Level Count"
+	displayGroup = "Flow Point Cloud"
+	doc = """When Level Count > 1, additional levels are created at different resolutions."""
+)
+float cellSize = 0.015625 (
+	displayName = "Cell Size"
+	displayGroup = "Flow Point Cloud"
+	doc = """Minimum voxel width. Exact voxel width if autoCellSize is false."""
+)
+bool enableLowPrecision = 1 (
+	displayName = "Enable Low Precision"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, use 8-bit channels for color."""
+)
+bool updateWhilePaused = 1 (
+	displayName = "Update While Paused"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, update Flow volume even while timeline is paused."""
+)
+bool fadeEnabled = 0 (
+	displayName = "Fade Enabled"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, fade voxel values over time."""
+)
+float fadeRate = 1 (
+	displayName = "Fade Rate"
+	displayGroup = "Flow Point Cloud"
+	doc = """Fade rate in units / second"""
+)
+bool enableSmallBlocks = 0 (
+	displayName = "Enable Small Blocks"
+	displayGroup = "Flow Point Cloud"
+	doc = """Use 16x8x8 cell blocks instead of the default 32x16x16"""
+)
+float rayMarchAttenuation = 10 (
+	displayName = "Ray March Attenuation"
+	displayGroup = "Flow Point Cloud"
+	doc = """Higher values make point cloud more opaque."""
+)
+float rayMarchColorScale = 10 (
+	displayName = "Ray March Color Scale"
+	displayGroup = "Flow Point Cloud"
+	doc = """Scale to apply to color during ray march. Needed because of tonemapping."""
+)
+bool enableStreaming = 1 (
+	displayName = "Enable Streaming"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, load point data over multiple frames. Better performance."""
+)
+bool streamOnce = 1 (
+	displayName = "Stream Once"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, stop streaming once all points are voxelized."""
+)
+bool streamClearAtStart = 1 (
+	displayName = "Stream Clear at Start"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, clear old voxels before streaming new."""
+)
+uint streamingBatchSize = 4194304 (
+	displayName = "Streaming Batch Size"
+	displayGroup = "Flow Point Cloud"
+	doc = """Points per streaming update, helps control cost per frame vs total frames to load."""
+)
+bool colorIsSrgb = 1 (
+	displayName = "Color is SRGB"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, treat source color data as SRGB color space instead of linear color space."""
+)
+bool followVisibility = 1 (
+	displayName = "Follow Visibility"
+	displayGroup = "Flow Point Cloud"
+	doc = """If true, enable or disable Flow emitters to align to render visibility setting."""
+)
+float widthScale = 1 (
+	displayName = "Width Scale"
+	displayGroup = "Flow Point Cloud"
+	doc = """Scale to apply to point width before level selection."""
+)
+float coupleRate = 100000000 (
+	displayName = "Couple Rate"
+	displayGroup = "Flow Point Cloud"
+	doc = """Lower values move voxel values to point values more slowly."""
+)
+}

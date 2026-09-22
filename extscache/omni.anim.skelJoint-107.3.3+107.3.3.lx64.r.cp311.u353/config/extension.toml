@@ -1,0 +1,76 @@
+[package]
+version = "107.3.3"
+title = "Skeleton Joint"
+authors = ["NVIDIA"]
+keywords = ["anim", "animation", "skeleton", "skeletal", "skel", "joint"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Expand on skeleton/joint features on UsdSkel"
+category = "Animation"
+icon = "data/icons/icon.png"
+
+[[python.module]]
+name = "omni.anim.skelJoint"
+
+[dependencies]
+"omni.kit.commands" = {}
+"omni.kit.usd_undo" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.window.preferences" = {}
+"omni.usd" = {}
+"omni.hydra.rtx" = {}
+"usdrt.scenegraph" = {}
+"omni.timeline" = {}
+"omni.kit.viewport.menubar.display" = {optional=true}
+"omni.kit.pip_archive" = {}
+"omni.usd.schema.anim" = {}
+"omni.anim.retarget.core" = { version="~107.3" }
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.mainwindow",
+    #"omni.kit.renderer.core",
+    #"omni.kit.renderer.capture",
+    #"omni.kit.async_engine",
+    #"omni.ui",
+    #"omni.usd",
+    #"omni.timeline",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.viewport.window",
+    "omni.kit.viewport.utility",
+    "omni.kit.property.transform",
+    #"omni.hydra.rtx",
+]
+
+args = [
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport", # Match the legacy window name.
+    "--/renderer/enabled=rtx",               # "--/renderer/enabled=pxr", Can we run and pass with Storm ?
+    "--/renderer/active=rtx",                # "--/renderer/enabled=pxr", Can we run and pass with Storm ?
+    "--/app/asyncRendering=false",
+    "--/app/docks/disabled=true",
+    "--/app/viewport/forceHideFps=true",
+    "--/app/window/width=800",               # Be explicit about the Window size
+    "--/app/window/height=600",              # Be explicit about the Window size
+    "--/app/renderer/resolution/width=800",  # Be explicit about the Viewport resolution
+    "--/app/renderer/resolution/height=600", # Be explicit about the Viewport resolution
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/exts/omni.anim.skelJoint/enableSavePose=true",
+    "--no-window"
+]
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[settings]
+exts."omni.anim.skelJoint".useFabric = true
+exts."omni.anim.skelJoint".forceUpdateSelectionToUSD = true
+exts."omni.anim.skelJoint".transientOmniJoints = true

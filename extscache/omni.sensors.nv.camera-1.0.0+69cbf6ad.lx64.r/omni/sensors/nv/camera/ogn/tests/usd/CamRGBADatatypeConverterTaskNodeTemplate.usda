@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamRGBADatatypeConverterTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamRGBADatatypeConverterTaskNode" (
+        docs="""Translates the camera image to a RGB image for SiL FastPath."""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamRGBADatatypeConverterTaskNode"
+        int node:typeVersion = 1
+
+        # 7 attributes
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0.0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom token inputs:rgbaDataType = "UINT8" (
+            docs="""target data type of the RGBA: Could be UINT8, UINT16, FLOAT16, FLOAT32"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0.0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom bool inputs:uintApplyGammaCorrection = true (
+            docs="""Indicates whether gamma correction should be applied you do a UINTx to UINTx conversion"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

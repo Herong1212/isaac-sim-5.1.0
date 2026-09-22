@@ -1,0 +1,78 @@
+{
+    "MakeVector2": {
+        "version": 1,
+        "description": [
+            "Merge 2 input values into a single output vector.",
+            "If the inputs are arrays, the output will be an array of vectors."
+        ],
+        "uiName": "Make 2-Vector",
+        "categories": ["math:conversion"],
+        "tags": ["compose", "combine", "join"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "x": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "X",
+                "description": "The first component of the vector"
+             },
+             "y": {
+                "type": ["double", "float", "half", "int", "double[]", "float[]", "half[]", "int[]"],
+                "uiName": "Y",
+                "description": "The second component of the vector"
+             }
+        },
+        "outputs": {
+            "tuple": {
+                "type": ["double[2]", "float[2]", "half[2]", "int[2]", "double[2][]", "float[2][]", "half[2][]", "int[2][]"],
+                "uiName": "Vector",
+                "description": "Output vector(s)"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:x": {"type": "double", "value": 42.0},
+                "inputs:y": {"type": "double", "value": 1.0},
+                "outputs:tuple": {"type": "double[2]", "value": [42.0, 1.0]}
+            },
+            {
+                "inputs:x": {"type": "float", "value": 42.0},
+                "inputs:y": {"type": "float", "value": 1.0},
+                "outputs:tuple": {"type": "float[2]", "value": [42.0, 1.0]}
+            },
+            {
+                "inputs:x": {"type": "float", "value": 42.0},
+                "outputs:tuple": {"type": "float[2]", "value": [42.0, 0.0]}
+            },
+            {
+                "inputs:x": {"type": "half", "value": 42.0},
+                "inputs:y": {"type": "half", "value": 1.0},
+                "outputs:tuple": {"type": "half[2]", "value": [42.0, 1.0]}
+            },
+            {
+                "inputs:x": {"type": "int", "value": 42},
+                "inputs:y": {"type": "int", "value": -42},
+                "outputs:tuple": {"type": "int[2]", "value": [42, -42]}
+            },
+            {
+                "inputs:x": {"type": "double[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "double[]", "value": [0, 1, 2]},
+                "outputs:tuple": {"type": "double[2][]", "value": [[42, 0], [1, 1], [0, 2]]}
+            },
+            {
+                "inputs:x": {"type": "float[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "float[]", "value": [0, 1, 2]},
+                "outputs:tuple": {"type": "float[2][]", "value": [[42, 0], [1, 1], [0, 2]]}
+            },
+            {
+                "inputs:x": {"type": "half[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "half[]", "value": [0, 1, 2]},
+                "outputs:tuple": {"type": "half[2][]", "value": [[42, 0], [1, 1], [0, 2]]}
+            },
+            {
+                "inputs:x": {"type": "int[]", "value": [42, 1, 0]},
+                "inputs:y": {"type": "int[]", "value": [0, 1, 2]},
+                "outputs:tuple": {"type": "int[2][]", "value": [[42, 0], [1, 1], [0, 2]]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+[package]
+title = "NVIDIA IndeX Core"
+version = "1.0.1"
+description = "Provides access to the NVIDIA IndeX library."
+authors = ["NVIDIA"]
+keywords = ["index", "volume", "volumetric"]
+category = "Internal"
+readme = "docs/README.md"
+#changelog = "docs/CHANGELOG.md"
+icon = "data/icon.png"
+#preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.index.libs" = {}
+"omni.client" = {}
+"omni.usd.libs" = {}
+
+[[native.plugin]]
+path = "bin/deps/rtx.indexlib.plugin"
+
+[settings]
+nvindex.componentsCore = "+io"
+nvindex.pluginsCore = "base_importer,+openvdb_integration"
+
+[[test]]
+waiver = "Tested by omni.hydra.index"

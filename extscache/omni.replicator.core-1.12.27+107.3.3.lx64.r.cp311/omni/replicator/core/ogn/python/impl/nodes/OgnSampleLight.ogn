@@ -1,0 +1,62 @@
+{
+    "OgnSampleLight": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node randomizes the properties of light prims.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Randomize light properties"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "prims": {
+                "description": ["prim(s) to set location"],
+                "type": "target"
+            },
+            "colorMin": {
+                "description": ["The minimum R, G, B values of light color. Scale is from 0 to 1"],
+                "type": "float[3]",
+                "default": [0, 0, 0]
+            },
+            "colorMax": {
+                "description": ["The maximum R, G, B values of light color. Scale is from 0 to 1"],
+                "type": "float[3]",
+                "default": [1, 1, 1]
+            },
+            "intensityRange": {
+                "description": ["First element contains the min value for intensity, second element contains max value"],
+                "type": "float[2]",
+                "default": [1, 100000]
+            },
+            "enableTemperature": {
+                "description": ["Enable if temperature of light needs to be randomized"],
+                "type": "bool",
+                "default": false
+            },
+            "temperatureRange": {
+                "description": ["Range of light temperature randomization. Will only be used if inputs:enableTemperature is enabled"],
+                "type": "float[2]",
+                "default": [1000, 10000]
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

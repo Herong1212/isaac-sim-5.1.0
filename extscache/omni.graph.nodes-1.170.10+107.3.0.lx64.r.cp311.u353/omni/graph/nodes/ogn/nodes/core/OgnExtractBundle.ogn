@@ -1,0 +1,26 @@
+{
+    "ExtractBundle": {
+        "version": 3,
+        "description": [
+            "Exposes readable attributes for a bundle as outputs on this node.",
+            "When this node computes it will read the latest attribute values from the target bundle into these",
+            "node attributes"
+        ],
+        "uiName": "Extract Bundle",
+        "categories": [ "bundle" ],
+        "inputs": {
+            "bundle": {
+                "type": "bundle",
+                "description": "The bundle to be read from."
+            }
+        },
+        "outputs": {
+            "passThrough": {
+                "type": "bundle",
+                "description": [
+                    "The input bundle passed as-is"
+                ]
+            }
+        }
+    }
+}

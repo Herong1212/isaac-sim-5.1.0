@@ -1,0 +1,44 @@
+{
+    "GetPrimsAtPath": {
+        "version": 1,
+        "description": ["DEPRECATED - Use ToTarget"],
+        "uiName": "Get Prims At Path (Legacy)",
+        "categories": ["sceneGraph"],
+        "scheduling": [ "threadsafe" ],
+        "metadata": {
+            "hidden": "true"
+        },
+        "inputs": {
+            "path": {
+                "type": ["token", "token[]"],
+                "description": "A token or token array to compute representing a path."
+            }
+        },
+        "outputs": {
+            "prims": {
+                "type": "target",
+                "description": "The output prim paths"
+            }
+        },
+        "state": {
+            "path": {
+                "type": "token",
+                "description": "Snapshot of previously seen path"
+            }
+        },
+        "tests": [
+            {
+                "inputs:path": {"type": "token", "value": ""},
+                "outputs:prims": []
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/A"},
+                "outputs:prims": ["/A"]
+            },
+            {
+                "inputs:path": {"type": "token[]", "value": ["", "/A", "/A/B", "/A/B/C"]},
+                "outputs:prims": ["", "/A", "/A/B", "/A/B/C"]
+            }
+        ]
+    }
+}

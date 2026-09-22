@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def SpatialAudio "AmbientSound"
+    {
+        uniform token auralMode = "nonSpatial"
+        uniform asset filePath = @AmbientSound.mp3@
+        uniform token playbackMode = "loopFromStage"
+    }
+
+    def SpatialAudio "WoodysVoice"
+    {
+        uniform token auralMode = "spatial"
+        uniform asset filePath = @WoodysVoice.mp3@
+        uniform double mediaOffset = 0.33333333333
+        uniform timecode startTime = 65
+        uniform timecode endTime = 165
+        double3 xformOp:translate = (3, -3, 2)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+        uniform UNKNOWN_TYPE test_unregistered_value = 65
+    }
+}

@@ -1,0 +1,58 @@
+[package]
+support_level = "Sample"
+category = "Rendering"
+changelog = "docs/CHANGELOG.md"
+description = "An extension to capture Kit viewport into images and videos."
+icon = "data/icon.svg"
+preview_image = "data/preview.png"
+readme = "docs/README.md"
+title = "Image and Video Capture"
+version = "1.7.5"
+
+
+[dependencies]
+"omni.usd" = {}
+"omni.kit.viewport.utility" = {}
+"omni.timeline" = {}
+"omni.ui" = {}
+"omni.videoencoding" = { optional=true }
+"omni.kit.renderer.core" = {optional=true}
+"omni.kit.renderer.capture" = {optional=true}
+"omni.appwindow" = {}
+"omni.graph.image.core" = {}
+# Required for Viewport state toggling
+"omni.kit.viewport.actions" = {}
+
+[settings]
+# Additional frames to wait for post-processing capturing a render-product
+exts."omni.kit.capture.viewport".renderProduct.waitFrames = 1
+
+[[python.module]]
+name = "omni.kit.capture.viewport"
+
+[[test]]
+args = [
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/rtx-transient/pathtracing/rtptEnabled=true",
+    "--/rtx-transient/rtEnabled=true",
+    "--/rtx-transient/ptEnabled=true",
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.videoencoding",
+    "omni.graph",  # Used in scripts that are called with this extension
+    "omni.graph.image.nodes",
+    "omni.kit.test_suite.helpers",
+]
+stdoutFailPatterns.exclude = [
+    "*ogPostProcessPath UsdRelationship not supported*",
+    "*AttributeError:*",
+]
+timeout=1600
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md", "docs/USAGE_PYTHON.md"]

@@ -1,0 +1,48 @@
+{
+    "GetMatrix4Scale": {
+        "version": 1,
+        "description": [
+            "Gets the scale of the given matrix3d or matrix4d value which represents a linear transformation.",
+            "Returns the vector3 scale component."
+        ],
+        "uiName": "Get Scale",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[3]", "matrixd[3][]", "matrixd[4]", "matrixd[4][]"],
+                "uiName": "Transform",
+                "description": "The matrix to extract the scale from."
+            }
+        },
+        "outputs": {
+            "scale": {
+                "type": ["vectord[3]", "vectord[3][]"],
+                "uiName": "Scale",
+                "description": "The vector that represents the scale of the transformation."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,2,0,0, 0,0,3,0, 50,0,0,1] },
+                "outputs:scale": {"type": "vectord[3]", "value": [1, 2, 3] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,0,0,0, 0,2,0,0, 0,0,3,0, 50,0,0,1],
+                    [4,0,0,0, 0,5,0,0, 0,0,6,0, 100,0,0,1]] },
+                "outputs:scale": {"type":"vectord[3][]", "value": [[1, 2, 3], [4, 5, 6]] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,2,0, 0,0,3] },
+                "outputs:scale": {"type": "vectord[3]", "value": [1, 2, 3] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value": [
+                    [1,0,0, 0,2,0, 0,0,3],
+                    [4,0,0, 0,5,0, 0,0,6]] },
+                "outputs:scale": {"type":"vectord[3][]", "value": [[1, 2, 3], [4, 5, 6]] }
+            }
+        ]
+    }
+}

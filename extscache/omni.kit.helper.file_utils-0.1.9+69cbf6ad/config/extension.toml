@@ -1,0 +1,48 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "0.1.9"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Utilities for common file operations"
+description="Set of utilities for common file operations"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+category = "core"
+support_level = "Core"
+
+[dependencies]
+"omni.client" = {}
+"omni.usd" = { optional = true }
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.widget.file".
+[[python.module]]
+name = "omni.kit.helper.file_utils"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/SETTINGS.md",
+    "docs/USAGE_PYTHON.md",
+]
+
+[[test]]
+args = [
+   "--/app/window/dpiScaleOverride=1.0",
+   "--/app/window/scaleToMonitor=false",
+]

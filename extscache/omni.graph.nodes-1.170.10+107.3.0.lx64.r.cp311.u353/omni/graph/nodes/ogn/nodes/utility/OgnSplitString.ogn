@@ -1,0 +1,50 @@
+{
+    "SplitString": {
+        "version": 1,
+        "description": [
+            "Returns a list of elements from a string based on a delimiter."
+        ],
+        "uiName": "Split String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": "string",
+                "description": "The input string."
+            },
+            "delimiter": {
+                "type": "string",
+                "description": "The string to use as a delimiter to split the string.",
+                "default": " "
+            }
+        },
+        "outputs": {
+            "elements": {
+                "type": "token[]",
+                "description": "The string elements."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:string": "This is a test string",
+                "inputs:delimiter": " ",
+                "outputs:elements": ["This", "is", "a", "string", "test"]
+            },
+            {
+                "inputs:string": "This is a test string",
+                "inputs:delimiter": "",
+                "outputs:elements": []
+            },
+            {
+                "inputs:string": "This is a test string",
+                "inputs:delimiter": ".",
+                "outputs:elements": ["This is a test string"]
+            },
+            {
+                "inputs:string": "A <= B <= C <= D <= E <= F <= G <= H",
+                "inputs:delimiter": " <= ",
+                "outputs:elements": ["A", "B", "C", "D", "E", "F", "G", "H"]
+            }
+        ]
+    }
+}

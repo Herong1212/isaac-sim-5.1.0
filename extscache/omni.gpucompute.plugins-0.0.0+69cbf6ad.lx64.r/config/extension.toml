@@ -1,0 +1,18 @@
+[package]
+title = "GPU Compute plugins bundle"
+category = "Internal"
+description = "Provides an abstraction layer between CUDA compute and D3D/Vulkan compute. It is used as fabric's gateway to CUDA"
+keywords = ["CUDA", "GPU", "compute", "D3D", "Vulkan"]
+support_level = "Core"
+
+[dependencies]
+"omni.gpu_foundation" = {} # because of slang for 'omni.gpucompute-d3dvk.plugin'
+
+[[native.plugin]]
+path = "bin/deps/omni.gpucompute-cuda.plugin"
+
+[[native.plugin]]
+path = "bin/deps/omni.gpucompute-d3dvk.plugin"
+
+[[test]]
+waiver = "Tested in rendering"

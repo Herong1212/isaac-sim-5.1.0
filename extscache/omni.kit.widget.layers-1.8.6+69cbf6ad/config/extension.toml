@@ -1,0 +1,84 @@
+[package]
+title = "Layer View"
+category = "Tools"
+feature = true
+description = "Omniverse Kit Layer Window"
+version = "1.8.6"
+keywords = ["layers"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+authors = ["NVIDIA"]
+repository = ""
+support_level = "sample"
+
+[dependencies]
+"omni.activity.core" = {}
+"omni.usd" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.context_menu" = { optional = true }
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.window.content_browser" = { optional = true }
+"omni.kit.notification_manager" = { optional = true }
+"omni.kit.window.drop_support" = { optional = true }
+"omni.kit.widget.stage" = {}
+"omni.kit.widget.prompt" = {}
+"omni.kit.window.file" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.usd.layers" = {}
+"omni.kit.widget.live_session_management" = { optional = true }
+"omni.kit.actions.core" = {}
+"omni.kit.hotkeys.core" = { optional = true }
+"omni.kit.widget.options_button" = {}
+"omni.kit.window.file_importer" = {}
+"omni.kit.window.file_exporter" = {}
+"omni.kit.async_engine" = {}
+
+[[python.module]]
+name = "omni.kit.widget.layers"
+
+[[test]]
+args = [
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+    "--/renderer/active=pxr",
+    "--/renderer/enabled=pxr",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+]
+
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.hydra_texture",
+    "omni.kit.context_menu",
+    "omni.kit.selection",
+    "omni.kit.mainwindow",
+    "omni.kit.widget.live_session_management",
+    "omni.kit.widget.versioning",
+    "omni.kit.window.content_browser",
+    "omni.kit.window.drop_support",
+    "omni.kit.material.library",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.collaboration.channel_manager",
+]
+
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface*while unloading all plugins*",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

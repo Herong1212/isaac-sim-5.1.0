@@ -1,0 +1,24 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.graph.ui-1.101.6%2B107.3.0.lx64.r.cp311.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.193460.b693200d.gl"
+        date = 1747128607
+        buildNumber = "23-06+master.7596.0d1e7eb2.gl"
+        repoName = "kit-omnigraph"
+        signed = 1

@@ -1,0 +1,330 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary renderSettings = {
+            bool "rtx:flow:enabled" = 1
+            int "rtx:flow:maxBlocks" = 32768
+            bool "rtx:flow:pathTracingEnabled" = 1
+            bool "rtx:flow:rayTracedReflectionsEnabled" = 1
+            bool "rtx:flow:rayTracedTranslucencyEnabled" = 1
+        }
+    }
+    defaultPrim = "PointCloud"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "PointCloud"
+{
+    def Xform "PointCloud"
+    {
+		double3 xformOp:rotateZYX = (0, 0, 0)
+        double3 xformOp:scale = (100, 100, 100)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+        def FlowPointCloud "flowPointCloud"
+        {
+            custom bool attributeCopyEnabled = 1
+            custom bool autoCellSize = 1
+            custom float cellSize = 0.015625
+            custom bool enabled = 1
+            custom bool enableLowPrecision = 1
+            custom bool enableSmallBlocks = 0
+            custom bool fadeEnabled = 0
+            custom float fadeRate = 1
+            custom int levelCount = 1
+            custom float rayMarchAttenuation = 10
+            custom float rayMarchColorScale = 10
+            custom bool updateWhilePaused = 1
+            custom float coupleRate = 100000000
+
+            def FlowEmitterPoint "flowEmitterPoint"
+            {
+                custom bool allocateMask = 1
+                custom bool applyPostPressure = 0
+                float burn = 1
+                custom float burnScale = 1
+                custom bool colorIsSrgb = 1
+                float coupleRateBurn = 100000000
+                float coupleRateDivergence = 0
+                float coupleRateFuel = 100000000
+                float coupleRateSmoke = 100000000
+                float coupleRateTemperature = 100000000
+                float coupleRateVelocity = 0
+                float divergence = 0
+                custom float divergenceScale = 1
+                custom bool enabled = 1
+                custom bool enableStreaming = 1
+                float fuel = 1
+                custom float fuelScale = 1
+                int layer = 0
+                int levelCount = 1
+                custom uint numSubSteps = 1
+                custom uint[] pointAllocateMasks = []
+                custom float[] pointBurns = []
+                custom float3[] pointColors = []
+                custom float[] pointCoupleRateBurns = []
+                custom float[] pointCoupleRateDivergences = []
+                custom float[] pointCoupleRateFuels = []
+                custom float[] pointCoupleRateSmokes = []
+                custom float[] pointCoupleRateTemperatures = []
+                custom float[] pointCoupleRateVelocities = []
+                custom float[] pointDivergences = []
+                custom float[] pointFuels = []
+                custom float3[] pointPositions = []
+                custom float[] pointSmokes = []
+                custom float[] pointTemperatures = []
+                custom float3[] pointVelocities = []
+                float smoke = 1
+                custom float smokeScale = 1
+                custom bool streamClearAtStart = 1
+                custom uint streamingBatchSize = 4194304
+                custom bool streamOnce = 1
+                float temperature = 1
+                custom float temperatureScale = 1
+                bool updateCoarseDensity = 1
+                float3 velocity = (0, 0, 0)
+                custom bool velocityIsWorldSpace = 0
+                custom float velocityScale = 1
+            }
+
+            def FlowEmitterNanoVdb "flowEmitterNanoVdb"
+            {
+                float coupleRateBurn = 100000000
+                float coupleRateFuel = 100000000
+                float coupleRateSmoke = 100000000
+                float coupleRateTemperature = 100000000
+                bool enableStreaming = 1
+                float smoke = 0
+                bool streamClearAtStart = 1
+                bool streamOnce = 1
+                float temperature = 0
+                int levelCount = 1
+                bool colorIsSrgb = 1
+                float minSmoke = 0.0001
+            }
+
+            def FlowSimulate "flowSimulate"
+            {
+                custom uint blockMinLifetime = 0
+                custom float densityCellSize = 0.5
+                custom bool autoCellSize = 1
+                custom bool enableLowPrecisionDensity = 1
+                custom bool enableLowPrecisionVelocity = 1
+                custom bool enableLowPrecisionRescale = 1
+                custom bool enableSmallBlocks = 0
+                custom bool enableVariableTimeStep = 0
+                custom bool forceClear = 0
+                bool forceDisableCoreSimulation = 1
+                custom bool forceDisableEmitters = 0
+                custom bool clearOnRescale = 0
+                custom bool forceSimulate = 1
+                custom bool interpolateTimeSteps = 0
+                int layer = 0
+                int levelCount = 1
+                custom uint maxStepsPerSimulate = 1
+                custom bool physicsCollisionEnabled = 0
+                custom bool physicsConvexCollision = 1
+                custom bool simulateWhenPaused = 0
+                custom float stepsPerSecond = 60
+                custom float timeScale = 1
+                custom uint velocitySubSteps = 1
+
+                def FlowAdvectionCombustionParams "advection"
+                {
+                    custom float buoyancyMaxSmoke = 1
+                    custom float buoyancyPerSmoke = 0
+                    custom float buoyancyPerTemp = 2
+                    custom float burnPerTemp = 4
+                    custom bool combustionEnabled = 1
+                    custom float coolingRate = 1.5
+                    custom float divergencePerBurn = 0
+                    bool downsampleEnabled = 0
+                    custom bool enabled = 1
+                    custom bool forceFadeEnabled = 0
+                    custom float fuelPerBurn = 0.25
+                    custom bool globalFetch = 0
+                    float3 gravity = (0, -100, 0)
+                    custom float ignitionTemp = 0.05
+                    custom float smokePerBurn = 3
+                    custom float tempPerBurn = 5
+
+                    def FlowAdvectionChannelParams "temperature"
+                    {
+                        float damping = 0
+                        float fade = 1
+                        custom float secondOrderBlendFactor = 0.9
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "fuel"
+                    {
+                        float damping = 0
+                        float fade = 1
+                        custom float secondOrderBlendFactor = 0.9
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "burn"
+                    {
+                        float damping = 0
+                        float fade = 1
+                        custom float secondOrderBlendFactor = 0.9
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "smoke"
+                    {
+                        float damping = 0
+                        float fade = 1
+                        custom float secondOrderBlendFactor = 0.9
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "velocity"
+                    {
+                        custom float damping = 0.01
+                        custom float fade = 1
+                        custom float secondOrderBlendFactor = 0.5
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "divergence"
+                    {
+                        custom float damping = 0.01
+                        custom float fade = 1
+                        custom float secondOrderBlendFactor = 0.5
+                        custom float secondOrderBlendThreshold = 0.001
+                    }
+                }
+
+                def FlowSummaryAllocateParams "summaryAllocate"
+                {
+                    bool enabled = 0
+                    bool enableNeighborAllocation = 0
+                    custom float smokeThreshold = 0.02
+                    custom float speedThreshold = 1
+                    custom float speedThresholdMinSmoke = 0
+                }
+
+                def FlowVorticityParams "vorticity"
+                {
+                    custom float burnMask = 0
+                    custom float constantMask = 0
+                    custom float densityMask = 0
+                    custom bool enabled = 1
+                    custom float forceScale = 0.6
+                    custom float fuelMask = 0
+                    custom float smokeMask = 0
+                    custom float temperatureMask = 0
+                    custom float velocityLinearMask = 0
+                    custom float velocityLogScale = 1
+                    custom float velocityMask = 1
+                }
+
+                def FlowPressureParams "pressure"
+                {
+                    custom bool enabled = 1
+                }
+
+                def FlowSparseNanoVdbExportParams "nanoVdbExport"
+                {
+                    custom bool burnEnabled = 0
+                    custom bool divergenceEnabled = 0
+                    custom bool enabled = 0
+                    custom bool fuelEnabled = 0
+                    custom bool readbackClearOnStart = 1
+                    custom bool readbackClearOnStop = 1
+                    custom asset readbackDirectory = @@
+                    custom bool readbackEnabled = 0
+                    custom rel readbackMaterial
+                    custom bool readbackOpenVDB = 1
+                    custom bool smokeEnabled = 1
+                    custom bool statisticsEnabled = 1
+                    custom bool temperatureEnabled = 0
+                    custom bool velocityEnabled = 0
+                }
+            }
+
+            def FlowOffscreen "flowOffscreen"
+            {
+                int layer = 0
+
+                def FlowShadowParams "shadow"
+                {
+                    float attenuation = 10
+                    custom bool coarsePropagate = 1
+                    bool enabled = 0
+                    custom bool isPointLight = 0
+                    custom float3 lightDirection = (1, 1, 1)
+                    custom float3 lightPosition = (0, 0, 0)
+                    custom float minIntensity = 0.125
+                    custom uint numSteps = 16
+                    custom float stepOffsetScale = 1
+                    custom float stepSizeScale = 0.75
+                }
+
+                def FlowRayMarchColormapParams "colormap"
+                {
+                    custom float colorScale = 2.5
+                    custom float[] colorScalePoints = [1, 1, 1, 1, 1, 1]
+                    custom uint resolution = 32
+                    custom float4[] rgbaPoints = [(0.9, 0.9, 0.9, 0.004902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902), (0.9, 0.9, 0.9, 0.904902)]
+                    custom float[] xPoints = [0, 0.05, 0.15, 0.6, 0.85, 1]
+                }
+
+                def FlowDebugVolumeParams "debugVolume"
+                {
+                    custom bool enableSpeedAsTemperature = 0
+                    custom bool enableVelocityAsDensity = 0
+                    custom float3 velocityScale = (0.01, 0.01, 0.01)
+                }
+            }
+
+            def FlowRender "flowRender"
+            {
+                int layer = 0
+
+                def FlowRayMarchParams "rayMarch"
+                {
+                    float attenuation = 10
+                    custom float colorScale = 10
+                    custom bool enableBlockWireframe = 0
+                    bool enableRawMode = 1
+                    custom float shadowFactor = 1
+                    custom float stepSizeScale = 0.75
+
+                    def FlowRayMarchCloudParams "cloud"
+                    {
+                        custom float3 ambientColor = (0.4, 0.55, 0.9)
+                        custom float ambientMultiplier = 1
+                        custom float3 attenuationMultiplier = (1, 1, 1)
+                        custom float densityMultiplier = 0.5
+                        custom bool enableCloudMode = 0
+                        custom int numShadowSteps = 10
+                        custom float shadowStepMultiplier = 1
+                        custom float3 sunDirection = (1, 1, 1)
+                        custom float3 volumeBaseColor = (1.1, 1, 0.95)
+                        custom float volumeColorMultiplier = 1
+                    }
+                }
+
+                def FlowRenderSettingsParams "renderSettings"
+                {
+                    custom bool compositeEnabled = 1
+                    custom bool enableAutoApply = 1
+                    custom bool flowEnabled = 1
+                    custom int maxBlocks = 32768
+                    custom bool pathTracingEnabled = 1
+                    custom bool pathTracingShadowsEnabled = 0
+                    custom bool rayTracedReflectionsEnabled = 1
+                    custom bool rayTracedShadowsEnabled = 0
+                    custom bool rayTracedTranslucencyEnabled = 1
+                }
+            }
+        }
+    }
+}

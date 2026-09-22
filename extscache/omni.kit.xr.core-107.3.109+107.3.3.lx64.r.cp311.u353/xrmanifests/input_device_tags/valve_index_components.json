@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "name": "valve_index_components",
+    "requiredInputs": [
+        "a",
+        "b",
+        "trigger",
+        "trackpad",
+        "thumbstick",
+        "squeeze"
+    ]
+}

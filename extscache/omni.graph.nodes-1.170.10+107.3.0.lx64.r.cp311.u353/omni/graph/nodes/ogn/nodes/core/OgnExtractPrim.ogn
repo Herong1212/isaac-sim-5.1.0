@@ -1,0 +1,38 @@
+{
+    "ExtractPrim": {
+        "version": 1,
+        "description": [
+            "Extract a child bundle that contains a primitive with requested path/prim.",
+            "This node is designed to work with Multiple Primitives in a Bundle. It searches for a child bundle in the input bundle,",
+            "with 'sourcePrimPath' that matches 'inputs:prim' or 'inputs:primPath'. The found child bundle will be provided to 'outputs_primBundle', or invalid,",
+            "bundle otherwise."
+        ],
+        "uiName": "Extract Prim",
+        "categories": [ "bundle" ],
+        "inputs": {
+            "prims": {
+                "uiName": "Prims Bundle",
+                "type": "bundle",
+                "description": "The Multiple Primitives in Bundle to extract from."
+            },
+            "primPath": {
+                "uiName": "Prim Path",
+                "type": "path",
+                "description": "The path of the prim to be extracted from Multiple Primitives in Bundle.",
+                "deprecated": "Use prim input instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim to be extracted from Multiple Primitives in Bundle."
+            }
+        },
+        "outputs": {
+            "primBundle": {
+                "type": "bundle",
+                "description": [
+                    "The extracted Single Primitive in Bundle"
+                ]
+            }
+        }
+    }
+}

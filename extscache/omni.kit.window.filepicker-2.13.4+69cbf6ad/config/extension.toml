@@ -1,0 +1,73 @@
+[package]
+title = "Filepicker Window"
+version = "2.13.4"
+category = "Internal"
+description = "Filepicker popup dialog and embeddable widget"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+readme  = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.usd.core" = { optional=true }
+"omni.client" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.helper.file_utils" = {}
+"omni.kit.widget.filebrowser" = {}
+"omni.kit.widget.browser_bar" = {}
+"omni.kit.window.popup_dialog" = {}
+"omni.kit.widget.versioning" = { optional=true}
+"omni.kit.widget.search_delegate" = { optional=true }
+"omni.kit.widget.nucleus_connector" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.widget.options_button" = {}
+"omni.kit.widget.context_menu" = {}
+
+[[python.module]]
+name = "omni.kit.window.filepicker"
+
+[[python.scriptFolder]]
+path = "scripts"
+
+[settings]
+exts."omni.kit.window.filepicker".timeout = 10.0    # DEPRECATED
+persistent.exts."omni.kit.window.filepicker".window_split = 306
+exts."omni.kit.window.filepicker".show_only_collections = ["bookmarks", "omniverse", "my-computer"]
+# OM-103188: Add default open directory for Filepicker
+exts."omni.kit.window.filepicker".default_open_directory = "omniverse://"
+exts."omni.kit.window.filepicker".mounted_servers = {}
+# The following setting is example to add default server connections
+# exts."omni.kit.window.filepicker".mounted_servers = {"localhost" = "omniverse://localhost", "another-server" = "omniverse://another-server"}
+exts."omni.kit.window.filepicker".show_add_new_connection = true
+exts."omni.kit.window.filepicker".detail_width_init = 236
+exts."omni.kit.window.filepicker".detail_width_min = 24
+exts."omni.kit.window.filepicker".detail_width_max = 350
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.kit.ui_test",
+	"omni.usd.core",
+    "omni.kit.mainwindow",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.pip_archive", # needed for psutil
+    "omni.kit.widget.search_delegate",
+    "omni.kit.widget.versioning",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

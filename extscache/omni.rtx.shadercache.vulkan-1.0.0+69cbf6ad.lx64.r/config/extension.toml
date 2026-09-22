@@ -1,0 +1,44 @@
+[core]
+reloadable = false
+
+[package]
+title = "Shader caches for Vulkan"
+version = "1.0.0"
+category = "Internal"
+description = "Shader caches for Vulkan"
+keywords = ["shader", "cache", "Vulkan"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+# compiled shaders are different per platform and per config
+writeTarget.platform = true
+writeTarget.config = true
+
+# Note:
+# This extension loads all vulkan shadercache sub-extensions as a bundle and is kept for backward compatibility.
+# New apps should instead load individual extensions as desired.
+[dependencies]
+"omni.gpu_foundation.shadercache.vulkan" = {}
+"omni.hydra.rtx.shadercache.vulkan" = {}
+"omni.hydra.iray.shadercache.vulkan" = {}
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md"
+]
+
+[[python.module]]
+name = "omni.rtx.shadercache.vulkan"
+
+[[test]]
+name = "startup"
+# This extension can't run on its own. It is only brought by omni.gpu_foundation. Disable startup test:
+enabled = false
+
+[[test]]
+waiver = "Shader cache"
+
+dependencies = [
+    "omni.gpu_foundation",
+]

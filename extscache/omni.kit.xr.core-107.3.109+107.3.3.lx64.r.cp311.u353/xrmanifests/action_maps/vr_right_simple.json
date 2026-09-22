@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "priority": 20,
+    "name": "VR Simple Controller (Right)",
+    "toolsLayout": "vr",
+    "dominantHand": "right",
+    "tags": [
+        {
+            "inputDevice": "/user/hand/left",
+            "tag": "simple_controller_components"
+        },
+        {
+            "inputDevice": "/user/hand/right",
+            "tag": "simple_controller_components"
+        }
+    ],
+    "tools": [
+        "teleport",
+        "select",
+        "menu"
+    ],
+    "actions": {
+        "xr_left_teleport_forward": "/user/hand/right/select",
+        "xr_menu": "/user/hand/left/select",
+        "xr_right_toggle_beam": "/user/hand/right/menu",
+        "xr_left_toggle_beam": "/user/hand/left/menu",
+        "xr_right_select_beam": "/user/hand/right/select",
+        "xr_left_select_beam": "/user/hand/left/select"
+    }
+}

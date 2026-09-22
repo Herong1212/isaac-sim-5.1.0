@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "priority": 10,
+    "name": "VR Oculus (Single Left)",
+    "toolsLayout": "vr",
+    "tags": [
+        {
+            "inputDevice": "/user/hand/left",
+            "tag": "left_oculus_touch_components"
+        }
+    ],
+    "tools": [
+        "teleport",
+        "grab",
+        "move",
+        "select",
+        "navigation",
+        "menu"
+    ],
+    "actions": {
+        "xr_left_teleport_backward": "/user/hand/left/dpad_down",
+        "xr_left_teleport_forward": "/user/hand/left/dpad_up",
+        "xr_navigation_rotate_left": "/user/hand/left/dpad_left",
+        "xr_navigation_rotate_right": "/user/hand/left/dpad_right",
+        "xr_menu": "/user/hand/left/y",
+
+        "xr_left_toggle_beam": "/user/hand/left/x",
+        "xr_left_grab": "/user/hand/left/squeeze",
+        "xr_left_grab_manipulate": "/user/hand/left/thumbstick",
+        "xr_left_select_beam": "/user/hand/left/trigger",
+        "xr_left_grab_select_beam": "/user/hand/left/squeeze",
+        "xr_left_select_move": "/user/hand/left/thumbstick"
+    }
+}

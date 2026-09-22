@@ -1,0 +1,25 @@
+[package]
+version = "107.3.3"
+title = "Animation Retargeting Bundle (BETA)"
+authors = ["NVIDIA"]
+keywords = ["animation", "skeleton", "skeletal", "retarget"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Bundle for retarget extensions"
+category = "Animation"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.retarget.bundle"
+
+[dependencies]
+"omni.anim.retarget.core" = { version="~107.3" }
+"omni.anim.retarget.preview" = { version="~107.3" }
+"omni.anim.retarget.ui" = { version="~107.3" }
+
+[package.writeTarget]
+kit = true
+
+[[test]]
+waiver = "Bundle extension"

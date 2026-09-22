@@ -1,0 +1,103 @@
+{
+    "CapitalizeString": {
+        "version": 1,
+        "description": [
+            "Formats a string based on a formatting operation (Upper Case, Lower Case, Capitalize, Title, etc.)."
+        ],
+        "uiName": "Capitalize String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token", "token[]"],
+                "description": "The base string."
+            },
+            "operation": {
+                "type": "token",
+                "description": "The formatting operation.",
+                "default": "UpperCase",
+                "metadata": {
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "upper": "UpperCase",
+                        "lower": "LowerCase",
+                        "capitalize": "Capitalize",
+                        "title": "Title"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": ["string", "token", "token[]"],
+                "description": "The modified string."
+            }
+        },
+        "tests": [
+            {
+                "inputs:string": {"type": "string", "value": ""},
+                "outputs:string": {"type": "string", "value": ""}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a String"},
+                "inputs:operation": "UpperCase",
+                "outputs:string": {"type": "string", "value": "THIS IS A STRING"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a String"},
+                "inputs:operation": "LowerCase",
+                "outputs:string": {"type": "string", "value": "this is a string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a String"},
+                "inputs:operation": "Capitalize",
+                "outputs:string": {"type": "string", "value": "This is a string"}
+            },
+            {
+                "inputs:string": {"type": "string", "value": "This is a String"},
+                "inputs:operation": "Title",
+                "outputs:string": {"type": "string", "value": "This Is A String"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a Token"},
+                "inputs:operation": "UpperCase",
+                "outputs:string": {"type": "token", "value": "THIS IS A TOKEN"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a Token"},
+                "inputs:operation": "LowerCase",
+                "outputs:string": {"type": "token", "value": "this is a token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a Token"},
+                "inputs:operation": "Capitalize",
+                "outputs:string": {"type": "token", "value": "This is a token"}
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a Token"},
+                "inputs:operation": "Title",
+                "outputs:string": {"type": "token", "value": "This Is A Token"}
+            },
+            {
+                "inputs:string": {"type": "token[]", "value": ["This is a Token", "This is a Array"]},
+                "inputs:operation": "UpperCase",
+                "outputs:string": {"type": "token[]", "value": ["THIS IS A TOKEN", "THIS IS A ARRAY"]}
+            },
+            {
+                "inputs:string": {"type": "token[]", "value": ["This is a Token", "This is a Array"]},
+                "inputs:operation": "LowerCase",
+                "outputs:string": {"type": "token[]", "value": ["this is a token", "this is a array"]}
+            },
+            {
+                "inputs:string": {"type": "token[]", "value": ["This is a Token", "This is a Array"]},
+                "inputs:operation": "Capitalize",
+                "outputs:string": {"type": "token[]", "value": ["This is a token", "This is a array"]}
+            },
+            {
+                "inputs:string": {"type": "token[]", "value": ["This is a Token", "This is a Array"]},
+                "inputs:operation": "Title",
+                "outputs:string": {"type": "token[]", "value": ["This Is A Token", "This Is A Array"]}
+            }
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+[package]
+title = "UJITSO Build System Client"
+category = "Internal"
+description = "A build system to facilitate retrieving, building and caching of derived data like GPU-ready geometry or textures."
+keywords = ["UJITSO", "build", "cache"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.ujitso.default" = {}
+#"omni.ujitso.processor.texture" = {} # this is provided by the "omni.gpu_foundation" extension
+#"omni.ujitso.processor.geometry" = {} # this is provided by the "omni.hydra.rtx" extension
+"omni.hsscclient" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = true
+
+[[test]]
+waiver = "Tested in rendering repo"
+
+[documentation]
+pages = ["docs/Overview.md"]

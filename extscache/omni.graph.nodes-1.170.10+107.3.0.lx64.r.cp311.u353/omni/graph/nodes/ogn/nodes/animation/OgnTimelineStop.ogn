@@ -1,0 +1,25 @@
+{
+    "StopTimeline": {
+        "version": 1,
+        "description": "Stops playback of the main timeline at the current frame",
+        "metadata": {
+            "uiName": "Stop playback"
+        },
+        "categories": [ "time" ],
+        "scheduling": "compute-on-request",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            }
+        }
+    }
+}

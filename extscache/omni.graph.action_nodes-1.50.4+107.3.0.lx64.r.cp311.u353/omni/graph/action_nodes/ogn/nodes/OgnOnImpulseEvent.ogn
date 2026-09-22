@@ -1,0 +1,48 @@
+{
+    "omni.graph.action.OnImpulseEvent": {
+        "version": 3,
+        "description": [
+            "Triggers the output execution once when the state attribute 'Enable Impulse' is set."
+        ],
+        "uiName": "On Impulse Event",
+        "categories": ["graph:action", "event"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "inputs": {
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while the Stage is being played.",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "After the impulse, signal to the graph that execution can continue downstream.",
+                "uiName": "Trigger"
+            }
+        },
+        "state": {
+            "enableImpulse": {
+                "type": "bool",
+                "description": "When true, activate 'Trigger' once and reset to false."
+            }
+        },
+        "tests": [
+            {
+                "outputs:execOut": 0,
+                "state_set:enableImpulse": false,
+                "state_get:enableImpulse": false
+            },
+            {
+                "inputs:onlyPlayback": false,
+                "outputs:execOut": 1,
+                "state_set:enableImpulse": true,
+                "state_get:enableImpulse": false
+            }
+        ]
+    }
+}

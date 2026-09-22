@@ -1,0 +1,57 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD Animation schema"
+description="USD Animation schema"
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+[[python.module]]
+name = "pxr"
+
+[[python.module]]
+name = "AnimationSchema"
+
+[[python.module]]
+name = "AnimationSchemaTools"
+
+[[python.module]]
+name = "OmniSkelSchema"
+
+[[python.module]]
+name = "RetargetingSchema"
+
+[[python.module]]
+name = "RetargetingSchemaTools"
+
+[[python.module]]
+name = "usd.schema.anim"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}animationSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}animationSchema${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}animationSchemaTools${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}animationSchemaTools${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniSkelSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniSkelSchema${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}retargetingSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}retargetingSchema${lib_ext}"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}retargetingSchemaTools${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}retargetingSchemaTools${lib_ext}"
+
+[[test]]
+waiver = "USD Schema, tested externally"

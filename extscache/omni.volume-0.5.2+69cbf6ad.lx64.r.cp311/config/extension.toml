@@ -1,0 +1,39 @@
+[package]
+version = "0.5.2"
+title = "Volume"
+category = "Internal"
+description = "This lightweight extension loads carb.volume and its dependencies and provides the carb.volume Python bindings."
+keywords = ["carb", "volume", "python", "binding"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+toggleable = false
+support_level = "Core"
+
+[dependencies]
+"omni.assets.plugins" = {}
+"omni.kit.pip_archive" = {}
+"omni.client" = {}
+
+[[native.library]]
+path = "bin/${lib_prefix}tbb${lib_ext}"
+
+[[native.library]]
+path = "bin/${lib_prefix}openvdb${lib_ext}"
+
+[[native.plugin]]
+path = "bin/deps/carb.volume.plugin"
+
+[[native.plugin]]
+path = "bin/omni.volume.plugin"
+
+[[python.module]]
+name = "omni.volume"
+
+[[python.module]]
+path = "."
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

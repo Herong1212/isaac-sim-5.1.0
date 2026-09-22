@@ -1,0 +1,23 @@
+{
+  "Plugins": [
+    {
+      "Info": {
+        "Types": {
+          "MdlDiscoveryPlugin" : {
+            "bases": ["NdrDiscoveryPlugin"],
+            "displayName": "MDL Discovery"
+          },
+          "MdlParserPlugin" : {
+            "bases": ["NdrParserPlugin"],
+            "displayName": "MDL Node Parser"
+          }
+        }
+      },
+      "LibraryPath": "libomni.usdMdl.so",
+      "Name": "usdMdl",
+      "ResourcePath": "resources",
+      "Root": "..",
+      "Type": "library"
+    }
+  ]
+}

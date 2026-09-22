@@ -1,0 +1,66 @@
+{
+    "omni.graph.nodes.Timer": {
+        "version": 2,
+        "description": [ "Timer Node is a node that lets you create animation curve(s), plays back and samples the value(s) along its time to output values." ],
+        "metadata": {
+            "uiName": "Timer"
+        },
+        "categories": {"animation": "Nodes dealing with Animation"},
+        "inputs": {
+            "startValue": {
+                "type": "double",
+                "description": "Value of the start of the duration.",
+                "uiName": "Start Value",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "default": 0.0
+            },
+            "endValue": {
+                "type": "double",
+                "description": "Value of the end of the duration.",
+                "uiName": "End Value",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "default": 1.0
+            },
+            "duration": {
+                "type": "double",
+                "description": "Number of seconds to play interpolation.",
+                "uiName": "Duration",
+                "default": 1.0
+            },
+            "play": {
+                "type": "execution",
+                "description": [
+                    "Signal to the graph that this node is ready for execution.",
+                    "When the node executes with this signal active it plays the clip from the current frame."
+                ],
+                "uiName": "Play"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "double",
+                "description": "Progress of the Timer node, between 0.0 and 1.0.",
+                "uiName": "Value",
+                "default": 0.0
+            },
+            "updated": {
+                "type": "execution",
+                "description": [
+                    "When the node is executed, and output value(s) resampled and updated,",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Updated"
+            },
+            "finished": {
+                "type": "execution",
+                "description": [
+                    "When the node has finished the playback,",
+                    "signal to the graph that execution can continue downstream on this path."
+                ],
+                "uiName": "Finished"
+            }
+        }
+    }
+}

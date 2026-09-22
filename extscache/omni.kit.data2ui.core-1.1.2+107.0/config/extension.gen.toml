@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.data2ui.core-1.1.2%2B107.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+master.187967.27e7f303.gl"
+        date = 1745347554
+        buildNumber = "1.1.2+master.419.be7c6352.gl"
+        repoName = "kit-datadriven-ui"
+        signed = 1

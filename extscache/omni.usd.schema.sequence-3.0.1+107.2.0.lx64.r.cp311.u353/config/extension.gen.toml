@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.usd.schema.sequence-3.0.1%2B107.2.0.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.2.0"
+
+    [package.publish]
+        kitVersion = "107.2.0+feature.184551.88dd4d99.gl"
+        date = 1744213496
+        buildNumber = "102.0.0+master.94.8d5aef0d.gl"
+        repoName = "kit-sequencer"
+        signed = 1

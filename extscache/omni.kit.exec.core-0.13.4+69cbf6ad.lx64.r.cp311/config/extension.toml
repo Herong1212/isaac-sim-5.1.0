@@ -1,0 +1,32 @@
+[package]
+title = "Orchestration and Execution Framework"
+version = "0.13.4"
+category = "Graph"
+# readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Execution orchestration layer for Kit."
+repository = ""
+keywords = ["omnigraph", "kit", "exec", "core", "execution", "framework", "orchestration"]
+support_level = "Core"
+
+[core]
+reloadable = false
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.exec.core.unstable".
+[[python.module]]
+name = "omni.kit.exec.core.unstable"
+
+# Other extensions on which this one relies
+[dependencies]
+"omni.graph.exec" = {}
+"omni.usd.libs" = {} # for tbb
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+timeout = 600
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.kit.exec.core.tests${lib_ext}",
+]

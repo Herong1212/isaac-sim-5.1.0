@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.viewport.window-749ab38a6c93b4e8.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.223956.0c304458.gl"
+        date = 1757755124
+        buildNumber = "107.3.3+1073.223956.0c304458.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

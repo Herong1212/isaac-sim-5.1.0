@@ -1,0 +1,12 @@
+#usda 1.0
+def Xform "World"
+{
+    def Xform "test_prim"
+    {
+        custom int test_custom_attr (
+            customData = {
+                int default = -1
+            }
+        )
+    }
+}

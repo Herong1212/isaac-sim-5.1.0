@@ -1,0 +1,17 @@
+[package]
+version = "1.0.2"
+title = "Object Inspection Capabilities"
+description = "Provides interfaces you can add to your ABI to provide data inspection information in a compliant way"
+keywords = [ "debug", "inspect", "information" ]
+support_level = "Sample"
+readme = "docs/README.md"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[python.module]]
+name = "omni.inspect"
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md"]

@@ -1,0 +1,58 @@
+{
+    "OgnSampleMaterial": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Randomizes the material on the prims.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Material Randomizer Node"
+        },
+        "state": {
+            "$comment": ["Internal state to store materials"]
+        },
+        "inputs": {
+            "prims": {
+                "description": ["prim(s) to set material"],
+                "type": "target"
+            },
+            "materialPrim": {
+                "description": ["materials to be sampled"],
+                "type": "target"
+            },
+            "materialPaths": {
+                "description": ["material paths to be sampled"],
+                "type": "token[]"
+            },
+            "useMaterialPrim": {
+                "description": ["Use materialPrim, otherwise use materialPaths"],
+                "type": "bool",
+                "default": false
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "maxCachedMaterials": {
+                "description": [
+                    "Maximum number of cached generated materials. A higher value allows more cached manterials ",
+                    "to remain in the scene, reducing number of materials created per call at the expense of memory usage. ",
+                    "This value only applies to materials specified from MDL paths."
+            ],
+                "type": "uint"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

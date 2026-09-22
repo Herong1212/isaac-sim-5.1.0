@@ -1,0 +1,249 @@
+{
+    "omni.graph.ImportUSDPrim": {
+        "description": [
+            "Imports data from a USD prim into attributes in an output bundle",
+            "This node is deprecated, Use ReadPrim nodes instead"
+        ],
+        "uiName": "import USD prim data",
+        "metadata": {
+            "hidden": "true"
+        },
+        "version": 1,
+        "inputs": {
+            "prim": {
+                "description": [ "The USD prim from which to import data." ],
+                "type": "bundle",
+                "optional": true
+            },
+            "usdTimecode": {
+                "default": 0,
+                "description": [ "The time at which to evaluate the transform of the USD prim." ],
+                "type": "double",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "keepPrimsSeparate": {
+                "default": true,
+                "description": [
+                    "Prefix output attribute names with \"prim\" followed by a unique number and a colon, ",
+                    "to keep the attributes for separate input prims separate.  The prim paths will ",
+                    "be in the \"primPaths\" token array attribute."
+                ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "importAttributes": {
+                "default": true,
+                "description": [ "Import attribute data from the USD prim." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "applyTransform": {
+                "default": false,
+                "description": [ "If importAttributes is true, apply the transform necessary to transform any transforming attributes into the space of this node." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "computeBoundingBox": {
+                "default": false,
+                "description": [ "Compute and store local bounding box of a prim and its children." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "importPrimvarMetadata": {
+                "default": true,
+                "description": [ "Import metadata like the interpolation type for primvars, and store it as attributes in the output bundle." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "importTransform": {
+                "default": true,
+                "description": [
+                    "Record the transform required to take any attributes of the input USD prim ",
+                    "into the space of this node, i.e. the world transform of the input prim times the ",
+                    "inverse world transform of this node, into the output bundle in an attribute named \"transform\"."
+                ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "importType": {
+                "default": true,
+                "description": [ "Deprecated, prim type is always imported" ],
+                "type": "bool",
+                "metadata": {
+                    "hidden": "true",
+                    "displayGroup": "parameters"
+                }
+            },
+            "importPath": {
+                "default": true,
+                "description": [ "Record the input USD prim's path into the output bundle in an attribute named \"primPath\"." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "importTime": {
+                "default": true,
+                "description": [ "Record the usdTimecode above into the output bundle in an attribute named \"primTime\"." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "timeVaryingAttributes": {
+                "default": true,
+                "description": [ "Check whether the USD attributes are time-varying and if so, import their data at the time \"usdTimecode\"." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "applySkelBinding": {
+                "default": true,
+                "description": [ "If the input USD prim is a Mesh, and has SkelBindingAPI schema applied, compute skinned points and normals." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "renameAttributes": {
+                "default": false,
+                "description": [ "If true, attributes listed in \"inputAttrNames\" will be imported to attributes with the names specified in \"outputAttrNames\"." ],
+                "type": "bool",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            },
+            "inputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the names of attributes in the input data to be renamed",
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Rename"
+                }
+            },
+            "outputAttrNames": {
+                "type": "token",
+                "description": "Comma or space separated text, listing the new names for the attributes listed in inputAttrNames",
+                "default": "",
+                "metadata": {
+                    "uiName": "New Attribute Names"
+                }
+            },
+            "attrNamesToImport": {
+                "type": "token",
+                "description": [
+                    "Comma or space separated text, listing the names of attributes in the input data to be imported ",
+                    "or empty to import all attributes."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Attributes To Import",
+                    "displayGroup": "parameters"
+                }
+            }
+        },
+        "outputs": {
+            "output": {
+                "description": [ "Output bundle containing all of the imported data." ],
+                "type": "bundle"
+            }
+        },
+        "state": {
+            "prevUsdTimecode": {
+                "type": "double",
+                "description": "Value of \"usdTimecode\" input from previous run"
+            },
+            "prevKeepPrimsSeparate": {
+                "type": "bool",
+                "description": "Value of \"keepPrimsSeparate\" input from previous run"
+            },
+            "prevImportAttributes": {
+                "type": "bool",
+                "description": "Value of \"importAttributes\" input from previous run"
+            },
+            "prevApplyTransform": {
+                "type": "bool",
+                "description": "Value of \"applyTransform\" input from previous run"
+            },
+            "prevComputeBoundingBox": {
+                "type": "bool",
+                "description": "Value of \"computeBoundingBox\" input from previous run"
+            },
+            "prevImportPrimvarMetadata": {
+                "type": "bool",
+                "description": "Value of \"importPrimvarMetadata\" input from previous run"
+            },
+            "prevImportTransform": {
+                "type": "bool",
+                "description": "Value of \"importTransform\" input from previous run"
+            },
+            "prevImportType": {
+                "type": "bool",
+                "description": "Value of \"importType\" input from previous run"
+            },
+            "prevImportPath": {
+                "type": "bool",
+                "description": "Value of \"importPath\" input from previous run"
+            },
+            "prevImportTime": {
+                "type": "bool",
+                "description": "Value of \"importTime\" input from previous run"
+            },
+            "prevTimeVaryingAttributes": {
+                "type": "bool",
+                "description": "Value of \"timeVaryingAttributes\" input from previous run"
+            },
+            "prevApplySkelBinding": {
+                "type": "bool",
+                "description": "Value of \"applySkelBinding\" input from previous run"
+            },
+            "prevRenameAttributes": {
+                "type": "bool",
+                "description": "Value of \"renameAttributes\" input from previous run"
+            },
+            "prevInputAttrNames": {
+                "type": "token",
+                "description": "Value of \"inputAttrNames\" input from previous run"
+            },
+            "prevOutputAttrNames": {
+                "type": "token",
+                "description": "Value of \"outputAttrNames\" input from previous run"
+            },
+            "prevOnlyImportSpecified": {
+                "type": "bool",
+                "description": "Value of \"onlyImportSpecified\" input from previous run"
+            },
+            "prevAttrNamesToImport": {
+                "type": "token",
+                "description": "Value of \"attrNamesToImport\" input from previous run"
+            },
+            "prevPaths": {
+                "description": [ "Array of paths from the previous run." ],
+                "type": "token[]"
+            },
+            "prevInvNodeTransform": {
+                "description": [ "Inverse transform of the node prim from the previous run." ],
+                "type": "matrixd[4]"
+            },
+            "prevTransforms": {
+                "description": [ "Array of transforms from the previous run." ],
+                "type": "matrixd[4][]"
+            }
+        }
+    }
+}

@@ -1,0 +1,139 @@
+[package]
+version = "107.3.8"
+title = "Navigation Core (BETA)"
+description = "Core functionality for Navigation"
+authors = ["NVIDIA"]
+category = "Animation"
+readme  = "docs/README.md"
+keywords = ["kit", "animation", "navigation"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.navigation.core"
+
+[settings]
+persistent.exts."omni.anim.navigation.core".navMesh.viewNavMesh = false
+persistent.exts."omni.anim.navigation.core".navMesh.useGpu = true
+persistent.exts."omni.anim.navigation.core".navMesh.maxVerticesPerTile = 5000000
+
+# unit: cm [default in kit]
+# default preferences (when opened stage has no saved settings)
+persistent.exts."omni.anim.navigation.core".navMesh.config.autoRebakeOnChanges = true
+persistent.exts."omni.anim.navigation.core".navMesh.config.autoRebakeDelaySeconds = 1
+persistent.exts."omni.anim.navigation.core".navMesh.config.excludeRigidBodies = true
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMinHeight = 100
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMinRadius = 10
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMaxRadius = 50
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMaxStepHeight = 40
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMaxFloorSlope = 45
+persistent.exts."omni.anim.navigation.core".navMesh.config.agentMinIslandRadius = 500
+persistent.exts."omni.anim.navigation.core".navMesh.config.vizGeomEnable = true
+persistent.exts."omni.anim.navigation.core".navMesh.config.vizSurfaceEnable = true
+persistent.exts."omni.anim.navigation.core".navMesh.config.vizOutlineEnable = true
+persistent.exts."omni.anim.navigation.core".navMesh.config.vizOutlineBorderOnly = true
+
+# default areas
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.0.areaName = "Walkable"
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.0.color = [0.2, 0.8, 1.0]
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.0.defaultCost = 1.0
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.1.areaName = "NotWalkable"
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.1.color = [1.0, 0.0, 0.0]
+persistent.exts."omni.anim.navigation.core".navMesh.config.areas.1.defaultCost = -1.0
+
+# Non-persistent settings that are either loaded from stage custom data or from persistent default settings above
+# The values here are just placeholders. They will either come from `persistent` or stage.
+exts."omni.anim.navigation.core".navMesh.config.autoRebakeOnChanges = true
+exts."omni.anim.navigation.core".navMesh.config.autoRebakeDelaySeconds = 1
+exts."omni.anim.navigation.core".navMesh.config.excludeRigidBodies = true
+exts."omni.anim.navigation.core".navMesh.config.agentMinHeight = 100
+exts."omni.anim.navigation.core".navMesh.config.agentMinRadius = 10
+exts."omni.anim.navigation.core".navMesh.config.agentMaxRadius = 50
+exts."omni.anim.navigation.core".navMesh.config.agentMaxStepHeight = 40
+exts."omni.anim.navigation.core".navMesh.config.agentMaxFloorSlope = 45
+exts."omni.anim.navigation.core".navMesh.config.agentMinIslandRadius = 500
+
+# visualization
+exts."omni.anim.navigation.core".navMesh.config.vizGeomEnable = true
+exts."omni.anim.navigation.core".navMesh.config.vizSurfaceEnable = true
+exts."omni.anim.navigation.core".navMesh.config.vizOutlineEnable = true
+exts."omni.anim.navigation.core".navMesh.config.vizOutlineBorderOnly = true
+
+# default areas
+exts."omni.anim.navigation.core".navMesh.config.areas.0.areaName = "Walkable"
+exts."omni.anim.navigation.core".navMesh.config.areas.0.color = [0.2, 0.8, 1.0]
+exts."omni.anim.navigation.core".navMesh.config.areas.0.defaultCost = 1.0
+exts."omni.anim.navigation.core".navMesh.config.areas.1.areaName = "NotWalkable"
+exts."omni.anim.navigation.core".navMesh.config.areas.1.color = [1.0, 0.0, 0.0]
+exts."omni.anim.navigation.core".navMesh.config.areas.1.defaultCost = -1.0
+
+# cache settings
+exts."omni.anim.navigation.core".navMesh.cache.enabled = true
+exts."omni.anim.navigation.core".navMesh.cache.enableUjitso = true
+exts."omni.anim.navigation.core".navMesh.cache.forcePersistent = false
+
+[dependencies]
+"omni.usd" = {}
+"omni.client" = {}
+"omni.kit.commands" = {}
+"omni.kit.usd.layers" = {}
+"omni.kit.usd_undo" = {}
+"omni.usd.schema.anim" = {}
+"usdrt.scenegraph" = {}
+"omni.kit.pip_archive" = {}
+"omni.anim.navigation.schema" = { version="~107.3" }
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx",
+    "omni.kit.viewport.utility",
+    "omni.kit.viewport.window",
+    "omni.kit.test_helpers_gfx"
+]
+args = [
+	"--/rtx/materialDb/syncLoads=true",
+	"--/omni.kit.plugin/syncUsdLoads=true",
+	"--/rtx/hydra/materialSyncLoads=true",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/ngx/enabled=false",
+    "--/rtx/post/aa/op=0",
+    "--/rtx/reflections/enabled=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx-defaults/reflections/enabled=0",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/hideUi=true",
+    "--/app/window/width=1024",
+    "--/app/window/height=1024",
+    "--/app/fastShutdown=true",
+    "--/app/renderer/resolution/width=1024",
+    "--/app/renderer/resolution/height=1024",
+    "--/persistent/app/viewport/displayOptions=0",
+    "--/persistent/app/viewport/gizmo/constantScaleEnabled=true",
+    "--/persistent/app/viewport/gizmo/constantScale=10.0",
+    "--/persistent/app/viewport/gizmo/maxFadeOut=1.0",
+    "--/persistent/app/viewport/gizmo/maxFadeOut=50.0",
+    "--no-window"
+]
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface*",
+    "*extension object is still alive, something holds a reference on it*",
+    "*Empty typeName for </World/NavMeshVolume.box>*"
+]
+
+[package.writeTarget]
+kit = true
+usd = true

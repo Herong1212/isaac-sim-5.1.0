@@ -1,0 +1,226 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.009999999776482582
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "OmniGlass"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniGlass/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                token outputs:out
+            }
+        }
+
+        def Material "OmniGlass_Opacity"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniGlass_Opacity/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniGlass_Opacity/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniGlass_Opacity/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass_Opacity.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass_Opacity"
+                token outputs:out
+            }
+        }
+
+        def Material "OmniPBR"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                token outputs:out
+            }
+        }
+
+        def Material "OmniPBR_ClearCoat"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR_ClearCoat/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR_ClearCoat.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR_ClearCoat"
+                token outputs:out
+            }
+        }
+
+        def Material "OmniPBR_ClearCoat_Opacity"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR_ClearCoat_Opacity/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR_ClearCoat_Opacity/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR_ClearCoat_Opacity/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR_ClearCoat_Opacity.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR_ClearCoat_Opacity"
+                token outputs:out
+            }
+        }
+
+        def Material "OmniPBR_Opacity"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/OmniPBR_Opacity/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniPBR_Opacity/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniPBR_Opacity/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR_Opacity.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR_Opacity"
+                token outputs:out
+            }
+        }
+
+        def Material "PreviewSurface"
+        {
+            token outputs:surface.connect = </World/Looks/PreviewSurface/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:diffuseColor", "inputs:emissiveColor", "inputs:useSpecularWorkflow", "inputs:specularColor", "inputs:metallic", "inputs:roughness", "inputs:clearcoat", "inputs:clearcoatRoughness", "inputs:opacity", "inputs:opacityThreshold", "inputs:ior", "inputs:normal", "inputs:displacement", "inputs:occlusion", "outputs:surface", "outputs:displacement"]
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0
+                float inputs:clearcoatRoughness = 0.01
+                color3f inputs:diffuseColor = (0.18, 0.18, 0.18)
+                float inputs:displacement = 0
+                color3f inputs:emissiveColor = (0, 0, 0)
+                float inputs:ior = 1.5
+                float inputs:metallic = 0
+                normal3f inputs:normal = (0, 0, 1)
+                float inputs:occlusion = 1
+                float inputs:opacity = 1
+                float inputs:opacityThreshold = 0
+                float inputs:roughness = 0.5 (
+                    customData = {
+                        dictionary range = {
+                            double max = 1
+                            double min = 0
+                        }
+                    }
+                )
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 0 (
+                    customData = {
+                        dictionary range = {
+                            int max = 1
+                            int min = 0
+                        }
+                    }
+                )
+                token outputs:displacement
+                token outputs:surface
+            }
+        }
+
+        def Material "PreviewSurfaceTexture"
+        {
+            token outputs:mdl:surface.connect = </World/Looks/PreviewSurfaceTexture/PreviewSurfaceTexture.outputs:surface>
+
+            def Shader "PreviewSurfaceTexture"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0
+                float inputs:clearcoatRoughness = 0
+                color3f inputs:diffuseColor.connect = </World/Looks/PreviewSurfaceTexture/diffuseColorTex.outputs:rgb>
+                float inputs:displacement = 0
+                color3f inputs:emissiveColor = (0, 0, 0)
+                float inputs:ior = 1.5
+                color3f inputs:metallic.connect = </World/Looks/PreviewSurfaceTexture/metallicTex.outputs:rgb>
+                normal3f inputs:normal = (0, 0, 1)
+                float inputs:occlusion = 1
+                float inputs:opacity = 1
+                float inputs:opacityThreshold = 0
+                color3f inputs:roughness.connect = </World/Looks/PreviewSurfaceTexture/roughnessTex.outputs:rgb>
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 0
+                token outputs:surface
+            }
+
+            def Shader "diffuseColorTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+            }
+
+            def Shader "metallicTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+            }
+
+            def Shader "roughnessTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                color3f outputs:rgb
+            }
+        }
+    }
+
+    def Cube "Cube"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding = None (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

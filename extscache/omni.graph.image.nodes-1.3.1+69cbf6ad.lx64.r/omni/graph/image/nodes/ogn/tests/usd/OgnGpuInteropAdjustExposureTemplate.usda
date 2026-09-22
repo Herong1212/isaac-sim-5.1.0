@@ -1,0 +1,53 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGpuInteropAdjustExposure.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_GpuInteropAdjustExposure" (
+        docs="""RTX Renderer Postprocess Example: adjust the exposure of the rendered image. The node can be used in a post-render graph to change the brightness of the rendered image. As a CUDA interop node, the node is scheduled for execution as a CUDA command. If the input RenderVar is not a valid texture, the node does not produce a result."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.GpuInteropAdjustExposure"
+        int node:typeVersion = 2
+
+        # 9 attributes
+        custom uint64 inputs:cudaMipmappedArray = 0 (
+            docs="""The RenderVar data, defined as a CUDA Mipmapped Array."""
+        )
+        custom float inputs:exposure = 0 (
+            docs="""Exposure value (in stops). Positive values increase the brightness of the image, while negative values result in darker images. 
+            The default exposure value of 0 results in an unmodified image. 
+            Increasing the value by one unit, results in a doubling of the exposure and a brigher image; 
+            decreasing the value by one unit results in a halving of the exposure, thus a darker image. """
+        )
+        custom uint64 inputs:format = 0 (
+            docs="""The texture format of the input image, matching the values of the enum carb::graphics::Format."""
+        )
+        custom uint inputs:height = 0 (
+            docs="""The height of the input image."""
+        )
+        custom double inputs:hydraTime = 0.0 (
+            docs="""The delta time of the renderer in stage."""
+        )
+        custom uint inputs:mipCount = 0 (
+            docs="""The number of levels of detail encoded in 'RenderVar Data'."""
+        )
+        custom double inputs:simTime = 0.0 (
+            docs="""The delta time of the simulation."""
+        )
+        custom uint64 inputs:stream = 0 (
+            docs="""The CUDA Stream used to order the CUDA commands scheduled by this graph execution."""
+        )
+        custom uint inputs:width = 0 (
+            docs="""The width of the input image."""
+        )
+    }
+}

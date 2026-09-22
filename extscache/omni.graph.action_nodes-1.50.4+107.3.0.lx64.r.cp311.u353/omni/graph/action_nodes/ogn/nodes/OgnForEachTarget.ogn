@@ -1,0 +1,61 @@
+{
+    "omni.graph.action.ForEachTarget": {
+        "version": 1,
+        "description": [
+            "Activates the 'Loop Body' signal once for each target in 'Targets', making the current",
+            "array member available in the output 'Target' with its index in 'Array Index'. After every element of",
+            "'Targets' has been processed the 'Finished' signal is activated. All of this will happen in a",
+            "single execution of the node, giving you the ability to evaluate a downstream graph multiple times",
+            "with different inputs coming from the changing 'Target' output."
+        ],
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "uiName": "For Each Target Loop",
+        "icon": {
+            "path": "LoopNodeIcon.svg"
+        },
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The targets array to loop over",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            }
+        },
+        "outputs": {
+            "loopBody": {
+                "type": "execution",
+                "description": [
+                    "For each member of 'Targets' signal the graph that execution can continue downstream."
+                ]
+            },
+            "target": {
+                "type": "target",
+                "description": [
+                    "The current member of 'Targets' being visited by the loop. Keeps the value of the last",
+                    "array element after the loop has completed."
+                ]
+            },
+            "arrayIndex": {
+                "type": "int",
+                "description": [
+                    "The value of the current index being visited by the loop. Keeps the value of the last index",
+                    "after the loop has completed. The index starts at zero and increments by one as it",
+                    "walks through the members of 'Targets'."
+                ]
+            },
+            "finished": {
+                "type": "execution",
+                "description": [
+                    "When the final element of 'Targets' has been processed signal the graph that",
+                    "execution can continue downstream."
+                ]
+            }
+        }
+    }
+}

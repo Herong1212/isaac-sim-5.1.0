@@ -1,0 +1,22 @@
+{
+    "GetGraphTargetPrim": {
+        "version": 1,
+        "description": [
+            "Access the target prim the graph is being executed on. If the graph is executing itself,",
+            "this will output the prim of the graph. Otherwise the graph is being executed via ",
+            "instancing, then this will output the prim of the target instance."
+        ],
+        "metadata": {
+            "uiName": "Get Graph Target Prim"
+        },
+        "categories": [ "sceneGraph" ],
+        "inputs": {
+        },
+        "outputs": {
+            "prim": {
+                "type": "target",
+                "description" : ["The graph target as a prim"]    
+            }
+        }
+    }
+}

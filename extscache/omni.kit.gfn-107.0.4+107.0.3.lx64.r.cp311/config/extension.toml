@@ -1,0 +1,40 @@
+[package]
+title = "NVIDIA GFN Integration"
+category = "Streaming"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+repository = ""
+description = "Integration between Omniverse Kit and the GFN runtime SDK"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+# Semantic Versioning is used: https://semver.org/
+version = "107.0.4"
+
+# Only available to the Kit version it was built with (and higher)
+[package.writeTarget]
+kit = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+[dependencies]
+#"omni.usd" = {}
+
+[[python.module]]
+name = "omni.kit.gfn"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[settings]
+# Initialize GFN SDK on extension startup
+exts."omni.kit.gfn".auto_startup_gfn = false
+
+[[test]]
+waiver = "Tests are in omni.gfn.autoload"

@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReplaceString.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReplaceString" (
+        docs="""Replaces the first occurrence of the given value from an array with a new value.  If "replaceAll" is true, replace all occurrences."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReplaceString"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom token inputs:replace (
+            docs="""The string to replace within the base string."""
+        )
+        custom bool inputs:replaceAll = false (
+            docs="""If true, replace all occurrences of the value."""
+        )
+        custom token inputs:string (
+            docs="""The base string."""
+        )
+        custom token inputs:value (
+            docs="""The sub string to set within the base string. Can be an empty string to remove."""
+        )
+
+        # 1 attribute
+        custom token outputs:string (
+            docs="""The output string."""
+        )
+    }
+}

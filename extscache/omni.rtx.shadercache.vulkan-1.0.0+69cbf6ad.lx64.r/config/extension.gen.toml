@@ -1,0 +1,20 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.rtx.shadercache.vulkan-6313e264471628b3.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.195367.2c7fcd57.gl"
+        date = 1757755258
+        buildNumber = "107.3.0+1073.195367.2c7fcd57.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+            1 = "windows-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

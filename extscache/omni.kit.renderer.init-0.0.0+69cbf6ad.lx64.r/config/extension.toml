@@ -1,0 +1,32 @@
+[package]
+title = "Rendering Core Init"
+category = "Rendering"
+description = "It is an integral part of omni.kit.renderer.core, which starts the graphics subsystem initialization, the point of separation is that other extensions can load while the graphics subsystem is initialized in the background thread"
+keywords = ["rendering", "core", "initialization"]
+support_level = "Core"
+
+[core]
+order = -100000
+
+[dependencies]
+"carb.windowing.plugins" = {}
+"omni.gpu_foundation" = {}
+"omni.assets.plugins" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[settings]
+exts."omni.kit.renderer.core".compatibilityMode = false
+exts."omni.kit.renderer.core".raytracingEnabled = true
+app.renderer.skipWhileMinimized = false
+app.renderer.sleepMsOnFocus = 0
+app.renderer.sleepMsOutOfFocus = 16
+renderer.vsync = false
+
+# OM-82643: Disable parallel startup on Linux
+"filter:os".linux.exts."omni.kit.renderer.core".parallelStartup.enabled = false
+"filter:os".windows.exts."omni.kit.renderer.core".parallelStartup.enabled = true
+
+[[test]]
+waiver = "Tests are in omni.kit.renderer.core"

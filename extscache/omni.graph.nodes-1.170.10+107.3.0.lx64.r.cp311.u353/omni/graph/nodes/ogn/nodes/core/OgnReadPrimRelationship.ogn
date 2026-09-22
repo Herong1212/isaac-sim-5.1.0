@@ -1,0 +1,42 @@
+{
+    "ReadPrimRelationship": {
+        "version": 1,
+        "description": "Reads the target(s) of a relationship on a given prim",
+        "uiName": "Read Prim Relationship",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-read", "threadsafe"],
+        "exclude": ["usd"],
+        "inputs": {
+            "prim": {
+                "type": "target",
+                "description": "The prim with the named relationship to read"
+            },
+            "name": {
+                "type": "token",
+                "uiName": "Relationship Name",
+                "description": "The name of the relationship to read"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "target",
+                "description": "The relationship target(s)"
+            }
+        },
+       "state": {
+            "correctlySetup": {
+                "type": "bool",
+                "description": "Whether or not the instance is properly setup",
+                "default": false
+            },
+            "prim": {
+                "type": "target",
+                "description": "The currently prefetched prim"
+            },
+            "name": {
+                "type": "token",
+                "description": "The prefetched relationship name"
+            }
+        }
+    }
+}

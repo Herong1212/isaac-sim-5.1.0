@@ -1,0 +1,52 @@
+[package]
+title = "Audio Device Enumerator"
+category = "Audio"
+version = "1.0.2"
+description = "An audio device enumeration API which is available from python and C++"
+authors = ["NVIDIA"]
+keywords = ["audio", "device"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"carb.audio" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[python.module]]
+path = "."
+name = "omni.kit.audiodeviceenum"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Examples.md",
+    "docs/Settings.md",
+    "docs/ChangeLog.md",
+]
+cpp_api = [
+    "../../../include/omni/audio/IAudioDeviceEnum.h",
+]
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.usd",
+    "omni.kit.window.preferences",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+
+# a leak message is printed for the PooledAllcator when running the tests in debug mode.  This
+# causes a test failure.  We'll exclude that here.
+stdoutFailPatterns.exclude = [
+    "*carb::memory::PooledAllocator*",
+    "*failed to open the new device {result = 0x00000002}*",
+    "*failed to open the new device {result = 0x00000005}*",
+]
+

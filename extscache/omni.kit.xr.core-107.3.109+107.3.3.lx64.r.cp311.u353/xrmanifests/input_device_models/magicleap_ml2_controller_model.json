@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 30,
+    "name": "Magic Leap ML2 Controller Model",
+    "tags": "magicleap_ml2_profile",
+    "inputDevices": [ "/user/hand/left", "/user/hand/right"],
+    "asset": "{ml.controllers}/ml/model.usd"
+}

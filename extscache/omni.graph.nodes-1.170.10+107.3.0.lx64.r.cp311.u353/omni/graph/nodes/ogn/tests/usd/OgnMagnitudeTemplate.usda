@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMagnitude.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_Magnitude" (
+        docs="""Compute the magnitude of a vector, array of vectors, or a scalar. If a scalar is passed in, the absolute value will be returned. If an array of vectors are passed in, the output will be an array of corresponding magnitudes."""
+    )
+    {
+        token node:type = "omni.graph.nodes.Magnitude"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom token inputs:input (
+            docs="""The vector(s) or scalar(s) to take the magnitude of."""
+        )
+
+        # 1 attribute
+        custom token outputs:magnitude (
+            docs="""The resulting magnitude(s) of the inputted vector(s) or scalar(s)."""
+        )
+    }
+}

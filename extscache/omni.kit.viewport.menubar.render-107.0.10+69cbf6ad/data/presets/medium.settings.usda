@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary renderSettings = {
+            bool "rtx:ambientOcclusion:enabled" = 1
+            bool "rtx:directLighting:sampledLighting:enabled" = 1
+            bool "rtx:directLighting:sampledLighting:ris:meshLights" = 1
+            int "rtx:directLighting:sampledLighting:samplesPerPixel" = 4
+            int "rtx:domeLight:upperLowerStrategy" = 0
+            int "rtx:indirectDiffuse:fetchSampleCount" = 1
+            int "rtx:indirectDiffuse:maxBounces" = 4
+            bool "rtx:newDenoiser:enabled" = 1
+            double "rtx:pathtracing:aa:filterRadius" = 1.0
+            int "rtx:pathtracing:aa:op" = 1
+            bool "rtx:pathtracing:cached:enabled" = 1
+            double "rtx:pathtracing:fireflyFilter:maxIntensityPerSample" = 3200
+            double "rtx:pathtracing:fireflyFilter:maxIntensityPerSampleDiffuse" = 3200
+            bool "rtx:pathtracing:fractionalCutoutOpacity" = 1
+            bool "rtx:pathtracing:lightcache:cached:enabled" = 1
+            int "rtx:pathtracing:maxBounces" = 4
+            int "rtx:pathtracing:maxSpecularAndTransmissionBounces" = 8
+            int "rtx:pathtracing:maxVolumeBounces" = 64
+            double "rtx:pathtracing:optixDenoiser:blendFactor" = 0
+            bool "rtx:pathtracing:optixDenoiser:enabled" = 1
+            int "rtx:pathtracing:ptfog:maxBounces" = 2
+            bool "rtx:pathtracing:ris:meshLights" = 1
+            int "rtx:post:aa:op" = 3
+            int "rtx:post:dlss:execMode" = 1
+            bool "rtx:raytracing:fractionalCutoutOpacity" = 1
+            bool "rtx:raytracing:subsurface:enabled" = 1
+            bool "rtx:raytracing:subsurface:fireflyFiltering:enabled" = 1
+            int "rtx:raytracing:subsurface:maxSamplePerFrame" = 32
+            bool "rtx:raytracing:subsurface:transmission:enabled" = 1
+            int "rtx:reflections:maxReflectionBounces" = 1
+            double "rtx:reflections:maxRoughness" = 0.3
+            int "rtx:reflections:sampledLighting:samplesPerPixel" = 1
+            bool "rtx:shadows:enabled" = 1
+            int "rtx:translucency:maxRefractionBounces" = 4
+            bool "rtx:translucency:reflectAtAllBounce" = 1
+            bool "rtx:translucency:sampleRoughness" = 1
+            bool "rtx:translucency:virtualDepth" = 1
+            bool "rtx:translucency:virtualMotion" = 1
+        }
+    }
+)
+

@@ -1,0 +1,27 @@
+{
+    "OgnArray": {
+        "description": [
+            "Array"
+        ],
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "uiName": "Array",
+        "language": "Python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "arrayType": {
+                "type": "string",
+                "description": "Data type of array"
+            },
+            "array": {
+                "type": "any",
+                "description": "Array of type arrayType",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

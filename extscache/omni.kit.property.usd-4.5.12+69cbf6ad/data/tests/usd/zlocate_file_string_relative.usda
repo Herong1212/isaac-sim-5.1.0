@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def Scope "Test"
+{
+    uniform string filePath = "./asset_array/dummy0.txt" (
+        customData = {
+            string uiType = "filePath"
+        }
+    )
+    
+    uniform string filePath2 = "./non_existing_file" (
+        customData = {
+            string uiType = "filePath"
+        }
+    )
+}
+
+

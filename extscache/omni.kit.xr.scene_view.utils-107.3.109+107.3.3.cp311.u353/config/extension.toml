@@ -1,0 +1,103 @@
+[package]
+version = "107.3.109"
+title = "UI SceneView Utilities"
+repository = ""
+readme = "docs/README.md"
+keywords = ["XR", "UI", "USD", "utility", "kit", "Opt out of nSpect"]
+icon = "data/icon.png"
+preview_image = "data/icon.png"
+description = "Helper utilities for using UI SceneViews"
+changelog = "docs/CHANGELOG.md"
+category = "XR"
+authors = ["NVIDIA"]
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[core]
+reloadable = true
+
+[dependencies]
+"omni.kit.xr.scene_view.core" = { version = "=107.3.109" }
+"omni.kit.viewport.registry" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.window" = {}
+# omni.kit.mainwindow is used to bring everything needed for UI application (replacement for omni.kit.uiapp)
+"omni.kit.mainwindow" = {}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.kit.xr.core" = { version = "=107.3.109" }
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+# Used for actiongraph_no_code_ui_integration.
+"omni.graph" = {}
+"omni.graph.core" = {}
+"omni.no_code_ui.bundle" = {}
+"omni.kit.context_menu" = {}
+
+[[python.module]]
+name = "omni.kit.xr.scene_view.utils"
+
+[[test]]
+pythonTests.include = [
+    "omni.kit.xr.scene_view.utils.tests.test_unit_*",
+
+    # When we separate "unit" and "integration" tests, just pull these "integration" tests out...
+    "omni.kit.xr.scene_view.utils.tests.test_integration_*",
+]
+
+args = [
+    "--/app/content/emptyStageOnStart=0",
+    "--/app/docks/disabled=true",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/testMode=1",
+    "--/app/viewport/forceHideFps=true",
+    "--/app/viewport/grid/enabled=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/hideUi=true",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/window/width=512",
+    "--/app/window/height=512",
+
+    "--/exts/omni.kit.renderer.core/present/enabled=false",
+
+    "--/omni.kit.plugin/syncUsdLoads=true",
+
+    "--/persistent=0",
+    "--/persistent/app/viewport/displayOptions=0",
+    "--/persistent/app/primCreation/PrimCreationWithDefaultXformOps=true",
+
+    "--/renderer/multiGpu/enabled=true",
+    "--/renderer/multiGpu/autoEnable=true",
+
+    "--reset-user",
+
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/rtx/hydra/perMaterialSyncLoads=true",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx/post/aa/op=0",
+    "--/rtx/sceneDb/ambientLightIntensity=1.0",
+    "--/rtx-transient/dlssg/enabled=false",
+
+    "--/xr/debug=true",
+    "--/xr/persistence/enabled=false",
+    "--/log/channels/omni.usd=error",
+    "--/app/useFabricSceneDelegate=true",
+]
+
+stdoutFailPatterns.exclude = [
+    "*[carb.imgui.plugin] Unable to load IWindowing!*",
+]
+
+dependencies = [
+    "omni.kit.xr.system.simulatedxr",
+    "omni.kit.xr.ui.stage",
+    "omni.kit.test_helpers_gfx",
+]
+
+timeout = 3600
+
+[documentation]
+python_api_hidden = true

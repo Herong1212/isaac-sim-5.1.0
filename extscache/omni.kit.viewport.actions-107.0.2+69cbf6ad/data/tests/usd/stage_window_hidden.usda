@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    endTimeCode = 240
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Camera "CameraA" (
+        hide_in_stage_window = false
+    )
+    {
+    }
+
+    def Mesh "MeshA" (
+        hide_in_stage_window = false
+    )
+    {
+    }
+
+    def Camera "CameraB" (
+        hide_in_stage_window = true
+    )
+    {
+    }
+
+    def Mesh "MeshB" (
+        hide_in_stage_window = true
+    )
+    {
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 2,
+    "name": "Generic Right Controller Model",
+    "inputDevices": [ "/user/hand/right"],
+    "asset": "{quest.controllers}/q2_right/model.usd"
+
+}

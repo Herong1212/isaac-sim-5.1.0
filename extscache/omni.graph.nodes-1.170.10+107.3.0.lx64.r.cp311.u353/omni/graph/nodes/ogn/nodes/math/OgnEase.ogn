@@ -1,0 +1,119 @@
+{
+    "Ease": {
+        "version": 2,
+        "description": [
+            "Easing function which interpolates between a start and end value.",
+            "Vectors are eased component-wise. The easing functions can be applied to decimal types.",
+            "Linear: Interpolates between start and finish at a fixed rate.",
+            "EaseIn: Starts slowly and ends fast according to an exponential, the slope is determined by the \"Blend Exponent\" input.",
+            "EaseOut: Same as EaseIn, but starts fast and ends slow",
+            "EaseInOut: Combines EaseIn and EaseOut",
+            "SinIn: Starts slowly and ends fast according to a sinusoidal curve",
+            "SinOut: Same as SinIn, but starts fast and ends slow",
+            "SinInOut: Combines SinIn and SinOut"
+        ],
+        "uiName": "Easing Function",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "start": {
+                "type": ["decimal_scalers", "decimal_tuples", "decimal_arrays"],
+                "description": "The start value from which the interpolation will begin."
+            },
+            "end": {
+                "type": ["decimal_scalers", "decimal_tuples", "decimal_arrays"],
+                "description": "The end value at which the interpolation will end."
+            },
+            "alpha": {
+                "type": ["float", "float[]"],
+                "description": "The normalized time [0 - 1.0] (inclusive). Values outside this range will be clamped."
+            },
+            "blendExponent": {
+                "type": "int",
+                "description": [
+                    "The blend exponent, which is the degree of the ease curve",
+                    " (1 = linear, 2 = quadratic, 3 = cubic, etc). ",
+                    "This only applies to the Ease* functions."
+                ],
+                "minimum": 1,
+                "maximum": 10,
+                "default": 2
+            },
+            "easeFunc": {
+                "type": "token",
+                "description": "The easing function to apply (EaseIn, EaseOut, EaseInOut, Linear, SinIn, SinOut, SinInOut).",
+                "uiName": "Operation",
+                "default": "EaseInOut",
+                "metadata": {
+                    "allowedTokens": ["EaseIn", "EaseOut", "EaseInOut", "Linear", "SinIn", "SinOut", "SinInOut"]
+                }
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["decimal_scalers", "decimal_tuples", "decimal_arrays"],
+                "description": [
+                    "The result of computing the configured easing function at the given normalized time value."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:start": {"type": "float", "value": 0}, "inputs:end": {"type": "float", "value": 10},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float", "value": 0.5}, "outputs:result": {"type": "float", "value": 5}
+            },
+            {
+                "inputs:start": {"type": "float[]", "value": [0, 1]}, "inputs:end": {"type": "float[]", "value": [10, 11]},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float[]", "value": [0.5, 0.6]},
+                "outputs:result": {"type": "float[]", "value": [5, 7]}
+            },
+            {
+                "inputs:start": {"type": "float[]", "value": [0, 0]}, "inputs:end": {"type": "float", "value": 10},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float[]", "value": [0.5, 0.6]}, "outputs:result": {"type": "float[]", "value": [5, 6]}
+            },
+            {
+                "inputs:start": {"type": "float", "value": 0}, "inputs:end": {"type": "float", "value": 10},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float[]", "value": [0.5, 0.6]},
+                "outputs:result": {"type": "float[]", "value": [5, 6]}
+            },
+            {
+                "inputs:start": {"type": "float[2]", "value": [0,0]}, "inputs:end": {"type": "float[2]", "value": [10,10]},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float[]", "value": [0.5, 0.6]},
+                "outputs:result": {"type": "float[2][]", "value": [[5, 5],[6,6]]}
+            },
+            {
+                "inputs:start": {"type": "float[2][]", "value": [[0, 0], [10, 10]]}, "inputs:end": {"type": "float[2]", "value": [10, 20]},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float[]", "value": [0.5, 0.5]}, "outputs:result": {"type": "float[2][]", "value": [[5, 10],[10,15]]}
+            },
+            {
+                "inputs:start": {"type": "double", "value": 0.0}, "inputs:end": {"type": "double", "value": 10.0},
+                "inputs:easeFunc": "EaseInOut", "inputs:alpha": {"type": "float", "value": 0.25}, "outputs:result": {"type": "double", "value": 1.25}
+            },
+            {
+                "inputs:start": {"type": "double", "value": 0.0}, "inputs:end": {"type": "double", "value": 10.0},
+                "inputs:easeFunc": "SinOut", "inputs:alpha": {"type": "float", "value": 0.75}, "outputs:result": {"type": "double", "value": 9.238795}
+            },
+            {
+                "inputs:start": {"type": "float[2]", "value": [0, 1]},
+                "inputs:end": {"type": "float[2]", "value": [10.0, 11.0]},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float", "value": 0.5},
+                "outputs:result": {"type": "float[2]", "value": [5.0, 6.0]}
+            },
+            {
+                "inputs:start": {"type": "half[3]", "value": [0, 1, 2]},
+                "inputs:end": {"type": "half[3]", "value": [10.0, 11.0, 12.0]},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float", "value": 0.5},
+                "outputs:result": {"type": "half[3]", "value": [5.0, 6.0, 7.0]}
+            },
+            {
+                "inputs:start": {"type": "float", "value": 0}, "inputs:end": {"type": "float", "value": 10},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float", "value": 1.524}, "outputs:result": {"type": "float", "value": 10}
+            },
+            {
+                "inputs:start": {"type": "float", "value": 0}, "inputs:end": {"type": "float", "value": 10},
+                "inputs:easeFunc": "Linear", "inputs:alpha": {"type": "float", "value": -20}, "outputs:result": {"type": "float", "value": 0}
+            }
+        ]
+    }
+}

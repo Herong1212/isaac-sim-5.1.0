@@ -1,0 +1,75 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadPrimBundle.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadPrimBundle" (
+        docs="""DEPRECATED - use ReadPrims!"""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadPrimBundle"
+        int node:typeVersion = 7
+
+        # 6 attributes
+        custom token inputs:attrNamesToImport = "*" (
+            docs="""A list of wildcard patterns used to match the attribute names that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']
+                '*' - match any
+                '* ^points' - match any, but exclude 'points'
+                '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"""
+        )
+        custom bool inputs:computeBoundingBox = false (
+            docs="""For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."""
+        )
+        custom rel inputs:prim (
+            docs="""The prims to be read from when 'usePath' is false"""
+        )
+        custom token inputs:primPath = "" (
+            docs="""The paths of the prims to be read from when 'usePath' is true"""
+        )
+        custom timecode inputs:usdTimecode = nan (
+            docs="""The time at which to evaluate the transform of the USD prim. A value of "NaN" indicates that the default USD time stamp should be used"""
+        )
+        custom bool inputs:usePath = false (
+            docs="""When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute"""
+        )
+
+        # 1 attribute
+        custom rel outputs_primBundle (
+            docs="""A bundle containing multiple prims as children.
+            Each child contains data attributes and two additional token attributes named sourcePrimPath and sourcePrimType
+            which contain the path and the type of the Prim being read"""
+        )
+
+        # 5 attributes
+        custom uint64 state:attrNamesToImport (
+            docs="""State from previous execution"""
+        )
+        custom bool state:computeBoundingBox = false (
+            docs="""State from previous execution"""
+        )
+        custom uint64 state:primPath (
+            docs="""State from previous execution"""
+        )
+        custom timecode state:usdTimecode = nan (
+            docs="""State from previous execution"""
+        )
+        custom bool state:usePath = false (
+            docs="""State from previous execution"""
+        )
+    }
+}

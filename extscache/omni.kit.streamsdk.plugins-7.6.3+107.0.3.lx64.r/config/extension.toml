@@ -1,0 +1,34 @@
+[package]
+version = "7.6.3"
+title = "StreamSDK plugins"
+category = "Rendering"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+repository = ""
+description = "Wrapper around the Stream SDK libraries."
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+# Only available to the Kit version it was built with (and higher)
+[package.writeTarget]
+kit = true
+
+[dependencies]
+"omni.kit.renderer.core" = {}
+
+[[native.plugin]]
+
+[settings]
+#exts."omni.kit.renderer.core".imgui.enableMips = false
+#exts."omni.kit.renderer.core".imgui.streamBufferSizeMB = 16
+
+[[test]]
+#args = ["--/exts/omni.kit.renderer.core/autostartRenderer=false", "--/exts/omni.appwindow/autocreateAppWindow=false"]
+#dependencies = ["omni.kit.test_helpers_gfx"]
+cppTests.libraries = [
+    "bin/${lib_prefix}carb.livestream.tests${lib_ext}"
+]
+
+[[test.native.plugin]]
+path = "bin/carb.livestream.plugin"

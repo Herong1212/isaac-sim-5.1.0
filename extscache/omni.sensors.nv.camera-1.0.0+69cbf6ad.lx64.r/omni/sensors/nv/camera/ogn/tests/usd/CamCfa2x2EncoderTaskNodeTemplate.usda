@@ -1,0 +1,88 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamCfa2x2EncoderTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamCfa2x2EncoderTaskNode" (
+        docs="""Translates the camera rgba image to a CFA image"""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamCfa2x2EncoderTaskNode"
+        int node:typeVersion = 1
+
+        # 15 attributes
+        custom float3 inputs:CFA_CF00 = (0.0, 0.0, 0.0) (
+            docs="""Top Left Pixel of 2x2 Color Filter Array"""
+        )
+        custom float3 inputs:CFA_CF01 = (0.0, 0.0, 0.0) (
+            docs="""Top Right Pixel of 2x2 Color Filter Array"""
+        )
+        custom float3 inputs:CFA_CF10 = (0.0, 0.0, 0.0) (
+            docs="""Bottom Left Pixel of 2x2 Color Filter Array"""
+        )
+        custom float3 inputs:CFA_CF11 = (0.0, 0.0, 0.0) (
+            docs="""Bottom Right Pixel of 2x2 Color Filter Array"""
+        )
+        custom token inputs:cfaSemantic = "RGGB" (
+            docs="""Semantic of the Color Filter array: RGGB, GRBG, BGGR, RCCB, CRBC, BCCR, RCCC, CCCR or CRCC"""
+        )
+        custom uint64 inputs:embeddedSrc = 0 (
+            docs="""Embedded Data Lines Source Buffer"""
+        )
+        custom bool inputs:flipHorizontal = false (
+            docs="""horizonal mirroring"""
+        )
+        custom bool inputs:flipVertical = false (
+            docs="""vertical mirroring"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:maximalValue = 16777215 (
+            docs="""the maximal value of the internal processing (20bits : 1048575) (passthrough : 1) (default for 24 bits: 16777215)"""
+        )
+        custom token inputs:outputDataTypeFormat = "UINT32" (
+            docs="""Data Type of the output format: [FLOAT32, UINT32]"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+
+        # 6 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:embeddedDest = 0 (
+            docs="""Embedded Data Lines Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

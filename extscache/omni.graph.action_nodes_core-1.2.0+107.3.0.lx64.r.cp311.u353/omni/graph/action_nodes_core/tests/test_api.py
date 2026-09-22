@@ -1,0 +1,19 @@
+"""Testing the stability of the API in this module"""
+
+import omni.graph.action_nodes_core as ognc
+import omni.graph.core.tests as ogts
+from omni.graph.tools.tests.internal_utils import _check_module_api_consistency, _check_public_api_contents
+
+
+# ======================================================================
+class _TestOmniGraphNodesCoreApi(ogts.OmniGraphTestCase):
+    _UNPUBLISHED = ["ogn", "tests"]
+
+    async def test_api(self):
+        _check_module_api_consistency(ognc, self._UNPUBLISHED)  # noqa: PLW0212
+        _check_module_api_consistency(ognc.tests, is_test_module=True)  # noqa: PLW0212
+
+    async def test_api_features(self):
+        """Test that the known public API features continue to exist"""
+        _check_public_api_contents(ognc, [], self._UNPUBLISHED, only_expected_allowed=True)  # noqa: PLW0212
+        _check_public_api_contents(ognc.tests, [], [], only_expected_allowed=True)  # noqa: PLW0212

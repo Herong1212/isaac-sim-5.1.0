@@ -1,0 +1,58 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.0.14"
+
+category = "Internal"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Timeline"
+description="Provides interface for time information"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "time", "timeline"]
+support_level = "Core"
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+
+[[python.module]]
+name = "omni.timeline"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[settings]
+app.player.playAnimations = true
+app.player.playSimulations = true
+app.player.playComputegraph = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/FRAME_INTEGRITY.md",
+    "docs/TIME_PARAMETERS.md",
+    "docs/TIME_STEPPING.md",
+    "docs/MULTIPLE_TIMELINES.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/USAGE_CPP.md",
+    "docs/CHANGELOG.md",
+]
+
+cpp_api = [
+     "../../../include/omni/timeline/ITimeline.h",
+     "../../../include/omni/timeline/TimelineTypes.h",
+]
+
+[[test]]
+stdoutFailPatterns.exclude = [
+    "*Timeline*must be less than*",
+]

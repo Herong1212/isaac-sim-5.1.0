@@ -1,0 +1,100 @@
+{
+    "OnViewportPressed": {
+        "version": 1,
+        "description": [
+            "Event node which fires when a press event is initiated in a viewport, and when that press is released.",
+            "A press event differs from a click event only in timing. Press events are held down while click events are",
+            "pressed and then immediately (within a small amount of time) released.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "On Viewport Pressed (BETA)",
+        "categories": ["graph:action", "ui"],
+        "scheduling": ["compute-on-request", "threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of 2D position outputs are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for press events",
+                "uiName": "Viewport",
+                "default": "Viewport",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture that will trigger press events",
+                "uiName": "Gesture",
+                "default": "Left Mouse Press",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "literalOnly": "1",
+                    "allowedTokens": {
+                        "LeftMouseDrag": "Left Mouse Press",
+                        "RightMouseDrag": "Right Mouse Press",
+                        "MiddleMouseDrag": "Middle Mouse Press"
+                    }
+                }
+            },
+            "onlyPlayback": {
+                "type": "bool",
+                "description": "When true, the node is only executed while Stage is being played",
+                "uiName": "Only Simulate On Play",
+                "default": true,
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "pressed": {
+                "type": "execution",
+                "description": [
+                    "When a press event is initiated in the viewport, signal to the graph that execution can continue",
+                    "downstream on this path. 'Press Position' will also be populated when this signal is set."
+                ],
+                "uiName": "Pressed"
+            },
+            "released": {
+                "type": "execution",
+                "description": [
+                    "When a press in the viewport is released, signal to the graph that execution can continue",
+                    "downstream on this path. 'Release Position' and 'Is Release Position Valid' will also be",
+                    "populated when this signal is set."
+                ],
+                "uiName": "Released"
+            },
+            "pressPosition": {
+                "type": "double[2]",
+                "description": "The position at which the press occurred (valid when either 'Pressed' or 'Released' is enabled)",
+                "uiName": "Press Position"
+            },
+            "releasePosition": {
+                "type": "double[2]",
+                "description": [
+                    "The position at which the press was released, or (0,0) if the press was released outside of the viewport",
+                    "or the viewport is currently pressed (valid when 'Ended' is enabled and 'Is Release Position Valid' is true)"
+                ],
+                "uiName": "Release Position"
+            },
+            "isReleasePositionValid": {
+                "type": "bool",
+                "description": "True if the press was released inside of the viewport, and false otherwise",
+                "uiName": "Is Release Position Valid"
+            }
+        }
+    }
+}

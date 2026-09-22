@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnAppendString.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_AppendString" (
+        docs="""Creates a new token or string by appending the given token or string. token[] inputs will be appended element-wise."""
+    )
+    {
+        token node:type = "omni.graph.nodes.AppendString"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:suffix (
+            docs="""The string to be appended"""
+        )
+        custom token inputs:value (
+            docs="""The string(s) to be appended to"""
+        )
+
+        # 1 attribute
+        custom token outputs:value (
+            docs="""The new string(s)"""
+        )
+    }
+}

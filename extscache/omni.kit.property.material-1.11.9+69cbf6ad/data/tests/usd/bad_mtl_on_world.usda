@@ -1,0 +1,51 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World" (
+    kind = "component"
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    rel material:binding = </World/Looks/Plastic_ABS_01> (
+        bindMaterialAs = "strongerThanDescendants"
+    )
+
+    def Xform "grill" (
+        instanceable = false
+    )
+    {
+        texCoord2f[] primvars:st = [] (
+            interpolation = "faceVarying"
+        )
+        int[] primvars:st:indices = []
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def Cube "Cube_01"
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            double size = 100
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.25, 0.25, 0.25)
+            double3 xformOp:translate = (51.44330726677762, 2.679923535526811, -34.224584746612834)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Cube "Cube_00"
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            double size = 100
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (0.25, 0.25, 0.25)
+            double3 xformOp:translate = (-46.594307005118, -6.163824131704928, 30.21956239874183)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+}
+

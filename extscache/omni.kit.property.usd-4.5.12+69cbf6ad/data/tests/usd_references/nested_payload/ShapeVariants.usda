@@ -1,0 +1,74 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+)
+
+def Xform "World"
+{
+    def Xform "Content"
+    {
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def Xform "Shape" (
+            displayName = "Shape"
+            variants = {
+                string shape = "Cube"
+            }
+            prepend variantSets = "shape"
+        )
+        {
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+            variantSet "shape" = {
+                "Cube" (
+                    customData = {
+                        string[] variantPrimPaths = ["."]
+                    }
+                    delete payload = [
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@,
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@</World/Geometry>,
+                        @./Cube.usd@</World/Geometry>,
+                        @./Cube.usd@</World>,
+                        @./Cube.usd@
+                    ]
+                    prepend payload = @./Cube.usd@</World/Geometry>
+                ) {
+
+                }
+                "Cylinder" (
+                    customData = {
+                        string[] variantPrimPaths = ["."]
+                    }
+                    delete payload = [
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@,
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@</World/Geometry>,
+                        @./Sphere.usd@</World/Geometry>,
+                        @./Cylinder.usd@</World/Geometry>,
+                        @./Cylinder.usd@</World>,
+                        @./Cylinder.usd@</World/Geomerty>
+                    ]
+                    prepend payload = @./Cylinder.usd@</World/Geometry>
+                ) {
+
+                }
+                "Sphere" (
+                    customData = {
+                        string[] variantPrimPaths = ["."]
+                    }
+                    delete payload = [
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@,
+                        @C:/Users/shyam.a.nair/Desktop/Solidworks/USD/test/Nested Payload/Cube.usd@</World/Geometry>
+                    ]
+                    prepend payload = @./Sphere.usd@</World/Geometry>
+                ) {
+
+                }
+            }
+        }
+    }
+}

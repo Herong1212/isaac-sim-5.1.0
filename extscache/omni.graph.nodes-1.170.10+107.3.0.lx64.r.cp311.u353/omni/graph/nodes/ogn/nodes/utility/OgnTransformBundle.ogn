@@ -1,0 +1,35 @@
+{
+    "omni.graph.TransformBundle": {
+        "description": [ "Applies a transform to an input bundle, storing the result in an output bundle" ],
+        "metadata": {
+            "uiName": "Transform Bundle"
+        },
+        "version": 1,
+        "categories": ["bundle"],
+        "inputs": {
+            "input": {
+                "description": [ "Input bundle containing the attributes to be transformed." ],
+                "type": "bundle"
+            },
+            "transform": {
+                "default": [
+                    [ 1.0, 0.0, 0.0, 0.0 ],
+                    [ 0.0, 1.0, 0.0, 0.0 ],
+                    [ 0.0, 0.0, 1.0, 0.0 ],
+                    [ 0.0, 0.0, 0.0, 1.0 ]
+                ],
+                "description": [ "The transform to apply to the bundle" ],
+                "type": "matrixd[4]",
+                "metadata": {
+                    "displayGroup": "parameters"
+                }
+            }
+        },
+        "outputs": {
+            "output": {
+                "description": [ "Output bundle containing all of the transformed attributes" ],
+                "type": "bundle"
+            }
+        }
+    }
+}

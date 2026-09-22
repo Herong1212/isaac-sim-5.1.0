@@ -1,0 +1,151 @@
+{
+    "RpResourceExampleDeformer": {
+        "version": 1,
+        "description": [
+            "Example node showcasing the deformation of a set of prims in a pre-render graph.",
+            "The node is meant to be used together with RpResourceExampleAllocator and RpResourceExampleHydra. ",
+            "The deformation function translates the input points on a sinusoidal path against the z axis."
+        ],
+        "categories": [ "examples", "graph:preRender" ],
+        "uiName": "GPU Interop Example: RpResource Deformer",
+        "inputs": {
+            "stream": {
+                "type": "uint64",
+                "description": "The CUDA Stream used to order the CUDA commands scheduled by this graph execution.",
+                "uiName": "Stream"
+            },
+            "resourcePointerCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Pointers to the allocated RpResources.",
+                    "Two resources are expected per prim: one for the rest positions and one for deformed positions."
+                ],
+                "uiName": "Resource Pointer Collection"
+            },
+            "pointCountCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Point count for each prim being deformed.",
+                    "The size of the array is equal to the number prims being deformed."
+                ],
+                "uiName": "Point Counts"
+            },
+            "primPathCollection": {
+                "type": "token[]",
+                "description": [
+                    "The paths of the prims being deformed."
+                ],
+                "uiName": "Prim Paths"
+            },
+            "verbose": {
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "If true, the node will log detailed messages during the execution. ",
+                    "Can negatively impact performance."
+                ],
+                "uiName":  "Verbose"
+            },
+            "runDeformerKernel": {
+                "type": "bool",
+                "default": true,
+                "description": [
+                    "If true, performs the deformation of the prims. ",
+                    "Can be toggled off to stop the deformation at an arbitrary point in time."
+                ],
+                "uiName": "Run Deformer"
+            },
+            "timeScale": {
+                "type": "float",
+                "default": 0.01,
+                "description": [
+                    "Determines the offset applied on the deformed points in each iteration of the node compute.",
+                    "Larger values will result in a more pronounced deformation over multiple frames."
+                ],
+                "uiName": "Time Scale"
+            },
+            "positionScale": {
+                "type": "float",
+                "default": 1.0,
+                "description": [
+                    "Determines the offset applied on the deformed points in each iteration of the node compute.",
+                    "Larger values will result in a more pronounced deformation over multiple frames."
+                ],
+                "uiName": "Position Scale"
+            },
+            "deformScale": {
+                "type": "float",
+                "default": 1.0,
+                "description": [
+                    "Multiplier used to control the scale of the deformation. ",
+                    "Incresing the value beyond 1 will increase the offset between the position at rest ",
+                    "and the deformed position, for a given deformation. ",
+                    "Negative values will flip the point posion agains the displacement axis."
+                ],
+                "uiName": "Deform Scale"
+            },
+            "simTime": {
+                "type": "double",
+                "default": 0.0,
+                "description": [
+                    "The time difference since the last simulation frame.",
+                    "May suffer from loss of precision and cannot be used as a deterministic identifier, ",
+                    "for example for fetching data from Fabric during the node compute."
+                ],
+                "uiName": "Simulation Frame Time"
+            }
+        },
+        "outputs":
+        {
+            "stream": {
+                "type": "uint64",
+                "description": "The CUDA Stream used to order the CUDA commands scheduled by this graph execution.",
+                "uiName": "Stream"
+            },
+            "resourcePointerCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Pointers to the allocated RpResources.",
+                    "Two resources are expected per prim: one for the rest positions and one for deformed positions."
+                ],
+                "uiName": "Resource Pointer Collection"
+            },
+            "pointCountCollection": {
+                "type": "uint64[]",
+                "description": [
+                    "Point count for each prim being deformed.",
+                    "The size of the array is equal to the number prims being deformed."
+                ],
+                "uiName": "Point Counts"
+            },
+            "primPathCollection": {
+                "type": "token[]",
+                "description": [
+                    "The paths of the prims being deformed."
+                ],
+                "uiName": "Prim Paths"
+            }
+        },
+        "state":
+        {
+            "sequenceCounter": {
+                "type": "double",
+                "description": [
+                    "Represents the time T of the deformation computation. ",
+                    "Stores the number of frames since the start of the deformation if the 'Simulation Frame Time' attribute is 0. ",
+                    "If the 'Simulation Frame Time' attribute is not 0, the value of this state attribute is equal to the simulation time. "
+                ],
+                "default": 0
+            }
+        },
+        "tokens": {
+            "points": "points",
+            "transform": "transform",
+            "rpResource": "rpResource",
+            "pointCount": "pointCount",
+            "primPath": "primPath",
+            "testToken": "testToken",
+            "uintData": "uintData"
+        }
+    }
+}

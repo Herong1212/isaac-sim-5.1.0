@@ -1,0 +1,181 @@
+import os
+import omni.kit.test
+import omni.graph.core as og
+import omni.graph.core.tests as ogts
+from omni.graph.core.tests.omnigraph_test_utils import _TestGraphAndNode
+from omni.graph.core.tests.omnigraph_test_utils import _test_clear_scene
+from omni.graph.core.tests.omnigraph_test_utils import _test_setup_scene
+from omni.graph.core.tests.omnigraph_test_utils import _test_verify_scene
+
+
+class TestOgn(ogts.OmniGraphTestCase):
+
+    async def test_data_access(self):
+        from omni.replicator.core.ogn.OgnBoundingBoxLegacyDatabase import OgnBoundingBoxLegacyDatabase
+        test_file_name = "OgnBoundingBoxLegacyTemplate.usda"
+        usd_path = os.path.join(os.path.dirname(__file__), "usd", test_file_name)
+        if not os.path.exists(usd_path):  # pragma: no cover
+            self.assertTrue(False, f"{usd_path} not found for loading test")
+        (result, error) = await ogts.load_test_file(usd_path)
+        self.assertTrue(result, f'{error} on {usd_path}')
+        test_node = og.Controller.node("/TestGraph/Template_omni_replicator_core_BoundingBoxLegacy")
+        database = OgnBoundingBoxLegacyDatabase(test_node)
+        self.assertTrue(test_node.is_valid())
+        node_type_name = test_node.get_type_name()
+        self.assertEqual(og.GraphRegistry().get_node_type_version(node_type_name), 1)
+
+        def _attr_error(attribute: og.Attribute, usd_test: bool) -> str:  # pragma no cover
+            test_type = "USD Load" if usd_test else "Database Access"
+            return f"{node_type_name} {test_type} Test - {attribute.get_name()} value error"
+
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:bboxIds"))
+        attribute = test_node.get_attribute("inputs:bboxIds")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.bboxIds
+        expected_value = []
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:bufferSize"))
+        attribute = test_node.get_attribute("inputs:bufferSize")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.bufferSize
+        database.inputs.bufferSize = db_value
+        expected_value = 0
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:data"))
+        attribute = test_node.get_attribute("inputs:data")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.data
+        expected_value = []
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:exec"))
+        attribute = test_node.get_attribute("inputs:exec")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.exec
+        database.inputs.exec = db_value
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:height"))
+        attribute = test_node.get_attribute("inputs:height")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.height
+        database.inputs.height = db_value
+        expected_value = 0
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:ids"))
+        attribute = test_node.get_attribute("inputs:ids")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.ids
+        expected_value = []
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:labels"))
+        attribute = test_node.get_attribute("inputs:labels")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.labels
+        expected_value = []
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:primPaths"))
+        attribute = test_node.get_attribute("inputs:primPaths")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.primPaths
+        expected_value = []
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:semanticFilterName"))
+        attribute = test_node.get_attribute("inputs:semanticFilterName")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.semanticFilterName
+        database.inputs.semanticFilterName = db_value
+        expected_value = ""
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:semanticTypes"))
+        attribute = test_node.get_attribute("inputs:semanticTypes")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.semanticTypes
+        expected_value = ['class']
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("inputs:width"))
+        attribute = test_node.get_attribute("inputs:width")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.inputs.width
+        database.inputs.width = db_value
+        expected_value = 0
+        actual_value = og.Controller.get(attribute)
+        ogts.verify_values(expected_value, actual_value, _attr_error(attribute, True))
+        ogts.verify_values(expected_value, db_value, _attr_error(attribute, False))
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:bboxIds"))
+        attribute = test_node.get_attribute("outputs:bboxIds")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.bboxIds
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:bufferSize"))
+        attribute = test_node.get_attribute("outputs:bufferSize")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.bufferSize
+        database.outputs.bufferSize = db_value
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:data"))
+        attribute = test_node.get_attribute("outputs:data")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.data
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:exec"))
+        attribute = test_node.get_attribute("outputs:exec")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.exec
+        database.outputs.exec = db_value
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:height"))
+        attribute = test_node.get_attribute("outputs:height")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.height
+        database.outputs.height = db_value
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:idToLabels"))
+        attribute = test_node.get_attribute("outputs:idToLabels")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.idToLabels
+        database.outputs.idToLabels = db_value
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:primPaths"))
+        attribute = test_node.get_attribute("outputs:primPaths")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.primPaths
+
+        self.assertTrue(test_node.get_attribute_exists("outputs:width"))
+        attribute = test_node.get_attribute("outputs:width")
+        self.assertTrue(attribute.is_valid())
+        db_value = database.outputs.width
+        database.outputs.width = db_value
+        temp_setting = database.inputs._setting_locked
+        database.inputs._testing_sample_value = True
+        database.outputs._testing_sample_value = True
+        database.inputs._setting_locked = temp_setting
+        self.assertTrue(database.inputs._testing_sample_value)
+        self.assertTrue(database.outputs._testing_sample_value)

@@ -1,0 +1,35 @@
+{
+    "OgnGetPrimAtPath": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node searches the stage by path and returns a prim in that path.",
+        "metadata":
+        {
+           "uiName": "Get Prim at Path"
+        },
+        "state": {
+        },
+        "inputs": {
+            "paths": {
+                "description": ["The path to the desired prim."],
+                "type": "token[]"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "prims": {
+                "description": ["Prim paths from search result."],
+                "type": "target"
+            },
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

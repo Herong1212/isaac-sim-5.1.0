@@ -1,0 +1,41 @@
+[package]
+version = "1.2.4"
+authors = ["NVIDIA"]
+title = "USD Prim Copy Paste"
+description="The ability to copy and paste USD Prims"
+readme  = "docs/README.md"
+repository = ""
+category = "USD"
+keywords = ["usd", "copy", "paste", "clipboard", "stage"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+support_level = "Sample"
+
+[dependencies]
+"omni.appwindow" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.pip_archive" = {}
+"omni.usd" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.hotkeys.core" = { optional = true }
+
+[[python.module]]
+name = "omni.kit.stage.copypaste"
+
+[[test]]
+args = [
+]
+dependencies = [
+    "omni.kit.hotkeys.core",
+    "omni.kit.window.stage",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = []
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/commands_api.md", "docs/USAGE_PYTHON.md"]

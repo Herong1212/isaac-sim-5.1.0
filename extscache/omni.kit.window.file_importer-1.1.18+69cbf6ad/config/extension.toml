@@ -1,0 +1,55 @@
+[package]
+title = "File Importer"
+version = "1.1.18"
+category = "core"
+description = "A dialog for importing files"
+authors = ["NVIDIA"]
+slackids = ["UQY4RMR3N"]
+repository = ""
+keywords = ["kit", "ui"]
+readme  = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.usd" = { optional = true }
+"omni.kit.window.filepicker" = {}
+"omni.kit.async_engine" = {}
+
+[[python.module]]
+name = "omni.kit.window.file_importer"
+
+[settings]
+exts."omni.kit.window.file_importer".appSettings = "/persistent/app/file_importer"
+exts."omni.kit.window.file_importer".enable_timestamp = true
+
+[[python.scriptFolder]]
+path = "scripts"
+
+[[test]]
+pythonTests.exclude = [
+    "*test_hide_window_destroys_detached_window*",
+]
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.kit.ui_test",
+]
+
+[[test]]
+name = "ui-visible"
+pythonTests.include = [
+    "omni.kit.window.file_importer.tests.test_extension.TestFileImporter.test_hide_window_destroys_detached_window",
+]
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.kit.ui_test",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

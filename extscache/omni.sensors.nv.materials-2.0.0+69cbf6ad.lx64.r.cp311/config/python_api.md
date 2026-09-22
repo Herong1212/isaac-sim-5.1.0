@@ -1,0 +1,212 @@
+# Public API for module omni.sensors.nv.materials:
+
+## Classes
+
+- class BulkProperties
+  - def __init__(self)
+  - [property] def compressibility(self) -> float
+  - [compressibility.setter] def compressibility(self, arg0: float)
+  - [property] def density(self) -> float
+  - [density.setter] def density(self, arg0: float)
+  - [property] def porosity(self) -> float
+  - [porosity.setter] def porosity(self, arg0: float)
+  - [property] def solarAbsorptivity(self) -> float
+  - [solarAbsorptivity.setter] def solarAbsorptivity(self, arg0: float)
+  - [property] def specificHeat(self) -> float
+  - [specificHeat.setter] def specificHeat(self, arg0: float)
+  - [property] def thermalConductivity(self) -> float
+  - [thermalConductivity.setter] def thermalConductivity(self, arg0: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg0: float)
+
+- class CoatingVariantProperties
+  - def __init__(self)
+  - [property] def diffuseAlbedo(self) -> float
+  - [diffuseAlbedo.setter] def diffuseAlbedo(self, arg0: float)
+  - [property] def lobewidthFraction(self) -> float
+  - [lobewidthFraction.setter] def lobewidthFraction(self, arg0: float)
+  - [property] def permeabilityImag(self) -> float
+  - [permeabilityImag.setter] def permeabilityImag(self, arg0: float)
+  - [property] def permeabilityReal(self) -> float
+  - [permeabilityReal.setter] def permeabilityReal(self, arg0: float)
+  - [property] def permittivityImag(self) -> float
+  - [permittivityImag.setter] def permittivityImag(self, arg0: float)
+  - [property] def permittivityReal(self) -> float
+  - [permittivityReal.setter] def permittivityReal(self, arg0: float)
+  - [property] def refractiveIndexImag(self) -> float
+  - [refractiveIndexImag.setter] def refractiveIndexImag(self, arg0: float)
+  - [property] def refractiveIndexReal(self) -> float
+  - [refractiveIndexReal.setter] def refractiveIndexReal(self, arg0: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg0: float)
+  - [property] def wavelength(self) -> float
+  - [wavelength.setter] def wavelength(self, arg0: float)
+
+- class IMaterialReader
+  - def getNumPaintVariantProperties(self, arg0: float, arg1: float) -> int
+  - def initialize(self)
+  - def parseCoatingVariantJson(self, arg0: str)
+  - def parseJson(self, arg0: str)
+  - def parsePaintVariantJson(self, arg0: str)
+  - def readAndParseCoatingVariantJsonFile(self, arg0: str)
+  - def readAndParseJsonFile(self, arg0: str)
+  - def readAndParsePaintVariantJsonFile(self, arg0: str)
+  - static def readJsonFile(*args, **kwargs) -> typing.Any
+  - def readMaterialProperties(self, arg0: BulkProperties, arg1: SpectralProperties, arg2: float, arg3: float, arg4: WaveType) -> bool
+  - def readVariantProperties(self, arg0: CoatingVariantProperties, arg1: PaintVariantProperties, arg2: float, arg3: float, arg4: WaveType) -> bool
+
+- class IMaterialReaderFactory
+  - def createInstance(self) -> IMaterialReader
+
+- class IMaterialUtilBSDF
+  - def computeBSDF(self, arg0: NvMatInput, arg1: NvMatOutput, arg2: NvPolarizedRayProps, arg3: NvPolarizedRayProps, arg4: NvPolarizedRayProps, arg5: NvPolarizedRayProps, arg6: BulkProperties, arg7: SpectralProperties, arg8: bool) -> float
+  - def initialize(self, arg0: int)
+  - def initializePaintVariants(self, arg0: PaintVariantProperties)
+  - def setCoatingAndPaintVariants(self, arg0: CoatingVariantProperties, arg1: PaintVariantProperties)
+  - def uninitializePaintVariants(self, arg0: PaintVariantProperties)
+  - def useRandomState(self, arg0: bool)
+
+- class IMaterialUtilBSDFFactory
+  - def createInstance(self) -> IMaterialUtilBSDF
+
+- class NvMatInFlags
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CALC_INTERNAL_TERMS: omni.sensors.nv.materials._materials.NvMatInFlags
+  - CALC_PHASE_AND_POLARIZED: omni.sensors.nv.materials._materials.NvMatInFlags
+  - CALC_R: omni.sensors.nv.materials._materials.NvMatInFlags
+  - CALC_T: omni.sensors.nv.materials._materials.NvMatInFlags
+
+- class NvMatInput
+  - def __init__(self)
+  - [property] def customPropsSize(self) -> int
+  - [customPropsSize.setter] def customPropsSize(self, arg0: int)
+  - [property] def diffuseRefl(self) -> omni.sensors.nv.common._common.float3
+  - [diffuseRefl.setter] def diffuseRefl(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def distPrevHit(self) -> float
+  - [distPrevHit.setter] def distPrevHit(self, arg0: float)
+  - [property] def flags(self) -> int
+  - [flags.setter] def flags(self, arg0: int)
+  - [property] def hitPoint(self) -> omni.sensors.nv.common._common.float3
+  - [hitPoint.setter] def hitPoint(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def incRayDir(self) -> omni.sensors.nv.common._common.float3
+  - [incRayDir.setter] def incRayDir(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def incRayProps(self) -> NvMatRayProps
+  - [incRayProps.setter] def incRayProps(self, arg0: NvMatRayProps)
+  - [property] def lookupRayDir(self) -> omni.sensors.nv.common._common.float3
+  - [lookupRayDir.setter] def lookupRayDir(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def matNormal(self) -> omni.sensors.nv.common._common.float3
+  - [matNormal.setter] def matNormal(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def materialId(self) -> int
+  - [materialId.setter] def materialId(self, arg0: int)
+  - [property] def randomState(self) -> int
+  - [randomState.setter] def randomState(self, arg1: int)
+  - [property] def sourceDivergence(self) -> float
+  - [sourceDivergence.setter] def sourceDivergence(self, arg0: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg0: float)
+
+- class NvMatOutput
+  - def __init__(self)
+  - [property] def distThroughCurMat(self) -> float
+  - [distThroughCurMat.setter] def distThroughCurMat(self, arg0: float)
+  - [property] def exitPoint(self) -> omni.sensors.nv.common._common.float3
+  - [exitPoint.setter] def exitPoint(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def lookupRayProps(self) -> NvMatRayProps
+  - [lookupRayProps.setter] def lookupRayProps(self, arg0: NvMatRayProps)
+  - [property] def materialId(self) -> int
+  - [materialId.setter] def materialId(self, arg0: int)
+  - [property] def reflRayDir(self) -> omni.sensors.nv.common._common.float3
+  - [reflRayDir.setter] def reflRayDir(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def reflRayProps(self) -> NvMatRayProps
+  - [reflRayProps.setter] def reflRayProps(self, arg0: NvMatRayProps)
+  - [property] def transRayDir(self) -> omni.sensors.nv.common._common.float3
+  - [transRayDir.setter] def transRayDir(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def transRayProps(self) -> NvMatRayProps
+  - [transRayProps.setter] def transRayProps(self, arg0: NvMatRayProps)
+
+- class NvMatRayProps
+  - def __init__(self)
+  - def __init__(self, arg0: omni.sensors.nv.common._common.float3)
+  - [property] def vector(self) -> omni.sensors.nv.common._common.float3
+  - [vector.setter] def vector(self, arg0: omni.sensors.nv.common._common.float3)
+
+- class NvPolarizedRayProps(NvMatRayProps)
+  - def __init__(self)
+  - [property] def coherent(self) -> omni.sensors.nv.common._common.float4
+  - [coherent.setter] def coherent(self, arg0: omni.sensors.nv.common._common.float4)
+  - [property] def crossCoherent(self) -> omni.sensors.nv.common._common.float4
+  - [crossCoherent.setter] def crossCoherent(self, arg0: omni.sensors.nv.common._common.float4)
+  - [property] def crossDiffuse(self) -> omni.sensors.nv.common._common.float2
+  - [crossDiffuse.setter] def crossDiffuse(self, arg0: omni.sensors.nv.common._common.float2)
+  - [property] def diffuse(self) -> omni.sensors.nv.common._common.float2
+  - [diffuse.setter] def diffuse(self, arg0: omni.sensors.nv.common._common.float2)
+
+- class PaintVariantProperties
+  - def __init__(self)
+  - [property] def diffuseAlbedo(self) -> float
+  - [diffuseAlbedo.setter] def diffuseAlbedo(self, arg0: float)
+  - [property] def lobewidthFraction(self) -> float
+  - [lobewidthFraction.setter] def lobewidthFraction(self, arg0: float)
+  - [property] def numPaintVariants(self) -> int
+  - [numPaintVariants.setter] def numPaintVariants(self, arg0: int)
+  - [property] def permeabilityImag(self) -> float
+  - [permeabilityImag.setter] def permeabilityImag(self, arg0: float)
+  - [property] def permeabilityReal(self) -> float
+  - [permeabilityReal.setter] def permeabilityReal(self, arg0: float)
+  - [property] def permittivityImag(self) -> float
+  - [permittivityImag.setter] def permittivityImag(self, arg0: float)
+  - [property] def permittivityReal(self) -> float
+  - [permittivityReal.setter] def permittivityReal(self, arg0: float)
+  - [property] def refractiveIndexImag(self) -> float
+  - [refractiveIndexImag.setter] def refractiveIndexImag(self, arg0: float)
+  - [property] def refractiveIndexReal(self) -> float
+  - [refractiveIndexReal.setter] def refractiveIndexReal(self, arg0: float)
+  - [property] def thickness(self) -> float
+  - [thickness.setter] def thickness(self, arg0: float)
+  - [property] def visibleColor(self) -> float
+  - [visibleColor.setter] def visibleColor(self, arg0: float)
+  - [property] def wavelength(self) -> float
+  - [wavelength.setter] def wavelength(self, arg0: float)
+
+- class SpectralProperties
+  - def __init__(self)
+  - [property] def baseRCS(self) -> float
+  - [baseRCS.setter] def baseRCS(self, arg0: float)
+  - [property] def diffuseAlbedo(self) -> float
+  - [diffuseAlbedo.setter] def diffuseAlbedo(self, arg0: float)
+  - [property] def emissivity(self) -> float
+  - [emissivity.setter] def emissivity(self, arg0: float)
+  - [property] def lobewidth(self) -> float
+  - [lobewidth.setter] def lobewidth(self, arg0: float)
+  - [property] def permeabilityImag(self) -> float
+  - [permeabilityImag.setter] def permeabilityImag(self, arg0: float)
+  - [property] def permeabilityReal(self) -> float
+  - [permeabilityReal.setter] def permeabilityReal(self, arg0: float)
+  - [property] def permittivityImag(self) -> float
+  - [permittivityImag.setter] def permittivityImag(self, arg0: float)
+  - [property] def permittivityReal(self) -> float
+  - [permittivityReal.setter] def permittivityReal(self, arg0: float)
+  - [property] def refractiveIndexImag(self) -> float
+  - [refractiveIndexImag.setter] def refractiveIndexImag(self, arg0: float)
+  - [property] def refractiveIndexReal(self) -> float
+  - [refractiveIndexReal.setter] def refractiveIndexReal(self, arg0: float)
+  - [property] def wavelength(self) -> float
+  - [wavelength.setter] def wavelength(self, arg0: float)
+
+- class WaveType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - WAVE_ELECTROMAGNETIC: omni.sensors.nv.materials._materials.WaveType
+  - WAVE_MECHANICAL: omni.sensors.nv.materials._materials.WaveType
+
+## Functions
+
+- def acquire_material_profile_reader_interface(plugin_name: str = None, library_path: str = None) -> IMaterialReaderFactory
+- def acquire_material_util_bsdf_interface(plugin_name: str = None, library_path: str = None) -> IMaterialUtilBSDFFactory
+- def calcSolidAngleForMat(arg0: SpectralProperties, arg1: SpectralProperties, arg2: NvMatInput) -> omni.sensors.nv.common._common.float2
+- def calcSolidAngleForMatPolarized(arg0: SpectralProperties, arg1: SpectralProperties, arg2: NvMatInput) -> omni.sensors.nv.common._common.float2
+- def release_material_profile_reader_interface(arg0: IMaterialReaderFactory)
+- def release_material_util_bsdf_interface(arg0: IMaterialUtilBSDFFactory)

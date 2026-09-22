@@ -1,0 +1,86 @@
+{
+    "version": 1,
+    "apiVersion": "1.1",
+    "interactionProfile": "/interaction_profiles/samsung/odyssey_controller",
+    "name": "Samsung Odyssey Controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceType": "controller"
+                },
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "squeeze",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "menu",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "value"
+                    ]
+                },
+                {
+                    "input": "trackpad",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "thumbstick",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click"
+                    ]
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "grip_surface"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "aim"
+        }
+    ]
+}

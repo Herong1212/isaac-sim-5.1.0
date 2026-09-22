@@ -1,0 +1,313 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (500, 500, 500)
+                double3 target = (-0.000003978038478180679, -0.000003978038307650422, 0.000007956076785831101)
+            }
+            dictionary Right = {
+                double3 position = (0, -50000, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./warehouse_fire_settings_with_emitter.usd"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            bool "rtx:flow:enabled" = 1
+            bool "rtx:flow:pathTracingEnabled" = 1
+            bool "rtx:flow:rayTracedReflectionsEnabled" = 1
+            bool "rtx:flow:rayTracedTranslucencyEnabled" = 1
+        }
+    }
+    defaultPrim = "Root"
+    upAxis = "Z"
+)
+
+def Xform "Root"
+{
+    def Xform "FlowScaledSettings"
+    {
+        token ui:displayGroup = "Material Graphs"
+        token ui:displayName = "FlowScaledSettings"
+        int ui:order = 1024
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def Scope "FlowScaledSettings"
+        {
+            token ui:displayGroup = "Material Graphs"
+            token ui:displayName = "FlowScaledSettings"
+            int ui:order = 1024
+            uniform token[] xformOpOrder = []
+
+            def FlowSimulate "flowSimulate"
+            {
+                bool autoCellSize = 0
+                uint blockMinLifetime = 4
+                bool clearOnRescale = 0
+                float densityCellSize = 0.05
+                custom bool enableHighPrecisionDensity = 0
+                custom bool enableHighPrecisionVelocity = 0
+                bool enableLowPrecisionDensity = 0
+                bool enableLowPrecisionRescale = 0
+                bool enableLowPrecisionVelocity = 0
+                bool enableSmallBlocks = 0
+                bool enableVariableTimeStep = 0
+                bool forceClear = 0
+                bool forceDisableCoreSimulation = 0
+                bool forceDisableEmitters = 0
+                bool forceSimulate = 0
+                bool interpolateTimeSteps = 0
+                int layer = 3
+                int level = 0
+                float levelCellSizeMultiplier = 0.5
+                int levelCount = 1
+                uint maxStepsPerSimulate = 1
+                bool physicsCollisionEnabled = 0
+                bool physicsConvexCollision = 0
+                bool simulateWhenPaused = 0
+                float stepsPerSecond = 60
+                float timeScale = 1
+                uint velocitySubSteps = 1
+
+                def FlowAdvectionCombustionParams "advection"
+                {
+                    float buoyancyMaxSmoke = 1
+                    float buoyancyPerSmoke = 0
+                    float buoyancyPerTemp = 2
+                    float burnPerTemp = 4
+                    bool combustionEnabled = 1
+                    float coolingRate = 1.5
+                    float divergencePerBurn = 0
+                    bool downsampleEnabled = 1
+                    bool enabled = 1
+                    bool forceFadeEnabled = 0
+                    float fuelPerBurn = 0.25
+                    bool globalFetch = 0
+                    float3 gravity = (0, 0, -9.81)
+                    float ignitionTemp = 0.05
+                    float smokePerBurn = 3
+                    float tempPerBurn = 5
+
+                    def FlowAdvectionChannelParams "velocity"
+                    {
+                        float damping = 0.01
+                        float fade = 0.01
+                        float secondOrderBlendFactor = 0.5
+                        float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "divergence"
+                    {
+                        float damping = 0.01
+                        float fade = 1
+                        float secondOrderBlendFactor = 0.5
+                        float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "temperature"
+                    {
+                        float damping = 0
+                        float fade = 0
+                        float secondOrderBlendFactor = 0.9
+                        float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "fuel"
+                    {
+                        float damping = 0
+                        float fade = 0
+                        float secondOrderBlendFactor = 0.9
+                        float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "burn"
+                    {
+                        float damping = 0
+                        float fade = 0
+                        float secondOrderBlendFactor = 0.9
+                        float secondOrderBlendThreshold = 0.001
+                    }
+
+                    def FlowAdvectionChannelParams "smoke"
+                    {
+                        float damping = 0.3
+                        float fade = 0.65
+                        float secondOrderBlendFactor = 0.9
+                        float secondOrderBlendThreshold = 0.001
+                    }
+                }
+
+                def FlowVorticityParams "vorticity"
+                {
+                    float burnMask = 0
+                    float constantMask = 0
+                    float densityMask = 0
+                    bool enabled = 1
+                    float forceScale = 0.6
+                    float fuelMask = 0
+                    float smokeMask = 0
+                    float temperatureMask = 0
+                    float velocityLinearMask = 0
+                    float velocityLogScale = 100
+                    float velocityMask = 1
+                }
+
+                def FlowPressureParams "pressure"
+                {
+                    bool enabled = 1
+                }
+
+                def FlowSummaryAllocateParams "summaryAllocate"
+                {
+                    bool enabled = 1
+                    bool enableNeighborAllocation = 1
+                    float smokeThreshold = 0.02
+                    float speedThreshold = 1
+                    float speedThresholdMinSmoke = 0
+                }
+
+                def FlowSparseNanoVdbExportParams "nanoVdbExport"
+                {
+                    bool burnEnabled = 0
+                    bool divergenceEnabled = 0
+                    bool enabled = 0
+                    bool enableLowPrecisionRgba = 0
+                    bool fuelEnabled = 0
+                    custom bool interopEnabled = 0
+                    bool readbackClearOnStart = 1
+                    bool readbackClearOnStop = 1
+                    asset readbackDirectory = @@
+                    bool readbackEnabled = 0
+                    rel readbackMaterial
+                    bool readbackOpenVDB = 1
+                    bool rgbaEnabled = 0
+                    custom bool rgbEnabled = 0
+                    bool smokeEnabled = 1
+                    bool statisticsEnabled = 1
+                    bool temperatureEnabled = 0
+                    bool velocityEnabled = 0
+                }
+            }
+
+            def FlowOffscreen "flowOffscreen"
+            {
+                int layer = 3
+                int level = 0
+
+                def FlowShadowParams "shadow"
+                {
+                    float attenuation = 100
+                    bool coarsePropagate = 1
+                    float colormapXMax = 1
+                    float colormapXMin = 0
+                    bool enabled = 1
+                    bool enableRawMode = 0
+                    bool isPointLight = 0
+                    float3 lightDirection = (-1, 1, 1)
+                    float3 lightPosition = (0, 0, 0)
+                    float minIntensity = 0.02
+                    uint numSteps = 16
+                    bool rawModeIsosurface = 1
+                    bool rawModeNormalize = 1
+                    float stepOffsetScale = 1
+                    float stepSizeScale = 0.75
+                }
+
+                def FlowRayMarchColormapParams "colormap"
+                {
+                    float colorScale = 2.5
+                    float[] colorScalePoints = [1, 1, 1, 1, 1, 1]
+                    uint resolution = 32
+                    float4[] rgbaPoints = [(0.0154, 0.0177, 0.0154, 0.004902), (0.03575, 0.03575, 0.03575, 0.504902), (0.03575, 0.03575, 0.03575, 0.504902), (1, 0.1594, 0.0134, 0.8), (13.53, 2.99, 0.12599, 0.8), (78, 39, 6.1, 0.7)]
+                    float[] xPoints = [0, 0.05, 0.15, 0.6, 0.85, 1]
+                }
+
+                def FlowDebugVolumeParams "debugVolume"
+                {
+                    custom bool applyPreShadow = 0
+                    bool enabled = 1
+                    bool enableDivergenceAsSmoke = 0
+                    bool enableSpeedAsTemperature = 0
+                    bool enableVelocityAsDensity = 0
+                    float outputBurnOffset = 0
+                    float outputBurnScale = 1
+                    float outputFuelOffset = 0
+                    float outputFuelScale = 1
+                    bool outputScaleBySmoke = 0
+                    float outputSmokeOffset = 0
+                    float outputSmokeScale = 1
+                    float outputTemperatureOffset = 0
+                    float outputTemperatureScale = 1
+                    float4 slicePlane = (1, 0, 0, 0)
+                    float slicePlaneThickness = 0
+                    float3 velocityScale = (0.01, 0.01, 0.01)
+                }
+            }
+
+            def FlowRender "flowRender"
+            {
+                int layer = 3
+                int level = 0
+
+                def FlowRayMarchParams "rayMarch"
+                {
+                    float attenuation = 50
+                    float colormapXMax = 1
+                    float colormapXMin = 0
+                    float colorScale = 1
+                    bool enableBlockWireframe = 0
+                    bool enableRawMode = 0
+                    bool rawModeIsosurface = 1
+                    bool rawModeNormalize = 1
+                    float shadowFactor = 1
+                    float stepSizeScale = 0.75
+
+                    def FlowRayMarchCloudParams "cloud"
+                    {
+                        float3 ambientColor = (0.4, 0.55, 0.9)
+                        float ambientMultiplier = 1
+                        float3 attenuationMultiplier = (1, 1, 1)
+                        float densityMultiplier = 0.5
+                        bool enableCloudMode = 0
+                        int numShadowSteps = 10
+                        float shadowStepMultiplier = 1
+                        float3 sunDirection = (1, 1, 1)
+                        float3 volumeBaseColor = (1.1, 1, 0.95)
+                        float volumeColorMultiplier = 1
+                    }
+                }
+
+                def FlowRenderSettingsParams "renderSettings"
+                {
+                    bool compositeEnabled = 1
+                    bool enableAutoApply = 1
+                    bool flowEnabled = 1
+                    int maxBlocks = 0
+                    bool pathTracingEnabled = 1
+                    bool pathTracingShadowsEnabled = 0
+                    bool rayTracedReflectionsEnabled = 1
+                    bool rayTracedShadowsEnabled = 0
+                    bool rayTracedTranslucencyEnabled = 1
+                }
+            }
+        }
+    }
+}

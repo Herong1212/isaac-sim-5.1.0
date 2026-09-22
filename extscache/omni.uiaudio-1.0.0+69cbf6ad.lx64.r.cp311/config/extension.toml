@@ -1,0 +1,31 @@
+[package]
+title = "UI Audio"
+category = "Audio"
+version = "1.0.0"
+description = "An audio API for playing sounds for UI interactions."
+repository = ""
+authors = ["NVIDIA"]
+keywords = ["audio", "ui"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"carb.audio" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[python.module]]
+path = "."
+name = "omni.kit.uiaudio"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Examples.md",
+    "docs/Settings.md",
+    "docs/ChangeLog.md",
+]
+cpp_api = [
+    "../../../include/omni/audio/IUiAudio.h",
+]

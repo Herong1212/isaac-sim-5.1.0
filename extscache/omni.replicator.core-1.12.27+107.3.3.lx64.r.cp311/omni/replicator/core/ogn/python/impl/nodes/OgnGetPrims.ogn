@@ -1,0 +1,69 @@
+{
+    "OgnGetPrims": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node searches the stage by path and returns a list of prims.",
+        "metadata":
+        {
+           "uiName": "Get Prims"
+        },
+        "state": {
+        },
+        "inputs": {
+            "pathPattern": {
+                "description": ["The RegEx (Regular Expression) path pattern to match"],
+                "type": "string"
+            },
+            "pathMatch": {
+                "description": ["The path substring to match"],
+                "type": "string"
+            },
+            "pathPatternExclusion": {
+                "description": ["The RegEx (Regular Expression) path pattern to ignore"],
+                "type": "string"
+            },
+            "primTypes": {
+                "description": ["List of prim types to include"],
+                "type": "token[]"
+            },
+            "primTypesExclusion": {
+                "description": ["List of prim types to ignore"],
+                "type": "token[]"
+            },
+            "semantics": {
+                "description": ["Semantic type-value pairs of semantics to include"],
+                "type": "token[]"
+            },
+            "semanticsExclusion": {
+                "description": ["Semantic type-value pairs of semantics to ignore"],
+                "type": "token[]"
+            },
+            "cachePrims": {
+                "description": ["If set to True, the stage is parsed only once."],
+                "type": "bool",
+                "default": true
+            },
+            "ignoreCase": {
+                "description": ["If set to True, use case-insensitive matching."],
+                "type": "bool",
+                "default": true
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "prims": {
+                "description": ["Prim paths from search result."],
+                "type": "target"
+            },
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

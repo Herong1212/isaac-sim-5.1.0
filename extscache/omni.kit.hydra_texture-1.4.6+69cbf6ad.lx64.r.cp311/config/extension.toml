@@ -1,0 +1,112 @@
+[package]
+version = "1.4.6"
+title = "Omniverse Kit Hydra Texture"
+category = "Internal"
+description = "Extension to setup and consume render output from a HydraEngine attached to a Usd.Stage"
+keywords = ["hydra", "texture", "render", "output"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.usd" = {}
+# GPU foundation must be brought up and initialized to use this extension
+# This is typically done with omni.kit.renderer.init
+"omni.gpu_foundation" = {}
+# omni.kit.renderer.core is optional, but included so this extension loads after it
+"omni.kit.renderer.core" = { optional=true }
+# List of optional known renderers to also load after (as this extension can't deliver frames until they are rendering them)
+"omni.hydra.rtx" = { optional=true }
+"omni.hydra.iray" = { optional=true }
+"omni.hydra.pxr" = { optional=true }
+"omni.hydra.index" = { optional=true }
+
+[[python.module]]
+name = "omni.kit.hydra_texture"
+
+[[native.plugin]]
+path = "bin/${platform}/${config}/*.plugin"
+
+[settings.exts."omni.kit.hydra_texture"]
+# This controls the prefix (or grouping when '/' is the last character)
+# underneath "/Render/", where implict Usd.RenderProducts will be created.
+# To revert to legacy Viewport behavior, set to "RenderProduct_"
+renderProduct.path.prefix = "OmniverseKit/HydraTextures/"
+# /exts/omni.kit.hydra_texture/renderProduct/path/filtering
+#   Whether to apply 'filtering' to reduce the path of the implicit Usd.RenderProduct
+#   This is helpful if you are trying to make the HydraTexture.name match the implicit Usd.RenderProduct path.
+# /exts/omni.kit.hydra_texture/renderProduct/path/useForTextureName
+#   Adjust the 'name' passed into the HydraTextures constructor
+#   to be prepended with the same prefix used for Usd.RenderProduct path.
+#   (Generally you will want filtering on with this option)
+#
+# { useForTextureName = false }
+# tex = create_hydra_texture(name='my_unique_name')
+#  tex.name == 'my_unique_name'
+#  tex.render_product_path == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#
+# { useForTextureName = true, filtering = true }
+# tex = create_hydra_texture(name='my_unique_name')
+#  tex.name == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#  tex.render_product_path == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#
+# { useForTextureName = false, filtering = true }
+# tex = create_hydra_texture(name='/Render/OmniverseKit/HydraTextures/my_unique_name')
+#  tex.name == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#  tex.render_product_path == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#
+# { useForTextureName = false, filtering = false }
+# tex = create_hydra_texture(name='/Render/OmniverseKit/HydraTextures/my_unique_name')
+#  tex.name == '/Render/OmniverseKit/HydraTextures/my_unique_name'
+#  tex.render_product_path == '/Render/OmniverseKit/HydraTextures/Render/OmniverseKit/HydraTextures/my_unique_name'
+#
+renderProduct.path.filtering = true
+renderProduct.path.useForTextureName = false
+
+# Preserve the camera set on the HydraTexture when a new stage is opened
+stage.load.preserve.camera = true
+# Preserve the resolution set on the HydraTexture when a new stage is opened
+stage.load.preserve.resolution = true
+# Preserve any AOV overrides (or reset to Ldr color) when a new stage is opened
+stage.load.preserve.aovs = false
+# Preserve the RenderProduct(path) set on the HydraTexture when a new stage is opened
+stage.load.preserve.renderProduct = false
+# Preserve any Usd applied-api schemas when a new stage is opened
+stage.load.preserve.apiSchemas = false
+
+# Types of prims considered valid for assignemt to camera_path
+# The type check on the "camera" prim does account for inheritance
+camera.validPrimTypes = [
+    "Camera",
+    "OmniSensor",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+[[test]]
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.renderer.init"
+]
+
+stdoutFailPatterns.exclude = [
+    # Can drop a frame or two rendering with OpenGL interop
+    "*HydraRenderer failed to render this frame*",
+    # PresentThread will auto-enable, but these tests run headless, ignore this for now
+    "*omni.hydratexture*omni::kit::renderer::IRenderer is not currently available but requested*",
+    "*Was not able to get a RenderProduct from the path: '/Does/not/exist'*",
+]

@@ -1,0 +1,44 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadMouseState.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_ReadMouseState" (
+        docs="""Reads the current state of the mouse. You can choose which mouse element this node is associated with. When mouse element is chosen to be a button, only outputs:isPressed is meaningful. When coordinates are chosen, only outputs:coords and outputs:window are meaningful.
+Pixel coordinates are the position of the mouse cursor in screen pixel units with (0,0) top left. Normalized coordinates are values between 0-1 where 0 is top/left and 1 is bottom/right. By default, coordinates are relative to the application window, but if 'Use Relative Coords' is set to true, then coordinates are relative to the workspace window containing the mouse pointer."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.ReadMouseState"
+        int node:typeVersion = 1
+
+        # 2 attributes
+        custom token inputs:mouseElement = "Left Button" (
+            docs="""The mouse input to check the state of"""
+        )
+        custom bool inputs:useRelativeCoords = false (
+            docs="""When true, the output 'coords' is made relative to the workspace window containing the
+            mouse pointer instead of the entire application window"""
+        )
+
+        # 3 attributes
+        custom float2 outputs:coords (
+            docs="""The coordinates of the mouse. If the mouse element selected is a button, this will output a zero vector."""
+        )
+        custom bool outputs:isPressed (
+            docs="""True if the button is currently pressed, false otherwise. If the mouse element selected
+            is a coordinate, this will output false."""
+        )
+        custom token outputs:window (
+            docs="""The name of the workspace window containing the mouse pointer if 'Use Relative Coords' is true
+            and the mouse element selected is a coordinate"""
+        )
+    }
+}

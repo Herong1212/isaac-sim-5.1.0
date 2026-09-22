@@ -1,0 +1,41 @@
+{
+    "OgnPhysicsSimulate": {
+        "description": [
+            "Simulate physics"
+        ],
+        "version": 1,
+        "uiName": "Simulate Physics",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+
+        "inputs": {
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "simulationTime": {
+                "type": "float",
+                "description": "Desired simulation time.",
+                "default": 1.0
+            },
+            "stepDt": {
+                "type": "float",
+                "description": "The per-step dt to simulate. A smaller value will require more steps but provide higher simulation accuracy.",
+                "default": 0.1
+            },
+            "physicsScene": {
+                "type": "target",
+                "description": "Physics Scene to simulate."
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

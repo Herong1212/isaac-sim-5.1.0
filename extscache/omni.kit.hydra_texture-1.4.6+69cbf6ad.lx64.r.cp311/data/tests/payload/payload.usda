@@ -1,0 +1,381 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer G:\\ov\\collections\\Collected_warehouse_20x20_layout_02_lite\\assets\\robots\\amr\\nova_carter_with_sensors\\nova_carter_with_sensors.usda
+"""
+    endTimeCode = 100
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+
+def Xform "World"
+{
+    def Xform "Nova_Carter_ROS"
+    {
+        def Xform "chassis_link" (
+            instanceable = false
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Camera "third_person_view_cam"
+            {
+                float2 clippingRange = (0.01, 10000000)
+                float focalLength = 18.147562
+                float focusDistance = 400
+                bool omni:kit:cameraLock = 1
+                custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -439.31613083667713)
+                quatd xformOp:orient = (0.541675220419702, 0.45451947767204354, -0.45451947767204376, -0.5416752204197018)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2, 1.4029392833150105e-14, 0.7)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def Xform "front_hawk"
+            {
+                token visibility = "inherited"
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.1003, 0.074998, 0.3459)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "left"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Camera "camera_left"
+                    {
+                        float2 clippingRange = (0.076, 100000)
+                        float focalLength = 2.8734348
+                        float focusDistance = 0.6
+                        float fStop = 240
+                        token projection = "perspective"
+                        quatd xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.001, -0.075, -0.0125)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "left_hawk"
+            {
+                token visibility = "inherited"
+                quatd xformOp:orient = (0.7071067811865475, 0, 0, 0.7071067811865476)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.43043, 0.15, 0.3459)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "left"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Camera "camera_left"
+                    {
+                        float2 clippingRange = (0.076, 100000)
+                        float focalLength = 2.8734348
+                        float focusDistance = 0.6
+                        float fStop = 240
+                        token projection = "perspective"
+                        quatd xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.001, -0.075, -0.0125)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "right_hawk"
+            {
+                token visibility = "inherited"
+                quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865476)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.28044, -0.15, 0.3459)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "left"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Camera "camera_left"
+                    {
+                        float2 clippingRange = (0.076, 100000)
+                        float focalLength = 2.8734348
+                        float focusDistance = 0.6
+                        float fStop = 240
+                        token projection = "perspective"
+                        quatd xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "mount"
+                {
+
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.001, -0.075, -0.0125)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "back_hawk"
+            {
+                token visibility = "inherited"
+                quatd xformOp:orient = (6.123233995736766e-17, 0, 0, 1)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.5637, -0.074998, 0.3459)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "left"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Camera "camera_left"
+                    {
+                        float2 clippingRange = (0.076, 100000)
+                        float focalLength = 2.8734348
+                        float focusDistance = 0.6
+                        float fStop = 240
+                        token projection = "perspective"
+                        quatd xformOp:orient = (0.5, 0.5, -0.5, -0.5)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+
+            def Xform "front_owl"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0.104344, 0, 0.37439)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.0115, 0.008, 0.01025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "left_owl"
+            {
+                quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.231696, -0.154101, 0.34439)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.0115, 0.008, 0.01025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "right_owl"
+            {
+                quatd xformOp:orient = (0.7071067811865476, 0, 0, 0.7071067811865475)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.231696, 0.154101, 0.34439)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.0115, 0.008, 0.01025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "back_owl"
+            {
+                quatd xformOp:orient = (6.123233995736766e-17, 0, 0, 1)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-0.567737, 0, 0.37439)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "mount"
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (-0.0115, 0.008, 0.01025)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+
+            def Xform "base_link"
+            {
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Xform "dummy_link"
+        {
+        }
+
+        def Xform "dummy_link_2"
+        {
+        }
+    }
+
+    def Scope "Render"
+    {
+        def Scope "Vars"
+        {
+            def RenderVar "LdrColor"
+            {
+                uniform string sourceName = "LdrColor"
+            }
+        }
+
+        def RenderProduct "FrontHawkLeftCameraRp"
+        {
+            rel camera = </World/Nova_Carter_ROS/chassis_link/front_hawk/left/camera_left>
+            rel orderedVars = [
+                </World/Render/Vars/LdrColor>,
+            ]
+            uniform int2 resolution = (1920, 1200)
+        }
+
+        def RenderProduct "RightHawkLeftCameraRp"
+        {
+            rel camera = </World/Nova_Carter_ROS/chassis_link/right_hawk/left/camera_left>
+            rel orderedVars = [
+                </World/Render/Vars/LdrColor>,
+            ]
+            uniform int2 resolution = (1920, 1200)
+        }
+
+        def RenderProduct "BackHawkLeftCameraRp"
+        {
+            rel camera = </World/Nova_Carter_ROS/chassis_link/back_hawk/left/camera_left>
+            rel orderedVars = [
+                </World/Render/Vars/LdrColor>,
+            ]
+            uniform int2 resolution = (1920, 1200)
+        }
+
+        def RenderProduct "LeftHawkLeftCameraRp"
+        {
+            rel camera = </World/Nova_Carter_ROS/chassis_link/left_hawk/left/camera_left>
+            rel orderedVars = [
+                </World/Render/Vars/LdrColor>,
+            ]
+            uniform int2 resolution = (1920, 1200)
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        float inputs:intensity = 3000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        double3 xformOp:rotateXYZ = (45, 0, 90)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        double size = 2
+
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-4, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Sphere "Sphere"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        double radius = 1
+
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (4, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cone "Cone"
+    {
+        float3[] extent = [(-0.5, -1, -0.5), (0.5, 0.5, 0.5)]
+        double radius = 1
+        double height = 2
+
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 4, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cylinder "Cylinder"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        double radius = 1
+        double height = 2
+
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, -4, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

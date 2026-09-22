@@ -1,0 +1,25 @@
+Standard Annotators,RT Annotators,PathTracing Annotators
+LdrColor/rgb,SmoothNormal,PtDirectIllumation
+HdrColor,BumpNormal,PtGlobalIllumination
+camera_params/CameraParams,Motion2d,PtReflections
+normals,DiffuseAlbedo,PtRefractions
+motion_vectors,SpecularAlbedo,PtSelfIllumination
+cross_correspondence,Roughness,PtBackground
+distance_to_image_plane,DirectDiffuse,PtWorldNormal
+distance_to_camera,DirectSpecular,PtRefractionFilter
+primPaths,Reflections,PtMultiMatte<0-7>
+bounding_box_2d_tight_fast,IndirectDiffuse,PtWorldPos
+bounding_box_2d_tight,DepthLinearized,PtZDepth
+bounding_box_2d_loose_fast,EmissionAndForegroundMask,PtVolumes
+bounding_box_2d_loose,AmbientOcclusion,PtDiffuseFilter
+bounding_box_3d_360,,PtReflectionFilter
+bounding_box_3d_fast,,
+bounding_box_3d,,
+semantic_segmentation,,
+instance_segmentation_fast,,
+instance_segmentation,,
+skeleton_data,,
+pointcloud,,
+CrossCorrespondence,,
+MotionVectors,,
+Occlusion,,

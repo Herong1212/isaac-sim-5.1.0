@@ -1,0 +1,49 @@
+mdl 1.6;
+
+import ::df::*;
+import ::math::*;
+import ::tex::*;
+import ::state::*;
+
+
+export material main_png(
+    uniform texture_2d tex_file = texture_2d("../../resources/tile.<UDIM>.png"),
+    uniform float scale_u = 6.0,
+    uniform float scale_v = 6.0,
+    bool lookup = true
+) = let {
+    float2 sample_coord = float2(state::texture_coordinate(0).x * scale_u, state::texture_coordinate(0).y * scale_v);
+    int2 tex_res = int2(tex::width(tex_file), tex::height(tex_file));
+    int2 tex_tile = math::abs(math::floor(sample_coord));
+    int2 texel_coord = int2(math::frac(sample_coord) * float2(tex_res - 1));
+    color tint = lookup
+        ? tex::lookup_color(tex: tex_file, coord: sample_coord)
+        : tex::texel_color(tex: tex_file, coord: texel_coord, uv_tile: tex_tile);
+
+} in material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf(
+            tint: tint)
+    )
+);
+
+export material main_exr(
+    uniform texture_2d tex_file = texture_2d("../../resources/tile.<UDIM>.exr"),
+    uniform float scale_u = 6.0,
+    uniform float scale_v = 6.0,
+    bool lookup = true
+) = let {
+    float2 sample_coord = float2(state::texture_coordinate(0).x * scale_u, state::texture_coordinate(0).y * scale_v);
+    int2 tex_res = int2(tex::width(tex_file), tex::height(tex_file));
+    int2 tex_tile = math::abs(math::floor(sample_coord));
+    int2 texel_coord = int2(math::frac(sample_coord) * float2(tex_res - 1));
+    color tint = lookup
+        ? tex::lookup_color(tex: tex_file, coord: sample_coord)
+        : tex::texel_color(tex: tex_file, coord: texel_coord, uv_tile: tex_tile);
+
+} in material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf(
+            tint: tint)
+    )
+);

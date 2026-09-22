@@ -1,0 +1,49 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnSizeToScale.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnSizeToScale" (
+        docs="""Generate scales to make each prim fit a cube of specified size."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnSizeToScale"
+        int node:typeVersion = 1
+
+        # 5 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom bool inputs:maintainAspectRatio = true (
+            docs="""Scale each axis by the same value to maintain aspect ratio"""
+        )
+        custom int inputs:numSamples = 0 (
+            docs="""number of samples"""
+        )
+        custom rel inputs:prims (
+            docs="""Prim(s) to convert the scale to."""
+        )
+        custom double3[] inputs:size = [] (
+            docs="""Desired size of the input prims."""
+        )
+
+        # 3 attributes
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+        custom int outputs:numSamples (
+            docs="""number of samples"""
+        )
+        custom double3[] outputs:samples (
+            docs="""scale values of each prim in the world space"""
+        )
+    }
+}

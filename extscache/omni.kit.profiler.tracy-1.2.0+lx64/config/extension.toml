@@ -1,0 +1,25 @@
+[package]
+version = "1.2.0"
+authors = ["NVIDIA"]
+title = "Profiler Tracy Extension"
+description="Profiler Tracy Extension."
+readme  = "docs/README.md"
+repository = ""
+category = "Internal"
+keywords = ["kit", "profiler", "Tracy"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+# publish separate package for linux/windows
+writeTarget.platform = true
+
+[dependencies]
+"omni.kit.actions.core" = {}
+"omni.services.pip_archive" = {} # for boto3
+
+[[python.module]]
+name = "omni.kit.profiler.tracy"
+
+[[test]]
+waiver = "Bundle extension"

@@ -1,0 +1,85 @@
+{
+    "AppendPath": {
+        "version": 1,
+        "description": [
+            "Generates a path token by appending the given relative path token to the given root or prim path token"
+        ],
+        "uiName": "Append Path",
+        "tags": [ "paths" ],
+        "categories": [ "sceneGraph" ],
+        "scheduling": [ "threadsafe" ],
+        "inputs": {
+            "path": {
+                "type": [ "token", "token[]" ],
+                "description": "The path token(s) to be appended to. Must be a base or prim path (ex. /World)"
+            },
+            "suffix": {
+                "type": "token",
+                "description": "The prim or prim-property path to append (ex. Cube or Cube.attr)"
+            }
+        },
+        "outputs": {
+            "path": {
+                "type": [ "token", "token[]" ],
+                "description": "The new path token(s) (ex. /World/Cube or /World/Cube.attr)"
+            }
+        },
+        "state": {
+            "path": {
+                "type": "token",
+                "description": "Snapshot of previously seen path"
+            },
+            "suffix": {
+                "type": "token",
+                "description": "Snapshot of previously seen suffix"
+            }
+        },
+        "tests": [
+            {
+                "inputs:path": {"type": "token", "value": ""},
+                "inputs:suffix": "foo",
+                "outputs:path": {"type": "token", "value": "" }
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/"},
+                "inputs:suffix": "",
+                "outputs:path": {"type": "token", "value": "/" }
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/"},
+                "inputs:suffix": "foo",
+                "outputs:path": {"type": "token", "value": "/foo" }
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/World"},
+                "inputs:suffix": "foo",
+                "outputs:path": {"type": "token", "value": "/World/foo" }
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/World"},
+                "inputs:suffix": "foo/bar",
+                "outputs:path": {"type": "token", "value": "/World/foo/bar" }
+            },
+            {
+                "inputs:path": {"type": "token", "value": "/World"},
+                "inputs:suffix": "foo/bar.attrib",
+                "outputs:path": {"type": "token", "value": "/World/foo/bar.attrib" }
+            },
+            {
+                "inputs:path": {"type": "token[]", "value": []},
+                "inputs:suffix": "foo",
+                "outputs:path": {"type": "token[]", "value": [] }
+            },
+            {
+                "inputs:path": {"type": "token[]", "value": [ "/World", "", "/World2" ]},
+                "inputs:suffix": "",
+                "outputs:path": {"type": "token[]", "value": [ "/World", "", "/World2" ] }
+            },
+            {
+                "inputs:path": {"type": "token[]", "value": [ "/World", "", "/World2" ]},
+                "inputs:suffix": "foo",
+                "outputs:path": {"type": "token[]", "value": [ "/World/foo", "", "/World2/foo" ] }
+            }
+        ]
+    }
+}

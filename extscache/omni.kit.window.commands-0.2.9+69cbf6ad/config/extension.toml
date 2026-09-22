@@ -1,0 +1,37 @@
+[package]
+version = "0.2.9"
+category = "Core"
+authors = ["NVIDIA"]
+title = "Commands Utils"
+description="Commands viewer"
+repository = ""
+keywords = ["kit", "commands"]
+changelog = "docs/CHANGELOG.md"
+support_level = "Sample"
+preview_image = "data/preview.png"
+
+[dependencies]
+"omni.kit.clipboard" = {}
+"omni.kit.commands" = {}
+"omni.kit.pip_archive" = {}
+"omni.ui" = {}
+"omni.kit.menu.utils" = {}
+
+[[python.module]]
+name = "omni.kit.window.commands"
+
+[settings]
+exts."omni.kit.window.commands".windowOpenByDefault = false
+
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md"]

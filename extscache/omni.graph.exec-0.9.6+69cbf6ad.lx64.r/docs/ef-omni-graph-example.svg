@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1854.1312 700"
+   version="1.1"
+   id="ef-omni-graph-example"
+   width="100%"
+   height="100%"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     class="graph"
+     transform="matrix(0.625,0,0,0.625,2.5,697.5)"
+     id="g1007">
+    <path
+       fill="#ffffff"
+       stroke="transparent"
+       d="M -4,4 V -1116 H 2962.61 V 4 Z"
+       id="path755" />
+    <g
+       class="cluster"
+       id="g761">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="m 20,-8 h 2918.61 c 6,0 12,-6 12,-12 v -1072 c 0,-6 -6,-12 -12,-12 H 20 c -6,0 -12,6 -12,12 V -20 c 0,6 6,12 12,12"
+         id="path757" />
+      <text
+         x="1479.3"
+         y="-1087.4"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text759">EXECUTION GRAPH | kit.def.execution(8412328473570437098)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g767">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1368.17,-40 h 1538.44 c 6,0 12,-6 12,-12 v -731 c 0,-6 -6,-12 -12,-12 H 1368.17 c -6,0 -12,6 -12,12 v 731 c 0,6 6,12 12,12"
+         id="path763" />
+      <text
+         x="2137.3899"
+         y="-778.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text765">/World/ActionGraph(1) | og.def.graph_execution(1354986524710330633)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g773">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 261.98,-16 h 2668.63 c 6,0 12,-6 12,-12 v -1031 c 0,-6 -6,-12 -12,-12 H 261.98 c -6,0 -12,6 -12,12 V -28 c 0,6 6,12 12,12"
+         id="path769" />
+      <text
+         x="1596.3"
+         y="-1054.4"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text771">kit.legacyPipeline(2) | kit.def.legacyPipeline(14601541822497998125)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g779">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 563.51,-24 h 2359.1 c 6,0 12,-6 12,-12 v -866 c 0,-6 -6,-12 -12,-12 H 563.51 c -6,0 -12,6 -12,12 v 866 c 0,6 6,12 12,12"
+         id="path775" />
+      <text
+         x="1743.0601"
+         y="-897.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text777">OmniGraph(2) | OmniGraphDef(13532122613264624703)</text>
+    </g>
+    <g
+       class="node"
+       id="g785">
+      <circle
+         cx="138.78999"
+         cy="-849"
+         r="83.379997"
+         stroke="#000000"
+         id="circle781" />
+      <text
+         x="138.78999"
+         y="-844.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text783">kit.customPipeline</text>
+    </g>
+    <g
+       class="cluster"
+       id="g791">
+      <path
+         fill="none"
+         stroke="#b2df8a"
+         d="m 634.54,-809 h 391.6 c 6,0 12,-6 12,-12 v -21 c 0,-6 -6,-12 -12,-12 h -391.6 c -6,0 -12,6 -12,12 v 21 c 0,6 6,12 12,12"
+         id="path787" />
+      <text
+         x="830.34003"
+         y="-837.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text789">og.pre_simulation(1) | og.def.pre_simulation(18371527843990822053)</text>
+    </g>
+    <g
+       class="cluster"
+       id="g797">
+      <path
+         fill="none"
+         stroke="#33a02c"
+         d="m 1101.57,-32 h 1813.04 c 6,0 12,-6 12,-12 v -772 c 0,-6 -6,-12 -12,-12 H 1101.57 c -6,0 -12,6 -12,12 v 772 c 0,6 6,12 12,12"
+         id="path793" />
+      <text
+         x="2008.09"
+         y="-811.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text795">og.simulation(2) | og.def.simulation(2058752528039269071)</text>
+    </g>
+    <g
+       class="edge"
+       id="g803">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="M 20.14,-849 H 45.07"
+         id="path799" />
+      <path
+         stroke="#000000"
+         d="m 45.33,-852.5 10,3.5 -10,3.5 z"
+         id="path801" />
+    </g>
+    <g
+       class="cluster"
+       id="g809">
+      <path
+         fill="none"
+         stroke="#e31a1c"
+         d="m 1165.17,-836 h 402.6 c 6,0 12,-6 12,-12 v -21 c 0,-6 -6,-12 -12,-12 h -402.6 c -6,0 -12,6 -12,12 v 21 c 0,6 6,12 12,12"
+         id="path805" />
+      <text
+         x="1366.47"
+         y="-864.40002"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text807">og.post_simulation(3) | og.def.post_simulation(12859070463537551084)</text>
+    </g>
+    <g
+       class="node"
+       id="g813">
+      <circle
+         cx="17.799999"
+         cy="-849"
+         r="1.8"
+         stroke="#000000"
+         id="circle811" />
+    </g>
+    <g
+       class="edge"
+       id="g819">
+      <path
+         fill="none"
+         stroke="#000000"
+         d="m 222.11,-849 h 25.52"
+         id="path815" />
+      <path
+         stroke="#000000"
+         d="m 239.98,-852.5 10,3.5 -10,3.5 z"
+         id="path817" />
+    </g>
+    <g
+       class="edge"
+       id="g825">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 261.73,-849 h 25.74"
+         id="path821" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 287.56,-852.5 10,3.5 -10,3.5 z"
+         id="path823" />
+    </g>
+    <g
+       class="node"
+       id="g829">
+      <circle
+         cx="259.78"
+         cy="-849"
+         r="1.8"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle827" />
+    </g>
+    <g
+       class="edge"
+       id="g835">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 523.53,-849 h 25.56"
+         id="path831" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 541.51,-852.5 10,3.5 -10,3.5 z"
+         id="path833" />
+    </g>
+    <g
+       class="edge"
+       id="g841">
+      <path
+         fill="none"
+         stroke="#a6cee3"
+         d="m 694.8,-914 c 25.69,-12.6 51.44,-25.23 73.43,-36.02"
+         id="path837" />
+      <path
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         d="m 767.11,-953.37 10.52,-1.27 -7.43,7.55 z"
+         id="path839" />
+    </g>
+    <g
+       class="node"
+       id="g845">
+      <circle
+         cx="1365.97"
+         cy="-689"
+         r="1.8"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle843" />
+    </g>
+    <g
+       class="edge"
+       id="g851">
+      <path
+         fill="none"
+         stroke="#33a02c"
+         d="m 1101.33,-792.62 c 15.15,5.95 205.46,80.75 252.96,99.42"
+         id="path847" />
+      <path
+         fill="#33a02c"
+         stroke="#33a02c"
+         d="m 1348.23,-699.45 7.94,7.02 -10.58,-0.53 z"
+         id="path849" />
+    </g>
+    <g
+       class="node"
+       id="g857">
+      <circle
+         cx="1784.95"
+         cy="-273"
+         r="153.37"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle853" />
+      <text
+         x="1784.95"
+         y="-268.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text855">omni_graph_nodes_constantdouble3</text>
+    </g>
+    <g
+       class="edge"
+       id="g863">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1367.65,-688.33 c 12.02,12 181.82,181.4 300.81,300.1"
+         id="path859" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 1671.25,-390.38 4.61,9.54 -9.55,-4.58 z"
+         id="path861" />
+    </g>
+    <g
+       class="node"
+       id="g869">
+      <circle
+         cx="1784.95"
+         cy="-617"
+         r="88.629997"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle865" />
+      <text
+         x="1784.95"
+         y="-612.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text867">CubeReadAttrib_02</text>
+    </g>
+    <g
+       class="edge"
+       id="g875">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1368.17,-688.79 c 16.57,2.86 201.54,34.8 319.12,55.1"
+         id="path871" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 1688.14,-637.1 9.26,5.15 -10.45,1.75 z"
+         id="path873" />
+    </g>
+    <g
+       class="node"
+       id="g881">
+      <circle
+         cx="2442.3"
+         cy="-683"
+         r="79.870003"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle877" />
+      <text
+         x="2442.3"
+         y="-678.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text879">on_playback_tick</text>
+    </g>
+    <g
+       class="edge"
+       id="g887">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1367.86,-689.28 c 24.7,-7.77 556.23,-172.08 958.75,-61.72 14.06,3.85 28.14,9.93 41.38,16.89"
+         id="path883" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2369.93,-737.04 7.08,7.88 -10.45,-1.74 z"
+         id="path885" />
+    </g>
+    <g
+       class="node"
+       id="g893">
+      <circle
+         cx="2150.3701"
+         cy="-224"
+         r="176.47"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle889" />
+      <text
+         x="2150.3701"
+         y="-219.8"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text891">make_transformation_matrix_from_trs_01</text>
+    </g>
+    <g
+       class="edge"
+       id="g899">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1936.92,-252.65 c 9.48,1.28 19.08,2.58 28.68,3.87"
+         id="path895" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 1966.16,-252.23 9.44,4.8 -10.37,2.13 z"
+         id="path897" />
+    </g>
+    <g
+       class="node"
+       id="g905">
+      <circle
+         cx="2442.3"
+         cy="-512"
+         r="73.599998"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle901" />
+      <text
+         x="2442.3"
+         y="-507.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text903">matrix_multiply</text>
+    </g>
+    <g
+       class="edge"
+       id="g911">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 2276.01,-347.81 c 36.8,-36.56 75.38,-74.88 106.01,-105.3"
+         id="path907" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2379.66,-455.71 9.57,-4.56 -4.63,9.53 z"
+         id="path909" />
+    </g>
+    <g
+       class="node"
+       id="g917">
+      <circle
+         cx="2626.4099"
+         cy="-533"
+         r="68.349998"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle913" />
+      <text
+         x="2626.4099"
+         y="-528.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text915">get_translation</text>
+    </g>
+    <g
+       class="edge"
+       id="g923">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 2515.8,-520.36 c 10.6,-1.22 21.55,-2.48 32.24,-3.72"
+         id="path919" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2547.85,-527.58 10.34,2.33 -9.53,4.62 z"
+         id="path921" />
+    </g>
+    <g
+       class="node"
+       id="g929">
+      <circle
+         cx="2820.72"
+         cy="-576"
+         r="89.769997"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle925" />
+      <text
+         x="2820.72"
+         y="-571.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text927">box0WriteAttrib_01</text>
+    </g>
+    <g
+       class="edge"
+       id="g935">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 2693.33,-547.74 c 9.54,-2.13 19.52,-4.36 29.51,-6.6"
+         id="path931" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2722.3,-557.8 10.53,1.23 -9,5.6 z"
+         id="path933" />
+    </g>
+    <g
+       class="node"
+       id="g941">
+      <circle
+         cx="2150.3701"
+         cy="-580"
+         r="161.5"
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         id="circle937" />
+      <text
+         x="2150.3701"
+         y="-575.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text939">make_transformation_matrix_from_trs</text>
+    </g>
+    <g
+       class="edge"
+       id="g947">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 1873.46,-608.09 c 31.87,3.24 69.09,7.03 105.67,10.76"
+         id="path943" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 1979.84,-600.78 9.59,4.5 -10.3,2.47 z"
+         id="path945" />
+    </g>
+    <g
+       class="edge"
+       id="g953">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 2308.22,-543.21 c 17.9,4.19 35.55,8.34 51.86,12.16"
+         id="path949" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2361.12,-534.4 8.94,5.69 -10.54,1.12 z"
+         id="path951" />
+    </g>
+    <g
+       class="edge"
+       id="g959">
+      <path
+         fill="none"
+         stroke="#fb9a99"
+         d="m 2519.47,-661.35 c 59.16,16.82 141.53,40.23 205.04,58.28"
+         id="path955" />
+      <path
+         fill="#fb9a99"
+         stroke="#fb9a99"
+         d="m 2725.47,-606.43 8.66,6.1 -10.57,0.63 z"
+         id="path957" />
+    </g>
+    <g
+       class="node"
+       id="g965">
+      <circle
+         cx="410.54001"
+         cy="-849"
+         r="112.93"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle961" />
+      <text
+         x="410.54001"
+         y="-844.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text963">SkelAnimationAnnotation</text>
+    </g>
+    <g
+       class="node"
+       id="g969">
+      <circle
+         cx="561.31"
+         cy="-849"
+         r="1.8"
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         id="circle967" />
+    </g>
+    <g
+       class="node"
+       id="g973">
+      <circle
+         cx="830.34003"
+         cy="-819"
+         r="1.8"
+         fill="#b2df8a"
+         stroke="#b2df8a"
+         id="circle971" />
+    </g>
+    <g
+       class="edge"
+       id="g979">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 563.12,-848.55 c 4.49,2.48 26.84,14.49 49.43,21.05"
+         id="path975" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 613.69,-830.83 8.85,5.83 -10.55,0.96 z"
+         id="path977" />
+    </g>
+    <g
+       class="node"
+       id="g983">
+      <circle
+         cx="1099.37"
+         cy="-793"
+         r="1.8"
+         fill="#33a02c"
+         stroke="#33a02c"
+         id="circle981" />
+    </g>
+    <g
+       class="edge"
+       id="g989">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 934.01,-809 c 59.26,5.77 127.1,12.37 153.27,14.92"
+         id="path985" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 1081.73,-800.24 7.84,7.13 -10.57,-0.68 z"
+         id="path987" />
+    </g>
+    <g
+       class="node"
+       id="g993">
+      <circle
+         cx="1365.97"
+         cy="-846"
+         r="1.8"
+         fill="#e31a1c"
+         stroke="#e31a1c"
+         id="circle991" />
+    </g>
+    <g
+       class="edge"
+       id="g999">
+      <path
+         fill="none"
+         stroke="#1f78b4"
+         d="m 1275.09,-828 c 10.43,-2.09 20.47,-4.1 29.81,-5.97"
+         id="path995" />
+      <path
+         fill="#1f78b4"
+         stroke="#1f78b4"
+         d="m 1304.56,-837.47 10.49,1.47 -9.11,5.39 z"
+         id="path997" />
+    </g>
+    <g
+       class="node"
+       id="g1005">
+      <circle
+         cx="830.34003"
+         cy="-980"
+         r="58.459999"
+         fill="#a6cee3"
+         stroke="#a6cee3"
+         id="circle1001" />
+      <text
+         x="830.34003"
+         y="-975.79999"
+         fill="#ffffff"
+         font-family="Times, serif"
+         font-size="14px"
+         text-anchor="middle"
+         id="text1003">DebugDraw</text>
+    </g>
+  </g>
+</svg>

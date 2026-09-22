@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnConstantPi.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ConstantPi" (
+        docs="""Computes a double precision floating point constant value that is a multiple of the mathematical constant 'pi'."""
+    )
+    {
+        token node:type = "omni.graph.nodes.ConstantPi"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom double inputs:factor = 1 (
+            docs="""Multiply this by the mathematical constant 'pi' to compute the output."""
+        )
+
+        # 1 attribute
+        custom double outputs:value (
+            docs="""The mathematical constant 'pi' multiplied by 'Factor'."""
+        )
+    }
+}

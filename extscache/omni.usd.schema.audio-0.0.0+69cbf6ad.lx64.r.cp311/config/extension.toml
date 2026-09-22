@@ -1,0 +1,31 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD audio schema"
+description="USD audio schema"
+keywords = ["usd", "schema", "audio"]
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+# thunks for old namespacing
+[[python.module]]
+name = "pxr"
+
+[[python.module]]
+name = "OmniAudioSchema"
+
+[[python.module]]
+name = "usd.schema.audio"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniAudioSchema${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniAudioSchema${lib_ext}"
+
+[[test]]
+waiver = "USD Schema, tested externally"

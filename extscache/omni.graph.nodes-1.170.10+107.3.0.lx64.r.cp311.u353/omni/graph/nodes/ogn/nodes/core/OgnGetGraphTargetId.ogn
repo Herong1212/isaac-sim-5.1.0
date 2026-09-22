@@ -1,0 +1,18 @@
+{
+    "GetGraphTargetId": {
+        "version": 1,
+        "description": [
+            "Access a unique id for the target prim the graph is being executed on."
+        ],
+        "categories": [ "sceneGraph" ],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+        },
+        "outputs": {
+            "targetId": {
+                "description": [ "The target prim id" ],
+                "type": "uint64"
+            }
+        }
+    }
+}

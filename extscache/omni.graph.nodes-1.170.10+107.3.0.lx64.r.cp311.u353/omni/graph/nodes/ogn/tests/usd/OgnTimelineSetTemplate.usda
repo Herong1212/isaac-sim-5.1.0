@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnTimelineSet.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_SetTimeline" (
+        docs="""Set properties of the main timeline"""
+    )
+    {
+        token node:type = "omni.graph.nodes.SetTimeline"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:propName = "Frame" (
+            docs="""The name of the property to set."""
+        )
+        custom double inputs:propValue = 0.0 (
+            docs="""The value of the property to set."""
+        )
+
+        # 2 attributes
+        custom bool outputs:clamped (
+            docs="""Was the input frame or time clamped to the playback range?"""
+        )
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+    }
+}

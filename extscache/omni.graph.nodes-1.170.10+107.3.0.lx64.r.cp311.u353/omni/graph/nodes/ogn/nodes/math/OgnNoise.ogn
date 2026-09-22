@@ -1,0 +1,177 @@
+{
+    "Noise": {
+        "version": 1,
+        "description": [
+            "Sample values from a Perlin noise field.\n",
+            "The noise field for any given seed is static: the same input position will always",
+            "give the same result. This is useful in many areas, such as texturing and animation,",
+            "where repeatability is essential. If you want a result that varies then you will need",
+            "to vary either the position or the seed. For example, connecting the \"Frame\" output of",
+            "an OnTick node to position will provide a noise result which varies from frame to frame.",
+            "Perlin noise is locally smooth, meaning that small changes in the sample position will",
+            "produce small changes in the resulting noise. Varying the seed value will produce a more",
+            "chaotic result.\n",
+            "Another characteristic of Perlin noise is that it is zero at the corners of each cell in",
+            "the field. In practical terms this means that integral positions, such as 5.0 in a",
+            "one-dimensional field or (3.0, -1.0) in a two-dimensional field, will return a result",
+            "of 0.0. Thus, if the source of your sample positions provides only integral values then all of",
+            "your results will be zero. To avoid this try offsetting your position values by a fractional",
+            "amount, such as 0.5."
+        ],
+        "uiName": "Noise",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "seed": {
+                "type": "uint",
+                "description": [
+                    "Positive seeding value for generating the Perlin noise field."
+                ],
+                "default": 0
+            },
+            "position":  {
+                "type":  [ "float", "float[]", "float[2]", "float[2][]", "float[3]", "float[3][]", "float[4]", "float[4][]" ],
+                "description": [
+                    "Position(s) within the noise field to be sampled. For a given seed, the same position",
+                    "will always return the same noise value."
+                ]
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": [ "float", "float[]" ],
+                "description": "Value at the selected position(s) in the noise field."
+            }
+        },
+        "tests": [
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float", "value": 1.4},
+                "outputs:result": {"type": "float", "value": 0.03438323736190796}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float", "value": -1.4},
+                "outputs:result": {"type": "float", "value": -0.03764888644218445}
+            },
+            {
+                "inputs:seed": 23,
+                "inputs:position": {"type": "float", "value": 1.4},
+                "outputs:result": {"type": "float", "value": -0.1955927014350891}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[2]", "value": [1.7, -0.4]},
+                "outputs:result": {"type": "float", "value": -0.10021606087684631}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[2]", "value": [-0.4, 1.7]},
+                "outputs:result": {"type": "float", "value": -0.4338015019893646}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [1.4, -0.8, 0.5]},
+                "outputs:result": {"type": "float", "value": -0.14821206033229828}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [1.5, -0.8, 0.5]},
+                "outputs:result": {"type": "float", "value": -0.11368121206760406}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [1.4, -0.9, 0.5]},
+                "outputs:result": {"type": "float", "value": -0.16395819187164307}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [1.4, -0.8, 0.8]},
+                "outputs:result": {"type": "float", "value": 0.00016325712203979492}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [1.5, -0.9, 0.8]},
+                "outputs:result": {"type": "float", "value": -0.03829096257686615}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[3]", "value": [2.5, -0.9, 0.8]},
+                "outputs:result": {"type": "float", "value": 0.034046247601509094}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[4]", "value": [2.5, -0.9, 0.8, 0.0]},
+                "outputs:result": {"type": "float", "value": -0.009762797504663467}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[4]", "value": [2.5, -0.9, 0.8, 0.1]},
+                "outputs:result": {"type": "float", "value": -0.07352154701948166}
+            },
+            {
+                "inputs:seed": 6,
+                "inputs:position": {"type": "float[4]", "value": [2.5, -0.9, 0.8, 0.1]},
+                "outputs:result": {"type": "float", "value": 0.2615857422351837}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[]", "value": [-1.4]},
+                "outputs:result": {"type": "float[]", "value": [-0.03764889]}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {"type": "float[]", "value": [0.5, -1.4]},
+                "outputs:result": {"type": "float[]", "value": [0.18699697, -0.03764889]}
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[2][]",
+                    "value": [[1.5, -0.8]]
+                },
+                "outputs:result": {"type": "float[]", "value": [0.16450586915016174] }
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[2][]",
+                    "value": [[1.5, -0.8], [2.5, -0.9]]
+                },
+                "outputs:result": {"type": "float[]", "value": [0.16450587, 0.08753645] }
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[3][]",
+                    "value": [[1.5, -0.8, 0.5]]
+                },
+                "outputs:result": {"type": "float[]", "value": [-0.11368121206760406] }
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[3][]",
+                    "value": [[1.5, -0.8, 0.5], [1.4, -0.8, 0.5]]
+                },
+                "outputs:result": {"type": "float[]", "value": [-0.11368121206760406, -0.14821206033229828] }
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[3][]",
+                    "value": [[2.5, -0.9, 0.8], [1.5, -0.8, 0.5], [1.4, -0.8, 0.5]]
+                },
+                "outputs:result": {"type": "float[]", "value": [0.034046247601509094, -0.11368121206760406, -0.14821206033229828] }
+            },
+            {
+                "inputs:seed": 5,
+                "inputs:position": {
+                    "type": "float[4][]",
+                    "value": [[2.5, -0.9, 0.8, 0.0], [2.5, -0.9, 0.8, 0.1]]
+                },
+                "outputs:result": {"type": "float[]", "value": [-0.009762797504663467, -0.07352154701948166] }
+            }
+        ]
+    }
+}

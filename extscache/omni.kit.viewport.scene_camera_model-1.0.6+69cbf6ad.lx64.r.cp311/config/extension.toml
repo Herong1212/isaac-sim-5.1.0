@@ -1,0 +1,49 @@
+[package]
+title = "UsdContext camera model for omni.ui.scene"
+category = "Internal"
+description = "Automatically updates camera when it's updated in UsdContext"
+version = "1.0.6"
+keywords = ["kit", "ui", "viewport", "render", "camera"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/README.md"
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+support_level = "Core"
+
+[dependencies]
+"omni.ui.scene" = {}
+"omni.usd" = {}
+
+[settings.exts]
+# Buffer view matrix to avoid jittering
+"omni.kit.viewport.scene_camera_model".frame_queue.enabled = true
+# Enable single camera-model in Viewports by default
+"omni.kit.widget.viewport".sceneView.singleCameraModel.enabled = true
+
+[[native.library]]
+path = "bin/${lib_prefix}omni.kit.viewport.scene_camera_model${lib_ext}"
+
+[[python.module]]
+name = "omni.kit.viewport.scene_camera_model"
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.hydra_texture",
+    "omni.hydra.pxr",
+]
+
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+stdoutFailPatterns.exclude = [
+    "*omniclient: Initialization failed*",
+]

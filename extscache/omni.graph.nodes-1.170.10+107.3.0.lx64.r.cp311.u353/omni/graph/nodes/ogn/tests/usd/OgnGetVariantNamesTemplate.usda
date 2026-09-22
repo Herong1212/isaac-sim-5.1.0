@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetVariantNames.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetVariantNames" (
+        docs="""Get variant names from a variantSet on a prim"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetVariantNames"
+        int node:typeVersion = 2
+
+        # 2 attributes
+        custom rel inputs:prim (
+            docs="""The prim with the variantSet"""
+        )
+        custom token inputs:variantSetName = "" (
+            docs="""The variantSet name"""
+        )
+
+        # 1 attribute
+        custom token[] outputs:variantNames (
+            docs="""List of variant names"""
+        )
+    }
+}

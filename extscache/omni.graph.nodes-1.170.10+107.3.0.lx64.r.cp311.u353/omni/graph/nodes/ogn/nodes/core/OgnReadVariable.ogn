@@ -1,0 +1,39 @@
+{
+    "omni.graph.core.ReadVariable": {
+        "version": 2,
+        "description": [ "Node that reads a value from a variable" ],
+        "uiName": "Read Variable",
+        "categories": [ "internal" ],
+        "scheduling": ["threadsafe"],
+        "metadata": { "hidden": "true" },
+        "inputs": {
+            "variableName": {
+                "type": "token",
+                "description": "The name of the graph variable to use.",
+                "metadata": {
+                    "hidden": "true",
+                    "literalOnly": "1"
+                }
+            },
+            "targetPath": {
+                "type": "token",
+                "description": "Ignored. Do not use.",
+                "optional": true,
+                "metadata": { "hidden": "true" }
+            },
+            "graph": {
+                "type": "target",
+                "description": "Ignored. Do not use",
+                "optional": true,
+                "metadata": { "hidden": "true" }
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "any",
+                "description": "The variable value that we returned.",
+                "unvalidated": true
+            }
+        }
+    }
+}

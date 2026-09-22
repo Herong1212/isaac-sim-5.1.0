@@ -1,0 +1,60 @@
+{
+    "omni.graph.action.ForEach": {
+        "version": 2,
+        "description": [
+            "Activates the 'Loop Body' signal once for each element in the 'Input Array', making the current",
+            "array member available in 'Element' with its index in 'Array Index'. After every element of the",
+            "'Input Array' has been processed the 'Finished' signal is activated. All of this will happen in a",
+            "single execution of the node, giving you the ability to evaluate a downstream graph multiple times",
+            "with different inputs coming from the changing 'Element' output."
+        ],
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "uiName": "For Each Loop",
+        "icon": {
+            "path": "LoopNodeIcon.svg"
+        },
+        "inputs": {
+            "arrayIn": {
+                "type": ["arrays", "bool[]"],
+                "description": "The array to loop over",
+                "$required": true,
+                "uiName": "Input Array"
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            }
+        },
+        "outputs": {
+            "loopBody": {
+                "type": "execution",
+                "description": [
+                    "For each member of 'Input Array' signal the graph that execution can continue downstream."
+                ]
+            },
+            "element": {
+                "type": ["array_elements", "bool"],
+                "description": [
+                    "The current member of 'Input Array' being visited by the loop. Keeps the value of the last",
+                    "array element after the loop has completed."
+                ]
+            },
+            "arrayIndex": {
+                "type": "int",
+                "description": [
+                    "The value of the current index being visited by the loop. Keeps the value of the last index",
+                    "after the loop has completed. The index starts at zero and increments by one as it",
+                    "walks through the members of 'Input Array'."
+                ]
+            },
+            "finished": {
+                "type": "execution",
+                "description": [
+                    "When the final element of 'Input Array' has been processed signal the graph that",
+                    "execution can continue downstream."
+                ]
+            }
+        }
+    }
+}

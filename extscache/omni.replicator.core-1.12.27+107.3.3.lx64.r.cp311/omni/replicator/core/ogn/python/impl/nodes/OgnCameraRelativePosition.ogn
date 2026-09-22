@@ -1,0 +1,57 @@
+{
+    "OgnCameraRelativePosition": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Convert camera relative position to world position.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Camera Relative Position"
+        },
+        "inputs": {
+            "cameraPrim": {
+                "description": ["Prims will be positioned relative to this camera"],
+                "type": "target"
+            },
+            "horizontalLocation": {
+                "description": ["Horizontal location in the camera frame, which is in the range of [-1, 1]"],
+                "type": "float[]"
+            },
+            "verticalLocation": {
+                "description": ["Vertical location in the camera frame, which is in the range of [-1, 1]"],
+                "type": "float[]"
+            },
+            "distance": {
+                "description": ["Distance from the prim(s) to the camera"],
+                "type": "float[]"
+            },
+            "numSamples": {
+                "description": ["Number of samples"],
+                "type": "int"
+            },
+            "width": {
+                "description": ["Width of the render product"],
+                "type": "int"
+            },
+            "height": {
+                "description": ["Height of the render product"],
+                "type": "int"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "samples": {
+                "description": ["New positions of each prim in the world space"],
+                "type": "double[3][]"
+            }
+        }
+    }
+}

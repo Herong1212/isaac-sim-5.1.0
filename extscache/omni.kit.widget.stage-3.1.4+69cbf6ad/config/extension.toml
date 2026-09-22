@@ -1,0 +1,80 @@
+[package]
+title = "Stage Widget"
+description = "Stage Widget"
+version = "3.1.4"
+category = "Internal"
+authors = ["NVIDIA"]
+repository = ""
+keywords = ["stage", "outliner", "scene"]
+changelog = "docs/CHANGELOG.md"
+readme = "docs/Overview.md"
+support_level = "Core"
+
+[dependencies]
+"omni.activity.core" = {}
+"omni.kit.context_menu" = { optional = true }
+"omni.ui" = {}
+"omni.usd" = {}
+"omni.kit.usd.layers" = {}
+"omni.kit.window.file_exporter" = {}
+"omni.client" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.hotkeys.core" = {}
+"omni.kit.helper.file_utils" = {}
+"omni.kit.widget.filter" = {}
+"omni.kit.widget.options_button" = {}
+"omni.kit.widget.searchfield" = {}
+# OmniAudioSchema support
+"omni.usd.schema.audio" = { optional=true }
+"omni.kit.notification_manager" = { optional = true }
+
+[[python.module]]
+name = "omni.kit.widget.stage"
+
+# Settings. They are applied on the root of global settings. In case of conflict original settings are kept.
+[settings]
+persistent.exts."omni.kit.widget.stage".showColumnVisibility = true
+persistent.exts."omni.kit.widget.stage".showColumnReload = true
+persistent.exts."omni.kit.widget.stage".showColumnType = true
+exts."omni.kit.widget.stage".filter.physics = true
+exts."omni.kit.widget.stage".filter.flattener = true
+
+[[test]]
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false", # Disable mGPU with PXR due to OM-51026, OM-53611
+    "--/renderer/multiGpu/maxGpuCount=1",
+    "--/app/asyncRendering=false",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/app/window/scaleToMonitor=false",
+    "--/persistent/app/stage/dragDropImport='reference'",
+    "--/persistent/material/stage/dragDropMaterialPath='absolute'",
+    "--/persistent/app/omniverse/filepicker/options_menu/show_details=false",
+]
+
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.window.content_browser",
+    "omni.kit.property.material",
+    "omni.kit.window.stage",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.pxr",
+    "omni.kit.viewport.window",
+    "omni.kit.collaboration.channel_manager",
+    "omni.kit.context_menu",
+]
+
+stdoutFailPatterns.exclude = [
+    "*HydraRenderer failed to render this frame*",  # Can drop a frame or two rendering with OpenGL interop
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+]

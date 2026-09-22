@@ -1,0 +1,19 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.gpucompute.plugins-3b816532b7e266ec.zip"
+
+    [package.publish]
+        kitVersion = "107.3.1+production.203327.cfe00f9c.gl"
+        date = 1757755257
+        buildNumber = "107.3.1+1073.203327.cfe00f9c.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

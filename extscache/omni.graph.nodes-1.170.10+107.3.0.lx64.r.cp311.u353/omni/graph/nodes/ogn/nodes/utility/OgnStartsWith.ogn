@@ -1,0 +1,50 @@
+{
+    "StartsWith": {
+        "version": 1,
+        "description": [
+            "Determines if a string starts with a given string value"
+        ],
+        "uiName": "Starts With",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "prefix": {
+                "type": "string",
+                "description": "The prefix to test"
+            },
+            "value": {
+                "type": "string",
+                "description": "The string to check"
+            }
+        },
+        "outputs": {
+            "isPrefix": {
+                "type": "bool",
+                "description": "True if 'value' starts with 'prefix'"
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": "", "inputs:prefix": "", "outputs:isPrefix": true
+            },
+            {
+                "inputs:value": "a", "inputs:prefix": "", "outputs:isPrefix": true
+            },
+            {
+                "inputs:value": "", "inputs:prefix": "a", "outputs:isPrefix": false
+            },
+            {
+                "inputs:value": "aa", "inputs:prefix": "a", "outputs:isPrefix": true
+            },
+            {
+                "inputs:value": "aa", "inputs:prefix": "aa", "outputs:isPrefix": true
+            },
+            {
+                "inputs:value": "aa", "inputs:prefix": "aaa", "outputs:isPrefix": false
+            },
+            {
+                "inputs:value": "aaa", "inputs:prefix": "aa", "outputs:isPrefix": true
+            }
+        ]
+    }
+}

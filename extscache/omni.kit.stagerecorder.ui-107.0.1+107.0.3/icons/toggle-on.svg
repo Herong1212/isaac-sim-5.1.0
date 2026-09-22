@@ -1,0 +1,4 @@
+<svg id="toggle_on" xmlns="http://www.w3.org/2000/svg" width="34" height="22" viewBox="0 0 34 22">
+  <rect id="toggle_on_gutter" width="34" height="22" rx="11" fill="rgb(26,145,197)"/>
+  <rect id="toggle_on_handle" width="19" height="19" rx="9.5" transform="translate(13 1)" fill="rgb(168,168,168)"/>
+</svg>

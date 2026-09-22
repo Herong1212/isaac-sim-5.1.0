@@ -1,0 +1,52 @@
+{
+    "RemoveString": {
+        "version": 1,
+        "description": [
+            "Remove a string starting at the indicated index with length."
+        ],
+        "uiName": "Remove String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The base string."
+            },
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index of the string in the range [-stringLength, stringLength). ",
+                    "Negative values index from the end of the string, and values out of range will result in an error."
+                ]
+            },
+            "count": {
+                "type": "int",
+                "description": [
+                    "The number of characters to delete. ",
+                    "When set to -1, the length of \"string\" will be used."
+                ],
+                "default": -1
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": ["string", "token"],
+                "description": "The output string."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:string": {"type": "string", "value": "This is a test string"},
+                "inputs:index": 10,
+                "inputs:count": 5,
+                "outputs:string": "This is a string"
+            },
+            {
+                "inputs:string": {"type": "token", "value": "This is a test string"},
+                "inputs:index": 10,
+                "inputs:count": 5,
+                "outputs:string": "This is a string"
+            }
+        ]
+    }
+}

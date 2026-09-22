@@ -1,0 +1,55 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnDecal.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnDecal" (
+        docs="""Mesh decal node"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnDecal"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom float inputs:clip_depth = 100.0 (
+            docs="""Depth along the z-axis of the clip volume"""
+        )
+        custom float inputs:clip_height = 100.0 (
+            docs="""Height along the y-axis of the clip volume"""
+        )
+        custom float inputs:clip_width = 100.0 (
+            docs="""Width along the x-axis of the clip volume"""
+        )
+        custom matrix4d inputs:clip_xform = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Collider mesh"""
+        )
+        custom uint inputs:execIn (
+            docs="""Input execution."""
+        )
+        custom rel inputs:mesh (
+            docs="""Cloth geometry"""
+        )
+        custom float inputs:offset_depth = 0.0 (
+            docs="""No documentation provided"""
+        )
+        custom float inputs:offset_normal = 0.1 (
+            docs="""No documentation provided"""
+        )
+
+        # 2 attributes
+        custom uint outputs:execOut (
+            docs="""Output execution."""
+        )
+        custom rel outputs_mesh (
+            docs="""Decal mesh geometry"""
+        )
+    }
+}

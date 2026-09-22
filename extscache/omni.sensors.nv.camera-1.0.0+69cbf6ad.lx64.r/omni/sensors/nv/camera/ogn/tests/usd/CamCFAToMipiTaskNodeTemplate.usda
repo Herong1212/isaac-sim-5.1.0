@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamCFAToMipiTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamCFAToMipiTaskNode" (
+        docs="""Muxes CFA and Embedded Lines into one image for the transcoder"""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamCFAToMipiTaskNode"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom token inputs:EmbeddedLineEncoder = "NONE" (
+            docs="""Encoder for the embedded Lines : Values: NONE, IMX390_DEFAULT, IMX728_DEFAULT, IMX623_DEFAULT, AR820_DEFAULT, defaults to NONE"""
+        )
+        custom token inputs:RawEncoding = "RAW12" (
+            docs="""Raw Encoding of the embedded registers RAW12, RAW16, RAW20, RAW24, defaults to RAW12"""
+        )
+        custom uint64 inputs:embeddedSrc = 0 (
+            docs="""Embedded Data Lines Src Buffer"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

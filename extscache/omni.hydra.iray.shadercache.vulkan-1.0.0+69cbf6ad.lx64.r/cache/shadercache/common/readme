@@ -1,0 +1,4 @@
+Do NOT remove this file. 
+
+It is used as a dummy file to create the "cache" folder in the prebuilding step that will contain shadercaches
+and other types of caches for the rendering plugins.

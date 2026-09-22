@@ -1,0 +1,35 @@
+{
+    "SetActiveViewportCamera": {
+        "version": 1,
+        "description": "Sets Viewport's actively bound camera to given camera at give path",
+        "language": "Python",
+        "uiName": "Set Active Camera",
+        "exclude": ["tests"],
+        "categories": ["sceneGraph:camera"],
+        "scheduling": ["usd-read"],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "Path of the camera to bind",
+                "uiName": "Camera Path"
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport, or empty for the default viewport",
+                "uiName": "Viewport"
+            },
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "In"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Out"
+            }
+        }
+    }
+}

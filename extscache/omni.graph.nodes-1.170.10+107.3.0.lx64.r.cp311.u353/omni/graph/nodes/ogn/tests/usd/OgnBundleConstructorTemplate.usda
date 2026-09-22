@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnBundleConstructor.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_BundleConstructor" (
+        docs="""This node creates a bundle mirroring all of the dynamic input attributes that have been added to it. If no dynamic attributes exist then the bundle will be empty. See the 'InsertAttribute' node for something that can construct a bundle from existing connected attributes."""
+    )
+    {
+        token node:type = "omni.graph.nodes.BundleConstructor"
+        int node:typeVersion = 1
+
+        # 1 attribute
+        custom rel outputs_bundle (
+            docs="""The bundle consisting of copies of all of the dynamic input attributes."""
+        )
+    }
+}

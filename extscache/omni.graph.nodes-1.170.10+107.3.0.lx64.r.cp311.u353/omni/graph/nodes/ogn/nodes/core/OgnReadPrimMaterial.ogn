@@ -1,0 +1,39 @@
+{
+    "ReadPrimMaterial": {
+        "version": 2,
+        "description": [
+            "Given a path to a  prim on the current USD stage,",
+            " outputs the material of the prim.  Gives an error if the given prim",
+            " can not be found."
+        ],
+        "uiName": "Read Prim Material",
+        "categories": [ "sceneGraph" ],
+        "scheduling": [ "usd-read", "threadsafe" ],
+        "exclude": [ "tests" ],
+        "inputs": {
+            "primPath": {
+                "type": "path",
+                "description": "Path of the prim with the material to be read.",
+                "uiName": "Prim Path",
+                "deprecated": "Use prim input instead"
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim with the material to be read. If both this and primPath inputs are set, this input takes priority."
+            }
+        },
+        "outputs": {
+            "material": {
+                "uiName": "Material Path",
+                "type": "path",
+                "description": "The material of the input prim",
+                "deprecated": "Use materialPrim output instead"
+            },
+            "materialPrim": {
+                "uiName": "Material",
+                "type": "target",
+                "description": "The prim containing the material of the input prim"
+            }
+        }
+    }
+}

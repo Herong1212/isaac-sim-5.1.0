@@ -1,0 +1,36 @@
+{
+    "OgnBindMaterial": {
+        "version": 2,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node binds a material on specified prims.",
+        "metadata":
+        {
+           "uiName": "Bind Material"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to bind material"],
+                "type": "target"
+            },
+            "materialPrims": {
+                "description": ["Materials to be bound to the prims."],
+                "type": "target"
+            },
+            "materialPaths": {
+                "description": ["Material paths to be bound to the prims."],
+                "type": "token[]"
+            },
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

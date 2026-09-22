@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12.896" height="12.827" viewBox="0 0 12.896 12.827">
+  <g id="Camera_settings_submenu" transform="translate(-1452.966 -41)">
+    <rect id="More_options" data-name="More options" width="12.827" height="12.827" transform="translate(1453 41)" fill="none"/>
+    <g id="Group_3655" data-name="Group 3655" transform="translate(1453.966 42.062)">
+      <line id="Line_871" data-name="Line 871" x2="10.896" transform="translate(0 9.178)" fill="none" stroke="#6e6e6e" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_872" data-name="Line 872" x2="10.896" transform="translate(0 5.583)" fill="none" stroke="#6e6e6e" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_873" data-name="Line 873" x2="10.896" transform="translate(0 1.988)" fill="none" stroke="#6e6e6e" stroke-linecap="round" stroke-width="2"/>
+      <g id="Ellipse_155" data-name="Ellipse 155" transform="translate(5.345)" fill="#9e9e9e" stroke="#6e6e6e" stroke-width="1">
+        <circle cx="1.988" cy="1.988" r="1.988" stroke="none"/>
+        <circle cx="1.988" cy="1.988" r="1.488" fill="none"/>
+      </g>
+      <g id="Ellipse_156" data-name="Ellipse 156" transform="translate(0.862 3.595)" fill="#9e9e9e" stroke="#6e6e6e" stroke-width="1">
+        <circle cx="1.988" cy="1.988" r="1.988" stroke="none"/>
+        <circle cx="1.988" cy="1.988" r="1.488" fill="none"/>
+      </g>
+      <g id="Ellipse_157" data-name="Ellipse 157" transform="translate(5.345 7.19)" fill="#9e9e9e" stroke="#6e6e6e" stroke-width="1">
+        <circle cx="1.988" cy="1.988" r="1.988" stroke="none"/>
+        <circle cx="1.988" cy="1.988" r="1.488" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

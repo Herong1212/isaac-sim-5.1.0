@@ -1,0 +1,9 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.search.files-1.0.4.zip"
+
+    [package.publish]
+        date = 1661966997
+        kitVersion = "104.0+release.91154.beb7c507.tc"
+        buildNumber = "1.0.0+main.239.7dfa5fc4.tc"
+        repoName = "kit-quicksearch"

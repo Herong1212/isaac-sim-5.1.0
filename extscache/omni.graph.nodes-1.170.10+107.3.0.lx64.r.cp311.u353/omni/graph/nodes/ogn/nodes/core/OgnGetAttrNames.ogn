@@ -1,0 +1,39 @@
+{
+    "GetAttributeNames": {
+        "version": 1,
+        "description": ["Retrieves the names of all of the attributes contained in the input bundle, optionally sorted."],
+        "metadata": {
+            "uiName": "Get Attribute Names From Bundle"
+        },
+        "categories": ["bundle"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "data": {
+                "type": "bundle",
+                "description": "Collection of attributes from which to extract names",
+                "metadata": {
+                    "uiName": "Bundle To Examine"
+                }
+            },
+            "sort": {
+                "type": "bool",
+                "description": ["If true, the names will be output in sorted order (default, for consistency).",
+                                "If false, the order is not be guaranteed to be consistent between systems or over",
+                                "time, so do not rely on the order downstream in this case."],
+                "default": true,
+                "metadata": {
+                    "uiName": "Sort Output"
+                }
+            }
+        },
+        "outputs": {
+            "output": {
+                "type": "token[]",
+                "description": ["Names of all of the attributes contained in the input bundle"],
+                "metadata": {
+                    "uiName": "Attribute Names"
+                }
+            }
+        }
+    }
+}

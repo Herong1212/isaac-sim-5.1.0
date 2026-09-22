@@ -1,0 +1,59 @@
+{
+    "WritePrim": {
+        "version": 4,
+        "description": [
+            "Exposes attributes for a single Prim on the USD stage as inputs to this node.",
+            "When this node computes it writes any of these connected inputs to the target Prim. Any inputs",
+            "which are not connected will not be written."
+        ],
+        "uiName": "Write Prim Attributes",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "uiName": "Prim",
+                "type": "target",
+                "description": "The prim to be written to"
+            },
+            "usdWriteBack": {
+                "uiName": "Persist To USD",
+                "type": "bool",
+                "default": true,
+                "description": "Whether or not the value should be written back to USD, or kept a Fabric only value"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": [
+                    "Identifier of the USD layer to export data to.",
+                    "Identifier can be empty, \"<Session Layer>\", \"<Root Layer>\" or the identifier of a sublayer.",
+                    "If empty or invalid, data will be exported to the current layer.",
+                    "This is only used when \"Persist To USD\" is enabled."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Identifier"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        },
+        "state": {
+            "layerIdentifier": {
+                "type": "token",
+                "description": "The prefetched layer Identifier."
+            },
+            "resolvedLayerIdentifier": {
+                "type": "token",
+                "description": "The prefetched resolved layer Identifier."
+            }
+        }
+    }
+}

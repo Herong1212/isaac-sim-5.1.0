@@ -1,0 +1,104 @@
+{
+    "ReplaceTargetName": {
+        "version": 1,
+        "description": [
+            "Replaces the target name (the last element) with the specified name.",
+            "Array inputs will be appended element-wise."
+        ],
+        "uiName": "Replace Target Name",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The target array to be modified",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "newName": {
+                "type": ["string", "token", "token[]"],
+                "description": "The new name to replace the current name.  Array inputs will be appended element-wise."
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The modified target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [],
+                "inputs:newName": {"type": "string", "value": ""},
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:newName": {"type": "string", "value": "A"},
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/World/B"],
+                "inputs:newName": {"type": "string", "value": ""},
+                "outputs:targets": ["/World/B"]
+            },
+            {
+                "inputs:targets": ["/World/B"],
+                "inputs:newName": {"type": "string", "value": "A"},
+                "outputs:targets": ["/World/A"]
+            },
+            {
+                "inputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"],
+                "inputs:newName": {"type": "string", "value": "A"},
+                "outputs:targets": ["/World1/A", "/World2/A", "/World3/A"]
+            },
+
+            {
+                "inputs:targets": [],
+                "inputs:newName": {"type": "token", "value": ""},
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:newName": {"type": "token", "value": "A"},
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/World/B"],
+                "inputs:newName": {"type": "token", "value": ""},
+                "outputs:targets": ["/World/B"]
+            },
+            {
+                "inputs:targets": ["/World/B"],
+                "inputs:newName": {"type": "token", "value": "A"},
+                "outputs:targets": ["/World/A"]
+            },
+            {
+                "inputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"],
+                "inputs:newName": {"type": "token", "value": "A"},
+                "outputs:targets": ["/World1/A", "/World2/A", "/World3/A"]
+            },
+            {
+                "inputs:targets": [],
+                "inputs:newName": {"type": "token[]", "value": []},
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"],
+                "inputs:newName": {"type": "token[]", "value": ["", "", ""]},
+                "outputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"]
+            },
+            {
+                "inputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"],
+                "inputs:newName": {"type": "token[]", "value": ["A", "B", "C"]},
+                "outputs:targets": ["/World1/A", "/World2/B", "/World3/C"]
+            },
+            {
+                "inputs:targets": ["/World1/X", "/World2/Y", "/World3/Z"],
+                "inputs:newName": {"type": "token[]", "value": ["", "B", ""]},
+                "outputs:targets": ["/World1/X", "/World2/B", "/World3/Z"]
+            }
+        ]
+    }
+}

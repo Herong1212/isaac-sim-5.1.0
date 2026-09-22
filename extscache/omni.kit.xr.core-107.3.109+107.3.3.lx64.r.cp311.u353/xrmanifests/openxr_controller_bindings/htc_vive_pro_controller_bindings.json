@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "apiVersion": "1.0",
+    "name": "Vive Pro Controller",
+    "interactionProfile": "/interaction_profiles/htc/vive_pro",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/head",
+                    "deviceType": "displayDevice"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "system",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "volume_up",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "volume_down",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "mute_mic",
+                    "gestures": [
+                        "click"
+                    ]
+                }
+            ]
+        }
+    ]
+}

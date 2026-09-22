@@ -1,0 +1,31 @@
+mdl 1.6;
+
+import ::df::*;
+import ::math::*;
+import ::tex::*;
+import ::state::*;
+import ..::subfolder2::some_functions::get_corn_flower_blue;
+
+export material textured_default(
+    uniform texture_2d tex_file = texture_2d("../../resources/tile.1001.png"),
+    float scale = 1.0f
+) = let {
+    float2 sample_coord = float2(state::texture_coordinate(0).x, state::texture_coordinate(0).y);
+} in  material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf(
+            tint: subfolder2::some_functions::get_corn_flower_blue(scale) * tex::lookup_color(tex: tex_file, coord: sample_coord))
+    )
+);
+
+export material textured_body(
+    float scale = 1.0f
+) = let {
+    uniform texture_2d tex_file = texture_2d("./body.png");
+    float2 sample_coord = float2(state::texture_coordinate(0).x, state::texture_coordinate(0).y);
+} in  material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf(
+            tint: subfolder2::some_functions::get_corn_flower_blue(scale) * tex::lookup_color(tex: tex_file, coord: sample_coord))
+    )
+);

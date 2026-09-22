@@ -1,0 +1,88 @@
+{
+    "version": 1,
+    "apiVersion": "1.0",
+    "name": "Vive Controller",
+    "interactionProfile": "/interaction_profiles/htc/vive_controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceName": "/user/hand/left",
+                    "deviceType": "controller"
+                },
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceName": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "system",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "squeeze",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "menu",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "click",
+                        "value"
+                    ]
+                },
+                {
+                    "input": "trackpad",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "grip_surface",
+                    "apiVersion": "1.1"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "aim"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnLookAt.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnLookAt" (
+        docs="""Set prim rotation to look at the target coordinates"""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnLookAt"
+        int node:typeVersion = 2
+
+        # 5 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom rel inputs:prims (
+            docs="""The prims whose orientation is to be changed"""
+        )
+        custom float3 inputs:target = (0.0, 0.0, 0.0) (
+            docs="""The location of where the prim should look at"""
+        )
+        custom rel inputs:targetPrim (
+            docs="""The target prim(s) that the prim should look at"""
+        )
+        custom float3 inputs:upAxis = (0.0, 0.0, 0.0) (
+            docs="""The up axis to set to the input prims."""
+        )
+
+        # 2 attributes
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+        custom double3[] outputs:values (
+            docs="""Rotation to make prims look at the specified target(s)"""
+        )
+    }
+}

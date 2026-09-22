@@ -1,0 +1,179 @@
+<svg id="efGraphTraversal01" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     overflow="hidden" width="1540" height="820" viewBox="0 0 1540 820">
+      <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" />
+
+      <!--Execution Graph-->
+      <rect x="2" y="98" width="1536" height="720" stroke="#005593" stroke-width="4" stroke-miterlimit="8"
+            fill="#FFFFFF" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400" font-size="16"
+            transform="translate(11.6 118)" fill="#005593">Execution Graph</text>
+      <path d="M144 276.002C144 216.354 192.354 168 252.002 168L1500 168C1559.65 168 1608 216.354 1608 276.002L1608 707.998C1608 767.646 1559.65 816 1500 816L252.002 816C192.354 816 144 767.646 144 707.998Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400" font-size="16"
+            transform="translate(131.6 166)" fill="#005593">NodeGraphDef</text>
+      <text font-family="Cambria Math,Cambria Math_MSFontService,sans-serif" font-weight="400" font-size="16"
+            transform="translate(247.58 166)" fill="#005593">𝐺</text>
+      <text font-family="Cambria Math,Cambria Math_MSFontService,sans-serif" font-weight="400" font-size="12"
+            transform="translate(257.28 169)" fill="#005593">1</text>
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400" font-size="16"
+            transform="translate(268.946 166)" fill="#005593">has associated executor type</text>
+
+      <!--Nodes-->
+      <path d="M192 240C192 226.745 202.745 216 216 216 229.255 216 240 226.745 240 240 240 253.255 229.255 264 216 264 202.745 264 192 253.255 192 240Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(113 229)" fill="#005593">a</text>
+      <path d="M360 300C360 286.745 370.745 276 384 276 397.255 276 408 286.745 408 300 408 313.255 397.255 324 384 324 370.745 324 360 313.255 360 300Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(280.25 289)">b</text>
+      <path d="M361 504C361 490.745 371.745 480 385 480 398.255 480 409 490.745 409 504 409 517.255 398.255 528 385 528 371.745 528 361 517.255 361 504Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(282.834 493)">c</text>
+      <path d="M360 661C360 647.745 370.745 637 384 637 397.255 637 408 647.745 408 661 408 674.255 397.255 685 384 685 370.745 685 360 674.255 360 661Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(280.25 650)">d</text>
+      <path d="M648 244.001C648 228.536 660.536 216 676 216L1028 216C1043.46 216 1056 228.536 1056 244.001L1056 355.999C1056 371.464 1043.46 384 1028 384L676 384C660.536 384 648 371.464 648 355.999Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-opacity="0" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(563.6 181)" fill="#005593">Node e</text>
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(587.6 229)" fill="#005593">NodeGraphDef
+            X</text>
+      <path d="M504 488.001C504 457.073 529.073 432 560.001 432L1144 432C1174.93 432 1200 457.073 1200 488.001L1200 711.999C1200 742.927 1174.93 768 1144 768L560.001 768C529.073 768 504 742.927 504 711.999Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-opacity="0" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(419.6 397)" fill="#005593">Node f</text>
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(443.6 451)" fill="#005593">NodeGraphDef
+            Y</text>
+      <path d="M1488 480C1488 466.745 1498.75 456 1512 456 1525.25 456 1536 466.745 1536 480 1536 493.255 1525.25 504 1512 504 1498.75 504 1488 493.255 1488 480Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(1408.25 469)">g</text>
+      <path d="M672 317C672 303.745 682.745 293 696 293 709.255 293 720 303.745 720 317 720 330.255 709.255 341 696 341 682.745 341 672 330.255 672 317Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(592.334 305)" fill="#005593">h</text>
+      <path d="M816 317C816 303.745 826.745 293 840 293 853.255 293 864 303.745 864 317 864 330.255 853.255 341 840 341 826.745 341 816 330.255 816 317Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(741.667 305)">i</text>
+      <path d="M959 317C959 303.745 969.745 293 983 293 996.255 293 1007 303.745 1007 317 1007 330.255 996.255 341 983 341 969.745 341 959 330.255 959 317Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(884.333 305)">j</text>
+      <path d="M528 528C528 514.745 538.745 504 552 504 565.255 504 576 514.745 576 528 576 541.255 565.255 552 552 552 538.745 552 528 541.255 528 528Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(448.666 517)" fill="#005593">k</text>
+      <path d="M624 636C624 622.745 634.745 612 648 612 661.255 612 672 622.745 672 636 672 649.255 661.255 660 648 660 634.745 660 624 649.255 624 636Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(549.666 625)">l</text>
+      <path d="M744 580C744 564.536 756.536 552 772 552L1124 552C1139.46 552 1152 564.536 1152 580L1152 691.999C1152 707.464 1139.46 720 1124 720L772 720C756.536 720 744 707.464 744 691.999Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-opacity="0" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(659.6 517)" fill="#005593">Node m</text>
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(683.6 565)" fill="#005593">NodeGraphDef
+            X</text>
+      <path d="M768 653C768 639.745 778.745 629 792 629 805.255 629 816 639.745 816 653 816 666.255 805.255 677 792 677 778.745 677 768 666.255 768 653Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="32"
+            transform="translate(688.333 641)" fill="#005593">h</text>
+      <path d="M912 653C912 639.745 922.745 629 936 629 949.255 629 960 639.745 960 653 960 666.255 949.255 677 936 677 922.745 677 912 666.255 912 653Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(837.667 641)">i</text>
+      <path d="M1055 653C1055 639.745 1065.75 629 1079 629 1092.25 629 1103 639.745 1103 653 1103 666.255 1092.25 677 1079 677 1065.75 677 1055 666.255 1055 653Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="32" transform="translate(980.33 641)">j</text>
+
+      <!--Edges-->
+      <path d="M240.894 238.211 351.95 293.739 350.161 297.317 239.106 241.789ZM351.95 289.267 360 300 346.584 300Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M234.775 256.078 358.527 494.234 354.978 496.078 231.225 257.922ZM361.154 490.615 361.363 504.029 350.506 496.148Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M217.88 263.319 358.473 651.251 354.712 652.614 214.12 264.681ZM361.552 648.007 360 661.333 350.27 652.096Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M4.37444e-06-2 230-1.9995 230 2.0005-4.37444e-06 2ZM228.001-5.9995 240.001 0.000524934 228.001 6.0005Z"
+            fill="#005593" transform="matrix(1 0 0 -1 314 278.001)" />
+      <path d="M403.227 519.421 497.027 592.314 494.572 595.473 400.773 522.579ZM497.902 587.929 503.696 600.03 490.539 597.404Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M1.07678-1.68539 88.6499 54.2641 86.4964 57.6349-1.07678 1.68539ZM89.1181 49.8165 96.0001 61.3333 82.6574 59.9288Z"
+            fill="#005593" transform="matrix(1 0 0 -1 314 639.333)" />
+      <path d="M1056.7 298.125 1486.35 457.673 1484.96 461.423 1055.3 301.875ZM1485.87 453.228 1495.03 463.03 1481.69 464.477Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M0 2-23.9999 2-21.9999 0-21.9999 468-23.9999 466 72.6665 466 72.6665 470-25.9999 470-25.9999-2 0-2ZM70.6665 462 82.6665 468 70.6665 474Z"
+            fill="#005593" transform="matrix(-6.12323e-17 -1 -1 6.12323e-17 758 745.666)" />
+      <path d="M0.659386-1.88818 286.248 97.8445 284.929 101.621-0.659386 1.88818ZM285.678 93.4088 295.029 103.03 281.722 104.738Z"
+            fill="#005593" transform="matrix(1 0 0 -1 1106 578.03)" />
+      <path d="M720 315 806 315 806 319 720 319ZM804 311 816 317 804 323Z" fill="#005593"
+            transform="translate(-94 -22)" />
+      <path d="M864 315 948.667 315 948.667 319 864 319ZM946.667 311 958.667 317 946.667 323Z" fill="#005593"
+            transform="translate(-94 -22)" />
+      <path d="M985.667 340 985.667 366 839 366 839 351.333 843 351.333 843 364 841 362 983.667 362 981.667 364 981.667 340ZM835 353.333 841 341.333 847 353.333Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M570.712 543.965 620.568 626.437 617.144 628.506 567.288 546.035ZM622.956 622.656 624.029 636.029 612.687 628.864Z"
+            fill="#005593" transform="translate(-94 -22)" />
+      <path d="M2.91628e-06-2 62.0004-1.99991 62.0004 2.00009-2.91628e-06 2ZM60.0004-5.99991 72.0004 0.000104987 60.0004 6.00009Z"
+            fill="#005593" transform="matrix(1 0 0 -1 578 614)" />
+      <path d="M816 651 902 651 902 655 816 655ZM900 647 912 653 900 659Z" fill="#005593"
+            transform="translate(-94 -22)" />
+      <path d="M960 651 1044.67 651 1044.67 655 960 655ZM1042.67 647 1054.67 653 1042.67 659Z" fill="#005593"
+            transform="translate(-94 -22)" />
+      <path d="M1081.67 676 1081.67 702 935 702 935 687.333 939 687.333 939 700 937 698 1079.67 698 1077.67 700 1077.67 676ZM931 689.333 937 677.333 943 689.333Z"
+            fill="#005593" transform="translate(-94 -22)" />
+
+      <!--Miscellaneous Elements/Definitions (left-to-right)-->
+      <text fill="#7F7F7F" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400"
+            font-size="16" transform="translate(0 40)">Root is a special node used to</text>
+      <text fill="#7F7F7F" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400"
+            font-size="16" transform="translate(0 59)">discover the entire topology.</text>
+      <path d="M336 60C336 40.1177 352.118 24 372 24 391.882 24 408 40.1177 408 60 408 79.8822 391.882 96 372 96 352.118 96 336 79.8822 336 60Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" fill="#005593"
+            font-size="12" transform="translate(264.417 42)">Root</text>
+      <path d="M1446 60C1446 40.1177 1462.12 24 1482 24 1501.88 24 1518 40.1177 1518 60 1518 79.8822 1501.88 96 1482 96 1462.12 96 1446 79.8822 1446 60Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill-rule="evenodd" fill="#005593"
+            transform="translate(-94 -22)" />
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="12" transform="translate(1373 35)">Node</text>
+      <text fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700"
+            font-size="12" transform="translate(1377.67 50)">Def</text>
+      <path d="M1536 36.0002C1536 29.3727 1541.37 24 1548 24L1620 24C1626.63 24 1632 29.3727 1632 36.0002L1632 83.9998C1632 90.6273 1626.63 96 1620 96L1548 96C1541.37 96 1536 90.6273 1536 83.9998Z"
+            stroke="#005593" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+            transform="translate(-94 -22)" />
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="12"
+            transform="translate(1457.67 35)" fill="#005593">NodeGraph</text>
+      <text font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="700" font-size="12"
+            transform="translate(1479.67 50)" fill="#005593">Def</text>
+      <text fill="#7F7F7F" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400"
+            font-size="16" transform="translate(1145.6 22)">Each node in topology has</text>
+      <text fill="#7F7F7F" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400"
+            font-size="16" transform="translate(1145.6 41)">one of two execution</text>
+      <text fill="#7F7F7F" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif" font-weight="400"
+            font-size="16" transform="translate(1145.6 60)">definition types.</text>
+</svg>

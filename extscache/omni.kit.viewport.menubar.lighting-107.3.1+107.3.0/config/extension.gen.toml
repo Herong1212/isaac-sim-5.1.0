@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.viewport.menubar.lighting-107.3.1%2B107.3.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.193460.b693200d.gl"
+        date = 1747144593
+        buildNumber = "107.0.0+master.990.8e1f31eb.gl"
+        repoName = "kit-scene"
+        signed = 1

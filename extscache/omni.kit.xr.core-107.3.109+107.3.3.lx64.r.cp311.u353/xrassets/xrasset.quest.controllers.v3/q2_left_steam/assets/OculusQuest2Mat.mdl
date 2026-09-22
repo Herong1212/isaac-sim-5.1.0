@@ -1,0 +1,12 @@
+mdl 1.6;
+
+import ::tex::*;
+using ..::..::OculusQuestMatBase import *;
+
+
+export material OculusQuest2Mat(
+)
+ =
+	OculusQuestMatBase(
+		base_color_tex: texture_2d("./OculusQuest2Mat_BaseColor.png",::tex::gamma_srgb)
+	);

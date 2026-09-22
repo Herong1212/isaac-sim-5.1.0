@@ -1,0 +1,102 @@
+{
+    "CrossProduct": {
+        "version": 1,
+        "description":  [
+            "Compute the cross product of two (arrays of) 3D vectors of the same size.",
+            "The cross product of two 3D vectors is a vector perpendicular to both inputs.",
+            "If arrays of vectors are provided, then the cross product will be taken on an element-by-element basis",
+            "between the two arrays (e.g. if two arrays with three vectors each are provided, the result will be",
+            "another array containing three vectors where the first output vector is the result of taking the",
+            "cross product between the first vectors in each input array, the second output vector is the result of",
+            "taking the cross product between the second vectors in each input array, etc.). The inputs \"A\" and",
+            "\"B\" must either both be 3D vectors, or both be arrays of 3D vectors with the same number of elements."
+        ],
+        "uiName": "Cross Product",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "a": {
+                "type": ["vectord[3]", "vectorf[3]", "vectorh[3]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"],
+                "description": "The first 3D vector (or array of 3D vectors) in the cross product.",
+                "uiName": "A"
+            },
+            "b": {
+                "type": ["vectord[3]", "vectorf[3]", "vectorh[3]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"],
+                "description": "The second 3D vector (or array of 3D vectors) in the cross product.",
+                "uiName": "B"
+            }
+        },
+        "outputs": {
+            "product": {
+                "type": ["vectord[3]", "vectorf[3]", "vectorh[3]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"],
+                "description": [
+                    "The resulting cross product between vector(s) \"A\" and vector(s) \"B\", which corresponds to",
+                    "the set of vectors perpendicular to both vector(s) \"A\" and vector(s) \"B\"."
+                ],
+                "uiName": "Product"
+            }
+        },
+        "tests": [
+            {
+                "inputs:a": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectord[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectord[3]", "value": [-4,  8, -4]}
+            },
+            {
+                "inputs:a": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectord[3][]", "value": [[5, 6, 7], [5, 6.1, 4.2]]},
+                "outputs:product": {"type": "vectord[3][]", "value": [[-4.0, 8.0, -4.0], [-9.9, 10.8, -3.9]]}
+            },
+            {
+                "inputs:a": {"type": "vectord[3][]", "value": [[1, 2, 3], [10.2, 3.5, 7]]},
+                "inputs:b": {"type": "vectord[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectord[3][]", "value": [[-4.0, 8.0, -4.0], [-17.5, -36.4, 43.7]]}
+            },
+            {
+                "inputs:a": {"type": "vectord[3][]", "value": [[1, 2, 3], [10.2, 3.5, 7]]},
+                "inputs:b": {"type": "vectord[3][]", "value": [[5, 6, 7], [5, 6.1, 4.2]]},
+                "outputs:product": {"type": "vectord[3][]", "value": [[-4.0, 8.0, -4.0], [-28, -7.84, 44.72]]}
+            },
+            {
+                "inputs:a": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectorf[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectorf[3]", "value": [-4,  8, -4]}
+            },
+            {
+                "inputs:a": {"type": "vectorf[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectorf[3][]", "value": [[5, 6, 7], [5, 6.1, 4.2]]},
+                "outputs:product": {"type": "vectorf[3][]", "value": [[-4.0, 8.0, -4.0], [-9.9, 10.8, -3.9]]}
+            },
+            {
+                "inputs:a": {"type": "vectorf[3][]", "value": [[1, 2, 3], [10.2, 3.5, 7]]},
+                "inputs:b": {"type": "vectorf[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectorf[3][]", "value": [[-4.0, 8.0, -4.0], [-17.5, -36.4, 43.7]]}
+            },
+            {
+                "inputs:a": {"type": "vectorf[3][]", "value": [[1, 2, 3], [10.2, 3.5, 7]]},
+                "inputs:b": {"type": "vectorf[3][]", "value": [[5, 6, 7], [5, 6.1, 4.2]]},
+                "outputs:product": {"type": "vectorf[3][]", "value": [[-4.0, 8.0, -4.0], [-28, -7.84, 44.72]]}
+            },
+            {
+                "inputs:a": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectorh[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectorh[3]", "value": [-4,  8, -4]}
+            },
+            {
+                "inputs:a": {"type": "vectorh[3]", "value": [1, 2, 3]},
+                "inputs:b": {"type": "vectorh[3][]", "value": [[5, 6, 7], [8, 9, 4]]},
+                "outputs:product": {"type": "vectorh[3][]", "value": [[-4.0, 8.0, -4.0], [-19.0, 20.0, -7.0]]}
+            },
+            {
+                "inputs:a": {"type": "vectorh[3][]", "value": [[1, 2, 3], [8, 9, 4]]},
+                "inputs:b": {"type": "vectorh[3]", "value": [5, 6, 7]},
+                "outputs:product": {"type": "vectorh[3][]", "value": [[-4.0, 8.0, -4.0], [39.0, -36.0, 3.0]]}
+            },
+            {
+                "inputs:a": {"type": "vectorh[3][]", "value": [[1, 2, 3], [8, 9, 4]]},
+                "inputs:b": {"type": "vectorh[3][]", "value": [[5, 6, 7], [1, 2, 3]]},
+                "outputs:product": {"type": "vectorh[3][]", "value": [[-4.0, 8.0, -4.0], [19.0, -20.0, 7.0]]}
+            }
+        ]
+    }
+}

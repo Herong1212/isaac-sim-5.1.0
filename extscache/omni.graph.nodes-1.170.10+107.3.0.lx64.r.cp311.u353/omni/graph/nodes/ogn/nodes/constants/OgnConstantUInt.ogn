@@ -1,0 +1,22 @@
+{
+    "ConstantUInt": {
+        "description": [
+            "Container for a 32-bit unsigned integer value,",
+            "mainly used to share a common value between several downstream nodes."
+        ],
+        "version": 1,
+        "categories": ["constants"],
+        "uiName": "Constant UInt",
+        "scheduling": ["pure"],
+        "inputs": {
+            "value": {
+                "type": "uint",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

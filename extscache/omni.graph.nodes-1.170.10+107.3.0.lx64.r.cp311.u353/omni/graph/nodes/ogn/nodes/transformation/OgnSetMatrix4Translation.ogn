@@ -1,0 +1,65 @@
+{
+    "SetMatrix4Translation": {
+        "version": 1,
+        "description": [
+            "Sets the translation of the given matrix value which represents a linear transformation.",
+            "Does not modify the orientation (row 0-2) of the matrix."
+        ],
+        "uiName": "Set Translation",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "uiName": "Matrix",
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "description": "The matrix to be modified"
+            },
+            "translation": {
+                "type": ["vectord[3]", "vectord[3][]"],
+                "uiName": "Translation",
+                "description": [
+                    "The translation that the matrix will apply"
+                ]
+             }
+        },
+        "outputs": {
+            "matrix": {
+                "uiName": "Matrix",
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "description": "The updated matrix"
+             }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:translation": {"type": "vectord[3]", "value":[1, 2, 3]},
+                "outputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 1,2,3,1]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 10,10,1,0, 50,0,0,1]},
+                "inputs:translation": {"type": "vectord[3][]", "value": [[45, 10, 10], [3, 2, 1]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value" : [
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 45,10,10,1],
+                    [1,0,0,0, 0,1,0,0, 10,10,1,0, 3,2,1,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value": [
+                    [1,10,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,15,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "inputs:translation": {"type": "vectord[3]", "value": [1, 2, 3]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value" : [
+                    [1,10,0,0, 0,1,0,0, 0,0,1,0, 1,2,3,1],
+                    [1,15,0,0, 0,1,0,0, 0,0,1,0, 1,2,3,1]]}
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1,10,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                    [1,15,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]},
+                "inputs:translation": {"type": "vectord[3][]", "value": [[45, 10, 10], [3, 2, 1]]},
+                "outputs:matrix": {"type":"matrixd[4][]", "value" : [
+                    [1,10,0,0, 0,1,0,0, 0,0,1,0, 45,10,10,1],
+                    [1,15,0,0, 0,1,0,0, 0,0,1,0, 3,2,1,1]]}
+            }
+        ]
+    }
+}

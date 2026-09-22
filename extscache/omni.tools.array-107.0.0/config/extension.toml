@@ -1,0 +1,50 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "107.0.0"
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Array Tool"
+description = "Creates an array of objects in multiple dimensions"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+icon = "data/array_tool_icon_dark.svg"
+preview_image = "data/array_example_02.jpg"
+
+# URL of the extension source repository.
+repository = ""
+
+# Extension category
+category = "Tools"
+
+# Keywords for the extension
+keywords = ["kit", "tool", "array"]
+
+# Use omni.ui to build simple UI
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.pip_archive" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.tools.array".
+[[python.module]]
+name = "omni.tools.array"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window",
+    "--/rtx/materialflattener/enabled=true",
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+    "omni.kit.uiapp",
+]

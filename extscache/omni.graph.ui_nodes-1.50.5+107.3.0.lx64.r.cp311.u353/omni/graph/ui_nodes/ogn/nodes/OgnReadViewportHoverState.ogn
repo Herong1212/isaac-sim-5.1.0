@@ -1,0 +1,56 @@
+{
+    "ReadViewportHoverState": {
+        "version": 1,
+        "description": [
+            "Read the state of the last viewport hover event from the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Viewport Hover State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of 2D position and velocity outputs are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for hover events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            }
+        },
+        "outputs": {
+            "position": {
+                "type": "double[2]",
+                "description": "The current mouse position if the specified viewport is currently hovered, otherwise (0,0)",
+                "uiName": "Position"
+            },
+            "velocity": {
+                "type": "double[2]",
+                "description": [
+                    "A vector representing the change in position of the mouse since the previous frame",
+                    "if the specified viewport is currently hovered, otherwise (0,0)"
+                ],
+                "uiName": "Velocity"
+            },
+            "isHovered": {
+                "type": "bool",
+                "description": "True if the specified viewport is currently hovered",
+                "uiName": "Is Hovered"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

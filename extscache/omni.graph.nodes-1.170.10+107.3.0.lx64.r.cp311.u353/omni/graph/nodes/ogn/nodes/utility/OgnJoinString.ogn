@@ -1,0 +1,45 @@
+{
+    "JoinString": {
+        "version": 1,
+        "description": [
+            "Creates a string from an input array and a delimiter."
+        ],
+        "uiName": "Join String",
+        "categories": ["function"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "elements": {
+                "type": "token[]",
+                "description": "The string elements to join."
+            },
+            "delimiter": {
+                "type": "string",
+                "description": "The delimiter string used to join the elements.",
+                "default": " "
+            }
+        },
+        "outputs": {
+            "string": {
+                "type": "string",
+                "description": "The output string."
+            }
+        },
+        "tests": [
+            {
+                "inputs:elements": ["This", "is", "a", "string"],
+                "inputs:delimiter": " ",
+                "outputs:string": "This is a string"
+            },
+            {
+                "inputs:elements": ["This", "is", "a", "string"],
+                "inputs:delimiter": "..",
+                "outputs:string": "This..is..a..string"
+            },
+            {
+                "inputs:elements": ["in", "ter", "est", "ing"],
+                "inputs:delimiter": "",
+                "outputs:string": "interesting"
+            }
+        ]
+    }
+}

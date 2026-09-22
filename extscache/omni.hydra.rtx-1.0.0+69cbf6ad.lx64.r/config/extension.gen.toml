@@ -1,0 +1,19 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.hydra.rtx-a92aa88e9f54b05f.zip"
+
+    [package.publish]
+        kitVersion = "107.3.3+production.229672.69cbf6ad.gl"
+        date = 1757755257
+        buildNumber = "107.3.3+1073.229672.69cbf6ad.gl"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

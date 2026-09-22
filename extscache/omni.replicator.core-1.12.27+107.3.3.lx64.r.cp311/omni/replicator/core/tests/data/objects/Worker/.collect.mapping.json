@@ -1,0 +1,593 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Debra/Props/Stage/B2_2k_256_4k.hdr",
+            "source_hash": "48c28d337f2a104ea91700f9f7470b1a20fe0d5b",
+            "target_url": "./Debra/Props/Stage/B2_2k_256_4k.hdr",
+            "target_hash": "eb993adb475a4c309d9715303e88b84e7869a43d"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Basketball_Shoes/Basketball_Shoes_BaseColor.jpg",
+            "source_hash": "7753b23fdba9a192f9cbc25e12bb155f9f89a5ae",
+            "target_url": "./Materials/Textures/Basketball_Shoes/Basketball_Shoes_BaseColor.jpg",
+            "target_hash": "12e7f9c5eabb51044ef4ebab16c45cc0f75c2504"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Basketball_Shoes/Basketball_Shoes_Metal.png",
+            "source_hash": "1373114793f68ef0c3d5a1ed86f6e35ef88399a0",
+            "target_url": "./Materials/Textures/Basketball_Shoes/Basketball_Shoes_Metal.png",
+            "target_hash": "92403721f9e98a94d4a331ca3634edf99a4924c6"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Basketball_Shoes/Basketball_Shoes_Normal.png",
+            "source_hash": "31334f0cbddf4898ebb05a6645bd52200e03a708",
+            "target_url": "./Materials/Textures/Basketball_Shoes/Basketball_Shoes_Normal.png",
+            "target_hash": "cd96a0a3cc19765d6c2e8764310c68fda6d22cfe"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Basketball_Shoes/Basketball_Shoes_Rough.png",
+            "source_hash": "58a0d5d9e19c5c89d3d5e14fbd419a64f7f8a566",
+            "target_url": "./Materials/Textures/Basketball_Shoes/Basketball_Shoes_Rough.png",
+            "target_hash": "e3d38853347dd43fc2149a8b53bab546214359bd"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_L/Std_Tearline_L_BaseColor.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_L/Std_Tearline_L_BaseColor.jpg",
+            "target_hash": "c56f3ac47aa41c42cda4f287e65b8158368e4e6b"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_L/Std_Tearline_L_Metal.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_L/Std_Tearline_L_Metal.jpg",
+            "target_hash": "93033c2f69b4ec59daf1b021a228e729c6f97381"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_L/Std_Tearline_L_Opacity.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_L/Std_Tearline_L_Opacity.jpg",
+            "target_hash": "b6f8a8df2bd0ef3f4b72284a9d3ea0f2e8da95d8"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_L/Std_Tearline_L_Rough.jpg",
+            "source_hash": "4624ea57d2a4c80379c56316fd25c77e9b3dce94",
+            "target_url": "./Materials/Textures/Std_Tearline_L/Std_Tearline_L_Rough.jpg",
+            "target_hash": "6e3966ecb5d51e7115fa0b3740f441d3cbf5e08e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_AO.jpg",
+            "source_hash": "22ede8e5082ea90bf31d52db34befa064bbcd041",
+            "target_url": "./Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_AO.jpg",
+            "target_hash": "6122a81b4e0061de533e1dc582ce02c9a1fbe62d"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_BaseColor.png",
+            "source_hash": "d0c46c84772061d7751d05e7b500e1b2c0bbb708",
+            "target_url": "./Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_BaseColor.png",
+            "target_hash": "e1b2cef39b4a33db98792812b1d6dcb74901e789"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Metal.jpg",
+            "source_hash": "2aeb3a67c722488382d22c99f9760503fe225cd1",
+            "target_url": "./Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Metal.jpg",
+            "target_hash": "664fed8660b765c13b2f918cac70995494852c6c"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Normal.png",
+            "source_hash": "e09f592222bf817e0b98b15eeed40a569e8de7e8",
+            "target_url": "./Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Normal.png",
+            "target_hash": "5f6b17d108fbd7ad8626350572e9acba1936e398"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Rough.jpg",
+            "source_hash": "0ba018fdf48cfdad06f214abb53dc59605f2b0bc",
+            "target_url": "./Materials/Textures/Std_Upper_Teeth/Std_Upper_Teeth_Rough.jpg",
+            "target_hash": "3d7f6a1f7c0b1dec76e6686c2e5c950945a67fda"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Baseball_Cap/Baseball_Cap_BaseColor.png",
+            "source_hash": "1835c0d0e33eae64439be7d51fc9f5280bd93828",
+            "target_url": "./Materials/Textures/Baseball_Cap/Baseball_Cap_BaseColor.png",
+            "target_hash": "1624c1b9be28621a14e109c92b1f793ccceb54f7"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Baseball_Cap/Baseball_Cap_Metal.png",
+            "source_hash": "d572c563687b0f019c8899dd743cef687d810c96",
+            "target_url": "./Materials/Textures/Baseball_Cap/Baseball_Cap_Metal.png",
+            "target_hash": "72a4b20d47680184679d4ab6615684caaa1b038e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Baseball_Cap/Baseball_Cap_Normal.png",
+            "source_hash": "ed85933ce015231d1b490bd39b170b297acc2af4",
+            "target_url": "./Materials/Textures/Baseball_Cap/Baseball_Cap_Normal.png",
+            "target_hash": "01ffebac430c4a639d41a1275ceba64a2c3c3f2b"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Baseball_Cap/Baseball_Cap_Rough.png",
+            "source_hash": "a03277b9b6af66831968c361735a3ad989a1a9d8",
+            "target_url": "./Materials/Textures/Baseball_Cap/Baseball_Cap_Rough.png",
+            "target_hash": "c56efdd9adc8a27cbb5d5a91502f8a53564d0b9a"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_L/Std_Eye_L_BaseColor.jpg",
+            "source_hash": "4a452f26800198b9f8b8ca80e50bbc255c872ca6",
+            "target_url": "./Materials/Textures/Std_Eye_L/Std_Eye_L_BaseColor.jpg",
+            "target_hash": "bf993a8b35ab324aeb2c8d0d75ac72ede505ec76"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_L/Std_Eye_L_Metal.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Eye_L/Std_Eye_L_Metal.jpg",
+            "target_hash": "b204574a6c0a88d74fb981cd7280c3eedf43da24"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_L/Std_Eye_L_Normal.jpg",
+            "source_hash": "5efe56a9e7d7ad55510b6cf09983146ee8987283",
+            "target_url": "./Materials/Textures/Std_Eye_L/Std_Eye_L_Normal.jpg",
+            "target_hash": "c92d798f8a657fddd410e1bd18058906b8ffd4f2"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_L/Std_Eye_L_Rough.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Eye_L/Std_Eye_L_Rough.jpg",
+            "target_hash": "bdce222016d5383beae121fb232da9d9ddb77c3d"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Nails/Std_Nails_AO.jpg",
+            "source_hash": "c0c477374fc032f95b067b0a24d2055509b3fe33",
+            "target_url": "./Materials/Textures/Std_Nails/Std_Nails_AO.jpg",
+            "target_hash": "4bc3c793066fe03ef79025385adce3d9c274fc5e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Nails/Std_Nails_BaseColor.jpg",
+            "source_hash": "558b07d4b681c38eccaaaed259941b1ad0e4c717",
+            "target_url": "./Materials/Textures/Std_Nails/Std_Nails_BaseColor.jpg",
+            "target_hash": "be82b9dc731f982db5c0878001ec19f2e3054c95"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Nails/Std_Nails_Normal.png",
+            "source_hash": "b6a1b4b352271b32fe1589cf04c56efc380c500c",
+            "target_url": "./Materials/Textures/Std_Nails/Std_Nails_Normal.png",
+            "target_hash": "ad7be473f9529d1103867cfd6896fee1084c055e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Nails/Std_Nails_Rough.jpg",
+            "source_hash": "085491d0e32a28798146492ff01df354b78e8057",
+            "target_url": "./Materials/Textures/Std_Nails/Std_Nails_Rough.jpg",
+            "target_hash": "4bc5ad9a99620010866f5f9026f12bb3840cf0ea"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_BaseColor.jpg",
+            "source_hash": "7d1995055dae2549544e685afd905b0c9c94be3c",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_BaseColor.jpg",
+            "target_hash": "2221ac03cbcbe5bc4438a7db61146fe7ddd71065"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Metal.jpg",
+            "source_hash": "0622f1161ba85e56dde6643a36fc7ba5af8b60c6",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Metal.jpg",
+            "target_hash": "9cd70dda7f2e14a0a1783b545533de6f3f7ca3f1"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Opacity.jpg",
+            "source_hash": "0622f1161ba85e56dde6643a36fc7ba5af8b60c6",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Opacity.jpg",
+            "target_hash": "9893340744dee659a71658f05b1bdcbc2bf4cba6"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Rough.jpg",
+            "source_hash": "7d1995055dae2549544e685afd905b0c9c94be3c",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_R/Std_Eye_Occlusion_R_Rough.jpg",
+            "target_hash": "df881317966143b3917b797be82dd6f14a61215e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_BaseColor.jpg",
+            "source_hash": "7d1995055dae2549544e685afd905b0c9c94be3c",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_BaseColor.jpg",
+            "target_hash": "e794369a81860f86bd49b05f18c20e25856d22f7"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Metal.jpg",
+            "source_hash": "0622f1161ba85e56dde6643a36fc7ba5af8b60c6",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Metal.jpg",
+            "target_hash": "3eb52da814223cb67da43e795c06e08b20e2d8d9"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Opacity.jpg",
+            "source_hash": "0622f1161ba85e56dde6643a36fc7ba5af8b60c6",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Opacity.jpg",
+            "target_hash": "72469346fbc7e65e9391ab2d75d80d3db33fd1c3"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Rough.jpg",
+            "source_hash": "7d1995055dae2549544e685afd905b0c9c94be3c",
+            "target_url": "./Materials/Textures/Std_Eye_Occlusion_L/Std_Eye_Occlusion_L_Rough.jpg",
+            "target_hash": "e6e5240c81d699b9cee6c8d97e3216c677a5049c"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Body/Std_Skin_Body_AO.jpg",
+            "source_hash": "fe0bc82ce80a615b21c0c973e9e02d8caa5d1005",
+            "target_url": "./Materials/Textures/Std_Skin_Body/Std_Skin_Body_AO.jpg",
+            "target_hash": "43bab7da1640a84a29f3952f238b12f15e63b20a"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Body/Std_Skin_Body_BaseColor.jpg",
+            "source_hash": "71ee8add9e1444fd203ae89ef074300af54c8a02",
+            "target_url": "./Materials/Textures/Std_Skin_Body/Std_Skin_Body_BaseColor.jpg",
+            "target_hash": "eb5ae4d3850b4032d4f5ca15259d97e59c636b7f"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Body/Std_Skin_Body_Metal.jpg",
+            "source_hash": "c54a04876d3f31f9c8bb8cc20290729217a8ae2a",
+            "target_url": "./Materials/Textures/Std_Skin_Body/Std_Skin_Body_Metal.jpg",
+            "target_hash": "9ec6065479b5aa1082a6c00bd30f4c6e2285060d"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Body/Std_Skin_Body_Normal.png",
+            "source_hash": "ef7f0dc5a446f0a7a195b0cc11fa584c3648230a",
+            "target_url": "./Materials/Textures/Std_Skin_Body/Std_Skin_Body_Normal.png",
+            "target_hash": "223bd5b43cd923645592717c4d87488ba8f638f3"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Body/Std_Skin_Body_Rough.jpg",
+            "source_hash": "3304920be7aabebe5dec8fe0b5ffba9a6c37f9f1",
+            "target_url": "./Materials/Textures/Std_Skin_Body/Std_Skin_Body_Rough.jpg",
+            "target_hash": "c273cc5900449629af8de8a69d47c7b3364eaf30"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eyelash/Std_Eyelash_AO.jpg",
+            "source_hash": "5e8683def2f01237ec0053ca631e5226f331335a",
+            "target_url": "./Materials/Textures/Std_Eyelash/Std_Eyelash_AO.jpg",
+            "target_hash": "4a027738250a71b9e06cb3be6f60f687b2e09333"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eyelash/Std_Eyelash_BaseColor.jpg",
+            "source_hash": "13e88eb304f31b0d3ea54b61f8f1880298fa756c",
+            "target_url": "./Materials/Textures/Std_Eyelash/Std_Eyelash_BaseColor.jpg",
+            "target_hash": "0673dd27e411f7875dbaed93bd12d8b7da2c9757"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eyelash/Std_Eyelash_Normal.png",
+            "source_hash": "d8d0bbccce9637a70463e6762480d3afd43f8a3a",
+            "target_url": "./Materials/Textures/Std_Eyelash/Std_Eyelash_Normal.png",
+            "target_hash": "97d4ba032dc357970cb5fbfeaeef1b42fa874f0e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eyelash/Std_Eyelash_Opacity.jpg",
+            "source_hash": "ad93c6d7ff3369e278d2714bd6aa6ae4a9786947",
+            "target_url": "./Materials/Textures/Std_Eyelash/Std_Eyelash_Opacity.jpg",
+            "target_hash": "9d09cad23dc5a7720e9d3aa198f690875748c622"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eyelash/Std_Eyelash_Rough.jpg",
+            "source_hash": "5e8683def2f01237ec0053ca631e5226f331335a",
+            "target_url": "./Materials/Textures/Std_Eyelash/Std_Eyelash_Rough.jpg",
+            "target_hash": "85b72be49ef8fbea6a7f19f154ddb11a50e0f4bd"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_AO.jpg",
+            "source_hash": "75e28baeef12b4147e3c7e6b3f5c6f0b12ff1589",
+            "target_url": "./Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_AO.jpg",
+            "target_hash": "0bfbdeb00ba2bed842972bff24b599fb5bdf5557"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_BaseColor.jpg",
+            "source_hash": "8348cd2695774472742402cdcdc8ce6fbd17fee0",
+            "target_url": "./Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_BaseColor.jpg",
+            "target_hash": "e5949943e49192d97b525e074820ef5b8b7f3eb1"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_Normal.png",
+            "source_hash": "dfde6a34c4c207232d79f3f25c3d1ae953f35c25",
+            "target_url": "./Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_Normal.png",
+            "target_hash": "62cb120ebef5497e0dcaf73639c62cd9d6fef2b6"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_Rough.jpg",
+            "source_hash": "b3aa630a2bbc4b0682a1d9c2642f1b351af5c337",
+            "target_url": "./Materials/Textures/Std_Skin_Arm/Std_Skin_Arm_Rough.jpg",
+            "target_hash": "9370643dd8960d4d34d00939b9dee75ff3545887"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_AO.jpg",
+            "source_hash": "4ac774380a8e0e869970de515b550a56683c6c9e",
+            "target_url": "./Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_AO.jpg",
+            "target_hash": "128fb37897b62b308b1bdd9a6495258c391a4659"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_BaseColor.jpg",
+            "source_hash": "d195a91e2f14e32e22140a8e89949060214ea886",
+            "target_url": "./Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_BaseColor.jpg",
+            "target_hash": "06e9cbda3f985fcc9e964eb53bc89c32ebb4bf21"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Metal.jpg",
+            "source_hash": "502aab7c888dd078a868a3b7ec58d6e2b0afcecf",
+            "target_url": "./Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Metal.jpg",
+            "target_hash": "b0e4dae1b91d30f55caa4b50767c41f13761b096"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Normal.png",
+            "source_hash": "bdc54fb5f8ad176fcde4d72447ef8e38d6882081",
+            "target_url": "./Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Normal.png",
+            "target_hash": "50c90a1fadab771ff385800cb0d107942128983e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Rough.jpg",
+            "source_hash": "257496f1ced6c01234a1b78d7db81179ce1b5b2b",
+            "target_url": "./Materials/Textures/Std_Skin_Leg/Std_Skin_Leg_Rough.jpg",
+            "target_hash": "609674859af5236d3dda3971fbdf0617091305bd"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Field_Jacket/Field_Jacket_BaseColor.jpg",
+            "source_hash": "ebcf6c0dc42ac753181355523895ce5af45392a4",
+            "target_url": "./Materials/Textures/Field_Jacket/Field_Jacket_BaseColor.jpg",
+            "target_hash": "32569f8a9e6d243dceca28e1f5297a9fd12dbed6"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Field_Jacket/Field_Jacket_Metal.png",
+            "source_hash": "1373114793f68ef0c3d5a1ed86f6e35ef88399a0",
+            "target_url": "./Materials/Textures/Field_Jacket/Field_Jacket_Metal.png",
+            "target_hash": "a52c1b23e16eda479dc24f08eb3b3497fb8cc211"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Field_Jacket/Field_Jacket_Normal.png",
+            "source_hash": "b161ba1788ea9cc7385888eb93bfd3c472faf3cb",
+            "target_url": "./Materials/Textures/Field_Jacket/Field_Jacket_Normal.png",
+            "target_hash": "46ab8a83ef64151ce973e3f1cae4340c0e24a5bd"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Field_Jacket/Field_Jacket_Rough.png",
+            "source_hash": "c517576bc693faa6d5b181eeb68460cdb8a9f96c",
+            "target_url": "./Materials/Textures/Field_Jacket/Field_Jacket_Rough.png",
+            "target_hash": "88e998df6d629db8cf743abcc73022b40bf9344f"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tongue/Std_Tongue_AO.png",
+            "source_hash": "7c9faa8a67315570824a69bbebec9ad6157d9ed0",
+            "target_url": "./Materials/Textures/Std_Tongue/Std_Tongue_AO.png",
+            "target_hash": "228ec4e1b5084e47cafd9f8c483559e648188a33"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tongue/Std_Tongue_BaseColor.png",
+            "source_hash": "3f5e9f6aa1e23397afa97dd007a25465d979f9aa",
+            "target_url": "./Materials/Textures/Std_Tongue/Std_Tongue_BaseColor.png",
+            "target_hash": "3f23b8fe71aeee6238468669208b385da343fef4"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tongue/Std_Tongue_Metal.png",
+            "source_hash": "1c86a41fcfbbb938767060c720ff79335a9f6166",
+            "target_url": "./Materials/Textures/Std_Tongue/Std_Tongue_Metal.png",
+            "target_hash": "2a14741887d1f52ec293175361b7f9052961452f"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tongue/Std_Tongue_Normal.png",
+            "source_hash": "25de129f5b2efa26e3bfc1032143d9d0aa023d77",
+            "target_url": "./Materials/Textures/Std_Tongue/Std_Tongue_Normal.png",
+            "target_hash": "d52f0f9bef9e62c15bf15807c81c763ff9aef5ca"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tongue/Std_Tongue_Rough.png",
+            "source_hash": "6ef5c112cf4497246860e4ac2dbe8fa4b202d9ee",
+            "target_url": "./Materials/Textures/Std_Tongue/Std_Tongue_Rough.png",
+            "target_hash": "3d2c39d6ff7d4699e9a76aae8844d25a20d27a51"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_L/Std_Cornea_L_AO.jpg",
+            "source_hash": "cd59cbc31b3827d28c8224904efef03be181b1df",
+            "target_url": "./Materials/Textures/Std_Cornea_L/Std_Cornea_L_AO.jpg",
+            "target_hash": "76e6006c50e39453379f7b04b8c3bfba7d9a715e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_L/Std_Cornea_L_BaseColor.jpg",
+            "source_hash": "f48cd406c8325e0a875b5267509c1e567d24dda7",
+            "target_url": "./Materials/Textures/Std_Cornea_L/Std_Cornea_L_BaseColor.jpg",
+            "target_hash": "87b9f512ba3de550ea943752b7381f814499b072"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_L/Std_Cornea_L_Metal.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Cornea_L/Std_Cornea_L_Metal.jpg",
+            "target_hash": "ee4f506f6e36fe801f1a9288e3e31f622cb73c33"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_L/Std_Cornea_L_Rough.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Cornea_L/Std_Cornea_L_Rough.jpg",
+            "target_hash": "4c7e97662590d4d5a342fa5eac6c706098bc4fed"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_R/Std_Tearline_R_BaseColor.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_R/Std_Tearline_R_BaseColor.jpg",
+            "target_hash": "d67a694858ff4d19f7014dbf0e1983125401a985"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_R/Std_Tearline_R_Metal.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_R/Std_Tearline_R_Metal.jpg",
+            "target_hash": "252af1dcea213effc3d283b1dab7a8b4b6f57a9c"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_R/Std_Tearline_R_Opacity.jpg",
+            "source_hash": "49287158ac5640f9d45d16c19cc6849b5c60617f",
+            "target_url": "./Materials/Textures/Std_Tearline_R/Std_Tearline_R_Opacity.jpg",
+            "target_hash": "8de48210de4480ed98f7173fcb70b0ea6f8ca588"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Tearline_R/Std_Tearline_R_Rough.jpg",
+            "source_hash": "4624ea57d2a4c80379c56316fd25c77e9b3dce94",
+            "target_url": "./Materials/Textures/Std_Tearline_R/Std_Tearline_R_Rough.jpg",
+            "target_hash": "4fa91c4fc29ae534cfb18d0e9ac21bd8d21cd972"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_BaseColor.jpg",
+            "source_hash": "9520d5ec33699a5fb36ce6abba68961b37e2cbe8",
+            "target_url": "./Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_BaseColor.jpg",
+            "target_hash": "0de43a9a8b4d92ecb6abfcdca09dd3751563e650"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Normal.jpg",
+            "source_hash": "fc5cdda765310d1659fc9e107f21b29de2694bc2",
+            "target_url": "./Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Normal.jpg",
+            "target_hash": "39f043fbba2601c634b58480b299e95e936c5353"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Opacity.jpg",
+            "source_hash": "516335f5348b383c3c9ce055857ac0ea423abefc",
+            "target_url": "./Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Opacity.jpg",
+            "target_hash": "122a39885fae0c6b82bf48257ca4087ba2267c5f"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Rough.png",
+            "source_hash": "f50459dae9db13205a249a4be2bf869f5239260c",
+            "target_url": "./Materials/Textures/V_Neck_Scrub_Shirt/V_Neck_Scrub_Shirt_Rough.png",
+            "target_hash": "3bcb92b539829045876898e8b5420a1afb68616e"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_AO.jpg",
+            "source_hash": "66752479ab529a48d863324cb58036b9f341c567",
+            "target_url": "./Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_AO.jpg",
+            "target_hash": "8e6dd93042b620184fac1211875f725cd479c4b8"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_BaseColor.png",
+            "source_hash": "70d032969d7d900d0bd0ae8e05ae7787237192e1",
+            "target_url": "./Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_BaseColor.png",
+            "target_hash": "48fc31fdee681c3d746fba7dcebea7216b239445"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Metal.jpg",
+            "source_hash": "635fa6a5e3bbfca6b8812b49e9df9a7957090bfd",
+            "target_url": "./Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Metal.jpg",
+            "target_hash": "7c74e51fa49730713378e7c0fc35dd49249be6fe"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Normal.png",
+            "source_hash": "501e4bf77efabb67b4e584ef94a6895ddc0d2b95",
+            "target_url": "./Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Normal.png",
+            "target_hash": "377060244953cb2428acf7be186b4f317138f84a"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Rough.jpg",
+            "source_hash": "47f7c3c682812b37e0ac67e26a2fe58c502628de",
+            "target_url": "./Materials/Textures/Std_Lower_Teeth/Std_Lower_Teeth_Rough.jpg",
+            "target_hash": "514ca3d7bb3cdd94ab33fc855a3e52a45f99c8ec"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_R/Std_Eye_R_BaseColor.jpg",
+            "source_hash": "4a452f26800198b9f8b8ca80e50bbc255c872ca6",
+            "target_url": "./Materials/Textures/Std_Eye_R/Std_Eye_R_BaseColor.jpg",
+            "target_hash": "fc9c83fec7bb3c01094a2b7b1fd707e96b21642b"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_R/Std_Eye_R_Metal.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Eye_R/Std_Eye_R_Metal.jpg",
+            "target_hash": "2acebafd4ddba5658eba749b26092746d33290a9"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_R/Std_Eye_R_Normal.jpg",
+            "source_hash": "ad5314560d0bcb9ad73ab881e1facc3201a7949b",
+            "target_url": "./Materials/Textures/Std_Eye_R/Std_Eye_R_Normal.jpg",
+            "target_hash": "d3b0951e039019203102b69bf43a7cf80915f264"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Eye_R/Std_Eye_R_Rough.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Eye_R/Std_Eye_R_Rough.jpg",
+            "target_hash": "be15eea79dbdd735f5cfbdb3a5621d3e6600408d"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Head/Std_Skin_Head_AO.jpg",
+            "source_hash": "8917f988dd913d8733e300510061ac183a145508",
+            "target_url": "./Materials/Textures/Std_Skin_Head/Std_Skin_Head_AO.jpg",
+            "target_hash": "3cffbbcd5c7667ac79ebc19b88412936b4cc211c"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Head/Std_Skin_Head_BaseColor.jpg",
+            "source_hash": "45848c662ea3b697a7b00d566d501f2733fc28f2",
+            "target_url": "./Materials/Textures/Std_Skin_Head/Std_Skin_Head_BaseColor.jpg",
+            "target_hash": "eb443e040c8af8c384fc5e85919d94ff96364f64"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Head/Std_Skin_Head_Metal.jpg",
+            "source_hash": "5ff61cdb8df1140571697e923433c934479e456a",
+            "target_url": "./Materials/Textures/Std_Skin_Head/Std_Skin_Head_Metal.jpg",
+            "target_hash": "a38ed3d655c7934167c511af1cd4b0820aa68af9"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Head/Std_Skin_Head_Normal.png",
+            "source_hash": "9365abbad85891de26d74c003d7fab30f4376c5f",
+            "target_url": "./Materials/Textures/Std_Skin_Head/Std_Skin_Head_Normal.png",
+            "target_hash": "f4159e8d3b7eae0e434c0823817cde8a41636440"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Skin_Head/Std_Skin_Head_Rough.jpg",
+            "source_hash": "d47fe908091f92025b3f8e956294f95858467094",
+            "target_url": "./Materials/Textures/Std_Skin_Head/Std_Skin_Head_Rough.jpg",
+            "target_hash": "d3c414cb5addef02f9425aa652a64f98fa3d3267"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_R/Std_Cornea_R_AO.jpg",
+            "source_hash": "82e2b7fd2e4c72da6f8077842d02a2e66af8014d",
+            "target_url": "./Materials/Textures/Std_Cornea_R/Std_Cornea_R_AO.jpg",
+            "target_hash": "4be9bb0427011e812d6b03d78e87f6fe1bdf9117"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_R/Std_Cornea_R_BaseColor.jpg",
+            "source_hash": "f48cd406c8325e0a875b5267509c1e567d24dda7",
+            "target_url": "./Materials/Textures/Std_Cornea_R/Std_Cornea_R_BaseColor.jpg",
+            "target_hash": "995ff46d07e55797a6e3bd146b5c351f0300bbd3"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_R/Std_Cornea_R_Metal.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Cornea_R/Std_Cornea_R_Metal.jpg",
+            "target_hash": "8f5b248fa3ca1180a47c62508ab5f59d0de748d5"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Std_Cornea_R/Std_Cornea_R_Rough.jpg",
+            "source_hash": "c12956ea87c263d5c4a7fb27e4d04a7445dd0d48",
+            "target_url": "./Materials/Textures/Std_Cornea_R/Std_Cornea_R_Rough.jpg",
+            "target_hash": "63b3eb99fb0f7810263141df77b8968410d1fc71"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/OmniRL_PBR.mdl",
+            "source_hash": "794ee056dd656d28c8d7082e61d190081a07d005",
+            "target_url": "./Materials/OmniRL_PBR.mdl",
+            "target_hash": "eb79543bb79c61d3f3d13fda19b00ce423c1eb43"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Cargo_pant/Cargo_pant_BaseColor.jpg",
+            "source_hash": "cc5f88c77e4c6297c1ad4a1ced03039004566db2",
+            "target_url": "./Materials/Textures/Cargo_pant/Cargo_pant_BaseColor.jpg",
+            "target_hash": "0c8421875251af24b50e843e3a0d72b2c0eaf0a1"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Cargo_pant/Cargo_pant_Normal.jpg",
+            "source_hash": "7024d53bffa704a9cb7def8c505a0e6247826f98",
+            "target_url": "./Materials/Textures/Cargo_pant/Cargo_pant_Normal.jpg",
+            "target_hash": "f55040b2f05aa08ac46a987aef46e140554989bd"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Cargo_pant/Cargo_pant_Opacity.jpg",
+            "source_hash": "e35b35553b703b233e88234b0a263b519909b548",
+            "target_url": "./Materials/Textures/Cargo_pant/Cargo_pant_Opacity.jpg",
+            "target_hash": "b61f679950354a93f9d577bb3d764b5b57cc8ee7"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/Textures/Cargo_pant/Cargo_pant_Rough.png",
+            "source_hash": "e1a683e6b84e7b311c3884f1e200c7db004e7f30",
+            "target_url": "./Materials/Textures/Cargo_pant/Cargo_pant_Rough.png",
+            "target_hash": "323b59c2d79a41fee8823f4315e0e7322a1644b4"
+        },
+        {
+            "source_url": "omniverse://drivesim2-dev.ov.nvidia.com/NVIDIA/Assets/Characters/Reallusion/Worker/Materials/OmniRLBase.mdl",
+            "source_hash": "bd62827aad79a4c172ac546e148c7b46ee0d5cf6",
+            "target_url": "./Materials/OmniRLBase.mdl",
+            "target_hash": "b27148e64c9bb35c57b34f3a44cd5823b5ed115d"
+        }
+    ]
+}

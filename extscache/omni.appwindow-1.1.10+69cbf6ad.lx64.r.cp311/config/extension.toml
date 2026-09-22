@@ -1,0 +1,63 @@
+[package]
+version = "1.1.10"
+category = "Internal"
+
+title = "App Window"
+description = "Create main/top-level application windows in kit."
+support_level = "Core"
+readme = "docs/Overview.md"
+
+[dependencies]
+"omni.kit.loop" = {}
+"carb.windowing.plugins" = {}
+
+[[python.module]]
+name = "omni.appwindow"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[settings]
+# OS Window default settings:
+app.window.enabled = true
+app.window.width = 1440
+app.window.height = 900
+app.window.title = "Omniverse Kit"
+app.window.fullscreen = false
+app.window.maximized = false
+app.window.noResize = false
+app.window.scaleToMonitor = true
+app.window.alwaysOnTop = false
+app.window.noDecorations = false
+app.window.hideMouseInFullscreen = false
+app.window.childWindowsOnTop = false
+app.window.saveSizeOnExit = true
+
+
+[[test]]
+args = [
+    "--show-test-window",
+]
+
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.appwindow.tests${lib_ext}"
+]
+
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/USAGE_CPP.md",
+    "docs/SETTINGS.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "../../../include/omni/kit/IAppWindow.h",
+]
+cpp_api_exclude_warnings = [
+    "warning: .* is not documented",
+    "warning: argument",
+    "^  parameter '",
+]

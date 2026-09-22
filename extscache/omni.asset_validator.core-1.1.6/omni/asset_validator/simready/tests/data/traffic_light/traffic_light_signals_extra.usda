@@ -1,0 +1,27 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset: has more signals than items in signalOrder
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    custom token[] omni:simready:signalOrder = ["green"]
+    custom token omni:simready:signalType = "trafficLight"
+
+    def DiskLight "signal_green"
+    {
+        custom token omni:simready:signal = "green"
+    }
+    def Xform "signal_amber" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token omni:simready:signal = "amber"
+        }
+    }
+}

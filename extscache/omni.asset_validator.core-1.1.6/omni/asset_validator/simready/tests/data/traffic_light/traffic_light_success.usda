@@ -1,0 +1,57 @@
+#usda 1.0
+(
+    """
+    SimReady Traffic Light asset: passes all validation rules
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode" (
+    """
+    A 'directional box' representing a traffic light
+    Attribute 'omni:simready:signalOrder' is optional
+    """
+)
+{
+    custom token[] omni:simready:signalOrder = ["red", "amber", "green"]
+    custom token omni:simready:signalType = "trafficLight"
+    custom float2 omni:simready:signal:domainIntensity = (0.0, 1.0)
+
+    def Xform "signal_red" (
+        """
+        There can be any number of signal prims
+        If their signal attribute is the same, the run-time will toggle them together
+        """
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token omni:simready:signal = "red"
+        }
+
+        def DiskLight "disk_light"
+        {
+            custom token omni:simready:signal = "red"
+        }
+    }
+
+    def Xform "signal_amber" (
+        references = @./mesh_light.usda@
+    )
+    {
+        over "mesh_light_bulb"
+        {
+            custom token omni:simready:signal = "amber"
+        }
+    }
+
+    def DiskLight "signal_green" (
+        """
+        A signal can live anywhere under the 'directional box'
+        """
+    )
+    {
+        custom token omni:simready:signal = "green"
+    }
+}

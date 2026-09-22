@@ -1,0 +1,21 @@
+mdl 1.6;
+
+import ::df::*;
+import ::base::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+import ::tex::*;
+import .::WrongSyntaxTest_validImport::*;
+
+// wrong syntax line
+bla
+
+export material WrongSyntaxTest (
+    color tint = WrongSyntaxTest_validImport::get_color()
+
+) = material(
+    surface: material_surface(
+        scattering: df::diffuse_reflection_bsdf(tint: tint)
+    )
+);

@@ -1,0 +1,48 @@
+[package]
+version = "1.12.1"
+category = "Internal"
+authors = ["NVIDIA"]
+title = "Property Window"
+description="Kit Property Window."
+repository = ""
+keywords = ["kit", "ui", "property"]
+support_level = "Core"
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+readme  = "docs/README.md"
+
+[dependencies]
+"omni.ui" = {}
+"omni.client" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.context_menu" = {}
+"omni.kit.widget.highlight_label" = {}
+"omni.kit.widget.searchfield" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.kit.window.property"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+dependencies = [
+    "omni.usd",
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+]
+
+[settings]
+ext."omni.kit.window.property".labelAlignment = "left"
+ext."omni.kit.window.property".checkboxAlignment = "left"
+ext."omni.kit.window.property".enableSearch = true
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/Settings.md",
+    "docs/CHANGELOG.md",
+]

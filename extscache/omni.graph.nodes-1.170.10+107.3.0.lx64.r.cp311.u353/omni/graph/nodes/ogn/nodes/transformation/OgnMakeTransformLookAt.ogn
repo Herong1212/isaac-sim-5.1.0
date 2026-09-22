@@ -1,0 +1,56 @@
+{
+    "MakeTransformLookAt": {
+        "version": 1,
+        "description": [
+            "Make a transformation matrix from eye and center world-space positions and an up vector.",
+            "Forward vector is negative Z direction computed from (eye - center) and normalized.",
+            "Up is positive Y direction. Right is the positive X direction."
+        ],
+        "uiName": "Make Transformation Matrix Look At",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "eye": {
+                "type": "vectord[3]",
+                "uiName": "Eye",
+                "description": "The position of the eye, or from-position in world-space",
+                "default": [1, 0, 0]
+            },
+            "center": {
+                "type": "vectord[3]",
+                "uiName": "Center",
+                "description": "The position of the center or target-position in world-space",
+                "default": [0, 0, 0]
+            },
+            "up": {
+                "type": "vectord[3]",
+                "uiName": "Up",
+                "description": "The direction of the up vector",
+                "default": [0, 1, 0]
+            }
+        },
+        "outputs": {
+            "transform": {
+                "type": "matrixd[4]",
+                "description": "The calculated transformation matrix"
+             }
+        },
+        "tests": [
+            {
+                "inputs:eye": [1, 0, 0], "inputs:center": [0, 0, 1], "inputs:up": [0, 1, 0],
+                "outputs:transform": [  0.70710678,  0, -0.70710678,  0,
+                                                 0,  1,           0,  0,
+                                        0.70710678,  0,  0.70710678,  0,
+                                       -0.70710678,  0, -0.70710678,  1 ]
+
+            },
+            {
+                "inputs:eye": [1, 0, 0], "inputs:center": [0, 0, 0], "inputs:up": [0, 1, 0],
+                "outputs:transform": [ 0,  0, -1,  0,
+                                       0,  1,  0,  0,
+                                       1,  0,  0,  0,
+                                       0,  0,  0,  1 ]
+            }
+        ]
+    }
+}

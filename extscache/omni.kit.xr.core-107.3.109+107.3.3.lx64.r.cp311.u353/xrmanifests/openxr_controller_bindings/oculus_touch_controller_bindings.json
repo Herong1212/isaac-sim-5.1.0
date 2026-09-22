@@ -1,0 +1,190 @@
+{
+    "version": 1,
+    "apiVersion": "1.0",
+    "name": "Oculus Touch Controller",
+    "interactionProfile": "/interaction_profiles/oculus/touch_controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "x",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "y",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "menu",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "squeeze",
+                    "gestures": [
+                        "value"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "value",
+                        "touch",
+                        {
+                            "gesture": "proximity",
+                            "apiVersion": "1.1"
+                        }
+                    ]
+                },
+                {
+                    "input": "thumbstick",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "thumb_resting_surfaces",
+                    "gestures": [ "proximity" ],
+                    "apiVersion": "1.1"
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "grip_surface",
+                    "apiVersion": "1.1"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "aim"
+        },
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "a",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "b",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "system",
+                    "gestures": [
+                        "click"
+                    ]
+                },
+                {
+                    "input": "squeeze",
+                    "gestures": [
+                        "value"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "value",
+                        "touch",
+                        {
+                            "gesture": "proximity",
+                            "apiVersion": "1.1"
+                        }
+                    ]
+                },
+                {
+                    "input": "thumbstick",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "thumb_resting_surfaces",
+                    "gestures": [ "proximity" ],
+                    "apiVersion": "1.1"
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "grip_surface",
+                    "apiVersion": "1.1"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "aim"
+        }
+    ]
+}

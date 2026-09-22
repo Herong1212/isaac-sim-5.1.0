@@ -1,0 +1,262 @@
+{
+    "OgnGetSkeletonData" : {
+        "version": 2,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Annotators": "Replicator annotator nodes."},
+        "description": [
+            "This node retrieves skeleton data given skeleton prims and camera paramters"
+        ],
+        "metadata": {
+           "uiName": "Get Skeleton Data"
+        },
+        "inputs": {
+            "prims": {
+                "type": "token[]",
+                "description": "list of skeleton prim paths"
+            },
+            "fabricPrims": {
+                "type": "token[]",
+                "description": "list of fabric skeleton root prim paths"
+            },
+            "fabricJoints": {
+                "type": "token[]",
+                "description": "list of fabric joint prim paths"
+            },
+            "primWorldPositions": {
+                "type": "double[3][]",
+                "description": "World translations for skeleton prims from fabric",
+                "default": []
+            },
+            "primWorldOrientations": {
+                "type": "float[4][]",
+                "description": "World rotations for skeleton prims from fabric",
+                "default": []
+            },
+            "primWorldScales": {
+                "type": "float[3][]",
+                "description": "World scales for skeleton prims from fabric",
+                "default": []
+            },
+            "jointWorldPositions": {
+                "type": "double[3][]",
+                "description": "World translations for skeleton prims from fabric",
+                "default": []
+            },
+            "jointWorldOrientations": {
+                "type": "float[4][]",
+                "description": "World rotations for skeleton prims from fabric",
+                "default": []
+            },
+            "jointWorldScales": {
+                "type": "float[3][]",
+                "description": "World scales for skeleton prims from fabric",
+                "default": []
+            },
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "cameraModel": {
+                "type": "token",
+                "description": "Camera model (pinhole or fisheye models)"
+            },
+            "cameraViewTransform": {
+                "type": "matrixd[4]",
+                "description": "Camera view matrix"
+            },
+            "cameraProjection" : {
+                "type": "matrixd[4]",
+                "description": "Camera projection matrix"
+            },
+            "cameraFocalLength": {
+                "type": "float",
+                "description": "Camera focal length"
+            },
+            "cameraAperture": {
+                "type": "float[2]",
+                "description": "Camera horizontal and vertical aperture"
+            },
+            "cameraFisheyeNominalWidth": {
+                "type": "int",
+                "description": "Camera fisheye nominal width"
+            },
+            "cameraFisheyeNominalHeight": {
+                "type": "int",
+                "description": "Camera fisheye nominal height"
+            },
+            "cameraFisheyeOpticalCentre": {
+                "type": "float[2]",
+                "description": "Camera fisheye optical centre"
+            },
+            "cameraFisheyeMaxFOV": {
+                "type": "float",
+                "description": "Camera fisheye maximum field of view"
+            },
+            "cameraFisheyePolynomial": {
+                "type": "float[]",
+                "description": "Camera fisheye polynomial"
+            },
+            "cameraNearFar": {
+                "type": "float[2]",
+                "description": "Camera near/far clipping range"
+            },
+            "renderProductPath": {
+                "type": "token",
+                "description": "Path of the render product to use for 2d projections"
+            },
+            "useSkelJoints": {
+                "type": "bool",
+                "description": "Get skeleton joint information using the skelJoints information"
+            },
+            "instanceSegmentationPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw instance segmentation data (host pointer)",
+                "default": 0
+            },
+            "instanceSegmentationStrides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) for instance segmentation."
+            },
+            "instanceSegmentationCudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "instanceSegmentationHeight": {
+                "type": "uint",
+                "description": "Instance Segmentation buffer height",
+                "default": 0
+            },
+            "instanceSegmentationWidth": {
+                "type": "uint",
+                "description": "Instance Segmentation buffer width",
+                "default": 0
+            },
+            "instanceSegmentationLabels": {
+                "type": "token[]",
+                "description": "Mapping from id to prim paths."
+            },
+            "instanceSegmentationIds": {
+                "type": "uint[]",
+                "description": "Mapping from id to semantic labels."
+            },
+            "instanceSegmentationSemantics": {
+                "type": "token[]",
+                "description": "Mapping from id to semantic labels."
+            }
+        },
+        "outputs": {
+            "exec": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "skeletonData": {
+                "description": ["Skeleton Data"],
+                "type": "string",
+                "default": "{}",
+                "deprecated": "Use separate node outputs instead."
+            },
+            "numSkeletons": {
+                "type": "int",
+                "description": "The number of skeletons in output data."
+            },
+            "skeletonParents": {
+                "type": "int[]",
+                "description": "The ID of all the skeleton joints."
+            },
+            "skeletonParentsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton skeletonParents array."
+            },
+            "restGlobalTranslations": {
+                "type": "float[3][]",
+                "description": "The rest skeleton joint translations in global space."
+            },
+            "restGlobalTranslationsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton restGlobalTranslations array."
+            },
+            "restLocalRotations": {
+                "type": "float[4][]",
+                "description": "The rest skeleton joint rotations in local space."
+            },
+            "restLocalRotationsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton restLocalRotations array."
+            },
+            "restLocalTranslations": {
+                "type": "float[3][]",
+                "description": "The rest skeleton joint translations in local space."
+            },
+            "restLocalTranslationsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton restLocalTranslations array."
+            },
+            "skelName": {
+                "type": "token[]",
+                "description": "The skeleton name."
+            },
+            "skelPath": {
+                "type": "token[]",
+                "description": "The USD stage path to the skeleton."
+            },
+            "assetPath": {
+                "type": "token[]",
+                "description": "The referenced asset path."
+            },
+            "animationVariant": {
+                "type": "token[]",
+                "description": "The name of the animation variant assigned."
+            },
+            "globalTranslations": {
+                "type": "float[3][]",
+                "description": "The skeleton joint translations in global space."
+            },
+            "globalTranslationsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton globalTranslations array."
+            },
+            "localRotations": {
+                "type": "float[4][]",
+                "description": "The skeleton joint rotations in local space."
+            },
+            "localRotationsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton localRotations array."
+            },
+            "skeletonJoints": {
+                "type": "token[]",
+                "description": "The paths of all the skeleton joints."
+            },
+            "translations2d": {
+                "type": "float[2][]",
+                "description": "The 2D projected skeleton joint positions."
+            },
+            "translations2dSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton translations2d array."
+            },
+            "jointOcclusions": {
+                "type": "bool[]",
+                "description": "Whether the joint is occluded."
+            },
+            "jointOcclusionsSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton jointOcclusions array."
+            },
+            "occlusionTypes": {
+                "type": "token[]",
+                "description": "The semantic name of the object occluding the joint."
+            },
+            "occlusionTypesSizes": {
+                "type": "int[]",
+                "description": "The size of each skeleton occlusionTypes array."
+            },
+            "inView": {
+                "type": "bool[]",
+                "description": "Whether the skeleton is in the camera view."
+            }
+        }
+    }
+}

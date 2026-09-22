@@ -1,0 +1,65 @@
+{
+    "ClearVariantSelection": {
+        "version": 3,
+        "categories": [
+            "graph:action",
+            "sceneGraph",
+            "variants"
+        ],
+        "icon": {
+            "path": "Variant.svg"
+        },
+        "scheduling": [
+            "usd-write"
+        ],
+        "description": [
+            "This node will clear the variant selection of the prim on the layer defined in \"Layer Identifier\".",
+            "Final variant selection will be determined by layer composition below the targeted layer.",
+            "In a single layer stage, this will be the fallback variant defined in your variantSet."
+        ],
+        "uiName": "Clear Variant Selection",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim with the variantSet"
+            },
+            "variantSetName": {
+                "type": "token",
+                "description": "The variantSet name"
+            },
+            "setVariant": {
+                "type": "bool",
+                "default": false,
+                "description": "Clears the variant selection when finished rather than writing to the attribute values"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": [
+                    "Identifier of the USD layer to clear data from.",
+                    "Identifier can be empty, \"<Session Layer>\", \"<Root Layer>\" or the identifier of a sublayer.",
+                    "If empty or invalid, data will be cleared from the current layer."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Identifier"
+                }
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        },
+        "state": {
+            "layerIdentifier": {
+                "type": "token",
+                "description": "The prefetched layer identifier."
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+[materialGraph]
+userAllowList = [
+ "my_materials",
+ "my_maps",
+]
+userBlockList = [
+ "foo_materials",
+ "bar_maps",
+]
+
+[options]
+noStandardPath = false
+
+[searchPaths]
+custom = [
+ "C:/some/project/materials",
+ "omniverse://another/project/materials",
+ "/my/own/materials",
+]

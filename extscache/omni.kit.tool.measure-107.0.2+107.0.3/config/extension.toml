@@ -1,0 +1,86 @@
+
+[package]
+title = "Measure Tool"
+description = "In-viewport measure tools."
+category = "Undefined"
+keywords = ["measure", "system", "tool"]
+version = "107.0.2"
+
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+changelog = "docs/CHANGELOG.md"
+readme = "docs/index.rst"
+authors = ["NVIDIA"]
+repository = ""
+
+[package.writeTarget]
+kit = true
+# platform = true  # only required if we have C++ compilation or 3rd party python (c based)
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.kit.tool.measure"
+
+# [[python.module]]
+# path = "pip_prebundle"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.py"]
+exclude = []
+
+# Extensions required to load before this one
+[dependencies]
+"omni.kit.async_engine" = {}
+"omni.kit.manipulator.viewport" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.pip_archive" = {}
+"omni.kit.property.bundle" = {}
+"omni.kit.raycast.query" = {}
+"omni.kit.viewport.menubar.display" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.window" = {}
+"omni.kit.window.cursor" = {}
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.usd" = {}
+"omni.warp.core" = {}
+"omni.kit.actions.core" = {optional=true}
+"omni.kit.hotekys.core" = {optional=true}
+
+
+[settings]
+exts."omni.kit.tool.measure".startup_tool = "NONE"
+exts."omni.kit.tool.measure".enable_hotkeys = false
+
+# Avoid test failure due to error message in ImageProvider when renderer
+# interface cannot be acquired
+[[test]]
+dependencies = [
+    "omni.hydra.pxr",
+    "omni.kit.uiapp",
+    "omni.kit.ui_test",
+    "omni.kit.collaboration.channel_manager",
+    "omni.kit.collaboration.presence_layer",
+]
+
+args = [
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/persistent/app/viewport/displayOptions=0",
+    "--/app/viewport/defaults/hud/visible=false",
+    "--/app/viewport/forceHideFps=true",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.viewport.window/startup/windowName=Viewport",
+    "--/app/fastShutdown=true",
+    "--no-window",
+]
+
+stdoutFailPatterns.exclude = [
+    "*[Error] [gpu.foundation.plugin]*",
+    "*[Error] [carb.graphics-vulkan.plugin]*",
+    "*[Error] [carb.graphics-direct3d.plugin]*"
+]

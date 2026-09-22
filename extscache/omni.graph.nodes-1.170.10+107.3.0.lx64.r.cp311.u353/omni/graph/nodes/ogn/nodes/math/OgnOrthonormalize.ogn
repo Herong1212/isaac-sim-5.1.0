@@ -1,0 +1,53 @@
+{
+    "Orthonormalize": {
+        "version": 1,
+        "description": [
+            "Computes the orthonormalized matrix from an input matrix or array of matrices. In practice, this",
+            "involves treating the columns (or rows, depending on whether column-major or row-major semantics",
+            "are being utilized for matrix descriptions - in mathematics the former is often used, while in computer",
+            "graphics the latter tends to be preferred) of each input matrix as independent vectors that span some",
+            "N-dimensional space (N being the number of column or row vectors in the matrix) and finding another set",
+            "of mutually-perpendicular vectors that span the same space before normalizing each one (hence the term",
+            "\"orthonormal\"; also see the so-called \"Gram-Schmidt Process\" that details exactly how one can go",
+            "about performing this computation); these new sets of vectors can then be combined to form the",
+            "\"orthonormal\" versions of each input matrix."
+        ],
+        "uiName": "Orthonormalize",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[3]", "matrixd[3][]", "matrixd[4]", "matrixd[4][]"],
+                "description": "Input matrix or array of matrices to orthonormalize."
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["matrixd[3]", "matrixd[3][]", "matrixd[4]", "matrixd[4][]"],
+                "description": "The orthonormalized matrix or array of matrices (with preserved typing)."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:matrix": {"type":"matrixd[3]", "value": [1,0,0, 0,2,0, 0,0,3] },
+                "outputs:result": {"type": "matrixd[3]", "value": [1,0,0, 0,1,0, 0,0,1] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[3][]", "value":
+                    [[1,0,0, 0,2,0, 0,0,3], [4,0,0, 0,5,0, 0,0,6]] },
+                "outputs:result": {"type":"matrixd[3][]", "value":
+                    [[1,0,0, 0,1,0, 0,0,1], [1,0,0, 0,1,0, 0,0,1]] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4]", "value": [1,0,0,0, 0,2,0,0, 0,0,3,0, 50,0,0,1] },
+                "outputs:result": {"type": "matrixd[4]", "value": [1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1] }
+            },
+            {
+                "inputs:matrix": {"type":"matrixd[4][]", "value":
+                    [[1,0,0,0, 0,2,0,0, 0,0,3,0, 50,0,0,1], [4,0,0,0, 0,5,0,0, 0,0,6,0, 100,0,0,1]] },
+                "outputs:result": {"type":"matrixd[4][]", "value":
+                    [[1,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1], [1,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]] }
+            }
+        ]
+    }
+}

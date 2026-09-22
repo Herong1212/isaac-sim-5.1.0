@@ -1,0 +1,1357 @@
+# Public API for module omni.ui:
+
+## Classes
+
+- class TextureFormat
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - B5_G5_R5_A1_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - B5_G6_R5_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC1_RGBA_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC1_RGBA_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC2_RGBA_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC2_RGBA_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC3_RGBA_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC3_RGBA_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC4_R_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC4_R_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC5_RG_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC5_RG_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC6H_RGB_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC6H_RGB_UFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC7_RGBA_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BC7_RGBA_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BGRA8_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - BGRA8_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - D16_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - D24_UNORM_S8_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - D32_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - D32_SFLOAT_S8_UINT_X24: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R10_G10_B10_A2_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R10_G10_B10_A2_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R11_G11_B10_UFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R16_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R16_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R16_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R16_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R16_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R24_UNORM_X8: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R32_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R32_SFLOAT_X8_X24: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R32_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R32_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R8_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R8_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R8_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R8_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - R9_G9_B9_E5_UFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG16_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG16_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG16_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG16_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG16_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG32_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG32_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG32_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG8_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG8_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG8_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RG8_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGB32_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGB32_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGB32_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA16_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA16_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA16_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA16_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA16_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA32_SFLOAT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA32_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA32_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA8_SINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA8_SNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA8_SRGB: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA8_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - RGBA8_UNORM: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - SAMPLER_FEEDBACK_MIN_MIP: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - SAMPLER_FEEDBACK_MIP_REGION_USED: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - X24_R8_UINT: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+  - X32_R8_UINT_X24: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat
+
+- class RpResource
+
+- class AbstractField(Widget, ValueModelHelper)
+  - def focus_keyboard(self, focus: bool = True)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class AbstractItem
+  - def __init__(self)
+
+- class AbstractItemDelegate
+  - def __init__(self)
+  - def build_branch(self, model: AbstractItemModel, item: AbstractItem = None, column_id: int = 0, level: int = 0, expanded: bool = False)
+  - def build_header(self, column_id: int = 0)
+  - def build_widget(self, model: AbstractItemModel, item: AbstractItem = None, index: int = 0, level: int = 0, expanded: bool = False)
+
+- class AbstractItemModel
+  - def __init__(self)
+  - def add_begin_edit_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> int
+  - def add_end_edit_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> int
+  - def add_item_changed_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> int
+  - def append_child_item(self, parentItem: AbstractItem, model: AbstractValueModel) -> AbstractItem
+  - def begin_edit(self, item: AbstractItem)
+  - def can_item_have_children(self, parentItem: AbstractItem = None) -> bool
+  - def drop(self, item_tagget: AbstractItem, item_source: AbstractItem, drop_location: int = -1)
+  - def drop(self, item_tagget: AbstractItem, source: str, drop_location: int = -1)
+  - def drop_accepted(self, item_tagget: AbstractItem, item_source: AbstractItem, drop_location: int = -1) -> bool
+  - def drop_accepted(self, item_tagget: AbstractItem, source: str, drop_location: int = -1) -> bool
+  - def end_edit(self, item: AbstractItem)
+  - def get_drag_mime_data(self, item: AbstractItem = None) -> str
+  - def get_item_children(self, parentItem: AbstractItem = None) -> typing.List[AbstractItem]
+  - def get_item_value_model(self, item: AbstractItem = None, column_id: int = 0) -> AbstractValueModel
+  - def get_item_value_model_count(self, item: AbstractItem = None) -> int
+  - def remove_begin_edit_fn(self, arg0: int)
+  - def remove_end_edit_fn(self, arg0: int)
+  - def remove_item(self, item: AbstractItem)
+  - def remove_item_changed_fn(self, arg0: int)
+  - def subscribe_begin_edit_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> carb._carb.Subscription
+  - def subscribe_end_edit_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> carb._carb.Subscription
+  - def subscribe_item_changed_fn(self, arg0: typing.Callable[[AbstractItemModel, AbstractItem], None]) -> carb._carb.Subscription
+
+- class AbstractMultiField(Widget, ItemModelHelper)
+  - [property] def column_count(self) -> int
+  - [column_count.setter] def column_count(self, arg1: int)
+  - [property] def h_spacing(self) -> float
+  - [h_spacing.setter] def h_spacing(self, arg1: float)
+  - [property] def v_spacing(self) -> float
+  - [v_spacing.setter] def v_spacing(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class AbstractSlider(Widget, ValueModelHelper)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class AbstractValueModel
+  - def __init__(self)
+  - def add_begin_edit_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> int
+  - def add_end_edit_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> int
+  - def add_value_changed_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> int
+  - def begin_edit(self)
+  - def end_edit(self)
+  - def get_value_as_bool(self) -> bool
+  - def get_value_as_float(self) -> float
+  - def get_value_as_int(self) -> int
+  - def get_value_as_string(self) -> str
+  - def remove_begin_edit_fn(self, arg0: int)
+  - def remove_end_edit_fn(self, arg0: int)
+  - def remove_value_changed_fn(self, arg0: int)
+  - def set_value(self, value: bool)
+  - def set_value(self, value: int)
+  - def set_value(self, value: float)
+  - def set_value(self, value: str)
+  - def subscribe_begin_edit_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> carb._carb.Subscription
+  - def subscribe_end_edit_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> carb._carb.Subscription
+  - def subscribe_item_changed_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> carb._carb.Subscription
+  - def subscribe_value_changed_fn(self, arg0: typing.Callable[[AbstractValueModel], None]) -> carb._carb.Subscription
+  - [property] def as_bool(self) -> bool
+  - [as_bool.setter] def as_bool(self, arg1: bool)
+  - [property] def as_float(self) -> float
+  - [as_float.setter] def as_float(self, arg1: float)
+  - [property] def as_int(self) -> int
+  - [as_int.setter] def as_int(self, arg1: int)
+  - [property] def as_string(self) -> str
+  - [as_string.setter] def as_string(self, arg1: str)
+
+- class Alignment
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BOTTOM: omni.ui._ui.Alignment
+  - CENTER: omni.ui._ui.Alignment
+  - CENTER_BOTTOM: omni.ui._ui.Alignment
+  - CENTER_TOP: omni.ui._ui.Alignment
+  - H_CENTER: omni.ui._ui.Alignment
+  - LEFT: omni.ui._ui.Alignment
+  - LEFT_BOTTOM: omni.ui._ui.Alignment
+  - LEFT_CENTER: omni.ui._ui.Alignment
+  - LEFT_TOP: omni.ui._ui.Alignment
+  - RIGHT: omni.ui._ui.Alignment
+  - RIGHT_BOTTOM: omni.ui._ui.Alignment
+  - RIGHT_CENTER: omni.ui._ui.Alignment
+  - RIGHT_TOP: omni.ui._ui.Alignment
+  - TOP: omni.ui._ui.Alignment
+  - UNDEFINED: omni.ui._ui.Alignment
+  - V_CENTER: omni.ui._ui.Alignment
+
+- class ArrowHelper
+  - [property] def begin_arrow_height(self) -> float
+  - [begin_arrow_height.setter] def begin_arrow_height(self, arg1: float)
+  - [property] def begin_arrow_type(self) -> ArrowType
+  - [begin_arrow_type.setter] def begin_arrow_type(self, arg1: ArrowType)
+  - [property] def begin_arrow_width(self) -> float
+  - [begin_arrow_width.setter] def begin_arrow_width(self, arg1: float)
+  - [property] def end_arrow_height(self) -> float
+  - [end_arrow_height.setter] def end_arrow_height(self, arg1: float)
+  - [property] def end_arrow_type(self) -> ArrowType
+  - [end_arrow_type.setter] def end_arrow_type(self, arg1: ArrowType)
+  - [property] def end_arrow_width(self) -> float
+  - [end_arrow_width.setter] def end_arrow_width(self, arg1: float)
+
+- class ArrowType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ARROW: omni.ui._ui.ArrowType
+  - NONE: omni.ui._ui.ArrowType
+
+- class Axis
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - NONE: omni.ui._ui.Axis
+  - X: omni.ui._ui.Axis
+  - XY: omni.ui._ui.Axis
+  - Y: omni.ui._ui.Axis
+
+- class BezierCurve(Shape, Widget, ArrowHelper, ShapeAnchorHelper)
+  - def __init__(self, **kwargs)
+  - def call_mouse_hovered_fn(self, arg0: bool)
+  - def has_mouse_hovered_fn(self) -> bool
+  - def set_mouse_hovered_fn(self, fn: typing.Callable[[bool], None])
+  - [property] def end_tangent_height(self) -> Length
+  - [end_tangent_height.setter] def end_tangent_height(self, arg1: Length)
+  - [property] def end_tangent_width(self) -> Length
+  - [end_tangent_width.setter] def end_tangent_width(self, arg1: Length)
+  - [property] def start_tangent_height(self) -> Length
+  - [start_tangent_height.setter] def start_tangent_height(self, arg1: Length)
+  - [property] def start_tangent_width(self) -> Length
+  - [start_tangent_width.setter] def start_tangent_width(self, arg1: Length)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Button(InvisibleButton, Widget)
+  - def __init__(self, text: str = '', **kwargs)
+  - [property] def image_height(self) -> Length
+  - [image_height.setter] def image_height(self, arg1: Length)
+  - [property] def image_url(self) -> str
+  - [image_url.setter] def image_url(self, arg1: str)
+  - [property] def image_width(self) -> Length
+  - [image_width.setter] def image_width(self, arg1: Length)
+  - [property] def spacing(self) -> float
+  - [spacing.setter] def spacing(self, arg1: float)
+  - [property] def text(self) -> str
+  - [text.setter] def text(self, arg1: str)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ByteImageProvider(ImageProvider)
+  - def __init__(self)
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - static def set_bytes_data(*args, **kwargs) -> typing.Any
+  - def set_bytes_data_from_gpu(self, gpu_bytes: int, sizes: typing.List[int], format: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat = TextureFormat.RGBA8_UNORM, stride: int = -1)
+  - def set_data(self, arg0: typing.List[int], arg1: typing.List[int])
+  - def set_data_array(self, arg0: numpy.ndarray[numpy.uint8], arg1: typing.List[int])
+  - def set_raw_bytes_data(self, raw_bytes: capsule, sizes: typing.List[int], format: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat = TextureFormat.RGBA8_UNORM, stride: int = -1)
+
+- class CanvasFrame(Frame, Container, Widget)
+  - def __init__(self, **kwargs)
+  - def screen_to_canvas(self, x: float, y: float) -> typing.Tuple[float, float]
+  - def screen_to_canvas_x(self, x: float) -> float
+  - def screen_to_canvas_y(self, y: float) -> float
+  - def set_pan_key_shortcut(self, mouse_button: int, key_flag: int)
+  - def set_pan_x_changed_fn(self, fn: typing.Callable[[float], None])
+  - def set_pan_y_changed_fn(self, fn: typing.Callable[[float], None])
+  - def set_zoom_changed_fn(self, fn: typing.Callable[[float], None])
+  - def set_zoom_key_shortcut(self, mouse_button: int, key_flag: int)
+  - [property] def compatibility(self) -> bool
+  - [compatibility.setter] def compatibility(self, arg1: bool)
+  - [property] def draggable(self) -> bool
+  - [draggable.setter] def draggable(self, arg1: bool)
+  - [property] def pan_x(self) -> float
+  - [pan_x.setter] def pan_x(self, arg1: float)
+  - [property] def pan_y(self) -> float
+  - [pan_y.setter] def pan_y(self, arg1: float)
+  - [property] def smooth_zoom(self) -> bool
+  - [smooth_zoom.setter] def smooth_zoom(self, arg1: bool)
+  - [property] def zoom(self) -> float
+  - [zoom.setter] def zoom(self, arg1: float)
+  - [property] def zoom_max(self) -> float
+  - [zoom_max.setter] def zoom_max(self, arg1: float)
+  - [property] def zoom_min(self) -> float
+  - [zoom_min.setter] def zoom_min(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class CheckBox(Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Circle(Shape, Widget)
+  - def __init__(self, **kwargs)
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - [property] def arc(self) -> Alignment
+  - [arc.setter] def arc(self, arg1: Alignment)
+  - [property] def radius(self) -> float
+  - [radius.setter] def radius(self, arg1: float)
+  - [property] def size_policy(self) -> CircleSizePolicy
+  - [size_policy.setter] def size_policy(self, arg1: CircleSizePolicy)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class CircleSizePolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - FIXED: omni.ui._ui.CircleSizePolicy
+  - STRETCH: omni.ui._ui.CircleSizePolicy
+
+- class CollapsableFrame(Frame, Container, Widget)
+  - def __init__(self, title: str = '', **kwargs)
+  - def call_build_header_fn(self, arg0: bool, arg1: str)
+  - def has_build_header_fn(self) -> bool
+  - def set_build_header_fn(self, fn: typing.Callable[[bool, str], None])
+  - def set_collapsed_changed_fn(self, fn: typing.Callable[[bool], None])
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - [property] def collapsed(self) -> bool
+  - [collapsed.setter] def collapsed(self, arg1: bool)
+  - [property] def title(self) -> str
+  - [title.setter] def title(self, arg1: str)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ColorStore
+  - static def find(name: str) -> int
+  - static def store(name: str, color: int)
+
+- class ColorWidget(Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, **kwargs)
+  - def __init__(self, arg0: float, arg1: float, arg2: float, arg3: float, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ComboBox(Widget, ItemModelHelper)
+  - def __init__(self, *args, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Container(Widget)
+  - def add_child(self, arg0: Widget)
+  - def clear(self)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class CornerFlag
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ALL: omni.ui._ui.CornerFlag
+  - BOTTOM: omni.ui._ui.CornerFlag
+  - BOTTOM_LEFT: omni.ui._ui.CornerFlag
+  - BOTTOM_RIGHT: omni.ui._ui.CornerFlag
+  - LEFT: omni.ui._ui.CornerFlag
+  - NONE: omni.ui._ui.CornerFlag
+  - RIGHT: omni.ui._ui.CornerFlag
+  - TOP: omni.ui._ui.CornerFlag
+  - TOP_LEFT: omni.ui._ui.CornerFlag
+  - TOP_RIGHT: omni.ui._ui.CornerFlag
+
+- class Direction
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BACK_TO_FRONT: omni.ui._ui.Direction
+  - BOTTOM_TO_TOP: omni.ui._ui.Direction
+  - FRONT_TO_BACK: omni.ui._ui.Direction
+  - LEFT_TO_RIGHT: omni.ui._ui.Direction
+  - RIGHT_TO_LEFT: omni.ui._ui.Direction
+  - TOP_TO_BOTTOM: omni.ui._ui.Direction
+
+- class DockPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CURRENT_WINDOW_IS_ACTIVE: omni.ui._ui.DockPolicy
+  - DO_NOTHING: omni.ui._ui.DockPolicy
+  - TARGET_WINDOW_IS_ACTIVE: omni.ui._ui.DockPolicy
+
+- class DockPosition
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - BOTTOM: omni.ui._ui.DockPosition
+  - LEFT: omni.ui._ui.DockPosition
+  - RIGHT: omni.ui._ui.DockPosition
+  - SAME: omni.ui._ui.DockPosition
+  - TOP: omni.ui._ui.DockPosition
+
+- class DockPreference
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - DISABLED: omni.ui._ui.DockPreference
+  - LEFT: omni.ui._ui.DockPreference
+  - LEFT_BOTTOM: omni.ui._ui.DockPreference
+  - MAIN: omni.ui._ui.DockPreference
+  - RIGHT: omni.ui._ui.DockPreference
+  - RIGHT_BOTTOM: omni.ui._ui.DockPreference
+  - RIGHT_TOP: omni.ui._ui.DockPreference
+
+- class DockSpace
+  - def __init__(self, arg0: object, **kwargs)
+  - [property] def dock_frame(self) -> Frame
+
+- class DynamicTextureProvider(ByteImageProvider, ImageProvider)
+  - def __init__(self, arg0: str)
+
+- class Ellipse(Shape, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FillPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - PRESERVE_ASPECT_CROP: omni.ui._ui.FillPolicy
+  - PRESERVE_ASPECT_FIT: omni.ui._ui.FillPolicy
+  - STRETCH: omni.ui._ui.FillPolicy
+
+- class FloatDrag(FloatSlider, AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FloatField(AbstractField, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def precision(self) -> int
+  - [precision.setter] def precision(self, arg1: int)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FloatSlider(AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def format(self) -> str
+  - [format.setter] def format(self, arg1: str)
+  - [property] def max(self) -> float
+  - [max.setter] def max(self, arg1: float)
+  - [property] def min(self) -> float
+  - [min.setter] def min(self, arg1: float)
+  - [property] def precision(self) -> int
+  - [precision.setter] def precision(self, arg1: int)
+  - [property] def step(self) -> float
+  - [step.setter] def step(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FloatStore
+  - static def find(name: str) -> float
+  - static def store(name: str, value: float)
+
+- class FocusPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - DEFAULT: omni.ui._ui.FocusPolicy
+  - FOCUS_ON_ANY_MOUSE_DOWN: omni.ui._ui.FocusPolicy
+  - FOCUS_ON_HOVER: omni.ui._ui.FocusPolicy
+  - FOCUS_ON_LEFT_MOUSE_DOWN: omni.ui._ui.FocusPolicy
+
+- class FontStyle
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - EXTRA_LARGE: omni.ui._ui.FontStyle
+  - EXTRA_SMALL: omni.ui._ui.FontStyle
+  - LARGE: omni.ui._ui.FontStyle
+  - NONE: omni.ui._ui.FontStyle
+  - NORMAL: omni.ui._ui.FontStyle
+  - SMALL: omni.ui._ui.FontStyle
+  - ULTRA: omni.ui._ui.FontStyle
+  - XXL: omni.ui._ui.FontStyle
+  - XXS: omni.ui._ui.FontStyle
+  - XXXL: omni.ui._ui.FontStyle
+  - XXXS: omni.ui._ui.FontStyle
+
+- class Fraction(Length)
+  - def __init__(self, value: float)
+
+- class Frame(Container, Widget)
+  - def __init__(self, **kwargs)
+  - def call_build_fn(self)
+  - def has_build_fn(self) -> bool
+  - def invalidate_raster(self)
+  - def rebuild(self)
+  - def set_build_fn(self, fn: typing.Callable[[], None])
+  - [property] def frozen(self) -> bool
+  - [frozen.setter] def frozen(self, arg1: bool)
+  - [property] def horizontal_clipping(self) -> bool
+  - [horizontal_clipping.setter] def horizontal_clipping(self, arg1: bool)
+  - [property] def raster_policy(self) -> RasterPolicy
+  - [raster_policy.setter] def raster_policy(self, arg1: RasterPolicy)
+  - [property] def separate_window(self) -> bool
+  - [separate_window.setter] def separate_window(self, arg1: bool)
+  - [property] def vertical_clipping(self) -> bool
+  - [vertical_clipping.setter] def vertical_clipping(self, arg1: bool)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeBezierCurve(BezierCurve, Shape, Widget, ArrowHelper, ShapeAnchorHelper)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeCircle(Circle, Shape, Widget)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeEllipse(Ellipse, Shape, Widget)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeLine(Line, Shape, Widget, ArrowHelper, ShapeAnchorHelper)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeRectangle(Rectangle, Shape, Widget)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class FreeTriangle(Triangle, Shape, Widget)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Grid(Stack, Container, Widget)
+  - def __init__(self, arg0: Direction, **kwargs)
+  - [property] def column_count(self) -> int
+  - [column_count.setter] def column_count(self, arg1: int)
+  - [property] def column_width(self) -> float
+  - [column_width.setter] def column_width(self, arg1: float)
+  - [property] def row_count(self) -> int
+  - [row_count.setter] def row_count(self, arg1: int)
+  - [property] def row_height(self) -> float
+  - [row_height.setter] def row_height(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class HGrid(Grid, Stack, Container, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class HStack(Stack, Container, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Image(Widget)
+  - def __init__(self, arg0: str, **kwargs)
+  - def __init__(self, **kwargs)
+  - def set_progress_changed_fn(self, fn: typing.Callable[[float], None])
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - [property] def fill_policy(self) -> FillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: FillPolicy)
+  - [property] def pixel_aligned(self) -> bool
+  - [pixel_aligned.setter] def pixel_aligned(self, arg1: bool)
+  - [property] def progress(self) -> float
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ImageProvider
+  - def __init__(self, **kwargs)
+  - def destroy(self)
+  - def get_managed_resource(self) -> omni.gpu_foundation_factory._gpu_foundation_factory.RpResource
+  - def set_image_data(self, arg0: capsule, arg1: int, arg2: int, arg3: omni.gpu_foundation_factory._gpu_foundation_factory.TextureFormat)
+  - def set_image_data(self, rp_resource: omni.gpu_foundation_factory._gpu_foundation_factory.RpResource, presentation_key: int = 0, metadata: omni.kit.renderer_capture._renderer_capture.Metadata = None)
+  - [property] def height(self) -> int
+  - [property] def is_reference_valid(self) -> bool
+  - [property] def width(self) -> int
+
+- class ImageWithProvider(Widget)
+  - def __init__(self, arg0: ImageProvider, **kwargs)
+  - def __init__(self, arg0: str, **kwargs)
+  - def __init__(self, **kwargs)
+  - def prepare_draw(self, width: float, height: float)
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - [property] def fill_policy(self) -> IwpFillPolicy
+  - [fill_policy.setter] def fill_policy(self, arg1: IwpFillPolicy)
+  - [property] def pixel_aligned(self) -> bool
+  - [pixel_aligned.setter] def pixel_aligned(self, arg1: bool)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Inspector
+  - static def begin_computed_height_metric()
+  - static def begin_computed_width_metric()
+  - static def end_computed_height_metric() -> int
+  - static def end_computed_width_metric() -> int
+  - static def get_children(widget: Widget) -> typing.List[Widget]
+  - static def get_resolved_style(*args, **kwargs) -> typing.Any
+  - static def get_stored_font_atlases() -> typing.List[typing.Tuple[str, int]]
+
+- class IntDrag(IntSlider, AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def step(self) -> float
+  - [step.setter] def step(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class IntField(AbstractField, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class IntSlider(AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def max(self) -> int
+  - [max.setter] def max(self, arg1: int)
+  - [property] def min(self) -> int
+  - [min.setter] def min(self, arg1: int)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class InvisibleButton(Widget)
+  - def __init__(self, **kwargs)
+  - def call_clicked_fn(self)
+  - def has_clicked_fn(self) -> bool
+  - def set_clicked_fn(self, fn: typing.Callable[[], None])
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ItemModelHelper
+  - [property] def model(self) -> AbstractItemModel
+  - [model.setter] def model(self, arg1: AbstractItemModel)
+
+- class IwpFillPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - IWP_PRESERVE_ASPECT_CROP: omni.ui._ui.IwpFillPolicy
+  - IWP_PRESERVE_ASPECT_FIT: omni.ui._ui.IwpFillPolicy
+  - IWP_STRETCH: omni.ui._ui.IwpFillPolicy
+
+- class Label(Widget)
+  - def __init__(self, arg0: str, **kwargs)
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - [property] def elided_text(self) -> bool
+  - [elided_text.setter] def elided_text(self, arg1: bool)
+  - [property] def elided_text_str(self) -> str
+  - [elided_text_str.setter] def elided_text_str(self, arg1: str)
+  - [property] def exact_content_height(self) -> float
+  - [property] def exact_content_width(self) -> float
+  - [property] def hide_text_after_hash(self) -> bool
+  - [hide_text_after_hash.setter] def hide_text_after_hash(self, arg1: bool)
+  - [property] def text(self) -> str
+  - [text.setter] def text(self, arg1: str)
+  - [property] def word_wrap(self) -> bool
+  - [word_wrap.setter] def word_wrap(self, arg1: bool)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Length
+  - static def __init__(*args, **kwargs) -> typing.Any
+  - def __init__(self, arg0: float)
+  - def __init__(self, arg0: int)
+  - [property] def unit(self) -> typing.Any
+  - [unit.setter] def unit(*args, **kwargs)
+  - [property] def value(self) -> float
+  - [value.setter] def value(self, arg0: float)
+
+- class Line(Shape, Widget, ArrowHelper, ShapeAnchorHelper)
+  - def __init__(self, **kwargs)
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MainWindow
+  - def __init__(self, show_foreground: bool = False, **kwargs)
+  - def set_active(self, active: bool, show_foreground: bool = True)
+  - [property] def cpp_status_bar_enabled(self) -> bool
+  - [cpp_status_bar_enabled.setter] def cpp_status_bar_enabled(self, arg1: bool)
+  - [property] def main_frame(self) -> Frame
+  - [property] def main_menu_bar(self) -> MenuBar
+  - [property] def show_foreground(self) -> bool
+  - [show_foreground.setter] def show_foreground(self, arg1: bool)
+  - [property] def status_bar_frame(self) -> Frame
+
+- class Menu(Stack, Container, Widget, MenuHelper)
+  - def __init__(self, text: str = '', **kwargs)
+  - def call_on_build_fn(self)
+  - static def get_current() -> Menu
+  - def has_on_build_fn(self) -> bool
+  - def hide(self)
+  - def invalidate(self)
+  - def set_on_build_fn(self, fn: typing.Callable[[], None])
+  - def set_shown_changed_fn(self, fn: typing.Callable[[bool], None])
+  - def set_teared_changed_fn(self, fn: typing.Callable[[bool], None])
+  - def show(self)
+  - def show_at(self, arg0: float, arg1: float)
+  - def tear_at(self, arg0: float, arg1: float)
+  - [property] def shown(self) -> bool
+  - [property] def tearable(self) -> bool
+  - [tearable.setter] def tearable(self, arg1: bool)
+  - [property] def teared(self) -> bool
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MenuBar(Menu, Stack, Container, Widget, MenuHelper)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MenuDelegate
+  - def __init__(self, **kwargs)
+  - static def build_item(*args, **kwargs) -> typing.Any
+  - static def build_status(*args, **kwargs) -> typing.Any
+  - static def build_title(*args, **kwargs) -> typing.Any
+  - static def call_on_build_item_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_build_status_fn(*args, **kwargs) -> typing.Any
+  - static def call_on_build_title_fn(*args, **kwargs) -> typing.Any
+  - def has_on_build_item_fn(self) -> bool
+  - def has_on_build_status_fn(self) -> bool
+  - def has_on_build_title_fn(self) -> bool
+  - static def set_default_delegate(delegate: MenuDelegate)
+  - static def set_on_build_item_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_build_status_fn(*args, **kwargs) -> typing.Any
+  - static def set_on_build_title_fn(*args, **kwargs) -> typing.Any
+  - [property] def propagate(self) -> bool
+  - [propagate.setter] def propagate(self, arg1: bool)
+
+- class MenuHelper
+  - def call_triggered_fn(self)
+  - def has_triggered_fn(self) -> bool
+  - def set_triggered_fn(self, fn: typing.Callable[[], None])
+  - [property] def checkable(self) -> bool
+  - [checkable.setter] def checkable(self, arg1: bool)
+  - [property] def delegate(self) -> MenuDelegate
+  - [delegate.setter] def delegate(self, arg1: MenuDelegate)
+  - [property] def hide_on_click(self) -> bool
+  - [hide_on_click.setter] def hide_on_click(self, arg1: bool)
+  - [property] def hotkey_text(self) -> str
+  - [hotkey_text.setter] def hotkey_text(self, arg1: str)
+  - [property] def menu_compatibility(self) -> bool
+  - [menu_compatibility.setter] def menu_compatibility(self, arg1: bool)
+  - [property] def text(self) -> str
+  - [text.setter] def text(self, arg1: str)
+
+- class MenuItem(Widget, MenuHelper)
+  - def __init__(self, arg0: str, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MenuItemCollection(Menu, Stack, Container, Widget, MenuHelper)
+  - def __init__(self, text: str = '', **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MultiFloatDragField(AbstractMultiField, Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, *args, **kwargs)
+  - [property] def max(self) -> float
+  - [max.setter] def max(self, arg1: float)
+  - [property] def min(self) -> float
+  - [min.setter] def min(self, arg1: float)
+  - [property] def step(self) -> float
+  - [step.setter] def step(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MultiFloatField(AbstractMultiField, Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, *args, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MultiIntDragField(AbstractMultiField, Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, *args, **kwargs)
+  - [property] def max(self) -> int
+  - [max.setter] def max(self, arg1: int)
+  - [property] def min(self) -> int
+  - [min.setter] def min(self, arg1: int)
+  - [property] def step(self) -> float
+  - [step.setter] def step(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MultiIntField(AbstractMultiField, Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, *args, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class MultiStringField(AbstractMultiField, Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def __init__(self, *args, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class OffsetLine(FreeLine, Line, Shape, Widget, ArrowHelper, ShapeAnchorHelper)
+  - def __init__(self, arg0: Widget, arg1: Widget, **kwargs)
+  - [property] def bound_offset(self) -> float
+  - [bound_offset.setter] def bound_offset(self, arg1: float)
+  - [property] def offset(self) -> float
+  - [offset.setter] def offset(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Percent(Length)
+  - def __init__(self, value: float)
+
+- class Pixel(Length)
+  - def __init__(self, value: float)
+
+- class Placer(Container, Widget)
+  - def __init__(self, **kwargs)
+  - def invalidate_raster(self)
+  - def set_offset_x_changed_fn(self, arg0: typing.Callable[[Length], None])
+  - def set_offset_y_changed_fn(self, arg0: typing.Callable[[Length], None])
+  - [property] def drag_axis(self) -> Axis
+  - [drag_axis.setter] def drag_axis(self, arg1: Axis)
+  - [property] def draggable(self) -> bool
+  - [draggable.setter] def draggable(self, arg1: bool)
+  - [property] def frames_to_start_drag(self) -> int
+  - [frames_to_start_drag.setter] def frames_to_start_drag(self, arg1: int)
+  - [property] def offset_x(self) -> Length
+  - [offset_x.setter] def offset_x(self, arg1: handle)
+  - [property] def offset_y(self) -> Length
+  - [offset_y.setter] def offset_y(self, arg1: handle)
+  - [property] def raster_policy(self) -> RasterPolicy
+  - [raster_policy.setter] def raster_policy(self, arg1: RasterPolicy)
+  - [property] def stable_size(self) -> bool
+  - [stable_size.setter] def stable_size(self, arg1: bool)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Plot(Widget)
+  - def __init__(self, type: Type = Type.LINE, scale_min: float = 3.4028234663852886e+38, scale_max: float = 3.4028234663852886e+38, *args, **kwargs)
+  - def set_data(self, *args)
+  - def set_data_provider_fn(self, arg0: typing.Callable[[int], float], arg1: int)
+  - def set_xy_data(self, arg0: typing.List[typing.Tuple[float, float]])
+  - [property] def scale_max(self) -> float
+  - [scale_max.setter] def scale_max(self, arg1: float)
+  - [property] def scale_min(self) -> float
+  - [scale_min.setter] def scale_min(self, arg1: float)
+  - [property] def title(self) -> str
+  - [title.setter] def title(self, arg1: str)
+  - [property] def type(self) -> Type
+  - [type.setter] def type(self, arg1: Type)
+  - [property] def value_offset(self) -> int
+  - [value_offset.setter] def value_offset(self, arg1: int)
+  - [property] def value_stride(self) -> int
+  - [value_stride.setter] def value_stride(self, arg1: int)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ProgressBar(Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class RadioButton(Button, InvisibleButton, Widget)
+  - def __init__(self, **kwargs)
+  - [property] def radio_collection(self) -> RadioCollection
+  - [radio_collection.setter] def radio_collection(self, arg1: RadioCollection)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class RadioCollection(ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+
+- class RasterImageProvider(ImageProvider)
+  - def __init__(self, source_url: str = None, **kwargs)
+  - [property] def max_mip_levels(self) -> int
+  - [max_mip_levels.setter] def max_mip_levels(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+
+- class RasterPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - AUTO: omni.ui._ui.RasterPolicy
+  - NEVER: omni.ui._ui.RasterPolicy
+  - ON_DEMAND: omni.ui._ui.RasterPolicy
+
+- class Rectangle(Shape, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ScrollBarPolicy
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - SCROLLBAR_ALWAYS_OFF: omni.ui._ui.ScrollBarPolicy
+  - SCROLLBAR_ALWAYS_ON: omni.ui._ui.ScrollBarPolicy
+  - SCROLLBAR_AS_NEEDED: omni.ui._ui.ScrollBarPolicy
+
+- class ScrollingFrame(Frame, Container, Widget)
+  - def __init__(self, **kwargs)
+  - def set_scroll_x_changed_fn(self, arg0: typing.Callable[[float], None])
+  - def set_scroll_y_changed_fn(self, arg0: typing.Callable[[float], None])
+  - [property] def horizontal_scrollbar_policy(self) -> ScrollBarPolicy
+  - [horizontal_scrollbar_policy.setter] def horizontal_scrollbar_policy(self, arg1: ScrollBarPolicy)
+  - [property] def scroll_x(self) -> float
+  - [scroll_x.setter] def scroll_x(self, arg1: float)
+  - [property] def scroll_x_max(self) -> float
+  - [property] def scroll_y(self) -> float
+  - [scroll_y.setter] def scroll_y(self, arg1: float)
+  - [property] def scroll_y_max(self) -> float
+  - [property] def vertical_scrollbar_policy(self) -> ScrollBarPolicy
+  - [vertical_scrollbar_policy.setter] def vertical_scrollbar_policy(self, arg1: ScrollBarPolicy)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Separator(Widget, MenuHelper)
+  - def __init__(self, text: str = '', **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ShadowFlag
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CUT_OUT_SHAPE_BACKGROUND: omni.ui._ui.ShadowFlag
+  - NONE: omni.ui._ui.ShadowFlag
+
+- class Shape(Widget)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ShapeAnchorHelper
+  - def call_anchor_fn(self)
+  - def get_closest_parametric_position(self, position_x: float, position_y: float) -> float
+  - def has_anchor_fn(self) -> bool
+  - def invalidate_anchor(self)
+  - def set_anchor_fn(self, fn: typing.Callable[[], None])
+  - [property] def anchor_alignment(self) -> Alignment
+  - [anchor_alignment.setter] def anchor_alignment(self, arg1: Alignment)
+  - [property] def anchor_position(self) -> float
+  - [anchor_position.setter] def anchor_position(self, arg1: float)
+
+- class SimpleBoolModel(AbstractValueModel)
+  - def __init__(self, default_value: bool = False, **kwargs)
+  - def get_max(self) -> bool
+  - def get_min(self) -> bool
+  - def set_max(self, arg0: bool)
+  - def set_min(self, arg0: bool)
+  - [property] def max(self) -> bool
+  - [max.setter] def max(self, arg1: bool)
+  - [property] def min(self) -> bool
+  - [min.setter] def min(self, arg1: bool)
+
+- class SimpleFloatModel(AbstractValueModel)
+  - def __init__(self, default_value: float = 0.0, **kwargs)
+  - def get_max(self) -> float
+  - def get_min(self) -> float
+  - def set_max(self, arg0: float)
+  - def set_min(self, arg0: float)
+  - [property] def max(self) -> float
+  - [max.setter] def max(self, arg1: float)
+  - [property] def min(self) -> float
+  - [min.setter] def min(self, arg1: float)
+
+- class SimpleIntModel(AbstractValueModel)
+  - def __init__(self, default_value: int = 0, **kwargs)
+  - def get_max(self) -> int
+  - def get_min(self) -> int
+  - def set_max(self, arg0: int)
+  - def set_min(self, arg0: int)
+  - [property] def max(self) -> int
+  - [max.setter] def max(self, arg1: int)
+  - [property] def min(self) -> int
+  - [min.setter] def min(self, arg1: int)
+
+- class SimpleStringModel(AbstractValueModel)
+  - def __init__(self, defaultValue: str = '')
+
+- class SliderDrawMode
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - DRAG: omni.ui._ui.SliderDrawMode
+  - FILLED: omni.ui._ui.SliderDrawMode
+  - HANDLE: omni.ui._ui.SliderDrawMode
+
+- class Spacer(Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Stack(Container, Widget)
+  - def __init__(self, arg0: Direction, **kwargs)
+  - [property] def content_clipping(self) -> bool
+  - [content_clipping.setter] def content_clipping(self, arg1: bool)
+  - [property] def direction(self) -> Direction
+  - [direction.setter] def direction(self, arg1: Direction)
+  - [property] def send_mouse_events_to_back(self) -> bool
+  - [send_mouse_events_to_back.setter] def send_mouse_events_to_back(self, arg1: bool)
+  - [property] def spacing(self) -> float
+  - [spacing.setter] def spacing(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class StringField(AbstractField, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def allow_tab_input(self) -> bool
+  - [allow_tab_input.setter] def allow_tab_input(self, arg1: bool)
+  - [property] def multiline(self) -> bool
+  - [multiline.setter] def multiline(self, arg1: bool)
+  - [property] def password_mode(self) -> bool
+  - [password_mode.setter] def password_mode(self, arg1: bool)
+  - [property] def read_only(self) -> bool
+  - [read_only.setter] def read_only(self, arg1: bool)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class StringStore
+  - static def find(name: str) -> str
+  - static def store(name: str, string: str)
+
+- class Style
+  - static def get_instance() -> Style
+  - [property] def default(self) -> object
+  - [default.setter] def default(self, arg1: handle)
+
+- class ToolBar(Window, WindowHandle)
+  - def __init__(self, title: str, **kwargs)
+  - def set_axis_changed_fn(self, arg0: typing.Callable[[ToolBarAxis], None])
+  - [property] def axis(self) -> ToolBarAxis
+  - [axis.setter] def axis(self, arg1: ToolBarAxis)
+
+- class ToolBarAxis
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - X: omni.ui._ui.ToolBarAxis
+  - Y: omni.ui._ui.ToolBarAxis
+
+- class ToolButton(Button, InvisibleButton, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class TreeView(Widget, ItemModelHelper)
+  - def __init__(self, **kwargs)
+  - def __init__(self, arg0: AbstractItemModel, **kwargs)
+  - def call_hover_changed_fn(self, arg0: AbstractItem, arg1: bool)
+  - def call_selection_changed_fn(self, arg0: typing.List[AbstractItem])
+  - def clear_selection(self)
+  - def dirty_widgets(self)
+  - def extend_selection(self, item: AbstractItem)
+  - def has_hover_changed_fn(self) -> bool
+  - def has_selection_changed_fn(self) -> bool
+  - def is_expanded(self, item: AbstractItem) -> bool
+  - def set_expanded(self, item: AbstractItem, expanded: bool, recursive: bool)
+  - def set_hover_changed_fn(self, fn: typing.Callable[[AbstractItem, bool], None])
+  - def set_selection_changed_fn(self, fn: typing.Callable[[typing.List[AbstractItem]], None])
+  - def toggle_selection(self, item: AbstractItem)
+  - [property] def column_widths(self) -> typing.List[Length]
+  - [column_widths.setter] def column_widths(self, arg1: typing.List[Length])
+  - [property] def columns_resizable(self) -> bool
+  - [columns_resizable.setter] def columns_resizable(self, arg1: bool)
+  - [property] def drop_between_items(self) -> bool
+  - [drop_between_items.setter] def drop_between_items(self, arg1: bool)
+  - [property] def expand_on_branch_click(self) -> bool
+  - [expand_on_branch_click.setter] def expand_on_branch_click(self, arg1: bool)
+  - [property] def fixed_width_columns(self) -> typing.List[bool]
+  - [fixed_width_columns.setter] def fixed_width_columns(self, arg1: typing.List[bool])
+  - [property] def header_visible(self) -> bool
+  - [header_visible.setter] def header_visible(self, arg1: bool)
+  - [property] def keep_alive(self) -> bool
+  - [keep_alive.setter] def keep_alive(self, arg1: bool)
+  - [property] def keep_expanded(self) -> bool
+  - [keep_expanded.setter] def keep_expanded(self, arg1: bool)
+  - [property] def min_column_widths(self) -> typing.List[Length]
+  - [min_column_widths.setter] def min_column_widths(self, arg1: typing.List[Length])
+  - [property] def resizeable_on_columns_resized(self) -> bool
+  - [resizeable_on_columns_resized.setter] def resizeable_on_columns_resized(self, arg1: bool)
+  - [property] def root_expanded(self) -> bool
+  - [root_expanded.setter] def root_expanded(self, arg1: bool)
+  - [property] def root_visible(self) -> bool
+  - [root_visible.setter] def root_visible(self, arg1: bool)
+  - [property] def selection(self) -> typing.List[AbstractItem]
+  - [selection.setter] def selection(self, arg1: typing.List[AbstractItem])
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Triangle(Shape, Widget)
+  - def __init__(self, **kwargs)
+  - [property] def alignment(self) -> Alignment
+  - [alignment.setter] def alignment(self, arg1: Alignment)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class Type
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - HISTOGRAM: omni.ui._ui.Type
+  - LINE: omni.ui._ui.Type
+  - LINE2D: omni.ui._ui.Type
+
+- class UIntDrag(UIntSlider, AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def step(self) -> float
+  - [step.setter] def step(self, arg1: float)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class UIntSlider(AbstractSlider, Widget, ValueModelHelper)
+  - def __init__(self, model: AbstractValueModel = None, **kwargs)
+  - [property] def max(self) -> int
+  - [max.setter] def max(self, arg1: int)
+  - [property] def min(self) -> int
+  - [min.setter] def min(self, arg1: int)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class UnitType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - FRACTION: omni.ui._ui.UnitType
+  - PERCENT: omni.ui._ui.UnitType
+  - PIXEL: omni.ui._ui.UnitType
+
+- class VGrid(Grid, Stack, Container, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class VStack(Stack, Container, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class ValueModelHelper
+  - [property] def model(self) -> AbstractValueModel
+  - [model.setter] def model(self, arg1: AbstractValueModel)
+
+- class VectorImageProvider(ImageProvider)
+  - def __init__(self, source_url: str = None, **kwargs)
+  - [property] def max_mip_levels(self) -> int
+  - [max_mip_levels.setter] def max_mip_levels(self, arg1: int)
+  - [property] def source_url(self) -> str
+  - [source_url.setter] def source_url(self, arg1: str)
+
+- class Widget
+  - def __init__(self, **kwargs)
+  - def call_accept_drop_fn(self, arg0: str) -> bool
+  - def call_computed_content_size_changed_fn(self)
+  - def call_drag_fn(self) -> str
+  - def call_drop_fn(self, arg0: WidgetMouseDropEvent)
+  - def call_key_pressed_fn(self, arg0: int, arg1: int, arg2: bool)
+  - def call_mouse_double_clicked_fn(self, arg0: float, arg1: float, arg2: int, arg3: int)
+  - def call_mouse_hovered_fn(self, arg0: bool)
+  - def call_mouse_moved_fn(self, arg0: float, arg1: float, arg2: int, arg3: bool)
+  - def call_mouse_pressed_fn(self, arg0: float, arg1: float, arg2: int, arg3: int)
+  - def call_mouse_released_fn(self, arg0: float, arg1: float, arg2: int, arg3: int)
+  - def call_mouse_wheel_fn(self, arg0: float, arg1: float, arg2: int)
+  - def call_tooltip_fn(self)
+  - def destroy(self)
+  - def has_accept_drop_fn(self) -> bool
+  - def has_computed_content_size_changed_fn(self) -> bool
+  - def has_drag_fn(self) -> bool
+  - def has_drop_fn(self) -> bool
+  - def has_key_pressed_fn(self) -> bool
+  - def has_mouse_double_clicked_fn(self) -> bool
+  - def has_mouse_hovered_fn(self) -> bool
+  - def has_mouse_moved_fn(self) -> bool
+  - def has_mouse_pressed_fn(self) -> bool
+  - def has_mouse_released_fn(self) -> bool
+  - def has_mouse_wheel_fn(self) -> bool
+  - def has_tooltip_fn(self) -> bool
+  - def scroll_here(self, center_ratio_x: float = 0.0, center_ratio_y: float = 0.0)
+  - def scroll_here_x(self, center_ratio: float = 0.0)
+  - def scroll_here_y(self, center_ratio: float = 0.0)
+  - def set_accept_drop_fn(self, fn: typing.Callable[[str], bool])
+  - def set_checked_changed_fn(self, fn: typing.Callable[[bool], None])
+  - def set_computed_content_size_changed_fn(self, fn: typing.Callable[[], None])
+  - def set_drag_fn(self, fn: typing.Callable[[], str])
+  - def set_drop_fn(self, fn: typing.Callable[[WidgetMouseDropEvent], None])
+  - def set_key_pressed_fn(self, fn: typing.Callable[[int, int, bool], None])
+  - def set_mouse_double_clicked_fn(self, fn: typing.Callable[[float, float, int, int], None])
+  - def set_mouse_hovered_fn(self, fn: typing.Callable[[bool], None])
+  - def set_mouse_moved_fn(self, fn: typing.Callable[[float, float, int, bool], None])
+  - def set_mouse_pressed_fn(self, fn: typing.Callable[[float, float, int, int], None])
+  - def set_mouse_released_fn(self, fn: typing.Callable[[float, float, int, int], None])
+  - def set_mouse_wheel_fn(self, fn: typing.Callable[[float, float, int], None])
+  - def set_style(self, arg0: handle)
+  - def set_tooltip(self, tooltip_label: str)
+  - def set_tooltip_fn(self, fn: typing.Callable[[], None])
+  - [property] def checked(self) -> bool
+  - [checked.setter] def checked(self, arg1: bool)
+  - [property] def computed_content_height(self) -> float
+  - [property] def computed_content_width(self) -> float
+  - [property] def computed_height(self) -> float
+  - [property] def computed_width(self) -> float
+  - [property] def dragging(self) -> bool
+  - [dragging.setter] def dragging(self, arg1: bool)
+  - [property] def enabled(self) -> bool
+  - [enabled.setter] def enabled(self, arg1: bool)
+  - [property] def explicit_hover(self) -> bool
+  - [explicit_hover.setter] def explicit_hover(self, arg1: bool)
+  - [property] def height(self) -> Length
+  - [height.setter] def height(self, arg1: Length)
+  - [property] def identifier(self) -> str
+  - [identifier.setter] def identifier(self, arg1: str)
+  - [property] def name(self) -> str
+  - [name.setter] def name(self, arg1: str)
+  - [property] def opaque_for_mouse_events(self) -> bool
+  - [opaque_for_mouse_events.setter] def opaque_for_mouse_events(self, arg1: bool)
+  - [property] def screen_position_x(self) -> float
+  - [property] def screen_position_y(self) -> float
+  - [property] def scroll_only_window_hovered(self) -> bool
+  - [scroll_only_window_hovered.setter] def scroll_only_window_hovered(self, arg1: bool)
+  - [property] def selected(self) -> bool
+  - [selected.setter] def selected(self, arg1: bool)
+  - [property] def skip_draw_when_clipped(self) -> bool
+  - [skip_draw_when_clipped.setter] def skip_draw_when_clipped(self, arg1: bool)
+  - [property] def style(self) -> object
+  - [style.setter] def style(self, arg1: handle)
+  - [property] def style_type_name_override(self) -> str
+  - [style_type_name_override.setter] def style_type_name_override(self, arg1: str)
+  - [property] def tooltip(self) -> str
+  - [tooltip.setter] def tooltip(self, arg1: str)
+  - [property] def tooltip_offset_x(self) -> float
+  - [tooltip_offset_x.setter] def tooltip_offset_x(self, arg1: float)
+  - [property] def tooltip_offset_y(self) -> float
+  - [tooltip_offset_y.setter] def tooltip_offset_y(self, arg1: float)
+  - [property] def visible(self) -> bool
+  - [visible.setter] def visible(self, arg1: bool)
+  - [property] def visible_max(self) -> float
+  - [visible_max.setter] def visible_max(self, arg1: float)
+  - [property] def visible_min(self) -> float
+  - [visible_min.setter] def visible_min(self, arg1: float)
+  - [property] def width(self) -> Length
+  - [width.setter] def width(self, arg1: Length)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class WidgetMouseDropEvent
+  - [property] def mime_data(self) -> str
+  - [property] def x(self) -> float
+  - [property] def y(self) -> float
+
+- class Window(WindowHandle)
+  - def __init__(self, title: str, dockPreference: DockPreference = DockPreference.DISABLED, **kwargs)
+  - def call_key_pressed_fn(self, arg0: int, arg1: int, arg2: bool)
+  - def deferred_dock_in(self, target_window: str, active_window: DockPolicy = DockPolicy.DO_NOTHING)
+  - def destroy(self)
+  - def dock_in_window(self, title: str, dockPosition: DockPosition, ratio: float = 0.5) -> bool
+  - static def get_window_callback(*args, **kwargs) -> typing.Any
+  - def has_key_pressed_fn(self) -> bool
+  - def move_to_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow)
+  - def move_to_main_os_window(self)
+  - def move_to_new_os_window(self) -> bool
+  - def notify_app_window_change(self, arg0: omni.appwindow._appwindow.IAppWindow)
+  - def setPosition(self, x: float, y: float)
+  - def set_active(self, active: bool)
+  - def set_docked_changed_fn(self, arg0: typing.Callable[[bool], None])
+  - def set_focused_changed_fn(self, arg0: typing.Callable[[bool], None])
+  - def set_height_changed_fn(self, arg0: typing.Callable[[float], None])
+  - def set_key_pressed_fn(self, fn: typing.Callable[[int, int, bool], None])
+  - def set_position_x_changed_fn(self, arg0: typing.Callable[[float], None])
+  - def set_position_y_changed_fn(self, arg0: typing.Callable[[float], None])
+  - def set_selected_in_dock_changed_fn(self, arg0: typing.Callable[[bool], None])
+  - def set_top_modal(self)
+  - def set_visibility_changed_fn(self, arg0: typing.Callable[[bool], None])
+  - def set_width_changed_fn(self, arg0: typing.Callable[[float], None])
+  - [property] def app_window(self) -> omni.appwindow._appwindow.IAppWindow
+  - [property] def auto_resize(self) -> bool
+  - [auto_resize.setter] def auto_resize(self, arg1: bool)
+  - [property] def detachable(self) -> bool
+  - [detachable.setter] def detachable(self, arg1: bool)
+  - [property] def docked(self) -> bool
+  - [property] def exclusive_keyboard(self) -> bool
+  - [exclusive_keyboard.setter] def exclusive_keyboard(self, arg1: bool)
+  - [property] def flags(self) -> int
+  - [flags.setter] def flags(self, arg1: int)
+  - [property] def focus_policy(self) -> FocusPolicy
+  - [focus_policy.setter] def focus_policy(self, arg1: FocusPolicy)
+  - [property] def focused(self) -> bool
+  - [property] def frame(self) -> Frame
+  - [property] def height(self) -> float
+  - [height.setter] def height(self, arg1: float)
+  - [property] def menu_bar(self) -> MenuBar
+  - [property] def noTabBar(self) -> bool
+  - [noTabBar.setter] def noTabBar(self, arg1: bool)
+  - [property] def padding_x(self) -> float
+  - [padding_x.setter] def padding_x(self, arg1: float)
+  - [property] def padding_y(self) -> float
+  - [padding_y.setter] def padding_y(self, arg1: float)
+  - [property] def position_x(self) -> float
+  - [position_x.setter] def position_x(self, arg1: float)
+  - [property] def position_y(self) -> float
+  - [position_y.setter] def position_y(self, arg1: float)
+  - [property] def raster_policy(self) -> RasterPolicy
+  - [raster_policy.setter] def raster_policy(self, arg1: RasterPolicy)
+  - [property] def selected_in_dock(self) -> bool
+  - [property] def tabBar_tooltip(self) -> str
+  - [tabBar_tooltip.setter] def tabBar_tooltip(self, arg1: str)
+  - [property] def title(self) -> str
+  - [title.setter] def title(self, arg1: str)
+  - [property] def visible(self) -> bool
+  - [visible.setter] def visible(self, arg1: bool)
+  - [property] def width(self) -> float
+  - [width.setter] def width(self, arg1: float)
+
+- class WindowHandle
+  - def dock_in(self, window: WindowHandle, dock_position: DockPosition, ratio: float = 0.5)
+  - def focus(self)
+  - def is_selected_in_dock(self) -> bool
+  - def notify_app_window_change(self, arg0: omni.appwindow._appwindow.IAppWindow)
+  - def undock(self)
+  - [property] def dock_id(self) -> int
+  - [property] def dock_order(self) -> int
+  - [dock_order.setter] def dock_order(self, arg1: int)
+  - [property] def dock_tab_bar_enabled(self) -> bool
+  - [dock_tab_bar_enabled.setter] def dock_tab_bar_enabled(self, arg1: bool)
+  - [property] def dock_tab_bar_visible(self) -> bool
+  - [dock_tab_bar_visible.setter] def dock_tab_bar_visible(self, arg1: bool)
+  - [property] def docked(self) -> bool
+  - [property] def height(self) -> float
+  - [height.setter] def height(self, arg1: float)
+  - [property] def position_x(self) -> float
+  - [position_x.setter] def position_x(self, arg1: float)
+  - [property] def position_y(self) -> float
+  - [position_y.setter] def position_y(self, arg1: float)
+  - [property] def title(self) -> str
+  - [property] def visible(self) -> object
+  - [visible.setter] def visible(self, arg1: bool)
+  - [property] def width(self) -> float
+  - [width.setter] def width(self, arg1: float)
+
+- class Workspace
+  - static def clear()
+  - static def get_dock_children_id(dock_id: int) -> object
+  - static def get_dock_id_height(dock_id: int) -> float
+  - static def get_dock_id_width(dock_id: int) -> float
+  - static def get_dock_position(dock_id: int) -> DockPosition
+  - static def get_docked_neighbours(member: WindowHandle) -> typing.List[WindowHandle]
+  - static def get_docked_windows(dock_id: int) -> typing.List[WindowHandle]
+  - static def get_dpi_scale() -> float
+  - static def get_main_window_height() -> float
+  - static def get_main_window_width() -> float
+  - static def get_parent_dock_id(dock_id: int) -> int
+  - static def get_selected_window_index(dock_id: int) -> int
+  - static def get_show_window_titles() -> typing.List[str]
+  - static def get_window(title: str) -> WindowHandle
+  - static def get_window_from_callback(*args, **kwargs) -> typing.Any
+  - static def get_windows() -> typing.List[WindowHandle]
+  - static def remove_window_visibility_changed_callback(fn: int)
+  - static def set_dock_id_height(dock_id: int, height: float)
+  - static def set_dock_id_width(dock_id: int, width: float)
+  - static def set_show_window_fn(title: str, fn: typing.Callable[[bool], None])
+  - static def set_window_created_callback(fn: typing.Callable[[WindowHandle], None])
+  - static def set_window_visibility_changed_callback(fn: typing.Callable[[str, bool], None]) -> int
+  - static def show_window(title: str, show: bool = True) -> bool
+
+- class ZStack(Stack, Container, Widget)
+  - def __init__(self, **kwargs)
+  - FLAG_WANT_CAPTURE_KEYBOARD: int
+
+- class UIPreferencesExtension(omni.ext.IExt)
+  - def on_startup(self, ext_id)
+  - def on_shutdown(self)
+
+## Functions
+
+- def dock_window_in_window(arg0: str, arg1: str, arg2: DockPosition, arg3: float) -> bool
+- def get_custom_glyph_code(file_path: str, font_style: FontStyle = FontStyle.NORMAL) -> str
+- def get_main_window_height() -> float
+- def get_main_window_width() -> float
+- def dump_workspace()
+- def restore_workspace(workspace_dump: List[Any], keep_windows_open = False)
+- def compare_workspace(workspace_dump: List[Any], compare_delegate: CompareDelegate = CompareDelegate())
+- def add_to_namespace(module = None, module_locals = locals())
+- def set_shade(shade_name: str | None = None)
+- def set_menu_delegate(delegate: MenuDelegate)
+
+## Variables
+
+- WINDOW_FLAGS_FORCE_HORIZONTAL_SCROLLBAR: int
+- WINDOW_FLAGS_FORCE_VERTICAL_SCROLLBAR: int
+- WINDOW_FLAGS_MENU_BAR: int
+- WINDOW_FLAGS_MODAL: int
+- WINDOW_FLAGS_NONE: int
+- WINDOW_FLAGS_NO_BACKGROUND: int
+- WINDOW_FLAGS_NO_CLOSE: int
+- WINDOW_FLAGS_NO_COLLAPSE: int
+- WINDOW_FLAGS_NO_DOCKING: int
+- WINDOW_FLAGS_NO_FOCUS_ON_APPEARING: int
+- WINDOW_FLAGS_NO_MOUSE_INPUTS: int
+- WINDOW_FLAGS_NO_MOVE: int
+- WINDOW_FLAGS_NO_RESIZE: int
+- WINDOW_FLAGS_NO_SAVED_SETTINGS: int
+- WINDOW_FLAGS_NO_SCROLLBAR: int
+- WINDOW_FLAGS_NO_SCROLL_WITH_MOUSE: int
+- WINDOW_FLAGS_NO_TITLE_BAR: int
+- WINDOW_FLAGS_POPUP: int
+- WINDOW_FLAGS_SHOW_HORIZONTAL_SCROLLBAR: int
+- color: Unknown
+- constant: Unknown
+- style: Unknown
+- url: Unknown

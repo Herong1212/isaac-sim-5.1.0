@@ -1,0 +1,57 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCurveTubeST.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_CurveTubeST" (
+        docs="""Compute curve tube ST values. S and T refer to the parameters in the 2-dimensional surface space of the tube."""
+    )
+    {
+        token node:type = "omni.graph.nodes.CurveTubeST"
+        int node:typeVersion = 1
+
+        # 8 attributes
+        custom int[] inputs:cols = [] (
+            docs="""Columns of the tubes."""
+        )
+        custom int[] inputs:curveVertexCounts = [] (
+            docs="""Vertex counts for each curve frame.
+            Must have the same number of elements as 'Curve Vertex Starts'."""
+        )
+        custom int[] inputs:curveVertexStarts = [] (
+            docs="""Vertex index starting points for each curve frame.
+            Must have the same number of elements as 'Curve Vertex Counts'."""
+        )
+        custom bool inputs:scaleTLikeS = false (
+            docs="""If true then scale T the same as S."""
+        )
+        custom float[] inputs:t = [] (
+            docs="""T values of the tubes."""
+        )
+        custom int[] inputs:tubeQuadStarts = [] (
+            docs="""Vertex index values for the tube quad starting points."""
+        )
+        custom int[] inputs:tubeSTStarts = [] (
+            docs="""Vertex index values for the tube ST starting points."""
+        )
+        custom float[] inputs:width = [] (
+            docs="""Width of tube positions, if scaling T like S."""
+        )
+
+        # 2 attributes
+        custom float2[] outputs:primvars:st (
+            docs="""Array of computed ST values."""
+        )
+        custom int[] outputs:primvars:st:indices (
+            docs="""Array of computed ST indices."""
+        )
+    }
+}

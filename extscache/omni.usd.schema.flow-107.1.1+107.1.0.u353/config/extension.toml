@@ -1,0 +1,28 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+version = "107.1.1"
+category = "Simulation"
+authors = ["NVIDIA"]
+title = "USD Flow schema"
+description="USD Flow schema"
+repository = ""
+keywords = ["physics", "usd", "flow"]
+toggleable = false
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/flow_schema_preview_image.png"
+icon = "data/flow_schema_icon.png"
+
+[package.writeTarget]
+kit = true
+usd = true
+
+[dependencies]
+"omni.usd.libs" = { }
+
+[[python.module]]
+name = "usd.schema.flow"

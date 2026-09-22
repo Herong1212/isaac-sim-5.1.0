@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnGetLocationAtDistanceOnCurve.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_GetLocationAtDistanceOnCurve" (
+        docs="""DEPRECATED: Use GetLocationAtDistanceOnCurve2"""
+    )
+    {
+        token node:type = "omni.graph.nodes.GetLocationAtDistanceOnCurve"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom point3d[] inputs:curve = [] (
+            docs="""The curve to be examined"""
+        )
+        custom double[] inputs:distance = [] (
+            docs="""The distances along the curve, wrapped to the range 0-1.0"""
+        )
+        custom token inputs:forwardAxis = "X" (
+            docs="""The direction vector from which the returned rotation is relative, one of X, Y, Z"""
+        )
+        custom token inputs:upAxis = "Y" (
+            docs="""The world Up vector, the curve should be in a plane perpendicular with this - one of X, Y, Z"""
+        )
+
+        # 3 attributes
+        custom point3d[] outputs:location (
+            docs="""Locations"""
+        )
+        custom quatf[] outputs:orientation (
+            docs="""Orientations"""
+        )
+        custom vector3d[] outputs:rotateXYZ (
+            docs="""Rotations"""
+        )
+    }
+}

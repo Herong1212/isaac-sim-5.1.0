@@ -1,0 +1,98 @@
+# https://docs.omniverse.nvidia.com/extensions/latest/ext_replicator/custom_writer.html
+register_worker:
+  randomizer.register:
+    worker:
+      inputs:
+        usd_path: "omniverse://localhost/NVIDIA/Assets/Characters/Reallusion/Worker/Worker.usd"
+
+      worker:
+        create.from_usd:
+          usd: usd_path
+          semantics: [["class", "worker"], ["class", "human"]]
+
+      with.worker:
+        modify.pose:
+          position:
+            distribution.uniform:
+              lower: [-500, 0, -500]
+              upper: [500, 0, 500]
+          rotation:
+            distribution.uniform:
+              lower: [-90, -45, 0]
+              upper: [-90, 45, 0]
+
+register_env_props:
+  randomizer.register:
+    env_props:
+      inputs:
+        size: 50
+      instances:
+        randomizer.instantiate:
+          paths:
+            utils.get_usd_files:
+              path: "omniverse://localhost/NVIDIA/Assets/Vegetation/Shrub"
+          size: size # Default size, can be replaced
+          mode: "point_instance"
+
+      with.instances:
+        modify.pose:
+          position:
+            distribution.uniform:
+              lower: [-500, 0, -500]
+              upper: [500, 0, 500]
+          rotation:
+            distribution.uniform:
+              lower: [-90, -180, 0]
+              upper: [-90, 180, 0]
+
+env:
+  create.from_usd:
+    usd: "omniverse://localhost/NVIDIA/Assets/Scenes/Templates/Outdoor/Puddles.usd"
+
+surface:
+  create.from_usd:
+    usd: "omniverse://localhost/NVIDIA/Assets/Scenes/Templates/Basic/display_riser.usd"
+
+# Put create camera and attach render product to other base yaml.
+camera:
+  create.camera:
+    focus_distance: 800
+    f_stop: 0.5
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [512, 512]
+
+# End of creation of camera and render product
+
+# Put create writer and initialize to other base yaml.
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output_yaml"
+      rgb: True
+      bounding_box_2d_tight: True
+    render_products: render_product
+
+# End of writer
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    randomizer.env_props:
+      size: 10
+
+    randomizer.worker: null
+
+    with.camera:
+      modify.pose:
+        position:
+          distribution.uniform:
+            lower: [-500, 200, 100]
+            upper: [500, 500, 1500]
+        look_at: surface

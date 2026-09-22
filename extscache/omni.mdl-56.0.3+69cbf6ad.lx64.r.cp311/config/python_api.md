@@ -1,0 +1,4797 @@
+# Public API for module omni.mdl.pymdlsdk:
+
+## Classes
+
+- class ReturnCode
+  - value: int
+
+- class OutBoolean
+  - value: bool
+
+- class Clip_mode(Enum)
+  - CLIP_RGB: Unknown
+  - CLIP_ALPHA: Unknown
+  - CLIP_RAW: Unknown
+
+- class Uuid(object)
+  - thisown: Unknown
+  - m_id1: int
+  - m_id2: int
+  - m_id3: int
+  - m_id4: int
+  - def __init__(self)
+
+- class Color_struct(object)
+  - thisown: Unknown
+  - r: float
+  - g: float
+  - b: float
+  - a: float
+  - def __init__(self)
+
+- class Boolean_2_struct(object)
+  - thisown: Unknown
+  - x: bool
+  - y: bool
+  - def __init__(self)
+
+- class Boolean_3_struct(object)
+  - thisown: Unknown
+  - x: bool
+  - y: bool
+  - z: bool
+  - def __init__(self)
+
+- class Boolean_4_struct(object)
+  - thisown: Unknown
+  - x: bool
+  - y: bool
+  - z: bool
+  - w: bool
+  - def __init__(self)
+
+- class Sint32_2_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - def __init__(self)
+
+- class Sint32_3_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - z: int
+  - def __init__(self)
+
+- class Sint32_4_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - z: int
+  - w: int
+  - def __init__(self)
+
+- class Uint32_2_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - def __init__(self)
+
+- class Uint32_3_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - z: int
+  - def __init__(self)
+
+- class Uint32_4_struct(object)
+  - thisown: Unknown
+  - x: int
+  - y: int
+  - z: int
+  - w: int
+  - def __init__(self)
+
+- class Float32_2_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - def __init__(self)
+
+- class Float32_3_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - z: float
+  - def __init__(self)
+
+- class Float32_4_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - z: float
+  - w: float
+  - def __init__(self)
+
+- class Float64_2_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - def __init__(self)
+
+- class Float64_3_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - z: float
+  - def __init__(self)
+
+- class Float64_4_struct(object)
+  - thisown: Unknown
+  - x: float
+  - y: float
+  - z: float
+  - w: float
+  - def __init__(self)
+
+- class Boolean_2_2_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - yx: bool
+  - yy: bool
+  - def __init__(self)
+
+- class Boolean_2_3_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - def __init__(self)
+
+- class Boolean_2_4_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - xw: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - yw: bool
+  - def __init__(self)
+
+- class Boolean_3_2_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - yx: bool
+  - yy: bool
+  - zx: bool
+  - zy: bool
+  - def __init__(self)
+
+- class Boolean_3_3_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - zx: bool
+  - zy: bool
+  - zz: bool
+  - def __init__(self)
+
+- class Boolean_3_4_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - xw: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - yw: bool
+  - zx: bool
+  - zy: bool
+  - zz: bool
+  - zw: bool
+  - def __init__(self)
+
+- class Boolean_4_2_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - yx: bool
+  - yy: bool
+  - zx: bool
+  - zy: bool
+  - wx: bool
+  - wy: bool
+  - def __init__(self)
+
+- class Boolean_4_3_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - zx: bool
+  - zy: bool
+  - zz: bool
+  - wx: bool
+  - wy: bool
+  - wz: bool
+  - def __init__(self)
+
+- class Boolean_4_4_struct(object)
+  - thisown: Unknown
+  - xx: bool
+  - xy: bool
+  - xz: bool
+  - xw: bool
+  - yx: bool
+  - yy: bool
+  - yz: bool
+  - yw: bool
+  - zx: bool
+  - zy: bool
+  - zz: bool
+  - zw: bool
+  - wx: bool
+  - wy: bool
+  - wz: bool
+  - ww: bool
+  - def __init__(self)
+
+- class Sint32_2_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - def __init__(self)
+
+- class Sint32_2_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - def __init__(self)
+
+- class Sint32_2_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - def __init__(self)
+
+- class Sint32_3_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - zx: int
+  - zy: int
+  - def __init__(self)
+
+- class Sint32_3_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - def __init__(self)
+
+- class Sint32_3_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - zw: int
+  - def __init__(self)
+
+- class Sint32_4_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - zx: int
+  - zy: int
+  - wx: int
+  - wy: int
+  - def __init__(self)
+
+- class Sint32_4_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - wx: int
+  - wy: int
+  - wz: int
+  - def __init__(self)
+
+- class Sint32_4_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - zw: int
+  - wx: int
+  - wy: int
+  - wz: int
+  - ww: int
+  - def __init__(self)
+
+- class Uint32_2_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - def __init__(self)
+
+- class Uint32_2_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - def __init__(self)
+
+- class Uint32_2_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - def __init__(self)
+
+- class Uint32_3_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - zx: int
+  - zy: int
+  - def __init__(self)
+
+- class Uint32_3_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - def __init__(self)
+
+- class Uint32_3_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - zw: int
+  - def __init__(self)
+
+- class Uint32_4_2_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - yx: int
+  - yy: int
+  - zx: int
+  - zy: int
+  - wx: int
+  - wy: int
+  - def __init__(self)
+
+- class Uint32_4_3_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - wx: int
+  - wy: int
+  - wz: int
+  - def __init__(self)
+
+- class Uint32_4_4_struct(object)
+  - thisown: Unknown
+  - xx: int
+  - xy: int
+  - xz: int
+  - xw: int
+  - yx: int
+  - yy: int
+  - yz: int
+  - yw: int
+  - zx: int
+  - zy: int
+  - zz: int
+  - zw: int
+  - wx: int
+  - wy: int
+  - wz: int
+  - ww: int
+  - def __init__(self)
+
+- class Float32_2_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - def __init__(self)
+
+- class Float32_2_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - def __init__(self)
+
+- class Float32_2_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - def __init__(self)
+
+- class Float32_3_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - zx: float
+  - zy: float
+  - def __init__(self)
+
+- class Float32_3_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - def __init__(self)
+
+- class Float32_3_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - zw: float
+  - def __init__(self)
+
+- class Float32_4_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - zx: float
+  - zy: float
+  - wx: float
+  - wy: float
+  - def __init__(self)
+
+- class Float32_4_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - wx: float
+  - wy: float
+  - wz: float
+  - def __init__(self)
+
+- class Float32_4_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - zw: float
+  - wx: float
+  - wy: float
+  - wz: float
+  - ww: float
+  - def __init__(self)
+
+- class Float64_2_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - def __init__(self)
+
+- class Float64_2_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - def __init__(self)
+
+- class Float64_2_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - def __init__(self)
+
+- class Float64_3_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - zx: float
+  - zy: float
+  - def __init__(self)
+
+- class Float64_3_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - def __init__(self)
+
+- class Float64_3_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - zw: float
+  - def __init__(self)
+
+- class Float64_4_2_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - yx: float
+  - yy: float
+  - zx: float
+  - zy: float
+  - wx: float
+  - wy: float
+  - def __init__(self)
+
+- class Float64_4_3_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - wx: float
+  - wy: float
+  - wz: float
+  - def __init__(self)
+
+- class Float64_4_4_struct(object)
+  - thisown: Unknown
+  - xx: float
+  - xy: float
+  - xz: float
+  - xw: float
+  - yx: float
+  - yy: float
+  - yz: float
+  - yw: float
+  - zx: float
+  - zy: float
+  - zz: float
+  - zw: float
+  - wx: float
+  - wy: float
+  - wz: float
+  - ww: float
+  - def __init__(self)
+
+- class IInterface(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IArray(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self, index_or_name)
+  - def get_value_as(self, type, index_or_name) -> typing.Any
+  - def set_value(self, index_or_name, value)
+  - def get_element_as(self, type, *args) -> typing.Any
+  - def get_length(self) -> int
+  - def get_element(self, *args) -> IInterface
+  - def set_element(self, index: int, element: IInterface) -> int
+  - def empty(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IMap(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self, index_or_name)
+  - def get_value_as(self, type, index_or_name) -> typing.Any
+  - def set_value(self, index_or_name, value)
+  - def get_length(self) -> int
+  - def empty(self) -> bool
+  - def clear(self)
+  - def insert(self, key: str, value: IInterface) -> int
+  - def erase(self, key: str) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ICompound(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> bool
+  - def set_value(self, value: bool)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_2_struct
+  - def set_value(self, value: Boolean_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_3_struct
+  - def set_value(self, value: Boolean_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_4_struct
+  - def set_value(self, value: Boolean_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_2_struct
+  - def set_value(self, value: Sint32_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_3_struct
+  - def set_value(self, value: Sint32_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_4_struct
+  - def set_value(self, value: Sint32_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_2_struct
+  - def set_value(self, value: Uint32_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_3_struct
+  - def set_value(self, value: Uint32_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_4_struct
+  - def set_value(self, value: Uint32_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_2_struct
+  - def set_value(self, value: Float32_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_3_struct
+  - def set_value(self, value: Float32_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_4_struct
+  - def set_value(self, value: Float32_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_2_struct
+  - def set_value(self, value: Float64_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_3_struct
+  - def set_value(self, value: Float64_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_4_struct
+  - def set_value(self, value: Float64_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IDifference(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IDynamic_array(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self, index_or_name)
+  - def get_value_as(self, type, index_or_name) -> typing.Any
+  - def set_value(self, index_or_name, value)
+  - def get_element_as(self, type, *args) -> typing.Any
+  - def front_as(self, type, *args) -> typing.Any
+  - def back_as(self, type, *args) -> typing.Any
+  - def set_length(self, size: int)
+  - def clear(self)
+  - def insert(self, index: int, element: IInterface) -> int
+  - def erase(self, index: int) -> int
+  - def push_back(self, element: IInterface) -> int
+  - def pop_back(self) -> int
+  - def back(self, *args) -> IInterface
+  - def front(self, *args) -> IInterface
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_length(self) -> int
+  - def get_element(self, *args) -> IInterface
+  - def set_element(self, index: int, element: IInterface) -> int
+  - def empty(self) -> bool
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IString(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_c_str(self) -> str
+  - def set_c_str(self, str: str)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IStructure(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self, index_or_name)
+  - def get_value_as(self, type, index_or_name) -> typing.Any
+  - def set_value(self, index_or_name, value)
+  - def get_structure_decl(self) -> IStructure_decl
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_length(self) -> int
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IStructure_decl(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def add_member(self, type_name: str, name: str) -> int
+  - def remove_member(self, name: str) -> int
+  - def get_length(self) -> int
+  - def get_member_type_name(self, *args) -> str
+  - def get_member_name(self, index: int) -> str
+  - def get_structure_type_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IData(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IData_simple(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IData_collection(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self, index_or_name)
+  - def get_value_as(self, type, index_or_name) -> typing.Any
+  - def set_value(self, index_or_name, value)
+  - def get_length(self) -> int
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> float
+  - def set_value(self, value: float)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IColor(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Color_struct
+  - def set_value(self, value: Color_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IColor3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Color_struct
+  - def set_value(self, value: Color_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> float
+  - def set_value(self, value: float)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class INumber(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint8(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint16(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint64(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISize(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint8(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint16(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint64(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IVoid(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_2_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_2_2_struct
+  - def set_value(self, value: Boolean_2_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_2_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_2_3_struct
+  - def set_value(self, value: Boolean_2_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_2_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_2_4_struct
+  - def set_value(self, value: Boolean_2_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_3_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_3_2_struct
+  - def set_value(self, value: Boolean_3_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_3_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_3_3_struct
+  - def set_value(self, value: Boolean_3_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_3_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_3_4_struct
+  - def set_value(self, value: Boolean_3_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_4_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_4_2_struct
+  - def set_value(self, value: Boolean_4_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_4_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_4_3_struct
+  - def set_value(self, value: Boolean_4_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IBoolean_4_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Boolean_4_4_struct
+  - def set_value(self, value: Boolean_4_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_2_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_2_2_struct
+  - def set_value(self, value: Sint32_2_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_2_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_2_3_struct
+  - def set_value(self, value: Sint32_2_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_2_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_2_4_struct
+  - def set_value(self, value: Sint32_2_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_3_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_3_2_struct
+  - def set_value(self, value: Sint32_3_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_3_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_3_3_struct
+  - def set_value(self, value: Sint32_3_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_3_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_3_4_struct
+  - def set_value(self, value: Sint32_3_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_4_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_4_2_struct
+  - def set_value(self, value: Sint32_4_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_4_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_4_3_struct
+  - def set_value(self, value: Sint32_4_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class ISint32_4_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Sint32_4_4_struct
+  - def set_value(self, value: Sint32_4_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_2_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_2_2_struct
+  - def set_value(self, value: Uint32_2_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_2_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_2_3_struct
+  - def set_value(self, value: Uint32_2_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_2_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_2_4_struct
+  - def set_value(self, value: Uint32_2_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_3_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_3_2_struct
+  - def set_value(self, value: Uint32_3_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_3_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_3_3_struct
+  - def set_value(self, value: Uint32_3_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_3_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_3_4_struct
+  - def set_value(self, value: Uint32_3_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_4_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_4_2_struct
+  - def set_value(self, value: Uint32_4_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_4_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_4_3_struct
+  - def set_value(self, value: Uint32_4_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IUint32_4_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Uint32_4_4_struct
+  - def set_value(self, value: Uint32_4_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_2_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_2_2_struct
+  - def set_value(self, value: Float32_2_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_2_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_2_3_struct
+  - def set_value(self, value: Float32_2_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_2_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_2_4_struct
+  - def set_value(self, value: Float32_2_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_3_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_3_2_struct
+  - def set_value(self, value: Float32_3_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_3_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_3_3_struct
+  - def set_value(self, value: Float32_3_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_3_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_3_4_struct
+  - def set_value(self, value: Float32_3_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_4_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_4_2_struct
+  - def set_value(self, value: Float32_4_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_4_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_4_3_struct
+  - def set_value(self, value: Float32_4_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat32_4_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float32_4_4_struct
+  - def set_value(self, value: Float32_4_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_2_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_2_2_struct
+  - def set_value(self, value: Float64_2_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_2_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_2_3_struct
+  - def set_value(self, value: Float64_2_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_2_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_2_4_struct
+  - def set_value(self, value: Float64_2_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_3_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_3_2_struct
+  - def set_value(self, value: Float64_3_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_3_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_3_3_struct
+  - def set_value(self, value: Float64_3_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_3_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_3_4_struct
+  - def set_value(self, value: Float64_3_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_4_2(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_4_2_struct
+  - def set_value(self, value: Float64_4_2_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_4_3(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_4_3_struct
+  - def set_value(self, value: Float64_4_3_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class IFloat64_4_4(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value(self) -> Float64_4_4_struct
+  - def set_value(self, value: Float64_4_4_struct)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_number_of_rows(self) -> int
+  - def get_number_of_columns(self) -> int
+  - def get_length(self) -> int
+  - def get_element_type_name(self) -> str
+  - def get_key(self, index: int) -> str
+  - def has_key(self, key: str) -> bool
+  - def get_type_name(self) -> str
+  - def get_iid(self) -> Uuid
+
+- class Mdl_version(Enum)
+  - MDL_VERSION_1_0: Unknown
+  - MDL_VERSION_1_1: Unknown
+  - MDL_VERSION_1_2: Unknown
+  - MDL_VERSION_1_3: Unknown
+  - MDL_VERSION_1_4: Unknown
+  - MDL_VERSION_1_5: Unknown
+  - MDL_VERSION_1_6: Unknown
+  - MDL_VERSION_1_7: Unknown
+  - MDL_VERSION_1_8: Unknown
+  - MDL_VERSION_1_9: Unknown
+  - MDL_VERSION_EXP: Unknown
+  - MDL_VERSION_LATEST: Unknown
+  - MDL_VERSION_INVALID: Unknown
+  - MDL_VERSION_FORCE_32_BIT: Unknown
+
+- class Message_severity(Enum)
+  - MESSAGE_SEVERITY_FATAL: Unknown
+  - MESSAGE_SEVERITY_ERROR: Unknown
+  - MESSAGE_SEVERITY_WARNING: Unknown
+  - MESSAGE_SEVERITY_INFO: Unknown
+  - MESSAGE_SEVERITY_VERBOSE: Unknown
+  - MESSAGE_SEVERITY_DEBUG: Unknown
+  - MESSAGE_SEVERITY_FORCE_32_BIT: Unknown
+
+- class Material_slot(Enum)
+  - SLOT_THIN_WALLED: Unknown
+  - SLOT_SURFACE_SCATTERING: Unknown
+  - SLOT_SURFACE_EMISSION_EDF_EMISSION: Unknown
+  - SLOT_SURFACE_EMISSION_INTENSITY: Unknown
+  - SLOT_SURFACE_EMISSION_MODE: Unknown
+  - SLOT_BACKFACE_SCATTERING: Unknown
+  - SLOT_BACKFACE_EMISSION_EDF_EMISSION: Unknown
+  - SLOT_BACKFACE_EMISSION_INTENSITY: Unknown
+  - SLOT_BACKFACE_EMISSION_MODE: Unknown
+  - SLOT_IOR: Unknown
+  - SLOT_VOLUME_SCATTERING: Unknown
+  - SLOT_VOLUME_ABSORPTION_COEFFICIENT: Unknown
+  - SLOT_VOLUME_SCATTERING_COEFFICIENT: Unknown
+  - SLOT_VOLUME_EMISSION_INTENSITY: Unknown
+  - SLOT_GEOMETRY_DISPLACEMENT: Unknown
+  - SLOT_GEOMETRY_CUTOUT_OPACITY: Unknown
+  - SLOT_GEOMETRY_NORMAL: Unknown
+  - SLOT_HAIR: Unknown
+  - SLOT_FIRST: Unknown
+  - SLOT_LAST: Unknown
+  - SLOT_FORCE_32_BIT: Unknown
+
+- class Material_opacity(Enum)
+  - OPACITY_OPAQUE: Unknown
+  - OPACITY_TRANSPARENT: Unknown
+  - OPACITY_UNKNOWN: Unknown
+  - OPACITY_FORCE_32_BIT: Unknown
+
+- class Uvtile_mode(Enum)
+  - UVTILE_MODE_NONE: Unknown
+  - UVTILE_MODE_UDIM: Unknown
+  - UVTILE_MODE_UVTILE0: Unknown
+  - UVTILE_MODE_UVTILE1: Unknown
+  - UVTILE_MODE_FORCE_32_BIT: Unknown
+
+- class Element_type(Enum)
+  - ELEMENT_TYPE_INSTANCE: Unknown
+  - ELEMENT_TYPE_GROUP: Unknown
+  - ELEMENT_TYPE_OPTIONS: Unknown
+  - ELEMENT_TYPE_CAMERA: Unknown
+  - ELEMENT_TYPE_LIGHT: Unknown
+  - ELEMENT_TYPE_LIGHTPROFILE: Unknown
+  - ELEMENT_TYPE_TEXTURE: Unknown
+  - ELEMENT_TYPE_IMAGE: Unknown
+  - ELEMENT_TYPE_TRIANGLE_MESH: Unknown
+  - ELEMENT_TYPE_ATTRIBUTE_CONTAINER: Unknown
+  - ELEMENT_TYPE_POLYGON_MESH: Unknown
+  - ELEMENT_TYPE_SUBDIVISION_SURFACE: Unknown
+  - ELEMENT_TYPE_FREEFORM_SURFACE: Unknown
+  - ELEMENT_TYPE_FIBERS: Unknown
+  - ELEMENT_TYPE_VOLUME: Unknown
+  - ELEMENT_TYPE_VOLUME_DATA: Unknown
+  - ELEMENT_TYPE_PARTICLES: Unknown
+  - ELEMENT_TYPE_MODULE: Unknown
+  - ELEMENT_TYPE_FUNCTION_DEFINITION: Unknown
+  - ELEMENT_TYPE_FUNCTION_CALL: Unknown
+  - ELEMENT_TYPE_MATERIAL_INSTANCE: Unknown
+  - ELEMENT_TYPE_COMPILED_MATERIAL: Unknown
+  - ELEMENT_TYPE_BSDF_MEASUREMENT: Unknown
+  - ELEMENT_TYPE_IRRADIANCE_PROBES: Unknown
+  - ELEMENT_TYPE_DECAL: Unknown
+  - ELEMENT_TYPE_ON_DEMAND_MESH: Unknown
+  - ELEMENT_TYPE_PROJECTOR: Unknown
+  - ELEMENT_TYPE_SECTION_OBJECT: Unknown
+  - ELEMENT_TYPE_PROXY: Unknown
+  - ELEMENT_TYPE_FORCE_32_BIT: Unknown
+
+- class Lightprofile_flags(Enum)
+  - LIGHTPROFILE_CLOCKWISE: Unknown
+  - LIGHTPROFILE_COUNTER_CLOCKWISE: Unknown
+  - LIGHTPROFILE_ROTATE_TYPE_B: Unknown
+  - LIGHTPROFILE_ROTATE_TYPE_C_90_270: Unknown
+  - LIGHTPROFILE_FLAGS_FORCE_32_BIT: Unknown
+
+- class Lightprofile_degree(Enum)
+  - LIGHTPROFILE_HERMITE_BASE_1: Unknown
+  - LIGHTPROFILE_HERMITE_BASE_3: Unknown
+  - LIGHTPROFILE_DEGREE_FORCE_32_BIT: Unknown
+
+- class Texture_compression(Enum)
+  - TEXTURE_NO_COMPRESSION: Unknown
+  - TEXTURE_MEDIUM_COMPRESSION: Unknown
+  - TEXTURE_HIGH_COMPRESSION: Unknown
+  - TEXTURE_COMPRESSION_FORCE_32_BIT: Unknown
+
+- class Filter_type(Enum)
+  - FILTER_BOX: Unknown
+  - FILTER_TRIANGLE: Unknown
+  - FILTER_GAUSS: Unknown
+  - FILTER_CMITCHELL: Unknown
+  - FILTER_CLANCZOS: Unknown
+  - FILTER_FAST: Unknown
+  - FILTER_FORCE_32_BIT: Unknown
+
+- class Baker_resource(Enum)
+  - BAKE_ON_CPU: Unknown
+  - BAKE_ON_GPU: Unknown
+  - BAKE_ON_GPU_WITH_CPU_FALLBACK: Unknown
+  - BAKER_RESOURCE_FORCE_32_BIT: Unknown
+
+- class Mdl_repair_options(Enum)
+  - MDL_REPAIR_DEFAULT: Unknown
+  - MDL_REMOVE_INVALID_ARGUMENTS: Unknown
+  - MDL_REPAIR_INVALID_ARGUMENTS: Unknown
+  - MDL_REPAIR_OPTIONS_FORCE_32_BIT: Unknown
+
+- class Bsdf_type(Enum)
+  - BSDF_SCALAR: Unknown
+  - BSDF_RGB: Unknown
+  - BSDF_TYPES_FORCE_32_BIT: Unknown
+
+- class IBaker(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_pixel_type(self) -> str
+  - def is_uniform(self) -> bool
+  - def bake_constant(self, constant: IData, samples: int = 1) -> int
+  - def get_type_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def bake_texture_with_constant_detection(self, texture: ICanvas, constant: IData, is_constant: OutBoolean = None, min_u: float = 0, max_u: float = 1, min_v: float = 0, max_v: float = 1, animation_time: float = 0.0, samples: int = 1) -> int
+  - def bake_texture(self, canvas: ICanvas, *args, **kwargs) -> int
+
+- class IBsdf_buffer(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IBsdf_isotropic_data(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_resolution_theta(self) -> int
+  - def get_resolution_phi(self) -> int
+  - def get_type(self) -> Bsdf_type
+  - def get_bsdf_buffer(self) -> IBsdf_buffer
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IBsdf_measurement(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def reset_file(self, filename: str) -> int
+  - def reset_reader(self, reader: IReader) -> int
+  - def get_filename(self) -> str
+  - def get_original_filename(self) -> str
+  - def set_reflection(self, bsdf_data: IBsdf_isotropic_data) -> int
+  - def get_reflection(self) -> IInterface
+  - def set_transmission(self, bsdf_data: IBsdf_isotropic_data) -> int
+  - def get_transmission(self) -> IInterface
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class IBuffer(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_data_size(self) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class ICanvas(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_tile(self, *args) -> ITile
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_resolution_x(self) -> int
+  - def get_resolution_y(self) -> int
+  - def get_type(self) -> str
+  - def get_layers_size(self) -> int
+  - def get_gamma(self) -> float
+  - def set_gamma(self, gamma: float)
+  - def get_iid(self) -> Uuid
+
+- class ICanvas_base(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_resolution_x(self) -> int
+  - def get_resolution_y(self) -> int
+  - def get_type(self) -> str
+  - def get_layers_size(self) -> int
+  - def get_gamma(self) -> float
+  - def set_gamma(self, gamma: float)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class ICompiled_material(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_connected_function_db_name_with_ret(self, material_instance_name, parameter_index)
+  - def get_body(self) -> IExpression_direct_call
+  - def get_temporary_count(self) -> int
+  - def get_temporary(self, index: int) -> IExpression
+  - def lookup_sub_expression(self, path: str) -> IExpression
+  - def is_valid(self, context: IMdl_execution_context) -> bool
+  - def get_parameter_count(self) -> int
+  - def get_parameter_name(self, index: int) -> str
+  - def get_argument(self, index: int) -> IValue
+  - def get_mdl_meters_per_scene_unit(self) -> float
+  - def get_mdl_wavelength_min(self) -> float
+  - def get_mdl_wavelength_max(self) -> float
+  - def get_opacity(self) -> Material_opacity
+  - def get_surface_opacity(self) -> Material_opacity
+  - def get_cutout_opacity(self) -> bool
+  - def get_referenced_scene_data_count(self) -> int
+  - def get_referenced_scene_data_name(self, index: int) -> str
+  - def depends_on_state_transform(self) -> bool
+  - def depends_on_state_object_id(self) -> bool
+  - def depends_on_global_distribution(self) -> bool
+  - def depends_on_uniform_scene_data(self) -> bool
+  - def get_hash(self) -> Uuid
+  - def get_slot_hash(self, slot: Material_slot) -> Uuid
+  - def get_sub_expression_hash(self, path: str) -> Uuid
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+  - def get_connected_function_db_name(self, material_instance_name, parameter_index, errors: ReturnCode = None)
+
+- class IDatabase(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Garbage_collection_priority(Enum)
+    - PRIORITY_LOW: Unknown
+    - PRIORITY_MEDIUM: Unknown
+    - PRIORITY_HIGH: Unknown
+    - PRIORITY_FORCE_32_BIT: Unknown
+  - def get_global_scope(self) -> IScope
+  - def create_scope(self, parent: IScope, privacy_level: int = 0, temp: bool = False) -> IScope
+  - def create_or_get_named_scope(self, name: str, parent: IScope = None, privacy_level: int = 0) -> IScope
+  - def get_scope(self, id: str) -> IScope
+  - def get_named_scope(self, name: str) -> IScope
+  - def remove_scope(self, id: str) -> int
+  - def garbage_collection(self, *args)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IDeserialized_function_name(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_db_name(self) -> str
+  - def get_argument_types(self) -> IType_list
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IDeserialized_module_name(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_db_name(self) -> str
+  - def get_load_module_argument(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IImage_api(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def create_tile(self, pixel_type: str, width: int, height: int) -> ITile
+  - def create_canvas(self, pixel_type: str, width: int, height: int, layers: int = 1, is_cubemap: bool = False, gamma: float = 0.0) -> ICanvas
+  - def create_mipmap(self, canvas: ICanvas, gamma_override: float = 0.0) -> IArray
+  - def clone_tile(self, tile: ITile) -> ITile
+  - def clone_canvas(self, canvas: ICanvas) -> ICanvas
+  - def create_buffer_from_canvas(self, canvas: ICanvas, image_format: str, pixel_type: str, export_options: IMap = None) -> IBuffer
+  - def create_canvas_from_buffer(self, buffer: IBuffer, image_format: str, selector: str = None) -> ICanvas
+  - def create_canvas_from_reader(self, reader: IReader, image_format: str, selector: str = None) -> ICanvas
+  - def supports_format_for_decoding(self, image_format: str, reader: IReader = None) -> bool
+  - def supports_format_for_encoding(self, image_format: str) -> bool
+  - def convert(self, *args) -> ICanvas
+  - def adjust_gamma(self, *args)
+  - def get_components_per_pixel(self, pixel_type: str) -> int
+  - def get_bytes_per_component(self, pixel_type: str) -> int
+  - def get_pixel_type_for_channel(self, pixel_type: str, selector: str) -> str
+  - def extract_channel(self, *args) -> ITile
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_configuration(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def add_mdl_path(self, path: str) -> int
+  - def remove_mdl_path(self, path: str) -> int
+  - def clear_mdl_paths(self)
+  - def get_mdl_paths_length(self) -> int
+  - def get_mdl_path(self, index: int) -> IString
+  - def get_mdl_system_paths_length(self) -> int
+  - def get_mdl_system_path(self, index: int) -> str
+  - def add_mdl_system_paths(self)
+  - def get_mdl_user_paths_length(self) -> int
+  - def get_mdl_user_path(self, index: int) -> str
+  - def add_mdl_user_paths(self)
+  - def add_resource_path(self, path: str) -> int
+  - def remove_resource_path(self, path: str) -> int
+  - def clear_resource_paths(self)
+  - def get_resource_paths_length(self) -> int
+  - def get_resource_path(self, index: int) -> IString
+  - def set_implicit_cast_enabled(self, value: bool) -> int
+  - def get_implicit_cast_enabled(self) -> bool
+  - def set_expose_names_of_let_expressions(self, value: bool) -> int
+  - def get_expose_names_of_let_expressions(self) -> bool
+  - def set_simple_glossy_bsdf_legacy_enabled(self, value: bool) -> int
+  - def get_simple_glossy_bsdf_legacy_enabled(self) -> bool
+  - def get_entity_resolver(self) -> IMdl_entity_resolver
+  - def set_entity_resolver(self, resolver: IMdl_entity_resolver)
+  - def set_material_ior_frequency(self, frequency_qualifier: IType.Modifier) -> int
+  - def get_material_ior_frequency(self) -> IType.Modifier
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_distiller_api(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def distill_material_with_ret(self, material, target, distiller_options = None)
+  - def get_target_count(self) -> int
+  - def get_target_name(self, index: int) -> str
+  - def create_baker(self, *args) -> IBaker
+  - def get_required_module_count(self, target: str) -> int
+  - def get_required_module_name(self, target: str, index: int) -> str
+  - def get_required_module_code(self, target: str, index: int) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def distill_material(self, material, target, distiller_options = None, errors: ReturnCode = None)
+
+- class IMdl_evaluator_api(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def is_function_parameter_enabled(self, trans, fact, call, index, errors: ReturnCode = None) -> IValue_bool
+
+- class IMdl_execution_context(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_option(self, name: str, errors: ReturnCode = None) -> str | int | float | bool | IInterface
+  - def get_messages_count(self) -> int
+  - def get_error_messages_count(self) -> int
+  - def get_message(self, index: int) -> IMessage
+  - def get_error_message(self, index: int) -> IMessage
+  - def clear_messages(self)
+  - def add_message(self, kind: IMessage.Kind, severity: Message_severity, code: int, message: str)
+  - def get_option_count(self) -> int
+  - def get_option_name(self, index: int) -> str
+  - def get_option_type(self, name: str) -> str
+  - def set_option(self, *args) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_i18n_configuration(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def set_locale(self, locale: str) -> int
+  - def get_locale(self) -> str
+  - def get_system_locale(self) -> str
+  - def get_system_keyword(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_resolved_module(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_module_name(self) -> str
+  - def get_filename(self) -> str
+  - def create_reader(self) -> IReader
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_resolved_resource(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def has_sequence_marker(self) -> bool
+  - def get_uvtile_mode(self) -> Uvtile_mode
+  - def get_mdl_file_path_mask(self) -> str
+  - def get_filename_mask(self) -> str
+  - def get_count(self) -> int
+  - def get_element(self, i: int) -> IMdl_resolved_resource_element
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_resolved_resource_element(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def has_uvtile_uv(self, i: int) -> bool
+  - def get_uvtile_u(self, i: int) -> int
+  - def get_uvtile_v(self, i: int) -> int
+  - def get_frame_number(self) -> int
+  - def get_count(self) -> int
+  - def get_mdl_file_path(self, i: int) -> str
+  - def get_filename(self, i: int) -> str
+  - def create_reader(self, i: int) -> IReader
+  - def get_resource_hash(self, i: int) -> Uuid
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_entity_resolver(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def resolve_module(self, module_name: str, owner_file_path: str, owner_name: str, pos_line: int, pos_column: int, context: IMdl_execution_context = None) -> IMdl_resolved_module
+  - def resolve_resource(self, file_path: str, owner_file_path: str, owner_name: str, pos_line: int, pos_column: int, context: IMdl_execution_context = None) -> IMdl_resolved_resource
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_factory(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def analyze_uniform(self, transaction: ITransaction, root_name: str, root_uniform: bool, query_expr: IExpression, context: IMdl_execution_context) -> tuple[bool, str]
+  - def create_type_factory(self, transaction: ITransaction) -> IType_factory
+  - def create_value_factory(self, transaction: ITransaction) -> IValue_factory
+  - def create_expression_factory(self, transaction: ITransaction) -> IExpression_factory
+  - def create_execution_context(self) -> IMdl_execution_context
+  - def clone(self, context: IMdl_execution_context) -> IMdl_execution_context
+  - def create_texture(self, transaction: ITransaction, file_path: str, shape: IType_texture.Shape, gamma: float, selector: str, shared: bool, context: IMdl_execution_context) -> IValue_texture
+  - def create_light_profile(self, transaction: ITransaction, file_path: str, shared: bool, context: IMdl_execution_context) -> IValue_light_profile
+  - def create_bsdf_measurement(self, transaction: ITransaction, file_path: str, shared: bool, context: IMdl_execution_context) -> IValue_bsdf_measurement
+  - def create_module_builder(self, transaction: ITransaction, module_name: str, min_module_version: Mdl_version, max_module_version: Mdl_version, context: IMdl_execution_context) -> IMdl_module_builder
+  - def create_module_transformer(self, transaction: ITransaction, module_name: str, context: IMdl_execution_context) -> IMdl_module_transformer
+  - def get_db_module_name(self, mdl_name: str) -> IString
+  - def get_db_definition_name(self, mdl_name: str) -> IString
+  - def decode_name(self, name: str) -> IString
+  - def encode_module_name(self, name: str) -> IString
+  - def encode_function_definition_name(self, name: str, parameter_types: IArray) -> IString
+  - def encode_type_name(self, name: str) -> IString
+  - def is_valid_mdl_identifier(self, name: str) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IMdl_impexp_api(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def load_module(self, transaction: ITransaction, argument: str, context: IMdl_execution_context = None) -> int
+  - def load_module_from_string(self, transaction: ITransaction, module_name: str, module_source: str, context: IMdl_execution_context = None) -> int
+  - def export_module(self, transaction: ITransaction, module_name: str, filename: str, context: IMdl_execution_context = None) -> int
+  - def export_module_to_string(self, transaction: ITransaction, module_name: str, exported_module: IString, context: IMdl_execution_context = None) -> int
+  - def export_lightprofile(self, filename: str, lightprofile: ILightprofile) -> int
+  - def export_bsdf_data(self, filename: str, reflection: IBsdf_isotropic_data, transmission: IBsdf_isotropic_data) -> int
+  - def get_mdl_module_name(self, *args) -> IString
+  - def frame_uvtile_marker_to_string(self, marker: str, f: int, u: int, v: int) -> IString
+  - def create_reader(self, *args) -> IReader
+  - def create_writer(self, filename: str) -> IWriter
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def serialize_function_name(self, definition_name, argument_types, return_type, context) -> ISerialized_function_name
+  - def deserialize_function_name(self, *args) -> IDeserialized_function_name
+  - def deserialize_module_name(self, module_name, context) -> IDeserialized_module_name
+  - def export_canvas(self, filename: str, canvas: ICanvas, *args, **kwargs) -> bool
+
+- class IMessage(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Kind(Enum)
+    - MSG_COMILER_CORE: Unknown
+    - MSG_COMILER_BACKEND: Unknown
+    - MSG_COMPILER_DAG: Unknown
+    - MSG_COMPILER_ARCHIVE_TOOL: Unknown
+    - MSG_IMP_EXP: Unknown
+    - MSG_INTEGRATION: Unknown
+    - MSG_UNCATEGORIZED: Unknown
+    - MSG_FORCE_32_BIT: Unknown
+  - def get_kind(self) -> IMessage.Kind
+  - def get_severity(self) -> Message_severity
+  - def get_string(self) -> str
+  - def get_code(self) -> int
+  - def get_notes_count(self) -> int
+  - def get_note(self, index: int) -> IMessage
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IModule(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_filename(self) -> str
+  - def get_mdl_name(self) -> str
+  - def get_mdl_package_component_count(self) -> int
+  - def get_mdl_package_component_name(self, index: int) -> str
+  - def get_mdl_simple_name(self) -> str
+  - def get_mdl_version(self) -> Mdl_version
+  - def get_import_count(self) -> int
+  - def get_import(self, index: int) -> str
+  - def get_struct_categories(self) -> IStruct_category_list
+  - def get_types(self) -> IType_list
+  - def get_constants(self) -> IValue_list
+  - def get_function_count(self) -> int
+  - def get_function(self, index: int) -> str
+  - def get_material_count(self) -> int
+  - def get_material(self, index: int) -> str
+  - def get_resources_count(self) -> int
+  - def get_resource(self, index: int) -> IValue_resource
+  - def get_annotation_definition_count(self) -> int
+  - def get_annotation_definition(self, *args) -> IAnnotation_definition
+  - def get_annotations(self) -> IAnnotation_block
+  - def is_standard_module(self) -> bool
+  - def is_mdle_module(self) -> bool
+  - def get_function_overloads(self, *args) -> IArray
+  - def is_valid(self, context: IMdl_execution_context) -> bool
+  - def reload(self, recursive: bool, context: IMdl_execution_context) -> int
+  - def reload_from_string(self, module_source: str, recursive: bool, context: IMdl_execution_context) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class INeuray(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Status(Enum)
+    - PRE_STARTING: Unknown
+    - STARTING: Unknown
+    - STARTED: Unknown
+    - SHUTTINGDOWN: Unknown
+    - SHUTDOWN: Unknown
+    - FAILURE: Unknown
+    - FORCE_32_BIT: Unknown
+  - def get_api_component(self, type)
+  - def shutdown(self, blocking: bool = True, run_garbage_collection: bool = True) -> int
+  - def get_interface_version(self) -> int
+  - def get_version(self) -> str
+  - def start(self, blocking: bool = True) -> int
+  - def get_status(self) -> INeuray.Status
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IPlugin_configuration(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def load_plugin_library(self, path: str) -> int
+  - def get_plugin_length(self) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IScene_element(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_element_type(self) -> Element_type
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IScope(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def create_transaction(self) -> ITransaction
+  - def get_id(self) -> str
+  - def get_privacy_level(self) -> int
+  - def get_name(self) -> str
+  - def get_parent(self) -> IScope
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class ISerialized_function_name(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_function_name(self) -> str
+  - def get_module_name(self) -> str
+  - def get_function_name_without_module_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class ITransaction(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def access_as(self, type, *args) -> typing.Any
+  - def edit_as(self, type, *args) -> typing.Any
+  - LOCAL_SCOPE: int
+  - def get_id(self) -> str
+  - def get_scope(self) -> IScope
+  - def is_open(self) -> bool
+  - def commit(self) -> int
+  - def abort(self)
+  - def store(self, *args) -> int
+  - def access(self, name: str) -> IInterface
+  - def edit(self, name: str) -> IInterface
+  - def copy(self, *args) -> int
+  - def remove(self, name: str, only_localized: bool = False) -> int
+  - def name_of(self, db_element: IInterface) -> str
+  - def get_privacy_level(self, name: str) -> int
+  - def get_time_stamp(self, *args) -> str
+  - def has_changed_since_time_stamp(self, element: str, time_stamp: str) -> bool
+  - def list_elements(self, root_element: str, name_pattern: str = None, type_names: IArray = None) -> IArray
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def create(self, type_name: str, *args, **kwargs)
+  - def create_as(self, type, type_name: str, *args, **kwargs)
+
+- class IAnnotation(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_name(self) -> str
+  - def set_name(self, name: str)
+  - def get_arguments(self) -> IExpression_list
+  - def get_definition(self) -> IAnnotation_definition
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IAnnotation_block(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_size(self) -> int
+  - def get_annotation(self, index: int) -> IAnnotation
+  - def set_annotation(self, index: int, annotation: IAnnotation) -> int
+  - def add_annotation(self, annotation: IAnnotation) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IAnnotation_definition(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_mdl_version(self) -> tuple[Mdl_version, Mdl_version]
+  - class Semantics(Enum)
+    - AS_UNKNOWN: Unknown
+    - AS_INTRINSIC_ANNOTATION: Unknown
+    - AS_ANNOTATION_FIRST: Unknown
+    - AS_THROWS_ANNOTATION: Unknown
+    - AS_SINCE_ANNOTATION: Unknown
+    - AS_REMOVED_ANNOTATION: Unknown
+    - AS_CONST_EXPR_ANNOTATION: Unknown
+    - AS_DERIVABLE_ANNOTATION: Unknown
+    - AS_NATIVE_ANNOTATION: Unknown
+    - AS_UNUSED_ANNOTATION: Unknown
+    - AS_NOINLINE_ANNOTATION: Unknown
+    - AS_SOFT_RANGE_ANNOTATION: Unknown
+    - AS_HARD_RANGE_ANNOTATION: Unknown
+    - AS_HIDDEN_ANNOTATION: Unknown
+    - AS_DEPRECATED_ANNOTATION: Unknown
+    - AS_VERSION_NUMBER_ANNOTATION: Unknown
+    - AS_VERSION_ANNOTATION: Unknown
+    - AS_DEPENDENCY_ANNOTATION: Unknown
+    - AS_UI_ORDER_ANNOTATION: Unknown
+    - AS_USAGE_ANNOTATION: Unknown
+    - AS_ENABLE_IF_ANNOTATION: Unknown
+    - AS_THUMBNAIL_ANNOTATION: Unknown
+    - AS_DISPLAY_NAME_ANNOTATION: Unknown
+    - AS_IN_GROUP_ANNOTATION: Unknown
+    - AS_DESCRIPTION_ANNOTATION: Unknown
+    - AS_AUTHOR_ANNOTATION: Unknown
+    - AS_CONTRIBUTOR_ANNOTATION: Unknown
+    - AS_COPYRIGHT_NOTICE_ANNOTATION: Unknown
+    - AS_CREATED_ANNOTATION: Unknown
+    - AS_MODIFIED_ANNOTATION: Unknown
+    - AS_KEYWORDS_ANNOTATION: Unknown
+    - AS_ORIGIN_ANNOTATION: Unknown
+    - AS_NODE_OUTPUT_PORT_DEFAULT_ANNOTATION: Unknown
+    - AS_ANNOTATION_LAST: Unknown
+    - AS_FORCE_32_BIT: Unknown
+  - def get_module(self) -> str
+  - def get_name(self) -> str
+  - def get_mdl_module_name(self) -> str
+  - def get_mdl_simple_name(self) -> str
+  - def get_mdl_parameter_type_name(self, index: int) -> str
+  - def get_semantic(self) -> IAnnotation_definition.Semantics
+  - def is_exported(self) -> bool
+  - def get_parameter_count(self) -> int
+  - def get_parameter_name(self, index: int) -> str
+  - def get_parameter_index(self, name: str) -> int
+  - def get_parameter_types(self) -> IType_list
+  - def get_defaults(self) -> IExpression_list
+  - def get_annotations(self) -> IAnnotation_block
+  - def create_annotation(self, arguments: IExpression_list) -> IAnnotation
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IAnnotation_list(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_size(self) -> int
+  - def get_index(self, name: str) -> int
+  - def get_name(self, index: int) -> str
+  - def get_annotation_block(self, *args) -> IAnnotation_block
+  - def set_annotation_block(self, *args) -> int
+  - def add_annotation_block(self, name: str, block: IAnnotation_block) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IExpression(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Kind(Enum)
+    - EK_CONSTANT: Unknown
+    - EK_CALL: Unknown
+    - EK_PARAMETER: Unknown
+    - EK_DIRECT_CALL: Unknown
+    - EK_TEMPORARY: Unknown
+    - EK_FORCE_32_BIT: Unknown
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IExpression_call(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_call(self) -> str
+  - def set_call(self, name: str) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def get_iid(self) -> Uuid
+
+- class IExpression_constant(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_value(self, *args) -> IValue
+  - def set_value(self, value: IValue) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def get_iid(self) -> Uuid
+
+- class IExpression_direct_call(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_definition(self) -> str
+  - def get_arguments(self) -> IExpression_list
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def get_iid(self) -> Uuid
+
+- class IExpression_factory(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Comparison_options(Enum)
+    - DEFAULT_OPTIONS: Unknown
+    - DEEP_CALL_COMPARISONS: Unknown
+    - SKIP_TYPE_ALIASES: Unknown
+    - COMPARISON_OPTIONS_FORCE_32_BIT: Unknown
+  - def create_cast_with_ret(self, src_expr, target_type, cast_db_name, force_cast, direct_call)
+  - def create_direct_call_with_ret(self, name, arguments)
+  - def get_value_factory(self) -> IValue_factory
+  - def create_constant(self, value: IValue) -> IExpression_constant
+  - def create_call(self, name: str) -> IExpression_call
+  - def create_parameter(self, type: IType, index: int) -> IExpression_parameter
+  - def create_temporary(self, type: IType, index: int) -> IExpression_temporary
+  - def create_expression_list(self) -> IExpression_list
+  - def create_annotation(self, name: str, arguments: IExpression_list) -> IAnnotation
+  - def create_annotation_block(self) -> IAnnotation_block
+  - def create_annotation_list(self) -> IAnnotation_list
+  - def clone(self, *args) -> IExpression_list
+  - def compare(self, *args) -> int
+  - def dump(self, *args) -> IString
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def create_cast(self, src_expr, target_type, cast_db_name, force_cast, direct_call, errors: ReturnCode = None)
+  - def create_decl_cast(self, src_expr, target_type, cast_db_name, force_cast, direct_call, errors: ReturnCode = None)
+  - def create_direct_call(self, name, arguments, errors: ReturnCode = None)
+
+- class IExpression_list(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_expression_as(self, type, *args) -> typing.Any
+  - def get_size(self) -> int
+  - def get_index(self, name: str) -> int
+  - def get_name(self, index: int) -> str
+  - def get_expression(self, *args) -> IExpression
+  - def set_expression(self, *args) -> int
+  - def add_expression(self, name: str, expression: IExpression) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IExpression_parameter(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_index(self) -> int
+  - def set_index(self, index: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def get_iid(self) -> Uuid
+
+- class IExpression_temporary(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_as(self, type, *args) -> typing.Any
+  - def get_index(self) -> int
+  - def set_index(self, index: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IExpression.Kind
+  - def get_type(self) -> IType
+  - def get_iid(self) -> Uuid
+
+- class IFunction_call(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_function_definition(self) -> str
+  - def get_mdl_function_definition(self) -> str
+  - def is_declarative(self) -> bool
+  - def is_material(self) -> bool
+  - def is_array_constructor(self) -> bool
+  - def get_return_type(self) -> IType
+  - def get_parameter_count(self) -> int
+  - def get_parameter_name(self, index: int) -> str
+  - def get_parameter_index(self, name: str) -> int
+  - def get_parameter_types(self) -> IType_list
+  - def get_arguments(self) -> IExpression_list
+  - def set_arguments(self, arguments: IExpression_list) -> int
+  - def set_argument(self, *args) -> int
+  - def reset_argument(self, *args) -> int
+  - def is_default(self) -> bool
+  - def is_valid(self, context: IMdl_execution_context) -> bool
+  - def repair(self, flags: int, context: IMdl_execution_context) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class IFunction_definition(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_mdl_version(self) -> tuple[Mdl_version, Mdl_version]
+  - class Semantics(Enum)
+    - DS_UNKNOWN: Unknown
+    - DS_CONV_CONSTRUCTOR: Unknown
+    - DS_ELEM_CONSTRUCTOR: Unknown
+    - DS_COLOR_SPECTRUM_CONSTRUCTOR: Unknown
+    - DS_MATRIX_ELEM_CONSTRUCTOR: Unknown
+    - DS_MATRIX_DIAG_CONSTRUCTOR: Unknown
+    - DS_INVALID_REF_CONSTRUCTOR: Unknown
+    - DS_DEFAULT_STRUCT_CONSTRUCTOR: Unknown
+    - DS_TEXTURE_CONSTRUCTOR: Unknown
+    - DS_CONV_OPERATOR: Unknown
+    - DS_COPY_CONSTRUCTOR: Unknown
+    - DS_BITWISE_COMPLEMENT: Unknown
+    - DS_UNARY_FIRST: Unknown
+    - DS_OPERATOR_FIRST: Unknown
+    - DS_LOGICAL_NOT: Unknown
+    - DS_POSITIVE: Unknown
+    - DS_NEGATIVE: Unknown
+    - DS_PRE_INCREMENT: Unknown
+    - DS_PRE_DECREMENT: Unknown
+    - DS_POST_INCREMENT: Unknown
+    - DS_POST_DECREMENT: Unknown
+    - DS_CAST: Unknown
+    - DS_UNARY_LAST: Unknown
+    - DS_SELECT: Unknown
+    - DS_BINARY_FIRST: Unknown
+    - DS_ARRAY_INDEX: Unknown
+    - DS_MULTIPLY: Unknown
+    - DS_DIVIDE: Unknown
+    - DS_MODULO: Unknown
+    - DS_PLUS: Unknown
+    - DS_MINUS: Unknown
+    - DS_SHIFT_LEFT: Unknown
+    - DS_SHIFT_RIGHT: Unknown
+    - DS_UNSIGNED_SHIFT_RIGHT: Unknown
+    - DS_LESS: Unknown
+    - DS_LESS_OR_EQUAL: Unknown
+    - DS_GREATER_OR_EQUAL: Unknown
+    - DS_GREATER: Unknown
+    - DS_EQUAL: Unknown
+    - DS_NOT_EQUAL: Unknown
+    - DS_BITWISE_AND: Unknown
+    - DS_BITWISE_XOR: Unknown
+    - DS_BITWISE_OR: Unknown
+    - DS_LOGICAL_AND: Unknown
+    - DS_LOGICAL_OR: Unknown
+    - DS_ASSIGN: Unknown
+    - DS_MULTIPLY_ASSIGN: Unknown
+    - DS_DIVIDE_ASSIGN: Unknown
+    - DS_MODULO_ASSIGN: Unknown
+    - DS_PLUS_ASSIGN: Unknown
+    - DS_MINUS_ASSIGN: Unknown
+    - DS_SHIFT_LEFT_ASSIGN: Unknown
+    - DS_SHIFT_RIGHT_ASSIGN: Unknown
+    - DS_UNSIGNED_SHIFT_RIGHT_ASSIGN: Unknown
+    - DS_BITWISE_OR_ASSIGN: Unknown
+    - DS_BITWISE_XOR_ASSIGN: Unknown
+    - DS_BITWISE_AND_ASSIGN: Unknown
+    - DS_BINARY_LAST: Unknown
+    - DS_TERNARY: Unknown
+    - DS_OPERATOR_LAST: Unknown
+    - DS_INTRINSIC_MATH_ABS: Unknown
+    - DS_INTRINSIC_MATH_FIRST: Unknown
+    - DS_INTRINSIC_MATH_ACOS: Unknown
+    - DS_INTRINSIC_MATH_ALL: Unknown
+    - DS_INTRINSIC_MATH_ANY: Unknown
+    - DS_INTRINSIC_MATH_ASIN: Unknown
+    - DS_INTRINSIC_MATH_ATAN: Unknown
+    - DS_INTRINSIC_MATH_ATAN2: Unknown
+    - DS_INTRINSIC_MATH_AVERAGE: Unknown
+    - DS_INTRINSIC_MATH_CEIL: Unknown
+    - DS_INTRINSIC_MATH_CLAMP: Unknown
+    - DS_INTRINSIC_MATH_COS: Unknown
+    - DS_INTRINSIC_MATH_CROSS: Unknown
+    - DS_INTRINSIC_MATH_DEGREES: Unknown
+    - DS_INTRINSIC_MATH_DISTANCE: Unknown
+    - DS_INTRINSIC_MATH_DOT: Unknown
+    - DS_INTRINSIC_MATH_EVAL_AT_WAVELENGTH: Unknown
+    - DS_INTRINSIC_MATH_EXP: Unknown
+    - DS_INTRINSIC_MATH_EXP2: Unknown
+    - DS_INTRINSIC_MATH_FLOOR: Unknown
+    - DS_INTRINSIC_MATH_FMOD: Unknown
+    - DS_INTRINSIC_MATH_FRAC: Unknown
+    - DS_INTRINSIC_MATH_ISNAN: Unknown
+    - DS_INTRINSIC_MATH_ISFINITE: Unknown
+    - DS_INTRINSIC_MATH_LENGTH: Unknown
+    - DS_INTRINSIC_MATH_LERP: Unknown
+    - DS_INTRINSIC_MATH_LOG: Unknown
+    - DS_INTRINSIC_MATH_LOG2: Unknown
+    - DS_INTRINSIC_MATH_LOG10: Unknown
+    - DS_INTRINSIC_MATH_LUMINANCE: Unknown
+    - DS_INTRINSIC_MATH_MAX: Unknown
+    - DS_INTRINSIC_MATH_MAX_VALUE: Unknown
+    - DS_INTRINSIC_MATH_MAX_VALUE_WAVELENGTH: Unknown
+    - DS_INTRINSIC_MATH_MIN: Unknown
+    - DS_INTRINSIC_MATH_MIN_VALUE: Unknown
+    - DS_INTRINSIC_MATH_MIN_VALUE_WAVELENGTH: Unknown
+    - DS_INTRINSIC_MATH_MODF: Unknown
+    - DS_INTRINSIC_MATH_NORMALIZE: Unknown
+    - DS_INTRINSIC_MATH_POW: Unknown
+    - DS_INTRINSIC_MATH_RADIANS: Unknown
+    - DS_INTRINSIC_MATH_ROUND: Unknown
+    - DS_INTRINSIC_MATH_RSQRT: Unknown
+    - DS_INTRINSIC_MATH_SATURATE: Unknown
+    - DS_INTRINSIC_MATH_SIGN: Unknown
+    - DS_INTRINSIC_MATH_SIN: Unknown
+    - DS_INTRINSIC_MATH_SINCOS: Unknown
+    - DS_INTRINSIC_MATH_SMOOTHSTEP: Unknown
+    - DS_INTRINSIC_MATH_SQRT: Unknown
+    - DS_INTRINSIC_MATH_STEP: Unknown
+    - DS_INTRINSIC_MATH_TAN: Unknown
+    - DS_INTRINSIC_MATH_TRANSPOSE: Unknown
+    - DS_INTRINSIC_MATH_BLACKBODY: Unknown
+    - DS_INTRINSIC_MATH_EMISSION_COLOR: Unknown
+    - DS_INTRINSIC_MATH_COSH: Unknown
+    - DS_INTRINSIC_MATH_SINH: Unknown
+    - DS_INTRINSIC_MATH_TANH: Unknown
+    - DS_INTRINSIC_MATH_INT_BITS_TO_FLOAT: Unknown
+    - DS_INTRINSIC_MATH_FLOAT_BITS_TO_INT: Unknown
+    - DS_INTRINSIC_MATH_DX: Unknown
+    - DS_INTRINSIC_MATH_DY: Unknown
+    - DS_INTRINSIC_MATH_LAST: Unknown
+    - DS_INTRINSIC_STATE_POSITION: Unknown
+    - DS_INTRINSIC_STATE_FIRST: Unknown
+    - DS_INTRINSIC_STATE_NORMAL: Unknown
+    - DS_INTRINSIC_STATE_GEOMETRY_NORMAL: Unknown
+    - DS_INTRINSIC_STATE_MOTION: Unknown
+    - DS_INTRINSIC_STATE_TEXTURE_SPACE_MAX: Unknown
+    - DS_INTRINSIC_STATE_TEXTURE_COORDINATE: Unknown
+    - DS_INTRINSIC_STATE_TEXTURE_TANGENT_U: Unknown
+    - DS_INTRINSIC_STATE_TEXTURE_TANGENT_V: Unknown
+    - DS_INTRINSIC_STATE_TANGENT_SPACE: Unknown
+    - DS_INTRINSIC_STATE_GEOMETRY_TANGENT_U: Unknown
+    - DS_INTRINSIC_STATE_GEOMETRY_TANGENT_V: Unknown
+    - DS_INTRINSIC_STATE_DIRECTION: Unknown
+    - DS_INTRINSIC_STATE_ANIMATION_TIME: Unknown
+    - DS_INTRINSIC_STATE_WAVELENGTH_BASE: Unknown
+    - DS_INTRINSIC_STATE_TRANSFORM: Unknown
+    - DS_INTRINSIC_STATE_TRANSFORM_POINT: Unknown
+    - DS_INTRINSIC_STATE_TRANSFORM_VECTOR: Unknown
+    - DS_INTRINSIC_STATE_TRANSFORM_NORMAL: Unknown
+    - DS_INTRINSIC_STATE_TRANSFORM_SCALE: Unknown
+    - DS_INTRINSIC_STATE_ROUNDED_CORNER_NORMAL: Unknown
+    - DS_INTRINSIC_STATE_METERS_PER_SCENE_UNIT: Unknown
+    - DS_INTRINSIC_STATE_SCENE_UNITS_PER_METER: Unknown
+    - DS_INTRINSIC_STATE_OBJECT_ID: Unknown
+    - DS_INTRINSIC_STATE_WAVELENGTH_MIN: Unknown
+    - DS_INTRINSIC_STATE_WAVELENGTH_MAX: Unknown
+    - DS_INTRINSIC_STATE_LAST: Unknown
+    - DS_INTRINSIC_TEX_WIDTH: Unknown
+    - DS_INTRINSIC_TEX_FIRST: Unknown
+    - DS_INTRINSIC_TEX_HEIGHT: Unknown
+    - DS_INTRINSIC_TEX_DEPTH: Unknown
+    - DS_INTRINSIC_TEX_LOOKUP_FLOAT: Unknown
+    - DS_INTRINSIC_TEX_LOOKUP_FLOAT2: Unknown
+    - DS_INTRINSIC_TEX_LOOKUP_FLOAT3: Unknown
+    - DS_INTRINSIC_TEX_LOOKUP_FLOAT4: Unknown
+    - DS_INTRINSIC_TEX_LOOKUP_COLOR: Unknown
+    - DS_INTRINSIC_TEX_TEXEL_FLOAT: Unknown
+    - DS_INTRINSIC_TEX_TEXEL_FLOAT2: Unknown
+    - DS_INTRINSIC_TEX_TEXEL_FLOAT3: Unknown
+    - DS_INTRINSIC_TEX_TEXEL_FLOAT4: Unknown
+    - DS_INTRINSIC_TEX_TEXEL_COLOR: Unknown
+    - DS_INTRINSIC_TEX_TEXTURE_ISVALID: Unknown
+    - DS_INTRINSIC_TEX_WIDTH_OFFSET: Unknown
+    - DS_INTRINSIC_TEX_HEIGHT_OFFSET: Unknown
+    - DS_INTRINSIC_TEX_DEPTH_OFFSET: Unknown
+    - DS_INTRINSIC_TEX_FIRST_FRAME: Unknown
+    - DS_INTRINSIC_TEX_LAST_FRAME: Unknown
+    - DS_INTRINSIC_TEX_GRID_TO_OBJECT_SPACE: Unknown
+    - DS_INTRINSIC_TEX_LAST: Unknown
+    - DS_INTRINSIC_DF_DIFFUSE_REFLECTION_BSDF: Unknown
+    - DS_INTRINSIC_DF_FIRST: Unknown
+    - DS_INTRINSIC_DF_DUSTY_DIFFUSE_REFLECTION_BSDF: Unknown
+    - DS_INTRINSIC_DF_DIFFUSE_TRANSMISSION_BSDF: Unknown
+    - DS_INTRINSIC_DF_SPECULAR_BSDF: Unknown
+    - DS_INTRINSIC_DF_SIMPLE_GLOSSY_BSDF: Unknown
+    - DS_INTRINSIC_DF_BACKSCATTERING_GLOSSY_REFLECTION_BSDF: Unknown
+    - DS_INTRINSIC_DF_MEASURED_BSDF: Unknown
+    - DS_INTRINSIC_DF_DIFFUSE_EDF: Unknown
+    - DS_INTRINSIC_DF_MEASURED_EDF: Unknown
+    - DS_INTRINSIC_DF_SPOT_EDF: Unknown
+    - DS_INTRINSIC_DF_ANISOTROPIC_VDF: Unknown
+    - DS_INTRINSIC_DF_FOG_VDF: Unknown
+    - DS_INTRINSIC_DF_NORMALIZED_MIX: Unknown
+    - DS_INTRINSIC_DF_CLAMPED_MIX: Unknown
+    - DS_INTRINSIC_DF_WEIGHTED_LAYER: Unknown
+    - DS_INTRINSIC_DF_FRESNEL_LAYER: Unknown
+    - DS_INTRINSIC_DF_CUSTOM_CURVE_LAYER: Unknown
+    - DS_INTRINSIC_DF_MEASURED_CURVE_LAYER: Unknown
+    - DS_INTRINSIC_DF_THIN_FILM: Unknown
+    - DS_INTRINSIC_DF_TINT: Unknown
+    - DS_INTRINSIC_DF_DIRECTIONAL_FACTOR: Unknown
+    - DS_INTRINSIC_DF_MEASURED_CURVE_FACTOR: Unknown
+    - DS_INTRINSIC_DF_LIGHT_PROFILE_POWER: Unknown
+    - DS_INTRINSIC_DF_LIGHT_PROFILE_MAXIMUM: Unknown
+    - DS_INTRINSIC_DF_LIGHT_PROFILE_ISVALID: Unknown
+    - DS_INTRINSIC_DF_BSDF_MEASUREMENT_ISVALID: Unknown
+    - DS_INTRINSIC_DF_MICROFACET_BECKMANN_SMITH_BSDF: Unknown
+    - DS_INTRINSIC_DF_MICROFACET_GGX_SMITH_BSDF: Unknown
+    - DS_INTRINSIC_DF_MICROFACET_BECKMANN_VCAVITIES_BSDF: Unknown
+    - DS_INTRINSIC_DF_MICROFACET_GGX_VCAVITIES_BSDF: Unknown
+    - DS_INTRINSIC_DF_WARD_GEISLER_MORODER_BSDF: Unknown
+    - DS_INTRINSIC_DF_COLOR_NORMALIZED_MIX: Unknown
+    - DS_INTRINSIC_DF_COLOR_CLAMPED_MIX: Unknown
+    - DS_INTRINSIC_DF_COLOR_WEIGHTED_LAYER: Unknown
+    - DS_INTRINSIC_DF_COLOR_FRESNEL_LAYER: Unknown
+    - DS_INTRINSIC_DF_COLOR_CUSTOM_CURVE_LAYER: Unknown
+    - DS_INTRINSIC_DF_COLOR_MEASURED_CURVE_LAYER: Unknown
+    - DS_INTRINSIC_DF_FRESNEL_FACTOR: Unknown
+    - DS_INTRINSIC_DF_MEASURED_FACTOR: Unknown
+    - DS_INTRINSIC_DF_CHIANG_HAIR_BSDF: Unknown
+    - DS_INTRINSIC_DF_SHEEN_BSDF: Unknown
+    - DS_INTRINSIC_DF_UNBOUNDED_MIX: Unknown
+    - DS_INTRINSIC_DF_COLOR_UNBOUNDED_MIX: Unknown
+    - DS_INTRINSIC_DF_LAST: Unknown
+    - DS_INTRINSIC_SCENE_DATA_ISVALID: Unknown
+    - DS_INTRINSIC_SCENE_FIRST: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_INT: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_INT2: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_INT3: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_INT4: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_FLOAT: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_FLOAT2: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_FLOAT3: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_FLOAT4: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_COLOR: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_INT: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_INT2: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_INT3: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_INT4: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_FLOAT: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_FLOAT2: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_FLOAT3: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_FLOAT4: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_COLOR: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_FLOAT4X4: Unknown
+    - DS_INTRINSIC_SCENE_DATA_LOOKUP_UNIFORM_FLOAT4X4: Unknown
+    - DS_INTRINSIC_SCENE_LAST: Unknown
+    - DS_INTRINSIC_DEBUG_BREAKPOINT: Unknown
+    - DS_INTRINSIC_DEBUG_FIRST: Unknown
+    - DS_INTRINSIC_DEBUG_ASSERT: Unknown
+    - DS_INTRINSIC_DEBUG_PRINT: Unknown
+    - DS_INTRINSIC_DEBUG_LAST: Unknown
+    - DS_INTRINSIC_DAG_FIELD_ACCESS: Unknown
+    - DS_INTRINSIC_DAG_FIRST: Unknown
+    - DS_INTRINSIC_DAG_ARRAY_CONSTRUCTOR: Unknown
+    - DS_INTRINSIC_DAG_ARRAY_LENGTH: Unknown
+    - DS_INTRINSIC_DAG_DECL_CAST: Unknown
+    - DS_INTRINSIC_DAG_LAST: Unknown
+    - DS_FORCE_32_BIT: Unknown
+  - def create_function_call_with_ret(self, arguments)
+  - def get_mdl_mangled_name(self) -> str
+  - def get_module(self) -> str
+  - def get_mdl_name(self) -> str
+  - def get_mdl_module_name(self) -> str
+  - def get_mdl_simple_name(self) -> str
+  - def get_mdl_parameter_type_name(self, index: int) -> str
+  - def get_prototype(self) -> str
+  - def get_semantic(self) -> IFunction_definition.Semantics
+  - def is_array_constructor(self) -> bool
+  - def is_exported(self) -> bool
+  - def is_declarative(self) -> bool
+  - def is_uniform(self) -> bool
+  - def is_material(self) -> bool
+  - def get_return_type(self) -> IType
+  - def get_parameter_count(self) -> int
+  - def get_parameter_name(self, index: int) -> str
+  - def get_parameter_index(self, name: str) -> int
+  - def get_parameter_types(self) -> IType_list
+  - def get_defaults(self) -> IExpression_list
+  - def get_enable_if_conditions(self) -> IExpression_list
+  - def get_enable_if_users(self, index: int) -> int
+  - def get_enable_if_user(self, index: int, u_index: int) -> int
+  - def get_annotations(self) -> IAnnotation_block
+  - def get_return_annotations(self) -> IAnnotation_block
+  - def get_parameter_annotations(self) -> IAnnotation_list
+  - def get_thumbnail(self) -> str
+  - def is_valid(self, context: IMdl_execution_context) -> bool
+  - def get_body(self) -> IExpression
+  - def get_temporary_count(self) -> int
+  - def get_temporary(self, index: int) -> IExpression
+  - def get_temporary_name(self, index: int) -> str
+  - def get_mangled_name(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+  - def create_function_call(self, arguments, errors: ReturnCode = None)
+
+- class IImage(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def has_uvtile_uv(self, frame_id: int, uvtile_id: int) -> bool
+  - def get_uvtile_u(self, frame_id: int, uvtile_id: int) -> int
+  - def get_uvtile_v(self, frame_id: int, uvtile_id: int) -> int
+  - def get_uvtile_uv_ranges_min_u(self, frame_id: int) -> int
+  - def get_uvtile_uv_ranges_min_v(self, frame_id: int) -> int
+  - def get_uvtile_uv_ranges_max_u(self, frame_id: int) -> int
+  - def get_uvtile_uv_ranges_max_v(self, frame_id: int) -> int
+  - def reset_file(self, filename: str, selector: str = None) -> int
+  - def reset_reader(self, *args) -> int
+  - def set_from_canvas(self, *args) -> bool
+  - def is_animated(self) -> bool
+  - def get_length(self) -> int
+  - def get_frame_number(self, frame_id: int) -> int
+  - def get_frame_id(self, frame_number: int) -> int
+  - def is_uvtile(self) -> bool
+  - def get_frame_length(self, frame_id: int) -> int
+  - def get_uvtile_id(self, frame_id: int, u: int, v: int) -> int
+  - def get_filename(self, frame_id: int, uvtile_id: int) -> str
+  - def get_original_filename(self) -> str
+  - def get_selector(self) -> str
+  - def get_canvas(self, frame_id: int, uvtile_id: int, level: int) -> ICanvas
+  - def get_type(self, frame_id: int, uvtile_id: int) -> str
+  - def get_levels(self, frame_id: int, uvtile_id: int) -> int
+  - def resolution_x(self, frame_id: int, uvtile_id: int, level: int) -> int
+  - def resolution_y(self, frame_id: int, uvtile_id: int, level: int) -> int
+  - def resolution_z(self, frame_id: int, uvtile_id: int, level: int) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class ILightprofile(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def reset_file(self, *args) -> int
+  - def reset_reader(self, *args) -> int
+  - def get_filename(self) -> str
+  - def get_original_filename(self) -> str
+  - def get_resolution_phi(self) -> int
+  - def get_resolution_theta(self) -> int
+  - def get_degree(self) -> Lightprofile_degree
+  - def get_flags(self) -> int
+  - def get_phi(self, index: int) -> float
+  - def get_theta(self, index: int) -> float
+  - def get_data(self, *args) -> float
+  - def get_candela_multiplier(self) -> float
+  - def sample(self, phi: float, theta: float, candela: bool) -> float
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class IMaterial_instance(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Compilation_options(Enum)
+    - DEFAULT_OPTIONS: Unknown
+    - CLASS_COMPILATION: Unknown
+    - COMPILATION_OPTIONS_FORCE_32_BIT: Unknown
+  - def create_compiled_material(self, flags: int, context: IMdl_execution_context = None) -> ICompiled_material
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class ITexture(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def set_image(self, name: str) -> int
+  - def get_image(self) -> str
+  - def set_volume(self, name: str) -> int
+  - def get_volume(self) -> str
+  - def set_gamma(self, gamma: float)
+  - def get_gamma(self) -> float
+  - def get_effective_gamma(self, frame_id: int, uvtile_id: int) -> float
+  - def get_selector(self) -> str
+  - def set_compression(self, compression: Texture_compression)
+  - def get_compression(self) -> Texture_compression
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_element_type(self) -> Element_type
+  - def get_iid(self) -> Uuid
+
+- class ITile(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_data(self) -> int
+  - def get_data_numpy(self) -> numpy.ndarray
+  - def get_pixel(self, x_offset: int, y_offset: int) -> Color_struct
+  - def set_pixel(self, x_offset: int, y_offset: int, color: Color_struct)
+  - def get_type(self) -> str
+  - def get_resolution_x(self) -> int
+  - def get_resolution_y(self) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IStruct_category(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Predefined_id(Enum)
+    - CID_USER: Unknown
+    - CID_MATERIAL_CATEGORY: Unknown
+    - CID_FORCE_32_BIT: Unknown
+  - def get_symbol(self) -> str
+  - def get_predefined_id(self) -> IStruct_category.Predefined_id
+  - def get_annotations(self) -> IAnnotation_block
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IStruct_category_list(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_size(self) -> int
+  - def get_index(self, name: str) -> int
+  - def get_name(self, index: int) -> str
+  - def get_struct_category(self, *args) -> IStruct_category
+  - def set_struct_category(self, *args) -> int
+  - def add_struct_category(self, name: str, struct_category: IStruct_category) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Kind(Enum)
+    - TK_ALIAS: Unknown
+    - TK_BOOL: Unknown
+    - TK_INT: Unknown
+    - TK_ENUM: Unknown
+    - TK_FLOAT: Unknown
+    - TK_DOUBLE: Unknown
+    - TK_STRING: Unknown
+    - TK_VECTOR: Unknown
+    - TK_MATRIX: Unknown
+    - TK_COLOR: Unknown
+    - TK_ARRAY: Unknown
+    - TK_STRUCT: Unknown
+    - TK_TEXTURE: Unknown
+    - TK_LIGHT_PROFILE: Unknown
+    - TK_BSDF_MEASUREMENT: Unknown
+    - TK_BSDF: Unknown
+    - TK_HAIR_BSDF: Unknown
+    - TK_EDF: Unknown
+    - TK_VDF: Unknown
+    - TK_FORCE_32_BIT: Unknown
+  - class Modifier(Enum)
+    - MK_NONE: Unknown
+    - MK_UNIFORM: Unknown
+    - MK_VARYING: Unknown
+    - MK_FORCE_32_BIT: Unknown
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_alias(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_aliased_type(self) -> IType
+  - def get_type_modifiers(self) -> int
+  - def get_symbol(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_array(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_element_type(self) -> IType
+  - def is_immediate_sized(self) -> bool
+  - def get_size(self) -> int
+  - def get_deferred_size(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_component_type(self, index: int) -> IType
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_atomic(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_bool(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_bsdf(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_bsdf_measurement(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_color(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_component_type(self, index: int) -> IType
+  - def get_size(self) -> int
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_compound(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_component_type(self, index: int) -> IType
+  - def get_size(self) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_df(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_double(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_edf(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_enumeration(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Predefined_id(Enum)
+    - EID_USER: Unknown
+    - EID_TEX_GAMMA_MODE: Unknown
+    - EID_INTENSITY_MODE: Unknown
+    - EID_FORCE_32_BIT: Unknown
+  - def get_value_code_with_ret(self, index)
+  - def get_symbol(self) -> str
+  - def get_size(self) -> int
+  - def get_value_name(self, index: int) -> str
+  - def find_value(self, *args) -> int
+  - def get_predefined_id(self) -> IType_enumeration.Predefined_id
+  - def get_annotations(self) -> IAnnotation_block
+  - def get_value_annotations(self, index: int) -> IAnnotation_block
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+  - def get_value_code(self, index: int, errors: ReturnCode = None)
+
+- class IType_factory(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def create_struct_category(self, symbol: str) -> IStruct_category
+  - def create_struct_category_list(self) -> IStruct_category_list
+  - def get_predefined_struct_category(self, id: IStruct_category.Predefined_id) -> IStruct_category
+  - def clone(self, *args) -> IType_list
+  - def compare(self, *args) -> int
+  - def dump(self, *args) -> IString
+  - def create_alias(self, type: IType, modifiers: int, symbol: str) -> IType_alias
+  - def create_bool(self) -> IType_bool
+  - def create_int(self) -> IType_int
+  - def create_enum(self, symbol: str) -> IType_enumeration
+  - def create_float(self) -> IType_float
+  - def create_double(self) -> IType_double
+  - def create_string(self) -> IType_string
+  - def create_vector(self, element_type: IType_atomic, size: int) -> IType_vector
+  - def create_matrix(self, column_type: IType_vector, columns: int) -> IType_matrix
+  - def create_color(self) -> IType_color
+  - def create_immediate_sized_array(self, element_type: IType, size: int) -> IType_array
+  - def create_deferred_sized_array(self, element_type: IType, size: str) -> IType_array
+  - def create_struct(self, symbol: str) -> IType_structure
+  - def create_texture(self, shape: IType_texture.Shape) -> IType_texture
+  - def create_light_profile(self) -> IType_light_profile
+  - def create_bsdf_measurement(self) -> IType_bsdf_measurement
+  - def create_bsdf(self) -> IType_bsdf
+  - def create_hair_bsdf(self) -> IType_hair_bsdf
+  - def create_edf(self) -> IType_edf
+  - def create_vdf(self) -> IType_vdf
+  - def create_type_list(self) -> IType_list
+  - def get_predefined_enum(self, id: IType_enumeration.Predefined_id) -> IType_enumeration
+  - def get_predefined_struct(self, id: IType_structure.Predefined_id) -> IType_structure
+  - def create_from_mdl_type_name(self, name: str) -> IType
+  - def is_compatible(self, lhs: IType, rhs: IType) -> int
+  - def from_same_struct_category(self, lhs: IType, rhs: IType) -> int
+  - def get_mdl_module_name(self, type: IType) -> IString
+  - def get_mdl_type_name(self, type: IType) -> IString
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_float(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_hair_bsdf(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_int(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_light_profile(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_list(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_size(self) -> int
+  - def get_index(self, name: str) -> int
+  - def get_name(self, index: int) -> str
+  - def get_type(self, *args) -> IType
+  - def set_type(self, *args) -> int
+  - def add_type(self, name: str, type: IType) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_matrix(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_element_type(self) -> IType_vector
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_component_type(self, index: int) -> IType
+  - def get_size(self) -> int
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_reference(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_resource(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_string(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_structure(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Predefined_id(Enum)
+    - SID_USER: Unknown
+    - SID_MATERIAL_EMISSION: Unknown
+    - SID_MATERIAL_SURFACE: Unknown
+    - SID_MATERIAL_VOLUME: Unknown
+    - SID_MATERIAL_GEOMETRY: Unknown
+    - SID_MATERIAL: Unknown
+    - SID_FORCE_32_BIT: Unknown
+  - def get_symbol(self) -> str
+  - def get_field_type(self, index: int) -> IType
+  - def get_field_name(self, index: int) -> str
+  - def find_field(self, name: str) -> int
+  - def get_predefined_id(self) -> IType_structure.Predefined_id
+  - def get_annotations(self) -> IAnnotation_block
+  - def get_field_annotations(self, index: int) -> IAnnotation_block
+  - def get_struct_category(self) -> IStruct_category
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_component_type(self, index: int) -> IType
+  - def get_size(self) -> int
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_texture(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Shape(Enum)
+    - TS_2D: Unknown
+    - TS_3D: Unknown
+    - TS_CUBE: Unknown
+    - TS_PTEX: Unknown
+    - TS_BSDF_DATA: Unknown
+    - TS_FORCE_32_BIT: Unknown
+  - def get_shape(self) -> IType_texture.Shape
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_vdf(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IType_vector(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_element_type(self) -> IType_atomic
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_component_type(self, index: int) -> IType
+  - def get_size(self) -> int
+  - def get_kind(self) -> IType.Kind
+  - def get_all_type_modifiers(self) -> int
+  - def skip_all_type_aliases(self) -> IType
+  - def is_declarative(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IValue(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - class Kind(Enum)
+    - VK_BOOL: Unknown
+    - VK_INT: Unknown
+    - VK_ENUM: Unknown
+    - VK_FLOAT: Unknown
+    - VK_DOUBLE: Unknown
+    - VK_STRING: Unknown
+    - VK_VECTOR: Unknown
+    - VK_MATRIX: Unknown
+    - VK_COLOR: Unknown
+    - VK_ARRAY: Unknown
+    - VK_STRUCT: Unknown
+    - VK_INVALID_DF: Unknown
+    - VK_TEXTURE: Unknown
+    - VK_LIGHT_PROFILE: Unknown
+    - VK_BSDF_MEASUREMENT: Unknown
+    - VK_FORCE_32_BIT: Unknown
+  - def get_kind(self) -> IValue.Kind
+  - def get_type(self) -> IType
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IValue_array(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_array
+  - def set_size(self, size: int) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_size(self) -> int
+  - def get_value(self, *args) -> IValue
+  - def set_value(self, index: int, value: IValue) -> int
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_atomic(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_atomic
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_bool(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_bool
+  - def get_value(self) -> bool
+  - def set_value(self, value: bool)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_bsdf_measurement(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_bsdf_measurement
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_value(self) -> str
+  - def set_value(self, value: str) -> int
+  - def get_file_path(self) -> str
+  - def get_owner_module(self) -> str
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_color(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_color
+  - def get_value(self, *args) -> IValue_float
+  - def set_value(self, *args) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_size(self) -> int
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_compound(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_compound
+  - def get_size(self) -> int
+  - def get_value(self, *args) -> IValue
+  - def set_value(self, index: int, value: IValue) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_double(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_double
+  - def get_value(self) -> float
+  - def set_value(self, value: float)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_enumeration(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_enumeration
+  - def get_value(self) -> int
+  - def get_index(self) -> int
+  - def set_value(self, value: int) -> int
+  - def set_index(self, index: int) -> int
+  - def get_name(self) -> str
+  - def set_name(self, name: str) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_factory(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type_factory(self) -> IType_factory
+  - def create_bool(self, value: bool = False) -> IValue_bool
+  - def create_int(self, value: int = 0) -> IValue_int
+  - def create_enum(self, type: IType_enumeration, index: int = 0) -> IValue_enumeration
+  - def create_float(self, value: float = 0.0) -> IValue_float
+  - def create_double(self, value: float = 0.0) -> IValue_double
+  - def create_string(self, *args) -> IValue_string
+  - def create_vector(self, type: IType_vector) -> IValue_vector
+  - def create_matrix(self, type: IType_matrix) -> IValue_matrix
+  - def create_color(self, red: float = 0.0, green: float = 0.0, blue: float = 0.0) -> IValue_color
+  - def create_array(self, type: IType_array) -> IValue_array
+  - def create_struct(self, type: IType_structure) -> IValue_structure
+  - def create_texture(self, type: IType_texture, value: str) -> IValue_texture
+  - def create_light_profile(self, value: str) -> IValue_light_profile
+  - def create_bsdf_measurement(self, value: str) -> IValue_bsdf_measurement
+  - def create_invalid_df(self, type: IType_reference) -> IValue_invalid_df
+  - def create(self, *args) -> IValue
+  - def create_value_list(self) -> IValue_list
+  - def clone(self, *args) -> IValue_list
+  - def compare(self, *args) -> int
+  - def dump(self, *args) -> IString
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IValue_float(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_float
+  - def get_value(self) -> float
+  - def set_value(self, value: float)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_int(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_int
+  - def get_value(self) -> int
+  - def set_value(self, value: int)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_invalid_df(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_reference
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_light_profile(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_light_profile
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_value(self) -> str
+  - def set_value(self, value: str) -> int
+  - def get_file_path(self) -> str
+  - def get_owner_module(self) -> str
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_list(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_size(self) -> int
+  - def get_index(self, name: str) -> int
+  - def get_name(self, index: int) -> str
+  - def get_value(self, *args) -> IValue
+  - def set_value(self, *args) -> int
+  - def add_value(self, name: str, value: IValue) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IValue_matrix(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_matrix
+  - def get_value(self, *args) -> IValue_vector
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_size(self) -> int
+  - def set_value(self, index: int, value: IValue) -> int
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_resource(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_resource
+  - def get_value(self) -> str
+  - def set_value(self, value: str) -> int
+  - def get_file_path(self) -> str
+  - def get_owner_module(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_string(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_string
+  - def get_value(self) -> str
+  - def set_value(self, value: str)
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_string_localized(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_original_value(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_type(self) -> IType_string
+  - def get_value(self) -> str
+  - def set_value(self, value: str)
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_structure(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_field_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_structure
+  - def get_field(self, *args) -> IValue
+  - def set_field(self, name: str, value: IValue) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_size(self) -> int
+  - def get_value(self, *args) -> IValue
+  - def set_value(self, index: int, value: IValue) -> int
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_texture(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_type(self) -> IType_texture
+  - def get_gamma(self) -> float
+  - def get_selector(self) -> str
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_value(self) -> str
+  - def set_value(self, value: str) -> int
+  - def get_file_path(self) -> str
+  - def get_owner_module(self) -> str
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IValue_vector(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_value_as(self, type, *args) -> typing.Any
+  - def get_type(self) -> IType_vector
+  - def get_value(self, *args) -> IValue_atomic
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_size(self) -> int
+  - def set_value(self, index: int, value: IValue) -> int
+  - def get_kind(self) -> IValue.Kind
+  - def get_iid(self) -> Uuid
+
+- class IMdl_module_builder(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def add_annotation(self, name: str, parameters: IType_list, defaults: IExpression_list, parameter_annotations: IAnnotation_list, annotations: IAnnotation_block, is_exported: bool, context: IMdl_execution_context) -> int
+  - def add_struct_category(self, name: str, annotations: IAnnotation_block, is_exported: bool, context: IMdl_execution_context) -> int
+  - def add_enum_type(self, name: str, enumerators: IExpression_list, enumerator_annotations: IAnnotation_list, annotations: IAnnotation_block, is_exported: bool, context: IMdl_execution_context) -> int
+  - def add_constant(self, name: str, expr: IExpression, annotations: IAnnotation_block, is_exported: bool, context: IMdl_execution_context) -> int
+  - def set_module_annotations(self, annotations: IAnnotation_block, context: IMdl_execution_context) -> int
+  - def remove_entity(self, name: str, index: int, context: IMdl_execution_context) -> int
+  - def clear_module(self, context: IMdl_execution_context) -> int
+  - def analyze_uniform(self, root_expr: IExpression, root_expr_uniform: bool, context: IMdl_execution_context) -> IArray
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+  - def add_function(self, name: str, body: IExpression, *args, **kwargs) -> int
+  - def add_struct_type(self, name: str, fields: IType_list, field_defaults: IExpression_list, field_annotations: IAnnotation_list, annotations: IAnnotation_block, is_exported: bool, *args, **kwargs) -> int
+  - def add_variant(self, name: str, prototype_name: str, defaults: IExpression_list, annotations: IAnnotation_block, return_annotations: IAnnotation_block, is_exported: bool, *args, **kwargs) -> int
+
+- class IMdl_module_transformer(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def upgrade_mdl_version(self, version: Mdl_version, context: IMdl_execution_context) -> int
+  - def use_absolute_import_declarations(self, include_filter: str, exclude_filter: str, context: IMdl_execution_context) -> int
+  - def use_relative_import_declarations(self, include_filter: str, exclude_filter: str, context: IMdl_execution_context) -> int
+  - def use_absolute_resource_file_paths(self, include_filter: str, exclude_filter: str, context: IMdl_execution_context) -> int
+  - def use_relative_resource_file_paths(self, include_filter: str, exclude_filter: str, context: IMdl_execution_context) -> int
+  - def inline_imported_modules(self, include_filter: str, exclude_filter: str, omit_anno_origin: bool, context: IMdl_execution_context) -> int
+  - def export_module(self, filename: str, context: IMdl_execution_context) -> int
+  - def export_module_to_string(self, exported_module: IString, context: IMdl_execution_context) -> int
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IStream_position(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def is_valid(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IReader_writer_base(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def get_error_number(self) -> int
+  - def get_error_message(self) -> str
+  - def eof(self) -> bool
+  - def get_file_descriptor(self) -> int
+  - def supports_recorded_access(self) -> bool
+  - def tell_position(self) -> IStream_position
+  - def seek_position(self, stream_position: IStream_position) -> bool
+  - def rewind(self) -> bool
+  - def supports_absolute_access(self) -> bool
+  - def tell_absolute(self) -> int
+  - def seek_absolute(self, pos: int) -> bool
+  - def get_file_size(self) -> int
+  - def seek_end(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IReader(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def readline(self, size: int) -> str
+  - def supports_lookahead(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_error_number(self) -> int
+  - def get_error_message(self) -> str
+  - def eof(self) -> bool
+  - def get_file_descriptor(self) -> int
+  - def supports_recorded_access(self) -> bool
+  - def tell_position(self) -> IStream_position
+  - def seek_position(self, stream_position: IStream_position) -> bool
+  - def rewind(self) -> bool
+  - def supports_absolute_access(self) -> bool
+  - def tell_absolute(self) -> int
+  - def seek_absolute(self, pos: int) -> bool
+  - def get_file_size(self) -> int
+  - def seek_end(self) -> bool
+  - def get_iid(self) -> Uuid
+
+- class IWriter(object)
+  - thisown: Unknown
+  - def __init__(self, *args)
+  - def is_valid_interface(self) -> bool
+  - def release(self)
+  - static def IID() -> Uuid
+  - def get_interface(self, type)
+  - def writeline(self, str: str) -> bool
+  - def flush(self) -> bool
+  - def compare_iid(self, iid: Uuid) -> bool
+  - def get_error_number(self) -> int
+  - def get_error_message(self) -> str
+  - def eof(self) -> bool
+  - def get_file_descriptor(self) -> int
+  - def supports_recorded_access(self) -> bool
+  - def tell_position(self) -> IStream_position
+  - def seek_position(self, stream_position: IStream_position) -> bool
+  - def rewind(self) -> bool
+  - def supports_absolute_access(self) -> bool
+  - def tell_absolute(self) -> int
+  - def seek_absolute(self, pos: int) -> bool
+  - def get_file_size(self) -> int
+  - def seek_end(self) -> bool
+  - def get_iid(self) -> Uuid
+
+## Functions
+
+- def attach_ineuray(ptr_as_uint64: int) -> INeuray
+- def attach_itransaction(ptr_as_uint64: int) -> ITransaction
+- def load_and_get_ineuray(arg1: str) -> INeuray
+- def load_plugin(arg1: INeuray, arg2: str) -> bool
+- def unload() -> int
+
+## Variables
+
+- STANDALONE_SUPPORT_ENABLED: Unknown
+- P: Unknown
+- T: Unknown
+- MI_NEURAYLIB_API_VERSION: Unknown
+- MI_NEURAYLIB_VERSION_MAJOR: Unknown
+- MI_NEURAYLIB_VERSION_MINOR: Unknown
+- MI_NEURAYLIB_VERSION_QUALIFIER: Unknown
+- MI_NEURAYLIB_PRODUCT_VERSION_STRING: Unknown
+- MI_NEURAYLIB_PLUGIN_TYPE: Unknown
+
+## Other
+
+- Enum: unknown
+- warnings: builtin module
+- gc: builtin module
+- sys: builtin module
+- ctypes: builtin module
+- typing: builtin module
+
+# Public API for module omni.mdl.extensions:
+
+## Classes
+
+- class MaterialGraphEditor
+  - registered_nodes: list[tuple[str, str]]
+  - def is_available(self) -> bool
+  - def register_node(self, sourceAsset: str, subIdentifier: str, category: str = '') -> bool
+  - def deregister_node(self, sourceAsset: str, subIdentifier: str) -> bool
+  - def deregister_nodes(self)
+  - async def reload_node_list(self)
+
+## Functions
+
+- def is_material_graph_editor_available(featureCustomNode: bool = True) -> bool
+
+# Public API for module omni.mdl.pymdl:
+
+## Classes
+
+- class Type(object)
+  - def __init__(self, itype: pymdlsdk.IType)
+
+- class Argument(object)
+  - def __init__(self, type: Type, annotations: tuple() = tuple())
+
+- class ArgumentConstant(Argument)
+  - def __init__(self, ivalue: pymdlsdk.IValue, annotations: tuple() = tuple())
+
+- class ArgumentCall(Argument)
+  - def __init__(self, iexpression: pymdlsdk.IExpression_call, annotations = tuple())
+
+- class Annotation(object)
+  - def __init__(self, iannotation: pymdlsdk.IAnnotation)
+  - [property] def name(self)
+  - [property] def moduleDbName(self) -> str
+  - [property] def simpleName(self) -> str
+  - [property] def parameterTypeNames(self) -> List[str]
+  - [property] def arguments(self) -> Dict[str, Argument]
+
+- class FunctionCall(object)
+  - def __init__(self, func: pymdlsdk.IFunction_call, dbName: str)
+
+- class FunctionDefinition(object)
+  - def __init__(self, func: pymdlsdk.IFunction_definition, dbName: str)
+
+- class Module(object)
+  - def __init__(self, transaction: pymdlsdk.ITransaction, module: pymdlsdk.IModule, dbName: str)
+
+## Functions
+
+- def DowncastIType(itype: pymdlsdk.IType) -> pymdlsdk.IType
+- def DowncastIExpression(iexpression: pymdlsdk.IExpression) -> pymdlsdk.IExpression
+- def DowncastIValue(ivalue: pymdlsdk.IValue) -> pymdlsdk.IValue
+- def IValueToPyValues(ivalue: pymdlsdk.IValue)
+- def AnnotationBlock(iannotation_block: pymdlsdk.IAnnotation_block) -> Tuple[Annotation, Ellipsis]

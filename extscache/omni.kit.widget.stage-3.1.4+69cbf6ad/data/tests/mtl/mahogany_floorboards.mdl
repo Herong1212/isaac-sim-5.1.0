@@ -1,0 +1,174 @@
+/******************************************************************************
+ *     Copyright 2018 NVIDIA Corporation. All rights reserved.
+ ******************************************************************************
+ 
+Permission is hereby granted by NVIDIA Corporation ("NVIDIA"), free of charge,
+to any person obtaining a copy of the sample definition code that uses our 
+Material Definition Language (the "MDL Materials"), to reproduce and distribute
+the MDL Materials, including without limitation the rights to use, copy, merge,
+publish, distribute, and sell modified and unmodified copies of the MDL 
+Materials, and to permit persons to whom the MDL Materials is furnished to do
+so, in all cases solely for use with NVIDIA's Material Definition Language,
+subject to the following further conditions:
+
+1. The above copyright notices, this list of conditions, and the disclaimer
+that follows shall be retained in all copies of one or more of the MDL
+Materials, including in any software with which the MDL Materials are bundled,
+redistributed, and/or sold, and included either as stand-alone text files,
+human-readable headers or in the appropriate machine-readable metadata fields
+within text or binary files as long as those fields can be easily viewed by the
+user, as applicable.
+2. The name of NVIDIA shall not be used to promote, endorse or advertise any 
+Modified Version without specific prior written permission, except a) to comply
+ with the notice requirements otherwise contained herein; or b) to acknowledge
+the contribution(s) of NVIDIA.
+
+THE MDL MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT,
+TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR 
+ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, 
+INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF 
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE
+THE MDL MATERIALS OR FROM OTHER DEALINGS IN THE MDL MATERIALS.
+*/
+ 
+mdl 1.5;
+import ::df::*;
+import ::state::*;
+import ::base::*;
+import ::tex::*;
+import ::anno::*;
+
+export material mahogany_floorboards(
+    uniform texture_2d diffuse_texture = texture_2d("")
+    [[ 
+        anno::display_name("Wood color texture"),
+        anno::description("Texture defining the color of the wood")
+    ]],
+    uniform texture_2d bump_texture = texture_2d("")
+    [[ 
+        anno::display_name("Bump texture"),
+        anno::description("Greyscale texture for bump mapping")
+    ]],
+    uniform texture_2d reflect_texture = texture_2d("")
+    [[ 
+        anno::display_name("Reflectivity texture"),
+        anno::description("Texture defining the reflectivity of the wood")
+    ]],
+    uniform float2 texture_tiling = float2(1.)
+    [[ 
+        anno::display_name("Texture tiling"),
+        anno::description("Defines how often to repeat the texture")
+    ]],
+    uniform float base_bump_amount = 1.
+    [[ 
+        anno::display_name("Wood bump scale"),
+        anno::description("Scales the bumpiness of the wood base")
+    ]],
+    float coat_roughness = .2
+    [[ 
+        anno::display_name("Coat roughness"),
+        anno::hard_range(0.0, 1.0),
+        anno::description("Roughness of the coat")
+    ]],
+    uniform float glossy_weight = 1.
+    [[ 
+        anno::display_name("Overall reflectivity"),
+        anno::hard_range(0.0, 1.0),
+        anno::description("Scales the reflectivity of the coating")
+    ]],
+    uniform float material_ior = 1.5
+    [[ 
+        anno::display_name("Coating ior"),
+        anno::soft_range(1.0, 4.0),
+        anno::description("Describes the directional dependence of the reflection."
+            " Values around 1.5 are realistic, higher values will increase reflectivity for"
+            " surfaces facing the observer")
+    ]]
+) [[ 
+    anno::copyright_notice (
+    "Permission is hereby granted by NVIDIA Corporation (\"NVIDIA\"), free of charge, "
+    "to any person obtaining a copy of the sample definition code that uses our "
+    "Material Definition Language (the \"MDL Materials\"), to reproduce and distribute "
+    "the MDL Materials, including without limitation the rights to use, copy, merge, "
+    "publish, distribute, and sell modified and unmodified copies of the MDL  "
+    "Materials, and to permit persons to whom the MDL Materials is furnished to do "
+    "so, in all cases solely for use with NVIDIA's Material Definition Language, "
+    "subject to the following further conditions: "
+    "\n"
+    "1. The above copyright notices, this list of conditions, and the disclaimer "
+    "that follows shall be retained in all copies of one or more of the MDL "
+    "Materials, including in any software with which the MDL Materials are bundled, "
+    "redistributed, and/or sold, and included either as stand-alone text files, "
+    "human-readable headers or in the appropriate machine-readable metadata fields "
+    "within text or binary files as long as those fields can be easily viewed by the "
+    "user, as applicable. "
+    "2. The name of NVIDIA shall not be used to promote, endorse or advertise any "
+    "Modified Version without specific prior written permission, except a) to comply "
+    "with the notice requirements otherwise contained herein; or b) to acknowledge "
+    "the contribution(s) of NVIDIA. "
+    "\n"
+    "THE MDL MATERIALS ARE PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+    "OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, "
+    "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, "
+    "TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL NVIDIA CORPORATION BE LIABLE FOR "
+    "ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, "
+    "INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF "
+    "CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE "
+    "THE MDL MATERIALS OR FROM OTHER DEALINGS IN THE MDL MATERIALS."
+    ),
+    anno::author("NVIDIA Corporation"),
+    anno::display_name("Mahogany floorboards"),
+    anno::description("Mahogany floorboards with a semi glossy finish")
+]] = let 
+{
+    base::texture_coordinate_info coordinate = base::transform_coordinate(
+        transform: base::rotation_translation_scale(float3(0.0),float3(0.0),float3(texture_tiling.x,texture_tiling.y,1))
+    );
+
+    base::texture_return reflectivity_map = base::file_texture(
+        texture: reflect_texture,
+        mono_source: base::mono_average,
+        color_scale: color(glossy_weight),
+        uvw: coordinate
+    );
+
+    bsdf coat_glossy_bsdf = df::simple_glossy_bsdf(
+        mode: df::scatter_reflect,
+        tint: color(1.),
+        roughness_u: coat_roughness
+    );
+    
+    float3 base_bump_map = base::file_bump_texture(
+        texture: bump_texture,
+        factor: base_bump_amount,
+        uvw: coordinate
+    );
+   
+    base::texture_return diffuse_map = base::file_texture(
+        texture: diffuse_texture,
+        uvw: coordinate
+    );
+
+    bsdf diffuse_bsdf = df::diffuse_reflection_bsdf(
+        roughness: 0.0,
+        tint: diffuse_map.tint
+    );
+    
+
+} in material(
+    surface: material_surface(
+        scattering: df::fresnel_layer(
+            ior: material_ior,
+            weight: reflectivity_map.mono,
+            layer: coat_glossy_bsdf,
+            normal: base_bump_map,
+            base: df::weighted_layer(
+                weight: float(1.0),
+                layer: diffuse_bsdf,
+                normal: base_bump_map
+            )
+        )
+    )
+);

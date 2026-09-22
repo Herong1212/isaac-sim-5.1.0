@@ -1,0 +1,12 @@
+{
+    "Plugins": [
+        {
+            "Info" : {},
+            "LibraryPath": "../../libusd_usdImagingGL.so",
+            "Name": "usdImagingGL",
+            "ResourcePath": "resources",
+            "Root": "..",
+            "Type": "library"
+        }
+    ]
+}

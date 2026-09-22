@@ -1,0 +1,248 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "0.6.13"
+title = "Synthetic Data Sensors"
+category = "Internal"
+description="An extension for providing python access to the synthetic data sensors, useful helper functions and sensor visualization."
+readme = "docs/README.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+authors = ["NVIDIA"]
+keywords = ["kit", "synthetic", "data", "visualization", "groundtruth", "sensor"]
+changelog="docs/CHANGELOG.md"
+python.import_mode = "ParallelThread"
+support_level = "Sample"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.pip_archive" = {}
+"omni.kit.commands" = {}
+"omni.graph" = {}
+"omni.graph.action_core" = {}
+"omni.graph.image.core" = {}
+"omni.graph.image.nodes" = {}
+"omni.usd" = {}
+"omni.usd.schema.semantics" = {}
+"omni.kit.async_engine" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.menubar.core" = {optional = true}
+
+[[python.module]]
+name = "omni.syntheticdata"
+
+# Watch the .ogn files for hot reloading (only for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+# Only show the API in internal builds since the user should not be accessing it directly
+cpp_api_hidden = true
+python_api_hidden = true
+builds = ["internal"]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/useFabricSceneDelegate=true"
+]
+
+[[test]]
+name="sensors"
+timeout = 1200
+args = [
+    "--vulkan",
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=false",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/hydraEngine/waitIdle=true",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx-transient/post/aa/limitedOps=false",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/rendering/perViewTlas=false",
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.viewport.window",
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*OgnSdOnNewFrame : frames * discarded*",
+    "*Upgrade your driver to latest for this feature*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+     "omni.syntheticdata.tests.helpers.*",
+     "omni.syntheticdata.tests.sensors.*",
+     "omni.syntheticdata.tests.visualize.*"
+]
+pythonTests.exclude = [
+     "omni.syntheticdata.tests.sensors.test_rendervar_buff_host_ptr.*", # sensors-async suite
+     "omni.syntheticdata.tests.sensors.test_bbox3d.TestBBox3D.test_bbox_3d_skinned_mesh",
+]
+
+[[test]]
+name="sensors_usdskel_fabric"
+timeout = 1200
+args = [
+    "--vulkan",
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=false",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/hydraEngine/waitIdle=true",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx-transient/post/aa/limitedOps=false",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/rendering/perViewTlas=false",
+    "--/app/useFabricSceneDelegate=true",
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.viewport.window",
+    "omni.hydra.usdrt_delegate",
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*OgnSdOnNewFrame : frames * discarded*",
+    "*Upgrade your driver to latest for this feature*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+     "omni.syntheticdata.tests.sensors.test_bbox3d.TestBBox3D.test_bbox_3d_skinned_mesh",
+]
+pythonTests.unreliable = [
+    # OMPE-18599: Failing UsdSkel tests (these should ideally pass with and without fabric)
+    "omni.syntheticdata.tests.sensors.test_bbox3d.TestBBox3D.test_bbox_3d_skinned_mesh",
+]
+
+[[test]]
+name="sensors-async"
+timeout = 1200
+args = [
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=false",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/rendering/perViewTlas=false",
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.viewport.window"
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*OgnSdOnNewFrame : frames * discarded*",
+    "*Upgrade your driver to latest for this feature*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+     "omni.syntheticdata.tests.sensors.test_rendervar_buff_host_ptr.*",
+]
+
+[[test]]
+name="pipeline"
+timeout = 1200
+args = [
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=false",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/pathtracing/cached/enabled=false",
+    "--/rtx/pathtracing/lightcache/spatialCache/enabled=false"
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.hydra_texture"
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+    "omni.syntheticdata.tests.pipeline.*"
+]
+pythonTests.exclude = [
+    "omni.syntheticdata.tests.pipeline.test_instance_mapping_update.*", # pipeline-bis suite
+    "omni.syntheticdata.tests.pipeline.test_semantic_filter.*", # pipeline-bis suite
+    "omni.syntheticdata.tests.pipeline.test_rendervar_host_to_disk.*" # pipeline-bis suite
+]
+
+[[test]]
+name="pipeline-bis"
+timeout = 1200
+args = [
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=false",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/pathtracing/cached/enabled=false",
+    "--/rtx/pathtracing/lightcache/spatialCache/enabled=false"
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.hydra_texture",
+    "omni.kit.test_helpers_gfx"
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+    "omni.syntheticdata.tests.pipeline.test_instance_mapping_update.*",
+    "omni.syntheticdata.tests.pipeline.test_semantic_filter.*",
+    "omni.syntheticdata.tests.pipeline.test_rendervar_host_to_disk.*"
+]
+
+[[test]]
+name="pipeline-async"
+timeout = 1200
+args = [
+    "--/app/content/emptyStageOnStart=true",
+    "--/app/asyncRendering=true",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/rtx/post/aa/op=0",
+    "--/rtx-defaults/post/aa/op=0",
+    "--/rtx/raytracing/cached/enabled=false",
+    "--/rtx-transient/hydra/geometrystreaming/syncLoad=true",
+    "--/rtx/raytracing/lightcache/spatialCache/enabled=false",
+    "--/rtx/pathtracing/cached/enabled=false",
+    "--/rtx/pathtracing/lightcache/spatialCache/enabled=false"
+]
+dependencies = [
+    "omni.hydra.rtx",
+    "omni.kit.hydra_texture"
+]
+stdoutFailPatterns.exclude = [
+    "*__OgnSdgInstanceMappingCache__*",
+    "*[rtx.materialdb.plugin] Failed to allocate*"
+]
+pythonTests.include = [
+    "omni.syntheticdata.tests.graph.*"
+]

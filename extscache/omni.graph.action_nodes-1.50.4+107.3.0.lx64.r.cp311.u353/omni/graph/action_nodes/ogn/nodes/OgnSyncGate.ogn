@@ -1,0 +1,38 @@
+{
+    "omni.graph.action.SyncGate": {
+        "version": 2,
+        "description": [
+            "Activate the downstream graphs after all of the input signals have been triggered with the same",
+            "synchronization value. An internal count is maintained that resets whenever a new synchronization value",
+            "is encountered. If the count reaches a number equal to the number of 'Execute In' inputs then the",
+            "'Execute Out' activation signals to the downstream graph that it is ready to be executed."
+        ],
+        "uiName": "Sync Gate",
+        "categories": ["graph:action","flowControl"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "uiName": "Execute In",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "syncValue": {
+                "type": "uint64",
+                "description": "Value against which each of the input signals are checked for synchronization.",
+                "uiName": "Sync"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            },
+            "syncValue": {
+                "type": "uint64",
+                "description": "Current synchronization value, independent of whether the output activation signal has been triggered.",
+                "uiName": "Sync"
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+[package]
+version = "0.0.9"
+authors = ["NVIDIA"]
+title = "Isaac Sim Action and Event Data Generation App Setup"
+description = "Isaac Sim Action and Event Data Generation App Setup"
+readme  = "docs/README.md"
+category = "Setup"
+keywords = ["metrosim", "metropolis", "action and event data generation", "action", "event", "synthetic data", "isaacsim app template"]
+changelog = "docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+repository = ""
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.quicklayout" = {}
+"omni.kit.window.title" = {}
+"omni.metropolis.utils" = { version = "^0.1.8" }
+
+[[python.module]]
+name = "isaacsim.action_and_event_data_generation.setup"
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

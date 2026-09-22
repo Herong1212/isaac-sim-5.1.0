@@ -1,0 +1,133 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (0.05142670073026168, 0.13106613271225473, 1.947674372803074)
+                double3 target = (0, 0, 0)
+            }
+            dictionary Right = {
+                double3 position = (-50000.5, 0, -1.1102341268554028e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329823578980278e-12, 50000.5, 1.1102341268554028e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 0
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Scope "Looks"
+    {
+        def Material "Material"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/Material/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/Material/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/Material/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @./simple_udim_tex.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "test_udim_body"
+                token outputs:out
+            }
+        }
+    }
+
+    def Xform "ROOT"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Xform "Mesh"
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Mesh "meshes_0_"
+            {
+                float3[] extent = [(-0.5, -0.5, 0), (0.5, 0.5, 0)]
+                int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                int[] faceVertexIndices = [0, 1, 2, 1, 3, 2, 1, 4, 3, 4, 5, 3, 4, 6, 5, 6, 7, 5, 6, 8, 7, 8, 9, 7, 2, 3, 10, 3, 11, 10, 3, 5, 11, 5, 12, 11, 5, 7, 12, 7, 13, 12, 7, 9, 13, 9, 14, 13, 10, 11, 15, 11, 16, 15, 11, 12, 16, 12, 17, 16, 12, 13, 17, 13, 18, 17, 13, 14, 18, 14, 19, 18, 15, 16, 20, 16, 21, 20, 16, 17, 21, 17, 22, 21, 17, 18, 22, 18, 23, 22, 18, 19, 23, 19, 24, 23]
+                rel material:binding = </World/Looks/Material> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                    interpolation = "faceVarying"
+                )
+                point3f[] points = [(0.5, -0.5, 0), (0.5, -0.25, 0), (0.25, -0.5, 0), (0.25, -0.25, 0), (0.5, -5.551115e-17, 0), (0.25, -2.7755576e-17, 0), (0.5, 0.25, 0), (0.25, 0.25, 0), (0.5, 0.5, 0), (0.25, 0.5, 0), (-5.551115e-17, -0.5, 0), (-2.7755576e-17, -0.25, 0), (0, 0, 0), (2.7755576e-17, 0.25, 0), (5.551115e-17, 0.5, 0), (-0.25, -0.5, 0), (-0.25, -0.25, 0), (-0.25, 2.7755576e-17, 0), (-0.25, 0.25, 0), (-0.25, 0.5, 0), (-0.5, -0.5, 0), (-0.5, -0.25, 0), (-0.5, 5.551115e-17, 0), (-0.5, 0.25, 0), (-0.5, 0.5, 0)]
+                float2[] primvars:st = [(4, 0), (4, 1), (3, 0), (4, 1), (3, 1), (3, 0), (4, 1), (4, 2), (3, 1), (4, 2), (3, 2), (3, 1), (4, 2), (4, 3), (3, 2), (4, 3), (3, 3), (3, 2), (4, 3), (4, 4), (3, 3), (4, 4), (3, 4), (3, 3), (3, 0), (3, 1), (2, 0), (3, 1), (2, 1), (2, 0), (3, 1), (3, 2), (2, 1), (3, 2), (2, 2), (2, 1), (3, 2), (3, 3), (2, 2), (3, 3), (2, 3), (2, 2), (3, 3), (3, 4), (2, 3), (3, 4), (2, 4), (2, 3), (2, 0), (2, 1), (1, 0), (2, 1), (1, 1), (1, 0), (2, 1), (2, 2), (1, 1), (2, 2), (1, 2), (1, 1), (2, 2), (2, 3), (1, 2), (2, 3), (1, 3), (1, 2), (2, 3), (2, 4), (1, 3), (2, 4), (1, 4), (1, 3), (1, 0), (1, 1), (0, 0), (1, 1), (0, 1), (0, 0), (1, 1), (1, 2), (0, 1), (1, 2), (0, 2), (0, 1), (1, 2), (1, 3), (0, 2), (1, 3), (0, 3), (0, 2), (1, 3), (1, 4), (0, 3), (1, 4), (0, 4), (0, 3)] (
+                    interpolation = "faceVarying"
+                )
+                uniform token subdivisionScheme = "none"
+            }
+        }
+
+        def Xform "Camera"
+        {
+            quatf xformOp:orient = (0.99783236, -0.058573272, -0.029943956, -0.0017577255)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (-0.274203360080719, 0.3153732717037201, 2.745677947998047)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Camera "Camera"
+            {
+                float2 clippingRange = (0.01, 100)
+                float focalLength = 22.470964
+                float horizontalAperture = 20.955
+                token projection = "perspective"
+                float verticalAperture = 20.955
+                quatf xformOp:orient = (1, -2.2355322e-10, -9.734001e-10, -1.03920275e-11)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (-2.775557561562892e-17, 1.144917494144693e-16, 4.440892098500627e-16)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+    }
+
+    def DomeLight "DomeLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float intensity = 1000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        token texture:format = "latlong"
+        double3 xformOp:rotateXYZ = (270, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}

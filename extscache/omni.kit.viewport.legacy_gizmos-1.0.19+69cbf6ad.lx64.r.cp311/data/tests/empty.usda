@@ -1,0 +1,91 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+    }
+    defaultPrim = "World"
+    metersPerUnit = 0.01
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+}
+
+def Camera "OmniverseKit_Persp" (
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (1, 10000000)
+    float focalLength = 30
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 20.955
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -866.0254037844386)
+    token projection = "perspective"
+    float verticalAperture = 15.2908
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateXYZ = (-35, 45.00000000000003, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (500, 500, 500)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def Camera "OmniverseKit_Front"
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 10000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -50000)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:translate = (0, 0, 50000)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+}
+
+def Camera "OmniverseKit_Top"
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 10000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -50000)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateXYZ = (90, 0, -180)
+    double3 xformOp:translate = (0, 50000, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+}
+
+def Camera "OmniverseKit_Right"
+{
+    float4[] clippingPlanes = []
+    float2 clippingRange = (20000, 10000000)
+    float focalLength = 50
+    float focusDistance = 0
+    float fStop = 0
+    float horizontalAperture = 10000
+    float horizontalApertureOffset = 0
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -50000)
+    token projection = "orthographic"
+    float verticalAperture = 3648.4849
+    float verticalApertureOffset = 0
+    double3 xformOp:rotateXYZ = (0, -90, -0)
+    double3 xformOp:translate = (-50000, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+}

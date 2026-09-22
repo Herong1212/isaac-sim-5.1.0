@@ -1,0 +1,67 @@
+{
+    "FlowVoxelizePoints": {
+        "version": 1,
+        "categories": "FlowUsd",
+        "categoryDefinitions": "FlowNodeCategories.json",
+        "description": "Voxelize points to NanoVDB.",
+        "metadata": {
+            "uiName": "Flow Voxelize Points"
+        },
+        "inputs": {
+            "points": {
+                "type": "pointf[3][]",
+                "description": "Point positions",
+                "uiName": "Points"
+            },
+			"colors": {
+                "type": "colorf[3][]",
+                "description": "Point colors",
+                "uiName": "Colors"
+            },
+			"localToWorld": {
+                "type": "matrixd[4]",
+                "description": "Local to World Transform",
+                "uiName": "Local To World"
+            },
+			"cellSize": {
+                "type": "float",
+                "description": "Voxel size",
+                "uiName": "Cell Size",
+				"default": 0.1
+            },
+			"maxBlocks": {
+                "type": "uint",
+                "description": "Maximum Flow Block used during voxelization",
+                "uiName": "Max Flow Blocks",
+				"default": 16384
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Executes when values are updated"
+            },
+			"redNanoVdb": {
+                "type": "uint[]",
+                "description": "NanoVDB with red channel",
+                "uiName": "Red NanoVDB"
+            },
+			"greenNanoVdb": {
+                "type": "uint[]",
+                "description": "NanoVDB with green channel",
+                "uiName": "Green NanoVDB"
+            },
+			"blueNanoVdb": {
+                "type": "uint[]",
+                "description": "NanoVDB with blue channel",
+                "uiName": "Blue NanoVDB"
+            },
+			"alphaNanoVdb": {
+                "type": "uint[]",
+                "description": "NanoVDB with alpha channel",
+                "uiName": "Alpha NanoVDB"
+            }
+        },
+        "exclude": ["tests"]
+    }
+}

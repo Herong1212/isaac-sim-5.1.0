@@ -1,0 +1,67 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnPhysXSceneQuerySweepPrimAll.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_physx_graph_SceneQuerySweepPrimAll" (
+        docs="""Outputs the rigid bodies and colliders that are hit by the input sweep."""
+    )
+    {
+        token node:type = "omni.physx.graph.SceneQuerySweepPrimAll"
+        int node:typeVersion = 2
+
+        # 6 attributes
+        custom bool inputs:bothSides = false (
+            docs="""Sets whether backfaces of colliders should be included in checks."""
+        )
+        custom token inputs:direction (
+            docs="""Ray direction vector"""
+        )
+        custom uint inputs:execIn (
+            docs="""Input execution"""
+        )
+        custom rel inputs:prim (
+            docs="""Prim to check against. This must be a geometric type (UsdGeom)."""
+        )
+        custom bool inputs:sortByDistance = false (
+            docs="""Enable to sort outputs by distance."""
+        )
+        custom token inputs:sweepRange (
+            docs="""Sweep distance. Use negative for infinite. If omitted, infinity is used."""
+        )
+
+        # 8 attributes
+        custom rel outputs:bodyPrims (
+            docs="""A list of the associated body prims for the collider prims that are hit by the sweep."""
+        )
+        custom rel outputs:colliderPrims (
+            docs="""A list of collider prims that are hit by the sweep."""
+        )
+        custom float[] outputs:distances (
+            docs="""A list of distances from the origin to the points hit."""
+        )
+        custom uint outputs:execOut (
+            docs="""Output execution"""
+        )
+        custom int[] outputs:faceIndexes (
+            docs="""A list of the face indexes of the points hit."""
+        )
+        custom rel outputs:materialPrims (
+            docs="""A list of physics material Prims at the points hit."""
+        )
+        custom normal3f[] outputs:normals (
+            docs="""A list of surface normals of the points hit."""
+        )
+        custom point3f[] outputs:positions (
+            docs="""A list of positions of the points hit."""
+        )
+    }
+}

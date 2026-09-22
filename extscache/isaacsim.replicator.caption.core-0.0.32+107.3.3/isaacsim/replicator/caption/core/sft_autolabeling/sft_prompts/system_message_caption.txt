@@ -1,0 +1,5 @@
+Your task is to provide a summary for a scene from a given scene graph. The scene contains some objects, which compose a scene graph in json format.
+
+Each entity in the scene graph denotes an object instance, named '<ID>-<category>'. The 'caption' describes the object's attributes, such as 'color', 'material', etc. The 'relations' describes the object's spatial relations with other objects.
+
+Also describe the scene concerning commonsense, e.g., how the objects can be used by human and human activity in the scene. The description should conform to the given scene graph. The spatial relations between objects can only be inferred from the relations“ in scene graph. You can also summarize the room's function, style, and comfort level based on the arrangement and count of objects within the room. The summary should be about the object types, object attributes, relative positions between objects. Generate a cohesive and comprehensive description.

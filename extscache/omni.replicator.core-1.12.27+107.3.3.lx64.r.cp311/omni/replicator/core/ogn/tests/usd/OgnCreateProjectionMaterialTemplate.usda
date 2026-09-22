@@ -1,0 +1,49 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCreateProjectionMaterial.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnCreateProjectionMaterial" (
+        docs="""This node prepares and/or projects a material on specified prims."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnCreateProjectionMaterial"
+        int node:typeVersion = 1
+
+        # 6 attributes
+        custom uint inputs:execIn (
+            docs="""exec"""
+        )
+        custom rel inputs:materialPrim (
+            docs="""Material to apply to each offset mesh."""
+        )
+        custom float inputs:offsetScale = 0.01 (
+            docs="""Scale factor when extruding target_prim points."""
+        )
+        custom rel inputs:prims (
+            docs="""Prim to project on to."""
+        )
+        custom rel inputs:proxyPrim (
+            docs="""Prim to project from."""
+        )
+        custom token inputs:semantics = "" (
+            docs="""Semantics to apply to each projection."""
+        )
+
+        # 2 attributes
+        custom uint outputs:execOut (
+            docs="""exec"""
+        )
+        custom rel outputs:prims (
+            docs="""Prim path of the created projection."""
+        )
+    }
+}

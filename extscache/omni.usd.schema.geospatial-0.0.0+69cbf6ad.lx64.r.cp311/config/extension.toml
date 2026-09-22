@@ -1,0 +1,27 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD Geospatial schema"
+description = "USD Geospatial schema"
+keywords = ["usd", "schema", "geospatial"]
+support_level = "Core"
+
+[dependencies]
+"omni.usd.libs" = {}
+
+[[python.module]]
+name = "OmniGeospatial"
+
+[[python.module]]
+name = "usd.schema.geospatial"
+
+[[native.library]]
+"filter:os".linux.path = "lib/${lib_prefix}omniGeospatial${lib_ext}"
+"filter:os".windows.path = "bin/${lib_prefix}omniGeospatial${lib_ext}"
+
+[[test]]
+waiver = "USD Schema, tested externally"

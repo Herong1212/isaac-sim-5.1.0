@@ -1,0 +1,76 @@
+{
+    "SetMatrix4Quaternion": {
+        "version": 1,
+        "description": [
+            "DEPRECATED - PLEASE USE SetMatrix4Rotation",
+            "Sets the rotation of the given matrix4d value which represents a linear transformation.",
+            "Does not modify the translation (row 3) of the matrix."
+        ],
+        "uiName": "Set Rotation Quaternion (Legacy)",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "metadata": {"hidden": "true"},
+        "inputs": {
+            "matrix" : {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Matrix",
+                "description": "The matrix to be modified"
+            },
+            "quaternion": {
+                "type": ["quatd[4]", "quatd[4][]"],
+                "uiName": "Quaternion",
+                "description": [
+                    "The quaternion the matrix will apply about the given rotationAxis."
+                ]
+             }
+        },
+        "outputs": {
+            "matrix": {
+                "type": ["matrixd[4]", "matrixd[4][]"],
+                "uiName": "Matrix",
+                "description": "The updated matrix"
+             }
+        },
+        "tests" : [
+            {
+                "inputs": {
+                    "matrix": {"type":"matrixd[4]", "value":[1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                    "quaternion": {"type": "quatd[4]", "value": [0.3826834, 0, 0, 0.9238795]}},
+                "outputs:matrix": {"type":"matrixd[4]", "value":[1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]}
+            },
+            {
+                "inputs": {
+                    "matrix": {"type":"matrixd[4]", "value":[1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1]},
+                    "quaternion": {"type": "quatd[4][]", "value": [[0.3826834, 0, 0, 0.9238795], [0.3826834, 0, 0, 0.9238795]]}},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1]
+                    ]}
+            },
+            {
+                "inputs": {
+                    "matrix": {"type":"matrixd[4][]", "value":[
+                        [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                        [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]
+                    },
+                    "quaternion": {"type": "quatd[4]", "value": [0.3826834, 0, 0, 0.9238795]}},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]
+                    ]}
+            },
+            {
+                "inputs": {
+                    "matrix": {"type":"matrixd[4][]", "value":[
+                        [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 50,0,0,1],
+                        [1.0,0,0,0, 0,1,0,0, 0,0,1,0, 100,0,0,1]]
+                    },
+                    "quaternion": {"type": "quatd[4][]", "value": [[0.3826834, 0, 0, 0.9238795], [0.3826834, 0, 0, 0.9238795]]}},
+                "outputs:matrix": {"type":"matrixd[4][]", "value":[
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 50,0,0,1],
+                    [1.0,0,0,0, 0,0.70711,0.70711,0, 0,-0.70711,0.70711,0, 100,0,0,1]
+                    ]}
+            }
+        ]
+    }
+}

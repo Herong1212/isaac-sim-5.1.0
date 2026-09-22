@@ -1,0 +1,46 @@
+[package]
+title = "Camera Sensor Simulator"
+description = "NVIDIA Camera Sensor Simulation."
+version = "1.0.0"
+authors = ["NVIDIA"]
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors","camera"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.usd" = {}
+"omni.graph.core" = {}
+
+[[native.library]]
+"filter:platform"."linux-x86_64".path = "bin/libnvjpeg.so"
+"filter:platform"."windows-x86_64".path = "bin/nvjpeg64_11.dll"
+
+[[native.library]]
+"filter:platform"."linux-x86_64".path = "bin/libnppc.so"
+"filter:platform"."windows-x86_64".path = "bin/nppc64_11.dll"
+
+[[native.library]]
+"filter:platform"."linux-x86_64".path = "bin/libnppig.so"
+"filter:platform"."windows-x86_64".path = "bin/nppig64_11.dll"
+
+[[native.library]]
+"filter:platform"."linux-x86_64".path = "bin/libnppicc.so"
+"filter:platform"."windows-x86_64".path = "bin/nppicc64_11.dll"
+
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[documentation]
+pages = [
+    "docs/camera_extension.rst",
+    "docs/CHANGELOG.md",
+]

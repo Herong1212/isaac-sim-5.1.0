@@ -1,0 +1,157 @@
+[package]
+version = "107.3.109"
+title = "XR Profile Common"
+description="This is the base extension for a variety of profiles and contains the common pieces"
+readme = "docs/README.md"
+category = "XR"
+keywords = ["XR", "Opt out of nSpect"]
+changelog="docs/CHANGELOG.md"
+
+authors = ["NVIDIA"]
+icon = "data/icon/iconxr.png"
+preview_image = "data/icon/preview.png"
+repository = ""
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[core]
+reloadable = true
+
+[dependencies]
+
+"omni.kit.xr.core" = { version = "=107.3.109" }
+"omni.kit.xr.ui.window.profile" = { version = "=107.3.109" }
+"omni.kit.xr.ui.window.viewport" = { version = "=107.3.109" }
+"omni.kit.xr.advertise" = { version = "=107.3.109" }
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+[[python.module]]
+name = "omni.kit.xr.profile.common"
+
+[[python.module]]
+name = "omni.kit.xr.profile.common.tests"
+
+[settings]
+
+################################################################################
+# Render Settings
+################################################################################
+
+# Performance
+#-------------------------------------------------------------------------------
+
+xr.rendersettings.performance.rtx.reflections.enabled = false
+xr.rendersettings.performance.rtx.caustics.enabled = false
+xr.rendersettings.performance.rtx.restir.enabled = false
+xr.rendersettings.performance.rtx.indirectDiffuse.enabled = false
+xr.rendersettings.performance.rtx.post.dlss.execMode = 0
+xr.rendersettings.performance.rtx.post.dof.enabled = false
+xr.rendersettings.performance.rtx.post.lensFlares.enabled = false
+xr.rendersettings.performance.rtx.post.motionblur.enabled = false
+xr.rendersettings.performance.rtx.post.chromaticAberration.enabled = false
+xr.rendersettings.performance.rtx.post.histogram.enabled = false
+xr.rendersettings.performance.rtx.post.backgroundZeroAlpha.enabled = false
+xr.rendersettings.performance.rtx.post.lensDistortion.enabled = false
+xr.rendersettings.performance.rtx.post.tvNoise.enabled = false
+xr.rendersettings.performance.rtx.directLighting.sampledLighting.autoEnableLightCountThreshold = 5
+xr.rendersettings.performance.rtx.directLighting.sampledLighting.samplesPerPixel = 2
+xr.rendersettings.performance.rtx.reflections.sampledLighting.samplesPerPixel = 2
+xr.rendersettings.performance.rtx.directLighting.sampledLighting.enabled = true
+
+# Balanced
+#-------------------------------------------------------------------------------
+
+xr.rendersettings.balanced.rtx.caustics.enabled = false
+xr.rendersettings.balanced.rtx.restir.enabled = false
+xr.rendersettings.balanced.rtx.indirectDiffuse.enabled = false
+xr.rendersettings.balanced.rtx.post.dlss.execMode = 0
+xr.rendersettings.balanced.rtx.post.dof.enabled = false
+xr.rendersettings.balanced.rtx.post.lensFlares.enabled = false
+xr.rendersettings.balanced.rtx.post.motionblur.enabled = false
+xr.rendersettings.balanced.rtx.post.chromaticAberration.enabled = false
+xr.rendersettings.balanced.rtx.post.histogram.enabled = false
+xr.rendersettings.balanced.rtx.post.backgroundZeroAlpha.enabled = false
+xr.rendersettings.balanced.rtx.post.lensDistortion.enabled = false
+xr.rendersettings.balanced.rtx.post.tvNoise.enabled = false
+xr.rendersettings.balanced.rtx.directLighting.sampledLighting.autoEnableLightCountThreshold = 5
+xr.rendersettings.balanced.rtx.directLighting.sampledLighting.samplesPerPixel = 4
+xr.rendersettings.balanced.rtx.reflections.sampledLighting.samplesPerPixel = 4
+xr.rendersettings.balanced.rtx.directLighting.sampledLighting.enabled = true
+
+# Quality
+#-------------------------------------------------------------------------------
+
+xr.rendersettings.quality.rtx.reflections.enabled = true
+xr.rendersettings.quality.rtx.caustics.enabled = true
+xr.rendersettings.quality.rtx.restir.enabled = true
+xr.rendersettings.quality.rtx.indirectDiffuse.enabled = false
+xr.rendersettings.quality.rtx.post.dlss.execMode = 1
+xr.rendersettings.quality.rtx.post.dof.enabled = false
+xr.rendersettings.quality.rtx.post.lensFlares.enabled = false
+xr.rendersettings.quality.rtx.post.motionblur.enabled = false
+xr.rendersettings.quality.rtx.post.chromaticAberration.enabled = false
+xr.rendersettings.quality.rtx.post.histogram.enabled = false
+xr.rendersettings.quality.rtx.post.backgroundZeroAlpha.enabled = false
+xr.rendersettings.quality.rtx.post.lensDistortion.enabled = false
+xr.rendersettings.quality.rtx.post.tvNoise.enabled = false
+xr.rendersettings.quality.rtx.directLighting.sampledLighting.enabled = true
+
+
+[[test]]
+pythonTests.include = ["omni.kit.xr.tests.*test*"]
+# test_extensions_api_md_is_uptodate is introduced by Kit SDK 106.5.0-master.155047.4ca82eb9
+# exclude it to make it undiscoverable by CI
+pythonTests.exclude = ["*test_extensions_api_md_is_uptodate"]
+
+args = [
+    "--/renderer/multiGpu/enabled=true",
+    "--/app/window/width=800",
+    "--/app/window/height=600",
+    "--/app/renderer/resolution/width=1280",
+    "--/app/renderer/resolution/height=720",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/testMode=1",
+    "--/app/content/emptyStageOnStart=0",
+    "--/persistent=0",
+    "--/xr/persistence/enabled=false",
+    "--reset-user",
+    "--/xr/debug=true",
+    "--/no-assert-dialog=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/app/docks/disabled=true",
+    "--/app/window/hideUi=true",
+    "--/app/viewport/forceHideFps=true",
+    "--/app/viewport/grid/enabled=false",
+    "--/log/channels/omni.usd=error",
+    "--/app/useFabricSceneDelegate=true",
+
+]
+
+timeout = 3600
+retries = 1
+
+stdoutFailPatterns.exclude = [
+    "*Unable to find icon*",
+    "*omni.kit.registry.nucleus.utils.common*Skipping deletion of*",
+    "shaderGroupHandle changed for shader group*",
+    "*IRAY*",
+    "*SBT*",
+    "*neuray*",
+    "*Failed opening shader cache version file*",
+    "*[omni.kit.viewport.menubar.camera.camera_menu_container]*",
+    "*OpenXR-Loader*",
+    "*[carb.imgui.plugin] Unable to load IWindowing!*",
+    "*Used expired prim*"
+]
+
+dependencies = [
+    "omni.kit.xr.system.simulatedxr",
+]
+
+[documentation]
+python_api_hidden = true

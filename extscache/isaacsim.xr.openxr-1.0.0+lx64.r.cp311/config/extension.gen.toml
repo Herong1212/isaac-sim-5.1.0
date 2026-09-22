@@ -1,0 +1,21 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/isaacsim.xr.openxr-1.0.0%2Blx64.r.cp311.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.192098.d04c0f0a.gl"
+        date = 1746678307
+        buildNumber = "5.0.0-alpha.53+develop.20976.b8b235b9.gl"
+        repoName = "isaac-sim"
+        signed = 1

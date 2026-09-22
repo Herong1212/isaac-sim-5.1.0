@@ -1,0 +1,53 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnMoveToTransform.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_MoveToTransform" (
+        docs="""Perform a transformation maneuver, moving a prim to a target transformation given a speed and easing factor. Transformation, Rotation, and Scale from a 4x4 transformation matrix will be applied Note: The Prim must have xform:orient in transform stack in order to interpolate rotations"""
+    )
+    {
+        token node:type = "omni.graph.nodes.MoveToTransform"
+        int node:typeVersion = 2
+
+        # 8 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom float inputs:exponent = 2.0 (
+            docs="""The blend exponent, which is the degree of the ease curve
+             (1 = linear, 2 = quadratic, 3 = cubic, etc). """
+        )
+        custom rel inputs:prim (
+            docs="""The prim to be transformed."""
+        )
+        custom string inputs:primPath (
+            docs="""The source prim to be transformed, used when 'Use Path' is true"""
+        )
+        custom double inputs:speed = 1.0 (
+            docs="""The peak speed of approach (Units / Second)"""
+        )
+        custom uint inputs:stop (
+            docs="""Signal to the graph that this node is ready to stop the maneuver"""
+        )
+        custom matrix4d inputs:target = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""The desired local transform"""
+        )
+        custom bool inputs:usePath = false (
+            docs="""When true, the 'Prim Path' attribute is used, otherwise it will read the connection at the 'Prim' attribute"""
+        )
+
+        # 1 attribute
+        custom uint outputs:finished (
+            docs="""When the maneuver is completed, signal to the graph that execution can continue downstream."""
+        )
+    }
+}

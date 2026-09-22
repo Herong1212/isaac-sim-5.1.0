@@ -1,0 +1,2 @@
+# Actor Simulation and Synthetic Data Generation
+The Isaacsim.Replicator.Agent (IRA) extension is a synthetic data generation tool that simulates human characters and robots in 3D environments to create high-quality training data for computer vision models, with applications in retail, manufacturing, and human-robot collaboration scenarios.

@@ -1,0 +1,41 @@
+{
+    "OgnWritePrimAttribute": {
+        "version": 1,
+        "language": "python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node writes to a specified attribute on specified prims.",
+        "metadata":
+        {
+           "uiName": "Write Prim Attribute"
+        },
+        "inputs": {
+            "prims": {
+                "description": ["Prim(s) to set attribute"],
+                "type": "target"
+            },
+            "attribute": {
+                "description": ["Name of attribute that is to be written"],
+                "type": "string"
+            },
+            "attributeType": {
+                "description": ["Attribute type, optional if attribute already exists on prim"],
+                "type": "string"
+            },
+            "values": {
+                "description": ["Values to be assigned to the attribute"],
+                "type": "any"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

@@ -1,0 +1,128 @@
+{
+    "Atan": {
+        "version": 1,
+        "description": [
+            "Compute the arctangent (in degrees) of a scalar, array of scalars, vector, or array of vectors;",
+            "in the latter three cases the arctangent operator is applied to every single scalar element in the",
+            "corresponding structures."
+        ],
+        "uiName": "Arctangent",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["decimals"],
+                "description": "The scalar(s) or vector(s) to take the arctangent of."
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["decimals"],
+                "description": [
+                    "The original input \"Value\" with the arctangent operator applied to each scalar",
+                    "value, all of which will have values (in degrees) lying in the range [-90, 90].",
+                    "The structure of the result, arrays and tuples, will mirror that of the input."
+                ],
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "double", "value": 1.0},
+                "outputs:value": {"type": "double", "value": 45.0}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 1.0},
+                "outputs:value": {"type": "float", "value": 45.0}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 1.0},
+                "outputs:value": {"type": "half", "value": 45.0}
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [1.0, 1.0]},
+                "outputs:value": {"type": "double[2]", "value": [45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "double[3]", "value": [45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [1.0, 1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "double[4]", "value": [45.0, 45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [1.0, 1.0]},
+                "outputs:value": {"type": "float[2]", "value": [45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "float[3]", "value": [45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [1.0, 1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "float[4]", "value": [45.0, 45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [1.0, 1.0]},
+                "outputs:value": {"type": "half[2]", "value": [45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "half[3]", "value": [45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [1.0, 1.0, 1.0, 1.0]},
+                "outputs:value": {"type": "half[4]", "value": [45.0, 45.0, 45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": [-1.0, 1.0]},
+                "outputs:value": {"type": "double[]", "value": [-45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [-1.0, 1.0]},
+                "outputs:value": {"type": "float[]", "value": [-45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [-1.0, 1.0]},
+                "outputs:value": {"type": "half[]", "value": [-45.0, 45.0]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]", "value": [[-1.0, -1.0]]},
+                "outputs:value": {"type": "double[2][]", "value": [[-45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[-1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "double[3][]", "value": [[-45.0, -45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "double[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value": [[-1.0, -1.0]]},
+                "outputs:value": {"type": "float[2][]", "value": [[-45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[-1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "float[3][]", "value": [[-45.0, -45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "float[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value": [[-1.0, -1.0]]},
+                "outputs:value": {"type": "half[2][]", "value": [[-45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[-1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "half[3][]", "value": [[-45.0, -45.0, -45.0]]}
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[-1.0, -1.0, -1.0, -1.0]]},
+                "outputs:value": {"type": "half[4][]", "value": [[-45.0, -45.0, -45.0, -45.0]]}
+            }
+        ]
+    }
+}

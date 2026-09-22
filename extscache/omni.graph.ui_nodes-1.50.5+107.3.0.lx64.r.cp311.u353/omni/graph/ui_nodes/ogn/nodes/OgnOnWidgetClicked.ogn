@@ -1,0 +1,39 @@
+{
+    "OnWidgetClicked": {
+        "version": 1,
+        "description": [
+            "Event node which fires when a UI widget with the specified identifier is clicked.",
+            "This node should be used in combination with UI creation nodes such as OgnButton."
+        ],
+        "uiName": "On Widget Clicked (BETA)",
+        "language": "Python",
+        "categories": ["internal:test"],
+        "scheduling": "compute-on-request",
+        "exclude": ["tests"],
+        "metadata": {
+            "hidden": true
+        },
+        "inputs": {
+            "widgetIdentifier": {
+                "type": "token",
+                "description": [
+                    "A unique identifier identifying the widget.",
+                    "This should be specified in the UI creation node such as OgnButton."
+                ],
+                "uiName": "Widget Identifier",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "clicked": {
+                "type": "execution",
+                "description": "When the widget is clicked, signal to the graph that execution can continue downstream.",
+                "uiName": "Clicked"
+            }
+        },
+        "state": {
+        }
+    }
+}

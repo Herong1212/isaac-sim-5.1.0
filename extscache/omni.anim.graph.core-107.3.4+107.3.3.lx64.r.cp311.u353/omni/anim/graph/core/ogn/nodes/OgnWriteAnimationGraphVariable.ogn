@@ -1,0 +1,37 @@
+{
+    "omni.anim.graph.WriteAnimationGraphVariable": {
+        "version": 1,
+        "description": ["Writes the variable value to the AnimationGraph applied to the specifed UsdSkelRoot prim."],
+        "uiName": "Write Animation Graph Variable",
+        "categories": { "animation": "Nodes dealing with Animation" },
+        "inputs": {
+           "execIn": {
+                "type": "execution",
+                "description": "Input execution state"
+            },
+            "skelRootPath": {
+                "type": "token",
+                "optional": true,
+                "description": "The prim path of a UsdSkelRoot to which has the AnimationGraph applied and assigned to it. Default behavior: use the graph target."
+            },
+            "graph": {
+                "type": "bundle",
+                "description": "The animation graph to write to that is applied the the character."
+            },
+            "variableName": {
+                "type": "token",
+                "description": "The name of the animation graph variable to get."
+            },
+            "value": {
+                "type": "any",
+                "description": "The variable value that we be written to."
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Output execution"
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "ReadUsdAttributeRange": {
+        "version": 1,
+        "description": [
+            "Given a path to a prim on the current USD stage and the name of an attribute on",
+            " that prim, gets the requested range of that attribute array, at the global timeline value."
+        ],
+        "uiName": "Read USD Attribute Range",
+        "scheduling": [ "usd-read", "threadsafe" ],
+        "exclude": [ "usd" ],
+        "inputs": {
+            "primPath": {
+                "type": "token",
+                "description": "The path of the prim to be modified when 'usePath' is true",
+                "optional": true
+            },
+            "usePath": {
+                "type": "bool",
+                "default": false,
+                "description": "When true, the 'primPath' attribute is used as the path to the prim being read, otherwise it will read the connection at the 'prim' attribute"
+            },
+            "prim": {
+                "type": "bundle",
+                "description": "The prim to be read from when 'usePath' is false",
+                "optional": true
+            },
+            "name": {
+                "type": "token",
+                "description": "The name of the attribute to get on the specified prim",
+                "uiName": "Attribute Name"
+            },
+            "usdTimecode": {
+                "type": "timecode",
+                "default": -1,
+                "description": [ "The time at which to evaluate the transform of the USD prim attribute. A value of \"-1\" indicates that the default USD time stamp should be used" ]
+            },
+            "firstElement": {
+                "type": "uint64",
+                "default": 0,
+                "description": [ "Index to the array attribute for the start of the range" ]
+            },
+            "rangeSize": {
+                "type": "uint64",
+                "default": 0,
+                "description": [ "Maximum Number of elements to include in the output. Set 0 to only get the size of the input array" ]
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "any",
+                "description": "The attribute value",
+                "unvalidated": true
+            },
+            "inputArraySize": {
+                "type": "uint64",
+                "default": 0,
+                "description": [ "Size of the input array" ]
+            }
+        }
+    }
+}

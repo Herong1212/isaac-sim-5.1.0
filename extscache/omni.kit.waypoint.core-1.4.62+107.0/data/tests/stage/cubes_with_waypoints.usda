@@ -1,0 +1,661 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (-1.0658141036401503e-14, -7.105427357601002e-15, 0)
+                double3 target = (-29.720326110342253, -34.99153102790347, -88.83869678081507)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, -1.1102230246251565e-11)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (-4.329780281177466e-12, 50000, 1.1102230246251565e-11)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./cubes_with_waypoints.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:background:source:color" = (0.329, 0.325, 0.325)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (0, 1, 0)
+            int "rtx:pathtracing:mgpu:enabled" = 0
+            double "rtx:post:chromaticAberration:strengthB" = -0.054999999701976776
+            double "rtx:post:chromaticAberration:strengthG" = -0.054999999701976776
+            bool "rtx:post:dof:overrideEnabled" = 1
+            bool "rtx:scenedb:skipMostLights" = 1
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def DistantLight "defaultLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 1
+        float intensity = 3000
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_01"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (286.3067927068753, -179.57678891483755, -1219.8295722457178)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_02"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, -687.3670015404593, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_03"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (40.11155996096195, -179.57678891483755, -1209.6802083768557)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_04"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-209.85106268853445, -179.57678891483755, -1199.3755343886864)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_05"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-445.670363679432, -179.57678891483755, -1189.6539168481495)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_06"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_07"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (365.15649174499873, -179.57678891483755, 692.8439960136927)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_08"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_09"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (118.96125899908714, -179.57678891483755, 702.9933598825628)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_10"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-131.00136365041152, -179.57678891483755, 713.2980338707273)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_11"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, -87.63932624963442, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-366.82066464130514, -179.57678891483755, 723.0196514112668)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_12"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_13"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, -634.3187931316518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_14"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_15"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, -387.9144461453276)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_16"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, -137.73950929549773)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_17"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, -687.3670015404593, 98.28009278754809)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_18"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_19"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, -634.3187931316518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_20"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_21"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, -387.9144461453276)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_22"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, -137.73950929549773)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_23"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, -687.3670015404593, 98.28009278754809)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_24"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_25"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 639.5169194274063)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_26"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_27"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 885.9212664137306)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_28"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 1136.0962032635603)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_29"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, 598.9316952843294, 1372.1158053466056)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_30"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_31"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 639.5169194274063)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_32"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_33"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 885.9212664137306)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_34"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 1136.0962032635603)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_35"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, 1372.1158053466056)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_36"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 78.46163257364096, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_37"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 78.46163257364096, -634.3187931316518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_38"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 598.9316952843294, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_39"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 78.46163257364096, -387.9144461453276)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_40"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 78.46163257364096, -137.73950929549773)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_41"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (914.2981621880601, 78.46163257364096, 98.28009278754809)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_42"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 78.46163257364096, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_43"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 78.46163257364096, -634.3187931316518)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_44"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 598.9316952843294, -899.4498868626981)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_45"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 78.46163257364096, -387.9144461453276)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_46"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 78.46163257364096, -137.73950929549773)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube_47"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1019.2024840127239, 78.46163257364096, 98.28009278754809)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Camera "Test_Camera" (
+        no_delete = false
+    )
+    {
+        float4[] clippingPlanes = []
+        float2 clippingRange = (1, 10000000)
+        float focalLength = 10.400001
+        float focusDistance = 0
+        float fStop = 0
+        float horizontalAperture = 20.955
+        float horizontalApertureOffset = 0
+        custom vector3d omni:kit:centerOfInterest = (0, 0, -100)
+        token projection = "perspective"
+        uniform token purpose = "default"
+        double shutter:close = 0
+        double shutter:open = 0
+        uniform token stereoRole = "mono"
+        float verticalAperture = 15.2908
+        float verticalApertureOffset = 0
+        token visibility = "inherited"
+        double3 xformOp:rotateYXZ = (-1.4659406974809117, -83.18804534085209, -12.088005929675239)
+        double3 xformOp:scale = (1.000000238418579, 0.9999994039535522, 1.0000010728836062)
+        double3 xformOp:translate = (-1.9468870959826745e-12, -1.4921397450962104e-13, 5.826450433232822e-13)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+    }
+
+    def Cube "Cube"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-1000, -687.3670015404593, 374.38582569636014)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+
+def "Viewport_Waypoints" (
+    hide_in_stage_window = true
+)
+{
+    def "Waypoint_1"
+    {
+        custom string camera:path = "/World/Test_Camera"
+        custom string comment = ""
+        custom string created = "2022-06-30 15:53:53"
+        custom string created_by = ""
+        custom float frame = 0
+        custom float3 icon_position = (-1.0658141e-14, -7.1054274e-15, 0)
+        custom string omni:baked_preview = "zTE\"rl=o\\O&Gb\"/l#A=h/'?=sp-9ncT?D=\\TW#0;Z8aHV-e;2-$N@hSp%1?o-(0![6@T9'6Z%?Eg9124MLqWQ>Z/GQ[hgmeZS%D<MAYY[/LY]T/DYA,.SU'h`]Qoo#AYMlu-VKaVPWaA:hKMKPbaJ9/C_Jm2;%dC!`f7?Hk>\"'`ng)2o`_qR%*N3PmQ;kVJIB$JY.[;J`MXorV:H<LY[/F<rIufX45LR/fn*'`IpN5l\\4UM]1VpV80e(Cp8.4d$/pP01s7fE5YV]J!I:trEqWEHQ><2)be52VVGKT43A/K89GR[(>`hA?&<f_n$2m,Pp7#P@NE6f,P%nU_r0,:PH+PVkC1a:JRQ,=[Wb;56T8'.6PNNZC4Pq'i-^eR?JYn`.Xu2#-q?CYH13([DTX)`i'hCJV`]kRlQurVBBO*'\"X::NY[`lV$'FFedmQ?p5Y*FS>(Sr*H3lQ)Jfhdd#F!L]/>XH:6)O5GsDU006He>A$!M*H^FriFB-H^W$f^qWH1sl-lP+r#5DQ4ErQ>))I#N\"W`AOKMZ&aT\\@0iM!.WZo&L,3WIY-VddZ55'513Y+RGMgT-%DBm5__KlrU>pR5KEmrd=ufb@f.mdF\"^Z=du-sr!d@Mk/igBcW(ut*),aV%uuL'@35npM\"[qD&=RUi#*aQ2k-J^Hd`[t1=bd\"R]6a-\"N>sr6JY)C<Z!t[OIi/YnJ'\\Jn&g&4aY^]^PR<EA]J,tlb=0;[p&K;Q-*R4+3@N2SSd!.rH`%Ug!qL_#8<it(/k:?Qrd%&Yd_I$'04IHB_)YAsM9`#(>^]l!CYj,$<JEXcDo&U6d:[IDJ=0H;VMA=q71]9E-f=5g1eR&L_\\putPUB'\"^LdP4G>Y0A@p3#\"8`!ep-A?ZSmeZ2b)JS*9lLTS>+5J;LBQEL[e@gi=NFmE)B[])Jmr`o9.\\UF?5IJ`_tj&<mqn<Z@gr1MN::U<7/IV=7[@D[[(e?`f6\"F?3^k[1l?is,6.MLC3X:7O;[rmtudiG\\DRe&PlYQ&J#peucJ9\"aU0QCXOlaUe)4@lY,.f3ONVPMN>a/>`0@Lpq<>n+:8A[+:f!D\"P4@tmb\"dsgQZpMggSqE4*^SlA_+9]Bd<>e5.8h>H+p!uLOo[;;VA?eGoR]+Tm6+e*:FXp>*LI6U^30K*!kZ`_)ab1i-joNXVK*5;:7P#;_,\"-D>3uYMP;MVU*tnn-qZtK=WFV\"]93pT-Q`EQ8meUb9:r8DPQ/aIXNuIRs!&h4.8ZZ;<Nf`\"b*=JI5!D.mSl;L[)96uqh>E9;`Km\">Jp$EG2/WBf$)\"m>)`H'NCY(O!8Fh!ZQ5pbXa*A?DEZer.7ZA=nIf4T<q*A?URPekoac[sWCtUQ^5CU6ihnmq</al($N>a[Kg9k_fF&9SuH,j$!^3o`SjaWqKE:tITHe:@>/0]iNq2<=T6llkZ\\S'3Xa`C?C4ZsHl8C$,$D&^fJH1U/-IJE;_o8Bilce>dB'>4qHd8<b<o^h6Arjr1)+?=L%Dr0RNg?pdBpP*<lgph@2C=Oe_\"r8ju9FDUeT]sq'oCIL&VCl/cU`6q;;3C;Tp()3KSj%SfaOS6F3h/-I*qegKbNZYSdD;,#>?H5rn(pd#@l\\8OU]fkkH4HTJbgVk_?HEr%otGqUcFLeOc;jk4>R,,#))Gm/mDaF7G6a3[%.JWe0+U(amPM&A^Ae-/mm\"C(jbgtMMZ08=GP[MObkHa-?ouVY2R'1%q+aV5o\".&3p,I)<S^#i%fWZM@k:3>@%FqRbQ_mNK8t.bXk0J_D6KX(1aH_B9d8\"YYBdNHFkN1gEF&K.:K+FJ:Im3&Qk0BOPV2c$+3lLa<e=Xs-`V^TP)m8T0F/2U&3lRPq?:X-Na?0`0f95l*?Y.ruBflpRH9D9Ia1U(`D;)MM[$(:^K5J5>i<&1]9<AJIhtZVJs,aSSDVjT>,=hNUQ8o5Jn*JoEH]n$amHr0g%lA32\"8fU3oB4H3I0NA!pD*'rj8b[qP^-!UG-hilI^f/\\qt,[!DV-#_0Z5+'V.^s!rVDfX'DraGP;D)(]5cuW)7Cj<)j%V/pjQ(5a5-K*cD?9`j]p1A1_$(iGOJkIg6;9);>>OW)`Uo..B>\\RB0CM/T_>Re'4;&A$Og4VS-8U@[/6k&WT*XKL>Ue$Im75RI\\#Z<8D?kmE>:!)FK7XrHha(d'.!8dh*Al&((eZXa1Jo)`#_jS9VL\";=0q:8k'LOk&W8oLm]NOb%hc2ZkjLbF\"!<Eh+.@hBldVntkdg9?UMg>8o$X@-XCZ&J)MFa$%lB\"#>f@#Hr_PZ`Ymg!/Zia]3V$7ZD&(p3nSNFHsVNQ+)a3J5>+>)>:QkoiF@m1?2N=$CME*kHa9Of]7WAA1S)Vi#Q2tsL@CXRrjc]qZscmJV$jg3_?s&]1>l[0Rk*7p3t_%npHrQ?K[Q=QQ:XBC`*1ha[G)c<6/;l<CUGElNSVIS$EmuIA#rE5ADN@Q$=fR8g<U*tnn.#O`IMP;MVU*tnn.#O`IMP;MVU+\"1AM4(!5o<=Id6FE]CJ_3&0NOb&9g9ou;;-9G[k'/CKC4^b1]mKM93JFEPKQXl1mMt@`bC\".q8L_kEH^K#2g,Q#AL,onH2,^Y2*S)[XCTM;'kLk:Pb289T>cbV\"GOA^BpCNe23f'^`-<k-plXUb\\</?T:r@'1HkR[&CfKRqIX7er2=<eK%5L&d6,rq?.\"f'qJWB##A]#7dSW'Q@%<I[V=8894fNktS,W2C'+_;:%Bi/_HOC=IjPn`kT=GIX[WB!kq8)ZCKEC1ke[`H?u*Ha%jqPukJ7@COih'[t?9lf[HOotsT^7qs;13sSusm@Zbpk?P`K3CQG.;aa\"Vf7-Do::uapZ._'K$%<RC\"o@Z6LBjI*[;/jpUFRo'W:bi?:8mbprXHJ(Vind1=9[8$5b0pBkKJB;`\"Qh)iHM6`LuV4S6=8%'l)=\"a=,=W1)CXf6`gQrGZ]KWG1PRbsM4gLaa8)m@/$Y#gT2A1PR.]Oe:'8pG@VX0qi`O^6eN->qEY82(3q-Qd@;OhsmnRi!6&]BJQD\\!*ma%U)SVVb`%8Gml=S:iNHT24H6_%Xm6W&:KZ!DYHk2l8<TL#sRgh@;66TeVS<io`3TdYDBfWTu:(NOA.X=kpjY;qUIm@f\"?3<mp8U=rO>TV^PJm4NBH84X$<:>`d640Pal4X(Z-S-\"XZZu=inqt>!AC/5G;n'1]X;V'GXF8-q(,C.NsXIjS#fJ-_,(1Xq32l+,7kLfa$(&P9$%XINi$J%fEe$oDDr]k8'H(-^/ir0]LDbmd==FiZ_DSu<3[r1#rf[s;DX#4bJPh2O\"MABLN:`[/J>_-ls[*R$g43-ZD@D/tC9:&P$GW<1a0F%^W(s>0o>uL$UN*VfS<:)-[3.1KTYPWJ?pi0VM)sa^qGOWGq*+Dt4'0-0r!<IS.C.UuGYWc_o9FT161P]I?[+1].+@D2,j1m]dG2KXsn$$KQ,4;LQf4QZ+0@6?Slg)aWl'R0f&g52ED0)U<F8h6%af[g08I:oHe[j2']^OtD`TO6*Q/n*1Y(-i<&<,@QrFDG!5$1B/8_\"pB@%!K2F)]\\/.EMa5LGPQ<efDOAZ%k>_X!fCtntfaGXEG.Zad#AD,.UT:m@KJ=+AW/hcIQ/8!<(9\\_854\"mEN]:fWC=bm+]\"1eu`/so7j(/!:1_BU;+H-H$FT'E>iU@WBjco*6#t=dt%T+f\\W<_0/PMMI!g;]a/I6];@DQ_TKa_P.Z/!O\"9o'nVl(pB:3EJ1-.:'@l>Mrpi.%[&L`Z"
+        custom string render = '{"/rtx/renderpreset": "Draft"}'
+        custom string sunstudy = '{"date": "2022-06-30", "time": 15.8975, "location": [51.426, -0.985, 0.0]}'
+
+        def Camera "Test_Camera"
+        {
+            float4[] clippingPlanes = []
+            float2 clippingRange = (1, 10000000)
+            float focalLength = 10.400001
+            float focusDistance = 0
+            float fStop = 0
+            float horizontalAperture = 20.955
+            float horizontalApertureOffset = 0
+            custom vector3d omni:kit:centerOfInterest = (0, 0, -100)
+            token projection = "perspective"
+            uniform token purpose = "Waypoint_1"
+            double shutter:close = 0
+            double shutter:open = 0
+            uniform token stereoRole = "mono"
+            float verticalAperture = 15.2908
+            float verticalApertureOffset = 0
+            token visibility = "inherited"
+            custom double3 xformOp:rotateYXZ = (-19.380365371704105, 19.65261840820312, 6.758358955383299)
+            custom double3 xformOp:scale = (1.000000238418579, 0.9999995231628419, 1.0000009536743164)
+            custom double3 xformOp:translate = (-1.0658141036401503e-14, -7.105427357601002e-15, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+        }
+    }
+
+    def "Waypoint_2"
+    {
+        custom string camera:path = "/World/Test_Camera"
+        custom string comment = ""
+        custom string created = "2022-06-30 15:54:02"
+        custom string created_by = ""
+        custom float frame = 0
+        custom float3 icon_position = (-1.946887e-12, -1.4921397e-13, 5.8264504e-13)
+        custom string omni:baked_preview = "zTE\"rl=o\\O&Gb\"/lGDoO%&;RNaL_*NROM2EC.TP1H(dXU4PTh4o,(a)sWCh)eTTfG+TOJTJ8k:ekU(G7Vpqt#Q,pj8$.Ma._W#.>QRq,jN543ddm]s(fFuK/:hql%jhRR9JB?n`3S\"*BQ8kCJPE?*#=*63%=a)N*>E?*#=*63%=a)MI2-'qjLMrJVe8Y[tfT#u8D?@$>\"@o7\"e]V`49/K6G%V;h'h0:0j7]<'BY9gra-..(2BMn<>i>e+lQTgAqE]'HM_MA7X6V+R$6`Z&i\\.TNK>eZ)WGHM-QDjcrm_HWr-Mn1hklf(=sQJA*XA\\o`M;Y=t?>;QX-1KYM9PW[0Yc3DubM*N<,DT$jK1)l[)QEbq5Bq%bPc8<4fTUg(<GHG&F4H_blShU8;t+6h[t^G99:#Us,pI(oJ5ftH@!)eA<fZ-&i&4t>U4NK`nma\"*36p6bFGj,_BI:HkbhN+4s(5SoCu23MRrROKgm[Zjgp>,a/Z[r/<sGj;9+e1\\;dEf41PrUh'**N]_e0L,gQ*iobf1.:QFs*bhLI(9%CJHm6XX]r9WgMaj/IG_;>7u[i>CneCOSp<eRp;@V?.,52+5Q.sJ))F`?Dr*&Bp[=I1bEqO9A=>=ADs6MtkFP?!9Klo)S*88r/5r0]Cu2h8[dB2I*`;k^A*:*==52C4cT?74:mj\"GK(_-,\"8WI6c^m:(rqPLaq>L'Fjlk*eo'NpDb4b5W<BFG%'a';4%mKc]rnYS=38R/d*\\G!Im?2tuq+#<%p=jNVdn`3-::WTrC&VMS,(<WV_0>U@o4WIClIBqAfJ2@JSTir4W\"lYpZY*'^G'&g^)h%3,M\\[nmYu;540o\"(o.fEN)++!,o\\bbTl9:Z!_T/q,[Uq1gGiJ4hEn:Mb/baptEjN*H.Eqo-4eKB26o?TY_`ufe)3H#I-YSm;cqKq;EOW+7Kq;iFgiJ/M>1M>\"SM_Df3cu63ZaIf2S#g?r6>d7alr;?04CA5F9hMX8b3\"jtEl,<3KGOF5fa1pEb>TJI=G/O<`[MLbBaTei=DS,;E`&qQ.@ss%X^\\Hdrq=W?H<I\\uOclkDgi.1*r8WtLsCme)2G3p44;sWm2hgA@4Q.\\3@lBEi([S6.LMLT3\\QIWF:LFE*5UR!N<Wqp4Qm+AQf[f4AFLk\"[]2fIP8bs_u65Oo01?eD9M%N40AL(4%;e4USjl[SJNMcJa21r!q_[On0fiZK4'GYmSambPM<du<s0gU:r4\\PLlPAom(VQ)YL6R]R#<2PfsunU^SI5M;B:ACRPTZ=(KMNR*QKcThFl@sqn6J+qcClWB\"lLtQ+EE+/,.B6NaTl`Q3<0E\"(Jd%Fk\"6?2:O21fB+=l0mneu`/#QMu\\Cbe[P:%@]/u2oN\\6\\]<\\9>%+#0G^AAf$2NM3%oThN]@8OQM^\\O4P?aB?N8:\\OqF[p$k*g\\DRHjT0GO?I(<l;<#[r:.*l-JLB-s^%a'6j?Hl^,&NfadsP%:[$\\F#EfCn`%LoXb?O4IJU=jKi!9MLG`kue?Nk=+)78@A,>i^$!ZVS=L`_PDRnba.oQ4Qi4sp>Ckhf(k-SjOe.up\"qWk=@es*&,47Bg<TDh1Sed$JGH&;AGY5ZKmd8rC-ThhgAWVR!<5^Z37B_;W/6f1\\-1.ClU4NS26)3,e'0'h,mcfYtJa#]41Os->?O*gTRBB?bo^/M_LAqIJ+q<\"0bqG-5^qqS5RY='=nD%cl?J,X`hrql.A#4C<Z=4c?hk`7h8*E`7Tg-mC=f&W-E0A\"78f3(TPCTt#YZhf^N-2s30rL\"2M[r3oQ]^S6s%>K>jaR9ci:/mkbrV,3\\?:*GB?MO9PJ$h1pW`N>!^j\"ji[[puE44n/Y#<ePNk&QLTldsJ7Y0\\N+->a(@M9Il,At2\\Ir:SZKEq89_?(Xm#(%pqCs5EgHf`];$>+o9.qE42W4*dC!CPD)2#&VA/LCP?Q[POBZit_\"`=>OOeRJML-\"(DB('E(B\"_p\"N)AcDW'Z=M&iR58JNjOt?@nUKT=NO?L?p?f?HXuaTU8)aks53pA00'r.h,K^clhI#fEULD&pd^3^e?\"5dsc]N?gl4iT*IBot'R&@44qYI>'hO6DBXO\"@kf1sZ4Z\"K/NgjJ_<M>&f&[r1#Ln36$8X0*pq*B6ec-Je\\En2KJLqd0@cApO]Pl2M[G<_0+^Aa/P-gPd)Lin-,GZ;:FKC)k96*63%=a)N*>E?*#=*63%=a)N*>E?*#=*63%=a)N*>E?*#=*63%=a)N*>E?*#=*63%=a)N*>E?*#=*63%=a)N*>E?*#=S<?RqSj'llO)r#a8tEM1SUqF@KuQ<:lk<O6G&=3VV2F\\&akl'dQZOQ0mJ.O,9s3==a7e$C1]+>\\a\"mP[:7=\"2pCCjX?1q3f3d%Ijfc%mP8+qgP%p3YBgN1c*`R-@m..2P*cCN=C9q!n1m+oi+l+eA$UIUBrIDks9o]ai$9URYKh&C*^cg8E*?J17ip8MYBB(g$.gUD+^rQ2;$-/WjJ=t?Vd0:h^0]o!OTWn,gXRXN$*6e\\ofIe\"Xq1MRHa:j_Olced,aQ@%7?IGD>P14K.G4\\naGV(%=BBTMVN0k5rQ(E;^,4`oma)*E._jIXrc'AEcCla!86*h^28M\\aFg[;0@1]Ql8Jeh!4PHaZV;2GGMnS>a\"Rm@hSBP:,\\qhr^,5]>QU:*Z@L$?nmljqAq_AXHY>C3i/H/G449n`rhc!LU>%k!VU3qd\\TUZ2MAZC<2l&GGM'-.Eo2<>8^EtkV,O9ed^jR:h>=jppF.bpg9p+Xp=a:^>Nc0k0h4!+1/BN.\\lA?7\\j8u1kK]?Q*BWQ\"_unJ.fs52^g1AHnab0s6oX!Y@jG_m?pMf2?b*=K$<r\\YTW.!#Whab:P],WiO]\\^&3f<kC\\o=;EBZ>ebh]k>W\\3SJr%fn'A8jOI==Q(4A7=?:?S[]PRHQ7Z<5K*Dd\\<ioP'\\T29+D_3%k(G*9In)']'qW,2D%HM]N-1h3_7ugOji@B;9FuZs?`<t-]W'<K'FONsa).F\\Vj\"p\\S7UBDmehCcn3LTKhX&mX1h_6+dr:8#LLX@deo?]=6N4-FldS&$#GOJYFiRs$\\j:eD%g&R)>W`?*k2%HAIcp'$^Y#P@gL?HmTYB'q/1#jpXSLDidWd16_@!tJW9>!WAjB7#*n2\"7`GPmGL?ajpDZtRi2Of+TVen.URpsshPB$h*7_@AW^^4!W#CY(22IdBU1>J5?jqY$1U?BO?mQclC/Wt_q%^1l2\\+[]/m0?e2L#K0i<a^Qsk@k=9Ges>=ZO.=\\kDttrQ\"NEsVRPeU@ce;(Zh77U)I.GB,Z>%c7H/jlC1q2E=R\"NJ&D;?<Rj.Q&I>-P_0B7Q&A(%=53NW7B0o1i7L1R:Oi(nj,&Fc9&e[s7FPeIMH3]6CGn3(eZpRl8gc6`XYo!ji1qi?S9Gou,eLkH]0iL`86gd-Je\"BEN<1Z\"rLGR2WQolAp<.:\"]AO0pHj%Sp<?HGY$BRe54o.D3NGH:WnS.-fidV;u.C,bRZEheT5'`=?hnnK_i%S`Q.32p\"*PP^KKB^WfIAp*2rfNlBonf_[`s<b:gW[F3/UlF/)3a&q2ap!BMKeUc-r:EMFRRq8I/IA\"Zuk&U0Ydd2^k-K>^j^L,f$>>bPYJ#OWt3UaBR-TK_YkX&jlFf=5g1NLft?m?>GC&'MeA#N`aP\"3UWAqt8a<6\\dKnL240L6F]d,E<a\\8Vs'7,J,fKA[D2+B8%SMV\\J))JSIt/_[F\\`Kh7Im3Nhbs.%JlO^%lJ0CPdXFFI/<**d\\B<nN;@>@XI7eJSBl3W+J+^^npVsWrX@LHD+-Y*Og.;Y@*P,tWopngYj:#PDm+H%Q7Z>%fWeqd47m-X_366Bb$/etQ1A(a!NTRaDp1^olI=4dfrA%&Xng1\"R;0u.m^PXE%D\"tY*.]+!_[etrO$<D2hh=J[1\\Np'!;@i+cZDjP`13:!2@Sd>0P<1X9aM9JakQ;Hq4Gp@*6fhV7pa%#[&G2.Somr&Mu;YWOX\"oEpi4hmaO-bQjij,K12,%-XO^e75\"kW/C0L8P>f9h#nDV8Bf&/@D+.>s$j03,$CB]@JZ*S5t0\"%7q(M9<6fBCOiH`1T&&^-p\"d\\HFNXq=c!@q1,JaZU!bQdgHIQb&0%Sc\"opK`'icGMe[H5Q4bKqs6,lZY,=_2gpml[7Kk7ISmbQ_JcOEZGp\"\\I/1-u[e$R.i`G8:nianA-(0[i[F=rfg<BF^m%Ca?NnS-s\\)[HP\"n=6+/r07>s8MsQl8Y2Yn%DfW@<%R&!15D>?!7\\,N4mU,HnI<4]oS&_2F0N1UIG]l?ba>#Tre4`c=4S>!W\"g?XY@N1D`7&2f2hej[p<Yn8q/a\"Lh-a87ZQO[fH^^/]HA)-44b0YNNo:#52ME6Z=X#HXb_5=\\e(=:qT@CUm/J3f`;\"f[qWV6&elJ(]TKdcF)!<os>f5.(Ou48?(VZ5@VPN@'(Rh9BTWgK>HJUA1BCi9bqM+j(\\=..!0Dldb*G[WJ%BR91,NP6c:,6_$@WqY@l'&=bL!B)M^UX7%>^/pij8s\"R36/WqC*77(nhfuPGsOaJ@-Z:CGLi3sLol#%.u3M3/hWl5X)mq[[0u:lbbN,._Uoth1Udu!UGRf+W4Q/)kPG5%)YAOV-VsX"
+        custom string render = '{"/rtx/renderpreset": "Draft"}'
+        custom string sunstudy = '{"date": "2022-06-30", "time": 15.8975, "location": [51.426, -0.985, 0.0]}'
+
+        def Camera "Test_Camera"
+        {
+            float4[] clippingPlanes = []
+            float2 clippingRange = (1, 10000000)
+            float focalLength = 10.400001
+            float focusDistance = 0
+            float fStop = 0
+            float horizontalAperture = 20.955
+            float horizontalApertureOffset = 0
+            custom vector3d omni:kit:centerOfInterest = (0, 0, -100)
+            token projection = "perspective"
+            uniform token purpose = "Waypoint_2"
+            double shutter:close = 0
+            double shutter:open = 0
+            uniform token stereoRole = "mono"
+            float verticalAperture = 15.2908
+            float verticalApertureOffset = 0
+            token visibility = "inherited"
+            custom double3 xformOp:rotateYXZ = (-1.4659406974809117, -83.18804534085209, -12.088005929675239)
+            custom double3 xformOp:scale = (1.000000238418579, 0.9999994039535522, 1.0000010728836062)
+            custom double3 xformOp:translate = (-1.9468870959826745e-12, -1.4921397450962104e-13, 5.826450433232822e-13)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateYXZ", "xformOp:scale"]
+        }
+    }
+}
+
+def "Environment"
+{
+    custom string date = "2022-06-30"
+    custom double location:latitude = 51.426
+    custom double location:longitude = -0.985
+    custom double location:north_orientation = 0
+    custom float time:current = 15.8975
+}
+

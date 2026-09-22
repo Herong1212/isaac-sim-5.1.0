@@ -1,0 +1,48 @@
+{
+    "omni.graph.action.Counter": {
+        "version": 2,
+        "description": [
+            "This node counts the number of times it has been executed since the 'Reset' signal was activated."
+        ],
+        "uiName": "Counter",
+        "categories": ["graph:action", "function"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed.",
+                "uiName": "Execute In"
+            },
+            "reset": {
+                "type": "execution",
+                "description": "Signal to the node to reset its internal counter.",
+                "uiName": "Reset"
+            }
+        },
+        "outputs": {
+            "count": {
+                "type": "int",
+                "description": "The number of times this node has been executed since being reset.",
+                "uiName": "Count"
+            },
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream.",
+                "uiName": "Execute Out"
+            }
+        },
+        "state": {
+            "count": {
+                "type": "int",
+                "description": "Internal value storing the execution count in a persistent way."
+            }
+        },
+        "tests" : [
+            {"outputs:count": 1, "state_set:count": 0, "inputs:execIn": 1},
+            {"outputs:count": 2, "state_set:count": 1, "inputs:execIn": 1},
+            {"outputs:count": 0, "state_set:count": 1, "inputs:execIn": 0,
+             "inputs:reset": 1, "state_get:count": 0}
+        ]
+    }
+}

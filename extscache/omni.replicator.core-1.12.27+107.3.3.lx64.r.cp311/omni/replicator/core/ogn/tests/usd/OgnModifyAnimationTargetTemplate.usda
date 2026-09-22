@@ -1,0 +1,40 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnModifyAnimationTarget.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_OgnModifyAnimationTarget" (
+        docs="""This modifies the target animation on a skeleton prim."""
+    )
+    {
+        token node:type = "omni.replicator.core.OgnModifyAnimationTarget"
+        int node:typeVersion = 2
+
+        # 4 attributes
+        custom uint inputs:exec (
+            docs="""exec"""
+        )
+        custom rel inputs:prims (
+            docs="""Skeleton prims to set attribute."""
+        )
+        custom bool inputs:reset_timeline = false (
+            docs="""Whether to reset the timeline after setting the new animation."""
+        )
+        custom rel inputs:values (
+            docs="""Animation path value to be assigned to the skeleton."""
+        )
+
+        # 1 attribute
+        custom uint outputs:exec (
+            docs="""exec"""
+        )
+    }
+}

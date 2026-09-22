@@ -1,0 +1,44 @@
+{
+    "OgnSetTimeline": {
+        "description": [
+            "Set visibility on prims"
+        ],
+        "version": 1,
+        "uiName": "Set Timeline",
+        "language": "Python",
+        "scheduling": "compute-on-request",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "state": {
+        },
+        "inputs": {
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "modifyType": {
+                "description": ["The method to modify the timeline."],
+                "type": "token",
+                "metadata": {
+                    "allowedTokens": {
+                        "time": "Time",
+                        "start_time": "Start Time",
+                        "end_time": "End Time",
+                        "frame": "Frame",
+                        "start_frame": "Start Frame",
+                        "end_frame": "End Frame"
+                    }
+                }
+            },
+            "value": {
+                "description": ["Value used to modify the timeline."],
+                "type": "float"
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

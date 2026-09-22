@@ -1,0 +1,1203 @@
+# Public API for module omni.graph.core:
+
+## Classes
+
+- class Attribute
+  - def connect(self, path: Attribute, modify_usd: bool) -> bool
+  - static def connectEx(*args, **kwargs) -> typing.Any
+  - def connectPrim(self, path: str, modify_usd: bool, write: bool) -> bool
+  - def deprecation_message(self) -> str
+  - def disconnect(self, attribute: Attribute, modify_usd: bool) -> bool
+  - def disconnectPrim(self, path: str, modify_usd: bool, write: bool) -> bool
+  - static def ensure_port_type_in_name(name: str, port_type: AttributePortType, is_bundle: bool) -> str
+  - def get(self, on_gpu: bool = False, instance: int = 18446744073709551614) -> object
+  - def get_all_metadata(self) -> dict
+  - static def get_array(*args, **kwargs) -> typing.Any
+  - static def get_attribute_data(*args, **kwargs) -> typing.Any
+  - def get_disable_dynamic_downstream_work(self) -> bool
+  - def get_downstream_connection_count(self) -> int
+  - def get_downstream_connections(self) -> typing.List[Attribute]
+  - static def get_downstream_connections_info(*args, **kwargs) -> typing.Any
+  - def get_extended_type(self) -> ExtendedAttributeType
+  - def get_handle(self) -> int
+  - def get_metadata(self, key: str) -> str
+  - def get_metadata_count(self) -> int
+  - def get_name(self) -> str
+  - static def get_node(*args, **kwargs) -> typing.Any
+  - def get_path(self) -> str
+  - def get_port_type(self) -> AttributePortType
+  - static def get_port_type_from_name(name: str) -> AttributePortType
+  - static def get_resolved_type(*args, **kwargs) -> typing.Any
+  - def get_type_name(self) -> str
+  - def get_union_types(self) -> object
+  - def get_upstream_connection_count(self) -> int
+  - def get_upstream_connections(self) -> typing.List[Attribute]
+  - static def get_upstream_connections_info(*args, **kwargs) -> typing.Any
+  - def is_array(self) -> bool
+  - def is_compatible(self, attribute: Attribute) -> bool
+  - def is_connected(self, attribute: Attribute) -> bool
+  - def is_deprecated(self) -> bool
+  - def is_dynamic(self) -> bool
+  - def is_runtime_constant(self) -> bool
+  - def is_valid(self) -> bool
+  - static def map_to_target(*args, **kwargs) -> typing.Any
+  - def register_value_changed_callback(self, func: object)
+  - static def remove_port_type_from_name(name: str, is_bundle: bool) -> str
+  - def set(self, value: object, on_gpu: bool = False, instance: int = 18446744073709551614) -> bool
+  - def set_default(self, value: object, on_gpu: bool = False) -> bool
+  - def set_disable_dynamic_downstream_work(self, disable: bool)
+  - def set_metadata(self, key: str, value: str) -> bool
+  - static def set_resolved_type(*args, **kwargs) -> typing.Any
+  - def update_attribute_value(self, update_immediately: bool) -> bool
+  - static def write_complete(attributes: typing.Sequence)
+  - [property] def gpu_ptr_kind(self) -> typing.Any
+  - [gpu_ptr_kind.setter] def gpu_ptr_kind(*args, **kwargs)
+  - [property] def is_optional_for_compute(self) -> bool
+  - [is_optional_for_compute.setter] def is_optional_for_compute(self, arg1: bool)
+  - [property] def target_mapping(self) -> object
+  - resolved_prefix: str
+
+- class AttributeData
+  - def as_read_only(self) -> AttributeData
+  - def copy_data(self, rhs: AttributeData) -> bool
+  - def cpu_valid(self) -> bool
+  - def get(self, on_gpu: bool = False) -> object
+  - static def get_array(*args, **kwargs) -> typing.Any
+  - def get_extended_type(self) -> ExtendedAttributeType
+  - def get_name(self) -> str
+  - def get_resolved_type(self) -> Type
+  - def get_type(self) -> Type
+  - def gpu_valid(self) -> bool
+  - def is_read_only(self) -> bool
+  - def is_valid(self) -> bool
+  - def resize(self, element_count: int) -> bool
+  - def set(self, value: object, on_gpu: bool = False) -> bool
+  - def size(self) -> int
+  - [property] def gpu_ptr_kind(self) -> PtrToPtrKind
+  - [gpu_ptr_kind.setter] def gpu_ptr_kind(self, arg1: PtrToPtrKind)
+
+- class AttributePortType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ATTRIBUTE_PORT_TYPE_INPUT: omni.graph.core._omni_graph_core.AttributePortType
+  - ATTRIBUTE_PORT_TYPE_OUTPUT: omni.graph.core._omni_graph_core.AttributePortType
+  - ATTRIBUTE_PORT_TYPE_STATE: omni.graph.core._omni_graph_core.AttributePortType
+  - ATTRIBUTE_PORT_TYPE_UNKNOWN: omni.graph.core._omni_graph_core.AttributePortType
+  - INPUT: omni.graph.core._omni_graph_core.AttributePortType
+  - OUTPUT: omni.graph.core._omni_graph_core.AttributePortType
+  - STATE: omni.graph.core._omni_graph_core.AttributePortType
+  - UNKNOWN: omni.graph.core._omni_graph_core.AttributePortType
+
+- class AttributeRole
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - APPLIED_SCHEMA: omni.graph.core._omni_graph_core.AttributeRole
+  - BUNDLE: omni.graph.core._omni_graph_core.AttributeRole
+  - COLOR: omni.graph.core._omni_graph_core.AttributeRole
+  - EXECUTION: omni.graph.core._omni_graph_core.AttributeRole
+  - FRAME: omni.graph.core._omni_graph_core.AttributeRole
+  - MATRIX: omni.graph.core._omni_graph_core.AttributeRole
+  - NONE: omni.graph.core._omni_graph_core.AttributeRole
+  - NORMAL: omni.graph.core._omni_graph_core.AttributeRole
+  - OBJECT_ID: omni.graph.core._omni_graph_core.AttributeRole
+  - PATH: omni.graph.core._omni_graph_core.AttributeRole
+  - POSITION: omni.graph.core._omni_graph_core.AttributeRole
+  - PRIM_TYPE_NAME: omni.graph.core._omni_graph_core.AttributeRole
+  - QUATERNION: omni.graph.core._omni_graph_core.AttributeRole
+  - TARGET: omni.graph.core._omni_graph_core.AttributeRole
+  - TEXCOORD: omni.graph.core._omni_graph_core.AttributeRole
+  - TEXT: omni.graph.core._omni_graph_core.AttributeRole
+  - TIMECODE: omni.graph.core._omni_graph_core.AttributeRole
+  - TRANSFORM: omni.graph.core._omni_graph_core.AttributeRole
+  - UNKNOWN: omni.graph.core._omni_graph_core.AttributeRole
+  - VECTOR: omni.graph.core._omni_graph_core.AttributeRole
+
+- class AttributeType
+  - static def base_data_size(type: Type) -> int
+  - static def get_unions() -> dict
+  - static def is_legal_ogn_type(type: Type) -> bool
+  - static def sdf_type_name_from_type(type: Type) -> object
+  - static def type_from_ogn_type_name(ogn_type_name: str) -> Type
+  - static def type_from_sdf_type_name(sdf_type_name: str) -> Type
+
+- class BaseDataType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ASSET: omni.graph.core._omni_graph_core.BaseDataType
+  - BOOL: omni.graph.core._omni_graph_core.BaseDataType
+  - CONNECTION: omni.graph.core._omni_graph_core.BaseDataType
+  - DOUBLE: omni.graph.core._omni_graph_core.BaseDataType
+  - FLOAT: omni.graph.core._omni_graph_core.BaseDataType
+  - HALF: omni.graph.core._omni_graph_core.BaseDataType
+  - INT: omni.graph.core._omni_graph_core.BaseDataType
+  - INT64: omni.graph.core._omni_graph_core.BaseDataType
+  - PRIM: omni.graph.core._omni_graph_core.BaseDataType
+  - RELATIONSHIP: omni.graph.core._omni_graph_core.BaseDataType
+  - TAG: omni.graph.core._omni_graph_core.BaseDataType
+  - TOKEN: omni.graph.core._omni_graph_core.BaseDataType
+  - UCHAR: omni.graph.core._omni_graph_core.BaseDataType
+  - UINT: omni.graph.core._omni_graph_core.BaseDataType
+  - UINT64: omni.graph.core._omni_graph_core.BaseDataType
+  - UNKNOWN: omni.graph.core._omni_graph_core.BaseDataType
+
+- class BucketId
+  - def __init__(self, id: int)
+  - [property] def id(self) -> int
+  - [id.setter] def id(self, arg0: int)
+
+- class BundleChangeType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - MODIFIED: omni.graph.core._omni_graph_core.BundleChangeType
+  - NONE: omni.graph.core._omni_graph_core.BundleChangeType
+
+- class ComputeGraph
+
+- class ConnectionInfo
+  - def __init__(self, attr: Attribute, connection_type: ConnectionType)
+  - [property] def attr(self) -> Attribute
+  - [attr.setter] def attr(self, arg0: Attribute)
+  - [property] def connection_type(self) -> ConnectionType
+  - [connection_type.setter] def connection_type(self, arg0: ConnectionType)
+
+- class ConnectionType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CONNECTION_TYPE_DATA_ONLY: omni.graph.core._omni_graph_core.ConnectionType
+  - CONNECTION_TYPE_EXECUTION: omni.graph.core._omni_graph_core.ConnectionType
+  - CONNECTION_TYPE_REGULAR: omni.graph.core._omni_graph_core.ConnectionType
+
+- class ExecutionAttributeState
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - DISABLED: omni.graph.core._omni_graph_core.ExecutionAttributeState
+  - ENABLED: omni.graph.core._omni_graph_core.ExecutionAttributeState
+  - ENABLED_AND_PUSH: omni.graph.core._omni_graph_core.ExecutionAttributeState
+  - LATENT_FINISH: omni.graph.core._omni_graph_core.ExecutionAttributeState
+  - LATENT_PUSH: omni.graph.core._omni_graph_core.ExecutionAttributeState
+
+- class ExtendedAttributeType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ANY: omni.graph.core._omni_graph_core.ExtendedAttributeType
+  - EXTENDED_ATTR_TYPE_ANY: omni.graph.core._omni_graph_core.ExtendedAttributeType
+  - EXTENDED_ATTR_TYPE_REGULAR: omni.graph.core._omni_graph_core.ExtendedAttributeType
+  - EXTENDED_ATTR_TYPE_UNION: omni.graph.core._omni_graph_core.ExtendedAttributeType
+  - REGULAR: omni.graph.core._omni_graph_core.ExtendedAttributeType
+  - UNION: omni.graph.core._omni_graph_core.ExtendedAttributeType
+
+- class FileFormatVersion
+  - def __init__(self, major_version: int, minor_version: int)
+  - [property] def majorVersion(self) -> int
+  - [majorVersion.setter] def majorVersion(self, arg0: int)
+  - [property] def minorVersion(self) -> int
+  - [minorVersion.setter] def minorVersion(self, arg0: int)
+
+- class FunctionResult
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - DEFERRED: omni.graph.core._omni_graph_core.FunctionResult
+  - FAILURE: omni.graph.core._omni_graph_core.FunctionResult
+  - SUCCESS: omni.graph.core._omni_graph_core.FunctionResult
+
+- class Graph
+  - def change_pipeline_stage(self, newPipelineStage: GraphPipelineStage)
+  - def create_graph_as_node(self, name: str, path: str, evaluator: str, is_global_graph: bool, is_backed_by_usd: bool, backing_type: GraphBackingType, pipeline_stage: GraphPipelineStage, evaluation_mode: GraphEvaluationMode = GraphEvaluationMode.GRAPH_EVALUATION_MODE_AUTOMATIC) -> Node
+  - def create_node(self, path: str, node_type: str, use_usd: bool) -> Node
+  - static def create_runtime_variable(*args, **kwargs) -> typing.Any
+  - def create_subgraph(self, subgraphPath: str, evaluator: str = '', createUsd: bool = True) -> Graph
+  - static def create_variable(*args, **kwargs) -> typing.Any
+  - def deregister_error_status_change_callback(self, status_change_handle: int)
+  - def destroy_node(self, node_path: str, update_usd: bool) -> bool
+  - def evaluate(self)
+  - def find_variable(self, name: str) -> IVariable
+  - static def get_context(*args, **kwargs) -> typing.Any
+  - static def get_default_graph_context(*args, **kwargs) -> typing.Any
+  - def get_evaluator_name(self) -> str
+  - def get_event_stream(self) -> carb.events._events.IEventStream
+  - def get_graph_backing_type(self) -> GraphBackingType
+  - def get_handle(self) -> int
+  - def get_instance_count(self) -> int
+  - def get_node(self, path: str) -> Node
+  - def get_nodes(self) -> typing.List[Node]
+  - def get_owning_compound_node(self) -> Node
+  - def get_parent_graph(self) -> object
+  - def get_path_to_graph(self) -> str
+  - def get_pipeline_stage(self) -> GraphPipelineStage
+  - def get_subgraph(self, path: str) -> Graph
+  - def get_subgraphs(self) -> typing.List[Graph]
+  - def get_variables(self) -> typing.List[IVariable]
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+  - def is_auto_instanced(self) -> bool
+  - def is_compound_graph(self) -> bool
+  - def is_disabled(self) -> bool
+  - def is_valid(self) -> bool
+  - def register_error_status_change_callback(self, callback: object) -> int
+  - def reload_from_stage(self)
+  - def reload_settings(self)
+  - def remove_variable(self, variable: IVariable) -> bool
+  - def rename_node(self, path: str, new_path: str) -> bool
+  - def rename_subgraph(self, path: str, new_path: str) -> bool
+  - def set_auto_instancing_allowed(self, arg0: bool) -> bool
+  - def set_disabled(self, disable: bool)
+  - def set_prim_view(self, view: IPrimView) -> bool
+  - def set_usd_notice_handling_enabled(self, enable: bool)
+  - def usd_notice_handling_enabled(self) -> bool
+  - [property] def evaluation_mode(self) -> GraphEvaluationMode
+  - [evaluation_mode.setter] def evaluation_mode(self, arg1: GraphEvaluationMode)
+  - CURRENT_FILE_FORMAT_VERSION: omni.graph.core._omni_graph_core.FileFormatVersion
+
+- class GraphBackingType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - GRAPH_BACKING_TYPE_FABRIC_SHARED: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_FABRIC_WITHOUT_HISTORY: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_FABRIC_WITH_HISTORY: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_FLATCACHE_SHARED: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_FLATCACHE_WITHOUT_HISTORY: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_FLATCACHE_WITH_HISTORY: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_NONE: omni.graph.core._omni_graph_core.GraphBackingType
+  - GRAPH_BACKING_TYPE_UNKNOWN: omni.graph.core._omni_graph_core.GraphBackingType
+
+- class GraphContext
+  - def get_attribute_as_bool(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> bool
+  - def get_attribute_as_boolarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[bool]
+  - def get_attribute_as_double(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> float
+  - def get_attribute_as_doublearray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float64]
+  - def get_attribute_as_float(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> float
+  - def get_attribute_as_floatarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float32]
+  - def get_attribute_as_half(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> float
+  - def get_attribute_as_halfarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float32]
+  - def get_attribute_as_int(self, arg0: Attribute, arg1: bool, arg2: bool, arg3: int) -> int
+  - def get_attribute_as_int64(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> int
+  - def get_attribute_as_int64array(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.int64]
+  - def get_attribute_as_intarray(self, arg0: Attribute, arg1: bool, arg2: bool, arg3: int) -> numpy.ndarray[numpy.int32]
+  - def get_attribute_as_nested_doublearray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float64]
+  - def get_attribute_as_nested_floatarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float32]
+  - def get_attribute_as_nested_halfarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.float32]
+  - def get_attribute_as_nested_intarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.int32]
+  - def get_attribute_as_string(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> str
+  - def get_attribute_as_uchar(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> int
+  - def get_attribute_as_uchararray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.uint8]
+  - def get_attribute_as_uint(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> int
+  - def get_attribute_as_uint64(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> int
+  - def get_attribute_as_uint64array(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.uint64]
+  - def get_attribute_as_uintarray(self, attribute: Attribute, getDefault: bool = False, write: bool = False, writeElemCount: int = 0) -> numpy.ndarray[numpy.uint32]
+  - def get_bundle(self, path: str) -> IBundle2
+  - def get_elapsed_time(self) -> float
+  - static def get_elem_count(*args, **kwargs) -> typing.Any
+  - def get_elem_count(self, arg0: Attribute) -> int
+  - def get_frame(self) -> float
+  - def get_graph(self) -> Graph
+  - def get_graph_target(self, index: int = 18446744073709551614) -> str
+  - def get_input_bundle(self, path: str) -> IConstBundle2
+  - def get_input_bundle(self, node: Node, attribute_name: str, instance: int = 18446744073709551614) -> IConstBundle2
+  - def get_input_target_bundles(self, node: Node, attribute_name: str, instance: int = 18446744073709551614) -> typing.List[IConstBundle2]
+  - def get_is_playing(self) -> bool
+  - def get_output_bundle(self, path: str) -> IBundle2
+  - def get_output_bundle(self, node: Node, attribute_name: str, instance: int = 18446744073709551614) -> IBundle2
+  - def get_time(self) -> float
+  - def get_time_since_start(self) -> float
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+  - def is_valid(self) -> bool
+  - def set_bool_attribute(self, arg0: bool, arg1: Attribute)
+  - def set_boolarray_attribute(self, arg0: typing.List[bool], arg1: Attribute)
+  - def set_double_attribute(self, arg0: float, arg1: Attribute)
+  - def set_double_matrix_attribute(self, arg0: typing.List[float], arg1: Attribute)
+  - def set_doublearray_attribute(self, arg0: typing.List[float], arg1: Attribute)
+  - def set_float_attribute(self, arg0: float, arg1: Attribute)
+  - def set_floatarray_attribute(self, arg0: typing.List[float], arg1: Attribute)
+  - def set_half_attribute(self, arg0: float, arg1: Attribute)
+  - def set_halfarray_attribute(self, arg0: typing.List[float], arg1: Attribute)
+  - def set_int64_attribute(self, arg0: int, arg1: Attribute)
+  - def set_int64array_attribute(self, arg0: typing.List[int], arg1: Attribute)
+  - def set_int_attribute(self, arg0: int, arg1: Attribute)
+  - def set_intarray_attribute(self, arg0: typing.List[int], arg1: Attribute)
+  - def set_nested_doublearray_attribute(self, arg0: typing.List[typing.List[float]], arg1: Attribute)
+  - def set_nested_floatarray_attribute(self, arg0: typing.List[typing.List[float]], arg1: Attribute)
+  - def set_nested_halfarray_attribute(self, arg0: typing.List[typing.List[float]], arg1: Attribute)
+  - def set_nested_intarray_attribute(self, arg0: typing.List[typing.List[int]], arg1: Attribute)
+  - def set_string_attribute(self, arg0: str, arg1: Attribute)
+  - def set_uchar_attribute(self, arg0: int, arg1: Attribute)
+  - def set_uchararray_attribute(self, arg0: typing.List[int], arg1: Attribute)
+  - def set_uint64_attribute(self, arg0: int, arg1: Attribute)
+  - def set_uint64array_attribute(self, arg0: typing.List[int], arg1: Attribute)
+  - def set_uint_attribute(self, arg0: int, arg1: Attribute)
+  - def set_uintarray_attribute(self, arg0: typing.List[int], arg1: Attribute)
+  - static def write_bucket_to_backing(*args, **kwargs) -> typing.Any
+
+- class GraphEvaluationMode
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - GRAPH_EVALUATION_MODE_AUTOMATIC: omni.graph.core._omni_graph_core.GraphEvaluationMode
+  - GRAPH_EVALUATION_MODE_INSTANCED: omni.graph.core._omni_graph_core.GraphEvaluationMode
+  - GRAPH_EVALUATION_MODE_STANDALONE: omni.graph.core._omni_graph_core.GraphEvaluationMode
+
+- class GraphEvent
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CREATE_VARIABLE: omni.graph.core._omni_graph_core.GraphEvent
+  - REMOVE_VARIABLE: omni.graph.core._omni_graph_core.GraphEvent
+  - VARIABLE_TYPE_CHANGE: omni.graph.core._omni_graph_core.GraphEvent
+
+- class GraphPipelineStage
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - GRAPH_PIPELINE_STAGE_ONDEMAND: omni.graph.core._omni_graph_core.GraphPipelineStage
+  - GRAPH_PIPELINE_STAGE_POSTRENDER: omni.graph.core._omni_graph_core.GraphPipelineStage
+  - GRAPH_PIPELINE_STAGE_PRERENDER: omni.graph.core._omni_graph_core.GraphPipelineStage
+  - GRAPH_PIPELINE_STAGE_SIMULATION: omni.graph.core._omni_graph_core.GraphPipelineStage
+  - GRAPH_PIPELINE_STAGE_UNKNOWN: omni.graph.core._omni_graph_core.GraphPipelineStage
+
+- class GraphRegistry
+  - def __init__(self)
+  - def get_event_stream(self) -> carb.events._events.IEventStream
+  - def get_node_type_version(self, node_type_name: str) -> int
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+
+- class GraphRegistryEvent
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - NODE_TYPE_ADDED: omni.graph.core._omni_graph_core.GraphRegistryEvent
+  - NODE_TYPE_CATEGORY_CHANGED: omni.graph.core._omni_graph_core.GraphRegistryEvent
+  - NODE_TYPE_NAMESPACE_CHANGED: omni.graph.core._omni_graph_core.GraphRegistryEvent
+  - NODE_TYPE_REMOVED: omni.graph.core._omni_graph_core.GraphRegistryEvent
+  - STAGE_PRE_ATTACH: omni.graph.core._omni_graph_core.GraphRegistryEvent
+
+- class IBundle2(_IBundle2, IConstBundle2, _IConstBundle2, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def add_attribute(*args, **kwargs) -> typing.Any
+  - static def add_attributes(*args, **kwargs) -> typing.Any
+  - def clear(self)
+  - def clear_contents(self, bundle_metadata: bool = True, attributes: bool = True, child_bundles: bool = True) -> int
+  - static def copy_attribute(*args, **kwargs) -> typing.Any
+  - static def copy_attributes(*args, **kwargs) -> typing.Any
+  - def copy_bundle(self, source_bundle: IConstBundle2, overwrite: bool = True)
+  - def copy_child_bundle(self, bundle: IConstBundle2, name: typing.Optional[str] = None) -> IBundle2
+  - def copy_child_bundle(self, name: str, bundle: IConstBundle2) -> IBundle2
+  - def copy_child_bundles(self, bundles: typing.List[IConstBundle2], names: typing.Optional[typing.List[str]] = None) -> typing.List[IBundle2]
+  - def copy_child_bundles(self, names: typing.List[str], bundles: typing.List[IConstBundle2]) -> typing.List[IBundle2]
+  - static def create_attribute(*args, **kwargs) -> typing.Any
+  - static def create_attribute_like(*args, **kwargs) -> typing.Any
+  - static def create_attribute_metadata(*args, **kwargs) -> typing.Any
+  - static def create_attributes(*args, **kwargs) -> typing.Any
+  - static def create_attributes_like(*args, **kwargs) -> typing.Any
+  - static def create_bundle_metadata(*args, **kwargs) -> typing.Any
+  - def create_child_bundle(self, path: str) -> IBundle2
+  - def create_child_bundles(self, paths: typing.List[str]) -> typing.List[IBundle2]
+  - static def get_attribute_by_name(*args, **kwargs) -> typing.Any
+  - def get_attribute_data(self, write: bool = False) -> list
+  - def get_attribute_data_count(self) -> int
+  - static def get_attribute_metadata_by_name(*args, **kwargs) -> typing.Any
+  - def get_attribute_names_and_types(self) -> tuple
+  - static def get_attributes(*args, **kwargs) -> typing.Any
+  - static def get_attributes_by_name(*args, **kwargs) -> typing.Any
+  - static def get_bundle_metadata_by_name(*args, **kwargs) -> typing.Any
+  - def get_child_bundle(self, index: int) -> IBundle2
+  - def get_child_bundle_by_name(self, name: str) -> IBundle2
+  - def get_child_bundles(self) -> typing.List[IBundle2]
+  - def get_child_bundles_by_name(self, names: typing.List[str]) -> typing.List[IBundle2]
+  - def get_metadata_storage(self) -> IBundle2
+  - def get_parent_bundle(self) -> IBundle2
+  - def get_prim_path(self) -> str
+  - static def insert_attribute(*args, **kwargs) -> typing.Any
+  - def insert_bundle(self, bundle_to_copy: IConstBundle2)
+  - def is_read_only(self) -> bool
+  - def is_valid(self) -> bool
+  - static def link_attribute(*args, **kwargs) -> typing.Any
+  - static def link_attributes(*args, **kwargs) -> typing.Any
+  - def link_child_bundle(self, name: str, bundle: IConstBundle2) -> IBundle2
+  - def link_child_bundle(self, bundle: IConstBundle2) -> IBundle2
+  - def link_child_bundles(self, names: typing.List[str], bundles: typing.List[IConstBundle2]) -> typing.List[IBundle2]
+  - def link_child_bundles(self, bundles: typing.List[IConstBundle2]) -> typing.List[IBundle2]
+  - def remove_all_attributes(self) -> int
+  - def remove_all_child_bundles(self) -> int
+  - def remove_attribute(self, name: str)
+  - static def remove_attribute(*args, **kwargs) -> typing.Any
+  - def remove_attribute_metadata(self, attribute: str, field_names: typing.List[str]) -> int
+  - def remove_attribute_metadata(self, attribute: str, field_name: str) -> int
+  - def remove_attributes(self, names: typing.List[str])
+  - static def remove_attributes(*args, **kwargs) -> typing.Any
+  - def remove_attributes_by_name(self, names: typing.List[str]) -> int
+  - def remove_bundle_metadata(self, field_names: typing.List[str]) -> int
+  - def remove_bundle_metadata(self, field_name: str) -> int
+  - def remove_child_bundle(self, bundle: IConstBundle2) -> int
+  - def remove_child_bundles(self, bundles: typing.List[IConstBundle2]) -> int
+  - def remove_child_bundles_by_name(self, names: typing.List[str]) -> int
+
+- class IBundleChanges(_IBundleChanges, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def activate_change_tracking(*args, **kwargs) -> typing.Any
+  - def activate_change_tracking(self, bundle: IBundle2)
+  - def clear_changes(self) -> int
+  - static def create(*args, **kwargs) -> typing.Any
+  - static def deactivate_change_tracking(*args, **kwargs) -> typing.Any
+  - def deactivate_change_tracking(self, bundle: IBundle2)
+  - def get_change(self, bundle: IConstBundle2) -> BundleChangeType
+  - static def get_change(*args, **kwargs) -> typing.Any
+  - def get_changes(self, bundles: typing.List[IConstBundle2]) -> typing.List[BundleChangeType]
+  - static def get_changes(*args, **kwargs) -> typing.Any
+  - def get_changes(self, entries: typing.Sequence) -> typing.List[BundleChangeType]
+
+- class IBundleFactory(_IBundleFactory, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def create(*args, **kwargs) -> typing.Any
+  - static def create_bundle(*args, **kwargs) -> typing.Any
+  - static def create_bundles(*args, **kwargs) -> typing.Any
+  - static def get_bundle(*args, **kwargs) -> typing.Any
+  - static def get_bundles(*args, **kwargs) -> typing.Any
+
+- class IBundleFactory2(_IBundleFactory2, IBundleFactory, _IBundleFactory, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def get_bundle_from_path(*args, **kwargs) -> typing.Any
+  - static def get_const_bundle_from_path(*args, **kwargs) -> typing.Any
+
+- class IConstBundle2(_IConstBundle2, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def add_attribute(*args, **kwargs) -> typing.Any
+  - static def add_attributes(*args, **kwargs) -> typing.Any
+  - def clear(self)
+  - static def get_attribute_by_name(*args, **kwargs) -> typing.Any
+  - def get_attribute_count(self) -> int
+  - def get_attribute_data(self, write: bool = False) -> list
+  - def get_attribute_data_count(self) -> int
+  - static def get_attribute_metadata_by_name(*args, **kwargs) -> typing.Any
+  - def get_attribute_metadata_count(self, attribute: str) -> int
+  - def get_attribute_metadata_names(self, attribute: str) -> typing.List[str]
+  - static def get_attribute_metadata_types(*args, **kwargs) -> typing.Any
+  - def get_attribute_names(self) -> typing.List[str]
+  - def get_attribute_names_and_types(self) -> tuple
+  - static def get_attribute_types(*args, **kwargs) -> typing.Any
+  - static def get_attributes(*args, **kwargs) -> typing.Any
+  - static def get_attributes_by_name(*args, **kwargs) -> typing.Any
+  - static def get_bundle_metadata_by_name(*args, **kwargs) -> typing.Any
+  - def get_bundle_metadata_count(self) -> int
+  - def get_bundle_metadata_names(self) -> typing.List[str]
+  - static def get_bundle_metadata_types(*args, **kwargs) -> typing.Any
+  - def get_child_bundle(self, index: int) -> IConstBundle2
+  - def get_child_bundle_by_name(self, path: str) -> IConstBundle2
+  - def get_child_bundle_count(self) -> int
+  - def get_child_bundles(self) -> typing.List[IConstBundle2]
+  - def get_child_bundles_by_name(self, names: typing.List[str]) -> typing.List[IConstBundle2]
+  - static def get_context(*args, **kwargs) -> typing.Any
+  - def get_metadata_storage(self) -> IConstBundle2
+  - def get_name(self) -> str
+  - def get_parent_bundle(self) -> IConstBundle2
+  - def get_path(self) -> str
+  - def get_prim_path(self) -> str
+  - static def insert_attribute(*args, **kwargs) -> typing.Any
+  - def insert_bundle(self, bundle_to_copy: IConstBundle2)
+  - def is_read_only(self) -> bool
+  - def is_valid(self) -> bool
+  - def remove_attribute(self, name: str)
+  - def remove_attributes(self, names: typing.List[str])
+  - [property] def valid(self) -> bool
+
+- class INodeCategories(_INodeCategories, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def define_category(self, category_name: str, category_description: str) -> bool
+  - static def get_all_categories() -> object
+  - static def get_node_categories(node_id: object) -> object
+  - static def get_node_type_categories(node_type_id: object) -> object
+  - def remove_category(self, category_name: str) -> bool
+  - [property] def category_count(self) -> int
+
+- class INodeTypeForwarding(_INodeTypeForwarding, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def define_forward(self, forward_name: str, forward_version: int, replacement_name: str, replacement_version: int, replacement_extension_id: str) -> bool
+  - static def find_forward(forward_name: str, forward_version: int) -> tuple
+  - static def get_forwarding() -> object
+  - def remove_forward(self, forward_name: str, forward_version: int) -> bool
+  - def remove_forwarded_type(self, referenced_name: str, referenced_version: int) -> int
+  - [property] def forward_count(self) -> int
+
+- class INodeTypeForwarding2(_INodeTypeForwarding2, INodeTypeForwarding, _INodeTypeForwarding, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+
+- class IPrimView(_IPrimView, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - [property] def paths(self) -> list
+  - [property] def prim_count(self) -> int
+  - [property] def segments(self) -> list
+
+- class ISchedulingHints(_ISchedulingHints, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def get_data_access(self, data_type: eAccessLocation) -> eAccessType
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+  - def set_data_access(self, data_type: eAccessLocation, new_access_type: eAccessType)
+  - [property] def compute_rule(self) -> eComputeRule
+  - [compute_rule.setter] def compute_rule(self, arg1: eComputeRule)
+  - [property] def thread_safety(self) -> eThreadSafety
+  - [thread_safety.setter] def thread_safety(self, arg1: eThreadSafety)
+
+- class ISchedulingHints2(_ISchedulingHints2, ISchedulingHints, _ISchedulingHints, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - def __init__(self, arg0: ISchedulingHints)
+  - [property] def purity_status(self) -> ePurityStatus
+  - [purity_status.setter] def purity_status(self, arg1: ePurityStatus)
+
+- class IVariable(_IVariable, omni.core._core.IObject)
+  - def __init__(self, arg0: omni.core._core.IObject)
+  - def __init__(self)
+  - static def get(*args, **kwargs) -> typing.Any
+  - static def get_array(*args, **kwargs) -> typing.Any
+  - static def set(*args, **kwargs) -> typing.Any
+  - static def set_type(*args, **kwargs) -> typing.Any
+  - [property] def category(self) -> str
+  - [category.setter] def category(self, arg1: str)
+  - [property] def display_name(self) -> str
+  - [display_name.setter] def display_name(self, arg1: str)
+  - [property] def is_backed_by_usd(self) -> bool
+  - [property] def name(self) -> str
+  - [property] def scope(self) -> eVariableScope
+  - [scope.setter] def scope(self, arg1: eVariableScope)
+  - [property] def source_path(self) -> str
+  - [property] def tooltip(self) -> str
+  - [tooltip.setter] def tooltip(self, arg1: str)
+  - [property] def type(self) -> typing.Any
+  - [property] def valid(self) -> bool
+
+- class MemoryType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ANY: omni.graph.core._omni_graph_core.MemoryType
+  - CPU: omni.graph.core._omni_graph_core.MemoryType
+  - CUDA: omni.graph.core._omni_graph_core.MemoryType
+
+- class Node
+  - def clear_old_compute_messages(self) -> int
+  - static def create_attribute(*args, **kwargs) -> typing.Any
+  - def deregister_on_connected_callback(self, callback: int)
+  - def deregister_on_disconnected_callback(self, callback: int)
+  - def deregister_on_path_changed_callback(self, callback: int)
+  - def get_attribute(self, name: str) -> Attribute
+  - def get_attribute_exists(self, name: str) -> bool
+  - def get_attributes(self) -> typing.List[Attribute]
+  - static def get_backing_bucket_id(*args, **kwargs) -> typing.Any
+  - static def get_compound_graph_instance(*args, **kwargs) -> typing.Any
+  - def get_compute_count(self) -> int
+  - static def get_compute_messages(*args, **kwargs) -> typing.Any
+  - def get_compute_vectorized_count(self) -> int
+  - def get_event_stream(self) -> carb.events._events.IEventStream
+  - static def get_graph(*args, **kwargs) -> typing.Any
+  - def get_graph_instance_id(self, instance: int = 18446744073709551614) -> str
+  - def get_handle(self) -> int
+  - static def get_node_type(*args, **kwargs) -> typing.Any
+  - def get_prim_path(self) -> str
+  - def get_type_name(self) -> str
+  - static def get_wrapped_graph(*args, **kwargs) -> typing.Any
+  - def increment_compute_count(self) -> int
+  - def is_backed_by_usd(self) -> bool
+  - def is_compound_node(self) -> bool
+  - def is_disabled(self) -> bool
+  - def is_valid(self) -> bool
+  - static def log_compute_message(*args, **kwargs) -> typing.Any
+  - def node_id(self) -> int
+  - def register_on_connected_callback(self, callback: object) -> int
+  - def register_on_disconnected_callback(self, callback: object) -> int
+  - def register_on_path_changed_callback(self, callback: object) -> int
+  - def remove_attribute(self, attributeName: str) -> bool
+  - def request_compute(self) -> bool
+  - def resolve_coupled_attributes(self, attributesArray: typing.List[Attribute]) -> bool
+  - static def resolve_partially_coupled_attributes(*args, **kwargs) -> typing.Any
+  - def set_compute_incomplete(self)
+  - def set_disabled(self, disabled: bool)
+
+- class NodeEvent
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ATTRIBUTE_TYPE_RESOLVE: omni.graph.core._omni_graph_core.NodeEvent
+  - CREATE_ATTRIBUTE: omni.graph.core._omni_graph_core.NodeEvent
+  - REMOVE_ATTRIBUTE: omni.graph.core._omni_graph_core.NodeEvent
+
+- class NodeType
+  - def add_extended_input(self, name: str, type: str, is_required: bool, extended_type: ExtendedAttributeType)
+  - def add_extended_output(self, name: str, type: str, is_required: bool, extended_type: ExtendedAttributeType)
+  - def add_extended_state(self, name: str, type: str, is_required: bool, extended_type: ExtendedAttributeType)
+  - def add_input(self, name: str, type: str, is_required: bool, default_value: object = None)
+  - def add_output(self, name: str, type: str, is_required: bool, default_value: object = None)
+  - def add_state(self, name: str, type: str, is_required: bool, default_value: object = None)
+  - def defined_at_runtime(self) -> bool
+  - def get_all_categories(self) -> list
+  - def get_all_metadata(self) -> dict
+  - def get_all_subnode_types(self) -> dict
+  - def get_metadata(self, key: str) -> str
+  - def get_metadata_count(self) -> int
+  - def get_node_type(self) -> str
+  - def get_path(self) -> str
+  - def get_scheduling_hints(self) -> ISchedulingHints
+  - def has_state(self) -> bool
+  - def inspect(self, inspector: omni.inspect._omni_inspect.IInspector) -> bool
+  - def is_compound_node_type(self) -> bool
+  - def is_valid(self) -> bool
+  - def set_has_state(self, has_state: bool)
+  - def set_metadata(self, key: str, value: str) -> bool
+  - def set_scheduling_hints(self, scheduling_hints: ISchedulingHints)
+
+- class OmniGraphBindingError(Exception, BaseException)
+
+- class PtrToPtrKind
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - CPU: omni.graph.core._omni_graph_core.PtrToPtrKind
+  - GPU: omni.graph.core._omni_graph_core.PtrToPtrKind
+  - NA: omni.graph.core._omni_graph_core.PtrToPtrKind
+
+- class Severity
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - ERROR: omni.graph.core._omni_graph_core.Severity
+  - INFO: omni.graph.core._omni_graph_core.Severity
+  - WARNING: omni.graph.core._omni_graph_core.Severity
+
+- class Type
+  - def __init__(self, base_type: BaseDataType, tuple_count: int = 1, array_depth: int = 0, role: AttributeRole = AttributeRole.NONE)
+  - def get_base_type_name(self) -> str
+  - def get_ogn_type_name(self) -> str
+  - def get_role_name(self) -> str
+  - def get_type_name(self) -> str
+  - def is_compatible_raw_data(self, type_to_compare: Type) -> bool
+  - def is_matrix_type(self) -> bool
+  - [property] def array_depth(self) -> int
+  - [array_depth.setter] def array_depth(self, arg1: int)
+  - [property] def base_type(self) -> BaseDataType
+  - [base_type.setter] def base_type(self, arg1: BaseDataType)
+  - [property] def role(self) -> AttributeRole
+  - [role.setter] def role(self, arg1: AttributeRole)
+  - [property] def tuple_count(self) -> int
+  - [tuple_count.setter] def tuple_count(self, arg1: int)
+
+- class eAccessLocation
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_GLOBAL: omni.graph.core._omni_graph_core.eAccessLocation
+  - E_STATIC: omni.graph.core._omni_graph_core.eAccessLocation
+  - E_TOPOLOGY: omni.graph.core._omni_graph_core.eAccessLocation
+  - E_USD: omni.graph.core._omni_graph_core.eAccessLocation
+
+- class eAccessType
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_NONE: omni.graph.core._omni_graph_core.eAccessType
+  - E_READ: omni.graph.core._omni_graph_core.eAccessType
+  - E_READ_WRITE: omni.graph.core._omni_graph_core.eAccessType
+  - E_WRITE: omni.graph.core._omni_graph_core.eAccessType
+
+- class eComputeRule
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_DEFAULT: omni.graph.core._omni_graph_core.eComputeRule
+  - E_ON_REQUEST: omni.graph.core._omni_graph_core.eComputeRule
+
+- class ePurityStatus
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_IMPURE: omni.graph.core._omni_graph_core.ePurityStatus
+  - E_PURE: omni.graph.core._omni_graph_core.ePurityStatus
+
+- class eThreadSafety
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_SAFE: omni.graph.core._omni_graph_core.eThreadSafety
+  - E_UNKNOWN: omni.graph.core._omni_graph_core.eThreadSafety
+  - E_UNSAFE: omni.graph.core._omni_graph_core.eThreadSafety
+
+- class eVariableScope
+  - def __init__(self, value: int)
+  - [property] def name(self) -> str
+  - [property] def value(self) -> int
+  - E_PRIVATE: omni.graph.core._omni_graph_core.eVariableScope
+  - E_PUBLIC: omni.graph.core._omni_graph_core.eVariableScope
+  - E_READ_ONLY: omni.graph.core._omni_graph_core.eVariableScope
+
+- class AttributeDataValueHelper
+  - def __init__(self, data: AttributeWithValue_t, instance = og.ACCORDING_TO_CONTEXT_GRAPH_INDEX)
+  - [property] def is_valid(self) -> bool
+  - [property] def is_resolved(self) -> bool
+  - def check_validity(self)
+  - [property] def gpu_ptr_kind(self) -> og.PtrToPtrKind
+  - [gpu_ptr_kind.setter] def gpu_ptr_kind(self, new_ptr_kind: og.PtrToPtrKind)
+  - [property] def type(self) -> og.Type
+  - [property] def attribute_data(self) -> og.AttributeData
+  - def set(self, new_value: ValueToSet_t, on_gpu: bool = False)
+  - def get(self, on_gpu: bool = False, reserved_element_count: Optional[int] = None, return_type: Optional[WrappedArrayType] = None) -> Any
+  - def get_array_size(self) -> int
+  - def reserve_element_count(self, new_element_count: int)
+  - [deprecated] def get_array(self, get_for_write: bool, reserved_element_count: int = 0, on_gpu: bool = False, return_type: Optional[WrappedArrayType] = None) -> Any
+
+- class AttributeValueHelper(AttributeDataValueHelper)
+  - def __init__(self, attribute: og.Attribute, instance = og.ACCORDING_TO_CONTEXT_GRAPH_INDEX)
+  - [property] def attribute(self) -> og.Attribute
+  - [property] def is_resolved(self) -> bool
+  - [property] def is_valid(self) -> bool
+  - [property] def type(self) -> og.Type
+  - def resolve_type(self, type_id: AttributeType_t)
+  - def set(self, new_value: ValueToSet_t, on_gpu: bool = False, update_usd: bool = False)
+
+- class WrappedArrayType(Enum)
+  - NUMPY: Unknown
+  - RAW: Unknown
+
+- class NodeTypeConstructionError(Exception)
+
+- class Bundle
+  - def __init__(self, attribute_name: str, read_only: bool)
+  - class def from_accessor(cls, bundle_contents: BundleContents)
+  - [property] def runtime_accessor(self) -> BundleContents
+  - def create_attribute(self, name: str, type_desc: type) -> OmniAttribute
+  - [property] def is_runtime_resident(self)
+  - [property] def size(self) -> int
+  - [property] def valid(self) -> Optional[bool]
+  - def clear(self)
+  - def insert(self, to_insert: Union[Bundle, OmniAttribute, Tuple[OmniAttribute, str], AttributeDescription])
+  - def attribute_by_name(self, attribute_name: str) -> Optional[RuntimeAttribute]
+  - def remove(self, attribute_name: str)
+  - [property] def name(self)
+  - [property] def attribute_names(self) -> List[OmniAttribute]
+
+- class BundleContainer
+  - def __init__(self, context: og.GraphContext, node: og.Node, attributes, gpu_bundles: List[str], read_only: bool = False, gpu_ptr_kinds: Optional[Dict[str, og.PtrToPtrKind]] = None)
+
+- class BundleContents
+  - def __init__(self, context: og.GraphContext, node: og.Node, attribute_name: str, read_only: bool, gpu_by_default: bool, gpu_ptr_kind: og.PtrToPtrKind = og.PtrToPtrKind.NA)
+  - [property] def size(self) -> int
+  - [property] def valid(self) -> bool
+  - def clear(self)
+  - def add_attributes(self, types: List[og.Type], names: List[str])
+  - def remove_attributes(self, names: List[str])
+  - def insert(self, to_insert: Union[BundleContents, RuntimeAttribute, Tuple[RuntimeAttribute, str], AttributeDescription]) -> RuntimeAttribute
+  - def attribute_by_name(self, attribute_name: str) -> Optional[RuntimeAttribute]
+  - def remove(self, attribute_name: str)
+  - [property] def bundle(self) -> og.Bundle
+  - [bundle.setter] def bundle(self, bundle_to_assign: BundleContents)
+  - [property] def attributes(self) -> List[RuntimeAttribute]
+  - [attributes.setter] def attributes(self, attributes_to_assign: List[RuntimeAttribute])
+  - [property] def path(self) -> str
+  - def changes(self, clear_at_exit: bool = True)
+
+- class BundleChanges
+  - def __init__(self, bundle_changes: og.IBundleChanges, bundle: og.IConstBundle2, clear_at_exit: bool = True)
+  - def activate(self)
+  - def deactivate(self)
+  - def clear_changes(self)
+  - def has_changed(self)
+  - def get_change(self, entry: Union[BundleContents, RuntimeAttribute, og.AttributeData, og.IConstBundle2])
+
+- class BundleWriteBlock
+  - def __init__(self, context: og.GraphContext, activate = True)
+
+- class Controller(GraphController, NodeController, DataView, ObjectLookup)
+  - Keys: Unknown
+  - TYPE_CHECKING: bool
+  - def __init__(self, *args, **kwargs)
+  - class async def evaluate(obj, *args, **kwargs)
+  - class def evaluate_sync(obj, *args, **kwargs)
+  - PrimCreationData_t: Unknown
+  - class def edit(obj, *args, **kwargs) -> Tuple[og.Graph, List[og.Node], List[Usd.Prim], PathToObjectMap_t]
+
+- class DataWrapper
+  - def __init__(self, memory: int, dtype: Dtype, shape: DataWrapperShapeTypes, device: Device, gpu_ptr_kind: og.PtrToPtrKind = og.PtrToPtrKind.NA)
+  - def is_array(self) -> bool
+
+- class Device
+  - def __init__(self, device_name: str)
+  - [property] def cpu(self) -> bool
+  - [property] def cuda(self) -> bool
+
+- class DataView
+  - class def force_usd_update(cls, force_update: bool = True)
+  - def __init__(self, *args, **kwargs)
+  - [property] def gpu_ptr_kind(self) -> og.PtrToPtrKind
+  - [gpu_ptr_kind.setter] def gpu_ptr_kind(self, new_ptr_kind: og.PtrToPtrKind)
+  - class def get(obj, *args, **kwargs) -> Any
+  - class def get_array_size(obj, *args, **kwargs) -> int
+  - class def set(obj, *args, **kwargs) -> bool
+
+- class Database
+  - INTERFACE: Dict
+  - PER_NODE_DATA: Dict
+  - class def dynamic_attribute_data(cls, node: og.Node, port_type: og.AttributePortType) -> DynamicAttributeInterface
+  - class def per_node_data(cls, node: og.Node) -> Dict[str, Any]
+  - ROLE_BUNDLE: Unknown
+  - ROLE_COLOR: Unknown
+  - ROLE_EXECUTION: Unknown
+  - ROLE_FRAME: Unknown
+  - ROLE_MATRIX: Unknown
+  - ROLE_NORMAL: Unknown
+  - ROLE_OBJECT_ID: Unknown
+  - ROLE_PATH: Unknown
+  - ROLE_POINT: Unknown
+  - ROLE_QUATERNION: Unknown
+  - ROLE_TARGET: Unknown
+  - ROLE_TEXCOORD: Unknown
+  - ROLE_TIMECODE: Unknown
+  - ROLE_TRANSFORM: Unknown
+  - ROLE_VECTOR: Unknown
+  - def __init__(self, node: og.Node)
+  - def get_metadata(self, metadata_key: str, attribute: Optional[og.Attribute] = None) -> Optional[str]
+  - [property] def abi_node(self) -> og.Node
+  - [property] def abi_context(self) -> og.GraphContext
+  - [deprecated] def move(self, dst: og.Attribute, src: og.Attribute)
+  - def log_error(self, message: str, add_context: bool = True)
+  - def log_warn(self, message: str)
+  - def log_warning(self, message: str)
+  - def log_info(self, message: str)
+  - class def get_internal_state(cls, node: og.Node, inst_id: str)
+  - class def per_instance_internal_state(cls, node: og.Node)
+  - class def shared_internal_state(cls, node: og.Node)
+  - [deprecated] class def per_node_internal_state(cls, node: og.Node)
+  - [deprecated] [property] def internal_state(self)
+  - [property] def per_instance_state(self)
+  - [property] def shared_state(self)
+  - class def per_node_errors(cls, node: og.Node)
+  - def get_variable(self, name: str)
+  - def set_variable(self, name: str, value: Any)
+  - def set_dynamic_attribute_memory_location(self, on_gpu: bool, gpu_ptr_kind: og.PtrToPtrKind = og.PtrToPtrKind.NA)
+
+- class DynamicAttributeAccess
+  - def __init__(self, context_id: og.GraphContext, node: og.Node, attributes, dynamic_attributes: DynamicAttributeInterface)
+  - def get_dynamic_attributes(self) -> DynamicAttributeInterface
+
+- class DynamicAttributeInterface
+  - def __init__(self, port_type: og.AttributePortType)
+  - def has_attribute(self, property_name: str) -> bool
+  - def set_default_memory_location(self, on_gpu: bool, gpu_ptr_kind: og.PtrToPtrKind = og.PtrToPtrKind.NA)
+  - def get(self, property_name: str) -> Any
+  - def set(self, property_name: str, locked: bool = False, new_value: Any = None) -> bool
+  - def add_attribute(self, new_attribute: og.Attribute)
+  - def remove_attribute(self, old_attribute: og.Attribute)
+
+- class PerNodeKeys
+  - ATTRIBUTES: str
+  - ROLE: str
+  - NODE_CALLBACK: str
+  - INTERNAL_STATE: str
+  - DYNAMIC_ATTRIBUTES: str
+  - ERRORS: str
+
+- class Dtype
+  - tuple_count: int
+  - size: int
+  - base_type: og.BaseDataType
+  - ctype: object
+  - class def is_matrix_type(cls) -> bool
+
+- class OmniGraphAttributeError(OmniGraphError, AttributeError)
+
+- class OmniGraphError(Exception)
+  - SHOW_STACK_TRACE: bool
+  - class def set_show_stack_trace(cls, enable_traces: bool)
+  - def __init__(self, *args, **kwargs) -> str
+
+- class OmniGraphTypeError(OmniGraphError, TypeError)
+
+- class OmniGraphValueError(OmniGraphError, ValueError)
+
+- class ReadOnlyError(OmniGraphError)
+  - def __init__(self, attribute: Attribute_t, message: Optional[str] = None)
+
+- class ExtensionInformation
+  - KEY_UNKNOWN_EXTENSION: str
+  - def __init__(self)
+  - def get_node_types_by_extension(self) -> Dict[str, List[str]]
+  - def get_nodes_by_extension(self) -> Tuple[Dict[str, List[str]], Dict[str, List[str]]]
+
+- class GraphController
+  - def __init__(self, *args, **kwargs)
+  - class def create_graph(obj, *args, **kwargs) -> og.Graph
+  - class def create_node(obj, *args, **kwargs) -> og.Graph
+  - class def create_prim(obj, *args, **kwargs) -> Usd.Prim
+  - class def create_variable(obj, *args, **kwargs) -> og.IVariable
+  - class def delete_node(obj, *args, **kwargs) -> bool
+  - ExposePrimNode_t: Unknown
+  - ExposePrimNodes_t: Unknown
+  - class PrimExposureType(Enum)
+    - AS_ATTRIBUTES: str
+    - AS_BUNDLE: str
+    - AS_WRITABLE: str
+  - PrimExposureType_t: Unknown
+  - class def node_type_to_expose(cls, exposure_type: PrimExposureType_t) -> str
+  - class def exposed_attribute_name(cls, exposure_type: PrimExposureType_t) -> str
+  - class def expose_prim(obj, *args, **kwargs) -> og.Node
+  - class def connect(obj, *args, **kwargs)
+  - class def disconnect(obj, *args, **kwargs)
+  - class def disconnect_all(obj, *args, **kwargs)
+  - class def set_variable_default_value(cls, variable_id: Variable_t, value)
+  - class def get_variable_default_value(cls, variable_id: Variable_t) -> Any
+
+- class OmniGraphInspector
+  - def __init__(self)
+  - def available(self) -> bool
+  - def memory_use(self, omnigraph_object: _OmniGraphObjectTypes) -> int
+  - def as_text(self, omnigraph_object: _OmniGraphObjectTypes, file_path: Optional[str] = None) -> str
+  - def as_json(self, omnigraph_object: _OmniGraphObjectTypes, file_path: Optional[str] = None, flags: Optional[List[str]] = None) -> str
+  - def attribute_locations(self, context: og.GraphContext) -> Dict[str, Dict[str, int]]
+
+- class NodeController
+  - def __init__(self, *args, **kwargs)
+  - class def create_attribute(obj, *args, **kwargs) -> Optional[og.Attribute]
+  - class def remove_attribute(obj, *args, **kwargs) -> bool
+  - class def safe_node_name(cls, node_type_name: str, abbreviated: bool = False) -> str
+  - class def promote_attribute(obj, *args, **kwargs) -> og.Attribute
+
+- class ObjectLookup
+  - class def graph(cls, graph_id: Optional[GraphSpecs_t]) -> Union[og.Graph, List[og.Graph]]
+  - class def node(cls, node_id: NodeSpecs_t, graph_id: Optional[GraphSpec_t] = None) -> Union[og.Node, List[og.Node]]
+  - class def node_path(cls, node_spec: NodeSpec_t) -> str
+  - class def prim_path(cls, prim_ids: Prims_t) -> Union[str, List[str]]
+  - class def attribute(cls, attribute_id: AttributeSpecs_t, node_id: Optional[Node_t] = None, graph_id: Optional[GraphSpec_t] = None) -> Union[og.Attribute, List[og.Attribute]]
+  - class def attribute_path(cls, attribute_spec: AttributeSpec_t) -> str
+  - class def attribute_type(cls, type_id: str | AttributeType_t | og.Attribute | og.AttributeData) -> og.Type
+  - class def node_type(cls, type_id: NodeTypes_t) -> Union[og.NodeType, List[og.NodeType]]
+  - class def prim(cls, prim_id: Prims_t) -> Union[Usd.Prim, List[Usd.Prim]]
+  - class def usd_attribute(cls, attribute_specs: AttributeSpecs_t) -> Union[Usd.Attribute, List[Usd.Attribute]]
+  - class def usd_property(cls, attribute_specs: AttributeSpecs_t) -> Union[Usd.Property, List[Usd.Property]]
+  - class def usd_relationship(cls, attribute_specs: AttributeSpecs_t) -> Union[Usd.Relationship, List[Usd.Relationship]]
+  - class def split_graph_from_node_path(cls, node_path: Union[str, Sdf.Path]) -> Tuple[og.Graph, str]
+  - class def variable(cls, variable_id: Variables_t) -> Union[og.IVariable, List[og.IVariable]]
+  - class def compound_graph(cls, node_id: NodeSpecs_t) -> og.Graph | None | List[og.Graph | None]
+  - class def compound_node(cls, item_id: GraphSpec_t | NodeSpec_t | List[GraphSpec_t | NodeSpec_t]) -> og.Node | None | List[og.Graph | None]
+
+- class RuntimeAttribute
+  - def __init__(self, attribute_data: og.AttributeData, context: og.GraphContext, read_only: bool, on_gpu: bool = None, gpu_ptr_kind: og.PtrToPtrKind = og.PtrToPtrKind.GPU)
+  - def copy_data(self, other: RuntimeAttribute) -> bool
+  - [property] def abi(self) -> og.AttributeData
+  - [property] def size(self) -> int
+  - [size.setter] def size(self, new_size: int) -> int
+  - [property] def name(self) -> str
+  - [property] def type(self) -> og.Type
+  - [property] def value(self) -> Any
+  - [value.setter] def value(self, new_value: Any)
+  - [property] def gpu_value(self) -> Any
+  - [gpu_value.setter] def gpu_value(self, new_value: Any)
+  - [property] def cpu_value(self) -> Any
+  - [cpu_value.setter] def cpu_value(self, new_value: Any)
+  - def array_value(self, *args, **kwargs) -> Any
+
+- class Settings
+  - VERSION: str
+  - UPDATE_MESH_TO_HYDRA: str
+  - PLAY_COMPUTE_GRAPH: str
+  - OPTIMIZE_GENERATED_PYTHON: str
+  - ENABLE_PATH_CHANGED_CALLBACK: str
+  - DEPRECATIONS_ARE_ERRORS: str
+  - DISABLE_INFO_NOTICE_HANDLING_IN_PLAYBACK: str
+  - AUTO_INSTANCING_ENABLED: str
+  - static def generator_settings() -> ogi.Settings
+  - static def temporary(setting_name: Union[str, List[Tuple[str, Any]], Dict[str, Any]], setting_value: Any = None)
+
+- class ThreadsafetyTestUtils
+  - MAX_GRAPH_INSTANCES: int
+  - EVALUATION_ALL_GRAPHS: int
+  - EVALUATION_WAIT_FRAME: int
+  - threading_cache: List
+  - thread_cache_indices: Unknown
+  - class def add_to_threading_cache(cls, test_instance_id: int, code)
+  - class def single_evaluation_first_test_instance(cls, test_instance_id: int, func, *args, **kwargs)
+  - class def single_evaluation_last_test_instance(cls, test_instance_id: int, func, *args, **kwargs)
+  - class def make_serial_test(cls, test_generator)
+  - class def make_threading_test(cls, test_generator)
+
+- class GraphSettings
+  - evaluator_type: str
+  - file_format_version: Tuple[int, int]
+  - fabric_backing: str
+  - pipeline_stage: str
+  - evaluation_mode: str
+
+- class TypedValue
+  - value: Any
+  - type: og.Type
+  - def has_type(self) -> bool
+  - def set(self, *args, **kwargs)
+
+- class PythonNodeRegistration
+  - def __init__(self, ext_name: str, module_name: str, ext_path: Path, autonode_config: dict[str, any] = None)
+  - def deregister(self)
+
+## Functions
+
+- def acquire_interface(plugin_name: str = None, library_path: str = None) -> ComputeGraph
+- def attach(stage_id: int, mps: float)
+- def create_prim_view_from_prims(prims: list) -> IPrimView
+- def create_prim_view_from_query(include: list, exclude: list = []) -> IPrimView
+- def deregister_node_type(name: str) -> bool
+- def deregister_post_load_file_format_upgrade_callback(postload_handle: int)
+- def deregister_pre_load_file_format_upgrade_callback(preload_handle: int)
+- def detach()
+- def get_all_graphs() -> typing.List[Graph]
+- def get_all_graphs_and_subgraphs() -> typing.List[Graph]
+- def get_bundle_tree_factory_interface() -> IBundleFactory
+- def get_compute_cuda_device() -> int
+- def get_compute_graph_contexts() -> typing.List[GraphContext]
+- def get_global_orchestration_graphs() -> typing.List[Graph]
+- def get_global_orchestration_graphs_in_pipeline_stage(pipeline_stage: GraphPipelineStage) -> typing.List[Graph]
+- def get_graph_by_path(path: str) -> object
+- def get_graphs_in_pipeline_stage(pipeline_stage: GraphPipelineStage) -> typing.List[Graph]
+- def get_node_by_path(path: str) -> object
+- def get_node_categories_interface() -> INodeCategories
+- def get_node_type(node_type_name: str) -> NodeType
+- def get_node_type_forwarding_interface(*args, **kwargs) -> typing.Any
+- def get_node_type_forwarding_interface2(*args, **kwargs) -> typing.Any
+- def get_registered_nodes() -> typing.List[str]
+- def is_global_graph_prim(prim_path: str) -> bool
+- def on_shutdown()
+- def register_node_type(name: object, version: int)
+- def register_post_load_file_format_upgrade_callback(callback: object) -> int
+- def register_pre_load_file_format_upgrade_callback(callback: object) -> int
+- def register_python_node()
+- def release_interface(arg0: ComputeGraph)
+- def set_test_failure(has_failure: bool)
+- def shutdown_compute_graph()
+- def test_failure_count() -> int
+- def update(current_time: float, elapsed_time: float)
+- def get_port_type_namespace(port_type: og.AttributePortType) -> str
+- def create_node_type(func: callable = None) -> callable
+- def developer_mode_active(ext_name: str) -> tuple[bool, list[str]]
+- def data_shape_from_type(attribute_type: og.Type, is_gathered: bool = False) -> tuple[Dtype, DataWrapperShapeTypes]
+- def traverse_downstream_graph(prims: List[Usd.Prim], attribute_predicate: Optional[Callable[[og.Attribute], bool]] = None, node_callback: Optional[Callable[[og.Node], None]] = None) -> Set[og.Node]
+- def traverse_upstream_graph(prims: List[Usd.Prim], attribute_predicate: Optional[Callable[[og.Attribute], bool]] = None, node_callback: Optional[Callable[[og.Node], None]] = None) -> Set[og.Node]
+- def resolve_base_coupled(attribute_specs: Sequence[Tuple[og.Attribute, int, int, og.AttributeRole]])
+- def resolve_fully_coupled(attributes: Sequence[og.Attribute])
+- def attribute_value_as_usd(og_type: og.Type, value: Any, array_limit: Optional[int] = None) -> Any
+- def get_graph_settings(graph: Graph_t) -> GraphSettings
+- def get_kit_version() -> Tuple[int, int]
+- def in_compute()
+- def is_attribute_plain_data(attrib: Attribute_t) -> bool
+- def is_in_compute() -> bool
+- def python_value_as_usd(og_type: og.Type, value: Any) -> Any
+- def generate_ogn_from_node(node: og.Node) -> Dict[str, Any]
+- async def load_example_file(example_file_name: str)
+- def remove_attributes_if(node: Nodes_t, attribute_filter_function: Optional[Callable[[og.Attribute], bool]] = None) -> int
+- def sync_to_usd(attribute: og.Attribute, value: Any)
+- def get_global_container_graphs() -> list[_omni_graph_core.Graph]
+
+## Variables
+
+- ACCORDING_TO_CONTEXT_GRAPH_INDEX: int
+- APPLIED_SCHEMA: omni.graph.core._omni_graph_core.AttributeRole
+- ASSET: omni.graph.core._omni_graph_core.BaseDataType
+- AUTHORING_GRAPH_INDEX: int
+- BOOL: omni.graph.core._omni_graph_core.BaseDataType
+- BUNDLE: omni.graph.core._omni_graph_core.AttributeRole
+- COLOR: omni.graph.core._omni_graph_core.AttributeRole
+- CONNECTION: omni.graph.core._omni_graph_core.BaseDataType
+- DOUBLE: omni.graph.core._omni_graph_core.BaseDataType
+- ERROR: omni.graph.core._omni_graph_core.Severity
+- EXECUTION: omni.graph.core._omni_graph_core.AttributeRole
+- FLOAT: omni.graph.core._omni_graph_core.BaseDataType
+- FRAME: omni.graph.core._omni_graph_core.AttributeRole
+- HALF: omni.graph.core._omni_graph_core.BaseDataType
+- INFO: omni.graph.core._omni_graph_core.Severity
+- INSTANCING_GRAPH_TARGET_PATH: str
+- INT: omni.graph.core._omni_graph_core.BaseDataType
+- INT64: omni.graph.core._omni_graph_core.BaseDataType
+- MATRIX: omni.graph.core._omni_graph_core.AttributeRole
+- NONE: omni.graph.core._omni_graph_core.AttributeRole
+- NORMAL: omni.graph.core._omni_graph_core.AttributeRole
+- OBJECT_ID: omni.graph.core._omni_graph_core.AttributeRole
+- PATH: omni.graph.core._omni_graph_core.AttributeRole
+- POSITION: omni.graph.core._omni_graph_core.AttributeRole
+- PRIM: omni.graph.core._omni_graph_core.BaseDataType
+- PRIM_TYPE_NAME: omni.graph.core._omni_graph_core.AttributeRole
+- QUATERNION: omni.graph.core._omni_graph_core.AttributeRole
+- RELATIONSHIP: omni.graph.core._omni_graph_core.BaseDataType
+- TAG: omni.graph.core._omni_graph_core.BaseDataType
+- TARGET: omni.graph.core._omni_graph_core.AttributeRole
+- TEXCOORD: omni.graph.core._omni_graph_core.AttributeRole
+- TEXT: omni.graph.core._omni_graph_core.AttributeRole
+- TIMECODE: omni.graph.core._omni_graph_core.AttributeRole
+- TOKEN: omni.graph.core._omni_graph_core.BaseDataType
+- TRANSFORM: omni.graph.core._omni_graph_core.AttributeRole
+- UCHAR: omni.graph.core._omni_graph_core.BaseDataType
+- UINT: omni.graph.core._omni_graph_core.BaseDataType
+- UINT64: omni.graph.core._omni_graph_core.BaseDataType
+- UNKNOWN: omni.graph.core._omni_graph_core.AttributeRole
+- VECTOR: omni.graph.core._omni_graph_core.AttributeRole
+- WARNING: omni.graph.core._omni_graph_core.Severity
+- RUNTIME_MODULE_NAME: str
+- cmds: Unknown
+- MetadataKeys: Unknown
+
+## Other
+
+- omni.core: public module
+
+
+# Public API for module omni.graph.core.typing:
+
+## Classes
+
+- class TypeConversion
+  - class Method(enum.Enum)
+    - ASSIGN: Tuple
+    - MODIFY: int
+  - types: List
+  - user_types: List
+  - def __init__(self)
+  - class def from_type(cls, type_desc: type) -> TypeDesc | None
+  - class def from_ogn_type(cls, og_type: str) -> TypeDesc | None
+  - class def register_type_conversion(cls, python_type: type, ogn_typename: str, python_to_ogn: callable = None, python_to_ogn_method: Method = Method.ASSIGN, ogn_to_python: callable = None, ogn_to_python_method: Method = Method.ASSIGN, default = None)
+  - class def unregister_type_conversion(cls, python_type: type = None, ogn_type_name: str = None) -> TypeDesc | None
+
+## Variables
+
+- Attribute_t: Unknown
+- Attributes_t: Unknown
+- AttributeSpec_t: Unknown
+- AttributeSpecs_t: Unknown
+- AttributesWithValues_t: Unknown
+- AttributeType_t: Unknown
+- AttributeTypeSpec_t: Unknown
+- AttributeValue_t: Unknown
+- AttributeValues_t: Unknown
+- AttributeWithValue_t: Unknown
+- ExtendedAttribute_t: Unknown
+- Graph_t: Unknown
+- Graphs_t: Unknown
+- GraphSpec_t: Graph_t
+- GraphSpecs_t: Graphs_t
+- NewNode_t: Unknown
+- Node_t: Unknown
+- Nodes_t: Unknown
+- NodeSpec_t: Unknown
+- NodeSpecs_t: Unknown
+- NodeType_t: Unknown
+- Prim_t: Unknown
+- PrimAttrs_t: Unknown
+- Prims_t: Unknown
+- ValueToSet_t: Unknown

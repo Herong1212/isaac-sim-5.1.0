@@ -1,0 +1,128 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "106.0.4"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Camera Manipulator"
+description="Viewport / SceneUI Camera manipulation"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "viewport", "ui.scene", "camera", "manipulator"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+category = "Manipulator"
+support_level = "Core"
+
+[dependencies]
+"omni.ui" = {}
+"omni.ui.scene" = {}
+"omni.kit.commands" = {}
+"omni.usd" = {}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.manipulator.camera".
+[[python.module]]
+name = "omni.kit.manipulator.camera"
+
+[settings]
+exts."omni.kit.manipulator.camera".clampUpdates = 0.15
+exts."omni.kit.manipulator.camera".flightMode.keyModifierAmount = 2
+# Whether to simply use the stage-up axis instead or transform it via the camera's parent
+exts."omni.kit.manipulator.camera".forceStageUp = false
+# Enable object-centric manipulation 0=off, 1=model-position, 2=pick-position
+exts."omni.kit.manipulator.camera".objectCentric.type = 0
+
+# Inertial decay, 1 = linear, 2 = quadratic, 3 = cubic, ...
+exts."omni.kit.manipulator.camera".inertiaDecay = 1
+
+# Setup default values for inertia applied only during flight-mode and with look
+exts."omni.kit.manipulator.camera".flyAcceleration = 1000
+exts."omni.kit.manipulator.camera".flyDampening = 10
+exts."omni.kit.manipulator.camera".lookAcceleration = 2000
+exts."omni.kit.manipulator.camera".lookDampening = 20
+
+# Setup default values for other movements (disabled by default)
+# exts."omni.kit.manipulator.camera".tumbleAcceleration = 2000
+# exts."omni.kit.manipulator.camera".tumbleDampening = 20
+# exts."omni.kit.manipulator.camera".moveAcceleration = 2000
+# exts."omni.kit.manipulator.camera".moveDampening = 20
+# What modes have inertia enabled [flight, tumble, look, move]
+# exts."omni.kit.manipulator.camera".inertiaModesEnabled = [1, 1, 1, 1]
+
+exts."omni.kit.manipulator.camera".gamePad.enabled = true
+
+exts."omni.kit.manipulator.camera".gamePad.trigger.action = "fly.y"
+exts."omni.kit.manipulator.camera".gamePad.leftStick.action = "fly"
+exts."omni.kit.manipulator.camera".gamePad.rightStick.action = "look"
+exts."omni.kit.manipulator.camera".gamePad.shoulder.action = "fly.x"
+exts."omni.kit.manipulator.camera".gamePad.dPad.action = "fly"
+
+exts."omni.kit.manipulator.camera".gamePad.fly.scale = 1.0
+exts."omni.kit.manipulator.camera".gamePad.fly.deadZone = 0.2
+exts."omni.kit.manipulator.camera".gamePad.look.scale = 0.75
+exts."omni.kit.manipulator.camera".gamePad.look.deadZone = 0.1
+
+exts."omni.kit.manipulator.camera".gamePad.speed.scale = 0.5
+exts."omni.kit.manipulator.camera".gamePad.button.a.action = "speed.y"
+exts."omni.kit.manipulator.camera".gamePad.button.b.action = "speed.y"
+exts."omni.kit.manipulator.camera".gamePad.button.a.scale = 1.0
+exts."omni.kit.manipulator.camera".gamePad.button.b.scale = -1.0
+
+persistent.exts."omni.kit.manipulator.camera".lookSpeed.0 = 180.0
+persistent.exts."omni.kit.manipulator.camera".lookSpeed.1 = 90.0
+persistent.exts."omni.kit.manipulator.camera".tumbleSpeed = 360.0
+persistent.exts."omni.kit.manipulator.camera".moveSpeed.0 = 1.0
+persistent.exts."omni.kit.manipulator.camera".moveSpeed.1 = 1.0
+persistent.exts."omni.kit.manipulator.camera".moveSpeed.2 = 1.0
+
+# Whether forward/backward and up/down movements ignore camera-view direction (similar to left/right strafe)
+persistent.exts."omni.kit.manipulator.camera".flyViewLock = false
+
+[[test]]
+pythonTests.exclude = [ "omni.kit.manipulator.camera.tests.test_viewport*" ]
+dependencies = [
+    "omni.kit.ui_test",
+]
+
+args = [
+    "--/app/window/width=500",
+    "--/app/window/height=500",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.manipulator.camera/gamePad/mustBeFocused=false",
+]
+
+[[test]]
+name="with_viewport"
+pythonTests.include = [ "omni.kit.manipulator.camera.tests.test_viewport*" ]
+args = [
+    "--/app/window/width=500",
+    "--/app/window/height=500",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/exts/omni.kit.manipulator.camera/gamePad/mustBeFocused=false",
+]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.viewport.window",
+    "omni.kit.viewport.utility",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md",
+    "docs/Settings.md",
+]

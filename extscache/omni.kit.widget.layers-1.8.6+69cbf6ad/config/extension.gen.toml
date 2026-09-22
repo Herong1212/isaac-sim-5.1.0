@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.widget.layers-2f4167e4e529647f.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.195367.2c7fcd57.gl"
+        date = 1757755125
+        buildNumber = "107.3.0+1073.195367.2c7fcd57.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

@@ -1,0 +1,220 @@
+{
+    "ToFloat": {
+        "version": 1,
+        "description": [
+            "Convert the given input to 32-bit floating-point. Array and tuple inputs",
+            "are converted element-wise to arrays and tuples of the same shape."
+        ],
+        "uiName": "To Float",
+        "categories": ["math:conversion"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "value": {
+                "type": ["integrals", "decimals", "bool", "bool[]"],
+                "uiName": "Value",
+                "description": "The numeric or boolean value to convert."
+             },
+             "role": {
+                 "type": "token",
+                 "uiName": "role",
+                  "description": [
+                    "The attribute role to apply to the output type. If the role is",
+                    "not supported by the output shape, a role of None is used."
+                 ],
+                 "default": "None",
+                 "metadata": {
+                     "literalOnly": "1",
+                     "allowedTokens": {
+                        "eNone" : "None",
+                        "eColor" : "Color",
+                        "eNormal" : "Normal",
+                        "ePosition" : "Point",
+                        "eQuaternion" : "Quaternion",
+                        "eTexCoord" : "TexCoord",
+                        "eVector" : "Vector"
+                    }
+                 }
+              }
+        },
+        "outputs": {
+            "converted": {
+                "type": ["float", "float[2]", "float[3]", "float[4]", "float[]", "float[2][]", "float[3][]", "float[4][]",
+                    "colorf[3]", "colorf[3][]", "colorf[4]", "colorf[4][]", "normalf[3]", "normalf[3][]",
+                    "pointf[3]", "pointf[3][]", "texcoordf[2]", "texcoordf[2][]", "texcoordf[3]", "texcoordf[3][]",
+                    "quatf[4]", "quatf[4][]", "vectorf[3]", "vectorf[3][]"],
+                "uiName": "Float",
+                "description": "The value converted to float form with the role applied."
+            }
+        },
+        "tests" : [
+            {
+                "inputs:value": {"type": "bool", "value": true},
+                "outputs:converted": {"type": "float", "value": 1.0}
+            },
+            {
+                "inputs:value": {"type": "double", "value": 2.1},
+                "outputs:converted": {"type": "float", "value": 2.1}
+            },
+            {
+                "inputs:value": {"type": "float", "value": 2.1},
+                "outputs:converted": {"type": "float", "value": 2.1}
+            },
+            {
+                "inputs:value": {"type": "half", "value": 2.5},
+                "outputs:converted": {"type": "float", "value": 2.5}
+            },
+            {
+                "inputs:value": {"type": "int", "value": 42},
+                "outputs:converted": {"type": "float", "value": 42.0}
+            },
+            {
+                "inputs:value": {"type": "int64", "value": 42},
+                "outputs:converted": {"type": "float", "value": 42.0}
+            },
+            {
+                "inputs:value": {"type": "uchar", "value": 42},
+                "outputs:converted": {"type": "float", "value": 42.0}
+            },
+            {
+                "inputs:value": {"type": "uint", "value": 42},
+                "outputs:converted": {"type": "float", "value": 42.0}
+            },
+            {
+                "inputs:value": {"type": "uint64", "value": 42},
+                "outputs:converted": {"type": "float", "value": 42.0}
+            },
+            {
+                "inputs:value": {"type": "bool[]", "value": [true, false]},
+                "outputs:converted": {"type": "float[]", "value": [1.0, 0.0]}
+            },
+            {
+                "inputs:value": {"type": "double[]", "value": 2.1},
+                "outputs:converted": {"type": "float[]", "value": 2.1}
+            },
+            {
+                "inputs:value": {"type": "float[]", "value": [] },
+                "outputs:converted": {"type": "float[]", "value": []}
+            },
+            {
+                "inputs:value": {"type": "half[]", "value": [2.5, 3.5]},
+                "outputs:converted": {"type": "float[]", "value": [2.5, 3.5]}
+            },
+            {
+                "inputs:value": {"type": "int[]", "value": [42, -99]},
+                "outputs:converted": {"type": "float[]", "value": [42.0, -99.0]}
+            },
+            {
+                "inputs:value": {"type": "int64[]", "value": [42, -99]},
+                "outputs:converted": {"type": "float[]", "value": [42.0, -99.0]}
+            },
+            {
+                "inputs:value": {"type": "uchar[]", "value": [42, 16]},
+                "outputs:converted": {"type": "float[]", "value": [42.0, 16.0]}
+            },
+            {
+                "inputs:value": {"type": "uint[]", "value": [42, 16]},
+                "outputs:converted": {"type": "float[]", "value": [42.0, 16.0]}
+            },
+            {
+                "inputs:value": {"type": "uint64[]", "value": [42, 16]},
+                "outputs:converted": {"type": "float[]", "value": [42.0, 16.0]}
+            },
+            {
+                "inputs:value": {"type": "double[2]", "value": [2.1, 2.1] }, "inputs:role": "TexCoord",
+                "outputs:converted": {"type": "texcoordf[2]", "value": [2.1, 2.1]}
+            },
+            {
+                "inputs:value": {"type": "float[2]", "value": [2.1, 2.1] },
+                "outputs:converted": {"type": "float[2]", "value": [2.1, 2.1]}
+            },
+            {
+                "inputs:value": {"type": "half[2]", "value": [2.5, 2.5] },
+                "outputs:converted": {"type": "float[2]", "value": [2.5, 2.5]}
+            },
+            {
+                "inputs:value": {"type": "int[2]", "value": [42, 42] },
+                "outputs:converted": {"type": "float[2]", "value": [42.0, 42.0]}
+            },
+            {
+                "inputs:value": {"type": "double[3]", "value": [2, 3, 4] }, "inputs:role": "Color",
+                "outputs:converted": {"type": "colorf[3]", "value": [2, 3, 4]}
+            },
+            {
+                "inputs:value": {"type": "float[3]", "value": [2, 3, 4] },
+                "outputs:converted": {"type": "float[3]", "value": [2, 3, 4]}
+            },
+            {
+                "inputs:value": {"type": "half[3]", "value": [2, 3, 4] }, "inputs:role": "Vector",
+                "outputs:converted": {"type": "vectorf[3]", "value": [2, 3, 4] }
+            },
+            {
+                "inputs:value": {"type": "int[3]", "value": [2, 3, 4] }, "inputs:role": "Normal",
+                "outputs:converted": {"type": "normalf[3]", "value": [2, 3, 4]}
+            },
+            {
+                "inputs:value": {"type": "double[4]", "value": [2, 3, 4, 5] }, "inputs:role": "Quaternion",
+                "outputs:converted": {"type": "quatf[4]", "value": [2, 3, 4, 5]}
+            },
+            {
+                "inputs:value": {"type": "float[4]", "value": [2, 3, 4, 5] },
+                "outputs:converted": {"type": "float[4]", "value": [2, 3, 4, 5]}
+            },
+            {
+                "inputs:value": {"type": "half[4]", "value": [2, 3, 4, 5] }, "inputs:role": "Color",
+                "outputs:converted": {"type": "colorf[4]", "value": [2, 3, 4, 5] }
+            },
+            {
+                "inputs:value": {"type": "int[4]", "value": [2, 3, 4, 5] },
+                "outputs:converted": {"type": "float[4]", "value": [2, 3, 4, 5]}
+            },
+            {
+                "inputs:value": {"type": "double[2][]",  "value": [[1, 2],[3, 4]] }, "inputs:role": "TexCoord",
+                "outputs:converted": {"type": "texcoordf[2][]", "value":  [[1.0, 2.0],[3.0, 4.0]] }
+            },
+            {
+                "inputs:value": {"type": "float[2][]", "value":  [[1, 2],[3, 4]] },
+                "outputs:converted": {"type": "float[2][]", "value":  [[1.0, 2.0],[3.0, 4.0]] }
+            },
+            {
+                "inputs:value": {"type": "half[2][]", "value":  [[1, 2],[3, 4]] },
+                "outputs:converted": {"type": "float[2][]", "value":  [[1.0, 2.0],[3.0, 4.0]] }
+            },
+            {
+                "inputs:value": {"type": "int[2][]", "value": [[1, 2],[3, 4]] },
+                "outputs:converted": {"type": "float[2][]", "value": [[1.0, 2.0],[3.0, 4.0]] }
+            },
+            {
+                "inputs:value": {"type": "double[3][]", "value": [[2, 3, 4]] }, "inputs:role": "Point",
+                "outputs:converted": {"type": "pointf[3][]", "value": [[2, 3, 4]]}
+            },
+            {
+                "inputs:value": {"type": "float[3][]", "value": [[2, 3, 4]] }, "inputs:role": "TexCoord",
+                "outputs:converted": {"type": "texcoordf[3][]", "value": [[2, 3, 4]]}
+            },
+            {
+                "inputs:value": {"type": "half[3][]", "value": [[2, 3, 4]] },
+                "outputs:converted": {"type": "float[3][]", "value": [[2, 3, 4]] }
+            },
+            {
+                "inputs:value": {"type": "int[3][]", "value": [[2, 3, 4]] }, "inputs:role": "Normal",
+                "outputs:converted": {"type": "normalf[3][]", "value": [[2, 3, 4]]}
+            },
+            {
+                "inputs:value": {"type": "double[4][]", "value": [[2, 3, 4, 5]] }, "inputs:role": "Quaternion",
+                "outputs:converted": {"type": "quatf[4][]", "value": [[2, 3, 4, 5]]}
+            },
+            {
+                "inputs:value": {"type": "float[4][]", "value": [[2, 3, 4, 5]] },
+                "outputs:converted": {"type": "float[4][]", "value": [[2, 3, 4, 5]]}
+            },
+            {
+                "inputs:value": {"type": "half[4][]", "value": [[2, 3, 4, 5]] }, "inputs:role": "Color",
+                "outputs:converted": {"type": "colorf[4][]", "value": [[2, 3, 4, 5]] }
+            },
+            {
+                "inputs:value": {"type": "int[4][]", "value": [[2, 3, 4, 5]] },
+                "outputs:converted": {"type": "float[4][]", "value": [[2, 3, 4, 5]]}
+            }
+        ]
+    }
+}

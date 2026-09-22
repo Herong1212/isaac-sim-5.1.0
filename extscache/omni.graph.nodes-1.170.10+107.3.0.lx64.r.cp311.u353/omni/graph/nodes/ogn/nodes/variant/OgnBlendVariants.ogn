@@ -1,0 +1,81 @@
+{
+    "BlendVariants": {
+        "version": 2,
+        "categories": [
+            "graph:action",
+            "sceneGraph",
+            "variants"
+        ],
+        "icon": {
+            "path": "Variant.svg"
+        },
+        "scheduling": [
+            "usd-read"
+        ],
+        "description": "Add new variant by blending two variants",
+        "uiName": "Blend Variants",
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "prim": {
+                "type": "target",
+                "description": "The prim with the variantSet"
+            },
+            "variantSetName": {
+                "type": "token",
+                "description": "The variantSet name"
+            },
+            "variantNameA": {
+                "type": "token",
+                "description": "The first variant name"
+            },
+            "variantNameB": {
+                "type": "token",
+                "description": "The second variant name"
+            },
+            "blend": {
+                "type": "double",
+                "description": "The blend value in [0.0, 1.0]",
+                "default": 0.0,
+                "minimum": 0.0,
+                "maximum": 1.0
+            },
+            "setVariant": {
+                "type": "bool",
+                "default": false,
+                "description": "Sets the variant selection when finished rather than writing to the attribute values"
+            },
+            "layerIdentifier": {
+                "type": "token",
+                "description": [
+                    "Identifier of the USD layer to export data to.",
+                    "Identifier can be empty, \"<Session Layer>\", \"<Root Layer>\" or the identifier of a sublayer.",
+                    "If empty or invalid, data will be exported to the current layer."
+                ],
+                "default": "",
+                "metadata": {
+                    "uiName": "Layer Identifier"
+                }
+            }
+        },
+        "outputs": {
+           "bundle": {
+                "type": "bundle",
+                "description": "Output bundle with blended attributes",
+                "uiName": "Bundle"
+            },
+            "execOut": {
+                "type": "execution",
+                "description": "Signal to the graph that execution can continue downstream."
+            }
+        },
+        "state": {
+            "layerIdentifier": {
+                "type": "token",
+                "description": "The prefetched layer identifier."
+            }
+        }
+    }
+}

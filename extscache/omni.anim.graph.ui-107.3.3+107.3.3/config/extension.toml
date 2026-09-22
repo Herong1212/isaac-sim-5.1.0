@@ -1,0 +1,88 @@
+[package]
+version = "107.3.3"
+title = "AnimGraph UI (BETA)"
+authors = ["NVIDIA"]
+keywords = ["animation", "animgraph", "anim", "graph", "skeleton", "skeletal"]
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "User interface for Animation Graph system."
+category = "Animation"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.anim.graph.ui"
+
+[dependencies]
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.commands" = {}
+"omni.timeline" = {}
+"omni.kit.usd_undo" = {}
+"omni.kit.window.file" = {}
+"omni.kit.widget.graph" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.window.property" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.viewport.window" = {}
+"omni.kit.menu.create" = {}
+"omni.kit.property.usd" = {}
+"omni.usd.schema.anim" = {}
+"omni.kit.browser.folder.core" = {}
+"omni.kit.browser.core" = {}
+"omni.kit.browser.sample" = {}
+"omni.kit.window.preferences" = {}
+"omni.kit.graph.editor.core" = {}
+"omni.kit.graph.delegate.modern" = { version="1.5" }
+"omni.genproc.core" = {}
+"omni.graph.bundle.action" = {}
+"omni.graph.io" = {}
+"omni.graph.visualization.nodes" = {}
+"omni.graph.ui" = {}
+"omni.kit.window.quicksearch" = {version="2.1"}
+"omni.kit.window.popup_dialog" = {}
+"omni.kit.widget.searchable_combobox" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.graph.widget.variables" = {version="2.0"}
+"omni.curve.manipulator" = {}
+"omni.activity.core" = {optional=true}
+"usdrt.scenegraph" = {}
+"omni.usd" = {}
+"omni.kit.async_engine" = {}
+"omni.kit.pip_archive" = {}
+"omni.anim.retarget.core" = { version="~107.3" }
+"omni.anim.graph.core" = { version="~107.3" }
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.mainwindow",
+    "omni.kit.quicklayout",
+    "omni.kit.window.stage",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx"
+]
+
+args = [
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/maxGpuCount=1"
+]
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface*",
+    "*extension object is still alive, something holds a reference on it*",
+    "*Folder*does not exist!*",
+    "*[omni.kit.browser.folder.core.models.folder_browser_data] Timeout 5.0 seconds when listing*",
+]
+
+[package.writeTarget]
+kit = true
+
+[settings]
+exts."omni.anim.graph".sample_folder = "https://omniverse-content-staging.s3.us-west-2.amazonaws.com/Assets/AnimGraph/106.2/Samples/Graph/"
+exts."omni.anim.graph.ui".enable_FBIK_nodes = true

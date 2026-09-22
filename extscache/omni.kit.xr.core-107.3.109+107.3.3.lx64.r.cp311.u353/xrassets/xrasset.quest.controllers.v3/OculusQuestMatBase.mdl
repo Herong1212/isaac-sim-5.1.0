@@ -1,0 +1,31 @@
+mdl 1.6;
+
+import ::state::*;
+import ::tex::*;
+import ::OmniPBR::*;
+
+
+export material OculusQuestMatBase(
+    uniform texture_2d base_color_tex = texture_2d(),
+    float metallic = 0.0,
+	float specular = 0.5,
+	float roughness = 0.5
+)
+ =
+	let {
+	float2 uv = float2(state::texture_coordinate(0).x,state::texture_coordinate(0).y);
+
+	color base_color = tex::lookup_color(base_color_tex, uv, tex::wrap_repeat,tex::wrap_repeat);
+
+	color emissive_color = color(0.0);
+	float opacity = 1.0;
+
+	} in
+		OmniPBR::OmniPBR(
+			diffuse_color_constant: base_color,
+			metallic_constant: metallic,
+			reflection_roughness_constant: roughness,
+			specular_level: specular,
+			emissive_color: emissive_color,
+			opacity_constant: opacity
+		);

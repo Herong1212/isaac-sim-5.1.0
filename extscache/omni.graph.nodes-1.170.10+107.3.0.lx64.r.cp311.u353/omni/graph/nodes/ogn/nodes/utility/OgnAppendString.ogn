@@ -1,0 +1,67 @@
+{
+    "AppendString": {
+        "version": 1,
+        "$comment": "This node is replaced by OgnBuildString",
+        "description": [
+            "Creates a new token or string by appending the given token or string.",
+            "token[] inputs will be appended element-wise."
+        ],
+        "uiName": "Append String (Deprecated)",
+        "categories": ["function", "internal:test"],
+        "scheduling": ["threadsafe"],
+        "metadata": {"hidden": "true"},
+        "inputs": {
+            "value": {
+                "type": ["token", "token[]", "string"],
+                "description": "The string(s) to be appended to"
+            },
+            "suffix": {
+                "type": ["token", "token[]", "string"],
+                "description": "The string to be appended"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["token","token[]", "string"],
+                "description": "The new string(s)"
+            }
+        },
+        "tests": [
+            {
+                "inputs:value": {"type":"token", "value": "/"},
+                "inputs:suffix": {"type":"token", "value": ""},
+                "outputs:value": {"type":"token", "value": "/"}
+            },
+            {
+                "inputs:value": {"type":"string", "value": "/"},
+                "inputs:suffix": {"type":"string", "value": ""},
+                "outputs:value": {"type":"string", "value": "/"}
+            },
+            {
+                "inputs:value": {"type":"token", "value": "/"},
+                "inputs:suffix": {"type":"token", "value": "foo"},
+                "outputs:value": {"type":"token", "value": "/foo"}
+            },
+            {
+                "inputs:value": {"type":"token[]", "value": ["/World","/World2"]},
+                "inputs:suffix": {"type":"token", "value": "/foo"},
+                "outputs:value": {"type":"token[]", "value": ["/World/foo","/World2/foo"]}
+            },
+            {
+                "inputs:value": {"type":"token[]", "value": ["/World","/World2"]},
+                "inputs:suffix": {"type":"token[]", "value": ["/foo"]},
+                "outputs:value": {"type":"token[]", "value": ["/World/foo","/World2/foo"]}
+            },
+            {
+                "inputs:value": {"type":"token[]", "value": ["/World","/World2"]},
+                "inputs:suffix": {"type":"token[]", "value": ["/foo", "/bar"]},
+                "outputs:value": {"type":"token[]", "value": ["/World/foo","/World2/bar"]}
+            },
+            {
+                "inputs:value": {"type":"string", "value": "/"},
+                "inputs:suffix": {"type":"string", "value": "foo"},
+                "outputs:value": {"type":"string", "value": "/foo"}
+            }
+        ]
+    }
+}

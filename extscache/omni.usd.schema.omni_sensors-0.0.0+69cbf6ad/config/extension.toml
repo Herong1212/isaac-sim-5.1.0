@@ -1,0 +1,28 @@
+[core]
+reloadable = false
+# Load at the start, load all schemas with order -100 (with order -1000 the USD libs are loaded)
+order = -100
+
+[package]
+category = "Internal"
+title = "USD RTX Sensor Schemas"
+description="USD Schemas for RTX Sensor"
+keywords = ["usd", "schema", "rtx", "sensor"]
+
+[dependencies]
+"omni.usd.libs" = {}
+# Required for proper startup during test-suite run, so make it optional.
+"omni.usd.core" = { optional = true }
+
+[[python.module]]
+name = "omni.usd.schema.omni_sensors"
+
+[[test]]
+dependencies = [
+    "omni.usd",
+]
+
+[documentation]
+pages = [
+    "docs/omni_sensors_schema.rst",
+]

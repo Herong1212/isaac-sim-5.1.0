@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.variant.editor-107.5.3%2B107.3.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3"
+
+    [package.publish]
+        kitVersion = "108.0.0+feature.217967.1c73315e.gl"
+        date = 1756826856
+        buildNumber = "108.0.0+main.224.fcf8b738.gl"
+        repoName = "kit-sample-extensions"
+        signed = 1

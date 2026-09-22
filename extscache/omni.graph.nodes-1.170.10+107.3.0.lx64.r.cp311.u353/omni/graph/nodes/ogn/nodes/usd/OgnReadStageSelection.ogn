@@ -1,0 +1,19 @@
+{
+    "ReadStageSelection": {
+        "version": 1,
+        "description": [
+            "Outputs the current stage selection as a list of paths"
+        ],
+        "uiName": "Read Stage Selection",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-read"],
+        "inputs": {
+        },
+        "outputs": {
+            "selectedPrims": {
+                "type": "token[]",
+                "description": "The currently selected path(s)"
+            }
+        }
+    }
+}

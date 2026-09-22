@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (50000, -10000, -20000)
+            }
+            dictionary Perspective = {
+                double3 position = (500, 500, 500)
+                double3 target = (0, 0, 0)
+            }
+            dictionary Right = {
+                double3 position = (10000, -50000, 20000)
+            }
+            dictionary Top = {
+                double3 position = (-10000, -20000, 50000)
+            }
+        }
+    }
+    defaultPrim = "World"
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+}

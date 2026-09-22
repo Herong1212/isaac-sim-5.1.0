@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    """
+    Invalid environment: missing omni:simready:opendrive attribute and therefore missing XODR map file
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+
+}

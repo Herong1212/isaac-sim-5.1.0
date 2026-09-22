@@ -1,0 +1,183 @@
+{
+    "ArrayIndex": {
+        "version": 1,
+        "description": [
+            "Returns a copy of an input array's element at the given index, where the index can take any value in the",
+            "domain [-arrayLength, arrayLength). Indices that are positive indicate positions counted from the",
+            "beginning of the array, while negative indices count from the back of the array."
+        ],
+        "uiName": "Get Array Index",
+        "categories": ["math:array"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "array": {
+                "type": ["arrays", "bool[]", "string"],
+                "description": "The array that will be searched by index to find the corresponding element's value.",
+                "uiName": "Array"
+            },
+            "index": {
+                "type": "int",
+                "description": [
+                    "The index into the array.\n",
+                    "Indices in the domain [0, arrayLength) correspond to the usual element locations in the array,",
+                    "e.g. an \"Index\" of 2 equates to the third element in the array.\n",
+                    "Indices in the domain [-arrayLength, 0) correspond to array indexing starting from the back of",
+                    "the list, e.g. for an array of size 5, an \"Index\" of -5 equates to the last element in the",
+                    "array (i.e. the element at position 4), an \"Index\" of -4 equates to the second-to-last element",
+                    "in the array (i.e. the element at position 3), etc.\n",
+                    "Attempting to compute this node with \"Index\" values outside of the [-arrayLength, arrayLength)",
+                    "domain will result in a runtime error."
+                ],
+                "uiName": "Index"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": ["array_elements", "bool"],
+                "description": "A copy of the value in the \"Array\" at the specified \"Index\".",
+                "uiName": "Value"
+            }
+        },
+        "tests": [
+            {
+                "inputs:array": {"type": "bool[]", "value": [true, false, false]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "bool", "value": false}
+            },
+            {
+                "inputs:array": {"type": "double[]", "value": [1.0, 2.0, 3.0]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "double", "value": 1.0}
+            },
+            {
+                "inputs:array": {"type": "float[]", "value": [1.0, 2.0, 3.0]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "float", "value": 3.0}
+            },
+            {
+                "inputs:array": {"type": "half[]", "value": [1.0, 2.0, 3.0]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "half", "value": 2.0}
+            },
+            {
+                "inputs:array": {"type": "int[]", "value": [42]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "int", "value": 42}
+            },
+            {
+                "inputs:array": {"type": "int64[]", "value": [1, 2, 3]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "int64", "value": 2}
+            },
+            {
+                "inputs:array": {"type": "string", "value": "TestString"},
+                "inputs:index": 1,
+                "outputs:value": {"type": "uchar", "value": 101}
+            },
+            {
+                "inputs:array": {"type": "token[]", "value": ["foo", "bar"]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "token", "value": "bar"}
+            },
+            {
+                "inputs:array": {"type": "uchar[]", "value": [1, 2, 3]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "uchar", "value": 3}
+            },
+            {
+                "inputs:array": {"type": "uint[]", "value": [1, 2, 3]},
+                "inputs:index": -2,
+                "outputs:value": {"type": "uint", "value": 2}
+            },
+            {
+                "inputs:array": {"type": "uint64[]", "value": [1, 2, 3]},
+                "inputs:index": 2,
+                "outputs:value": {"type": "uint64", "value": 3}
+            },
+            {
+                "inputs:array": {"type": "double[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "double[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:array": {"type": "double[3][]", "value": [[1.0, 2.0, 3.0], [3.0, 4.0, 5.0]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "double[3]", "value": [3.0, 4.0, 5.0]}
+            },
+            {
+                "inputs:array": {"type": "double[4][]", "value": [[1.0, 2.0, 3.0, 4.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "double[4]", "value": [3.0, 4.0, 5.0, 6.0]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[2][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "matrixd[2]", "value": [1, 2, 3, 4]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[3][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9], [3, 4, 5, 6, 7, 8, 9, 10, 11]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "matrixd[3]", "value": [3, 4, 5, 6, 7, 8, 9, 10, 11]}
+            },
+            {
+                "inputs:array": {"type": "matrixd[4][]", "value": [
+                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "matrixd[4]", "value":
+                    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]}
+            },
+            {
+                "inputs:array": {"type": "float[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "float[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:array": {"type": "float[3][]", "value": [[1.0, 2.0, 3.0], [3.0, 4.0, 5.0]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "float[3]", "value": [3.0, 4.0, 5.0]}
+            },
+            {
+                "inputs:array": {"type": "float[4][]", "value": [[1.0, 2.0, 3.0, 4.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "float[4]", "value": [3.0, 4.0, 5.0, 6.0]}
+            },
+            {
+                "inputs:array": {"type": "half[2][]", "value": [[1.0, 2.0], [3.0, 4.0]]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "half[2]", "value": [1.0, 2.0]}
+            },
+            {
+                "inputs:array": {"type": "half[3][]", "value": [[1.0, 2.0, 3.0], [3.0, 4.0, 5.0]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "half[3]", "value": [3.0, 4.0, 5.0]}
+            },
+            {
+                "inputs:array": {"type": "half[4][]", "value": [[1.0, 2.0, 3.0, 4.0], [3.0, 4.0, 5.0, 6.0]]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "half[4]", "value": [3.0, 4.0, 5.0, 6.0]}
+            },
+            {
+                "inputs:array": {"type": "int[2][]", "value": [[1, 2], [3, 4]]},
+                "inputs:index": 0,
+                "outputs:value": {"type": "int[2]", "value": [1, 2]}
+            },
+            {
+                "inputs:array": {"type": "int[3][]", "value": [[1, 2, 3], [3, 4, 5]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "int[3]", "value": [3, 4, 5]}
+            },
+            {
+                "inputs:array": {"type": "int[4][]", "value": [[1, 2, 3, 4], [3, 4, 5, 6]]},
+                "inputs:index": -1,
+                "outputs:value": {"type": "int[4]", "value": [3, 4, 5, 6]}
+            },
+            {
+                "inputs:array": {"type": "pointd[3][]", "value": [[1, 2, 3],[4, 5, 6]]},
+                "inputs:index": 1,
+                "outputs:value": {"type": "pointd[3]", "value":[4, 5, 6]}
+            }
+        ]
+    }
+}

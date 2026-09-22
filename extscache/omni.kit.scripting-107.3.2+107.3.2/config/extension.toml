@@ -1,0 +1,67 @@
+[package]
+version = "107.3.2"
+title = "Python Scripting Component (BETA)"
+authors = ["NVIDIA"]
+readme  = "docs/README.md"
+keywords = ["kit", "scripting", "python", "component"]
+changelog = "docs/CHANGELOG.md"
+category = "Scripting"
+description = "Python Scripting components and tools for behavior script creation, editing and execution."
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+[[python.module]]
+name = "omni.kit.scripting"
+
+
+[dependencies]
+"omni.client" = {}
+"omni.ui" = {}
+"omni.kit.commands" = {}
+"omni.kit.context_menu" = {}
+"omni.kit.usd_undo" = {}
+"omni.kit.menu.create" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.window.stage" = {}
+"omni.kit.window.content_browser" = {}
+"omni.kit.window.file" = {}
+"omni.kit.window.popup_dialog" = { optional = true }
+"omni.kit.window.property" = {}
+"omni.kit.widget.searchable_combobox" = {}
+"omni.timeline" = {}
+"omni.usd.schema.omniscripting" = {}
+"omni.usd" = {}
+"omni.kit.async_engine" = {}
+"usdrt.scenegraph" = {}
+"omni.kit.pip_archive" = {}
+
+[package.writeTarget]
+kit = true
+
+[[test]]
+timeout = 1000
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.mainwindow",
+    "omni.kit.quicklayout",
+    "omni.kit.test_suite.helpers",
+    "omni.hydra.rtx"
+]
+pyCoverageIncludeDependencies = false
+pyCoverageOmit = [
+    "omni/kit/scripting/tests/*",
+    "omni/kit/scripting/scripts/loader/*"
+]
+viewport_legacy_only = true
+args = [
+    "--/app/asyncRendering=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/scripting/ignoreWarningDialog=true",
+    "--/app/fastShutdown=true"
+]
+stdoutFailPatterns.exclude = [
+    "*Client omni.ui Failed to acquire interface*",
+    "*extension object is still alive, something holds a reference on it*",
+    "*leaking memory. Missing call to destroyResourceBindingSignature*"
+]

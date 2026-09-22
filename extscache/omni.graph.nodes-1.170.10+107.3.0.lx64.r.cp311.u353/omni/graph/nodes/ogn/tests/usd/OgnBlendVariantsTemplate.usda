@@ -1,0 +1,62 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnBlendVariants.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_BlendVariants" (
+        docs="""Add new variant by blending two variants"""
+    )
+    {
+        token node:type = "omni.graph.nodes.BlendVariants"
+        int node:typeVersion = 2
+
+        # 8 attributes
+        custom double inputs:blend = 0.0 (
+            docs="""The blend value in [0.0, 1.0]"""
+        )
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom token inputs:layerIdentifier = "" (
+            docs="""Identifier of the USD layer to export data to.
+            Identifier can be empty, "<Session Layer>", "<Root Layer>" or the identifier of a sublayer.
+            If empty or invalid, data will be exported to the current layer."""
+        )
+        custom rel inputs:prim (
+            docs="""The prim with the variantSet"""
+        )
+        custom bool inputs:setVariant = false (
+            docs="""Sets the variant selection when finished rather than writing to the attribute values"""
+        )
+        custom token inputs:variantNameA = "" (
+            docs="""The first variant name"""
+        )
+        custom token inputs:variantNameB = "" (
+            docs="""The second variant name"""
+        )
+        custom token inputs:variantSetName = "" (
+            docs="""The variantSet name"""
+        )
+
+        # 2 attributes
+        custom rel outputs_bundle (
+            docs="""Output bundle with blended attributes"""
+        )
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+
+        # 1 attribute
+        custom token state:layerIdentifier (
+            docs="""The prefetched layer identifier."""
+        )
+    }
+}

@@ -1,0 +1,42 @@
+[package]
+version = "0.7.11"
+authors = ["NVIDIA"]
+title = "Actor SDG UI"
+description="Actor Simulation and Synthetic Data Generation UI"
+readme  = "docs/README.md"
+category = "Synthetic Data"
+repository = ""
+keywords = ["agent","actor","metropolis","sdg","simulation", "synthetic data"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+writeTarget.kit = true
+
+[dependencies]
+"omni.anim.navigation.core" = {}
+"omni.anim.graph.core" = {}
+"omni.anim.retarget.core" = {}
+"omni.kit.scripting" = {}
+"isaacsim.replicator.agent.core" = { version="^0.7.24" }
+"omni.anim.navigation.ui" = { version="~107.3"}
+
+
+[[python.module]]
+name = "isaacsim.replicator.agent.ui"
+
+[settings]
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]

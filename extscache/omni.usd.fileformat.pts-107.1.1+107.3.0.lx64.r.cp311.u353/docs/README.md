@@ -1,0 +1,1 @@
+# omni.usd.fileformat.pts

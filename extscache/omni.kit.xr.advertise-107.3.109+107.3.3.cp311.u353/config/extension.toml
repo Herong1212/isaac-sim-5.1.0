@@ -1,0 +1,75 @@
+[package]
+version = "107.3.109"
+title = "AR Advertise"
+description="Trigger ZeroConf advertising of AR server whenever AR is enabled"
+readme  = "docs/README.md"
+category = "XR"
+keywords = ["XR", "AR", "Opt out of nSpect"]
+changelog="docs/CHANGELOG.md"
+
+authors = ["NVIDIA"]
+icon = "data/icon/iconxr.png"
+preview_image = "data/icon/preview.png"
+repository = ""
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.kit.xr.core" = { version = "=107.3.109" }
+"omni.services.transport.server.zeroconf" = {}
+"omni.kit.xr.system.simulatedxr" = { version = "=107.3.109", optional = true }
+
+[[python.module]]
+name = "omni.kit.xr.advertise"
+
+[[python.module]]
+name = "omni.kit.xr.advertise.tests"
+
+[[test]]
+pythonTests.include = ["omni.kit.xr.advertise.tests.advertise*"]
+
+args = [
+    "--/renderer/multiGpu/enabled=true",
+    "--/app/window/width=800",
+    "--/app/window/height=600",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--/app/testMode=1",
+    "--/app/content/emptyStageOnStart=0",
+    "--/persistent=0",
+    "--/xr/persistence/enabled=false",
+    "--reset-user",
+    "--/xr/debug=true",
+    "--/no-assert-dialog=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/app/docks/disabled=true",
+    "--/app/window/hideUi=true",
+    "--/app/viewport/forceHideFps=true"
+]
+
+timeout = 3600
+retries = 1
+
+stdoutFailPatterns.exclude = [
+    "*Unable to find icon*",
+    "*omni.kit.registry.nucleus.utils.common*Skipping deletion of*",
+    "shaderGroupHandle changed for shader group*",
+    "*IRAY*",
+    "*SBT*",
+    "*neuray*",
+    "*Failed opening shader cache version file*",
+    "*OpenXR-Loader*",
+    "*[carb.imgui.plugin] Unable to load IWindowing!*"
+]
+
+dependencies = [
+    "omni.kit.xr.profile.tabletar",
+    "omni.kit.xr.system.simulatedxr",
+]
+
+[documentation]
+python_api_hidden = true

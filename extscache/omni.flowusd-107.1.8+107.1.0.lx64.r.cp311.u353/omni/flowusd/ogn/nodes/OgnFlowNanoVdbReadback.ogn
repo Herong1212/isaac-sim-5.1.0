@@ -1,0 +1,54 @@
+{
+    "FlowNanoVdbReadback": {
+        "version": 1,
+        "categories": "FlowUsd",
+        "categoryDefinitions": "FlowNodeCategories.json",
+        "description": "Access to NanoVDBs produced by Flow, with some latency due to async readback.",
+        "metadata": {
+            "uiName": "Flow NanoVDB Readback"
+        },
+        "outputs": {
+            "execOut": {
+                "type": "execution",
+                "description": "Executes when values are updated"
+            },
+            "temperature": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow temperature channel",
+                "uiName": "Temperature",
+                "default": []
+            },
+            "fuel": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow fuel channel",
+                "uiName": "Fuel",
+                "default": []
+            },
+			"burn": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow burn channel",
+                "uiName": "Burn",
+                "default": []
+            },
+			"smoke": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow smoke channel",
+                "uiName": "Smoke",
+                "default": []
+            },
+			"velocity": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow velocity channel",
+                "uiName": "Velocity",
+                "default": []
+            },
+			"divergence": {
+                "type": "uint[]",
+                "description": "NanoVDB for Flow divergence channel",
+                "uiName": "Divergence",
+                "default": []
+            }
+        },
+        "exclude": ["tests"]
+    }
+}

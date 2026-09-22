@@ -1,0 +1,111 @@
+{
+    "AugCutMixExp": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "description": "This node blends a sampled image from a provided folder into the input image.",
+        "language": "Python",
+        "cudaPointers": "cpu",
+        "categories": {
+            "Replicator": "AugCutMixExp"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "folderpath": {
+                "type": "string",
+                "description": "folderpath containing filler images."
+            },
+            "data": {
+                "type": "uchar[]",
+                "memoryType": "cuda",
+                "description": "Buffer array data",
+                "default": []
+            },
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "xform": {
+                "type": "matrixd[3]",
+                "description": "Input augmentation transform",
+                "default": [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
+            },
+            "width": {
+                "type": "uint",
+                "description": "Width"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Height"
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format"
+            }
+        },
+        "outputs": {
+            "exec": {
+                "type": "execution",
+                "description": "Trigger"
+            },
+            "dataPtr": {
+                "type": "uint64",
+                "description": "Pointer to the raw data (cuda device pointer or host pointer)",
+                "default": 0
+            },
+            "cudaDeviceIndex": {
+                "type": "int",
+                "description": "Index of the device where the data lives (-1 for host data)",
+                "default": -1
+            },
+            "bufferSize": {
+                "type": "uint",
+                "description": "Size (in bytes) of the buffer (0 if the input is a texture)"
+            },
+            "height": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "width": {
+                "type": "uint",
+                "description": "Shape of the data"
+            },
+            "strides": {
+                "type": "int[2]",
+                "description": "Strides (in bytes) ([0,0] if the input is a buffer)"
+            },
+            "xform": {
+                "type": "matrixd[3]",
+                "description": "Output augmentation transform"
+            },
+            "format": {
+                "type": "uint64",
+                "description": "Format"
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "InsertTargets": {
+        "version": 1,
+        "description": [
+            "Inserts a target or target array to a target array at an index.",
+            "Index is clamped in the range [0:arrayLength]."
+        ],
+        "uiName": "Insert Targets",
+        "categories": ["sceneGraph"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "targets": {
+                "type": "target",
+                "description": "The input target array.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "insertTargets": {
+                "type": "target",
+                "description": "The targets to insert.",
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            },
+            "index": {
+                "type": "int",
+                "description": "The array index clamped in the range [0:arrayLength] to insert the targets."
+            }
+        },
+        "outputs": {
+            "targets": {
+                "type": "target",
+                "description": "The modified target array."
+            }
+        },
+        "tests": [
+            {
+                "inputs:targets": [],
+                "inputs:insertTargets": [],
+                "outputs:targets": []
+            },
+            {
+                "inputs:targets": [],
+                "inputs:insertTargets": ["/A", "/B", "/C"],
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:insertTargets": [],
+                "outputs:targets": ["/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:insertTargets": "/D",
+                "inputs:index": 1,
+                "outputs:targets": ["/A", "/D", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:insertTargets": "/D",
+                "inputs:index": -1,
+                "outputs:targets": ["/D", "/A", "/B", "/C"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:insertTargets": "/D",
+                "inputs:index": 10,
+                "outputs:targets": ["/A", "/B", "/C", "/D"]
+            },
+            {
+                "inputs:targets": ["/A", "/B", "/C"],
+                "inputs:insertTargets": ["/D", "/E"],
+                "inputs:index": 2,
+                "outputs:targets": ["/A", "/B", "/D", "/E", "/C"]
+            }
+        ]
+    }
+}

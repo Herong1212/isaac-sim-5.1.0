@@ -1,0 +1,142 @@
+{
+    "BundleInspector": {
+        "version": 4,
+        "description": [
+            "This node creates independent outputs containing information about the contents",
+            "of a bundle. It can be used for testing or debugging what is inside a",
+            "bundle as it flows through the graph. The bundle is inspected recursively, so",
+            "any bundles inside of the main bundle will have their contents added to the output as well.",
+            "The bundle contents can be printed when the node executes, and it passes the input straight",
+            "through unchanged, so you can insert this node between two nodes to inspect the data flowing",
+            "through the graph."
+        ],
+        "metadata": {
+            "uiName": "Bundle Inspector"
+        },
+        "categories": ["bundle"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "bundle": {
+                "type": "bundle",
+                "description": "The bundle to be inspected.",
+                "metadata": {
+                    "uiName": "Bundle To Analyze"
+                }
+            },
+            "print": {
+                "type": "bool",
+                "description": "If true then the contents of 'Bundle To Analyze' will print when the node executes.",
+                "metadata": {
+                    "uiName" : "Print Contents"
+                }
+            },
+            "inspectDepth": {
+                "type": "int",
+                "default": 1,
+                "description": [
+                    "The depth that the inspector is going to traverse and print. For example,",
+                    "0 means just attributes on the input bundles. 1 means its immediate children.",
+                    "-1 means the entire recursive contents of the bundle."
+                ],
+                "metadata": {
+                    "uiName" : "Inspect Depth"
+                }
+            }
+        },
+        "outputs": {
+            "count": {
+                "type": "uint64",
+                "description": [
+                    "Deprecated - Use 'Attribute Count' instead."
+                ],
+                "deprecated": "Use 'Attribute Count' instead.",
+                "metadata": {
+                    "uiName": "Attribute Count",
+                    "hidden": "true"
+                }
+            },
+            "attributeCount": {
+                "type": "uint64",
+                "description": [
+                    "Number of attributes present in the bundle. Every output that is an array type",
+                    "should have this number of elements in it."
+                ],
+                "metadata": {
+                    "uiName": "Attribute Count"
+                }
+            },
+            "names": {
+                "type": "token[]",
+                "description": "List of the names of attributes present in the bundle.",
+                "metadata": {
+                    "uiName": "Attribute Names"
+                }
+            },
+            "types": {
+                "type": "token[]",
+                "description": "List of the types of attributes present in the bundle.",
+                "metadata": {
+                    "uiName": "Attribute Base Types"
+                }
+            },
+            "roles": {
+                "type": "token[]",
+                "description": "List of the names of the roles of attributes present in the bundle.",
+                "metadata": {
+                    "uiName": "Attribute Roles"
+                }
+            },
+            "arrayDepths": {
+                "type": "int[]",
+                "description": "List of the array depths of attributes present in the bundle.",
+                "metadata": {
+                    "uiName": "Array Depths"
+                }
+            },
+            "tupleCounts": {
+                "type": "int[]",
+                "description": "List of the tuple counts of attributes present in the bundle.",
+                "metadata": {
+                    "uiName": "Tuple Counts"
+                }
+            },
+            "values": {
+                "type": "token[]",
+                "description": "List of the bundled attribute values, converted to token format.",
+                "metadata": {
+                    "uiName": "Attribute Values"
+                }
+            },
+            "childCount": {
+                "type": "uint64",
+                "description": [
+                    "Number of child bundles present in the bundle."
+                ],
+                "metadata": {
+                    "uiName": "Child Count"
+                }
+            },
+            "bundle": {
+                "type": "bundle",
+                "description": "The input 'Bundle', passed through unchanged.",
+                "metadata": {
+                    "uiName": "Bundle Passthrough"
+                }
+            }
+        },
+        "tests": [
+            {
+                "outputs:count": 0,
+                "outputs:names": [],
+                "outputs:types": [],
+                "outputs:roles": [],
+                "outputs:arrayDepths": [],
+                "outputs:tupleCounts": [],
+                "outputs:values": []
+            }
+        ]
+    }
+}

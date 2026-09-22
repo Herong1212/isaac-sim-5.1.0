@@ -1,0 +1,48 @@
+[package]
+title = "OmniGraph Core Nodes"
+version = "1.1.0"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains the core collection of OmniGraph nodes"
+repository = ""
+keywords = ["omnigraph", "nodes"]
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+python.import_mode = "ParallelThread"
+writeTarget.kit = true
+writeTarget.usd = true
+support_level = "Core"
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.graph.nodes_core"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+exclude = ["Ogn*Database.py"]
+
+# Other extensions that need to load in order for this one to work
+[dependencies]
+"omni.graph" = { optional=true }
+"omni.graph.core" = {}
+"omni.kit.exec.core" = {}
+"omni.graph.ui" = { optional=true }  # for node templates
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+[[test]]
+pythonTests.unreliable = [
+]
+dependencies = [
+    "omni.graph",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

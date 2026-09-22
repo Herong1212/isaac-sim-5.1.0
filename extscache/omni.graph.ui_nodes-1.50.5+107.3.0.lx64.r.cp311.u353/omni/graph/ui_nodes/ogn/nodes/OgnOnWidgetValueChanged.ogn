@@ -1,0 +1,45 @@
+{
+    "OnWidgetValueChanged": {
+        "version": 1,
+        "description": [
+            "Event node which fires when a UI widget with the specified identifier has its value changed.",
+            "This node should be used in combination with UI creation nodes such as OgnSlider."
+        ],
+        "uiName": "On Widget Value Changed (BETA)",
+        "language": "Python",
+        "categories": ["internal:test"],
+        "scheduling": "compute-on-request",
+        "exclude": ["tests"],
+        "metadata": {
+            "hidden": true
+        },
+        "inputs": {
+            "widgetIdentifier": {
+                "type": "token",
+                "description": [
+                    "A unique identifier identifying the widget.",
+                    "This should be specified in the UI creation node such as OgnSlider."
+                ],
+                "uiName": "Widget Identifier",
+                "metadata": {
+                    "literalOnly": "1"
+                }
+            }
+        },
+        "outputs": {
+            "valueChanged": {
+                "type": "execution",
+                "description": "When the value of the widget is changed, signal to the graph that execution can continue downstream.",
+                "uiName": "Value Changed"
+            },
+            "newValue": {
+                "type": ["bool", "int", "float", "string"],
+                "description": "The new value of the widget",
+                "uiName": "New Value",
+                "unvalidated": true
+            }
+        },
+        "state": {
+        }
+    }
+}

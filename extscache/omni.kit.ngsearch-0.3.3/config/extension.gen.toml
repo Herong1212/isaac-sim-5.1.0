@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.ngsearch-0.3.3.zip"
+
+    [package.publish]
+        kitVersion = "105.1+release.126783.96529284.tc"
+        date = 1698239263
+        buildNumber = "105.1+master.1260.a956587d.gl"
+        repoName = "kit-deepsearch"
+        signed = 1

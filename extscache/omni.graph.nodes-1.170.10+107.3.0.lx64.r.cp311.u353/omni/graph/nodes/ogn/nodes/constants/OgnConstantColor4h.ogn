@@ -1,0 +1,21 @@
+{
+    "ConstantColor4h": {
+        "description": [
+            "Container for a half-precision floating-point RGBA color value,",
+            "mainly used to share a common value between several downstream nodes. The A (alpha) value is not premultiplied."
+        ],
+        "categories": ["constants"],
+        "scheduling": ["pure"],
+        "version": 1,
+        "inputs": {
+            "value": {
+                "type": "colorh[4]",
+                "description": "The value, acting as both input and output.",
+                "uiName": "Value",
+                "metadata": {
+                    "outputOnly": "1"
+                }
+            }
+        }
+    }
+}

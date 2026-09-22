@@ -1,0 +1,62 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "1.1.6"
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Fabric Commands"
+description = "Commands for Fabric"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+preview_image = "data/preview.png"
+changelog="docs/CHANGELOG.md"
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+support_level = "Core"
+
+# Extension category
+category = "Internal"
+feature = false
+
+# Keywords for the extension
+keywords = ["kit", "fabric", "commands"]
+
+[dependencies]
+"omni.usd" = {}
+"omni.hydra.usdrt_delegate" = {}
+"omni.kit.primitive.mesh" = {}
+
+[[python.module]]
+name = "omni.fabric.commands"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[[test]]
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--/app/useFabricSceneDelegate=true",
+    "--/persistent/app/stage/nestedGprimsAuthoring=false",
+    "--/persistent/app/primCreation/PrimCreationWithDefaultXformOps=true",
+]
+
+dependencies = [
+    "omni.kit.test",
+    "omni.kit.uiapp",
+    "omni.kit.test_suite.helpers",
+]
+
+stdoutFailPatterns.exclude = [
+    "*Failed to acquire interface [omni::kit::renderer::IGpuFoundation v0.2]*", # Leak
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/SETTINGS.md",
+    "docs/CHANGELOG.md",
+    "docs/USAGE_PYTHON.md"
+]

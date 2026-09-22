@@ -1,0 +1,106 @@
+{
+    "version": 1,
+    "apiVersion": "1.0",
+    "interactionProfile": "/interaction_profiles/valve/index_controller",
+    "name": "Valve Index Controller",
+    "bindings": [
+        {
+            "devices": [
+                {
+                    "devicePath": "/user/hand/left",
+                    "deviceType": "controller"
+                },
+                {
+                    "devicePath": "/user/hand/right",
+                    "deviceType": "controller"
+                }
+            ],
+            "inputs": [
+                {
+                    "input": "a",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "b",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "system",
+                    "gestures": [
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "squeeze",
+                    "gestures": [
+                        "value",
+                        "force"
+                    ]
+                },
+                {
+                    "input": "trigger",
+                    "gestures": [
+                        "value",
+                        "touch",
+                        "click"
+                    ]
+                },
+                {
+                    "input": "thumbstick",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "click",
+                        "touch"
+                    ]
+                },
+                {
+                    "input": "trackpad",
+                    "gestures": [
+                        "x",
+                        "y",
+                        "touch",
+                        "force"
+                    ]
+                }
+            ],
+            "poses": [
+                {
+                    "pose": "grip"
+                },
+                {
+                    "pose": "aim"
+                },
+                {
+                    "pose": "grip_surface",
+                    "apiVersion": "1.1"
+                },
+                {
+                    "pose": "palm_ext",
+                    "extension": "XR_EXT_palm_pose"
+                },
+                {
+                    "pose": "pinch_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                },
+                {
+                    "pose": "poke_ext",
+                    "extension": "XR_EXT_hand_interaction"
+                }
+            ],
+            "outputs": [
+                {
+                    "output": "haptic"
+                }
+            ],
+            "defaultPose": "grip"
+        }
+    ]
+}

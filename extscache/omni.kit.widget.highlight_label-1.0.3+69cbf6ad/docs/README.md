@@ -1,0 +1,1 @@
+# Highlight label widget

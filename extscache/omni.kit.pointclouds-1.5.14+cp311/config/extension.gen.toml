@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.pointclouds-1.5.14%2Bcp311.zip"
+
+    [package.target]
+
+        [package.target.python]
+            0 = "cp311"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.200661.b8584094.gl"
+        date = 1754307854
+        buildNumber = "107.0+release.1089.6571c5ee.gl"
+        repoName = "point-cloud-import"
+        signed = 1

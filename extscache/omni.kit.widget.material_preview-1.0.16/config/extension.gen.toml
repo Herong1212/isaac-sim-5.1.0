@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.widget.material_preview-1.0.16.zip"
+
+    [package.publish]
+        kitVersion = "106.0+master.140498.2b2de844.tc"
+        date = 1709737114
+        buildNumber = "106.0+master.2316.00fcba1b.tc"
+        repoName = "kit-graphs"
+        signed = 1

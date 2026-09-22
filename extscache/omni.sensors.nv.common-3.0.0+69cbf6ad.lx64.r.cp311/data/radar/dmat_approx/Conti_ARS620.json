@@ -1,0 +1,38 @@
+{
+  "class": "sensor",
+  "type": "radar",
+  "name": "Continental ARS620",
+  "driveWorksId": "GENERIC",
+  "profile":
+  {
+    "NearScanMaxRangeM": "250",
+    "NearScanMaxVelMpsSequence":[8.17, 8.42, 10.66, 9.42, 8.2, 10.41, 9.3, 8.24, 10.43, 9.33, 8.36, 10.63, 9.72, 8.65, 10.84, 9.71, 8.78, 10.8, 9.82, 8.48, 10.88, 9.55, 8.45, 10.93],
+    "NearScanMaxAzAngRad": "1.152",
+    "NearScanMaxElevAngRad": "0.349",
+
+    "NearScanRangeSepM": "0.4",
+    "NearScanVelSepMps": "0.147",
+    "NearScanBoreAzSepRad": "0.0227",
+    "NearScanBoreElevSepRad": "0.0873",
+
+    "NearScanElevMode": "2",
+
+
+    "FarScanMaxRangeM": "250",
+    "FarScanMaxVelMpsSequence":[8.17, 8.42, 10.66, 9.42, 8.2, 10.41, 9.3, 8.24, 10.43, 9.33, 8.36, 10.63, 9.72, 8.65, 10.84, 9.71, 8.78, 10.8, 9.82, 8.48, 10.88, 9.55, 8.45, 10.93],
+    "FarScanMaxAzAngRad": "1.152",
+    "FarScanMaxElevAngRad": "0.349",
+
+    "FarScanRangeSepM": "0.4",
+    "FarScanVelSepMps": "0.147",
+    "FarScanBoreAzSepRad": "0.0227",
+    "FarScanBoreElevSepRad": "0.0873",
+
+    "FarScanElevMode": "2",
+
+
+    "NumRaysPerDeg": "10.0",
+    "NumExtraThreads": "5",
+    "FrameDurationNs": 50000000
+  }
+}

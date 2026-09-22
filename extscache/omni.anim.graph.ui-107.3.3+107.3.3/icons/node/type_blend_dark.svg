@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Blend" transform="translate(-82 -200)">
+    <rect id="Icon_Base" width="40" height="40" transform="translate(82 200)" fill="none"/>
+    <path id="bgr" d="M9,0H40a0,0,0,0,1,0,0V31a9,9,0,0,1-9,9H0a0,0,0,0,1,0,0V9A9,9,0,0,1,9,0Z" transform="translate(82 200)" fill="#1e2931"/>
+    <circle id="Ellipse_279" data-name="Ellipse 279" cx="10.5" cy="10.5" r="10.5" transform="translate(87 205)" fill="#7f9f8e" opacity="0.53"/>
+    <circle id="Ellipse_281" data-name="Ellipse 281" cx="10.5" cy="10.5" r="10.5" transform="translate(97 215)" fill="#47fbad" opacity="0.53"/>
+  </g>
+</svg>

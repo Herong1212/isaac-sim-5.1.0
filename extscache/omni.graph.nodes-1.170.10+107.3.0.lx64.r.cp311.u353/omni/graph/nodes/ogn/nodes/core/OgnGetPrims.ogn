@@ -1,0 +1,73 @@
+{
+    "GetPrims": {
+        "version": 2,
+        "description": [ "Filters primitives in the input bundle by path and type." ],
+        "uiName": "Get Prims",
+        "categories": [ "bundle" ],
+        "inputs": {
+            "bundle": {
+                "type": "bundle",
+                "description": "The bundle to be read from"
+            },
+            "inverse": {
+                "uiName": "Inverse",
+                "type": "bool",
+                "default": false,
+                "description": [
+                    "By default all primitives matching the path patterns and types are added to the output bundle;",
+                    "when this option is on, all mismatching primitives will be added instead."
+                ]
+            },
+            "pathPattern": {
+                "uiName": "Path Pattern",
+                "type": "string",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match primitive path.",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    `*` - match an arbitrary number of any characters",
+                    "    `?` - match any single character",
+                    "    `^` - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['/Cube0', '/Cube1', '/Box']",
+                    "    '*' - match any",
+                    "    '* ^/Box' - match any, but exclude '/Box'",
+                    "    '* ^/Cube*' - match any, but exclude '/Cube0' and '/Cube1'"
+                ]
+            },
+            "typePattern": {
+                "uiName": "Type Pattern",
+                "type": "string",
+                "default": "*",
+                "description": [
+                    "A list of wildcard patterns used to match primitive type.",
+                    "",
+                    "Supported syntax of wildcard pattern:",
+                    "    `*` - match an arbitrary number of any characters",
+                    "    `?` - match any single character",
+                    "    `^` - (caret) is used to define a pattern that is to be excluded",
+                    "",
+                    "Example of wildcard patterns, input: ['Mesh', 'Cone', 'Cube']",
+                    "    '*' - match any",
+                    "    '* ^Mesh' - match any, but exclude 'Mesh'",
+                    "    '* ^Cone ^Cube' - match any, but exclude 'Cone' and 'Cube'"
+                ]
+            },
+            "prims": {
+                "type": "target",
+                "description": "The prim to be extracted from Multiple Primitives in Bundle.",
+                "optional": true,
+                "metadata": {
+                    "allowMultiInputs": "1"
+                }
+            }
+        },
+        "outputs": {
+            "bundle": {
+                "type": "bundle",
+                "description": "The output bundle that contains filtered primitives"
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "priority": 10,
+    "name": "Vive Controller Model",
+    "tags": "htc_vive_wand_components",
+    "inputDevices": [ "/user/hand/left", "/user/hand/right"],
+    "asset": "{vive.controllers}/vive/model.usd"
+}

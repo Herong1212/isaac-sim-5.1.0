@@ -1,0 +1,5 @@
+Your task is to provide a summary for a scene from a given scene graph within 2-3 sentences. The scene contains some objects, which compose a scene graph in json format.
+
+Each entity in the scene graph denotes an object instance, named '<ID>-<category>'. The 'caption' describes the object's attributes, such as 'color', 'material', etc. The 'relations' describes the object's spatial relations with other objects.
+
+The description should be percise and conform to the given scene graph. Avoid any inference. The summary should be about overall environment, the object types, object attributes, and relative positions between objects. 

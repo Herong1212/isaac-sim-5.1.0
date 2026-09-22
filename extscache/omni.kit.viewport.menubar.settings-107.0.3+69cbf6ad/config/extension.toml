@@ -1,0 +1,71 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "107.0.3"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarly for displaying extension info in UI
+title = "Viewport settings in Viewport Menu Bar"
+description="Adds a variety of viewport settings"
+
+# URL of the extension source repository.
+repository = ""
+
+# Keywords for the extension
+keywords = ["kit", "ui", "menu", "viewport", "settings"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+category = "Internal"
+support_level = "Core"
+
+[dependencies]
+"omni.kit.viewport.menubar.core" = {}
+"omni.kit.notification_manager" = {optional=true}
+
+# Main python module this extension provides, it will be publicly available as "import omni.kit.viewport.menubar.settings".
+[[python.module]]
+name = "omni.kit.viewport.menubar.settings"
+
+[settings]
+exts."omni.kit.viewport.menubar.settings".visible = true
+exts."omni.kit.viewport.menubar.settings".order = -100
+exts."omni.kit.viewport.menubar.settings".show.camera.clamping = true
+# exts."omni.kit.viewport.menubar.settings".min_resolution = [64, 64]
+app.viewport.ui.minBrightness = 0.5
+app.viewport.ui.maxBrightness = 1.0
+
+persistent.app.renderer.resolution.custom.list = []
+
+[[test]]
+dependencies = [
+    "omni.kit.viewport.window",
+    "omni.kit.viewport.utility",
+    "omni.hydra.pxr",
+    "omni.kit.window.drop_support",
+    "omni.kit.ui_test",
+]
+args = [
+    # Test that this setting will be hidden
+    "--/exts/omni.kit.viewport.menubar.settings/show/camera/clamping=false",
+    "--/renderer/enabled=pxr",
+    "--/renderer/active=pxr",
+    "--/app/window/width=600",
+    "--/app/window/height=600",
+    "--/persistent/app/viewport/displayOptions=0",
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/SETTINGS.md",
+]

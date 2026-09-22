@@ -1,0 +1,24 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.gfn-107.0.4%2B107.0.3.lx64.r.cp311.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+mr36087.171495.aeeb3d54.gl"
+        date = 1746756606
+        buildNumber = "107.0+master.1021.65b6783e.gl"
+        repoName = "kit-livestream"
+        signed = 1

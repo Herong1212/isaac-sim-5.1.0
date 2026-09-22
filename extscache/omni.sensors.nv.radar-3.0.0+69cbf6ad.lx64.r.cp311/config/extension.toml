@@ -1,0 +1,40 @@
+[package]
+title = "Omni RADAR Extension"
+description = "Omni Nvidia RADAR extension "
+version = "3.0.0"
+authors = ["NVIDIA"]
+changelog="docs/CHANGELOG.md"
+readme="docs/README.md"
+preview_image="package/preview.png"
+icon="package/icon.png"
+keywords=["sensors","radar"]
+repository = ""
+category="Omniverse Simulation"
+support_level = "Core"
+
+[[native.library]]
+"filter:os".linux.path = "${kit}/dev/libs/sensors/generic_model_output/bin/libgeneric_mo_io.so"
+"filter:platform"."windows-x86_64".path = "${kit}/dev/libs/sensors/generic_model_output/bin/generic_mo_io.dll"
+
+
+# Other extensions that need to load before this one
+[dependencies]
+"omni.graph.core" = {}
+"omni.sensors.nv.wpm" = {}
+"omni.sensors.nv.common" = {}
+"omni.sensors.nv.materials" = {}
+"omni.sensors.net" = {}
+
+[[native.plugin]]
+path = "bin/*.plugin"
+recursive = false
+
+# Main module for the Python interface
+[[python.module]]
+name = "omni.sensors.nv.radar"
+
+[documentation]
+pages = [
+    "docs/radar_extension.rst",
+    "docs/CHANGELOG.md",
+]

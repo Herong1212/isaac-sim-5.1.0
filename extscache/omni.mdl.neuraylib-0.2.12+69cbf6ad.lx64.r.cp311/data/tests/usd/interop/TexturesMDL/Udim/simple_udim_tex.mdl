@@ -1,0 +1,26 @@
+mdl 1.4;
+
+import df::*;
+import base::*;
+
+
+export material test_udim_body(
+)
+=
+material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf (
+            tint: base::file_texture(texture: texture_2d("./cube.<UDIM>.png")).tint)
+    )
+);
+
+export material test_udim_param(
+    uniform texture_2d diffuse_texture = texture_2d("./cube.<UDIM>.png")
+)
+=
+material(
+    surface: material_surface (
+        scattering: df::diffuse_reflection_bsdf (
+            tint: base::file_texture(texture: diffuse_texture).tint)
+    )
+);

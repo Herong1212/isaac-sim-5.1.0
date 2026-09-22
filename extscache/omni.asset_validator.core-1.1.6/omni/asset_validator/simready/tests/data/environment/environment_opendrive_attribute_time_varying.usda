@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    """
+    Invalid environment: omni:simready:openDrive attribute is time-varying.
+    """
+    defaultPrim = "RootNode"
+)
+
+def Xform "RootNode"
+{
+    asset omni:simready:openDrive = @./road.xodr@
+    asset omni:simready:openDrive.timeSamples = {101: @./road.xodr@, 102: @./road.xodr@}
+
+}

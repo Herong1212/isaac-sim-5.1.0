@@ -1,0 +1,40 @@
+[package]
+version = "0.2.3"
+category = "Internal"
+authors = ["NVIDIA"]
+title = "USD Collection Property Widget (Preview)"
+description="USD Collection Property Widget"
+repository = ""
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+keywords = ["kit", "usd", "property", "collection"]
+changelog="docs/CHANGELOG.md"
+readme = "docs/README.md"
+
+[[python.module]]
+name = "omni.kit.property.collection"
+
+[dependencies]
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.kit.window.property" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.core.collection" = {}
+
+[[test]]
+dependencies = [
+    "omni.kit.mainwindow",
+    "omni.kit.ui_test",
+    "omni.kit.window.collection",
+]
+
+args = [
+    "--/app/window/dpiScaleOverride=1.0",
+    "--/app/window/scaleToMonitor=false",
+    "--no-window",
+]
+
+stdoutFailPatterns.exclude = [
+    "*[Error] [carb.graphics-direct3d.plugin]*",
+    "*[Error] [gpu.foundation.plugin]*",
+]

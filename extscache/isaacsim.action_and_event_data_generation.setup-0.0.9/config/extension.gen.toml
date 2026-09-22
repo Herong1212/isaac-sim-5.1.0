@@ -1,0 +1,9 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/isaacsim.action_and_event_data_generation.setup-0.0.9.zip"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.199947.b0a86421.gl"
+        date = 1751332815
+        buildNumber = "0.1.3+500.9592.1149eed7.gl"
+        repoName = "isaacsim.action_and_event_data_generation"

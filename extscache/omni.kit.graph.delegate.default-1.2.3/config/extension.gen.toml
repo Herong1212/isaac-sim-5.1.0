@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.graph.delegate.default-1.2.3.zip"
+
+    [package.publish]
+        kitVersion = "108.0.0+feature.217967.1c73315e.gl"
+        date = 1756895691
+        buildNumber = "108.0.0+main.233.46b7a6c1.gl"
+        repoName = "kit-sample-extensions"
+        signed = 1

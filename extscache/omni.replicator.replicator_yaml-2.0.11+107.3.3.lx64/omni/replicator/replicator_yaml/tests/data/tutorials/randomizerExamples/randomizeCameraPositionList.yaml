@@ -1,0 +1,45 @@
+# Create camera positions
+camera_positions:  [[0, 20, 0], [50, 50, 50]]
+
+camera:
+  create.camera:
+    focus_distance: 200
+    f_stop: 0.5
+
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [0, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+# End of creation of camera and render product
+
+# Put create writer and initialize to other base yaml.
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output_yaml"
+      rgb: True
+      bounding_box_2d_tight: True
+    render_products: render_product
+
+# End of writer
+
+trigger:
+  trigger.on_frame:
+    max_execs: 10
+
+with_trigger:
+  with.trigger:
+    with.camera:
+      modify.pose:
+        position:
+          distribution.choice:
+            choices: camera_positions
+          look_at: [0,0,0]

@@ -1,0 +1,136 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnCameraParams.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_replicator_core_CameraParams" (
+        docs="""This node exposes camera parameters."""
+    )
+    {
+        token node:type = "omni.replicator.core.CameraParams"
+        int node:typeVersion = 1
+
+        # 16 attributes
+        custom float2 inputs:cameraApertureOffset = (0.0, 0.0) (
+            docs="""Camera horizontal and vertical aperture offset"""
+        )
+        custom float2 inputs:cameraApertureSize = (0.0, 0.0) (
+            docs="""Camera horizontal and vertical aperture"""
+        )
+        custom float inputs:cameraFStop = 0.0 (
+            docs="""Camera fStop"""
+        )
+        custom float[] inputs:cameraFisheyeParams = [] (
+            docs="""Camera fisheye projection parameters"""
+        )
+        custom float inputs:cameraFocalLength = 0.0 (
+            docs="""Camera focal length"""
+        )
+        custom float inputs:cameraFocusDistance = 0.0 (
+            docs="""Camera focus distance"""
+        )
+        custom int inputs:cameraModel = 0 (
+            docs="""Camera model (pinhole or fisheye models)"""
+        )
+        custom float2 inputs:cameraNearFar = (0.0, 0.0) (
+            docs="""Camera near/far clipping range"""
+        )
+        custom float inputs:cameraOpenCVFx = 0.0 (
+            docs="""Camera OpenCV fx"""
+        )
+        custom float inputs:cameraOpenCVFy = 0.0 (
+            docs="""Camera OpenCV fy"""
+        )
+        custom matrix4d inputs:cameraProjection = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Camera projection matrix"""
+        )
+        custom matrix4d inputs:cameraViewTransform = ((1.0, 0.0, 0.0, 0.0), (0.0, 1.0, 0.0, 0.0), (0.0, 0.0, 1.0, 0.0), (0.0, 0.0, 0.0, 1.0)) (
+            docs="""Camera view matrix"""
+        )
+        custom uint inputs:exec (
+            docs="""Trigger"""
+        )
+        custom bool inputs:isPinholeOpenCV = false (
+            docs="""Is pinhole openCV camera"""
+        )
+        custom float inputs:metersPerSceneUnit = 0.0 (
+            docs="""Scene units to meters scale"""
+        )
+        custom int2 inputs:renderProductResolution = (0, 0) (
+            docs="""RenderProduct resolution"""
+        )
+
+        # 21 attributes
+        custom float2 outputs:cameraAperture (
+            docs="""Camera horizontal and vertical aperture"""
+        )
+        custom float2 outputs:cameraApertureOffset (
+            docs="""Camera horizontal and vertical aperture offset"""
+        )
+        custom float outputs:cameraFStop (
+            docs="""Camera fStop"""
+        )
+        custom float[] outputs:cameraFisheyeLensP (
+            docs="""Distortion coefficients to calculate tangential distortion. Special parameters for rad tan thin prism."""
+        )
+        custom float[] outputs:cameraFisheyeLensS (
+            docs="""Distortion coefficients to calculate thin prism distortion. Special parameters for rad tan thin prism."""
+        )
+        custom float outputs:cameraFisheyeMaxFOV (
+            docs="""Camera fisheye maximum field of view"""
+        )
+        custom int outputs:cameraFisheyeNominalHeight (
+            docs="""Camera fisheye nominal height"""
+        )
+        custom int outputs:cameraFisheyeNominalWidth (
+            docs="""Camera fisheye nominal width"""
+        )
+        custom float2 outputs:cameraFisheyeOpticalCentre (
+            docs="""Camera fisheye optical centre"""
+        )
+        custom float[] outputs:cameraFisheyePolynomial (
+            docs="""Camera fisheye polynomial"""
+        )
+        custom float outputs:cameraFocalLength (
+            docs="""Camera focal length"""
+        )
+        custom float outputs:cameraFocusDistance (
+            docs="""Camera focus distance"""
+        )
+        custom token outputs:cameraModel (
+            docs="""Camera model (pinhole or fisheye models)"""
+        )
+        custom float2 outputs:cameraNearFar (
+            docs="""Camera near/far clipping range"""
+        )
+        custom float outputs:cameraOpenCVFx (
+            docs="""Camera OpenCV fx"""
+        )
+        custom float outputs:cameraOpenCVFy (
+            docs="""Camera OpenCV fy"""
+        )
+        custom matrix4d outputs:cameraProjection (
+            docs="""Camera projection matrix"""
+        )
+        custom matrix4d outputs:cameraViewTransform (
+            docs="""Camera view matrix"""
+        )
+        custom uint outputs:exec (
+            docs="""Trigger"""
+        )
+        custom float outputs:metersPerSceneUnit (
+            docs="""Scene units to meters scale"""
+        )
+        custom int2 outputs:renderProductResolution (
+            docs="""RenderProduct resolution"""
+        )
+    }
+}

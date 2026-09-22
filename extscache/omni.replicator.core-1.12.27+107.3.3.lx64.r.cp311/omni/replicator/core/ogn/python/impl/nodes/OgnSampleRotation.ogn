@@ -1,0 +1,47 @@
+{
+    "OgnSampleRotation": {
+        "version": 1,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node assigns uniformly sampled rotations to the input prims.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Sample Rotation"
+        },
+        "state": {
+            "$comment": ["Internal state."]
+        },
+        "inputs": {
+            "prims": {
+                "description": ["prim(s) to set rotation"],
+                "type": "target"
+            },
+            "execIn": {
+                "description": ["exec"],
+                "type": "execution"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "minAngle": {
+                "description": ["minimum value for Euler angles in XYZ form (degrees)"],
+                "type": "float[3]",
+                "default": [-180.0, -180.0, -180.0]
+            },
+            "maxAngle": {
+                "description": ["maximum value for Euler angles in XYZ form (degrees)"],
+                "type": "float[3]",
+                "default": [180.0, 180.0, 180.0]
+            }
+        },
+        "outputs": {
+            "execOut": {
+                "description": ["exec"],
+                "type": "execution"
+            }
+        }
+    }
+}

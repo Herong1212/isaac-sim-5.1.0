@@ -1,0 +1,120 @@
+{
+    "InterpolateTo": {
+        "version": 2,
+        "description": [
+            "Computes the value \"Result\" after moving \"Delta Seconds\" forward in time at a given \"Speed\" from",
+            "the \"Current\" value in the direction of a \"Target\" value. The interpolation provides an eased",
+            "approach to the \"Target\", with options to adjust the \"Speed\" and \"Exponent\" to tweak the curve. The",
+            "formula is:",
+            "result = current + (target - current) * (1 - clamp(0, speed * deltaSeconds, 1))^exp.",
+            "For quaternions, the node performs a spherical linear interpolation (SLERP) with",
+            "alpha = (1 - clamp(0, speed * deltaSeconds, 1))^exp",
+            "Vectors and arrays are interpolated component-wise, and interpolation can be applied to decimal types."
+        ],
+        "uiName": "Interpolate To",
+        "categories": ["math:operator"],
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "current": {
+                "type": ["decimal_scalers", "decimal_tuples", "decimal_arrays"],
+                "description": [
+                    "The initial value at which the dependent variable (i.e. the variable that's being interpolated",
+                    "over) begins its current interpolation step."
+                ]
+            },
+            "target": {
+                "type": ["decimal_scalers", "decimal_tuples", "decimal_arrays"],
+                "description": "The target value that the dependent variable will eventually reach (given enough time)."
+            },
+            "speed": {
+                "type": "double",
+                "description": "The peak speed of approach (in units per second).",
+                "minimum": 0.0,
+                "default": 1.0
+            },
+            "deltaSeconds": {
+                "type": "double",
+                "description": "The time step for the interpolation (in seconds).",
+                "minimum": 0.0
+            },
+            "exponent": {
+                "type": "float",
+                "description": [
+                    "The blend exponent, which is the degree of the ease curve",
+                    "(1 = linear, 2 = quadratic, 3 = cubic, etc)."
+                ],
+                "minimum": 1.0,
+                "maximum": 10.0,
+                "default": 2.0
+            }
+        },
+        "outputs": {
+            "result": {
+                "type": ["numerics"],
+                "description": "The value of the dependent variable being interpolated after a single time-step.",
+                "uiName": "Result"
+            }
+        },
+        "tests" : [
+            {
+                "inputs": {
+                    "current": {"type": "float", "value": 0.0},
+                    "target": {"type": "float", "value": 10.0},
+                    "deltaSeconds": 0.1
+                 },
+                 "outputs": {"result": {"type": "float", "value": 1.9}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "double[3]", "value": [0.0, 1.0, 2.0]},
+                    "target": {"type": "double[3]", "value": [10.0, 11.0, 12.0]},
+                    "deltaSeconds": 0.1
+                 },
+                 "outputs": {"result": {"type": "double[3]", "value": [1.9, 2.9, 3.9]}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "float[]", "value": [0.0, 1.0, 2.0]},
+                    "target": {"type": "float[]", "value": [10.0, 11.0, 12.0]},
+                    "deltaSeconds": 0.1
+                 },
+                 "outputs": {"result": {"type": "float[]", "value": [1.9, 2.9, 3.9]}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "double[3][]", "value": [[0.0, 1.0, 2.0],[0.0, 1.0, 2.0]]},
+                    "target": {"type": "double[3][]", "value": [[10.0, 11.0, 12.0], [10.0, 11.0, 12.0]]},
+                    "deltaSeconds": 0.1
+                 },
+                 "outputs": {"result": {"type": "double[3][]", "value": [[1.9, 2.9, 3.9], [1.9, 2.9, 3.9]]}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "quatd[4]", "value": [0, 0, 0, 1]},
+                    "target": {"type": "quatd[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                    "deltaSeconds": 0.5,
+                    "exponent": 1
+                 },
+                 "outputs": {"result": {"type": "quatd[4]", "value": [0.3826834, 0, 0, 0.9238795]}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "quatf[4]", "value": [0, 0, 0, 1]},
+                    "target": {"type": "quatf[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                    "deltaSeconds": 0.5,
+                    "exponent": 1
+                 },
+                 "outputs": {"result": {"type": "quatf[4]", "value": [0.3826834, 0, 0, 0.9238795]}}
+            },
+            {
+                "inputs": {
+                    "current": {"type": "float[4]", "value": [0, 0, 0, 1]},
+                    "target": {"type": "float[4]", "value": [0.7071068, 0, 0, 0.7071068]},
+                    "deltaSeconds": 0.5,
+                    "exponent": 1
+                 },
+                 "outputs": {"result": {"type": "float[4]", "value": [0.3535534, 0, 0, 0.8535534]}}
+            }
+        ]
+    }
+}

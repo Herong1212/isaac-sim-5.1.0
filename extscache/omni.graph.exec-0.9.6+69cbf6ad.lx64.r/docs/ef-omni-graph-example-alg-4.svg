@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1654.77 410">
+    <g class="graph" transform="translate(4 406)">
+        <path fill="#fff" stroke="transparent" d="M-4 4v-410h1654.77V4H-4z" />
+        <g class="cluster">
+            <path fill="none" stroke="#000"
+                  d="M20-8h1614.77c6 0 12-6 12-12v-362c0-6-6-12-12-12H20c-6 0-12 6-12 12v362c0 6 6 12 12 12" /><text
+                  x="827.38" y="-377.4" font-family="Times,serif" font-size="14" text-anchor="middle">EXECUTION GRAPH |
+                kit.def.execution(8412328473570437098)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#a6cee3"
+                  d="M261.98-16h1364.79c6 0 12-6 12-12v-321c0-6-6-12-12-12H261.98c-6 0-12 6-12 12v321c0 6 6 12 12 12" />
+            <text x="944.37" y="-344.4" font-family="Times,serif" font-size="14"
+                  text-anchor="middle">kit.legacyPipeline(2) | kit.def.legacyPipeline(14601541822497998125)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#1f78b4"
+                  d="M563.51-24h1055.26c6 0 12-6 12-12v-156c0-6-6-12-12-12H563.51c-6 0-12 6-12 12v156c0 6 6 12 12 12" />
+            <text x="1091.14" y="-187.4" font-family="Times,serif" font-size="14" text-anchor="middle">OmniGraph(2) |
+                OmniGraphDef(13532122613264624703)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#b2df8a"
+                  d="M634.54-100h391.6c6 0 12-6 12-12v-21c0-6-6-12-12-12h-391.6c-6 0-12 6-12 12v21c0 6 6 12 12 12" />
+            <text x="830.34" y="-128.4" font-family="Times,serif" font-size="14"
+                  text-anchor="middle">og.pre_simulation(1) | og.def.pre_simulation(18371527843990822053)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#E31A1C"
+                  d="M1197.17-126h402.6c6 0 12-6 12-12v-21c0-6-6-12-12-12h-402.6c-6 0-12 6-12 12v21c0 6 6 12 12 12" />
+            <text x="1398.47" y="-154.4" font-family="Times,serif" font-size="14"
+                  text-anchor="middle">og.post_simulation(3) | og.def.post_simulation(12859070463537551084)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#33a02c"
+                  d="M1101.57-32h509.2c6 0 12-6 12-12v-62c0-6-6-12-12-12h-509.2c-6 0-12 6-12 12v62c0 6 6 12 12 12" />
+            <text x="1356.17" y="-101.4" font-family="Times,serif" font-size="14" text-anchor="middle">og.simulation(2)
+                | og.def.simulation(2058752528039269071)</text>
+        </g>
+        <g class="cluster">
+            <path fill="none" stroke="#fb9a99"
+                  d="M1194.17-40h408.6c6 0 12-6 12-12v-21c0-6-6-12-12-12h-408.6c-6 0-12 6-12 12v21c0 6 6 12 12 12" />
+            <text x="1398.47" y="-68.4" font-family="Times,serif" font-size="14"
+                  text-anchor="middle">/World/ActionGraph(1) | og.def.graph_execution(1354986524710330633)</text>
+        </g>
+        <g class="node">
+            <circle cx="138.79" cy="-153" r="83.38" stroke="#000" /><text x="138.79" y="-148.8" fill="#fff"
+                  font-family="Times,serif" font-size="14" text-anchor="middle">kit.customPipeline</text>
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#000" d="M20.14-153h24.93" />
+            <path stroke="#000" d="m45.33-156.5 10 3.5-10 3.5v-7z" />
+        </g>
+        <g class="node">
+            <circle cx="259.78" cy="-153" r="1.8" fill="#a6cee3" stroke="#a6cee3" />
+        </g>
+        <g class="node">
+            <circle cx="17.8" cy="-153" r="1.8" stroke="#000" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#000" d="M222.11-153h25.52" />
+            <path stroke="#000" d="m239.98-156.5 10 3.5-10 3.5v-7z" />
+        </g>
+        <g class="node">
+            <circle cx="410.54" cy="-153" r="112.93" fill="#a6cee3" stroke="#a6cee3" /><text x="410.54" y="-148.8"
+                  fill="#fff" font-family="Times,serif" font-size="14"
+                  text-anchor="middle">SkelAnimationAnnotation</text>
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#a6cee3" d="M261.73-153h25.74" />
+            <path fill="#a6cee3" stroke="#a6cee3" d="m287.56-156.5 10 3.5-10 3.5v-7z" />
+        </g>
+        <g class="node">
+            <circle cx="561.31" cy="-153" r="1.8" fill="#1f78b4" stroke="#1f78b4" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#a6cee3" d="M523.53-153h25.56" />
+            <path fill="#a6cee3" stroke="#a6cee3" d="m541.51-156.5 10 3.5-10 3.5v-7z" />
+        </g>
+        <g class="node">
+            <circle cx="830.34" cy="-110" r="1.8" fill="#b2df8a" stroke="#b2df8a" />
+        </g>
+        <g class="node">
+            <circle cx="830.34" cy="-270" r="58.46" fill="#a6cee3" stroke="#a6cee3" /><text x="830.34" y="-265.8"
+                  fill="#fff" font-family="Times,serif" font-size="14" text-anchor="middle">DebugDraw</text>
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#1f78b4" d="M563.07-152.3c4.31 3.87 26.09 22.85 49.91 32.85" />
+            <path fill="#1f78b4" stroke="#1f78b4" d="m614.32-122.69 8.22 6.69-10.6-.1 2.38-6.59z" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#a6cee3" d="m678.7-204 88.72-38.87" />
+            <path fill="#a6cee3" stroke="#a6cee3" d="m766.21-246.16 10.57-.81-7.76 7.22-2.81-6.41z" />
+        </g>
+        <g class="node">
+            <circle cx="1099.37" cy="-83" r="1.8" fill="#33a02c" stroke="#33a02c" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#33a02c" d="M1101.22-82.91c5.18.58 33.52 3.73 70.77 7.88" />
+            <path fill="#33a02c" stroke="#33a02c" d="m1172.62-78.48 9.55 4.58-10.32 2.37.77-6.95z" />
+        </g>
+        <g class="node">
+            <circle cx="1397.97" cy="-136" r="1.8" fill="#E31A1C" stroke="#E31A1C" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#1f78b4" d="M930.2-100c60.14 6.08 130.35 13.18 157.08 15.88" />
+            <path fill="#1f78b4" stroke="#1f78b4" d="m1081.83-90.35 7.74 7.24-10.56-.83 2.82-6.41z" />
+        </g>
+        <g class="node">
+            <circle cx="1397.97" cy="-50" r="1.8" fill="#fb9a99" stroke="#fb9a99" />
+        </g>
+        <g class="edge">
+            <path fill="none" stroke="#1f78b4" d="M1296.22-118c12.25-2.19 24.01-4.29 34.9-6.23" />
+            <path fill="#1f78b4" stroke="#1f78b4" d="m1330.57-127.69 10.46 1.69-9.23 5.2-1.23-6.89z" />
+        </g>
+    </g>
+</svg>

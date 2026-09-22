@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary renderSettings = {
+            bool "rtx:post:tvNoise:enabled" = 1
+            bool "rtx:post:tvNoise:enableScanlines" = 1
+            double "rtx:post:tvNoise:scanlineSpread" = 0.1234567
+            float "rtx:post:tvNoise:grainAmount" = 0.06
+        }
+    }
+    defaultPrim = "World"
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxPostTvNoiseAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                float omni:rtx:post:tvNoise:filmGrain:amount = 5
+                bool omni:rtx:post:tvNoise:scanlines:enabled = 0
+            }
+
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_1" (
+                prepend apiSchemas = ["OmniRtxPostTvNoiseAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                bool omni:rtx:post:tvNoise:enabled = 1
+                bool omni:rtx:post:tvNoise:scanlines:enabled = 1
+                float omni:rtx:post:tvNoise:scanlines:spread = 3
+            }
+        }
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+        }
+    }
+}

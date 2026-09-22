@@ -1,0 +1,15 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.thumbnails.mdl-1.0.27%2B107.3.0.zip"
+
+    [package.target]
+
+        [package.target.kit]
+            0 = "107.3.0"
+
+    [package.publish]
+        kitVersion = "107.3.0+feature.193460.b693200d.gl"
+        date = 1747016392
+        buildNumber = "107.2+master.2440.48ebfb47.gl"
+        repoName = "kit-browsers"
+        signed = 1

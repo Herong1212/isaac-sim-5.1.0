@@ -1,0 +1,943 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnUniversalAdd.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_examples_cpp_UniversalAdd" (
+        docs="""Universal add node type for all data types. See the 'omni.graph.nodes.Add' node type for a Python implementation that uses only one output and one pair of inputs using the 'any' type."""
+    )
+    {
+        token node:type = "omni.graph.examples.cpp.UniversalAdd"
+        int node:typeVersion = 1
+
+        # 204 attributes
+        custom bool inputs:bool_0 = false (
+            docs="""Input of type bool"""
+        )
+        custom bool inputs:bool_1 = false (
+            docs="""Input of type bool"""
+        )
+        custom bool[] inputs:bool_arr_0 = [] (
+            docs="""Input of type bool[]"""
+        )
+        custom bool[] inputs:bool_arr_1 = [] (
+            docs="""Input of type bool[]"""
+        )
+        custom color3d inputs:colord3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colord[3]"""
+        )
+        custom color3d inputs:colord3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colord[3]"""
+        )
+        custom color3d[] inputs:colord3_arr_0 = [] (
+            docs="""Input of type colord[3][]"""
+        )
+        custom color3d[] inputs:colord3_arr_1 = [] (
+            docs="""Input of type colord[3][]"""
+        )
+        custom color4d inputs:colord4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colord[4]"""
+        )
+        custom color4d inputs:colord4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colord[4]"""
+        )
+        custom color4d[] inputs:colord4_arr_0 = [] (
+            docs="""Input of type colord[4][]"""
+        )
+        custom color4d[] inputs:colord4_arr_1 = [] (
+            docs="""Input of type colord[4][]"""
+        )
+        custom color3f inputs:colorf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colorf[3]"""
+        )
+        custom color3f inputs:colorf3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colorf[3]"""
+        )
+        custom color3f[] inputs:colorf3_arr_0 = [] (
+            docs="""Input of type colorf[3][]"""
+        )
+        custom color3f[] inputs:colorf3_arr_1 = [] (
+            docs="""Input of type colorf[3][]"""
+        )
+        custom color4f inputs:colorf4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colorf[4]"""
+        )
+        custom color4f inputs:colorf4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colorf[4]"""
+        )
+        custom color4f[] inputs:colorf4_arr_0 = [] (
+            docs="""Input of type colorf[4][]"""
+        )
+        custom color4f[] inputs:colorf4_arr_1 = [] (
+            docs="""Input of type colorf[4][]"""
+        )
+        custom color3h inputs:colorh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colorh[3]"""
+        )
+        custom color3h inputs:colorh3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type colorh[3]"""
+        )
+        custom color3h[] inputs:colorh3_arr_0 = [] (
+            docs="""Input of type colorh[3][]"""
+        )
+        custom color3h[] inputs:colorh3_arr_1 = [] (
+            docs="""Input of type colorh[3][]"""
+        )
+        custom color4h inputs:colorh4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colorh[4]"""
+        )
+        custom color4h inputs:colorh4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type colorh[4]"""
+        )
+        custom color4h[] inputs:colorh4_arr_0 = [] (
+            docs="""Input of type colorh[4][]"""
+        )
+        custom color4h[] inputs:colorh4_arr_1 = [] (
+            docs="""Input of type colorh[4][]"""
+        )
+        custom double2 inputs:double2_0 = (0.0, 0.0) (
+            docs="""Input of type double[2]"""
+        )
+        custom double2 inputs:double2_1 = (0.0, 0.0) (
+            docs="""Input of type double[2]"""
+        )
+        custom double2[] inputs:double2_arr_0 = [] (
+            docs="""Input of type double[2][]"""
+        )
+        custom double2[] inputs:double2_arr_1 = [] (
+            docs="""Input of type double[2][]"""
+        )
+        custom double3 inputs:double3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type double[3]"""
+        )
+        custom double3 inputs:double3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type double[3]"""
+        )
+        custom double3[] inputs:double3_arr_0 = [] (
+            docs="""Input of type double[3][]"""
+        )
+        custom double3[] inputs:double3_arr_1 = [] (
+            docs="""Input of type double[3][]"""
+        )
+        custom double4 inputs:double4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type double[4]"""
+        )
+        custom double4 inputs:double4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type double[4]"""
+        )
+        custom double4[] inputs:double4_arr_0 = [] (
+            docs="""Input of type double[4][]"""
+        )
+        custom double4[] inputs:double4_arr_1 = [] (
+            docs="""Input of type double[4][]"""
+        )
+        custom double inputs:double_0 = 0.0 (
+            docs="""Input of type double"""
+        )
+        custom double inputs:double_1 = 0.0 (
+            docs="""Input of type double"""
+        )
+        custom double[] inputs:double_arr_0 = [] (
+            docs="""Input of type double[]"""
+        )
+        custom double[] inputs:double_arr_1 = [] (
+            docs="""Input of type double[]"""
+        )
+        custom float2 inputs:float2_0 = (0.0, 0.0) (
+            docs="""Input of type float[2]"""
+        )
+        custom float2 inputs:float2_1 = (0.0, 0.0) (
+            docs="""Input of type float[2]"""
+        )
+        custom float2[] inputs:float2_arr_0 = [] (
+            docs="""Input of type float[2][]"""
+        )
+        custom float2[] inputs:float2_arr_1 = [] (
+            docs="""Input of type float[2][]"""
+        )
+        custom float3 inputs:float3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type float[3]"""
+        )
+        custom float3 inputs:float3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type float[3]"""
+        )
+        custom float3[] inputs:float3_arr_0 = [] (
+            docs="""Input of type float[3][]"""
+        )
+        custom float3[] inputs:float3_arr_1 = [] (
+            docs="""Input of type float[3][]"""
+        )
+        custom float4 inputs:float4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type float[4]"""
+        )
+        custom float4 inputs:float4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type float[4]"""
+        )
+        custom float4[] inputs:float4_arr_0 = [] (
+            docs="""Input of type float[4][]"""
+        )
+        custom float4[] inputs:float4_arr_1 = [] (
+            docs="""Input of type float[4][]"""
+        )
+        custom float inputs:float_0 = 0.0 (
+            docs="""Input of type float"""
+        )
+        custom float inputs:float_1 = 0.0 (
+            docs="""Input of type float"""
+        )
+        custom float[] inputs:float_arr_0 = [] (
+            docs="""Input of type float[]"""
+        )
+        custom float[] inputs:float_arr_1 = [] (
+            docs="""Input of type float[]"""
+        )
+        custom frame4d inputs:frame4_0 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Input of type frame[4]"""
+        )
+        custom frame4d inputs:frame4_1 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Input of type frame[4]"""
+        )
+        custom frame4d[] inputs:frame4_arr_0 = [] (
+            docs="""Input of type frame[4][]"""
+        )
+        custom frame4d[] inputs:frame4_arr_1 = [] (
+            docs="""Input of type frame[4][]"""
+        )
+        custom half2 inputs:half2_0 = (0.0, 0.0) (
+            docs="""Input of type half[2]"""
+        )
+        custom half2 inputs:half2_1 = (0.0, 0.0) (
+            docs="""Input of type half[2]"""
+        )
+        custom half2[] inputs:half2_arr_0 = [] (
+            docs="""Input of type half[2][]"""
+        )
+        custom half2[] inputs:half2_arr_1 = [] (
+            docs="""Input of type half[2][]"""
+        )
+        custom half3 inputs:half3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type half[3]"""
+        )
+        custom half3 inputs:half3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type half[3]"""
+        )
+        custom half3[] inputs:half3_arr_0 = [] (
+            docs="""Input of type half[3][]"""
+        )
+        custom half3[] inputs:half3_arr_1 = [] (
+            docs="""Input of type half[3][]"""
+        )
+        custom half4 inputs:half4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type half[4]"""
+        )
+        custom half4 inputs:half4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type half[4]"""
+        )
+        custom half4[] inputs:half4_arr_0 = [] (
+            docs="""Input of type half[4][]"""
+        )
+        custom half4[] inputs:half4_arr_1 = [] (
+            docs="""Input of type half[4][]"""
+        )
+        custom half inputs:half_0 = 0.0 (
+            docs="""Input of type half"""
+        )
+        custom half inputs:half_1 = 0.0 (
+            docs="""Input of type half"""
+        )
+        custom half[] inputs:half_arr_0 = [] (
+            docs="""Input of type half[]"""
+        )
+        custom half[] inputs:half_arr_1 = [] (
+            docs="""Input of type half[]"""
+        )
+        custom int2 inputs:int2_0 = (0, 0) (
+            docs="""Input of type int[2]"""
+        )
+        custom int2 inputs:int2_1 = (0, 0) (
+            docs="""Input of type int[2]"""
+        )
+        custom int2[] inputs:int2_arr_0 = [] (
+            docs="""Input of type int[2][]"""
+        )
+        custom int2[] inputs:int2_arr_1 = [] (
+            docs="""Input of type int[2][]"""
+        )
+        custom int3 inputs:int3_0 = (0, 0, 0) (
+            docs="""Input of type int[3]"""
+        )
+        custom int3 inputs:int3_1 = (0, 0, 0) (
+            docs="""Input of type int[3]"""
+        )
+        custom int3[] inputs:int3_arr_0 = [] (
+            docs="""Input of type int[3][]"""
+        )
+        custom int3[] inputs:int3_arr_1 = [] (
+            docs="""Input of type int[3][]"""
+        )
+        custom int4 inputs:int4_0 = (0, 0, 0, 0) (
+            docs="""Input of type int[4]"""
+        )
+        custom int4 inputs:int4_1 = (0, 0, 0, 0) (
+            docs="""Input of type int[4]"""
+        )
+        custom int4[] inputs:int4_arr_0 = [] (
+            docs="""Input of type int[4][]"""
+        )
+        custom int4[] inputs:int4_arr_1 = [] (
+            docs="""Input of type int[4][]"""
+        )
+        custom int64 inputs:int64_0 = 0 (
+            docs="""Input of type int64"""
+        )
+        custom int64 inputs:int64_1 = 0 (
+            docs="""Input of type int64"""
+        )
+        custom int64[] inputs:int64_arr_0 = [] (
+            docs="""Input of type int64[]"""
+        )
+        custom int64[] inputs:int64_arr_1 = [] (
+            docs="""Input of type int64[]"""
+        )
+        custom int inputs:int_0 = 0 (
+            docs="""Input of type int"""
+        )
+        custom int inputs:int_1 = 0 (
+            docs="""Input of type int"""
+        )
+        custom int[] inputs:int_arr_0 = [] (
+            docs="""Input of type int[]"""
+        )
+        custom int[] inputs:int_arr_1 = [] (
+            docs="""Input of type int[]"""
+        )
+        custom matrix2d inputs:matrixd2_0 = ((0.0, 0.0), (0.0, 0.0)) (
+            docs="""Input of type matrixd[2]"""
+        )
+        custom matrix2d inputs:matrixd2_1 = ((0.0, 0.0), (0.0, 0.0)) (
+            docs="""Input of type matrixd[2]"""
+        )
+        custom matrix2d[] inputs:matrixd2_arr_0 = [] (
+            docs="""Input of type matrixd[2][]"""
+        )
+        custom matrix2d[] inputs:matrixd2_arr_1 = [] (
+            docs="""Input of type matrixd[2][]"""
+        )
+        custom matrix3d inputs:matrixd3_0 = ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)) (
+            docs="""Input of type matrixd[3]"""
+        )
+        custom matrix3d inputs:matrixd3_1 = ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)) (
+            docs="""Input of type matrixd[3]"""
+        )
+        custom matrix3d[] inputs:matrixd3_arr_0 = [] (
+            docs="""Input of type matrixd[3][]"""
+        )
+        custom matrix3d[] inputs:matrixd3_arr_1 = [] (
+            docs="""Input of type matrixd[3][]"""
+        )
+        custom matrix4d inputs:matrixd4_0 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Input of type matrixd[4]"""
+        )
+        custom matrix4d inputs:matrixd4_1 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Input of type matrixd[4]"""
+        )
+        custom matrix4d[] inputs:matrixd4_arr_0 = [] (
+            docs="""Input of type matrixd[4][]"""
+        )
+        custom matrix4d[] inputs:matrixd4_arr_1 = [] (
+            docs="""Input of type matrixd[4][]"""
+        )
+        custom normal3d inputs:normald3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normald[3]"""
+        )
+        custom normal3d inputs:normald3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normald[3]"""
+        )
+        custom normal3d[] inputs:normald3_arr_0 = [] (
+            docs="""Input of type normald[3][]"""
+        )
+        custom normal3d[] inputs:normald3_arr_1 = [] (
+            docs="""Input of type normald[3][]"""
+        )
+        custom normal3f inputs:normalf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normalf[3]"""
+        )
+        custom normal3f inputs:normalf3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normalf[3]"""
+        )
+        custom normal3f[] inputs:normalf3_arr_0 = [] (
+            docs="""Input of type normalf[3][]"""
+        )
+        custom normal3f[] inputs:normalf3_arr_1 = [] (
+            docs="""Input of type normalf[3][]"""
+        )
+        custom normal3h inputs:normalh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normalh[3]"""
+        )
+        custom normal3h inputs:normalh3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type normalh[3]"""
+        )
+        custom normal3h[] inputs:normalh3_arr_0 = [] (
+            docs="""Input of type normalh[3][]"""
+        )
+        custom normal3h[] inputs:normalh3_arr_1 = [] (
+            docs="""Input of type normalh[3][]"""
+        )
+        custom point3d inputs:pointd3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointd[3]"""
+        )
+        custom point3d inputs:pointd3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointd[3]"""
+        )
+        custom point3d[] inputs:pointd3_arr_0 = [] (
+            docs="""Input of type pointd[3][]"""
+        )
+        custom point3d[] inputs:pointd3_arr_1 = [] (
+            docs="""Input of type pointd[3][]"""
+        )
+        custom point3f inputs:pointf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointf[3]"""
+        )
+        custom point3f inputs:pointf3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointf[3]"""
+        )
+        custom point3f[] inputs:pointf3_arr_0 = [] (
+            docs="""Input of type pointf[3][]"""
+        )
+        custom point3f[] inputs:pointf3_arr_1 = [] (
+            docs="""Input of type pointf[3][]"""
+        )
+        custom point3h inputs:pointh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointh[3]"""
+        )
+        custom point3h inputs:pointh3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type pointh[3]"""
+        )
+        custom point3h[] inputs:pointh3_arr_0 = [] (
+            docs="""Input of type pointh[3][]"""
+        )
+        custom point3h[] inputs:pointh3_arr_1 = [] (
+            docs="""Input of type pointh[3][]"""
+        )
+        custom quatd inputs:quatd4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quatd[4]"""
+        )
+        custom quatd inputs:quatd4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quatd[4]"""
+        )
+        custom quatd[] inputs:quatd4_arr_0 = [] (
+            docs="""Input of type quatd[4][]"""
+        )
+        custom quatd[] inputs:quatd4_arr_1 = [] (
+            docs="""Input of type quatd[4][]"""
+        )
+        custom quatf inputs:quatf4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quatf[4]"""
+        )
+        custom quatf inputs:quatf4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quatf[4]"""
+        )
+        custom quatf[] inputs:quatf4_arr_0 = [] (
+            docs="""Input of type quatf[4][]"""
+        )
+        custom quatf[] inputs:quatf4_arr_1 = [] (
+            docs="""Input of type quatf[4][]"""
+        )
+        custom quath inputs:quath4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quath[4]"""
+        )
+        custom quath inputs:quath4_1 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Input of type quath[4]"""
+        )
+        custom quath[] inputs:quath4_arr_0 = [] (
+            docs="""Input of type quath[4][]"""
+        )
+        custom quath[] inputs:quath4_arr_1 = [] (
+            docs="""Input of type quath[4][]"""
+        )
+        custom texCoord2d inputs:texcoordd2_0 = (0.0, 0.0) (
+            docs="""Input of type texcoordd[2]"""
+        )
+        custom texCoord2d inputs:texcoordd2_1 = (0.0, 0.0) (
+            docs="""Input of type texcoordd[2]"""
+        )
+        custom texCoord2d[] inputs:texcoordd2_arr_0 = [] (
+            docs="""Input of type texcoordd[2][]"""
+        )
+        custom texCoord2d[] inputs:texcoordd2_arr_1 = [] (
+            docs="""Input of type texcoordd[2][]"""
+        )
+        custom texCoord3d inputs:texcoordd3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordd[3]"""
+        )
+        custom texCoord3d inputs:texcoordd3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordd[3]"""
+        )
+        custom texCoord3d[] inputs:texcoordd3_arr_0 = [] (
+            docs="""Input of type texcoordd[3][]"""
+        )
+        custom texCoord3d[] inputs:texcoordd3_arr_1 = [] (
+            docs="""Input of type texcoordd[3][]"""
+        )
+        custom texCoord2f inputs:texcoordf2_0 = (0.0, 0.0) (
+            docs="""Input of type texcoordf[2]"""
+        )
+        custom texCoord2f inputs:texcoordf2_1 = (0.0, 0.0) (
+            docs="""Input of type texcoordf[2]"""
+        )
+        custom texCoord2f[] inputs:texcoordf2_arr_0 = [] (
+            docs="""Input of type texcoordf[2][]"""
+        )
+        custom texCoord2f[] inputs:texcoordf2_arr_1 = [] (
+            docs="""Input of type texcoordf[2][]"""
+        )
+        custom texCoord3f inputs:texcoordf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordf[3]"""
+        )
+        custom texCoord3f inputs:texcoordf3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordf[3]"""
+        )
+        custom texCoord3f[] inputs:texcoordf3_arr_0 = [] (
+            docs="""Input of type texcoordf[3][]"""
+        )
+        custom texCoord3f[] inputs:texcoordf3_arr_1 = [] (
+            docs="""Input of type texcoordf[3][]"""
+        )
+        custom texCoord2h inputs:texcoordh2_0 = (0.0, 0.0) (
+            docs="""Input of type texcoordh[2]"""
+        )
+        custom texCoord2h inputs:texcoordh2_1 = (0.0, 0.0) (
+            docs="""Input of type texcoordh[2]"""
+        )
+        custom texCoord2h[] inputs:texcoordh2_arr_0 = [] (
+            docs="""Input of type texcoordh[2][]"""
+        )
+        custom texCoord2h[] inputs:texcoordh2_arr_1 = [] (
+            docs="""Input of type texcoordh[2][]"""
+        )
+        custom texCoord3h inputs:texcoordh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordh[3]"""
+        )
+        custom texCoord3h inputs:texcoordh3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type texcoordh[3]"""
+        )
+        custom texCoord3h[] inputs:texcoordh3_arr_0 = [] (
+            docs="""Input of type texcoordh[3][]"""
+        )
+        custom texCoord3h[] inputs:texcoordh3_arr_1 = [] (
+            docs="""Input of type texcoordh[3][]"""
+        )
+        custom timecode inputs:timecode_0 = 0.0 (
+            docs="""Input of type timecode"""
+        )
+        custom timecode inputs:timecode_1 = 0.0 (
+            docs="""Input of type timecode"""
+        )
+        custom timecode[] inputs:timecode_arr_0 = [] (
+            docs="""Input of type timecode[]"""
+        )
+        custom timecode[] inputs:timecode_arr_1 = [] (
+            docs="""Input of type timecode[]"""
+        )
+        custom token inputs:token_0 = "default_token" (
+            docs="""Input of type token"""
+        )
+        custom token inputs:token_1 = "default_token" (
+            docs="""Input of type token"""
+        )
+        custom token[] inputs:token_arr_0 = [] (
+            docs="""Input of type token[]"""
+        )
+        custom token[] inputs:token_arr_1 = [] (
+            docs="""Input of type token[]"""
+        )
+        custom uchar inputs:uchar_0 = 0 (
+            docs="""Input of type uchar"""
+        )
+        custom uchar inputs:uchar_1 = 0 (
+            docs="""Input of type uchar"""
+        )
+        custom uchar[] inputs:uchar_arr_0 = [] (
+            docs="""Input of type uchar[]"""
+        )
+        custom uchar[] inputs:uchar_arr_1 = [] (
+            docs="""Input of type uchar[]"""
+        )
+        custom uint64 inputs:uint64_0 = 0 (
+            docs="""Input of type uint64"""
+        )
+        custom uint64 inputs:uint64_1 = 0 (
+            docs="""Input of type uint64"""
+        )
+        custom uint64[] inputs:uint64_arr_0 = [] (
+            docs="""Input of type uint64[]"""
+        )
+        custom uint64[] inputs:uint64_arr_1 = [] (
+            docs="""Input of type uint64[]"""
+        )
+        custom uint inputs:uint_0 = 0 (
+            docs="""Input of type uint"""
+        )
+        custom uint inputs:uint_1 = 0 (
+            docs="""Input of type uint"""
+        )
+        custom uint[] inputs:uint_arr_0 = [] (
+            docs="""Input of type uint[]"""
+        )
+        custom uint[] inputs:uint_arr_1 = [] (
+            docs="""Input of type uint[]"""
+        )
+        custom vector3d inputs:vectord3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectord[3]"""
+        )
+        custom vector3d inputs:vectord3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectord[3]"""
+        )
+        custom vector3d[] inputs:vectord3_arr_0 = [] (
+            docs="""Input of type vectord[3][]"""
+        )
+        custom vector3d[] inputs:vectord3_arr_1 = [] (
+            docs="""Input of type vectord[3][]"""
+        )
+        custom vector3f inputs:vectorf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectorf[3]"""
+        )
+        custom vector3f inputs:vectorf3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectorf[3]"""
+        )
+        custom vector3f[] inputs:vectorf3_arr_0 = [] (
+            docs="""Input of type vectorf[3][]"""
+        )
+        custom vector3f[] inputs:vectorf3_arr_1 = [] (
+            docs="""Input of type vectorf[3][]"""
+        )
+        custom vector3h inputs:vectorh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectorh[3]"""
+        )
+        custom vector3h inputs:vectorh3_1 = (0.0, 0.0, 0.0) (
+            docs="""Input of type vectorh[3]"""
+        )
+        custom vector3h[] inputs:vectorh3_arr_0 = [] (
+            docs="""Input of type vectorh[3][]"""
+        )
+        custom vector3h[] inputs:vectorh3_arr_1 = [] (
+            docs="""Input of type vectorh[3][]"""
+        )
+
+        # 102 attributes
+        custom bool outputs:bool_0 = false (
+            docs="""Output of type bool"""
+        )
+        custom bool[] outputs:bool_arr_0 = [] (
+            docs="""Output of type bool[]"""
+        )
+        custom color3d outputs:colord3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type colord[3]"""
+        )
+        custom color3d[] outputs:colord3_arr_0 = [] (
+            docs="""Output of type colord[3][]"""
+        )
+        custom color4d outputs:colord4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type colord[4]"""
+        )
+        custom color4d[] outputs:colord4_arr_0 = [] (
+            docs="""Output of type colord[4][]"""
+        )
+        custom color3f outputs:colorf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type colorf[3]"""
+        )
+        custom color3f[] outputs:colorf3_arr_0 = [] (
+            docs="""Output of type colorf[3][]"""
+        )
+        custom color4f outputs:colorf4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type colorf[4]"""
+        )
+        custom color4f[] outputs:colorf4_arr_0 = [] (
+            docs="""Output of type colorf[4][]"""
+        )
+        custom color3h outputs:colorh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type colorh[3]"""
+        )
+        custom color3h[] outputs:colorh3_arr_0 = [] (
+            docs="""Output of type colorh[3][]"""
+        )
+        custom color4h outputs:colorh4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type colorh[4]"""
+        )
+        custom color4h[] outputs:colorh4_arr_0 = [] (
+            docs="""Output of type colorh[4][]"""
+        )
+        custom double2 outputs:double2_0 = (0.0, 0.0) (
+            docs="""Output of type double[2]"""
+        )
+        custom double2[] outputs:double2_arr_0 = [] (
+            docs="""Output of type double[2][]"""
+        )
+        custom double3 outputs:double3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type double[3]"""
+        )
+        custom double3[] outputs:double3_arr_0 = [] (
+            docs="""Output of type double[3][]"""
+        )
+        custom double4 outputs:double4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type double[4]"""
+        )
+        custom double4[] outputs:double4_arr_0 = [] (
+            docs="""Output of type double[4][]"""
+        )
+        custom double outputs:double_0 = 0.0 (
+            docs="""Output of type double"""
+        )
+        custom double[] outputs:double_arr_0 = [] (
+            docs="""Output of type double[]"""
+        )
+        custom float2 outputs:float2_0 = (0.0, 0.0) (
+            docs="""Output of type float[2]"""
+        )
+        custom float2[] outputs:float2_arr_0 = [] (
+            docs="""Output of type float[2][]"""
+        )
+        custom float3 outputs:float3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type float[3]"""
+        )
+        custom float3[] outputs:float3_arr_0 = [] (
+            docs="""Output of type float[3][]"""
+        )
+        custom float4 outputs:float4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type float[4]"""
+        )
+        custom float4[] outputs:float4_arr_0 = [] (
+            docs="""Output of type float[4][]"""
+        )
+        custom float outputs:float_0 = 0.0 (
+            docs="""Output of type float"""
+        )
+        custom float[] outputs:float_arr_0 = [] (
+            docs="""Output of type float[]"""
+        )
+        custom frame4d outputs:frame4_0 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Output of type frame[4]"""
+        )
+        custom frame4d[] outputs:frame4_arr_0 = [] (
+            docs="""Output of type frame[4][]"""
+        )
+        custom half2 outputs:half2_0 = (0.0, 0.0) (
+            docs="""Output of type half[2]"""
+        )
+        custom half2[] outputs:half2_arr_0 = [] (
+            docs="""Output of type half[2][]"""
+        )
+        custom half3 outputs:half3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type half[3]"""
+        )
+        custom half3[] outputs:half3_arr_0 = [] (
+            docs="""Output of type half[3][]"""
+        )
+        custom half4 outputs:half4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type half[4]"""
+        )
+        custom half4[] outputs:half4_arr_0 = [] (
+            docs="""Output of type half[4][]"""
+        )
+        custom half outputs:half_0 = 0.0 (
+            docs="""Output of type half"""
+        )
+        custom half[] outputs:half_arr_0 = [] (
+            docs="""Output of type half[]"""
+        )
+        custom int2 outputs:int2_0 = (0, 0) (
+            docs="""Output of type int[2]"""
+        )
+        custom int2[] outputs:int2_arr_0 = [] (
+            docs="""Output of type int[2][]"""
+        )
+        custom int3 outputs:int3_0 = (0, 0, 0) (
+            docs="""Output of type int[3]"""
+        )
+        custom int3[] outputs:int3_arr_0 = [] (
+            docs="""Output of type int[3][]"""
+        )
+        custom int4 outputs:int4_0 = (0, 0, 0, 0) (
+            docs="""Output of type int[4]"""
+        )
+        custom int4[] outputs:int4_arr_0 = [] (
+            docs="""Output of type int[4][]"""
+        )
+        custom int64 outputs:int64_0 = 0 (
+            docs="""Output of type int64"""
+        )
+        custom int64[] outputs:int64_arr_0 = [] (
+            docs="""Output of type int64[]"""
+        )
+        custom int outputs:int_0 = 0 (
+            docs="""Output of type int"""
+        )
+        custom int[] outputs:int_arr_0 = [] (
+            docs="""Output of type int[]"""
+        )
+        custom matrix2d outputs:matrixd2_0 = ((0.0, 0.0), (0.0, 0.0)) (
+            docs="""Output of type matrixd[2]"""
+        )
+        custom matrix2d[] outputs:matrixd2_arr_0 = [] (
+            docs="""Output of type matrixd[2][]"""
+        )
+        custom matrix3d outputs:matrixd3_0 = ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)) (
+            docs="""Output of type matrixd[3]"""
+        )
+        custom matrix3d[] outputs:matrixd3_arr_0 = [] (
+            docs="""Output of type matrixd[3][]"""
+        )
+        custom matrix4d outputs:matrixd4_0 = ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)) (
+            docs="""Output of type matrixd[4]"""
+        )
+        custom matrix4d[] outputs:matrixd4_arr_0 = [] (
+            docs="""Output of type matrixd[4][]"""
+        )
+        custom normal3d outputs:normald3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type normald[3]"""
+        )
+        custom normal3d[] outputs:normald3_arr_0 = [] (
+            docs="""Output of type normald[3][]"""
+        )
+        custom normal3f outputs:normalf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type normalf[3]"""
+        )
+        custom normal3f[] outputs:normalf3_arr_0 = [] (
+            docs="""Output of type normalf[3][]"""
+        )
+        custom normal3h outputs:normalh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type normalh[3]"""
+        )
+        custom normal3h[] outputs:normalh3_arr_0 = [] (
+            docs="""Output of type normalh[3][]"""
+        )
+        custom point3d outputs:pointd3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type pointd[3]"""
+        )
+        custom point3d[] outputs:pointd3_arr_0 = [] (
+            docs="""Output of type pointd[3][]"""
+        )
+        custom point3f outputs:pointf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type pointf[3]"""
+        )
+        custom point3f[] outputs:pointf3_arr_0 = [] (
+            docs="""Output of type pointf[3][]"""
+        )
+        custom point3h outputs:pointh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type pointh[3]"""
+        )
+        custom point3h[] outputs:pointh3_arr_0 = [] (
+            docs="""Output of type pointh[3][]"""
+        )
+        custom quatd outputs:quatd4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type quatd[4]"""
+        )
+        custom quatd[] outputs:quatd4_arr_0 = [] (
+            docs="""Output of type quatd[4][]"""
+        )
+        custom quatf outputs:quatf4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type quatf[4]"""
+        )
+        custom quatf[] outputs:quatf4_arr_0 = [] (
+            docs="""Output of type quatf[4][]"""
+        )
+        custom quath outputs:quath4_0 = (0.0, 0.0, 0.0, 0.0) (
+            docs="""Output of type quath[4]"""
+        )
+        custom quath[] outputs:quath4_arr_0 = [] (
+            docs="""Output of type quath[4][]"""
+        )
+        custom texCoord2d outputs:texcoordd2_0 = (0.0, 0.0) (
+            docs="""Output of type texcoordd[2]"""
+        )
+        custom texCoord2d[] outputs:texcoordd2_arr_0 = [] (
+            docs="""Output of type texcoordd[2][]"""
+        )
+        custom texCoord3d outputs:texcoordd3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type texcoordd[3]"""
+        )
+        custom texCoord3d[] outputs:texcoordd3_arr_0 = [] (
+            docs="""Output of type texcoordd[3][]"""
+        )
+        custom texCoord2f outputs:texcoordf2_0 = (0.0, 0.0) (
+            docs="""Output of type texcoordf[2]"""
+        )
+        custom texCoord2f[] outputs:texcoordf2_arr_0 = [] (
+            docs="""Output of type texcoordf[2][]"""
+        )
+        custom texCoord3f outputs:texcoordf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type texcoordf[3]"""
+        )
+        custom texCoord3f[] outputs:texcoordf3_arr_0 = [] (
+            docs="""Output of type texcoordf[3][]"""
+        )
+        custom texCoord2h outputs:texcoordh2_0 = (0.0, 0.0) (
+            docs="""Output of type texcoordh[2]"""
+        )
+        custom texCoord2h[] outputs:texcoordh2_arr_0 = [] (
+            docs="""Output of type texcoordh[2][]"""
+        )
+        custom texCoord3h outputs:texcoordh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type texcoordh[3]"""
+        )
+        custom texCoord3h[] outputs:texcoordh3_arr_0 = [] (
+            docs="""Output of type texcoordh[3][]"""
+        )
+        custom timecode outputs:timecode_0 = 0.0 (
+            docs="""Output of type timecode"""
+        )
+        custom timecode[] outputs:timecode_arr_0 = [] (
+            docs="""Output of type timecode[]"""
+        )
+        custom token outputs:token_0 = "default_token" (
+            docs="""Output of type token"""
+        )
+        custom token[] outputs:token_arr_0 = [] (
+            docs="""Output of type token[]"""
+        )
+        custom uchar outputs:uchar_0 = 0 (
+            docs="""Output of type uchar"""
+        )
+        custom uchar[] outputs:uchar_arr_0 = [] (
+            docs="""Output of type uchar[]"""
+        )
+        custom uint64 outputs:uint64_0 = 0 (
+            docs="""Output of type uint64"""
+        )
+        custom uint64[] outputs:uint64_arr_0 = [] (
+            docs="""Output of type uint64[]"""
+        )
+        custom uint outputs:uint_0 = 0 (
+            docs="""Output of type uint"""
+        )
+        custom uint[] outputs:uint_arr_0 = [] (
+            docs="""Output of type uint[]"""
+        )
+        custom vector3d outputs:vectord3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type vectord[3]"""
+        )
+        custom vector3d[] outputs:vectord3_arr_0 = [] (
+            docs="""Output of type vectord[3][]"""
+        )
+        custom vector3f outputs:vectorf3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type vectorf[3]"""
+        )
+        custom vector3f[] outputs:vectorf3_arr_0 = [] (
+            docs="""Output of type vectorf[3][]"""
+        )
+        custom vector3h outputs:vectorh3_0 = (0.0, 0.0, 0.0) (
+            docs="""Output of type vectorh[3]"""
+        )
+        custom vector3h[] outputs:vectorh3_arr_0 = [] (
+            docs="""Output of type vectorh[3][]"""
+        )
+    }
+}

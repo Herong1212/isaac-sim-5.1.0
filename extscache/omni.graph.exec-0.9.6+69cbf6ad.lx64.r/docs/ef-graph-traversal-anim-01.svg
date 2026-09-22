@@ -1,0 +1,959 @@
+<svg style="max-width:100%; height:auto; max-height:100%;" id="efGraphTraversalAnim01"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" width="651"
+     height="649.5" viewBox="0 0 868 866" align="center">
+      <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" />
+
+      <!--Edges (with relative orderings)-->
+      <g class="edges1" id="edges1">
+            <g class="edges1" id="ab1">
+                  <path d="M1.41421-1.41421 118.461 115.633 115.633 118.461-1.41421 1.41421ZM119.875 111.39 124.118 124.118 111.39 119.875Z"
+                        fill="#000000" transform="matrix(1 0 0 -1 84 208.118)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(134 130)">1</text>
+            </g>
+            <g class="edges1" id="ac1">
+                  <path d="M99.4142 282.586 216.461 399.632 213.633 402.461 96.5858 285.414ZM217.875 395.39 222.118 408.118 209.39 403.875Z"
+                        fill="#000000" transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(134 322)">2</text>
+            </g>
+            <g class="edges1" id="bd1">
+                  <path d="M291.414 90.5858 408.461 207.632 405.633 210.461 288.586 93.4142ZM409.875 203.39 414.118 216.118 401.39 211.875Z"
+                        fill="#000000" transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(326 130)">1</text>
+            </g>
+            <g class="edges1" id="cd1">
+                  <path d="M1.41421-1.41421 118.461 115.632 115.632 118.461-1.41421 1.41421ZM119.875 111.39 124.118 124.118 111.39 119.875Z"
+                        fill="#000000" transform="matrix(1 0 0 -1 276 400.118)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(326 322)">1</text>
+            </g>
+            <g class="edges1" id="ce1">
+                  <path d="M291.414 474.586 408.461 591.632 405.633 594.461 288.586 477.414ZM409.875 587.39 414.118 600.118 401.39 595.875Z"
+                        fill="#000000" transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(326 514)">2</text>
+            </g>
+            <g class="edges1" id="df1">
+                  <path d="M496 248 582 248 582 252 496 252ZM580 244 592 250 580 256Z" fill="#000000"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(518 226)">1</text>
+            </g>
+            <g class="edges1" id="dg1">
+                  <path d="M1.41421-1.41421 118.461 115.633 115.633 118.461-1.41421 1.41421ZM119.875 111.39 124.118 124.118 111.39 119.875Z"
+                        fill="#000000" transform="matrix(1 0 0 -1 468 208.118)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(518 130)">2</text>
+            </g>
+            <g class="edges1" id="dh1">
+                  <path d="M483.414 282.586 600.461 399.633 597.633 402.461 480.586 285.414ZM601.875 395.39 606.118 408.118 593.39 403.875Z"
+                        fill="#000000" transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(518 322)">3</text>
+            </g>
+            <g class="edges1" id="eh1">
+                  <path d="M1.41421-1.41421 118.461 115.633 115.633 118.461-1.41421 1.41421ZM119.875 111.39 124.118 124.118 111.39 119.875Z"
+                        fill="#000000" transform="matrix(1 0 0 -1 468 592.118)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(518 514)">1</text>
+            </g>
+            <g class="edges1" id="ei1">
+                  <path d="M0.927266-1.77205 294.126 151.65 292.271 155.195-0.927266 1.77205ZM294.208 147.179 302.059 158.059 288.645 157.811Z"
+                        fill="#000000" transform="matrix(1 0 0 -1 482 626.059)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(601.2 538)">2</text>
+            </g>
+            <g class="edges1" id="fi1">
+                  <path d="M675.414 282.586 792.461 399.633 789.633 402.461 672.586 285.414ZM793.875 395.39 798.118 408.118 785.39 403.875Z"
+                        fill="#000000" transform="translate(-14 -8)" />
+                  <text class="noselect" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" fill="#000000" transform="translate(710 322)">1</text>
+            </g>
+      </g>
+
+      <!--Nodes-->
+      <g class="nodes1" id="nodes1">
+            <g class="nodes1" id="a1">
+                  <path d="M16 250C16 223.49 37.4903 202 64 202 90.5097 202 112 223.49 112 250 112 276.51 90.5097 298 64 298 37.4903 298 16 276.51 16 250Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(37.95 255)">a</text>
+            </g>
+            <g class="nodes1" id="b1">
+                  <path d="M208 58C208 31.4903 229.49 10 256 10 282.51 10 304 31.4903 304 58 304 84.5097 282.51 106 256 106 229.49 106 208 84.5097 208 58Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(229.833 63)">b</text>
+            </g>
+            <g class="nodes1" id="c1">
+                  <path d="M208 442C208 415.49 229.49 394 256 394 282.51 394 304 415.49 304 442 304 468.51 282.51 490 256 490 229.49 490 208 468.51 208 442Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(231.417 447)">c</text>
+            </g>
+            <g class="nodes1" id="d1">
+                  <path d="M400 250C400 223.49 421.49 202 448 202 474.51 202 496 223.49 496 250 496 276.51 474.51 298 448 298 421.49 298 400 276.51 400 250Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(421.833 255)">d</text>
+            </g>
+            <g class="nodes1" id="e1">
+                  <path d="M400 634C400 607.49 421.49 586 448 586 474.51 586 496 607.49 496 634 496 660.51 474.51 682 448 682 421.49 682 400 660.51 400 634Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(422.75 639)">e</text>
+            </g>
+            <g class="nodes1" id="f1">
+                  <path d="M592 250C592 223.49 613.49 202 640 202 666.51 202 688 223.49 688 250 688 276.51 666.51 298 640 298 613.49 298 592 276.51 592 250Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(617.5 255)">f</text>
+            </g>
+            <g class="nodes1" id="g1">
+                  <path d="M592 58C592 31.4903 613.49 10 640 10 666.51 10 688 31.4903 688 58 688 84.5097 666.51 106 640 106 613.49 106 592 84.5097 592 58Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(613.833 63)">g</text>
+            </g>
+            <g class="nodes1" id="h1">
+                  <path d="M592 442C592 415.49 613.49 394 640 394 666.51 394 688 415.49 688 442 688 468.51 666.51 490 640 490 613.49 490 592 468.51 592 442Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(613.917 447)">h</text>
+            </g>
+            <g class="nodes1" id="i1">
+                  <path d="M784 442C784 415.49 805.49 394 832 394 858.51 394 880 415.49 880 442 880 468.51 858.51 490 832 490 805.49 490 784 468.51 784 442Z"
+                        stroke="#000000" stroke-width="4" stroke-miterlimit="8" fill="#000000" fill-rule="evenodd"
+                        transform="translate(-14 -8)" />
+                  <text class="noselect" fill="#FFFFFF" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                        font-weight="700" font-size="40" transform="translate(812.583 447)">i</text>
+            </g>
+      </g>
+
+      <!--Miscellaneous text-->
+      <text class="noselect" fill="#000000" font-family="Cambria Math,Cambria Math_MSFontService,sans-serif"
+            font-weight="400" font-size="40" transform="translate(12.7199 45)">𝐺</text>
+      <text class="noselect" fill="#000000" font-family="Cambria Math,Cambria Math_MSFontService,sans-serif"
+            font-weight="400" font-size="29" transform="translate(35.7866 53)">2</text>
+
+      <!--Buttons-->
+      <rect x="277.85" y="768" width="312" height="96" stroke="#000000" stroke-width="4" stroke-miterlimit="8"
+            fill="#F8CBAD" />
+      <g onmouseover="onMouseOver1(this)" onclick=" onClickGoToStart1(this)" onmousedown="onMouseDown1(this)"
+         onmouseup="onMouseUp1(this)" onmouseleave="onMouseLeave1(this)">
+            <path d="M508 800C508 795.582 511.582 792 516 792L548 792C552.418 792 556 795.582 556 800L556 832C556 836.418 552.418 840 548 840L516 840C511.582 840 508 836.418 508 832Z"
+                  stroke="#C55A11" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+                  transform="translate(-206.15 0)" />
+            <text class="noselect" fill="#C55A11" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                  font-weight="700" font-size="16" transform="translate(316.183 821)">&lt;&lt;</text>
+      </g>
+      <g onmouseover="onMouseOver1(this)" onclick=" onClickBackward1(this)" onmousedown="onMouseDown1(this)"
+         onmouseup="onMouseUp1(this)" onmouseleave="onMouseLeave1(this)">
+            <path d="M580 800C580 795.582 583.582 792 588 792L620 792C624.418 792 628 795.582 628 800L628 832C628 836.418 624.418 840 620 840L588 840C583.582 840 580 836.418 580 832Z"
+                  stroke="#C55A11" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+                  transform="translate(-206.15 0)" />
+            <text class="noselect" fill="#C55A11" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                  font-weight="700" font-size="16" transform="translate(393.017 821)">&lt;</text>
+      </g>
+      <g onmouseover="onMouseOver1(this)" onclick=" onClickForward1(this)" onmousedown="onMouseDown1(this)"
+         onmouseup="onMouseUp1(this)" onmouseleave="onMouseLeave1(this)">
+            <path d="M652 800C652 795.582 655.582 792 660 792L692 792C696.418 792 700 795.582 700 800L700 832C700 836.418 696.418 840 692 840L660 840C655.582 840 652 836.418 652 832Z"
+                  stroke="#C55A11" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+                  transform="translate(-206.15 0)" />
+            <text class="noselect" fill="#C55A11" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                  font-weight="700" font-size="16" transform="translate(465.017 821)">&gt;</text>
+      </g>
+      <g onmouseover="onMouseOver1(this)" onclick=" onClickGoToEnd1(this)" onmousedown="onMouseDown1(this)"
+         onmouseup="onMouseUp1(this)" onmouseleave="onMouseLeave1(this)">
+            <path d="M724 800C724 795.582 727.582 792 732 792L764 792C768.418 792 772 795.582 772 800L772 832C772 836.418 768.418 840 764 840L732 840C727.582 840 724 836.418 724 832Z"
+                  stroke="#C55A11" stroke-width="4" stroke-miterlimit="8" fill="#FFFFFF" fill-rule="evenodd"
+                  transform="translate(-206.15 0)" />
+            <text class="noselect" fill="#C55A11" font-family="NVIDIA Sans,NVIDIA Sans_MSFontService,sans-serif"
+                  font-weight="700" font-size="16" transform="translate(532.183 821)">&gt;&gt;</text>
+      </g>
+
+      <style id="dynamicStyles1">
+            /*Center the SVG*/
+            #efGraphTraversalAnim01 {
+                  margin-left: auto;
+                  margin-right: auto;
+                  display: block;
+            }
+
+            .noselect {
+                  /* iOS Safari */
+                  -webkit-touch-callout: none;
+                  /* Safari */
+                  -webkit-user-select: none;
+                  /* Konqueror HTML */
+                  -khtml-user-select: none;
+                  /* Old versions of Firefox */
+                  -moz-user-select: none;
+                  /* Internet Explorer/Edge */
+                  -ms-user-select: none;
+                  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+                  user-select: none;
+            }
+      </style>
+
+      <script type="text/javascript">
+            //<![CDATA[
+
+            let dynamicStyle1 = document.getElementById("dynamicStyles1");
+
+            // Dynamic CSS. Allows us to alter certain CSS parameters
+            // at runtime by completely rebuilding it.
+            function createCssDynamicTextContent1(nodeIdx, edgeIdx, colors, fillMode, animDir) {
+                  return `
+                  :root {
+                        --node-fill-default-color: ${colors["nodeDefaultFillColor"]};
+                        --node-stroke-default-color: ${colors["nodeDefaultStrokeColor"]};
+                        --edge-default-color: ${colors["edgeDefaultColor"]};
+                        --visit-try-color: ${colors["visitTryColor"]};
+                        --visit-success-color: ${colors["visitSuccessColor"]};
+                        --visit-failure-color: ${colors["visitFailureColor"]};
+                  }
+
+                  /*Edge Animation Keyframes*/
+                  @keyframes edge_visit_try {
+                        0% {
+                              fill: var(--edge-default-color);
+                        }
+
+                        100% {
+                              fill: var(--visit-try-color);
+                        }
+                  }
+
+                  @keyframes edge_visit_success {
+                        0% {
+                              fill: var(--visit-try-color);
+                        }
+
+                        100% {
+                              fill: var(--visit-success-color);
+                        }
+                  }
+
+                  @keyframes edge_visit_failure {
+                        0% {
+                              fill: var(--visit-try-color);
+                        }
+
+                        100% {
+                              fill: var(--visit-failure-color);
+                        }
+                  }
+
+                  /*Edge Animations*/
+                  .edges1:nth-child(${edgeIdx}).visitTry>path {
+                        animation: edge_visit_try 0.5s ease ${fillMode} ${animDir};
+                  }
+
+                  .edges1:nth-child(${edgeIdx}).visitSuccess>path {
+                        animation: edge_visit_success 0.5s ease ${fillMode} ${animDir};
+                  }
+
+                  .edges1:nth-child(${edgeIdx}).visitFailure>path {
+                        animation: edge_visit_failure 1s ease ${fillMode} ${animDir};
+                  }
+
+                  /*Node Animation Keyframes*/
+                  @keyframes node_visit_try_already_visited {
+                        0% {
+                              stroke: var(--visit-success-color);
+                        }
+                        100% {
+                              stroke: var(--visit-try-color);
+                        }
+                  }
+
+                  @keyframes node_visit_try_never_visited {
+                        0% {
+                              stroke: var(--node-stroke-default-color);
+                        }
+                        100% {
+                              stroke: var(--visit-try-color);
+                        }
+                  }
+
+                  @keyframes node_visit_success {
+                        0% {
+                              fill: var(--node-fill-default-color);
+                              stroke: var(--visit-try-color);
+                        }
+
+                        100% {
+                              fill: var(--visit-success-color);
+                              stroke: var(--visit-success-color);
+                        }
+                  }
+
+                  @keyframes node_visit_failure_already_visited {
+                        0% {
+                              stroke: var(--visit-try-color);
+                        }
+
+                        50% {
+                              stroke: var(--visit-failure-color);
+                        }
+
+                        100% {
+                              stroke: var(--visit-success-color);
+                        }
+                  }
+
+                  @keyframes node_visit_failure_never_visited {
+                        0% {
+                              stroke: var(--visit-try-color);
+                        }
+
+                        50% {
+                              stroke: var(--visit-failure-color);
+                        }
+
+                        100% {
+                              stroke: var(--node-stroke-default-color);
+                        }
+                  }
+                  
+                  /*Node Animations*/
+                  .nodes1.visitTryAlreadyVisited:nth-child(${nodeIdx})>path {
+                        animation: node_visit_try_already_visited 0.5s ease ${fillMode} ${animDir};
+                  }
+
+                  .nodes1.visitTryNeverVisited:nth-child(${nodeIdx})>path {
+                        animation: node_visit_try_never_visited 0.5s ease ${fillMode} ${animDir};
+                  }
+
+                  .nodes1.visitSuccess:nth-child(${nodeIdx})>path {
+                        animation: node_visit_success 0.5s ease ${fillMode} ${animDir};
+                  }
+
+                  .nodes1.visitFailureAlreadyVisited:nth-child(${nodeIdx})>path {
+                        animation: node_visit_failure_already_visited 1s ease ${fillMode} ${animDir};
+                  }
+
+                  .nodes1.visitFailureNeverVisited:nth-child(${nodeIdx})>path {
+                        animation: node_visit_failure_never_visited 1s ease ${fillMode} ${animDir};
+                  }
+
+                  /*Center the SVG*/
+                  #efGraphTraversalAnim01 {
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: block;
+                  }
+
+                  .noselect {
+                        /* iOS Safari */
+                        -webkit-touch-callout: none;
+                        /* Safari */
+                        -webkit-user-select: none;
+                        /* Konqueror HTML */
+                        -khtml-user-select: none;
+                        /* Old versions of Firefox */
+                        -moz-user-select: none;
+                        /* Internet Explorer/Edge */
+                        -ms-user-select: none;
+                        /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+                        user-select: none;
+                  }
+                  `;
+            }
+
+            // Establishes the exact node/edge traversal ordering.
+            const nodesAndEdgesOrdering1 = [
+                  [["a1", "node", "try"]],
+                  [["a1", "node", "success"]],
+                  [["ab1", "edge", "try"], ["b1", "node", "try"]],
+                  [["ab1", "edge", "success"], ["b1", "node", "success"]],
+                  [["bd1", "edge", "try"], ["d1", "node", "try"]],
+                  [["bd1", "edge", "success"], ["d1", "node", "success"]],
+                  [["df1", "edge", "try"], ["f1", "node", "try"]],
+                  [["df1", "edge", "success"], ["f1", "node", "success"]],
+                  [["fi1", "edge", "try"], ["i1", "node", "try"]],
+                  [["fi1", "edge", "success"], ["i1", "node", "success"]],
+                  [["dg1", "edge", "try"], ["g1", "node", "try"]],
+                  [["dg1", "edge", "success"], ["g1", "node", "success"]],
+                  [["dh1", "edge", "try"], ["h1", "node", "try"]],
+                  [["dh1", "edge", "success"], ["h1", "node", "success"]],
+                  [["ac1", "edge", "try"], ["c1", "node", "try"]],
+                  [["ac1", "edge", "success"], ["c1", "node", "success"]],
+                  [["cd1", "edge", "try"], ["d1", "node", "try"]],
+                  [["cd1", "edge", "failure"], ["d1", "node", "failure"]],
+                  [["ce1", "edge", "try"], ["e1", "node", "try"]],
+                  [["ce1", "edge", "success"], ["e1", "node", "success"]],
+                  [["eh1", "edge", "try"], ["h1", "node", "try"]],
+                  [["eh1", "edge", "failure"], ["h1", "node", "failure"]],
+                  [["ei1", "edge", "try"], ["i1", "node", "try"]],
+                  [["ei1", "edge", "failure"], ["i1", "node", "failure"]],
+            ];
+
+            // Node + edge colors.
+            const nodeAndEdgeColors1 = {
+                  "nodeDefaultFillColor": "#000000",
+                  "nodeDefaultStrokeColor": "#000000",
+                  "edgeDefaultColor": "#000000",
+                  "visitTryColor": "#FFD100",
+                  "visitSuccessColor": "#005593",
+                  "visitFailureColor": "#BB1E10",
+            };
+
+            // Button state colors.
+            const buttonDefaultColor1 = "#FFFFFF";
+            const buttonHoverColor1 = "#BFBFBF";
+            const buttonDownColor1 = "#7F7F7F";
+
+            let cnt1 = -1;
+
+            function onClickGoToStart1(buttonElement) {
+                  // Reset counter to start.
+                  cnt1 = -1;
+
+                  // Reset all edges to their initial state color, and remove all anim-related classes.
+                  const edges = document.getElementById("edges1");
+                  for (const edge of edges.children) {
+                        edge.classList.value = "edges1";
+                        const path = edge.getElementsByTagName("path").item(0);
+                        path.setAttribute("fill", nodeAndEdgeColors1["edgeDefaultColor"]);
+
+                        // Listen for any animations that may have been playing that just
+                        // ended and/or got cancelled by this action, and make sure to
+                        // overwrite the final colors with the correct values after the
+                        // fact.
+                        edge.addEventListener("animationend", () => {
+                              path.setAttribute("fill", nodeAndEdgeColors1["edgeDefaultColor"]);
+                        }, { once: true });
+                        edge.addEventListener("animationcancel", () => {
+                              path.setAttribute("fill", nodeAndEdgeColors1["edgeDefaultColor"]);
+                        }, { once: true });
+                  }
+
+                  // Reset all nodes to their initial state color, and remove all anim-related classes.
+                  const nodes = document.getElementById("nodes1");
+                  for (const node of nodes.children) {
+                        node.classList.value = "nodes1";
+                        const path = node.getElementsByTagName("path").item(0);
+                        path.setAttribute("fill", nodeAndEdgeColors1["nodeDefaultFillColor"]);
+                        path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+
+                        // Listen for any animations that may have been playing that just
+                        // ended and/or got cancelled by this action, and make sure to
+                        // overwrite the final colors with the correct values after the
+                        // fact.
+                        node.addEventListener("animationend", () => {
+                              path.setAttribute("fill", nodeAndEdgeColors1["nodeDefaultFillColor"]);
+                              path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                        }, { once: true });
+                        node.addEventListener("animationcancel", () => {
+                              path.setAttribute("fill", nodeAndEdgeColors1["nodeDefaultFillColor"]);
+                              path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                        }, { once: true });
+                  }
+            }
+
+            function onClickBackward1(buttonElement) {
+                  if (cnt1 < 0) {
+                        return;
+                  }
+
+                  // Get a list of the current elements that need to undergo animation.
+                  const listOfElements = nodesAndEdgesOrdering1[cnt1];
+                  let prevEdgeIdx = 0;
+
+                  for (let i = 0; i < listOfElements.length; ++i) {
+                        // Unpack the element attributes.
+                        const elementAttrs = listOfElements[i];
+                        const name = elementAttrs[0];
+                        const type = elementAttrs[1];
+                        const status = elementAttrs[2];
+
+                        if (type == "edge") {
+                              // Get the "edges1" element (which contains all edges), the actual current
+                              // edge's html element (which is a child of the "edges1" element as well) and
+                              // the corresponding path element.
+                              const edges = document.getElementById("edges1");
+                              const edge = document.getElementById(name);
+                              const path = edge.getElementsByTagName("path").item(0);
+
+                              // Rebuild the CSS stylesheet.
+                              const edgeIdx = Array.prototype.indexOf.call(edges.children, edge) + 1;
+                              prevEdgeIdx = edgeIdx;
+                              dynamicStyle1.innerHTML = createCssDynamicTextContent1(0, edgeIdx, nodeAndEdgeColors1, "backwards", "reverse");
+
+                              // Depending on the edge status, add the corresponding name
+                              // to the class and set the colors to their final values
+                              // after the animation finishes.
+
+                              // When reversing from "try", we want to go back to the default edge color
+                              // (since no single edge will be traversed more than once, so it's guaranteed
+                              // that this is the first time that the current edge was iterated over).
+                              if (status == "try") {
+                                    edge.classList.add("visitTry");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["edgeDefaultColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["edgeDefaultColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                              // When reversing from "success", it's guaranteed that the previous state
+                              // was "try" (i.e. we had to try and visit the element before being able to
+                              // declare that visit a success).
+                              else if (status == "success") {
+                                    edge.classList.add("visitSuccess");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                              // When reversing from "failure", it's guaranteed that the previous state
+                              // was "try" (i.e. we had to try and visit the element before being able to
+                              // declare that visit a failure).
+                              else if (status == "failure") {
+                                    edge.classList.add("visitFailure");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                        }
+                        else if (type == "node") {
+                              // Get the "nodes1" element (which contains all nodes), the actual current
+                              // nodes's html element (which is a child of the "nodes1" element as well) and
+                              // the corresponding path element.
+                              const nodes = document.getElementById("nodes1");
+                              const node = document.getElementById(name);
+                              const path = node.getElementsByTagName("path").item(0);
+
+                              // Rebuild the CSS stylesheet.
+                              const nodeIdx = Array.prototype.indexOf.call(nodes.children, node) + 1;
+                              dynamicStyle1.innerHTML = createCssDynamicTextContent1(nodeIdx, prevEdgeIdx, nodeAndEdgeColors1, "backwards", "reverse");
+
+                              // Depending on the node status, add the corresponding name
+                              // to the class and set the colors to their final values
+                              // after the animation finishes.
+
+                              // When reversing a "try", we need to check whether the current
+                              // "try" was the first-ever for the given node (i.e. checking the
+                              // node's fill color).
+                              if (status == "try") {
+                                    if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                          node.classList.add("visitTryAlreadyVisited");
+                                    }
+                                    else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                          node.classList.add("visitTryNeverVisited");
+                                    }
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    node.addEventListener("animationend", () => {
+                                          if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                                          }
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                                          }
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                              // When reversing a "success", it's guaranteed that the previous state
+                              // was "try" (i.e. we had to try and visit the element before being able to
+                              // declare that visit a success).
+                              else if (status == "success") {
+                                    node.classList.add("visitSuccess");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    node.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["nodeDefaultFillColor"]);
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["nodeDefaultFillColor"]);
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                              // When reversing a "failure", it's guaranteed that the previous state
+                              // was "try" (i.e. we had to try and visit the element before being able to
+                              // declare that visit a failure). We do, however, need to check whether or not
+                              // the node has already been visited successfully (i.e. the fill color) in order
+                              // to play the correct reverse animation.
+                              else if (status == "failure") {
+                                    if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                          node.classList.add("visitFailureAlreadyVisited");
+                                    }
+                                    else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                          node.classList.add("visitFailureUnfilled");
+                                    }
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    node.addEventListener("animationend", () => {
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                        }
+                  }
+
+                  cnt1 -= 1;
+            }
+
+
+            function onClickForward1(buttonElement) {
+                  if (cnt1 >= nodesAndEdgesOrdering1.length - 1) {
+                        return;
+                  }
+                  cnt1 += 1;
+
+                  // Get a list of the current elements that need to undergo animation.
+                  const listOfElements = nodesAndEdgesOrdering1[cnt1];
+                  let prevEdgeIdx = 0;
+
+                  for (let i = 0; i < listOfElements.length; ++i) {
+                        // Unpack the element attributes.
+                        const elementAttrs = listOfElements[i];
+                        const name = elementAttrs[0];
+                        const type = elementAttrs[1];
+                        const status = elementAttrs[2];
+
+                        if (type == "edge") {
+                              // Get the "edges1" element (which contains all edges), the actual current
+                              // edge's html element (which is a child of the "edges1" element as well) and
+                              // the corresponding path element.
+                              const edges = document.getElementById("edges1");
+                              const edge = document.getElementById(name);
+                              const path = edge.getElementsByTagName("path").item(0);
+
+                              // Rebuild the CSS stylesheet.
+                              const edgeIdx = Array.prototype.indexOf.call(edges.children, edge) + 1;
+                              prevEdgeIdx = edgeIdx;
+                              dynamicStyle1.innerHTML = createCssDynamicTextContent1(0, edgeIdx, nodeAndEdgeColors1, "both", "normal");
+
+                              // Depending on the edge status, add the corresponding name
+                              // to the class and set the colors to their final values
+                              // after the animation finishes.
+                              if (status == "try") {
+                                    edge.classList.add("visitTry");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitTryColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                              else if (status == "success") {
+                                    edge.classList.add("visitSuccess");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                              else if (status == "failure") {
+                                    edge.classList.add("visitFailure");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    edge.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitFailureColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                                    edge.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitFailureColor"]);
+                                          edge.classList.value = "edges1";
+                                    }, { once: true });
+                              }
+                        }
+                        else if (type == "node") {
+
+                              // Get the "nodes1" element (which contains all nodes), the actual current
+                              // nodes's html element (which is a child of the "nodes1" element as well) and
+                              // the corresponding path element.
+                              const nodes = document.getElementById("nodes1");
+                              const node = document.getElementById(name);
+                              const path = node.getElementsByTagName("path").item(0);
+
+                              // Rebuild the CSS stylesheet.
+                              const nodeIdx = Array.prototype.indexOf.call(nodes.children, node) + 1;
+                              dynamicStyle1.innerHTML = createCssDynamicTextContent1(nodeIdx, prevEdgeIdx, nodeAndEdgeColors1, "both", "normal");
+
+                              // Depending on the node status, add the corresponding name
+                              // to the class and set the colors to their final values
+                              // after the animation finishes.
+                              if (status == "try") {
+
+                                    // Set the node animation based on whether or not it has already
+                                    // been successfully visited (i.e. its fill color).
+                                    if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                          node.classList.add("visitTryAlreadyVisited");
+                                    }
+                                    else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                          node.classList.add("visitTryNeverVisited");
+                                    }
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-relatad classes.
+                                    node.addEventListener("animationend", () => {
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitTryColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                              else if (status == "success") {
+                                    node.classList.add("visitSuccess");
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    node.addEventListener("animationend", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                              else if (status == "failure") {
+                                    // Set the node's stroke color based on whether or not it has already
+                                    // been successfully visited (i.e. its fill color).
+                                    if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                          node.classList.add("visitFailureAlreadyVisited");
+                                    }
+                                    else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                          node.classList.add("visitFailureUnfilled");
+                                    }
+
+                                    // Add event listeners for the current animation ending/cancelling early
+                                    // that will correctly set the final color(s) on the element at hand, since
+                                    // the colors set by the CSS animations are transient and won't stick around
+                                    // if the element's class changes (which is necessary for triggering other
+                                    // animations as well). Also remove all anim-related classes.
+                                    node.addEventListener("animationend", () => {
+                                          if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                                          }
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                                    node.addEventListener("animationcancel", () => {
+                                          if (path.getAttribute("fill") == nodeAndEdgeColors1["visitSuccessColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (path.getAttribute("fill") == nodeAndEdgeColors1["nodeDefaultFillColor"]) {
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["nodeDefaultStrokeColor"]);
+                                          }
+                                          node.classList.value = "nodes1";
+                                    }, { once: true });
+                              }
+                        }
+                  }
+            }
+
+            function onClickGoToEnd1(buttonElement) {
+                  // Set counter to end.
+                  cnt1 = nodesAndEdgesOrdering1.length - 1;
+
+                  for (let i = 0; i < nodesAndEdgesOrdering1.length; ++i) {
+                        // Get a list of the current elements that need to be set to their end state.
+                        const listOfElements = nodesAndEdgesOrdering1[i];
+                        let prevEdgeIdx = 0;
+
+                        for (let j = 0; j < listOfElements.length; ++j) {
+                              // Unpack the element attributes.
+                              const elementAttrs = listOfElements[j];
+                              const name = elementAttrs[0];
+                              const type = elementAttrs[1];
+                              const status = elementAttrs[2];
+                              const element = document.getElementById(name);
+                              const path = element.getElementsByTagName("path").item(0);
+
+                              // Clear the element class list.
+                              element.setAttributeNS(null, "class", "");
+
+                              if (status == "try") {
+                                    continue;
+                              }
+
+                              // Set all elements to their final colors.
+                              if (type == "edge") {
+                                    element.classList.add("edges1");
+                                    if (status == "success") {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                    }
+                                    else if (status == "failure") {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitFailureColor"]);
+                                    }
+                              }
+                              else if (type == "node") {
+                                    element.classList.add("nodes1");
+                                    if (status == "success") {
+                                          path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                    }
+                              }
+
+                              // Listen for any animations that may have been playing that just
+                              // ended and/or got cancelled by this action, and make sure to
+                              // overwrite the final colors with the correct values after the
+                              // fact.
+                              element.addEventListener("animationend", () => {
+                                    if (type == "edge") {
+                                          element.classList.add("edges1");
+                                          if (status == "success") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (status == "failure") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitFailureColor"]);
+                                          }
+                                    }
+                                    else if (type == "node") {
+                                          element.classList.add("nodes1");
+                                          if (status == "success") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                    }
+                              }, { once: true });
+                              element.addEventListener("animationcancel", () => {
+                                    if (type == "edge") {
+                                          element.classList.add("edges1");
+                                          if (status == "success") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                          else if (status == "failure") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitFailureColor"]);
+                                          }
+                                    }
+                                    else if (type == "node") {
+                                          element.classList.add("nodes1");
+                                          if (status == "success") {
+                                                path.setAttribute("fill", nodeAndEdgeColors1["visitSuccessColor"]);
+                                                path.setAttribute("stroke", nodeAndEdgeColors1["visitSuccessColor"]);
+                                          }
+                                    }
+                              }, { once: true });
+                        }
+                  }
+            }
+
+            function onMouseDown1(buttonElement) {
+                  let buttonPathElement = buttonElement.getElementsByTagName("path").item(0);
+                  buttonPathElement.setAttribute("fill", buttonDownColor1);
+            }
+
+            function onMouseUp1(buttonElement) {
+                  let buttonPathElement = buttonElement.getElementsByTagName("path").item(0);
+                  buttonPathElement.setAttribute("fill", buttonHoverColor1);
+            }
+
+            function onMouseOver1(buttonElement) {
+                  let buttonPathElement = buttonElement.getElementsByTagName("path").item(0);
+                  buttonPathElement.setAttribute("fill", buttonHoverColor1);
+            }
+
+            function onMouseLeave1(buttonElement) {
+                  let buttonPathElement = buttonElement.getElementsByTagName("path").item(0);
+                  buttonPathElement.setAttribute("fill", buttonDefaultColor1);
+            }
+
+              //]]>
+      </script>
+</svg>

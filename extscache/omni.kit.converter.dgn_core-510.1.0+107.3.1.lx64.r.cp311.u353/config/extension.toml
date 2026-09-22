@@ -1,0 +1,71 @@
+[package]
+title = "DGN Converter Core Extension"
+version = "510.1.0"
+description = "DGN Converter Core Extension using Open Design Alliance (ODA) SDK. It supports..." #TODO
+category = "Converter"
+repository = ""
+
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/Overview.md"
+
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+
+writeTarget.kit = true
+writeTarget.usd = true
+
+authors = ["NVIDIA"]
+
+keywords = [
+    'CAD Converter',
+    'cad',
+    'DGN'
+]
+
+[dependencies]
+"omni.kit.converter.common" = { version = "~507.1"}
+"omni.services.convert.cad" = { version = "~507.0", optional = true }
+
+[[python.module]]
+name = "omni.kit.converter.dgn_core"
+
+[[python.module]]
+name = "omni.converter.dgn"
+
+[[python.module]]
+name = "omni.converter.dgn.tokens"
+
+[[native.library]]
+path = "bin/${lib_prefix}omni_converter_dgn${lib_ext}"
+
+# Extension test settings
+[[test]]
+args = [
+    "--/app/file/ignoreUnsavedOnExit=true",
+    "--no-window",
+    "--/app/fastShutdown=true",
+]
+timeout = 2000
+# unreliable = true
+dependencies = [
+    "omni.kit.test_suite.helpers",
+    "omni.services.convert.cad",
+]
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = [
+    "*Exporter path not supported*",
+    "*OdError when reading file*"
+]
+
+pyCoverageThreshold = 85
+
+# only perform pyCoverage for dgn_core
+pyCoverageFilter = ["omni.kit.converter.dgn_core"]
+pyCoverageOmit = ["*/tests/*", "*/csdk_utils.py"]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+    "docs/Third_Party_Notices.md"
+]

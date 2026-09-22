@@ -1,0 +1,10 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.kit.browser.folder.core-1.10.9.zip"
+
+    [package.publish]
+        kitVersion = "107.2.0+master.182371.b8e2bef6.gl"
+        date = 1746800553
+        buildNumber = "107.2+master.2426.797fc68b.gl"
+        repoName = "kit-browsers"
+        signed = 1

@@ -1,0 +1,29 @@
+{
+    "ReadOmniGraphValue": {
+        "version": 1,
+        "description": [
+            "Imports a data value from the Fabric cache that is located at the given path and attribute name.",
+            "This is for data that is not already present in OmniGraph as that data can be accessed through a direct connection to the underlying OmniGraph node."
+        ],
+        "uiName": "Read OmniGraph Value",
+        "categories": [ "sceneGraph" ],
+        "scheduling": [ "global-read", "threadsafe" ],
+        "inputs": {
+            "path": {
+                "type": "path",
+                "description": "The path to the Fabric data bucket in which the attribute being queried lives."
+            },
+            "name": {
+                "type": "token",
+                "description": "The name of the attribute to be queried"
+            }
+        },
+        "outputs": {
+            "value": {
+                "type": "any",
+                "description": "The attribute value",
+                "unvalidated": true
+            }
+        }
+    }
+}

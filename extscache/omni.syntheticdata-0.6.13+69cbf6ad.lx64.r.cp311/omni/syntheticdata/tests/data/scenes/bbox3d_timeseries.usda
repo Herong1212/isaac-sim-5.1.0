@@ -1,0 +1,90 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (500, 0, 0)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (0.2441350830905442, -7.612287002770293, 0.705726950637699)
+                double3 target = (-2.7755575615628914e-17, 8.881784197001252e-16, -1.1102230246251565e-16)
+            }
+            dictionary Right = {
+                double3 position = (0, -500, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 500)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./bbox3d_timeseries.usda"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 3
+    metersPerUnit = 1
+    timeCodesPerSecond = 3
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def Xform "bounding_boxes"
+    {
+        double3 xformOp:rotateXYZ.timeSamples = {
+            0: (10, 0, 0),
+            1: (15, 0, 0),
+            2: (20, 0, 0),
+        }
+        uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+
+        def Xform "timeseries_xform"
+        {
+            def Mesh "box1_timeseries_xform" (
+                prepend apiSchemas = ["SemanticsAPI:Semantics"]
+            )
+            {
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 5, 4, 2, 3, 7, 6, 0, 3, 7, 4, 1, 2, 6, 5]
+                point3f[] points = [(-2, -1, 1), (2, -1, 1), (2, 1, 1), (-2, 1, 1), (-2, -1, -1), (2, -1, -1), (2, 1, -1), (-2, 1, -1)]
+                custom bool primvars:doNotCastShadows = 1
+                string semantic:Semantics:params:semanticData = "automobile"
+                string semantic:Semantics:params:semanticType = "class"
+                double3 xformOp:rotateXYZ.timeSamples = {
+                    0: (0, 10, 0),
+                    1: (0, 15, 0),
+                    2: (0, 20, 0),
+                }
+                uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+            }
+        }
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 2
+        float inputs:intensity = 3000
+        float inputs:shaping:cone:angle = 90
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

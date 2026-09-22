@@ -1,0 +1,50 @@
+[package]
+version = "2.40.2"
+title = "OmniGraph Telemetry"
+description = "Telemetry support for the 'omni.graph.*' extensions."
+authors = ["NVIDIA"]
+category = "Telemetry"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+repository = ""
+keywords = ["telemetry", "graph"]
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+# Specifying this ensures that the extension is always published for the matching version of the Kit SDK
+writeTarget.kit = true
+support_level = "Sample"
+
+# Publish to each platform separately. This is to work around a bug in some of the extension
+# publishing tools where extensions without native plugins are only published once assuming
+# that all is python and all is good. This forces the plugin to be packaged as-is for each
+# platform.
+writeTarget.platform = true
+
+# These settings ensure the extension is named and categorized properly when publishing.
+# These are necessary due to the above bug workaround since this extension only consists of
+# a python bindings module.
+writeTarget.config = true
+writeTarget.python = true
+
+writeTarget.usd = true
+
+[[python.module]]
+name = "omni.graph.telemetry"
+
+[dependencies]
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph" = { version = "1.139.0" }
+"omni.kit.commands" = {}
+"omni.usd" = {}
+
+[[test]]
+dependencies = [
+    "omni.graph.nodes",
+    "omni.kit.graph.usd.commands",
+]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

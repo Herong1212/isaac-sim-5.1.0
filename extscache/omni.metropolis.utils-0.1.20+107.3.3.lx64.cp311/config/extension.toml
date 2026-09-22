@@ -1,0 +1,55 @@
+[package]
+version = "0.1.20"
+authors = ["NVIDIA"]
+title = "Isaac Sim Action and Event Data Generation Utilities"
+description="Isaac Sim Action and Event Data Generation Utilities"
+readme  = "docs/README.md"
+category = "Utilities"
+repository = ""
+keywords = ["metropolis","metrosim", "utility", "utils", "utilities", "action and event data generation", "action", "event", "synthetic data"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+writeTarget.kit = true
+writeTarget.platform = true
+writeTarget.python = true
+
+[dependencies]
+"omni.pip.compute" = {}
+"omni.anim.navigation.core" = { version = "~107.3" }
+"omni.usd" = {}
+"omni.timeline" = {}
+"omni.replicator.core" = {}
+"omni.kit.quicklayout" = {}
+"omni.kit.window.filepicker" = {}
+"omni.kit.window.content_browser" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.scripting" = {}
+"isaacsim.storage.native" = {}
+
+[[python.module]]
+name = "omni.metropolis.utils"
+
+[settings]
+
+[[test]]
+dependencies = []
+args = [
+    "--no-window",
+    "--/windowless=1",
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+    "--/app/file/ignoreUnsavedStage=1",
+]
+stdoutFailPatterns.exclude = [
+    "*FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead*",
+    "*GLInteropContext::init: carb::windowing is not available*"
+]
+
+[[test]]
+name = "startup"
+args = [
+    "--/app/settings/fabricDefaultStageFrameHistoryCount=3",
+]
+stdoutFailPatterns.exclude = [
+    "*GLInteropContext::init: carb::windowing is not available*"
+]

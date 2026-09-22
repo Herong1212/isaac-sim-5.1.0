@@ -1,0 +1,169 @@
+/* make method name bold so it pops */
+dl.cpp.function span.sig-name.descname:has(+ span.sig-paren) > span.n > span.pre
+{
+    font-weight: bold;
+}
+
+/* add a newline before the namespace in a function signature */
+dl.cpp.function span.sig-prename.descclassname:before
+{
+    content: "\a";
+    white-space: pre;
+}
+
+/* add a newline before the function/method name only if it is not preceded by a namespace */
+dl.cpp.function span:not(.sig-prename.descclassname) + span.sig-name.descname:has(+ span.sig-paren):before
+{
+    content: "\a";
+    white-space: pre;
+}
+
+/* make the class/struct header look like a definition */
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.struct>dt:first-child,
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.type>dt:first-child,
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.function>dt:first-child,
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.macro>dt:first-child,
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.enum>dt:first-child,
+html.writer-html5 .rst-content section>dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple).cpp.class>dt:first-child
+{
+    background-color: transparent;
+    border: 0px;
+    border-left: 2px solid #76b900 !important; /* var(--api-member-header-border-color); */
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace; /* var(--nv-font-face-mono); */
+    letter-spacing: -0.5px;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    width: 100%;
+    padding: 6px;
+    color: rgb(26, 26, 26);
+    margin: 0px;
+    margin-bottom: 15px;
+}
+
+/* top-level entity should not be shifted right (nested entities should) */
+html.writer-html5 .rst-content div > section > dl.cpp.struct>dd,
+html.writer-html5 .rst-content div > section > dl.cpp.type>dd,
+html.writer-html5 .rst-content div > section > dl.cpp.function>dd,
+html.writer-html5 .rst-content div > section > dl.cpp.macro>dd,
+html.writer-html5 .rst-content div > section > dl.cpp.enum>dd,
+html.writer-html5 .rst-content div > section > dl.cpp.class>dd
+{
+    margin-left: 0px;
+}
+
+/* class/struct fields/members header */
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list):not(.simple):not(.enumerator)>dt
+{
+    background: #e0e0e0;
+}
+
+/* :file: domain should be in italics */
+.rst-content code.file {
+    font-style: italic;
+    border: 0px;
+    color: unset;
+    font-family: unset;
+    font-size: unset;
+    padding: 0px;
+}
+
+/* links to code should look like regular links */
+a.reference > code.xref.cpp {
+    border: 0px;
+    color: unset;
+    font-size: unset;
+    font-family: unset;
+    padding: 0px;
+}
+
+/* make inline code looks less distinctive */
+code.docutils.literal.notranslate {
+    border: unset;
+    padding: unset;
+    color: unset;
+    font-size: unset;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,Courier,monospace
+}
+
+/* ef text in logo */
+div.wy-side-nav-search > a:after {
+    content: "EXECUTION FRAMEWORK";
+    position: absolute;
+    top: 50px;
+    left: 92px;
+    font-size: 11px;
+    font-family: unset;
+    color: unset;
+}
+
+/* listings should have the caption on the bottom */
+div.literal-block-wrapper.docutils.container {
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+/* remove the padding around listing captions to match the look of figure captions */
+.rst-content .code-block-caption {
+    padding: 0px;
+    margin-bottom: 15px;
+}
+
+/* remove the large margin at the end of listings and put one that matches figures */
+.rst-content div[class^=highlight], .rst-content pre.literal-block {
+    margin:0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* make figure captions smaller (like listing and table captions) */
+figcaption > p {
+    font-size: 85%;
+}
+
+/* move table captions to the bottom of the table */
+.rst-content table.docutils caption, .rst-content table.field-list caption, .wy-table caption
+{
+    caption-side: bottom;
+}
+
+/* zoomable svg images */
+div.zoomable-svg
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+span.zoomable-svg-buttons
+{
+    position: absolute;
+    font-size: 75%;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+span.zoomable-svg-button
+{
+    border: 1px #AAAAAA solid;
+    padding: 2px;
+    margin: 2.5px;
+    background: #00000099;
+    color: #EEEEEE;
+}
+
+span.zoomable-svg-hidden
+{
+    display: none
+}
+
+div.zoomable-svg-fullscreen
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+    width: 100%;
+    height: 100vh;
+    background: #000000AA;
+}

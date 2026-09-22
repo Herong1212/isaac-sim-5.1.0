@@ -1,0 +1,25 @@
+libzip-LICENSE.txt
+premake-LICENSE.txt
+python-LICENSES.txt
+lua-LICENSE.txt
+pybind11-LICENSE.txt
+draco-LICENSE.md
+alembic-LICENSE.txt
+materialx-LICENSE.txt
+rendering-LICENSES.txt
+omniverse client library-LICENSES.txt
+nv-usd-license.txt
+zlib-LICENSE.txt
+imgui-LICENSE.md
+glew-LICENSE.md
+glm-LICENSE.md
+gsl-LICENSE.md
+openexr-LICENSE.md
+zlib-LICENSE.md
+kit-devtools-LICENSE.txt
+tbb-LICENSE.txt
+boost-LICENSE.md
+IlmBase-LICENSE.md
+fmt-LICENSE.txt
+doxygen-LICENSE.txt
+opensubdiv-LICENSE.md

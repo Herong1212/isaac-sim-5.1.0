@@ -1,0 +1,39 @@
+{
+    "omni.graph.action.AddPrimRelationship": {
+        "version": 1,
+        "description": [ "Adds a target path to a relationship property.",
+                         "If the relationship property does not exist it will be created.",
+                         "Duplicate targets will not be added."],
+        "uiName": "Add Prim Relationship",
+        "categories": ["sceneGraph"],
+        "scheduling": ["usd-write"],
+        "inputs": {
+            "execIn": {
+                "type": "execution",
+                "description": "Signal to the graph that this node is ready to be executed."
+            },
+            "name": {
+                "type": "token",
+                "description": "Name of the relationship property to be modified or added.",
+                "uiName": "Relationship Name"
+            },
+            "path": {
+                "type": "path",
+                "description": "Path of the prim with the relationship property.",
+                "uiName": "Prim Path"
+            },
+            "target": {
+                "type": "path",
+                "description": "The target path to be added, which may be a prim, attribute or another relationship.",
+                "uiName": "Target Path"
+            }
+        },
+        "outputs": {
+            "isSuccessful": {
+                "type": "bool",
+                "description": "Whether the node has successfully added the new target to the relationship.",
+                "uiName": "Is Successful"
+            }
+        }
+    }
+}

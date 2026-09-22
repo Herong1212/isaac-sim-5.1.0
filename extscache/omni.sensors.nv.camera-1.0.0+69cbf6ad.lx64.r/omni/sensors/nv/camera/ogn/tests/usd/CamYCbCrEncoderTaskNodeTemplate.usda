@@ -1,0 +1,100 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file CamYCbCrEncoderTaskNode.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_sensors_nv_camera_CamYCbCrEncoderTaskNode" (
+        docs="""Translates the camera rgba image to a YCbCr image for SiL FastPath."""
+    )
+    {
+        token node:type = "omni.sensors.nv.camera.CamYCbCrEncoderTaskNode"
+        int node:typeVersion = 1
+
+        # 20 attributes
+        custom float inputs:CbCoefficentsB = 0.0 (
+            docs="""B component weight to calc Cb for custom YcbCr calculation"""
+        )
+        custom float inputs:CbCoefficentsG = 0.0 (
+            docs="""G component weight to calc Cb for custom YcbCr calculation"""
+        )
+        custom float inputs:CbCoefficentsR = 0.0 (
+            docs="""R component weight to calc Cb for custom YcbCr calculation"""
+        )
+        custom float inputs:CrCoefficentsB = 0.0 (
+            docs="""B component weight to calc Cr for custom YcbCr calculation"""
+        )
+        custom float inputs:CrCoefficentsG = 0.0 (
+            docs="""G component weight to calc Cr for custom YcbCr calculation"""
+        )
+        custom float inputs:CrCoefficentsR = 0.0 (
+            docs="""R component weight to calc Cr for custom YcbCr calculation"""
+        )
+        custom token inputs:YCbCrEncodingFormat = "YUV420" (
+            docs="""Format of the YCbCr: Could be YUV444,YUV422 or YUV420 """
+        )
+        custom token inputs:YCbCrEncodingStandard = "JPEG" (
+            docs="""Standard of the RGB->YCbCr transcoding: Could be BT.601, BT.709, BT.2020, JPEG or custom """
+        )
+        custom float inputs:YCoefficentsB = 0.0 (
+            docs="""B component weight to calc Y for custom YcbCr calculation"""
+        )
+        custom float inputs:YCoefficentsG = 0.0 (
+            docs="""G component weight to calc Y for custom YcbCr calculation"""
+        )
+        custom float inputs:YCoefficentsR = 0.0 (
+            docs="""R component weight to calc Y for custom YcbCr calculation"""
+        )
+        custom uint64 inputs:gpu = 0 (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double inputs:hydraTimeIn = 0.0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom float inputs:offsetCb = 0.0 (
+            docs="""Cb offset for custom YcbCr calculation"""
+        )
+        custom float inputs:offsetCr = 0.0 (
+            docs="""Cr offset for custom YcbCr calculation"""
+        )
+        custom float inputs:offsetY = 0.0 (
+            docs="""Y offset for custom YcbCr calculation"""
+        )
+        custom uint64 inputs:rp = 0 (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double inputs:simTimeIn = 0.0 (
+            docs="""timecode/timestamp input in [ns]"""
+        )
+        custom uint64 inputs:src = 0 (
+            docs="""Source Buffer"""
+        )
+        custom token inputs:yuvDataType = "UINT8" (
+            docs="""YUV output data type UINT8 or FLOAT16"""
+        )
+
+        # 5 attributes
+        custom uint64 outputs:dest = 0 (
+            docs="""Destination Buffer"""
+        )
+        custom uint64 outputs:gpu (
+            docs="""Pointer to shared context containing gpu foundations"""
+        )
+        custom double outputs:hydraTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+        custom uint64 outputs:rp (
+            docs="""Pointer to render product for this view"""
+        )
+        custom double outputs:simTimeOut = 0.0 (
+            docs="""timecode/timestamp output in [ns]"""
+        )
+    }
+}

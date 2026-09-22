@@ -1,0 +1,114 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnReadPrims.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_ReadPrims" (
+        docs="""DEPRECATED - use ReadPrimsV2!"""
+    )
+    {
+        token node:type = "omni.graph.nodes.ReadPrims"
+        int node:typeVersion = 3
+
+        # 8 attributes
+        custom bool inputs:applySkelBinding = false (
+            docs="""If an input USD prim is skinnable and has the SkelBindingAPI schema applied, read skeletal data and apply SkelBinding to deform the prim.
+            The output bundle will have additional child bundles created to hold data for the skeleton and skel animation prims if present. After
+            execution, deformed points and normals will be written to the `points` and `normals` attributes, while non-deformed points and normals
+            will be copied to the `points:default` and `normals:default` attributes."""
+        )
+        custom string inputs:attrNamesToImport = "*" (
+            docs="""A list of wildcard patterns used to match the attribute names that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['points', 'faceVertexCount', 'faceVertexIndices', 'size']
+                '*' - match any
+                '* ^points' - match any, but exclude 'points'
+                '* ^face*' - match any, but exclude 'faceVertexCount' and 'faceVertexIndices'"""
+        )
+        custom bool inputs:computeBoundingBox = false (
+            docs="""For each primitive compute local bounding box and store them as 'bboxMinCorner', 'bboxMaxCorner' and 'bboxTransform' attributes."""
+        )
+        custom string inputs:pathPattern = "" (
+            docs="""A list of wildcard patterns used to match the prim paths that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['/Cube0', '/Cube1', '/Box']
+                '*' - match any
+                '* ^/Box' - match any, but exclude '/Box'
+                '* ^/Cube*' - match any, but exclude '/Cube0' and '/Cube1'"""
+        )
+        custom rel inputs:prims (
+            docs="""The prims to be read from when 'useFindPrims' is false"""
+        )
+        custom string inputs:typePattern = "*" (
+            docs="""A list of wildcard patterns used to match the prim types that are to be imported
+
+            Supported syntax of wildcard pattern:
+                '*' - match an arbitrary number of any characters
+                '?' - match any single character
+                '^' - (caret) is used to define a pattern that is to be excluded
+
+            Example of wildcard patterns, input: ['Mesh', 'Cone', 'Cube']
+                '*' - match any
+                '* ^Mesh' - match any, but exclude 'Mesh'
+                '* ^Cone ^Cube' - match any, but exclude 'Cone' and 'Cube'"""
+        )
+        custom timecode inputs:usdTimecode = nan (
+            docs="""The time at which to evaluate the transform of the USD prim. A value of "NaN" indicates that the default USD time stamp should be used"""
+        )
+        custom bool inputs:useFindPrims = false (
+            docs="""When true, the 'pathPattern' and 'typePattern' attribute is used as the pattern to search for the prims to read
+            otherwise it will read the connection at the 'prim' attribute."""
+        )
+
+        # 1 attribute
+        custom rel outputs_primsBundle (
+            docs="""An output bundle containing multiple prims as children.
+            Each child contains data attributes and two additional token attributes named sourcePrimPath and sourcePrimType
+            which contains the path of the Prim being read"""
+        )
+
+        # 8 attributes
+        custom bool state:applySkelBinding = false (
+            docs="""State from previous execution"""
+        )
+        custom string state:attrNamesToImport (
+            docs="""State from previous execution"""
+        )
+        custom bool state:computeBoundingBox = false (
+            docs="""State from previous execution"""
+        )
+        custom string state:pathPattern (
+            docs="""State from previous execution"""
+        )
+        custom uint64[] state:primPaths (
+            docs="""State from previous execution"""
+        )
+        custom string state:typePattern (
+            docs="""State from previous execution"""
+        )
+        custom timecode state:usdTimecode = -1 (
+            docs="""State from previous execution"""
+        )
+        custom bool state:useFindPrims = false (
+            docs="""State from previous execution"""
+        )
+    }
+}

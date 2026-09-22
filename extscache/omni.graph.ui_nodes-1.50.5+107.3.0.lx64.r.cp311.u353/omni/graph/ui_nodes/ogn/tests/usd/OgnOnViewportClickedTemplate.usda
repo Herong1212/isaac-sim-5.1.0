@@ -1,0 +1,46 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnOnViewportClicked.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_ui_nodes_OnViewportClicked" (
+        docs="""Event node which fires when a click event occurs in the specified viewport. A press event differs from a click event only in timing. Press events are held down while click events are pressed and then immediately (within a small amount of time) released. Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."""
+    )
+    {
+        token node:type = "omni.graph.ui_nodes.OnViewportClicked"
+        int node:typeVersion = 1
+
+        # 4 attributes
+        custom token inputs:gesture = "Left Mouse Click" (
+            docs="""The input gesture to trigger viewport click events."""
+        )
+        custom bool inputs:onlyPlayback = true (
+            docs="""When true, the node is only executed while the Stage is being played."""
+        )
+        custom bool inputs:useNormalizedCoords = false (
+            docs="""When true, the components of the 2D position output are scaled to between 0 and 1,
+            where 0 is top/left and 1 is bottom/right.
+            When false, components are in viewport render resolution pixels."""
+        )
+        custom token inputs:viewport = "Viewport" (
+            docs="""Name of the viewport window to watch for click events."""
+        )
+
+        # 2 attributes
+        custom uint outputs:clicked (
+            docs="""When the specified input gesture triggers a click event in the specified viewport,
+            signal to the graph that execution can continue downstream."""
+        )
+        custom double2 outputs:position (
+            docs="""The position at which the click event occurred."""
+        )
+    }
+}

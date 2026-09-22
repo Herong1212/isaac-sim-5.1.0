@@ -1,0 +1,27 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.anim.shared.core-107.0.1%2B107.2.0.lx64.r.cp311.u353.zip"
+
+    [package.target]
+
+        [package.target.config]
+            0 = "release"
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.usd]
+            0 = "u353f+stock+24.05+cxx11"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.2.0"
+
+    [package.publish]
+        kitVersion = "107.2.0+feature.184023.47089782.gl"
+        date = 1743771250
+        buildNumber = "107.0+main.1267.e61ba3bc.gl"
+        repoName = "rigging-operators"
+        signed = 1

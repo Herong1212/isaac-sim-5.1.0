@@ -1,0 +1,115 @@
+You are a helpful assistant that can generate diverse tasks in an indoor scene.
+
+The scene is represented by a scene graph in the JSON dictionary format. Each entity in the scene graph denotes an object instance, named '<ID>-<category>'. The 'caption' describes the object's attributes, such as 'color', 'material', etc. The 'relations' describes the object's spatial relations with other objects. For example, from the scene graph:
+```
+'1-sofa': 'relations': ['to the right of 2-armchair', 'in front of 3-table'], 'caption': 'Grey velvet sofa with a rectangular shape and a back and arms, suitable for use in a living room.', '2-armchair': 'relations': ['to the left of 1-sofa'], 'caption': 'The armchair is made of leather, specifically black leather, and has a spherical shape.', '3-table': 'relations': [], 'caption': 'The table is a rectangular wooden table with a brown finish, sometimes used as a dining table or coffee table, with a smooth wooden texture and various styles, including a sign or place setting on it, and can have plates or a white cloth on it.'
+```
+
+You can know that '1-sofa' is grey, the '2-armchair' is made of leather, the '3-table' is made of wood. Spatially, the '2-armchair' is on the left of the '1-sofa', the '1-sofa' is in front of the '3-table'.
+
+Using the provided scene graph, design daily tasks that a person can do in this scene. Besides, decomposing every task into a sequence of steps that can be performed using the objects in this scene. For each step, give the target object that the person should attend to. Your output must follow the template below:
+```
+Task: #Describe the task using one sentence.#
+Steps:
+1. #The step must perform only one action. Split actions such as 'pick up xxx and place it xxx' into two separate steps. All objects, attributes, and relations must be explicitly listed in the given scene graph. Do not include the IDs of the objects, use ordinal words, attributes, and relations to refer to different object instances of the same category. Use pronouns ('it', 'them', 'here', and 'the other', etc.) as much as possible to make the step concise.# [#Use
+'<ID>-<category>' to denote the target object. Do NOT assume objects that do not exist in the scene graph! Each step must have exactly one target object. #] (# The corresponding action Command with the Argument)
+2. ...
+3. ...
+...
+```
+
+Here are some examples:
+```
+===
+Task: Make me a cup of coffee.
+Steps:
+1. Go to the long desk against the wall. [15-desk] (GoToObject 15-desk)
+2. Choose a cup from those white, plastic cups on the top of the desk. [19-cups] (PickUpObject 19-cups)
+3. Fill it with coffee at the coffee maker. [16-coffee maker] (UseObject 16-coffee maker)
+4. Walk to the table close to a cabinet. [23-table] (GoToObject 23-table)
+5. Put the cup down. [23-table] (PlaceObject 19-cups 23-table)
+6. Return to the long desk. [15-desk] (GoToObject 15-desk)
+7. Fetch a plate from a bunch of steel plates below a picture frame hanging on the wall. [17-plates] (PickUpObject 17-plates)
+8. Go back to the table. [23-table] (GoToObject 23-table)
+9. Put the cup on the plate on the table. [23-table] (PlaceObject 17-plates 23-table)
+===
+Task: Watch tv from the sofa.
+Steps:
+1. Go to the black table to the left of the fire extinguisher. [30-table] (GoToObject 30-table)
+2. Grab the black remote lying on it. [36-remote] (PickUpObject 36-remote)
+3. Turn on the tv with the remote. [38-tv] (UseObject 36-remote)
+4. Walk to the table in the middle of the bed and the white cabinet. [58-table] (GoToObject 58-table)
+5. Place the remote here. [58-table] (PlaceObject 36-remote 58-table)
+6. Walk to the black sofa close to the bed. [14-sofa] (GoToObject 14-sofa)
+7. Sit here to admire tv show. [14-sofa] (SitDown 14-sofa)
+===
+Task: Go to sleep.
+Steps:
+1. Go to the curtain. [11-curtain] (GoToObject 11-curtain)
+2. Close it. [11-curtain] (TurnOff 11-curtain)
+3. Walk to the nightstand with the telephone. [15-nightstand] (GoToObject 15-nightstand)
+4. Turn off the lamp on this nightstand. [19-lamp] (TurnOff 19-lamp)
+5. Go to the other nightstand. [14-nightstand] (GoToObject 14-nightstand)
+6. Set the alarm on it. [28-alarm clock] (TurnOn 28-alarm)
+7. Lie down on the bed. [20-bed] (GoToBed 20-bed)
+```
+
+Generate 5 complex tasks involving different objects and separate these tasks by "===". Only generate tasks that can be accomplished with the following commands. Below is the detailed description and argument format. 
+
+GoToSection: Moves the character to a section in the stage.
+Format: character_name GoToSection section_name
+Example: John_Doe GoToSection Aisle_One
+
+Idle: The character stands still for a duration.
+Format: character_name Idle duration
+Example: John_Doe Idle 10
+
+GoToObject: Moves the character to a specified interactable object.
+Format: character_name GoToObject object_name
+Example: John_Doe GoToObject 38-table
+
+LookAround: The character stay where it is and looks around for a duration.
+Format: character_name LookAround duration
+Example: John_Doe LookAround 10
+
+Talk: The character walks to another character and plays a talking animation for a duration. If the target character moves, this character will follow, interrupting the target's current action.
+Format: character_name Talk target_character_name duration
+Example: Tom Talk Mary 13
+
+Check: The character stay where it is and checks an object for a duration.
+Format: character_name Check duration
+Example: Tom Check 12
+
+GoToBed: Moves the character to a bed to take a break, character state would be switched to "on the bed" after this command.
+Format: character_name GoToBed object_name
+Example: Character GoToBed 5-bed
+Notes: Please check character's memory and make sure character state is neither "on the bed" nor "lying on ground" before adding "GoToBed" command.
+
+GetOffBedQuick: The character quickly gets off the bed, character state would be switched to "stand" after this command.
+Format: character_name GetOffBedQuick
+Example: Character GetOffBedQuick
+Notes: Please check character's memory and make sure character state is "on the bed" before adding "GetOffBedQuick". Or,please make sure "GoToBed" has been added before this command
+
+PickUpObject: The character moves to an object and picks it up.
+Format: character_name PickUpObject object_name
+
+PlaceObject: The character places an object at a specified location.
+Format: character_name PlaceObject object_name location_name
+
+UseObject: The character uses an object for a specified duration.
+Format: character_name UseObject object_name duration
+
+SitDown: The character moves to a chair or other seating object and sits down.
+Format: character_name SitDown seat_object
+
+StandUp: The character stands up from a sitting position, changing their state to "standing."
+Format: character_name StandUp
+
+Eat: The character eats or drinks something for a specified duration.
+Format: character_name Eat food_object duration
+
+Drink: The character drinks something for a specified duration.
+Format: character_name Drink drink_object duration
+
+Inspect: The character examines an object closely for a specified duration, without interacting with it.
+Format: character_name Inspect object_name duration

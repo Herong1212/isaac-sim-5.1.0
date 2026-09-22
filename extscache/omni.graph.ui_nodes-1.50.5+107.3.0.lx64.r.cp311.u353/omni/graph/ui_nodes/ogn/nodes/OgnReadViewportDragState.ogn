@@ -1,0 +1,78 @@
+{
+    "ReadViewportDragState": {
+        "version": 1,
+        "description": [
+            "Read the state of the last viewport drag event from the specified viewport.",
+            "Note that viewport mouse events must be enabled on the specified viewport using a SetViewportMode node."
+        ],
+        "uiName": "Read Viewport Drag State (BETA)",
+        "categories": ["ui"],
+        "scheduling": ["threadsafe"],
+        "exclude": ["tests"],
+        "inputs": {
+            "useNormalizedCoords": {
+                "type": "bool",
+                "description": [
+                    "When true, the components of 2D position and velocity outputs are scaled to between 0 and 1,",
+                    "where 0 is top/left and 1 is bottom/right.",
+                    "When false, components are in viewport render resolution pixels."
+                ],
+                "uiName": "Use Normalized Coords",
+                "default": false
+            },
+            "viewport": {
+                "type": "token",
+                "description": "Name of the viewport window to watch for drag events",
+                "uiName": "Viewport",
+                "default": "Viewport"
+            },
+            "gesture": {
+                "type": "token",
+                "description": "The input gesture to trigger viewport drag events",
+                "uiName": "Gesture",
+                "default": "Left Mouse Drag",
+                "metadata": {
+                    "displayGroup": "parameters",
+                    "allowedTokens": {
+                        "LeftMouseDrag": "Left Mouse Drag",
+                        "RightMouseDrag": "Right Mouse Drag",
+                        "MiddleMouseDrag": "Middle Mouse Drag"
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "initialPosition": {
+                "type": "double[2]",
+                "description": "The mouse position at which the most recent drag began",
+                "uiName": "Initial Position"
+            },
+            "currentPosition": {
+                "type": "double[2]",
+                "description": [
+                    "The current mouse position if a drag is in progress,",
+                    "or the final mouse position of the most recent drag if a drag is not in progress"
+                ],
+                "uiName": "Current Position"
+            },
+            "velocity": {
+                "type": "double[2]",
+                "description": [
+                    "A vector representing the change in position of the mouse since the previous frame",
+                    "if a drag is in progress, otherwise (0,0)"
+                ],
+                "uiName": "Velocity"
+            },
+            "isDragInProgress": {
+                "type": "bool",
+                "description": "True if a viewport drag event is currently in progress in the specified viewport",
+                "uiName": "Is Drag In Progress"
+            },
+            "isValid": {
+                "type": "bool",
+                "description": "True if a valid event state was detected and the outputs of this node are valid, and false otherwise",
+                "uiName": "Is Valid"
+            }
+        }
+    }
+}

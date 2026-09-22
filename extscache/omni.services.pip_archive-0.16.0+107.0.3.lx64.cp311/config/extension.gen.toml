@@ -1,0 +1,21 @@
+
+[package]
+    archivePath = "https://d2cerybs4newgl.cloudfront.net/omni.services.pip_archive-0.16.0%2B107.0.3.lx64.cp311.zip"
+
+    [package.target]
+
+        [package.target.python]
+            0 = "cp311"
+
+        [package.target.platform]
+            0 = "linux-x86_64"
+
+        [package.target.kit]
+            0 = "107.0.3"
+
+    [package.publish]
+        kitVersion = "107.0.3+feature.179912.d4c08a52.gl"
+        date = 1746482332
+        buildNumber = "106.1.0+master.2831.1552d038.gl"
+        repoName = "kit-services"
+        signed = 1

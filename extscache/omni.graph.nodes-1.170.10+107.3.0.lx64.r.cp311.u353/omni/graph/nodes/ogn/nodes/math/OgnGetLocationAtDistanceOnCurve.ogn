@@ -1,0 +1,62 @@
+{
+    "GetLocationAtDistanceOnCurve": {
+        "version": 1,
+        "description": [
+            "DEPRECATED: Use GetLocationAtDistanceOnCurve2"
+        ],
+        "uiName": "Get Locations At Distances On Curve",
+        "categories": ["internal"],
+        "metadata": {"hidden": "true"},
+        "scheduling": ["threadsafe"],
+        "inputs": {
+            "curve": {
+                "type": "pointd[3][]",
+                "description": "The curve to be examined",
+                "uiName": "Curve"
+            },
+            "distance": {
+                "type": "double[]",
+                "description": "The distances along the curve, wrapped to the range 0-1.0",
+                "uiName": "Distances"
+            },
+            "forwardAxis": {
+                "type": "token",
+                "description": ["The direction vector from which the returned rotation is relative, one of X, Y, Z"],
+                "uiName": "Forward",
+                "default": "X"
+            },
+            "upAxis": {
+                "type": "token",
+                "description": ["The world Up vector, the curve should be in a plane perpendicular with this - one of X, Y, Z"],
+                "uiName": "Up",
+                "default": "Y"
+            }
+        },
+        "outputs": {
+            "location": {
+                "type": "pointd[3][]",
+                "description": "Locations",
+                "uiName": "Locations on curve at the given distances in world space"
+            },
+            "rotateXYZ": {
+                "type": "vectord[3][]",
+                "description": "Rotations",
+                "uiName": "World space rotations of the curve at the given distances, may not be smooth for some curves"
+            },
+            "orientation": {
+                "type": "quatf[4][]",
+                "description": "Orientations",
+                "uiName": "World space orientations of the curve at the given distances, may not be smooth for some curves"
+            }
+        },
+        "tokens": [
+            "x", "y", "z", "X", "Y", "Z"
+        ],
+        "tests": [
+            {"inputs:curve": [[1, 2, 3]], "inputs:distance": [0.5], "outputs:location": [[1, 2, 3]]},
+
+            {"inputs:curve": [[0, 0, 0], [0, 0, 1]], "inputs:distance": [0.75, 0], "inputs:forwardAxis": "X", "inputs:upAxis": "Y",
+                "outputs:location": [[0, 0, 0.5], [0, 0, 0]], "outputs:rotateXYZ": [[0, 90, 0], [0, -90, 0]]}
+        ]
+    }
+}

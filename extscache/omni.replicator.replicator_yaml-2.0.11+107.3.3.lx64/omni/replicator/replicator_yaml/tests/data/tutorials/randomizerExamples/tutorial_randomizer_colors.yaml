@@ -1,0 +1,79 @@
+stage_unit_setting:
+  settings.set_stage_meters_per_unit:
+    meters_per_unit: 1
+
+stage_up_axis_setting:
+  settings.set_stage_up_axis:
+    up_axis: "Z"
+
+sphere:
+  create.sphere:
+    semantics: [["class", "sphere"]]
+    position: [1, 0, 1]
+cube:
+  create.cube:
+    semantics: [["class", "cube"]]
+    position: [1, 2, 2]
+plane:
+  create.plane:
+    semantics: [["class", "plane"]]
+    visible: true
+    scale: 10
+
+
+# Unused - preserves material randomizer node ID after functional improvements.
+unused:
+  distribution.uniform:
+    lower: -1
+    upper: 1
+unused2:
+  distribution.uniform:
+    lower: -1
+    upper: 1
+unused3:
+  distribution.uniform:
+    lower: -1
+    upper: 1
+
+
+register_colors:
+  randomizer.register:
+    get_color:
+      shapes:
+        get.prims:
+          semantics: [['class', 'cube'], ['class', 'sphere']]
+      with.shapes:
+        randomizer.color:
+          colors:
+            distribution.uniform:
+              lower: [0, 0, 0]
+              upper: [1, 1, 1]
+
+trigger:
+  trigger.on_frame:
+    max_execs: 100
+    rt_subframes: 3
+
+with_trigger:
+  with.trigger:
+    randomizer.get_color: null
+
+camera:
+  create.camera:
+    position: [5, 0, 0]
+
+render_product:
+  create.render_product:
+    camera: camera
+    resolution: [1024, 1024]
+
+writer:
+  writers.get:
+    name: "BasicWriter"
+    init_params:
+      output_dir: "_output"
+      rgb: True
+
+writer_attach:
+  writer.attach:
+    render_products: render_product

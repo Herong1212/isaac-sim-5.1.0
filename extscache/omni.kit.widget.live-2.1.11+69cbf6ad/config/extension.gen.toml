@@ -1,0 +1,13 @@
+
+[package]
+    archivePath = "http://d4i3qtqj3r0z5.cloudfront.net/omni.kit.widget.live-a53b652bfb3eb3ab.zip"
+
+    [package.publish]
+        kitVersion = "107.4.0+master.206660.d2e3230b.gl"
+        date = 1757755125
+        buildNumber = "107.4.0+master.206660.d2e3230b.gl"
+
+    [package.target]
+
+        [package.target.kitHash]
+            0 = "69cbf6ad"

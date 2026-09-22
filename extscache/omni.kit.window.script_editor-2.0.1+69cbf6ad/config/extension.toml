@@ -1,0 +1,82 @@
+[package]
+version = "2.0.1"
+
+authors = ["NVIDIA"]
+
+title = "Script Editor"
+description = "Window to edit and run python scripts."
+
+repository = ""
+
+category = "Utilities"
+support_level = "Sample"
+feature = true
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+
+# Preview image. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+[dependencies]
+"omni.ui" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.hotkeys.core" = {}
+"omni.kit.window.file_importer" = {}
+"omni.kit.window.file_exporter" = {}
+"omni.kit.menu.utils" = {}
+"omni.kit.widget.text_editor" = {}
+"omni.kit.widget.context_menu" = {}
+"omni.kit.window.popup_dialog" = {}
+
+[[trigger]]
+menu.name = "Window/Script Editor"
+menu.window = "Script Editor"
+
+[[python.module]]
+name = "omni.kit.window.script_editor"
+
+[settings]
+# Folder to look for snippets. Snippets are just .py files, where first line is a comment with snippet name. Snippet
+# name can contain one '/' to define category. E.g. # Settings/Get Setting
+exts."omni.kit.window.script_editor".snippetFolders = [
+    "${kit}/snippets",
+    "${shared_documents}/snippets"
+]
+
+# Clear text from the editor tab after it has been executed?
+persistent.exts."omni.kit.window.script_editor".clearAfterExecute = false
+
+# Color palette to use. Can be "Dark", "Light" or "Retro Blue".
+persistent.exts."omni.kit.window.script_editor".editorPalette = "Dark"
+
+# If you open or reload a script file, should it be automatically executed?
+persistent.exts."omni.kit.window.script_editor".executeOnReload = false
+
+# Size, in points, of font used in the log window and editor tabs.
+# If the exact size is not supported the nearest one will be used.
+persistent.exts."omni.kit.window.script_editor".fontSize = 14
+
+# Set the path to the font of the bottom part of the window
+persistent.exts."omni.kit.window.script_editor".font = ""
+
+# Write to temp file before executing. That allows inspect and ast std modules to be able to get sources and work correctly.
+exts."omni.kit.window.script_editor".executeInTempFile = true
+
+[[test]]
+dependencies = [
+    "omni.kit.ui_test",
+    "omni.kit.test_suite.helpers",
+]
+stdoutFailPatterns.exclude = [
+    "*SyntaxError*" # We have syntax error produced on purpose during testing
+]
+args = [
+]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/SETTINGS.md"]

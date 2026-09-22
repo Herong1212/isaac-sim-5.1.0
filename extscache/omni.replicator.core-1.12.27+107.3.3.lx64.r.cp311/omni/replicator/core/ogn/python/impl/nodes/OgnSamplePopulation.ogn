@@ -1,0 +1,69 @@
+{
+    "OgnSamplePopulation": {
+        "version": 2,
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "This node generates a random sample of assets from a weighted list of assets.",
+        "scheduling": "compute-on-request",
+        "metadata":
+        {
+           "uiName": "Randomize Population"
+        },
+        "state": {
+            "$comment": ["Internal state to store voxels of prims to avoid unnecessary re-calculations"]
+        },
+        "inputs": {
+            "mode": {
+                "description": ["Sampling mode"],
+                "type": "token",
+                "default": "point_instance"
+            },
+            "withReplacements": {
+                "description": ["Use replacements to avoid duplicates"],
+                "type": "bool",
+                "default": true
+            },
+            "populationName": {
+                "description": ["Name of population"],
+                "type": "string",
+                "default": ""
+            },
+            "prims": {
+                "description": ["Paths to prims in the scene, but provided in the form of target"],
+                "type": "target"
+            },
+            "paths": {
+                "description": ["Paths from which to instantiate a population"],
+                "type": "token[]"
+            },
+            "useCache": {
+                "description": ["Cache assets to speed up randomization"],
+                "type": "bool",
+                "default": true
+            },
+            "semantics": {
+                "description": ["Semantic key-value pairs separated by a colon (eg. class:car)"],
+                "type": "token[]"
+            },
+            "exec": {
+                "description": ["Execution in"],
+                "type": "execution"
+            },
+            "populationPath": {
+                "description": "Prim path to population prim",
+                "type": "target",
+                "metadata": { "hidden": "true" }
+            }
+        },
+        "outputs": {
+            "prims": {
+                "description": ["Sampled prims"],
+                "type": "target"
+            },
+            "exec": {
+                "description": ["Execution out"],
+                "type": "execution"
+            }
+        }
+    }
+}

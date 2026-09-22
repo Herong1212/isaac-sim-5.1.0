@@ -1,0 +1,101 @@
+[package]
+title = "GPU Foundation"
+category = "Rendering"
+description = "Low-level management of GPU-based resources and compute workloads."
+keywords = ["GPU", "resource", "foundation"]
+support_level = "Core"
+readme = "docs/Overview.md"
+
+# Load at the start, since we need to lock carb::graphics selection ASAP
+[core]
+order = -100000
+reloadable = false
+
+[dependencies]
+"omni.stats" = {} # carb::stats::IStats interface implementation, needed for the IGpuProfiler
+"omni.assets.plugins" = {}
+"carb.graphics_optional" = { optional = true, version = "2" }
+"omni.ujitso.default" = { optional = true } # for texture processor
+# GPU Foundation sends activity events
+"omni.activity.profiler" = { optional = true }
+"omni.client" = { optional = true }
+"omni.kit.trace" = { optional = true }
+
+[dependencies."filter:os"."windows"]
+"filter:setting".app.vulkan."value:true"."omni.gpu_foundation.shadercache.vulkan" = {}
+"filter:setting".app.vulkan."value:false"."omni.gpu_foundation.shadercache.d3d12" = {}
+
+[dependencies."filter:os"."linux"]
+"omni.gpu_foundation.shadercache.vulkan" = {}
+"omni.hsscclient" = { optional = true }
+
+[[native.library]]
+# Windows statically links against libvulkan. This should be standardized with CC-800.
+# Adding libvulkan.so to Linux x86 causes a crash on NGX initialization due to loading
+# the same lib twice with a different name
+"filter:platform"."linux-aarch64".path = "bin/deps/${lib_prefix}vulkan${lib_ext}"
+"filter:platform"."macos-universal".path = "bin/deps/${lib_prefix}vulkan${lib_ext}"
+
+[[python.module]]
+name = "omni.gpu_foundation_factory"
+
+[[native.plugin]]
+"filter:platform"."windows-x86_64"."path" = "bin/deps/carb.graphics-direct3d.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.graphics-vulkan.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.graphics_optional.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.shadercompiler-slang.plugin"
+
+[[native.plugin]]
+path = "bin/deps/gpu.foundation.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.blockcompression.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.cudainterop.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.glinterop.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.failureinjector.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.memorytracking.plugin"
+
+[[native.plugin]]
+path = "bin/omni.gpu_foundation.ext.plugin"
+
+[[native.plugin]]
+path = "bin/omni.gpu_foundation_factory.plugin"
+
+[[native.plugin]]
+path = "bin/deps/carb.imguiregistry.plugin"
+
+[[native.plugin]]
+path = "bin/deps/omni.streamingstatus.plugin"
+
+[[native.plugin]]
+path = "bin/carb.ujitso.processors.texture/carb.ujitso.processor.texture.plugin"
+
+[settings]
+exts."omni.kit.renderer.core".compatibilityMode = false
+exts."omni.kit.renderer.core".raytracingEnabled = true
+# Whether to skip showing startup errors to user as UI dialog boxes
+exts."omni.gpu_foundation".startup.skipErrorDialogs = false
+
+[[test]]
+waiver = "Tested in rendering repo"
+
+[documentation]
+python_api_hidden = true
+cpp_api_hidden = true
+pages = [
+    "docs/Overview.md",
+]

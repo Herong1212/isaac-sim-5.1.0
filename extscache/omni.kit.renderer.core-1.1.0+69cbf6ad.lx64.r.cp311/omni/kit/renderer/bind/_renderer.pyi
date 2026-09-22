@@ -1,0 +1,118 @@
+"""
+        This module contains bindings to C++ omni::kit::renderer::IRenderer interface, core C++ part of Omniverse Kit.
+
+        >>> import omni.kit.renderer.bind
+        >>> e = omni.kit.renderer.bind.get_renderer_interface()
+        """
+from __future__ import annotations
+import omni.kit.renderer.bind._renderer
+import typing
+import carb._carb
+import carb.events._events
+import omni.appwindow._appwindow
+import omni.gpu_foundation_factory._gpu_foundation_factory
+
+__all__ = [
+    "IRenderer",
+    "RendererEventType",
+    "acquire_renderer_interface",
+    "get_renderer_event_name",
+    "get_renderer_event_type",
+    "release_renderer_interface"
+]
+
+
+class IRenderer():
+    def attach_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow) -> bool: ...
+    def detach_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow) -> None: ...
+    def draw_freeze_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow, arg1: bool) -> None: ...
+    def force_render_frame(self, arg0: float) -> None: ...
+    def freeze_app_window(self, arg0: omni.appwindow._appwindow.IAppWindow, arg1: bool) -> None: ...
+    def get_clear_color(self, arg0: omni.appwindow._appwindow.IAppWindow) -> carb._carb.Float4: ...
+    def get_framebuffer_height(self, arg0: omni.appwindow._appwindow.IAppWindow) -> int: ...
+    def get_framebuffer_texture(self, arg0: omni.appwindow._appwindow.IAppWindow) -> omni.gpu_foundation_factory._gpu_foundation_factory.Texture: ...
+    def get_framebuffer_width(self, arg0: omni.appwindow._appwindow.IAppWindow) -> int: ...
+    @staticmethod
+    def get_graphics_command_list(*args, **kwargs) -> typing.Any: ...
+    @staticmethod
+    def get_graphics_command_queue(*args, **kwargs) -> typing.Any: ...
+    def get_graphics_device(self, arg0: omni.appwindow._appwindow.IAppWindow) -> omni.gpu_foundation_factory._gpu_foundation_factory.Device: ...
+    def get_post_end_render_frame_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_post_end_render_pass_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_post_present_frame_buffer_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_pre_begin_frame_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_pre_begin_render_pass_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_present_render_frame_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def get_render_frame_event_stream(self, app_window: omni.appwindow._appwindow.IAppWindow = None) -> carb.events._events.IEventStream: ...
+    def is_app_window_attached(self, arg0: omni.appwindow._appwindow.IAppWindow) -> bool: ...
+    def set_clear_color(self, arg0: omni.appwindow._appwindow.IAppWindow, arg1: carb._carb.Float4) -> None: ...
+    def shutdown(self) -> None: ...
+    def startup(self) -> None: ...
+    def wait_idle(self, arg0: omni.appwindow._appwindow.IAppWindow) -> None: ...
+    @property
+    def clear_color(self) -> carb._carb.Float4:
+        """
+        App window clear color
+
+        :type: carb._carb.Float4
+        """
+    @clear_color.setter
+    def clear_color(self, arg1: omni.appwindow._appwindow.IAppWindow, arg2: carb._carb.Float4) -> None:
+        """
+        App window clear color
+        """
+    pass
+class RendererEventType():
+    """
+    Members:
+
+      PRE_BEGIN_FRAME
+
+      PRE_BEGIN_RENDER_PASS
+
+      RENDER_FRAME
+
+      POST_END_RENDER_PASS
+
+      POST_END_RENDER_FRAME
+
+      POST_PRESENT_FRAME_BUFFER
+
+      PRESENT_RENDER_FRAME
+    """
+    def __eq__(self, other: object) -> bool: ...
+    def __getstate__(self) -> int: ...
+    def __hash__(self) -> int: ...
+    def __index__(self) -> int: ...
+    def __init__(self, value: int) -> None: ...
+    def __int__(self) -> int: ...
+    def __ne__(self, other: object) -> bool: ...
+    def __repr__(self) -> str: ...
+    def __setstate__(self, state: int) -> None: ...
+    @property
+    def name(self) -> str:
+        """
+        :type: str
+        """
+    @property
+    def value(self) -> int:
+        """
+        :type: int
+        """
+    POST_END_RENDER_FRAME: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.POST_END_RENDER_FRAME: 4>
+    POST_END_RENDER_PASS: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.POST_END_RENDER_PASS: 3>
+    POST_PRESENT_FRAME_BUFFER: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.POST_PRESENT_FRAME_BUFFER: 5>
+    PRESENT_RENDER_FRAME: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.PRESENT_RENDER_FRAME: 6>
+    PRE_BEGIN_FRAME: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.PRE_BEGIN_FRAME: 0>
+    PRE_BEGIN_RENDER_PASS: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.PRE_BEGIN_RENDER_PASS: 1>
+    RENDER_FRAME: omni.kit.renderer.bind._renderer.RendererEventType # value = <RendererEventType.RENDER_FRAME: 2>
+    __members__: dict # value = {'PRE_BEGIN_FRAME': <RendererEventType.PRE_BEGIN_FRAME: 0>, 'PRE_BEGIN_RENDER_PASS': <RendererEventType.PRE_BEGIN_RENDER_PASS: 1>, 'RENDER_FRAME': <RendererEventType.RENDER_FRAME: 2>, 'POST_END_RENDER_PASS': <RendererEventType.POST_END_RENDER_PASS: 3>, 'POST_END_RENDER_FRAME': <RendererEventType.POST_END_RENDER_FRAME: 4>, 'POST_PRESENT_FRAME_BUFFER': <RendererEventType.POST_PRESENT_FRAME_BUFFER: 5>, 'PRESENT_RENDER_FRAME': <RendererEventType.PRESENT_RENDER_FRAME: 6>}
+    pass
+def acquire_renderer_interface(plugin_name: str = None, library_path: str = None) -> IRenderer:
+    pass
+def get_renderer_event_name(event: RendererEventType, app_window: omni.appwindow._appwindow.IAppWindow = None) -> str:
+    pass
+def get_renderer_event_type(name: str) -> tuple:
+    pass
+def release_renderer_interface(arg0: IRenderer) -> None:
+    pass

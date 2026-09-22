@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    doc ="""Generated from node description file OgnWriteSetting.ogn
+Contains templates for node types found in that file."""
+)
+
+def OmniGraph "TestGraph"
+{
+    token evaluator:type = "push"
+    int2 fileFormatVersion = (1, 3)
+    token flatCacheBacking = "Shared"
+    token pipelineStage = "pipelineStageSimulation"
+
+    def OmniGraphNode "Template_omni_graph_nodes_WriteSetting" (
+        docs="""Node that writes a value to a kit application setting. Issues an error if input::value type  does not match setting type."""
+    )
+    {
+        token node:type = "omni.graph.nodes.WriteSetting"
+        int node:typeVersion = 1
+
+        # 3 attributes
+        custom uint inputs:execIn (
+            docs="""Signal to the graph that this node is ready to be executed."""
+        )
+        custom string inputs:settingPath = "" (
+            docs="""The path of the setting to be modified"""
+        )
+        custom token inputs:value (
+            docs="""The new value to be written"""
+        )
+
+        # 1 attribute
+        custom uint outputs:execOut (
+            docs="""Signal to the graph that execution can continue downstream."""
+        )
+    }
+}

@@ -1,0 +1,64 @@
+[package]
+version = "1.0.1"
+title = "Python Debugger"
+description="Uses debugpy which implements the Debug Adapter Protocol"
+authors = ["NVIDIA"]
+repository = ""
+category = "Development Tools"
+support_level = "Core"
+keywords = ["kit", "debug", "python"]
+readme  = "docs/README.md"
+changelog="docs/CHANGELOG.md"
+
+[dependencies]
+"omni.kit.pip_archive" = {}
+
+[[python.module]]
+name = "omni.kit.debug.python"
+
+[[python.module]]
+name = "debugpy"
+
+[settings.exts."omni.kit.debug.python"]
+# Host and port for listen to debugger for
+host = "127.0.0.1"
+port = 3000
+
+# "listen" or "connect", use connect when debugging multiple kit processes such as running unit tests
+mode = "listen"
+
+# Enable debugpy builtin logging, logs go into ${logs} folder
+debugpyLogging = false
+
+# Block until client (debugger) connected
+waitForClient = false
+
+# break immediately (also waits for client)
+break = false
+
+# having "native" defined makes package separate for each platform & build config (bindings are shared libraries)
+[native]
+
+[documentation]
+pages = ["docs/Overview.md", "docs/CHANGELOG.md", "docs/USAGE_PYTHON.md", "docs/SETTINGS.md"]
+
+[[test]]
+name="startup"
+stdoutFailPatterns.exclude = [
+    "*Debugger warning: It seems that frozen modules are being used*",
+    "*make the debugger miss breakpoints. Please pass*",
+    "*to python to disable frozen modules*",
+    "*Note: Debugging will proceed*",
+]
+
+[[test]]
+pyCoverageEnabled = false
+waiver = "Developer tool. Brings 3rd party (debugpy) to another 3rd party (VSCode), doesn't have much to test and building an integration test is not worth it."
+
+# Python-3.11 errors, can also be disabled with env['PYDEVD_DISABLE_FILE_VALIDATION']=1
+stdoutFailPatterns.exclude = [
+    "*Debugger warning: It seems that frozen modules are being used*",
+    "*make the debugger miss breakpoints. Please pass*",
+    "*to python to disable frozen modules*",
+    "*Note: Debugging will proceed*",
+]

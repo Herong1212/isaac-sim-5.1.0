@@ -1,0 +1,44 @@
+{
+    "omni.graph.nodes.GpuInteropRenderProductEntry": {
+        "version": 2,
+        "description": [
+            "Entry node for post-processing hydra render results for a single view. ",
+            "Gives direct access to the RenderProduct and GPU interfaces."
+        ],
+        "metadata": {"hidden": "true"},
+        "categories": ["internal", "graph:postRender", "rendering"],
+        "uiName": "GPU Interop: Render Product Entry",
+        "inputs": {
+        },
+        "outputs": {
+            "simTime": {
+                "type": "double",
+                "description": [
+                    "The time difference since the last simulation frame.",
+                    "May suffer from loss of precision and cannot be used as a deterministic identifier, ",
+                    "for example for fetching data from Fabric during the node compute."
+                ],
+                "uiName": "Simulation Time"
+            },
+            "hydraTime": {
+                "type": "double",
+                "description": "The time difference since the last rendered frame.",
+                "uiName": "Renderer Time"
+            },
+            "gpu": {
+                "type": "uint64",
+                "description": "The shared context containing GPU foundation interfaces.",
+                "uiName": "GPU Foundations"
+            },
+            "rp": {
+                "type": "uint64",
+                "description": "The to render product for this view.",
+                "uiName": "Render Product"
+            },
+            "exec": {
+                "type": "execution",
+                "description": "Trigger for scheduling dependencies."
+            }
+        }
+    }
+}
